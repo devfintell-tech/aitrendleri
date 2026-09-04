@@ -1,0 +1,37 @@
+name: Günlük Reddit AI Trend Taraması
+
+on:
+  schedule:
+    # Her sabah 06:00 UTC (Türkiye saatiyle 09:00) otomatik çalışır
+    - cron: '0 6 * * *'
+  workflow_dispatch: # GitHub arayüzünden manuel 'Run workflow' ile istediğiniz an tetikleme
+
+jobs:
+  analyze-and-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Kodu Çek
+        uses: actions/checkout@v4
+
+      - name: Node.js Kurulumu
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Bağımlılıkları Yükle
+        run: npm ci || npm install
+
+      - name: Reddit Verilerini Çek & Gemini ile Analiz Et
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: npm run crawl
+
+      - name: Güncel Verileri Git Deposuna Kaydet
+        run: |
+          git config --global user.name "AI Trend Bot"
+          git config --global user.email "bot@aitrendradar.local"
+          git add src/data/latest-report.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "🤖 Otonom Günlük Rapor Güncellemesi [skip ci]" && git push)

@@ -1,0 +1,9 @@
+name = "ai-hype-radar"
+compatibility_date = "2024-09-01"
+pages_build_output_dir = "dist"
+
+# Cloudflare D1 Veritabanı Tanımı (Opsiyonel Canlı SQL)
+# [[d1_databases]]
+# binding = "DB"
+# database_name = "ai-hype-db"
+# database_id = "<your-d1-database-id>"

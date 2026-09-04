@@ -1,0 +1,28 @@
+{
+  "name": "ai-trend-tracker",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "crawl": "node scripts/run-analysis.js",
+    "seed": "node scripts/seed-data.js"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.475.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwind-merge": "^3.0.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.0.6",
+    "@vitejs/plugin-react": "^4.3.4",
+    "fast-xml-parser": "^5.0.8",
+    "tailwindcss": "^4.0.6",
+    "vite": "^6.1.0",
+    "wrangler": "^3.109.0"
+  }
+}
