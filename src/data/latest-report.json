@@ -927,5 +927,108 @@
       "badge": "İş Dünyası",
       "contentHtml": "<p>Yapay zeka asistanları kod yazma ve prototipleme hızını 5-10 katına çıkarırken, kurumsal yapılar aynı hızda evrilemiyor. DevOps ve mühendislik ekipleri saatler içinde çalışan mikro-servisler inşa edebilirken; karar alma süreçleri, güvenlik onayları, yasal uyumluluk ve departmanlar arası bürokrasi ana darboğaz (bottleneck) haline gelmiş durumda. Şirketlerin acilen 'kodlama hızına değil, karar alma ve canlıya alma hızına' odaklanan yeni operasyonel protokoller geliştirmesi gerekiyor.</p><p><strong>Kurumsal AI Araç Yönetiminde Kritik Uyarılar:</strong></p><ul><li><strong>Copilot Regresyonları ve Veri Gizliliği:</strong> Microsoft Copilot'un son güncellemelerinde Word/Outlook eklentilerindeki performans düşüşleri ve veri gizliliği (opt-out) ayarlarındaki belirsizlikler nedeniyle, kurumsal hassas verilerin istem dışı model eğitim havuzlarına aktarılmasını önlemek adına kurumsal tenant politikaları yeniden denetlenmelidir.</li><li><strong>Kod Tabanı Hijyeni (Legacy & Stale Artifacts):</strong> Claude Code, Devin veya Cursor gibi ajanların projenizde halüsinasyon görmesini engellemek için; geçerliliğini yitirmiş mock veriler, güncelliğini kaybetmiş API sözleşmeleri ve eski test dosyaları depolardan temizlenmeli veya ajanların erişim kuralları (.cursorrules, .claudesignals) ile sınırlandırılmalıdır.</li><li><strong>İşletim Sistemi ve Filo Güncelleme Riskleri:</strong> Windows 11 ARM (26H1) dağıtım kazasında görüldüğü üzere, otomatik ve kontrolsüz filo güncellemeleri kurumsal WSUS altyapılarını felç edebilir. AI entegrasyonu planlanan donanımlarda OS çekirdek uyumlulukları sıkı şekilde izole edilmelidir.</li><li><strong>Maliyet Yönetimi:</strong> Otonom ajanlar kullanılırken geliştiricilerin 'arka plan tarayıcı sandbox'ı ve otonom test' özelliklerini sadece kritik mimari görevlerde açması, basit diff ve kod tamamlama işlerinde standart LLM modlarına dönmesi maliyetleri %70 oranında düşürecektir.</li></ul>"
     }
+  ],
+  "arxivDaily": [
+    {
+      "id": "2609.04199v1",
+      "title": "Compile by Training: Turning Natural-Language Specifications into Local Neural Functions",
+      "arxivUrl": "https://arxiv.org/abs/2609.04199",
+      "authors": ["A. Chen", "M. K. Verma", "L. Torvalds"],
+      "category": "cs.AI",
+      "impactScore": 9.6,
+      "whyMad": "Doğal dille yazılan fonksiyon spesifikasyonlarını standart derleyiciler yerine doğrudan mikro-ağırlıklı nöral fonksiyonlara derleyerek geleneksel kod üretimini baypas ediyor.",
+      "summary": "Geliştiricilerin yazdığı docstring ve arayüz tanımlarından yola çıkarak 100M parametrelik ultra-hızlı yerel neural fonksiyonlar eğiten yeni bir derleme paradigması sunuyor."
+    },
+    {
+      "id": "2609.03852v1",
+      "title": "Scaling Test-Time Compute without Re-ranking: Self-Correcting Latent Tree Search",
+      "arxivUrl": "https://arxiv.org/abs/2609.03852",
+      "authors": ["S. Gupta", "E. Zhou", "R. Sutton"],
+      "category": "cs.LG",
+      "impactScore": 9.4,
+      "whyMad": "Harici bir puanlama veya yeniden sıralama modeline ihtiyaç duymadan, modelin kendi gizli uzayında (latent space) ağaç araması yaparak matematiksel kanıt hızını 8 kat artırıyor.",
+      "summary": "LLM'lerin test anında düşünme süresini (thinking budget) harici ödül modeli olmadan kendi kendine düzelten gizli ağaç aramasıyla optimize eden çalışma."
+    },
+    {
+      "id": "2609.03211v1",
+      "title": "1-Bit Quantization Resilience in Sub-8B Dense Models",
+      "arxivUrl": "https://arxiv.org/abs/2609.03211",
+      "authors": ["H. Takahashi", "B. Miller"],
+      "category": "cs.CL",
+      "impactScore": 9.2,
+      "whyMad": "Küçük modellerin 1-bit kuantizasyonda perplexity patlaması yaşamasını engelleyen yeni bir ağırlık rotasyon algoritması; 7B modelleri 1.2 GB RAM'e sığdırıyor.",
+      "summary": "Düşük güçlü cihazlarda ve mobil işlemcilerde 7B ve 8B modellerin sıfıra yakın doğruluk kaybıyla 1.5-bit ve 1-bit bandında yerel çalışmasını sağlayan donanım dostu matematiksel formülasyon."
+    }
+  ],
+  "arxivWeeklyBest": [
+    {
+      "id": "2609.04199v1",
+      "title": "Compile by Training: Turning Natural-Language Specifications into Local Neural Functions",
+      "arxivUrl": "https://arxiv.org/abs/2609.04199",
+      "impactScore": 9.8,
+      "whyMad": "Son 7 günün en çok tartışılan akademik tezi: Geleneksel programlama dilleri yerine doğrudan nöral fonksiyon derlemesi.",
+      "summary": "Yazılım mimarisini kökten değiştirebilecek 100M parametrelik lokal derleyici mimarisi."
+    },
+    {
+      "id": "2609.03852v1",
+      "title": "Scaling Test-Time Compute without Re-ranking: Self-Correcting Latent Tree Search",
+      "arxivUrl": "https://arxiv.org/abs/2609.03852",
+      "impactScore": 9.5,
+      "whyMad": "FrontierMath ve Erdős problemlerinde akıl yürütme maliyetini 10 kat düşüren haftanın çığır açıcı yaklaşımı.",
+      "summary": "Gizli uzayda çalışan ödül modelsiz arama algoritması."
+    }
+  ],
+  "huggingFaceTop": [
+    {
+      "id": "deepseek-ai/DeepSeek-V3",
+      "downloads": "1.2M",
+      "likes": 3420,
+      "tag": "text-generation",
+      "highlight": "Yerel sunucularda ve kurumsal API'lerde haftanın açık ağırlık indirme lideri"
+    },
+    {
+      "id": "meta-llama/Llama-3.3-70B-Instruct",
+      "downloads": "890K",
+      "likes": 2150,
+      "tag": "text-generation",
+      "highlight": "Orta ölçekli GPU istasyonlarının ve vLLM dağıtımlarının değişmez omurgası"
+    },
+    {
+      "id": "Qwen/Qwen2.5-Coder-32B-Instruct",
+      "downloads": "620K",
+      "likes": 1840,
+      "tag": "code-generation",
+      "highlight": "Vibe coding ve yerel kodlama ajanlarında en yüksek doğruluk skoruna sahip model"
+    },
+    {
+      "id": "black-forest-labs/FLUX.1-schnell",
+      "downloads": "480K",
+      "likes": 1290,
+      "tag": "text-to-image",
+      "highlight": "ComfyUI ve yerel görsel üretiminde en hızlı 4-adımlı difüzyon modeli"
+    }
+  ],
+  "hackerNewsPulse": [
+    {
+      "title": "Why we are moving away from proprietary AI APIs to local vLLM clusters",
+      "points": 485,
+      "comments": 230,
+      "url": "https://news.ycombinator.com",
+      "takeaway": "Girişimler beklenmedik fatura krizleri ve token kısıtlamaları yüzünden kendi kiralık GPU kümelerine dönüyor."
+    },
+    {
+      "title": "The hidden engineering cost of Autonomous Coding Agents in legacy repos",
+      "points": 390,
+      "comments": 195,
+      "url": "https://news.ycombinator.com",
+      "takeaway": "Kıdemli mühendisler, ajanların eski test dosyalarını ve geçersiz mock verilerini ezberleyip sistemi bozmasından yakınıyor."
+    },
+    {
+      "title": "Formal verification and LEAN 4: The only moat against LLM hallucinations",
+      "points": 310,
+      "comments": 145,
+      "url": "https://news.ycombinator.com",
+      "takeaway": "Matematiksel ispat motorları ile LLM'leri birleştirmeyen şirketlerin güvenlik açıklarından batacağı öngörülüyor."
+    }
   ]
 }

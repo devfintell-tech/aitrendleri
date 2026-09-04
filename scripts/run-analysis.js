@@ -35,92 +35,234 @@ function sleep(ms) {
 }
 
 /**
- * Reddit RSS beslemesini akıllı retry ve sakin bekleme ile çeker.
- * Hem son 24 saatin "hot" beslemesini hem de son 1 haftanın en çok oylanan "top.rss?t=week" beslemesini çeker.
+ * 1. REDDİT GÜNLÜK SICAK (HOT) BESLEMESİ
+ * Haftalık/aylık için ayrı ağır tarama yapmayız; gün gün biriken veri haftalık ve aylık görünümü oluşturur.
  */
 async function fetchBatchPosts(batch) {
-  const feeds = [
-    { label: "Günlük Sıcak", url: `https://www.reddit.com/r/${batch.slug}/hot.rss?limit=25` },
-    { label: "1 Haftalık En Çok Oylanan", url: `https://www.reddit.com/r/${batch.slug}/top.rss?t=week&limit=15` }
-  ];
-
+  const feedUrl = `https://www.reddit.com/r/${batch.slug}/hot.rss?limit=25`;
   const posts = [];
   const seenLinks = new Set();
 
-  for (const feedConfig of feeds) {
-    console.log(`📡 Çekiliyor: [${batch.name}] -> (${feedConfig.label})...`);
+  console.log(`📡 Çekiliyor: [${batch.name}] -> (Günlük Sıcak)...`);
 
-    for (let attempt = 1; attempt <= 2; attempt++) {
-      try {
-        const res = await fetch(feedConfig.url, {
-          headers: {
-            "User-Agent": REDDIT_USER_AGENT,
-            "Accept": "application/atom+xml,application/xml,text/xml"
-          }
-        });
+  for (let attempt = 1; attempt <= 2; attempt++) {
+    try {
+      const res = await fetch(feedUrl, {
+        headers: {
+          "User-Agent": REDDIT_USER_AGENT,
+          "Accept": "application/atom+xml,application/xml,text/xml"
+        }
+      });
 
-        if (res.status === 429) {
-          console.warn(`⏳ Reddit 429 verdi [${batch.name} - ${feedConfig.label}]. 10 saniye sakinleşip tekrar deneniyor (Deneme ${attempt}/2)...`);
-          await sleep(10000);
+      if (res.status === 429) {
+        console.warn(`⏳ Reddit 429 verdi [${batch.name}]. 10 saniye bekleniyor (Deneme ${attempt}/2)...`);
+        await sleep(10000);
+        continue;
+      }
+
+      if (!res.ok) {
+        console.warn(`⚠️ HTTP ${res.status} [${batch.name}]: ${res.statusText}`);
+        break;
+      }
+
+      const xml = await res.text();
+      const jsonObj = parser.parse(xml);
+      const feed = jsonObj.feed;
+      if (!feed || !feed.entry) break;
+
+      const entries = Array.isArray(feed.entry) ? feed.entry : [feed.entry];
+
+      for (const entry of entries.slice(0, 15)) {
+        const link = entry.link && entry.link["@_href"] ? entry.link["@_href"] : "";
+        if (seenLinks.has(link)) continue;
+        if (link) seenLinks.add(link);
+
+        let content = "";
+        if (entry.content && typeof entry.content === "string") {
+          content = entry.content;
+        } else if (entry.content && entry.content["#text"]) {
+          content = entry.content["#text"];
+        }
+
+        const title = entry.title ? decodeHtmlEntities(typeof entry.title === "string" ? entry.title : entry.title["#text"] || "") : "";
+        if (title.toLowerCase().includes("monthly discussion") || title.toLowerCase().includes("weekly thread") || title.toLowerCase().includes("rules")) {
           continue;
         }
 
-        if (!res.ok) {
-          console.warn(`⚠️ HTTP ${res.status} [${batch.name} - ${feedConfig.label}]: ${res.statusText}`);
-          break;
-        }
+        content = content.replace(/<\/?[^>]+(>|$)/g, "");
+        content = decodeHtmlEntities(content);
+        if (content.length > 700) content = content.substring(0, 700) + "...";
 
-        const xml = await res.text();
-        const jsonObj = parser.parse(xml);
-        const feed = jsonObj.feed;
-        if (!feed || !feed.entry) break;
-
-        const entries = Array.isArray(feed.entry) ? feed.entry : [feed.entry];
-
-        for (const entry of entries.slice(0, 15)) {
-          const link = entry.link && entry.link["@_href"] ? entry.link["@_href"] : "";
-          if (seenLinks.has(link)) continue;
-          if (link) seenLinks.add(link);
-
-          let content = "";
-          if (entry.content && typeof entry.content === "string") {
-            content = entry.content;
-          } else if (entry.content && entry.content["#text"]) {
-            content = entry.content["#text"];
-          }
-
-          const title = entry.title ? decodeHtmlEntities(typeof entry.title === "string" ? entry.title : entry.title["#text"] || "") : "";
-          if (title.toLowerCase().includes("monthly discussion") || title.toLowerCase().includes("weekly thread") || title.toLowerCase().includes("rules")) {
-            continue;
-          }
-
-          content = content.replace(/<\/?[^>]+(>|$)/g, "");
-          content = decodeHtmlEntities(content);
-          if (content.length > 800) content = content.substring(0, 800) + "...";
-
-          posts.push({
-            label: feedConfig.label,
-            title,
-            link,
-            content: content.trim()
-          });
-        }
-        break; // Başarılı, döngüden çık
-      } catch (err) {
-        console.error(`❌ Hata [${batch.name} - ${feedConfig.label}]:`, err.message);
-        if (attempt < 2) await sleep(4000);
+        posts.push({
+          title,
+          link,
+          content: content.trim()
+        });
       }
+      break;
+    } catch (err) {
+      console.error(`❌ Hata [${batch.name}]:`, err.message);
+      if (attempt < 2) await sleep(4000);
     }
-    // İki besleme arasında kısa nefes alma
-    await sleep(2000);
   }
 
-  console.log(`✅ [${batch.name}] için toplam ${posts.length} başlık (sıcak + 1 haftalık) başarıyla alındı.`);
   return posts;
 }
 
 /**
- * tool-history.json dosyasından sistemin kendi geçmiş kayıtlarını derleyip Gemini'ye beslenebilir özet metin haline getirir.
+ * 2. HACKER NEWS API (Algolia - %100 Ücretsiz & Sınırsız)
+ * Silikon Vadisi mühendislerinin son 24 saatteki teknik tartışmaları ve eleştirileri.
+ */
+async function fetchHackerNewsPosts() {
+  console.log("⚡ Hacker News Algolia API'den teknik tartışmalar çekiliyor...");
+  try {
+    const oneDayAgo = Math.floor(Date.now() / 1000) - 86400;
+    const url = `https://hn.algolia.com/api/v1/search?query=AI+OR+LLM+OR+model&tags=story&numericFilters=created_at_i>${oneDayAgo}&hitsPerPage=15`;
+    const res = await fetch(url, { headers: { "Accept": "application/json" } });
+    if (!res.ok) {
+      console.warn(`⚠️ Hacker News HTTP ${res.status}`);
+      return [];
+    }
+    const data = await res.json();
+    const hits = (data.hits || []).filter(h => (h.points || 0) >= 15).slice(0, 10);
+
+    return hits.map(h => ({
+      title: h.title,
+      points: h.points,
+      comments: h.num_comments,
+      url: h.url || `https://news.ycombinator.com/item?id=${h.objectID}`,
+      hnUrl: `https://news.ycombinator.com/item?id=${h.objectID}`
+    }));
+  } catch (err) {
+    console.warn("⚠️ Hacker News çekilemedi:", err.message);
+    return [];
+  }
+}
+
+/**
+ * 3. HUGGING FACE API (%100 Ücretsiz Açık Uç Nokta)
+ * Açık kaynak & yerel modellerin gerçek indirme ve beğeni sayıları.
+ */
+async function fetchHuggingFaceTrending() {
+  console.log("🤗 Hugging Face API'den trending yerel modeller çekiliyor...");
+  try {
+    const url = "https://huggingface.co/api/models?sort=trendingScore&direction=-1&limit=12&full=false";
+    const res = await fetch(url, { headers: { "Accept": "application/json" } });
+    if (!res.ok) {
+      console.warn(`⚠️ Hugging Face HTTP ${res.status}`);
+      return [];
+    }
+    const list = await res.json();
+    return (list || []).map(m => ({
+      id: m.id,
+      likes: m.likes || 0,
+      downloads: m.downloads || 0,
+      pipeline_tag: m.pipeline_tag || "text-generation",
+      author: m.author || (m.id.includes("/") ? m.id.split("/")[0] : "community")
+    }));
+  } catch (err) {
+    console.warn("⚠️ Hugging Face modelleri çekilemedi:", err.message);
+    return [];
+  }
+}
+
+/**
+ * 4. ARXİV API (%100 Ücretsiz & Sınırsız)
+ * Son günlerde çıkan yapay zeka makalelerini çeker ve daha önce görülmemiş olanları seçer.
+ */
+async function fetchArxivCandidatePapers(seenIds = new Set()) {
+  console.log("🔬 ArXiv API'den güncel yapay zeka makaleleri taranıyor...");
+  try {
+    const url = "http://export.arxiv.org/api/query?search_query=cat:cs.AI+OR+cat:cs.CL+OR+cat:cs.LG&sortBy=submittedDate&sortOrder=descending&max_results=20";
+    const res = await fetch(url);
+    if (!res.ok) {
+      console.warn(`⚠️ ArXiv HTTP ${res.status}`);
+      return [];
+    }
+    const xml = await res.text();
+    const jsonObj = parser.parse(xml);
+    const entries = jsonObj.feed?.entry || [];
+    const list = Array.isArray(entries) ? entries : [entries];
+
+    const candidates = [];
+    for (const e of list) {
+      const fullId = e.id ? String(e.id) : "";
+      const rawId = fullId.replace("http://arxiv.org/abs/", "").replace("https://arxiv.org/abs/", "").trim();
+      
+      // MÜKERRERLİK KONTROLÜ: Daha önce getirilmiş makaleleri kesinlikle eliyoruz!
+      if (seenIds.has(rawId) || seenIds.has(fullId)) continue;
+
+      let authors = [];
+      if (e.author) {
+        const authArr = Array.isArray(e.author) ? e.author : [e.author];
+        authors = authArr.map(a => a.name).filter(Boolean).slice(0, 3);
+      }
+
+      const title = e.title ? decodeHtmlEntities(String(e.title)).replace(/\s+/g, " ").trim() : "";
+      const summary = e.summary ? decodeHtmlEntities(String(e.summary)).replace(/\s+/g, " ").trim() : "";
+
+      candidates.push({
+        id: rawId,
+        arxivUrl: fullId.startsWith("http") ? fullId : `https://arxiv.org/abs/${rawId}`,
+        title,
+        summary: summary.length > 500 ? summary.substring(0, 500) + "..." : summary,
+        authors
+      });
+
+      if (candidates.length >= 8) break;
+    }
+    return candidates;
+  } catch (err) {
+    console.warn("⚠️ ArXiv makaleleri çekilemedi:", err.message);
+    return [];
+  }
+}
+
+/**
+ * ArXiv kalıcı hafızasını yükler (Tekrar etmemek için)
+ */
+function loadArxivHistory() {
+  const arxivPath = path.join(__dirname, "../src/data/arxiv-papers.json");
+  if (!fs.existsSync(arxivPath)) {
+    return { seenPaperIds: [], dailyRecords: [] };
+  }
+  try {
+    return JSON.parse(fs.readFileSync(arxivPath, "utf-8"));
+  } catch (e) {
+    return { seenPaperIds: [], dailyRecords: [] };
+  }
+}
+
+/**
+ * Yeni seçilen ArXiv makalelerini kalıcı veritabanına kaydeder.
+ */
+function updateArxivHistory(newPapers, dateStr, isoDate) {
+  const arxivPath = path.join(__dirname, "../src/data/arxiv-papers.json");
+  const history = loadArxivHistory();
+
+  for (const p of newPapers) {
+    if (p.id && !history.seenPaperIds.includes(p.id)) {
+      history.seenPaperIds.push(p.id);
+    }
+  }
+
+  const existingRecordIndex = history.dailyRecords.findIndex(r => r.isoDate === isoDate);
+  if (existingRecordIndex >= 0) {
+    history.dailyRecords[existingRecordIndex] = { date: dateStr, isoDate, papers: newPapers };
+  } else {
+    history.dailyRecords.unshift({ date: dateStr, isoDate, papers: newPapers });
+  }
+
+  if (history.dailyRecords.length > 60) {
+    history.dailyRecords = history.dailyRecords.slice(0, 60);
+  }
+
+  fs.writeFileSync(arxivPath, JSON.stringify(history, null, 2), "utf-8");
+  console.log(`📚 ArXiv veritabanı güncellendi (Toplam görülen benzersiz makale: ${history.seenPaperIds.length}).`);
+}
+
+/**
+ * tool-history.json dosyasından sistemin kendi geçmiş kayıtlarını derleyip Gemini'ye besler.
  */
 function loadToolHistorySummary() {
   const historyPath = path.join(__dirname, "../src/data/tool-history.json");
@@ -184,11 +326,12 @@ async function callGemini(model, apiKey, prompt) {
 }
 
 /**
+ * EN YÜKSEK ÖNCELİK: gemini-3.8-flash İLK SIRADA ÇALIŞIR!
  * 3.8 -> 3.7 -> 3.6 -> 3.5 -> 2.5 sırasıyla ve 3 farklı API anahtarıyla en iyi yanıta ulaşana kadar dener.
  */
 async function generateWithWaterfall(prompt) {
   const MODELS = [
-    "gemini-3.8-flash",
+    "gemini-3.8-flash", // 🥇 HER ZAMAN İLK ÇALIŞTIRILIR!
     "gemini-3.7-flash",
     "gemini-3.6-flash",
     "gemini-3.5-flash",
@@ -221,9 +364,10 @@ async function generateWithWaterfall(prompt) {
  * Ana işlem akışı
  */
 async function main() {
-  console.log("🚀 50 Subreddit Reddit AI, GPU/CPU ve Yazılım Trend Radarı Başlatılıyor...");
+  console.log("🚀 Çok Kaynaklı Yapay Zeka İstihbarat Radarı (Reddit + HN + HuggingFace + ArXiv) Başlatılıyor...");
   const startTime = Date.now();
 
+  // 1. REDDIT GÜNLÜK SICAK GÖNDERİLERİ TOPLA
   let allDiscussions = "";
   let totalPosts = 0;
   let successfulBatches = 0;
@@ -233,76 +377,119 @@ async function main() {
     if (posts.length > 0) {
       successfulBatches++;
       totalPosts += posts.length;
-      allDiscussions += `\n\n=== KATEGORİ: ${batch.name} (Subredditler: ${batch.slug}) ===\n`;
+      allDiscussions += `\n\n=== REDDIT KATEGORİ: ${batch.name} (Subredditler: ${batch.slug}) ===\n`;
       allDiscussions += posts.map(p => `BAŞLIK: ${p.title}\nİÇERİK: ${p.content}`).join("\n---\n");
     }
-    // GitHub'da süremiz bol; Reddit'i hiç rahatsız etmemek için sakin sakin bekliyoruz (5.0 - 7.5s)
-    const jitter = 5000 + Math.floor(Math.random() * 2500);
+    const jitter = 3500 + Math.floor(Math.random() * 2000);
     console.log(`⏳ Bekleniyor (${(jitter / 1000).toFixed(1)}s)...`);
     await sleep(jitter);
   }
 
-  if (allDiscussions.length < 200) {
-    console.error("❌ Yeterli veri toplanamadı.");
-    process.exit(1);
+  // 2. HACKER NEWS MÜHENDİS TARTIŞMALARINI TOPLA
+  const hnPosts = await fetchHackerNewsPosts();
+  let hnDiscussions = "";
+  if (hnPosts.length > 0) {
+    hnDiscussions = hnPosts.map(h => `- [HN Puan: ${h.points} | Yorum: ${h.comments}] "${h.title}" (Link: ${h.url})`).join("\n");
   }
 
+  // 3. HUGGING FACE YEREL MODEL VE TREND VERİLERİNİ TOPLA
+  const hfModels = await fetchHuggingFaceTrending();
+  let hfSummary = "";
+  if (hfModels.length > 0) {
+    hfSummary = hfModels.map(m => `- Model: ${m.id} | İndirme: ${m.downloads.toLocaleString()} | Beğeni: ${m.likes} | Tür: ${m.pipeline_tag}`).join("\n");
+  }
+
+  // 4. ARXİV BİLİMSEL MAKALE HAVUZU (Daha önce getirilmemiş olanları filtrele)
+  const arxivHistory = loadArxivHistory();
+  const seenPaperIds = new Set(arxivHistory.seenPaperIds || []);
+  const candidateArxiv = await fetchArxivCandidatePapers(seenPaperIds);
+
+  // Son 7 günün kaydedilmiş ArXiv makalelerini topla (Haftalık en iyileri seçebilmek için)
+  const past7DaysPapers = (arxivHistory.dailyRecords || [])
+    .slice(0, 7)
+    .flatMap(r => (r.papers || []).map(p => ({ ...p, recordedDate: r.date })));
+
+  let arxivPromptText = `ADAY YENİ MAKALE HAVUZU (Daha önce hiç sunulmamış, bugün için seçebileceğin 3 makale adayı):\n`;
+  arxivPromptText += candidateArxiv.map((c, i) => `${i + 1}. [${c.id}] "${c.title}" by ${c.authors.join(", ")}\nÖzet: ${c.summary}\nLink: ${c.arxivUrl}`).join("\n\n");
+
+  let pastArxivText = `HAFIZADAKİ SON 7 GÜNÜN ARXİV MAKALELERİ (Haftalık En İyileri Seçmek İçin Kaynak):\n`;
+  pastArxivText += past7DaysPapers.slice(0, 15).map(p => `- [${p.id}] "${p.title}" (Etki Skoru: ${p.impactScore || 9.0}) - ${p.whyMad || p.summary}`).join("\n");
+
   const historySummary = loadToolHistorySummary();
-  console.log(`📊 Toplam ${totalPosts} adet gönderi toplandı (Günlük sıcak + 1 haftalık en çok oylananlar).`);
+  console.log(`📊 Toplam ${totalPosts} Reddit gönderisi, ${hnPosts.length} Hacker News başlığı, ${hfModels.length} Hugging Face modeli ve ${candidateArxiv.length} taze ArXiv adayı toplandı.`);
   console.log(`📚 Sistemin yerel hafıza veritabanı analiz promptuna enjekte ediliyor...`);
 
   const prompt = `
-    Sen kıdemli bir "Yapay Zeka, GPU/Donanım ve Yazılım Ekosistemi Baş Danışmanısın".
-    Aşağıda 50 seçkin Reddit topluluğundan toplanan en güncel tartışmalar (Günlük Sıcak + 1 Haftalık En Çok Oylanan) yer almaktadır:
+    Sen kıdemli bir "Yapay Zeka, GPU/Donanım, Bulut Platformları ve Yazılım Ekosistemi Baş Danışmanısın".
+    Aşağıda 4 FARKLI KÜRESEL KAYNAKTAN derlenen son 24 saatin istihbaratı yer almaktadır:
 
+    ════════════════════════════════════════════════════════════════════
+    1. 🌐 50 SEÇKİN REDDIT TOPLULUĞU TARTIŞMALARI:
     ${allDiscussions}
 
     ════════════════════════════════════════════════════════════════════
-    📌 SİSTEMİN KALICI VERİTABANI HAFIZASI (TOOL-HISTORY DATABASE):
-    Aşağıda sistemimizin daha önceki günlerde ve haftalarda kaydettiği gerçek model ve araç skorları, zaman çizgisi ve hissiyat akışı yer almaktadır:
+    2. ⚡ HACKER NEWS SİLİKON VADİSİ MÜHENDİS TARTIŞMALARI & ELEŞTİRİLERİ:
+    ${hnDiscussions || "Bugün yoğun bir tartışma kaydedilmedi."}
 
+    ════════════════════════════════════════════════════════════════════
+    3. 🤗 HUGGING FACE GERÇEK İNDİRME VE YEREL MODEL POPÜLARİTE VERİLERİ:
+    ${hfSummary || "Veri çekilemedi."}
+
+    ════════════════════════════════════════════════════════════════════
+    4. 🔬 ARXİV BİLİMSEL YAPAY ZEKA VE MAKİNE ÖĞRENİMİ MAKALE HAVUZU:
+    ${arxivPromptText}
+
+    ${pastArxivText}
+
+    ════════════════════════════════════════════════════════════════════
+    📌 SİSTEMİN KALICI VERİTABANI HAFIZASI (TOOL-HISTORY DATABASE):
+    Aşağıda sistemimizin daha önceki günlerde kaydettiği gerçek model skorları, zaman çizgisi ve hissiyat akışı yer almaktadır:
     ${historySummary}
     ════════════════════════════════════════════════════════════════════
 
-    GÖREV VE ZAMAN DİLİMLERİ HESAPLAMA KURALLARI:
+    GÖREV VE ZAMAN DİLİMLERİ HESAPLAMA KURALLARI (AYRI TARAMA YAPILMAZ; GEÇMİŞ HAFIZA KULLANILIR):
     1. "twelveHours" (12 Saatlik Sekme):
-       - Reddit'in son 12 saatteki anlık çıkışlarına ve sıcak tartışmalarına dayanmalıdır.
+       - Reddit ve Hacker News'in son 12 saatteki anlık çıkışlarına ve sıcak tartışmalarına dayanmalıdır.
        - En taze duyurulan, ani kırılma yaşayan veya servis çöküşü yaşayan modelleri listele (en az 10 adet).
 
     2. "daily" (24 Saatlik Sekme):
        - Bugünün genel günlüğünü temsil eder (en az 10-14 adet).
        - scoreDelta: Dün kaydedilen skora göre 24 saatlik net değişim.
 
-    3. "weekly" (1 Haftalık Sekme - VERİTABANI VE 1 HAFTALIK REDDIT VERİSİ):
-       - KESİNLİKLE yukarıdaki "SİSTEMİN KALICI VERİTABANI HAFIZASI"ndaki son 7 günlük kayıtları ve Reddit'in "1 Haftalık En Çok Oylanan" başlıklarını harmanla!
-       - scoreDelta: Veritabanındaki 7 gün önceki kayıt ile bugünkü skor arasındaki gerçek 7 günlük net farkı (7d Delta) yansıtmalıdır.
-       - Eğer bir model (örn. ilk günlerde büyük coşkuyla karşılanıp sonra 503 hataları, kota bitmesi veya servis çöküşü nedeniyle eleştirilen bir araç) son 7 günde düşüşe geçtiyse ("balon söndü"), haftalık skorda bu düşüşü negatif delta (-1.5, -2.0 gibi) olarak yansıt.
-       - sparkline: Son 7 günün puan akışını temsil eden 7 adet sayı dizisi olmalıdır (en az 10-12 araç).
+    3. "weekly" (1 Haftalık Sekme - VERİTABANINDAN DERLENEN GERÇEK 7 GÜNLÜK HAFIZA):
+       - KESİNLİKLE yukarıdaki "SİSTEMİN KALICI VERİTABANI HAFIZASI"ndaki son 7 günlük kayıtları kullan!
+       - Yeni tarama uydurma; son 7 günde tabloda en çok adı geçen, en yüksek puan alan ve istikrarını koruyan modelleri listele.
+       - scoreDelta: Veritabanındaki 7 gün önceki kayıt ile bugünkü skor arasındaki gerçek farkı yansıtmalıdır.
+       - Eğer bir model (örn. ilk günlerde büyük hype alıp sonra çöken bir araç) son 7 günde düşüşe geçtiyse bunu negatif delta (-1.5 gibi) olarak yansıt.
 
-    4. "monthly" (1 Aylık Sekme - VERİTABANI VE PAZAR DİNAMİKLERİ):
+    4. "monthly" (1 Aylık Sekme):
        - Veritabanındaki 30 günlük genel trendi, kurumsal benimsenmeyi ve pazar konsolidasyonunu yansıtmalıdır.
 
     KATEGORİLENDİRME KURALLARI:
     Her araca veya modele MUTLAKA şu kategorilerden tam olarak birini ver:
     - "LLM (Model)" : Claude, Gemini, GPT-4.5 gibi kapalı/ticari API modelleri.
-    - "Yerel Model" : DeepSeek, Llama, Qwen, Mistral, Phi gibi açık ağırlıklı, yerel cihazda/sunucuda çalışabilen modeller.
+    - "Yerel Model" : DeepSeek, Llama, Qwen, Mistral, Phi gibi açık ağırlıklı, yerel cihazda/sunucuda çalışabilen modeller (Hugging Face verileriyle destekle).
     - "IDE / Editör" : Cursor, Windsurf, VS Code gibi kodlama editörleri.
     - "CLI / Terminal" : Cline, Aider, Claude Code gibi terminal ajanları.
     - "Otonom Agent" : CrewAI, LangGraph, AutoGPT gibi çoklu ajan framework'leri.
     - "Otomasyon" : n8n, Zapier AI gibi iş akışı otomasyonları.
     - "Altyapı & SDK" : Ollama, vLLM, PydanticAI, GPU sunucuları, API maliyet/yönetim kütüphaneleri.
-    - "Bulut & Platform" : Google AI Studio, Google Colab, Vertex AI (Google Cloud), AWS Bedrock, RunPod, Modal, Hugging Face Spaces gibi model test/playground, bulut GPU, notebook ve kurumsal dağıtım platformları.
+    - "Bulut & Platform" : Google AI Studio, Google Colab, Vertex AI (Google Cloud), AWS Bedrock, RunPod, Modal, Hugging Face Spaces gibi model test/playground, bulut GPU ve kurumsal dağıtım platformları.
     - "Medya / Üretim" : ComfyUI, Flux, Midjourney, Wan 2.1 gibi görsel ve video üretim araçları.
     - "Şirket / Lab" : NVIDIA, OpenAI, Anthropic, DeepSeek, AMD gibi çip ve model üreticisi şirketler.
 
-    DONANIM, GPU/CPU, BULUT PLATFORMLARI VE MALİYET VURGUSU:
-    Raporun içinde yapay zeka modellerinin çalışması için gereken donanım (NVIDIA RTX/Blackwell, Apple M4, AMD, CPU çıkarımı), API token maliyetleri ve geliştirici bulut platformlarını (Google AI Studio, Google Colab, Vertex AI, AWS Bedrock, RunPod) mutlaka değerlendir. Kota değişimleri veya test ortamı güncellemeleri varsa bunları "Bulut & Platform" kategorisiyle listeye al.
+    ARXİV MAKALE KURALLARI:
+    - "arxivDaily" listesi için: "ADAY YENİ MAKALE HAVUZU"ndan en çarpıcı, en yenilikçi ve en mantıklı 3 makaleyi seç. Her biri için Türkçe anlaşılır "whyMad" (neden çılgın ve çarpıcı olduğu) ve 1-2 cümlelik "summary" yaz.
+    - "arxivWeeklyBest" listesi için: Hem bugünün makalelerini hem de "HAFIZADAKİ SON 7 GÜNÜN ARXİV MAKALELERİ"ni incele ve bu 7 günün toplamındaki en yüksek etki yaratan en iyi 3-4 makalesini seçip derle!
+
+    HUGGING FACE VE HACKER NEWS ÖZETİ:
+    - "huggingFaceTop": En popüler 4-5 yerel modeli indirme ve beğeni sayılarıyla formatla.
+    - "hackerNewsPulse": HN'deki en dikkat çeken 3 mühendis tartışmasını ve ana fikrini çıkar.
 
     İSTENEN JSON ŞEMASI:
     {
       "executiveSummary": "1-2 paragraflık derin makro yönetici özeti",
       "twelveHours": [
-        // SON 12 SAAT: Günde 2 kez yapılan taramanın son 12 saatteki en ani çıkış yapanları, son döngüde kırılma yaşayan modeller/araçlar (en az 10 adet)
         {
           "id": "model-id",
           "name": "Model/Araç/Donanım Adı",
@@ -316,15 +503,15 @@ async function main() {
           "sparkline": [8.0, 8.3, 8.7, 9.0, 9.3, 9.5, 9.7],
           "primaryFunction": "Temel işlev ve yetenek",
           "whyTrending": "Son 12 saatteki ani yükseliş ve kırılma gerekçesi",
-          "sources": ["r/vibecoding", "r/hardware"]
+          "sources": ["r/vibecoding", "Hacker News"]
         }
       ],
       "daily": [
-        // DİKKAT: EN AZ 10 ADET (10-14 arası) konuşulan model ve aracı listele! Kesinlikle 10'dan az olmasın.
+        // EN AZ 10-14 ADET model ve araç
         {
           "id": "model-id",
           "name": "Model/Araç/Donanım Adı",
-          "category": "LLM (Model) | Yerel Model | IDE / Editör | CLI / Terminal | Otonom Agent | Otomasyon | Altyapı & SDK | Medya / Üretim | Şirket / Lab",
+          "category": "LLM (Model) | Yerel Model | IDE / Editör | CLI / Terminal | Otonom Agent | Otomasyon | Altyapı & SDK | Bulut & Platform | Medya / Üretim | Şirket / Lab",
           "badge": "Örn: Günün Lideri",
           "hypeScore": 9.5,
           "prevScore": 9.0,
@@ -334,31 +521,73 @@ async function main() {
           "sparkline": [8.0, 8.2, 8.5, 8.9, 9.1, 9.3, 9.5],
           "primaryFunction": "Temel işlev ve yetenek",
           "whyTrending": "Neden trend olduğuna dair 1-2 cümlelik keskin analiz",
-          "sources": ["r/vibecoding", "r/hardware"]
+          "sources": ["r/vibecoding", "Hugging Face"]
         }
       ],
-      "weekly": [ /* aynı formatta en az 10-12 araç... */ ],
-      "monthly": [ /* aynı formatta en az 6-8 araç... */ ],
+      "weekly": [ /* Son 7 günün kalıcı hafızasından derlenmiş en iyi 10-12 araç... */ ],
+      "monthly": [ /* Son 30 günün kalıcı hafızasından derlenmiş en iyi 6-8 araç... */ ],
+      "arxivDaily": [
+        // Bugün adaylardan seçilen 3 yeni ve benzersiz makale
+        {
+          "id": "arxiv-id",
+          "title": "İngilizce Makale Başlığı",
+          "arxivUrl": "https://arxiv.org/abs/...",
+          "authors": ["Yazar 1", "Yazar 2"],
+          "category": "cs.AI | cs.LG | cs.CL",
+          "impactScore": 9.5,
+          "whyMad": "Neden çılgın ve ezber bozan bir makale olduğuna dair keskin Türkçe açıklama",
+          "summary": "Makalenin getirdiği teknik yeniliğin anlaşılır Türkçe özeti"
+        }
+      ],
+      "arxivWeeklyBest": [
+        // Son 7 günün birikmiş makaleleri arasından en iyi 3-4 makale
+        {
+          "id": "arxiv-id",
+          "title": "Makale Başlığı",
+          "arxivUrl": "https://arxiv.org/abs/...",
+          "impactScore": 9.7,
+          "whyMad": "Haftanın en iyi makalelerinden biri seçilme gerekçesi",
+          "summary": "Teknik özet"
+        }
+      ],
+      "huggingFaceTop": [
+        {
+          "id": "org/model-name",
+          "downloads": "250K",
+          "likes": 420,
+          "tag": "text-generation",
+          "highlight": "Topluluğun en çok tercih ettiği açık ağırlık"
+        }
+      ],
+      "hackerNewsPulse": [
+        {
+          "title": "Tartışma Başlığı",
+          "points": 340,
+          "comments": 180,
+          "url": "https://...",
+          "takeaway": "Silikon vadisi mühendislerinin ana eleştiri ve görüşü"
+        }
+      ],
       "sections": [
         {
           "title": "BÖLÜM 1: 🌐 GÜNÜN EKOSİSTEM DENGESİ & MODELLER ARASI GÜÇ SAVAŞI",
           "badge": "Ekosistem Dengesi",
-          "contentHtml": "<p>Anthropic, OpenAI, Google ve Açık Kaynak (DeepSeek/Llama/vLLM) kamplarının geliştirici zihnindeki hakimiyeti ve günün pazar kırılma noktaları hakkında derinlemesine 2-3 analitik paragraf (asla tablo listesi tekrarı yapma).</p>"
+          "contentHtml": "<p>Anthropic, OpenAI, Google ve Açık Kaynak kamplarının geliştirici zihnindeki pazar payı ve güç dengesi analizi.</p>"
         },
         {
           "title": "BÖLÜM 2: 💡 DERİN TEKNİK İÇGÖRÜLER, VIBE CODING & GPU/ALTYAPI DENGESİ",
           "badge": "Teknoloji & Donanım",
-          "contentHtml": "<p>...</p>"
+          "contentHtml": "<p>Hacker News ve Reddit tartışmalarından süzülen teknik mimari, bellek ve donanım içgörüleri.</p>"
         },
         {
           "title": "BÖLÜM 3: 📉 MAKRO SEKTÖR TRENDLERİ, ÇİP SAVAŞLARI & API MALİYETLERİ",
           "badge": "Pazar Analizi",
-          "contentHtml": "<p>...</p>"
+          "contentHtml": "<p>Bulut sağlayıcılar, GPU kiralama maliyetleri ve kurumsal platform hareketleri.</p>"
         },
         {
           "title": "BÖLÜM 4: 💼 BEYAZ YAKA ENTEGRASYON VE OPERASYON REHBERİ",
           "badge": "İş Dünyası",
-          "contentHtml": "<p>...</p>"
+          "contentHtml": "<p>Şirketlerin ve ekiplerin günlük operasyonlarına bu araçları nasıl entegre edeceği.</p>"
         }
       ]
     }
@@ -372,9 +601,11 @@ async function main() {
     month: "long",
     year: "numeric"
   });
+  const isoDate = new Date().toISOString().split("T")[0]; // örn. "2026-09-05"
 
   const finalOutput = {
     date: dateStr,
+    isoDate: isoDate,
     activeModel: activeModelUsed,
     durationSeconds: duration,
     totalPostsAnalyzed: totalPosts,
@@ -391,7 +622,6 @@ async function main() {
   if (!fs.existsSync(archiveDir)) {
     fs.mkdirSync(archiveDir, { recursive: true });
   }
-  const isoDate = new Date().toISOString().split("T")[0]; // örn. "2026-09-05"
   const archivePath = path.join(archiveDir, `${isoDate}.json`);
   fs.writeFileSync(archivePath, JSON.stringify(finalOutput, null, 2), "utf-8");
   console.log(`📦 Günlük arşiv kalıcı olarak saklandı: ${archivePath}`);
@@ -407,7 +637,12 @@ async function main() {
     fs.writeFileSync(indexPath, JSON.stringify(archiveIndex, null, 2), "utf-8");
   }
 
-  // 4. Araç bazlı tarihsel hafıza ve topluluk duygu günlüğünü güncelle
+  // 4. ArXiv kalıcı veritabanını güncelle (Bugün seçilen 3 makale kaydedilir ve tekrar getirilmesi engellenir)
+  if (resultJson.arxivDaily && resultJson.arxivDaily.length > 0) {
+    updateArxivHistory(resultJson.arxivDaily, dateStr, isoDate);
+  }
+
+  // 5. Araç bazlı tarihsel hafıza ve topluluk duygu günlüğünü güncelle
   updateToolHistory(finalOutput, dateStr);
 
   console.log(`⏱️ Toplam Çalışma Süresi: ${duration} saniye.`);

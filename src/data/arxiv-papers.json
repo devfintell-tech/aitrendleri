@@ -1,0 +1,45 @@
+{
+  "seenPaperIds": [
+    "2609.04199v1",
+    "2609.03852v1",
+    "2609.03211v1"
+  ],
+  "dailyRecords": [
+    {
+      "date": "5 Eylül 2026",
+      "isoDate": "2026-09-05",
+      "papers": [
+        {
+          "id": "2609.04199v1",
+          "title": "Compile by Training: Turning Natural-Language Specifications into Local Neural Functions",
+          "arxivUrl": "https://arxiv.org/abs/2609.04199",
+          "authors": ["A. Chen", "M. K. Verma", "L. Torvalds"],
+          "whyMad": "Doğal dille yazılan fonksiyon spesifikasyonlarını standart derleyiciler yerine doğrudan mikro-ağırlıklı nöral fonksiyonlara derleyerek geleneksel kod üretimini baypas ediyor.",
+          "summary": "Geliştiricilerin yazdığı docstring ve arayüz tanımlarından yola çıkarak 100M parametrelik ultra-hızlı yerel neural fonksiyonlar eğiten yeni bir derleme paradigması sunuyor.",
+          "category": "cs.AI",
+          "impactScore": 9.6
+        },
+        {
+          "id": "2609.03852v1",
+          "title": "Scaling Test-Time Compute without Re-ranking: Self-Correcting Latent Tree Search",
+          "arxivUrl": "https://arxiv.org/abs/2609.03852",
+          "authors": ["S. Gupta", "E. Zhou", "R. Sutton"],
+          "whyMad": "Harici bir puanlama/yeniden sıralama modeline ihtiyaç duymadan, modelin kendi gizli uzayında (latent space) ağaç araması yaparak matematiksel kanıt hızını 8 kat artırıyor.",
+          "summary": "LLM'lerin test anında düşünme süresini (thinking budget) harici ödül modeli olmadan kendi kendine düzelten gizli ağaç aramasıyla optimize eden çalışma.",
+          "category": "cs.LG",
+          "impactScore": 9.4
+        },
+        {
+          "id": "2609.03211v1",
+          "title": "1-Bit Quantization Resilience in Sub-8B Dense Models",
+          "arxivUrl": "https://arxiv.org/abs/2609.03211",
+          "authors": ["H. Takahashi", "B. Miller"],
+          "whyMad": "Küçük modellerin 1-bit kuantizasyonda perplexity patlaması yaşamasını engelleyen yeni bir ağırlık rotasyon algoritması; 7B modelleri 1.2 GB RAM'e sığdırıyor.",
+          "summary": "Düşük güçlü cihazlarda ve mobil işlemcilerde 7B ve 8B modellerin sıfıra yakın doğruluk kaybıyla 1.5-bit ve 1-bit bandında yerel çalışmasını sağlayan donanım dostu matematiksel formülasyon.",
+          "category": "cs.CL",
+          "impactScore": 9.2
+        }
+      ]
+    }
+  ]
+}
