@@ -107,23 +107,23 @@ export default function App() {
               <div className="flex items-center gap-2">
                 <span className="font-semibold text-sm tracking-wide font-mono">aitrendleri.xlsx</span>
                 <span className="text-[10px] bg-[#0c5e31] px-2 py-0.5 rounded font-mono text-emerald-200">
-                  Otomatik Kaydet: AÇIK
+                  Resmi Çalışma Sayfası
                 </span>
               </div>
               <p className="text-[11px] text-emerald-100/90 font-mono">
-                50 Subreddit • 60+ Gönderi • Gemini Şelale Analizi ({report.date})
+                50 Seçkin Topluluk • Günlük Yapay Zeka Hype ve Trend Tablosu ({report.date})
               </p>
             </div>
           </div>
 
           {/* Sağ Durum ve Saat Bilgisi */}
           <div className="flex items-center gap-4 text-xs font-mono text-emerald-100">
-            <div className="hidden sm:flex items-center gap-1.5 bg-[#0e6b37] px-2.5 py-1 rounded">
-              <span className="w-2 h-2 rounded-full bg-emerald-300 animate-pulse"></span>
-              <span>Canlı Dağıtım: Cloudflare Pages</span>
+            <div className="flex items-center gap-1.5 bg-[#0e6b37] px-2.5 py-1 rounded">
+              <span className="w-2 h-2 rounded-full bg-emerald-300"></span>
+              <span>Canlı Veri Akışı</span>
             </div>
-            <div className="text-[11px] opacity-90">
-              Günde 2 Kez (03:00 & 15:00 TSİ)
+            <div className="hidden sm:block text-[11px] opacity-90">
+              Güncelleme: 03:00 &amp; 15:00 TSİ
             </div>
           </div>
         </div>
@@ -211,11 +211,10 @@ export default function App() {
                 
                 {/* Sütun Harfleri ve Başlıklar (A, B, C, D, E, F, G) */}
                 <thead>
-                  {/* Excel Sütun Harfleri Satırı */}
+                  {/* Excel Sütun Harfleri Satırı (A - G) */}
                   <tr className="bg-[#f8fafc] border-b border-[#d1d5db] text-[10px] font-mono text-slate-500 select-none">
-                    <th className="w-10 text-center py-1 border-r border-[#e2e8f0]"></th>
-                    <th className="px-3 py-1 border-r border-[#e2e8f0] text-center w-12">A</th>
-                    <th className="px-3 py-1 border-r border-[#e2e8f0] text-left w-48">B</th>
+                    <th className="px-3 py-1 border-r border-[#e2e8f0] text-center w-14">A</th>
+                    <th className="px-3 py-1 border-r border-[#e2e8f0] text-left w-52">B</th>
                     <th className="px-3 py-1 border-r border-[#e2e8f0] text-left w-36">C</th>
                     <th className="px-3 py-1 border-r border-[#e2e8f0] text-left">D</th>
                     <th className="px-3 py-1 border-r border-[#e2e8f0] text-right w-24">E</th>
@@ -225,7 +224,6 @@ export default function App() {
 
                   {/* Sütun İsimleri Satırı */}
                   <tr className="bg-[#f1f5f9] border-b-2 border-[#cbd5e1] text-[11px] font-semibold text-slate-700 select-none">
-                    <th className="w-10 text-center py-2 border-r border-[#cbd5e1] font-mono text-slate-500">Satır</th>
                     <th className="px-3 py-2 border-r border-[#cbd5e1] text-center">Sıra</th>
                     <th className="px-3 py-2 border-r border-[#cbd5e1] text-left">Model / Ürün Adı</th>
                     <th className="px-3 py-2 border-r border-[#cbd5e1] text-left">Kategori</th>
@@ -239,7 +237,6 @@ export default function App() {
                 {/* Tablo Satırları (Excel Hücreleri) */}
                 <tbody className="divide-y divide-[#e2e8f0]">
                   {filteredTools.map((tool, idx) => {
-                    const rowNumber = idx + 2; // Excel row numbering
                     const isPositive = tool.scoreDelta > 0;
                     const isNegative = tool.scoreDelta < 0;
                     const isExpanded = expandedId === tool.id;
@@ -260,44 +257,34 @@ export default function App() {
                                 : 'bg-[#fafafa] hover:bg-[#f0fdf4]'
                           }`}
                         >
-                          {/* Satır Numarası (Excel Gri Satır Başlığı) */}
-                          <td className="py-2 text-center font-mono text-[11px] text-slate-500 bg-[#f8fafc] border-r border-[#e2e8f0] font-semibold">
-                            {rowNumber}
-                          </td>
-
                           {/* Kolon A: Sıra */}
-                          <td className="px-3 py-2 text-center font-mono font-bold text-slate-600 border-r border-[#e2e8f0]">
+                          <td className="px-3 py-2.5 text-center font-mono font-bold text-slate-600 border-r border-[#e2e8f0]">
                             #{idx + 1}
                           </td>
 
-                          {/* Kolon B: Model Adı */}
-                          <td className="px-3 py-2 border-r border-[#e2e8f0]">
-                            <div className="flex items-center justify-between gap-2">
-                              <span className="font-bold text-slate-900 hover:text-[#107c41]">
-                                {tool.name}
-                              </span>
-                              {tool.badge && (
-                                <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-slate-100 border border-slate-300 text-slate-600">
-                                  {tool.badge}
-                                </span>
-                              )}
-                            </div>
+                          {/* Kolon B: Model Adı (Kare kutular kaldırıldı) */}
+                          <td className="px-3 py-2.5 border-r border-[#e2e8f0]">
+                            <span className="font-bold text-slate-900 hover:text-[#107c41] transition">
+                              {tool.name}
+                            </span>
                           </td>
 
                           {/* Kolon C: Kategori (KUSURSUZ DİKEY HİZA) */}
-                          <td className="px-3 py-2 border-r border-[#e2e8f0]">
-                            <span className={`inline-block font-mono text-[11px] px-2 py-0.5 rounded border ${getCategoryBadgeClass(tool.category)}`}>
+                          <td className="px-3 py-2.5 border-r border-[#e2e8f0]">
+                            <span className={`inline-block font-mono text-[11px] px-2.5 py-0.5 rounded border ${getCategoryBadgeClass(tool.category)}`}>
                               {tool.category}
                             </span>
                           </td>
 
-                          {/* Kolon D: Temel Fonksiyon */}
-                          <td className="px-3 py-2 border-r border-[#e2e8f0] text-slate-600 line-clamp-1">
-                            {tool.primaryFunction}
+                          {/* Kolon D: Temel Fonksiyon (Taşma engellendi, tek satırda kusursuz) */}
+                          <td className="px-3 py-2.5 border-r border-[#e2e8f0] text-slate-700">
+                            <div className="truncate max-w-xl text-xs text-slate-700 font-normal" title={tool.primaryFunction}>
+                              {tool.primaryFunction}
+                            </div>
                           </td>
 
                           {/* Kolon E: Hype Skoru */}
-                          <td className="px-3 py-2 text-right border-r border-[#e2e8f0] font-mono">
+                          <td className="px-3 py-2.5 text-right border-r border-[#e2e8f0] font-mono">
                             <span className="font-black text-slate-900 text-sm">
                               {tool.hypeScore}
                             </span>
@@ -305,7 +292,7 @@ export default function App() {
                           </td>
 
                           {/* Kolon F: Delta */}
-                          <td className="px-3 py-2 text-right border-r border-[#e2e8f0] font-mono font-bold">
+                          <td className="px-3 py-2.5 text-right border-r border-[#e2e8f0] font-mono font-bold">
                             <div className="flex items-center justify-end gap-0.5">
                               {isPositive && <ArrowUpRight className="w-3.5 h-3.5 text-emerald-600" />}
                               {isNegative && <ArrowDownRight className="w-3.5 h-3.5 text-rose-600" />}
@@ -317,9 +304,9 @@ export default function App() {
                           </td>
 
                           {/* Kolon G: Kaynaklar / Açma Butonu */}
-                          <td className="px-3 py-2 text-center text-slate-500 font-mono text-[11px]">
+                          <td className="px-3 py-2.5 text-center text-slate-500 font-mono text-[11px]">
                             <div className="flex items-center justify-center gap-1">
-                              <span className="text-[10px] text-slate-600 bg-slate-100 px-1 py-0.5 rounded border border-slate-200">
+                              <span className="text-[10px] text-slate-600 bg-slate-100 px-1.5 py-0.5 rounded border border-slate-200">
                                 {tool.sources?.[0] || 'r/ai'}
                               </span>
                               {isExpanded ? <ChevronUp className="w-3.5 h-3.5 text-[#107c41]" /> : <ChevronDown className="w-3.5 h-3.5 text-slate-400" />}
@@ -330,7 +317,6 @@ export default function App() {
                         {/* TIKLANINCA AÇILAN EXCEL HÜCRE DETAYI & TARİHÇE GÜNLÜĞÜ */}
                         {isExpanded && (
                           <tr className="bg-[#f8fafc] border-b-2 border-[#107c41]">
-                            <td className="bg-[#f1f5f9] border-r border-[#cbd5e1]"></td>
                             <td colSpan={7} className="p-4 space-y-4">
                               
                               {/* 1. Kısım: Güncel Neden Trend Oldu */}
