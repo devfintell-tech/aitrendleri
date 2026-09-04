@@ -9,12 +9,37 @@ import ArchiveModal from './components/ArchiveModal';
 import SubredditsModal from './components/SubredditsModal';
 import DomainSetupGuide from './components/DomainSetupGuide';
 import { MOCK_TOOLS_DATA, LATEST_CONSULTANT_REPORT } from './data/mockData';
+import latestReportData from './data/latest-report.json';
 import { Shield, Sparkles, Terminal, CheckCircle2, ArrowRight } from 'lucide-react';
 
 export default function App() {
   const [activeTimeframe, setActiveTimeframe] = useState('daily');
-  const [toolsData, setToolsData] = useState(MOCK_TOOLS_DATA);
-  const [currentReport, setCurrentReport] = useState(LATEST_CONSULTANT_REPORT);
+  
+  // Initialize with real generated data if available
+  const initialTools = {
+    daily: latestReportData?.daily || MOCK_TOOLS_DATA.daily,
+    weekly: latestReportData?.weekly || MOCK_TOOLS_DATA.weekly,
+    monthly: latestReportData?.monthly || MOCK_TOOLS_DATA.monthly
+  };
+
+  const initialReport = latestReportData ? {
+    id: "rep-live",
+    title: "Reddit AI Danışman Bülteni - Canlı Sinyal Raporu",
+    date: latestReportData.date,
+    activeModel: latestReportData.activeModel,
+    stats: {
+      totalSubreddits: latestReportData.subredditsCovered || 30,
+      successfulSubreddits: latestReportData.subredditsCovered || 30,
+      durationSeconds: latestReportData.durationSeconds || 63,
+      totalPostsAnalyzed: latestReportData.totalPostsAnalyzed || 20,
+      avgHypeIndex: 9.1
+    },
+    executiveSummary: latestReportData.executiveSummary,
+    sections: latestReportData.sections || LATEST_CONSULTANT_REPORT.sections
+  } : LATEST_CONSULTANT_REPORT;
+
+  const [toolsData, setToolsData] = useState(initialTools);
+  const [currentReport, setCurrentReport] = useState(initialReport);
   const [isScanning, setIsScanning] = useState(false);
   const [scanMessage, setScanMessage] = useState(null);
 

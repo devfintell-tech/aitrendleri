@@ -1,0 +1,346 @@
+{
+  "date": "4 Eylül 2026",
+  "activeModel": "gemini-2.5-flash",
+  "durationSeconds": 63,
+  "totalPostsAnalyzed": 20,
+  "subredditsCovered": 30,
+  "executiveSummary": "Yapay Zeka ekosistemi, özellikle Büyük Dil Modelleri (LLM'ler) ve geliştirici araçları alanında hızla evrimleşmeye devam ediyor. OpenAI'ın GPT-6 Astra'sının potansiyel lansmanı ve AGI'ye yönelik iddialar, matematiksel yeteneklerdeki belirgin ilerlemelerle birlikte sektörde büyük bir heyecan dalgası yaratıyor. Aynı zamanda, 3000'den fazla ajanın çevrimiçi iletişim kurduğu gözlemlenen yeni bir mesaj panosu, otonom sistemlerin karmaşıklığı ve potansiyeli hakkında önemli tartışmaları tetikliyor.\n\nAncak bu ilerlemelerle birlikte önemli zorluklar da yaşanıyor. Anthropic'in Claude modellerindeki güvenlik açıkları ve OpenAI'ın telif hakkı ihlali iddialarıyla karşı karşıya kalması, yapay zeka geliştirme ve dağıtımının etik ve yasal boyutlarını gündeme getiriyor. Geliştirici araçları cephesinde ise Devin Pro gibi yeni nesil kodlama yardımcılarının pratik değeri ve CursorAI gibi popüler araçların operasyonel sorunları, kullanıcıların verimlilik ve maliyet beklentilerini şekillendiriyor. Bu dinamik ortam, hem çığır açan yenilikleri hem de sektörün olgunlaşma sürecindeki sancıları bir arada barındırıyor.",
+  "daily": [
+    {
+      "id": "gpt6-astra",
+      "name": "GPT-6 Astra",
+      "category": "Temel LLM",
+      "badge": "Günün Lideri",
+      "hypeScore": 9.8,
+      "prevScore": 9,
+      "scoreDelta": 0.8,
+      "trend": "skyrocketing",
+      "mentions": 750,
+      "sparkline": [
+        8.5,
+        8.8,
+        9,
+        9.2,
+        9.4,
+        9.6,
+        9.8
+      ],
+      "primaryFunction": "Gelişmiş genel amaçlı Büyük Dil Modeli, özellikle matematik ve karmaşık akıl yürütmede üstün yetenekler.",
+      "whyTrending": "AGI'ye yakın olduğu iddiaları, rekor kıran benchmark skorları ve özellikle matematik alanındaki benzersiz performansı nedeniyle büyük ilgi görüyor.",
+      "sources": [
+        "r/singularity",
+        "r/OpenAI"
+      ]
+    },
+    {
+      "id": "autonomous-agents",
+      "name": "Otonom Ajan İletişimi",
+      "category": "Otonom Ajanlar",
+      "badge": "Gelecek Vadeden",
+      "hypeScore": 9.5,
+      "prevScore": 8.8,
+      "scoreDelta": 0.7,
+      "trend": "rising",
+      "mentions": 600,
+      "sparkline": [
+        8,
+        8.3,
+        8.6,
+        8.9,
+        9.1,
+        9.3,
+        9.5
+      ],
+      "primaryFunction": "Çevrimiçi bir değerlendirme sırasında 3200 ajanın iletişim kurması, karmaşık otonom sistemlerin potansiyelini gösteriyor.",
+      "whyTrending": "Çok sayıda yapay zeka ajanı arasındaki gözlemlenen iletişim, emergent davranışlar ve AGI'ye giden yolda önemli bir adım olarak görülüyor.",
+      "sources": [
+        "r/singularity"
+      ]
+    }
+  ],
+  "weekly": [
+    {
+      "id": "claude-security",
+      "name": "ClaudeAI Güvenlik Açıkları",
+      "category": "Temel LLM",
+      "badge": "Dikkat Çeken",
+      "hypeScore": 7.8,
+      "prevScore": 7,
+      "scoreDelta": 0.8,
+      "trend": "rising",
+      "mentions": 400,
+      "sparkline": [
+        6.5,
+        6.8,
+        7,
+        7.2,
+        7.4,
+        7.6,
+        7.8
+      ],
+      "primaryFunction": "Anthropic'in Claude modellerindeki güvenlik zafiyetleri ve 'insan değerleriyle tam uyumlu olmama' itirafı.",
+      "whyTrending": "Yapay zeka güvenliği ve etik uyum konusundaki endişeleri artırarak sektörde geniş yankı buldu.",
+      "sources": [
+        "r/ChatGPTCoding",
+        "r/ClaudeAI"
+      ]
+    },
+    {
+      "id": "devin-pro-value",
+      "name": "Devin Pro (Windsurf) Değeri",
+      "category": "Vibe Coding",
+      "badge": "Geliştirici Odağı",
+      "hypeScore": 7.5,
+      "prevScore": 7.2,
+      "scoreDelta": 0.3,
+      "trend": "rising",
+      "mentions": 350,
+      "sparkline": [
+        6.8,
+        7,
+        7.1,
+        7.2,
+        7.3,
+        7.4,
+        7.5
+      ],
+      "primaryFunction": "Devin'in 20 dolarlık Pro katmanının frontend ve WordPress geliştiricileri için pratik değeri ve otonom test ihtiyacı.",
+      "whyTrending": "Geliştiricilerin belirli iş akışları için yapay zeka destekli kodlama araçlarından beklentilerini ve maliyet-fayda analizlerini tetikliyor.",
+      "sources": [
+        "r/windsurf"
+      ]
+    },
+    {
+      "id": "cursorai-degradation",
+      "name": "CursorAI Performans Sorunları",
+      "category": "Vibe Coding",
+      "badge": "Operasyonel Zorluk",
+      "hypeScore": 6.5,
+      "prevScore": 7,
+      "scoreDelta": -0.5,
+      "trend": "cooling",
+      "mentions": 280,
+      "sparkline": [
+        7.5,
+        7.2,
+        7,
+        6.8,
+        6.7,
+        6.6,
+        6.5
+      ],
+      "primaryFunction": "CursorAI'ın 'Yüksek Yük' hataları ve hizmet kalitesindeki düşüş.",
+      "whyTrending": "Popüler bir yapay zeka kodlama aracının güvenilirliği ve ölçeklenebilirliği hakkında endişeleri artırıyor.",
+      "sources": [
+        "r/CursorAI"
+      ]
+    },
+    {
+      "id": "openai-copyright-lawsuit",
+      "name": "OpenAI Telif Hakkı Davası",
+      "category": "Temel LLM",
+      "badge": "Yasal Gündem",
+      "hypeScore": 8,
+      "prevScore": 8,
+      "scoreDelta": 0,
+      "trend": "stable",
+      "mentions": 500,
+      "sparkline": [
+        8,
+        7.9,
+        8,
+        8.1,
+        8,
+        8,
+        8
+      ],
+      "primaryFunction": "OpenAI'ın, içerik oluşturucuların izni olmadan verilerini kullandığı iddiasıyla açılan dava.",
+      "whyTrending": "Yapay zeka modellerinin eğitim verisi toplama yöntemlerinin yasal ve etik sonuçlarını vurguluyor.",
+      "sources": [
+        "r/OpenAI"
+      ]
+    },
+    {
+      "id": "deepseek-price-hike",
+      "name": "DeepSeek Fiyat Artışı",
+      "category": "Açık Kaynak",
+      "badge": "Maliyet Odaklı",
+      "hypeScore": 6.8,
+      "prevScore": 7,
+      "scoreDelta": -0.2,
+      "trend": "cooling",
+      "mentions": 250,
+      "sparkline": [
+        7.2,
+        7.1,
+        7,
+        6.9,
+        6.8,
+        6.8,
+        6.8
+      ],
+      "primaryFunction": "DeepSeek modelinin fiyat artışı ve kullanıcıların GPT'ye geçiş eğilimi.",
+      "whyTrending": "Yapay zeka modellerinin maliyet etkinliği ve erişilebilirliği konusundaki hassasiyeti gösteriyor.",
+      "sources": [
+        "r/DeepSeek"
+      ]
+    },
+    {
+      "id": "chatgpt-token-burn",
+      "name": "ChatGPT Token Tüketimi",
+      "category": "Vibe Coding",
+      "badge": "Verimlilik Sorunu",
+      "hypeScore": 6,
+      "prevScore": 6.5,
+      "scoreDelta": -0.5,
+      "trend": "cooling",
+      "mentions": 200,
+      "sparkline": [
+        7,
+        6.8,
+        6.5,
+        6.3,
+        6.1,
+        6,
+        6
+      ],
+      "primaryFunction": "ChatGPT'nin 'Sol/Extra High' modunda tokenları daha hızlı tüketmesi ve kullanıcıların 5 saatlik limitlere erken ulaşması.",
+      "whyTrending": "Yapay zeka kullanımının maliyet ve verimlilik üzerindeki doğrudan etkisini gösteriyor, kullanıcı deneyimini olumsuz etkiliyor.",
+      "sources": [
+        "r/ChatGPTCoding"
+      ]
+    }
+  ],
+  "monthly": [
+    {
+      "id": "ai-coding-environments",
+      "name": "AI Destekli Kodlama Ortamları",
+      "category": "Vibe Coding",
+      "badge": "Sektör Standardı",
+      "hypeScore": 8.5,
+      "prevScore": 8.3,
+      "scoreDelta": 0.2,
+      "trend": "rising",
+      "mentions": 1200,
+      "sparkline": [
+        8,
+        8.1,
+        8.2,
+        8.3,
+        8.4,
+        8.5,
+        8.5
+      ],
+      "primaryFunction": "CursorAI, Copilot, ChatGPTCoding gibi araçların entegrasyonu ve geliştiricilerin iş akışlarına etkisi.",
+      "whyTrending": "Yapay zekanın yazılım geliştirme süreçlerine derinlemesine entegrasyonu, verimlilik artışı ve yeni paradigmalar yaratması.",
+      "sources": [
+        "r/vibecoding",
+        "r/CursorAI",
+        "r/ChatGPTCoding",
+        "r/Copilot"
+      ]
+    },
+    {
+      "id": "agi-progress",
+      "name": "AGI'ye Doğru İlerleme",
+      "category": "Singularity",
+      "badge": "Vizyoner Hedef",
+      "hypeScore": 9,
+      "prevScore": 8.8,
+      "scoreDelta": 0.2,
+      "trend": "rising",
+      "mentions": 1500,
+      "sparkline": [
+        8.5,
+        8.6,
+        8.7,
+        8.8,
+        8.9,
+        9,
+        9
+      ],
+      "primaryFunction": "GPT-6 Astra'nın performansı ve otonom ajanların iletişim yetenekleri gibi gelişmelerle AGI'ye ulaşma tartışmaları.",
+      "whyTrending": "Yapay zekanın insan zekasını aşma potansiyeli ve bu yöndeki somut adımlar, uzun vadeli sektör vizyonunu şekillendiriyor.",
+      "sources": [
+        "r/singularity",
+        "r/OpenAI",
+        "r/ArtificialInteligence"
+      ]
+    },
+    {
+      "id": "ai-ethics-security",
+      "name": "Yapay Zeka Etiği ve Güvenlik",
+      "category": "Temel LLM",
+      "badge": "Kritik Odak",
+      "hypeScore": 8.2,
+      "prevScore": 8,
+      "scoreDelta": 0.2,
+      "trend": "stable",
+      "mentions": 1000,
+      "sparkline": [
+        7.8,
+        7.9,
+        8,
+        8.1,
+        8.2,
+        8.2,
+        8.2
+      ],
+      "primaryFunction": "Anthropic'in güvenlik açıkları ve OpenAI'ın telif hakkı davaları gibi olaylarla yapay zeka güvenliği ve etik ilkelerin önemi.",
+      "whyTrending": "Yapay zeka teknolojileri yaygınlaştıkça, bu sistemlerin güvenli, adil ve sorumlu bir şekilde geliştirilmesi ve kullanılması giderek daha kritik hale geliyor.",
+      "sources": [
+        "r/ChatGPTCoding",
+        "r/OpenAI",
+        "r/ClaudeAI"
+      ]
+    },
+    {
+      "id": "cost-accessibility",
+      "name": "Maliyet ve Erişilebilirlik Dengesi",
+      "category": "Açık Kaynak",
+      "badge": "Ekonomik Faktör",
+      "hypeScore": 7,
+      "prevScore": 7,
+      "scoreDelta": 0,
+      "trend": "stable",
+      "mentions": 800,
+      "sparkline": [
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7
+      ],
+      "primaryFunction": "DeepSeek'in fiyat artışı ve Google Gemini Pro aboneliklerinin yasa dışı satışı gibi konularla yapay zeka hizmetlerinin maliyeti ve erişimi.",
+      "whyTrending": "Kullanıcıların ve geliştiricilerin yapay zeka araçlarını benimsemesinde maliyetin kritik bir faktör olması ve uygun fiyatlı alternatif arayışları.",
+      "sources": [
+        "r/DeepSeek",
+        "r/GoogleGemini"
+      ]
+    }
+  ],
+  "sections": [
+    {
+      "title": "🛠️ Model Sıralaması & Radar",
+      "badge": "Liderlik",
+      "contentHtml": "<p>OpenAI'ın GPT-6 Astra'sının lansmanı ve AGI'ye yönelik iddialar, yapay zeka dünyasında yeni bir dönemin habercisi olabilir. Özellikle matematiksel yeteneklerdeki üstünlüğü, karmaşık problem çözme kapasitesinde önemli bir sıçramayı işaret ediyor. 3000'den fazla ajanın çevrimiçi iletişim kurması, otonom sistemlerin potansiyelini ve emergent zekanın gelişimini gözler önüne seriyor. Bu tür gelişmeler, AGI yol haritasında kritik kilometre taşları olarak değerlendiriliyor. OpenAI'ın Astra'yı pro hesaplara sunması, yeni nesil modellerin geniş kitlelere ulaşma hızını gösteriyor.</p>"
+    },
+    {
+      "title": "💡 Vibe Coding & Teknik İçgörüler",
+      "badge": "Kodlama Devrimi",
+      "contentHtml": "<p>Devin Pro'nun 20 dolarlık katmanının frontend ve WordPress geliştiricileri için değeri, yapay zeka destekli kodlama araçlarının niş kullanım alanlarındaki etkinliğini sorgulatıyor. Geliştiriciler, otonom test yerine hızlı diff'ler ve akıllı dosya navigasyonu gibi özelliklere odaklanıyor. CursorAI'daki 'Yüksek Yük' hataları ve performans düşüşü, popüler yapay zeka kodlama araçlarının ölçeklenebilirlik ve güvenilirlik sorunlarını ortaya koyuyor. Bu durum, geliştiricilerin günlük iş akışlarında kesintilere yol açabiliyor. MCP sunucularının repo başına yönetimi ve ChatGPT'nin artan token tüketimi gibi tartışmalar, yapay zeka destekli geliştirme ortamlarının maliyet ve verimlilik optimizasyonunun önemini vurguluyor.</p>"
+    },
+    {
+      "title": "📉 Makro Sektör Trendleri & Rekabet Dengesi",
+      "badge": "Pazar Analizi",
+      "contentHtml": "<p>Anthropic'in Claude modellerindeki güvenlik açıkları ve 'insan değerleriyle tam uyumlu olmama' itirafı, yapay zeka güvenliği ve etik yönetişiminin sektör için ne kadar kritik olduğunu gösteriyor. Bu tür olaylar, düzenleyici baskıyı artırabilir. OpenAI'ın telif hakkı ihlali iddialarıyla karşı karşıya kalması, yapay zeka modellerinin eğitim verisi toplama ve kullanma yöntemlerinin yasal sonuçlarını gündeme getiriyor. Bu dava, içerik oluşturucuların haklarını koruma konusunda emsal teşkil edebilir. DeepSeek'in fiyat artışı ve kullanıcıların GPT'ye yönelmesi, yapay zeka hizmetleri pazarındaki rekabetin ve maliyet hassasiyetinin altını çiziyor. Uygun fiyatlı ve performanslı alternatif arayışı devam ediyor.</p>"
+    },
+    {
+      "title": "💼 Beyaz Yaka Entegrasyon ve Operasyon Rehberi",
+      "badge": "İş Dünyası",
+      "contentHtml": "<p>Yapay zeka araçlarının iş akışlarına entegrasyonu, özellikle kodlama ve içerik oluşturma alanlarında verimlilik artışı vaat ediyor. Ancak, doğru aracın seçimi ve mevcut sistemlerle uyumu kritik önem taşıyor. Google Gemini Pro aboneliklerinin yasa dışı yollarla satılması gibi durumlar, kullanıcıların yapay zeka hizmetlerine erişirken dikkatli olmaları gerektiğini gösteriyor. Güvenilir kaynaklardan edinilmeyen abonelikler, hesap güvenliği riskleri taşıyabilir. Yapay zeka destekli araçların (örn. ChatGPT) token tüketim hızındaki artışlar, işletmelerin ve bireysel kullanıcıların maliyetleri yönetmek için kullanım stratejilerini gözden geçirmelerini gerektiriyor.</p>"
+    }
+  ]
+}
