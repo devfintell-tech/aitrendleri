@@ -30,7 +30,7 @@ async function sendNotification() {
         <table style="width: 100%; font-size: 13px; border-collapse: collapse;">
           <tr>
             <td style="padding: 6px 0; color: #94a3b8;">📡 Taranan Subreddit:</td>
-            <td style="padding: 6px 0; font-weight: bold; color: #ffffff; text-align: right;">43 Topluluk</td>
+            <td style="padding: 6px 0; font-weight: bold; color: #ffffff; text-align: right;">${report.subredditsCovered || 50} Topluluk</td>
           </tr>
           <tr>
             <td style="padding: 6px 0; color: #94a3b8;">🔥 Çekilen Sıcak Başlık:</td>

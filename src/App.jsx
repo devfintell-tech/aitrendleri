@@ -66,7 +66,7 @@ export default function App() {
               </h1>
             </div>
             <p className="text-xs text-slate-400 mt-0.5">
-              43+ Reddit AI topluluğu sinyal analizi ve model sıralaması
+              50+ Reddit Yapay Zeka, Donanım &amp; Yazılım topluluğu sinyal analizi ve model sıralaması
             </p>
           </div>
 

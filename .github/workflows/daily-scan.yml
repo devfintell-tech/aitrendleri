@@ -28,9 +28,11 @@ jobs:
       - name: Bağımlılıkları Yükle
         run: npm ci || npm install
 
-      - name: 43 Reddit Sub Taraması & Gemini 3.8 Analizi
+      - name: 50 Reddit Sub Taraması & Gemini 3.8 Şelale Analizi
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}
+          GEMINI_API_KEY_3: ${{ secrets.GEMINI_API_KEY_3 }}
         run: npm run crawl
 
       - name: Siteyi Derle & Cloudflare Pages'e Doğrudan Canlıya Al

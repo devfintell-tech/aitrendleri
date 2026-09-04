@@ -1,7 +1,7 @@
 /**
- * 43+ Yüksek Sinyalli Yapay Zeka Subreddit Grubu
+ * 50 Yüksek Sinyalli Yapay Zeka, Donanım (GPU/CPU) ve Yazılım Subreddit Havuzu
  * Reddit'in resmi Multi-Subreddit (+ operatörü) özelliği kullanılarak
- * 43 ayrı istek yerine yalnızca 6 optimize pakette çekilir.
+ * 50 ayrı istek yerine 7 organize pakette çekilir.
  */
 
 export const SUBREDDIT_BATCHES = [
@@ -16,25 +16,30 @@ export const SUBREDDIT_BATCHES = [
     subreddits: ["AI_Agents", "CrewAI", "LangChain", "AutoGPT", "Automate", "n8n", "agenticai"]
   },
   {
-    name: "Büyük Dil Modelleri & Sektör Liderleri",
+    name: "Büyük Dil Modelleri & Araştırma Devleri",
     slug: "OpenAI+GoogleGemini+DeepSeek+Singularity+ArtificialInteligence+MachineLearning+Anthropic",
     subreddits: ["OpenAI", "GoogleGemini", "DeepSeek", "Singularity", "ArtificialInteligence", "MachineLearning", "Anthropic"]
   },
   {
-    name: "Açık Kaynak, Yerel Modeller & GPU",
+    name: "Açık Kaynak, Yerel Modeller & Self-Hosted",
     slug: "LocalLLaMA+ollama+vllm+huggingface+OpenSourceAI+MistralAI+selfhosted",
     subreddits: ["LocalLLaMA", "ollama", "vllm", "huggingface", "OpenSourceAI", "MistralAI", "selfhosted"]
   },
   {
-    name: "Geliştirici, API & Prompt Mühendisliği",
-    slug: "LLMDevs+PromptEngineering+AI_Tools+GenerativeAI+datascience",
-    subreddits: ["LLMDevs", "PromptEngineering", "AI_Tools", "GenerativeAI", "datascience"]
+    name: "Yazılım Geliştirici, API & Kodlama Dünyası",
+    slug: "LLMDevs+PromptEngineering+AI_Tools+GenerativeAI+webdev+programming",
+    subreddits: ["LLMDevs", "PromptEngineering", "AI_Tools", "GenerativeAI", "webdev", "programming"]
+  },
+  {
+    name: "Donanım, GPU, CPU & Bulut Altyapısı",
+    slug: "hardware+nvidia+AMD_Stock+sysadmin+devops+Cloud+technology",
+    subreddits: ["hardware", "nvidia", "AMD_Stock", "sysadmin", "devops", "Cloud", "technology"]
   },
   {
     name: "Görsel, Video & Medya Üretimi",
-    slug: "ComfyUI+StableDiffusion+Midjourney+Sora+RunwayML",
-    subreddits: ["ComfyUI", "StableDiffusion", "Midjourney", "Sora", "RunwayML"]
+    slug: "ComfyUI+StableDiffusion+Midjourney+Sora+RunwayML+artificial",
+    subreddits: ["ComfyUI", "StableDiffusion", "Midjourney", "Sora", "RunwayML", "artificial"]
   }
 ];
 
-export const REDDIT_USER_AGENT = "web:aitrendleri.com:v2.0 (by /u/orhanerturk; contact: orhaner1907@gmail.com)";
+export const REDDIT_USER_AGENT = "web:aitrendleri.com:v3.0 (by /u/orhanerturk; contact: orhaner1907@gmail.com)";
