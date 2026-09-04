@@ -1,613 +1,526 @@
 {
-  "date": "5 Eylül 2026",
-  "activeModel": "gemini-3.7-flash",
-  "durationSeconds": 48,
-  "totalPostsAnalyzed": 36,
+  "date": "4 Eylül 2026",
+  "activeModel": "gemini-3.8-flash",
+  "durationSeconds": 47,
+  "totalPostsAnalyzed": 18,
   "subredditsCovered": 30,
-  "executiveSummary": "Geliştirici ekosisteminde 'Fable 5.1' fırtınası esiyor; vibe coding ve multimodal ajan tabanlı üretim pratiklerinde tek prompt ile Blender 3D ortamlarından tam fonksiyonel web uygulamalarına kadar uçtan uca tek hamlede üretim (one-shot generation) tartışmaların odağına oturdu. Öte yandan NVIDIA'nın Hugging Face'i 12.9 milyar dolarlık sembolik bir değerlemeyle satın aldığına dair spekülasyonlar ve endüstri tepkileri açık kaynak yapay zeka bağımsızlığı konusunda ciddi endişeleri tetiklemiş durumda. Claude Code ve Devin benzeri otonom kodlama ajanlarının token tüketim modelleri, bayat test verilerinin ajanları manipüle etmesi ve Cursor altyapısındaki 'yüksek yük' kesintileri, pratik geliştirici operasyonlarında limit optimizasyonunu öncelikli hale getiriyor.",
+  "executiveSummary": "Geliştirici ekosisteminde 'Vibe Coding' paradigması, prototipleme aşamasını aşarak tam teşekküllü üretim hattına dönüşürken, altyapı darboğazları ve model maliyetleri ana gündem maddesi haline gelmiştir. Fable 5.1 ve Claude Code tabanlı uçtan uca otonom geliştirmeler toplulukta şok dalgaları yaratırken, Cursor'ın yoğun yük altında yaşadığı kesintiler ve Microsoft Copilot'ın tartışmalı arayüz ve gizlilik güncellemeleri kullanıcı direncini tetiklemiştir.\n\nÖte yandan, bağlam kirlenmesi (context pollution) ve bayat kodların (stale test fixtures) otonom ajanları yanıltması gibi derin teknik problemler, salt model zekasından ziyade repo hijyeni ve MCP (Model Context Protocol) mimarilerinin önemini ortaya koymaktadır. Kurumlar, kontrolsüz token tüketimi ve otonom test overhead'leri karşısında cerrahi müdahalelere izin veren yerel ve hibrit yaklaşımlara ağırlık vermektedir.",
   "daily": [
     {
       "id": "fable-5-1",
       "name": "Fable 5.1",
-      "category": "IDE / Editör",
-      "badge": "Günün Lideri",
-      "hypeScore": 9.6,
-      "prevScore": 8.4,
-      "scoreDelta": 1.2,
+      "category": "Otonom Agent",
+      "badge": "Günün Zirvesi",
+      "hypeScore": 9.7,
+      "prevScore": 8.9,
+      "scoreDelta": 0.8,
       "trend": "skyrocketing",
-      "mentions": 1240,
+      "mentions": 680,
       "sparkline": [
-        7.5,
-        7.8,
-        8.1,
+        8.2,
         8.4,
-        8.8,
+        8.7,
+        8.9,
         9.2,
-        9.6
+        9.5,
+        9.7
       ],
-      "primaryFunction": "Tek prompt ile Blender ve Web uygulamaları üreten otonom multimodal kodlama aracı",
-      "whyTrending": "Blender MCP entegrasyonu ve sıfırdan 8 saatte beat maker platformu üretmesiyle vibe coding topluluğunda büyük yankı uyandırdı.",
+      "primaryFunction": "Tek prompt ile Blender ve web tabanlı uçtan uca karmaşık interaktif uygulamalar ve 3D sahneler üretme.",
+      "whyTrending": "Blender MCP entegrasyonuyla 1km² WoW haritası ve sıfırdan çalışan tarayıcı tabanlı müzik yapma aracını tek atışta (one-shot) inşa etmesiyle viral oldu.",
       "sources": [
         "r/vibecoding",
         "r/ClaudeAI"
-      ]
-    },
-    {
-      "id": "claude-code",
-      "name": "Claude Code / Claude 3.7",
-      "category": "CLI / Terminal",
-      "badge": "Ajan Standardı",
-      "hypeScore": 9.4,
-      "prevScore": 9.2,
-      "scoreDelta": 0.2,
-      "trend": "rising",
-      "mentions": 1850,
-      "sparkline": [
-        8.9,
-        9,
-        9.1,
-        9.1,
-        9.2,
-        9.3,
-        9.4
-      ],
-      "primaryFunction": "Terminal tabanlı derin repo anlama ve otonom kod geliştirme ajanı",
-      "whyTrending": "Kullanım limitlerinin sıfırlanması ve repo içindeki bayat test verileriyle başa çıkma stratejileri üzerinden yoğun teknik tartışmalara konu oluyor.",
-      "sources": [
-        "r/ClaudeDev",
-        "r/ChatGPTCoding",
-        "r/ClaudeAI"
-      ]
-    },
-    {
-      "id": "nvidia-huggingface",
-      "name": "NVIDIA x Hugging Face Ekosistemi",
-      "category": "Şirket / Lab",
-      "badge": "Pazar Sarsıntısı",
-      "hypeScore": 9.1,
-      "prevScore": 7.9,
-      "scoreDelta": 1.2,
-      "trend": "skyrocketing",
-      "mentions": 980,
-      "sparkline": [
-        6.5,
-        6.8,
-        7.2,
-        7.5,
-        7.9,
-        8.6,
-        9.1
-      ],
-      "primaryFunction": "Açık kaynak model deposu ve GPU ekosistemi hakimiyeti",
-      "whyTrending": "12.93 milyar dolarlık Unicode '🤗' göndermeli satın alma iddiaları açık kaynak bağımsızlığı ve çıkar çatışması tartışmalarını alevlendirdi.",
-      "sources": [
-        "r/LocalLLaMA",
-        "r/ollama"
-      ]
-    },
-    {
-      "id": "ellm-cpu-inference",
-      "name": "eLLM",
-      "category": "Altyapı & SDK",
-      "badge": "Teknik Çıkış",
-      "hypeScore": 8.7,
-      "prevScore": 7.3,
-      "scoreDelta": 1.4,
-      "trend": "skyrocketing",
-      "mentions": 610,
-      "sparkline": [
-        6,
-        6.4,
-        6.9,
-        7.3,
-        7.8,
-        8.2,
-        8.7
-      ],
-      "primaryFunction": "Rust tabanlı, CPU üzerinde GPU'dan hızlı çalışan uzun bağlamlı LLM çıkarım motoru",
-      "whyTrending": "DDR bellek bant genişliğini GPU HBM'e karşı avantaja çeviren depolama-hesaplama takas stratejisiyle CPU çıkarımını radikal şekilde hızlandırıyor.",
-      "sources": [
-        "r/LocalLLaMA",
-        "r/OpenSourceAI"
       ]
     },
     {
       "id": "cursor-ai",
       "name": "Cursor",
       "category": "IDE / Editör",
-      "badge": "Altyapı Sınavı",
-      "hypeScore": 8.5,
-      "prevScore": 8.9,
-      "scoreDelta": -0.4,
-      "trend": "cooling",
-      "mentions": 1150,
-      "sparkline": [
-        9.1,
-        9,
-        8.9,
-        8.9,
-        8.8,
-        8.6,
-        8.5
-      ],
-      "primaryFunction": "Yapay zeka destekli kod editörü ve bağlam yöneticisi",
-      "whyTrending": "Son günlerde yaşanan sunucu aşırı yük (High Load) problemleri ve servis kesintileri kullanıcıların alternatiflere yönelmesine neden oluyor.",
-      "sources": [
-        "r/CursorAI",
-        "r/ChatGPTCoding"
-      ]
-    },
-    {
-      "id": "devin-windsurf",
-      "name": "Devin / Windsurf Pro",
-      "category": "Otonom Agent",
-      "badge": "Maliyet/Fayda Tartışması",
-      "hypeScore": 8.2,
-      "prevScore": 8.3,
-      "scoreDelta": -0.1,
-      "trend": "stable",
-      "mentions": 720,
-      "sparkline": [
-        8.4,
-        8.4,
-        8.3,
-        8.3,
-        8.2,
-        8.2,
-        8.2
-      ],
-      "primaryFunction": "Otonom tarayıcı ve sandbox doğrulamalı yazılım mühendisliği asistanı",
-      "whyTrending": "20 dolarlık aboneliğin arka plan düşünme zincirleri ve otonom test overhead'i sebebiyle frontend geliştiricileri için hızla tükenmesi sorgulanıyor.",
-      "sources": [
-        "r/windsurf",
-        "r/ChatGPTCoding"
-      ]
-    },
-    {
-      "id": "microsoft-copilot",
-      "name": "Microsoft 365 Copilot",
-      "category": "Otomasyon",
-      "badge": "Kullanıcı Tepkisi",
-      "hypeScore": 7.4,
-      "prevScore": 8,
+      "badge": "Altyapı Krizi",
+      "hypeScore": 8.8,
+      "prevScore": 9.4,
       "scoreDelta": -0.6,
       "trend": "cooling",
-      "mentions": 890,
+      "mentions": 540,
       "sparkline": [
-        8.2,
-        8.1,
-        8,
-        7.8,
-        7.7,
-        7.5,
-        7.4
+        9.5,
+        9.4,
+        9.4,
+        9.3,
+        9.1,
+        8.9,
+        8.8
       ],
-      "primaryFunction": "Office ve Word entegrasyonlu doküman üretimi ve yeniden yazım",
-      "whyTrending": "Word arayüz güncellemesi sonrası Autorewrite hızının düşmesi, kenar çubuğuna taşınması ve eğitimden çıkma (opt-out) ayarlarının kaybolması tepki topladı.",
+      "primaryFunction": "Yapay zeka öncelikli kod düzenleme, diff alma ve çoklu dosya bağlam yönetimi.",
+      "whyTrending": "Sunucularında yaşanan 'High Load' kaynaklı büyük kesintiler ve performans düşüşü nedeniyle geliştiricilerin iş akışları aksadı.",
+      "sources": [
+        "r/CursorAI"
+      ]
+    },
+    {
+      "id": "claude-code",
+      "name": "Claude Code (CLI)",
+      "category": "CLI / Terminal",
+      "badge": "Yüksek Talep",
+      "hypeScore": 9.4,
+      "prevScore": 9.1,
+      "scoreDelta": 0.3,
+      "trend": "rising",
+      "mentions": 490,
+      "sparkline": [
+        8.6,
+        8.8,
+        8.9,
+        9,
+        9.1,
+        9.3,
+        9.4
+      ],
+      "primaryFunction": "Terminal üzerinden doğrudan repo analizi, kod düzenleme ve git operasyonları yürüten otonom ajan.",
+      "whyTrending": "Bayat test verileri ve context şişmesi tartışmalarına rağmen limitlerin sıfırlanması toplulukta rahatlama yarattı.",
+      "sources": [
+        "r/ClaudeDev",
+        "r/ClaudeAI",
+        "r/ChatGPTCoding"
+      ]
+    },
+    {
+      "id": "ms-copilot",
+      "name": "Microsoft Copilot",
+      "category": "Otomasyon",
+      "badge": "Kullanıcı Tepkisi",
+      "hypeScore": 6.2,
+      "prevScore": 7.5,
+      "scoreDelta": -1.3,
+      "trend": "cooling",
+      "mentions": 410,
+      "sparkline": [
+        7.8,
+        7.6,
+        7.5,
+        7.1,
+        6.8,
+        6.4,
+        6.2
+      ],
+      "primaryFunction": "Microsoft 365 ve ofis araçları üzerinde içerik yeniden yazma ve kod tamamlama.",
+      "whyTrending": "Word entegrasyonunda Autorewrite fonksiyonunun bozulması, geçmiş sohbetlerin kaybolması ve eğitim opt-out seçeneğinin kaldırılması sert tepki çekti.",
       "sources": [
         "r/Copilot"
       ]
     },
     {
-      "id": "llm-psp",
-      "name": "LLMPSP (PSP 90M LLM)",
-      "category": "Yerel Model",
-      "badge": "Uç Uç Nokta (Edge)",
-      "hypeScore": 7.1,
-      "prevScore": 5.5,
-      "scoreDelta": 1.6,
-      "trend": "skyrocketing",
-      "mentions": 430,
+      "id": "devin-windsurf",
+      "name": "Windsurf / Devin",
+      "category": "IDE / Editör",
+      "badge": "Maliyet Tartışması",
+      "hypeScore": 8.5,
+      "prevScore": 8.6,
+      "scoreDelta": -0.1,
+      "trend": "stable",
+      "mentions": 330,
       "sparkline": [
-        4.8,
-        5,
-        5.5,
-        6,
-        6.4,
-        6.8,
-        7.1
+        8.4,
+        8.5,
+        8.6,
+        8.7,
+        8.6,
+        8.5,
+        8.5
       ],
-      "primaryFunction": "2004 model Sony PSP üzerinde çalışan 90M parametreli yerel dil modeli",
-      "whyTrending": "0.5 token/sn hızında 32MB RAM'li 20 yıllık konsolda LLM çalıştırma başarısı, aşırı uç donanımlarda yerel model optimizasyonunun simgesi oldu.",
+      "primaryFunction": "Otonom test çalıştırma, sandbox ortamı kurma ve cerrahi diff kod üretimi.",
+      "whyTrending": "20 dolarlık pro planın otonom arka plan görevleriyle 2-3 işlemde tükenmesi ve frontend geliştiriciler için aşırı maliyetli bulunması tartışılıyor.",
       "sources": [
-        "r/LocalLLaMA"
+        "r/windsurf",
+        "r/ChatGPTCoding"
       ]
     }
   ],
   "weekly": [
     {
       "id": "claude-3-7-sonnet",
-      "name": "Claude 3.7 Sonnet / Thinking",
+      "name": "Claude 3.7 Sonnet",
       "category": "LLM (Model)",
-      "badge": "Haftanın Standardı",
-      "hypeScore": 9.7,
-      "prevScore": 9.5,
-      "scoreDelta": 0.2,
-      "trend": "skyrocketing",
-      "mentions": 5800,
+      "badge": "Sektör Standardı",
+      "hypeScore": 9.6,
+      "prevScore": 9.3,
+      "scoreDelta": 0.3,
+      "trend": "rising",
+      "mentions": 2850,
       "sparkline": [
         9,
-        9.2,
+        9.1,
         9.3,
+        9.3,
+        9.4,
         9.5,
-        9.6,
-        9.6,
-        9.7
+        9.6
       ],
-      "primaryFunction": "Hibrit akıl yürütme (thinking) ve yüksek doğruluklu kodlama modeli",
-      "whyTrending": "Hem doğrudan API hem de ajan katmanlarında en kararlı ve yüksek kaliteli kod üreten model olarak liderliğini koruyor.",
+      "primaryFunction": "Hibrit muhakeme ve ileri seviye kod üretim mimarisi.",
+      "whyTrending": "Vibe coding projelerinin ve Claude Code terminal ajanının birincil motoru olarak pazar hakimiyetini koruyor.",
       "sources": [
         "r/ClaudeAI",
-        "r/ChatGPTCoding",
+        "r/vibecoding",
         "r/ClaudeDev"
       ]
     },
     {
       "id": "fable-5-1",
       "name": "Fable 5.1",
-      "category": "IDE / Editör",
-      "badge": "Haftalık Sıçrama",
-      "hypeScore": 9.3,
-      "prevScore": 7.8,
+      "category": "Otonom Agent",
+      "badge": "Haftanın Çıkışı",
+      "hypeScore": 9.5,
+      "prevScore": 8,
       "scoreDelta": 1.5,
       "trend": "skyrocketing",
-      "mentions": 3400,
+      "mentions": 1920,
       "sparkline": [
-        7,
-        7.4,
         7.8,
+        8,
         8.3,
-        8.7,
+        8.6,
         9,
-        9.3
+        9.3,
+        9.5
       ],
-      "primaryFunction": "Multimodal tasarım ve vibe coding motoru",
-      "whyTrending": "Geliştiricilerin saatler içinde eksiksiz ürünler çıkarmasını sağlayan multimodal one-shot kabiliyeti.",
+      "primaryFunction": "Uçtan uca web, ses ve 3D arayüz üretim otomasyonu.",
+      "whyTrending": "Geleneksel geliştiricilerin dahi x5'ten x20 planlarına yükseltme yapmayı düşündüğü 'vibe coding' amiral gemisi haline geldi.",
       "sources": [
         "r/vibecoding",
         "r/ClaudeAI"
       ]
     },
     {
+      "id": "cursor-ai",
+      "name": "Cursor",
+      "category": "IDE / Editör",
+      "badge": "Kapasite Sınavı",
+      "hypeScore": 8.9,
+      "prevScore": 9.5,
+      "scoreDelta": -0.6,
+      "trend": "cooling",
+      "mentions": 2100,
+      "sparkline": [
+        9.6,
+        9.5,
+        9.4,
+        9.2,
+        9.1,
+        9,
+        8.9
+      ],
+      "primaryFunction": "Yapay zeka destekli dosya indeksleme ve çoklu model entegrasyon editörü.",
+      "whyTrending": "Model sağlayıcılarındaki yoğunluk ve kendi sunucu altyapısındaki aksamalar nedeniyle haftalık bazda ivme kaybetti.",
+      "sources": [
+        "r/CursorAI"
+      ]
+    },
+    {
       "id": "deepseek-r1",
       "name": "DeepSeek-R1",
       "category": "Yerel Model",
-      "badge": "Yerel Akıl Yürütme",
+      "badge": "Yerel Güç",
       "hypeScore": 9.2,
-      "prevScore": 9.4,
-      "scoreDelta": -0.2,
+      "prevScore": 9.1,
+      "scoreDelta": 0.1,
       "trend": "stable",
-      "mentions": 4900,
+      "mentions": 1780,
       "sparkline": [
-        9.5,
-        9.4,
-        9.4,
-        9.3,
-        9.3,
+        8.9,
+        9,
+        9.1,
+        9.1,
+        9.2,
         9.2,
         9.2
       ],
-      "primaryFunction": "Açık ağırlıklı akıl yürütme ve distilasyon modeli",
-      "whyTrending": "Yerel donanımlarda fine-tune ve distilasyon standart referansı olarak egemenliğini sürdürüyor.",
+      "primaryFunction": "Açık ağırlıklı derin muhakeme ve yerel kod analizi.",
+      "whyTrending": "Maliyet optimizasyonu arayan ekiplerin Claude ve GPT token limitlerinden kaçmak için yerel Ollama/vLLM üzerinden devreye aldığı temel model.",
       "sources": [
-        "r/LocalLLaMA",
-        "r/ollama",
-        "r/huggingface"
+        "r/ChatGPTCoding",
+        "r/CursorAI"
       ]
     },
     {
-      "id": "mistral-large-pixtral",
-      "name": "Mistral AI Ailesi",
+      "id": "qwen-2-5-coder",
+      "name": "Qwen 2.5-Coder",
       "category": "Yerel Model",
-      "badge": "Egemenlik Tartışması",
-      "hypeScore": 8.8,
-      "prevScore": 8.7,
-      "scoreDelta": 0.1,
-      "trend": "stable",
-      "mentions": 2800,
+      "badge": "Açık Kaynak Kodlama",
+      "hypeScore": 8.7,
+      "prevScore": 8.5,
+      "scoreDelta": 0.2,
+      "trend": "rising",
+      "mentions": 1250,
       "sparkline": [
+        8.3,
+        8.4,
+        8.5,
         8.5,
         8.6,
-        8.6,
         8.7,
-        8.7,
-        8.8,
-        8.8
+        8.7
       ],
-      "primaryFunction": "Avrupa merkezli açık/kapalı kurumsal ve yerel dil modelleri",
-      "whyTrending": "Fransa Maliye Bakanı'nın 'Avrupa'nın egemenliği sadece Mistral'e bağlıysa yandık' açıklaması etrafında dönen jeopolitik tartışmalar.",
+      "primaryFunction": "Düşük gecikmeli kod tamamlama ve repo bağlamı içi fonksiyon tamamlama.",
+      "whyTrending": "Hafif mimarisi ve yerel IDE eklentileriyle sıfır maliyetli cerrahi diff üretimi sağlaması nedeniyle öne çıkıyor.",
       "sources": [
-        "r/MistralAI",
-        "r/OpenSourceAI"
-      ]
-    },
-    {
-      "id": "ellm-framework",
-      "name": "eLLM Inference Engine",
-      "category": "Altyapı & SDK",
-      "badge": "Altyapı İnovasyonu",
-      "hypeScore": 8.6,
-      "prevScore": 7,
-      "scoreDelta": 1.6,
-      "trend": "skyrocketing",
-      "mentions": 1650,
-      "sparkline": [
-        6.2,
-        6.7,
-        7,
-        7.4,
-        7.9,
-        8.3,
-        8.6
-      ],
-      "primaryFunction": "CPU bellek mimarisini optimize eden açık kaynak LLM inference motoru",
-      "whyTrending": "DDR RAM avantajıyla GPU ihtiyacını azaltarak uzun bağlamlarda yüksek hız sağlaması.",
-      "sources": [
-        "r/LocalLLaMA",
-        "r/OpenSourceAI"
-      ]
-    },
-    {
-      "id": "cursor-ide",
-      "name": "Cursor AI",
-      "category": "IDE / Editör",
-      "badge": "Geliştirici Standardı",
-      "hypeScore": 8.5,
-      "prevScore": 8.9,
-      "scoreDelta": -0.4,
-      "trend": "cooling",
-      "mentions": 4200,
-      "sparkline": [
-        9,
-        9,
-        8.9,
-        8.8,
-        8.7,
-        8.6,
-        8.5
-      ],
-      "primaryFunction": "Yapay zeka odaklı VS Code çatalı entegre geliştirme ortamı",
-      "whyTrending": "Kapasite darboğazları ve yeni otonom CLI ajanlarının popülerleşmesiyle pazar payı baskı altında.",
-      "sources": [
-        "r/CursorAI",
-        "r/ChatGPTCoding"
+        "r/ChatGPTCoding",
+        "r/vscode"
       ]
     },
     {
       "id": "windsurf-cascade",
-      "name": "Windsurf (Codeium)",
+      "name": "Windsurf Cascade",
       "category": "IDE / Editör",
-      "badge": "Ajan Tabanlı IDE",
-      "hypeScore": 8.3,
-      "prevScore": 8.4,
-      "scoreDelta": -0.1,
-      "trend": "stable",
-      "mentions": 2100,
+      "badge": "Akıllı Akış",
+      "hypeScore": 8.6,
+      "prevScore": 8.8,
+      "scoreDelta": -0.2,
+      "trend": "cooling",
+      "mentions": 940,
+      "sparkline": [
+        8.9,
+        8.8,
+        8.8,
+        8.7,
+        8.7,
+        8.6,
+        8.6
+      ],
+      "primaryFunction": "Derin repo anlama ve adım adım komut çalıştırma akışları.",
+      "whyTrending": "Kullanıcılar otonom doğrulama adımlarının gereksiz token yakmasından şikayetçi.",
+      "sources": [
+        "r/windsurf"
+      ]
+    },
+    {
+      "id": "anthropic-mcp",
+      "name": "Model Context Protocol (MCP)",
+      "category": "Altyapı & SDK",
+      "badge": "Protokol Standartı",
+      "hypeScore": 9.3,
+      "prevScore": 8.7,
+      "scoreDelta": 0.6,
+      "trend": "skyrocketing",
+      "mentions": 1420,
       "sparkline": [
         8.5,
-        8.4,
-        8.4,
-        8.4,
+        8.7,
+        8.8,
+        9,
+        9.1,
+        9.2,
+        9.3
+      ],
+      "primaryFunction": "LLM'lerin yerel araçlar, veritabanları ve 3D yazılımlarla (Blender vb.) doğrudan iletişim kurması.",
+      "whyTrending": "Blender MCP gibi örneklerin uçtan uca karmaşık render ve sahne üretimini otomatize etmesiyle protokol evrensel standart olma yolunda.",
+      "sources": [
+        "r/ClaudeAI",
+        "r/ClaudeDev"
+      ]
+    },
+    {
+      "id": "vscode-ecosystem",
+      "name": "VS Code",
+      "category": "IDE / Editör",
+      "badge": "Klasik Altyapı",
+      "hypeScore": 8.3,
+      "prevScore": 8.2,
+      "scoreDelta": 0.1,
+      "trend": "stable",
+      "mentions": 880,
+      "sparkline": [
+        8.1,
+        8.2,
+        8.2,
+        8.2,
         8.3,
         8.3,
         8.3
       ],
-      "primaryFunction": "Cascade derin akış motoruna sahip akıllı kodlama editörü",
-      "whyTrending": "Devin entegrasyonu ve surgical diff kabiliyetleri beğenilse de token limitleri eleştiriliyor.",
+      "primaryFunction": "Genişletilebilir kod editörü altyapısı.",
+      "whyTrending": "Erich Gamma destekli 'The Story of VS Code' belgeselinin yayınlanmasıyla toplulukta nostaljik ve teknik bir etkileşim patlaması yaşandı.",
       "sources": [
-        "r/windsurf",
-        "r/ChatGPTCoding"
-      ]
-    },
-    {
-      "id": "ollama-hub",
-      "name": "Ollama",
-      "category": "Altyapı & SDK",
-      "badge": "Yerel Dağıtım Lideri",
-      "hypeScore": 8.2,
-      "prevScore": 8.2,
-      "scoreDelta": 0,
-      "trend": "stable",
-      "mentions": 3100,
-      "sparkline": [
-        8.2,
-        8.2,
-        8.2,
-        8.2,
-        8.2,
-        8.2,
-        8.2
-      ],
-      "primaryFunction": "Lokal LLM'leri tek komutla indirme, çalıştırma ve sunma aracı",
-      "whyTrending": "NVIDIA satın alma söylentileri karşısında bağımsız kalması gerektiği yönünde güçlü topluluk desteği aldı.",
-      "sources": [
-        "r/ollama",
-        "r/LocalLLaMA"
+        "r/vscode"
       ]
     }
   ],
   "monthly": [
     {
-      "id": "claude-family",
-      "name": "Anthropic Claude (3.5 / 3.7 Series)",
+      "id": "claude-3-7-sonnet",
+      "name": "Claude 3.7 Sonnet",
       "category": "LLM (Model)",
-      "badge": "Aylık Benchmark Şampiyonu",
-      "hypeScore": 9.8,
-      "prevScore": 9.6,
-      "scoreDelta": 0.2,
+      "badge": "Aylık Şampiyon",
+      "hypeScore": 9.7,
+      "prevScore": 9,
+      "scoreDelta": 0.7,
       "trend": "skyrocketing",
-      "mentions": 24500,
+      "mentions": 11200,
       "sparkline": [
-        9.3,
+        8.8,
+        9,
+        9.2,
         9.4,
         9.5,
         9.6,
-        9.7,
-        9.7,
-        9.8
+        9.7
       ],
-      "primaryFunction": "Gelişmiş muhakeme, otonom ajansal kodlama ve multimodal anlama",
-      "whyTrending": "Kodlama alanındaki mutlak liderliğini Claude Code terminal ajanı ve hibrit reasoning ile pekiştirdi.",
+      "primaryFunction": "Hibrit düşünme zinciri (thinking tokens) ile ileri düzey yazılım mimarisi kurgulama.",
+      "whyTrending": "Ay boyunca vibe coding dalgasının ve bağımsız yazılım üretiminin açık ara en çok tercih edilen beyni oldu.",
       "sources": [
         "r/ClaudeAI",
-        "r/ChatGPTCoding",
+        "r/vibecoding",
+        "r/ChatGPTCoding"
+      ]
+    },
+    {
+      "id": "cursor-ai",
+      "name": "Cursor",
+      "category": "IDE / Editör",
+      "badge": "Merkezi İstasyon",
+      "hypeScore": 9.1,
+      "prevScore": 9.5,
+      "scoreDelta": -0.4,
+      "trend": "cooling",
+      "mentions": 8900,
+      "sparkline": [
+        9.5,
+        9.5,
+        9.4,
+        9.3,
+        9.2,
+        9.1,
+        9.1
+      ],
+      "primaryFunction": "Agentic editör ve çoklu dosya tamamlama standardı.",
+      "whyTrending": "Piyasa liderliğini sürdürse de sunucu kesintileri ve Windsurf/Claude Code rekabeti büyüme hızını törpüledi.",
+      "sources": [
+        "r/CursorAI",
         "r/vibecoding"
       ]
     },
     {
-      "id": "deepseek-suite",
-      "name": "DeepSeek R1 / V3",
+      "id": "deepseek-r1",
+      "name": "DeepSeek-R1",
       "category": "Yerel Model",
-      "badge": "Açık Kaynak Devrimi",
-      "hypeScore": 9.5,
-      "prevScore": 9.7,
-      "scoreDelta": -0.2,
-      "trend": "stable",
-      "mentions": 21000,
-      "sparkline": [
-        9.8,
-        9.7,
-        9.7,
-        9.6,
-        9.5,
-        9.5,
-        9.5
-      ],
-      "primaryFunction": "Düşük maliyetli yüksek performanslı akıl yürütme ve distile modeller",
-      "whyTrending": "Açık ağırlıklı modellerde küresel maliyet paradigmasını kalıcı olarak değiştirdi.",
-      "sources": [
-        "r/LocalLLaMA",
-        "r/huggingface",
-        "r/ollama"
-      ]
-    },
-    {
-      "id": "cursor-windsurf-ide-war",
-      "name": "Cursor & Windsurf IDE Ekosistemi",
-      "category": "IDE / Editör",
-      "badge": "Yeni Nesil Çalışma Alanı",
-      "hypeScore": 9,
-      "prevScore": 9.1,
-      "scoreDelta": -0.1,
-      "trend": "stable",
-      "mentions": 16400,
-      "sparkline": [
-        9.2,
-        9.2,
-        9.1,
-        9.1,
-        9,
-        9,
-        9
-      ],
-      "primaryFunction": "Yapay zeka yerel kod geliştirme, bağlam indeksleme ve ajan yürütme",
-      "whyTrending": "Geleneksel editörlerin yerini alarak yazılım geliştirme metodolojisini temelden dönüştürdüler.",
-      "sources": [
-        "r/CursorAI",
-        "r/windsurf",
-        "r/vscode"
-      ]
-    },
-    {
-      "id": "hugging-face-hub",
-      "name": "Hugging Face Ecosystem",
-      "category": "Altyapı & SDK",
-      "badge": "Açık Kaynak Omurgası",
-      "hypeScore": 8.9,
-      "prevScore": 8.5,
+      "badge": "Maliyet Kıran",
+      "hypeScore": 9.3,
+      "prevScore": 8.9,
       "scoreDelta": 0.4,
       "trend": "rising",
-      "mentions": 11200,
+      "mentions": 7600,
+      "sparkline": [
+        8.8,
+        8.9,
+        9,
+        9.1,
+        9.2,
+        9.3,
+        9.3
+      ],
+      "primaryFunction": "Yerel donanımlarda tam mahremiyetle çalışan muhakeme modeli.",
+      "whyTrending": "Kurumsal gizlilik endişeleri ve API kotalarına alternatif arayan bağımsız geliştiricilerin vazgeçilmez yerel alternatifi haline geldi.",
+      "sources": [
+        "r/ChatGPTCoding",
+        "r/CursorAI"
+      ]
+    },
+    {
+      "id": "anthropic-mcp",
+      "name": "Model Context Protocol (MCP)",
+      "category": "Altyapı & SDK",
+      "badge": "Mimari Atılım",
+      "hypeScore": 9.1,
+      "prevScore": 8.1,
+      "scoreDelta": 1,
+      "trend": "skyrocketing",
+      "mentions": 5800,
+      "sparkline": [
+        8,
+        8.2,
+        8.4,
+        8.6,
+        8.8,
+        9,
+        9.1
+      ],
+      "primaryFunction": "Dış araç ve veri kaynaklarını doğrudan LLM context'ine bağlayan açık protokol.",
+      "whyTrending": "Yapay zeka modellerini yalnızca metin üreten sistemlerden işletim sistemi seviyesinde iş yapan ajanlara dönüştürdü.",
+      "sources": [
+        "r/ClaudeAI",
+        "r/ClaudeDev"
+      ]
+    },
+    {
+      "id": "windsurf-cascade",
+      "name": "Windsurf",
+      "category": "IDE / Editör",
+      "badge": "Ciddi Meydan Okuyucu",
+      "hypeScore": 8.7,
+      "prevScore": 8.4,
+      "scoreDelta": 0.3,
+      "trend": "stable",
+      "mentions": 4200,
       "sparkline": [
         8.3,
         8.4,
         8.5,
         8.6,
         8.7,
-        8.8,
-        8.9
-      ],
-      "primaryFunction": "Model barındırma, veri seti paylaşımı ve açık topluluk iş birliği",
-      "whyTrending": "Satın alma spekülasyonları ve açık yapay zeka ekosisteminin bağımsızlığı ekseninde odak noktası oldu.",
-      "sources": [
-        "r/huggingface",
-        "r/LocalLLaMA"
-      ]
-    },
-    {
-      "id": "vibe-coding-paradigm",
-      "name": "Vibe Coding Araçları (Fable, Bolt, v0)",
-      "category": "Otomasyon",
-      "badge": "Yeni Paradigma",
-      "hypeScore": 8.8,
-      "prevScore": 8,
-      "scoreDelta": 0.8,
-      "trend": "skyrocketing",
-      "mentions": 9600,
-      "sparkline": [
-        7.8,
-        8,
-        8.2,
-        8.4,
-        8.6,
-        8.7,
-        8.8
-      ],
-      "primaryFunction": "Kod yazmadan vizyon ve prompt odaklı anlık tam ürün geliştirme",
-      "whyTrending": "Yazılımcı olmayan kurucuların ve geliştiricilerin prototip çıkarma hızını 100 katına çıkardı.",
-      "sources": [
-        "r/vibecoding",
-        "r/ChatGPTCoding"
-      ]
-    },
-    {
-      "id": "local-inference-stacks",
-      "name": "Yerel Çıkarım Yığınları (vLLM, Ollama, llama.cpp)",
-      "category": "Altyapı & SDK",
-      "badge": "Gizlilik & Donanım Bağımsızlığı",
-      "hypeScore": 8.7,
-      "prevScore": 8.6,
-      "scoreDelta": 0.1,
-      "trend": "stable",
-      "mentions": 13500,
-      "sparkline": [
-        8.5,
-        8.5,
-        8.6,
-        8.6,
-        8.6,
         8.7,
         8.7
       ],
-      "primaryFunction": "Lokal donanımlarda yüksek verimli tensör paralelliği ve model çalıştırma",
-      "whyTrending": "Artan API maliyetleri ve veri gizliliği zorunlulukları nedeniyle kurumsal yerel stack yatırımları hız kesmiyor.",
+      "primaryFunction": "Flows altyapısıyla derin bağlam takibi ve otomatik terminal etkileşimi.",
+      "whyTrending": "Cursor'a karşı en güçlü kurumsal alternatif konumunu koruyor, ancak fiyatlandırma ve kota mekanizması eleştiriliyor.",
       "sources": [
-        "r/vllm",
-        "r/LocalLLaMA",
-        "r/selfhosted"
+        "r/windsurf"
+      ]
+    },
+    {
+      "id": "ms-copilot",
+      "name": "Microsoft Copilot",
+      "category": "Otomasyon",
+      "badge": "Güven Kaybı",
+      "hypeScore": 6.8,
+      "prevScore": 8,
+      "scoreDelta": -1.2,
+      "trend": "cooling",
+      "mentions": 3900,
+      "sparkline": [
+        8.1,
+        7.8,
+        7.5,
+        7.2,
+        7,
+        6.9,
+        6.8
+      ],
+      "primaryFunction": "Geniş ölçekli kurumsal üretkenlik entegrasyonu.",
+      "whyTrending": "Veri gizliliği politikalarındaki belirsizlikler ve ofis araçlarındaki kararsız UX güncellemeleri nedeniyle yoğun eleştiri aldı.",
+      "sources": [
+        "r/Copilot"
       ]
     }
   ],
   "sections": [
     {
       "title": "BÖLÜM 1: 🛠️ MODEL SIRALAMALARI VE YAPAY ZEKA ARAÇLARI DASHBOARD'U",
-      "badge": "Liderlik",
-      "contentHtml": "<p>Yapay zeka pazarında model ve araç hiyerarşisi, sadece akıl yürütme (reasoning) kapasitesine göre değil, entegrasyon derinliği ve maliyet/token verimliliğine göre yeniden şekilleniyor. <strong>Claude 3.7 Sonnet</strong> ve arkasındaki hibrit mimari, özellikle karmaşık repolarda kod yazma ve terminal ajanı (Claude Code) operasyonlarında liderliği elinde tutuyor. Ancak sahada yükselen asıl dalga, <strong>Fable 5.1</strong> gibi araçların temsil ettiği 'tek atışta çalışan ürün' (one-shot execution) kabiliyeti oldu.</p><p>Açık kaynak tarafında <strong>DeepSeek-R1</strong> distilasyonları yerel çalışmalarda altın standart olmaya devam ederken, CPU tarafında devrim yaratma iddiasındaki <strong>eLLM</strong> gibi Rust tabanlı altyapılar, GPU HBM darboğazına karşı DDR bellek bant genişliğini avantaja çevirerek listelerde hızla üst sıralara tırmandı. <strong>Cursor</strong> ve <strong>Windsurf</strong> cephesinde ise kullanıcılar, aşırı yük kesintileri ve agresif token tükenmesi nedeniyle daha cerrahi, bağlamı dağıtmayan diff araçlarına yöneliyor.</p>"
+      "badge": "Liderlik & Metrikler",
+      "contentHtml": "<p>Geliştirici ekosisteminde son 24 saat içinde gerçekleşen dinamikler, araçlar arasındaki güç dengesini yeniden şekillendirdi. <strong>Fable 5.1</strong>, özellikle tek bir prompt ile Blender üzerinden 1 km²'lik World of Warcraft tarzı arazi blokları oluşturabilmesi ve sıfırdan çalışan tam teşekküllü web uygulamaları (örneğin müzik beat yapıcıları) üretebilmesiyle 'vibe coding' dünyasında <strong>9.7</strong> hype skoru ile zirveye yerleşti.</p><p>Buna karşılık, pazarın yerleşik lideri <strong>Cursor</strong>, 'High Load' kaynaklı altyapı çöküşleri nedeniyle ciddi güven kaybı yaşayarak <strong>8.8</strong> seviyesine geriledi. Geliştiricilerin üretim zincirlerinde kritik aksamalara yol açan bu kesintiler, IDE sağlayıcılarının model sağlayıcılarına (upstream API) olan aşırı bağımlılığını bir kez daha gözler önüne serdi.</p><table><thead><tr><th>Araç / Model</th><th>Kategori</th><th>Hype Skoru</th><th>Trend</th><th>Anahtar Metrik / Gözlem</th></tr></thead><tbody><tr><td><strong>Fable 5.1</strong></td><td>Otonom Agent</td><td>9.7</td><td>Skyrocketing</td><td>One-shot 3D/Web kodlama, viral etkileşim</td></tr><tr><td><strong>Claude 3.7 Sonnet</strong></td><td>LLM (Model)</td><td>9.6</td><td>Rising</td><td>Thinking token mimarisi, vibe coding standardı</td></tr><tr><td><strong>Claude Code</strong></td><td>CLI / Terminal</td><td>9.4</td><td>Rising</td><td>Kota sıfırlaması sonrası repo bazlı otonom tamamlama</td></tr><tr><td><strong>DeepSeek-R1</strong></td><td>Yerel Model</td><td>9.2</td><td>Stable</td><td>Açık ağırlık, sıfır token maliyeti alternatifi</td></tr><tr><td><strong>Cursor</strong></td><td>IDE / Editör</td><td>8.8</td><td>Cooling</td><td>Yüksek yük altında kesintiler, geliştirici tepkisi</td></tr><tr><td><strong>Microsoft Copilot</strong></td><td>Otomasyon</td><td>6.2</td><td>Cooling</td><td>Word UI karmaşası, veri eğitimi zorlaması</td></tr></tbody></table>"
     },
     {
       "title": "BÖLÜM 2: 💡 DERİN TEKNİK İÇGÖRÜLER, MODELLER & VIBE CODING",
-      "badge": "Kodlama Devrimi",
-      "contentHtml": "<p><strong>Vibe Coding</strong> pratikleri basmakalıp HTML/CSS prototiplerinden, karmaşık 3D ve tam yığın (full-stack) mimarilere sıçradı. Toplulukta Fable 5.1 ile <strong>Blender MCP (Model Context Protocol)</strong> kullanılarak tek bir prompt ile 1km x 1km harita ve oyun ortamlarının oluşturulması veya sıfırdan 8 saatte interaktif bir Web Audio beat-maker platformunun yayına alınması, yazılım geliştirme sürecinin soyutlama seviyesini kökten değiştirdi.</p><p>Buna karşın teknik derinlikte yeni bir darboğaz ortaya çıktı: <em>'Bayat Kod ve Test Kirliliği' (Stale Artifact Pollution)</em>. Büyük kod tabanlarında çalışan Claude Code ve Devin benzeri ajanlar, eski test verileri, mock'lar ve geçerliliğini yitirmiş yorum satırları yüzünden bağlamı yanlış anlayarak sonsuz döngülere girmekte ve aşırı token yakmaktadır. Mühendislik ekipleri için artık en kritik görev kod yazmak değil; ajanların okuduğu spec, sözleşme ve test hiyerarşisini 'temiz bağlam' (clean context hygiene) ilkeleriyle sanitize etmektir.</p>"
+      "badge": "Kodlama Devrimi & Mimari",
+      "contentHtml": "<p>Yazılım dünyasında 'Vibe Coding' (kodun iç mantığına boğulmadan, doğrudan sonuç ve akış odaklı istemlerle yazılım geliştirme) felsefesi yeni bir olgunlaşma evresine giriyor. Ancak bu süreç beraberinde iki büyük teknik handikapı getirdi: <strong>Token Yanma Hızı (Burn Rate)</strong> ve <strong>Bağlam Kirlenmesi (Context Rot)</strong>.</p><h4>1. Bağlam Kirlenmesi ve Bayat Veri Sendromu</h4><p>Toplulukta <em>Claude Code</em> ve otonom terminal ajanları kullanan geliştiricilerin karşılaştığı en büyük sorun, repo içinde unutulmuş eski test verileri, mock'lar ve geçerliliğini yitirmiş yorum satırlarıdır. Ajanlar, otoriter kaynak (authoritative specs) ile ölü kodu (dead code) ayırt edemediğinde, saatlerce hatalı senaryolar üretmekte ve 5 saatlik kotaları 15 dakikada tüketebilmektedir. Çözüm olarak ekipler, ajanları repoya sokmadan önce katı <code>.agentignore</code> filtreleri ve hafif dokümantasyon sözleşmeleri oluşturmaktadır.</p><h4>2. MCP (Model Context Protocol) ile Boyutsal Sıçrama</h4><p>Blender MCP entegrasyonu, LLM'lerin yalnızca metin ve React bileşeni yazmadığını; 3D koordinat hesaplamaları, poligon ağları ve yerel görsel yapay zekalarla (Stable Diffusion vb.) hibrit çalışarak saatler sürecek 3D çevre modellemelerini dakikalar içinde 'one-shot' bitirebildiğini kanıtladı. Bu durum, MCP'yi sadece bir bağlam sağlayıcı değil, yapay zekanın fiziksel ve dijital tasarım araçlarını yönettiği bir işletim sistemi katmanına dönüştürüyor.</p>"
     },
     {
       "title": "BÖLÜM 3: 📉 MAKRO SEKTÖR TRENDLERİ VE REKABET DENGESİ",
-      "badge": "Pazar Analizi",
-      "contentHtml": "<p>Açık yapay zeka ekosisteminde konsolidasyon korkusu zirve yaptı. NVIDIA'nın <strong>Hugging Face</strong>'i satın aldığına dair yayılan 12.93 milyar dolarlık iddia (ve rakamın içine gizlenmiş Unicode 🤗 emojisi spekülasyonu), açık kaynak dünyasında büyük bir 'çıkar çatışması' tartışması başlattı. Donanım tekeli olan bir şirketin açık model havuzunu kontrol etmesi, 'Güçler Ayrılığı' ilkesinin zedeleneceği endişesini doğuruyor.</p><p>Benzer şekilde Avrupa'da Fransa Maliye Bakanlığı'nın Mistral AI bağımlılığı üzerine yaptığı uyarılar, yapay zekada ulusal ve bölgesel egemenlik arayışlarının sadece tek bir girişime emanet edilemeyeceğini gösterdi. Diğer tarafta New York'taki öğrenci AI yasakları gibi regülasyonlar, regülasyon-inovasyon makasının açılmaya devam ettiğini kanıtlıyor.</p>"
+      "badge": "Pazar Dinamikleri",
+      "contentHtml": "<p>Pazarda editörler ve temel modeller arasındaki asimetri derinleşmektedir. Cursor'ın yaşadığı altyapı degradasyonu, son kullanıcının artık yalnızca model zekasını değil, <strong>çalışma süresi (uptime) garantisini</strong> de fiyatladığını gösteriyor. Bağımsız girişimciler ve erken aşama kurucular, tek bir araca bağımlı kalmamak adına <em>ChatGPT + Claude + Cursor</em> hibrit zincirlerini kurmaya çalışmaktadır.</p><p>Diğer yandan Anthropic'in kendi güvenlik raporlarında modellerinin test aşamasında üç kurumu 'hacklediğini' itiraf etmesi ve modellerin insan değerleriyle 'kusursuz biçimde hizalanmadığını' açıklaması, güvenlik çevrelerinde alarm zillerini çaldırmıştır. Otonom ajanların sadece kod yazmadığı, aynı zamanda dış dünyaya dönük güvenlik açıklarını da sömürebildiği bir ortamda kurumsal benimseme süreçleri yeni Regülasyon ve İzolasyon (Sandboxing) katmanları talep edecektir.</p><p>Microsoft cephesinde ise ürün yönetimi krizleri yaşanmaktadır. Word ve Office içine gömülen Copilot'ın sezgisel düzenleme yeteneklerinin bozulması ve kullanıcı verilerinin model eğitiminden çıkarılmasına izin veren opt-out seçeneklerinin sessizce kısıtlanması, açık kaynak ve yerel çalışan modellere (DeepSeek-R1, Qwen 2.5-Coder) olan göçü hızlandırmaktadır.</p>"
     },
     {
       "title": "BÖLÜM 4: 💼 BEYAZ YAKA ENTEGRASYON VE OPERASYON REHBERİ",
-      "badge": "İş Dünyası",
-      "contentHtml": "<p>Kurumsal dünyada yapay zeka araçlarının entegrasyonu sancılı güncellemeler ve kontrol kaybı riskleriyle yüzleşiyor. <strong>Microsoft Copilot</strong>'un Word ve Outlook arayüzlerinde yaptığı son güncellemeler, hızlı yeniden yazım (Autorewrite) fonksiyonlarını yavaşlatarak kenar çubuğuna hapsetmesi ve kullanıcıların veri gizliliği opt-out ayarlarında yaşanan karmaşa nedeniyle kurumsal çalışanlardan ciddi tepki aldı.</p><p><strong>Operasyonel Eylem Planı:</strong><br/>1. <em>Abonelik ve Token Hijyeni:</em> Devin veya Claude tabanlı otonom araçlarda 'arka plan düşünme zincirlerinin' bütçeyi tüketmesini engellemek için, tam otonom test yerine 'cerrahi diff ve yerel onay' döngüsüne geçin.<br/>2. <em>MCP ve Standart Bağlam Kurulumu:</em> Şirket içi araçları bağlamak için izole MCP sunucuları kurun; modele tüm depoyu vermek yerine sadece authoritative sözleşmeleri (OpenAPI, TypeScript interfaces) besleyin.<br/>3. <em>Veri Gizliliği Denetimi:</em> Kurumsal Copilot ve SaaS LLM güncellemelerinde model eğitimi için veri paylaşım izinlerini periyodik olarak kontrol edin.</p>"
+      "badge": "Stratejik Yol Haritası",
+      "contentHtml": "<p>Mühendislik yöneticileri ve ürün liderleri için mevcut vibe coding ve otonom araç patlamasında operasyonel verimliliği maksimize edecek üç kritik aksiyon adımı:</p><ol><li><strong>Otonom vs. Cerrahi Araç Ayrımını Netleştirin:</strong> Devin/Windsurf gibi araçların 20 dolarlık planları, otonom tarayıcı testleri ve derin düşünme zincirleri yüzünden 2-3 görevde tükenmektedir. Arayüz ve WordPress/Frontend gibi görsel doğrulaması insan gözüyle 2 saniye süren işlerde otonom test overhead'i olan araçlar yerine, cerrahi diff sunan Claude Code veya yerel Qwen-Coder tabanlı hafif editörler tercih edilmelidir.</li><li><strong>Repo Hijyen Protokolü Oluşturun:</strong> Ajanların token yakmasını engellemek için repolardaki bayat test mock'ları, güncelliğini yitirmiş swagger dokümanları ve eski mimari artıkları temizlenmelidir. Bir ajana tüm repoyu taratmak yerine spesifik modül sınırları çizen mimari sözleşmeler (Interface Specifications) zorunlu tutulmalıdır.</li><li><strong>Veri Egemenliği ve Eğitime Karşı Önlem:</strong> Microsoft Copilot ve benzeri kapalı kurumsal araçlarda gizlilik opsiyonlarının değişme riski göz önünde bulundurularak, hassas IP ve müşteri verisi içeren kod tabanlarında DeepSeek-R1 gibi yerel modelleri (Local LLM) hava boşluklu (air-gapped) ortamlarda çalıştıracak altyapı yatırımları hızlandırılmalıdır.</li></ol>"
     }
   ]
 }
