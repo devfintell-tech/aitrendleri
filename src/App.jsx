@@ -12,8 +12,12 @@ import {
   FileSpreadsheet,
   Search,
   Filter,
-  Info
+  Info,
+  Calendar
 } from 'lucide-react';
+
+// Arşivlenen geçmiş günlük raporları dinamik olarak içeri aktar
+const archiveModules = import.meta.glob('./data/archive/*.json', { eager: true });
 
 export default function App() {
   const [timeframe, setTimeframe] = useState('daily'); // 'daily' | '12h' | 'weekly' | 'monthly' | 'report'
@@ -21,18 +25,59 @@ export default function App() {
   const [expandedId, setExpandedId] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
 
-  const report = latestReportData ? {
-    date: latestReportData.date,
-    executiveSummary: latestReportData.executiveSummary,
-    sections: latestReportData.sections || LATEST_CONSULTANT_REPORT.sections
+  // 1. Arşivlenmiş ve Canlı Tarihlerin Listesi (Geçmişte ne olmuştu diye seçebilmek için)
+  const availableDates = useMemo(() => {
+    const list = [];
+    const seenDates = new Set();
+
+    if (latestReportData?.date) {
+      list.push({
+        id: 'latest',
+        label: `${latestReportData.date} (Canlı)`,
+        dateStr: latestReportData.date,
+        data: latestReportData
+      });
+      seenDates.add(latestReportData.date);
+    }
+
+    for (const [filePath, mod] of Object.entries(archiveModules)) {
+      if (filePath.includes('archive-index.json')) continue;
+      const data = mod.default || mod;
+      if (data?.date && !seenDates.has(data.date)) {
+        seenDates.add(data.date);
+        list.push({
+          id: data.date,
+          label: `${data.date}`,
+          dateStr: data.date,
+          data: data
+        });
+      }
+    }
+
+    return list;
+  }, []);
+
+  const [selectedDateId, setSelectedDateId] = useState('latest');
+
+  // Seçili tarihe ait rapor verisi (Tarih seçilince tüm sayfa o günün sıralamasına ve verisine döner)
+  const activeReportData = useMemo(() => {
+    if (selectedDateId === 'latest') return latestReportData;
+    const found = availableDates.find(d => d.id === selectedDateId);
+    return found?.data || latestReportData;
+  }, [selectedDateId, availableDates]);
+
+  const report = activeReportData ? {
+    date: activeReportData.date,
+    executiveSummary: activeReportData.executiveSummary,
+    sections: activeReportData.sections || LATEST_CONSULTANT_REPORT.sections
   } : LATEST_CONSULTANT_REPORT;
 
   const rawTools = {
-    '12h': latestReportData?.twelveHours || MOCK_TOOLS_DATA.twelveHours || latestReportData?.daily || MOCK_TOOLS_DATA.daily,
-    daily: latestReportData?.daily || MOCK_TOOLS_DATA.daily,
-    weekly: latestReportData?.weekly || MOCK_TOOLS_DATA.weekly,
-    monthly: latestReportData?.monthly || MOCK_TOOLS_DATA.monthly
-  }[timeframe] || (latestReportData?.daily || MOCK_TOOLS_DATA.daily);
+    '12h': activeReportData?.twelveHours || activeReportData?.daily || MOCK_TOOLS_DATA.daily,
+    daily: activeReportData?.daily || MOCK_TOOLS_DATA.daily,
+    weekly: activeReportData?.weekly || MOCK_TOOLS_DATA.weekly,
+    monthly: activeReportData?.monthly || MOCK_TOOLS_DATA.monthly
+  }[timeframe] || (activeReportData?.daily || MOCK_TOOLS_DATA.daily);
 
   // Filter tools by category and search
   const filteredTools = useMemo(() => {
@@ -105,39 +150,57 @@ export default function App() {
             </div>
           </div>
 
-          {/* Sağ Durum ve Saat Bilgisi */}
-          <div className="flex items-center gap-4 text-xs font-mono text-emerald-100">
-            <div className="flex items-center gap-1.5 bg-[#0e6b37] px-2.5 py-1 rounded">
-              <span className="w-2 h-2 rounded-full bg-emerald-300 animate-pulse"></span>
-              <span>Canlı Veri Akışı</span>
+          {/* Sağ Durum, Geçmiş Tarih Seçici ve Saat Bilgisi */}
+          <div className="flex items-center gap-2 sm:gap-3 text-xs font-mono text-emerald-100 flex-wrap">
+            {/* Geçmiş Tarih / Arşiv Seçici Dropdown */}
+            <div className="flex items-center gap-1.5 bg-[#0e6b37] border border-emerald-400/40 px-2 py-1 rounded text-white shadow-xs">
+              <Calendar className="w-3.5 h-3.5 text-emerald-300 flex-shrink-0" />
+              <select
+                value={selectedDateId}
+                onChange={(e) => setSelectedDateId(e.target.value)}
+                className="bg-transparent text-white font-mono text-[11px] sm:text-xs font-semibold focus:outline-none cursor-pointer pr-1"
+                title="Geçmiş günlerin sıralamasını ve raporunu görüntüle"
+              >
+                {availableDates.map(d => (
+                  <option key={d.id} value={d.id} className="bg-slate-800 text-white font-sans text-xs">
+                    {d.label}
+                  </option>
+                ))}
+              </select>
             </div>
-            <div className="hidden sm:block text-[11px] opacity-90">
-              Güncelleme: 03:00 &amp; 15:00 TSİ (12 Saatlik)
+
+            <div className="hidden md:flex items-center gap-1.5 bg-[#0e6b37] px-2.5 py-1 rounded">
+              <span className="w-2 h-2 rounded-full bg-emerald-300 animate-pulse"></span>
+              <span>Canlı Akış</span>
             </div>
           </div>
         </div>
 
-        {/* 2. ZAMAN SEÇİCİ SEKMELER (flex-wrap ile sağa kaydırmasız tam görünüm) */}
-        <div className="max-w-7xl mx-auto px-2 sm:px-4 flex flex-wrap items-center gap-1 sm:gap-1.5 text-xs border-t border-[#0e6b37] pt-1.5 pb-1">
-          {[
-            { id: 'daily', label: '📊 24 Saatlik (Günlük)' },
-            { id: '12h', label: '⚡ 12 Saatlik' },
-            { id: 'weekly', label: '📈 1 Haftalık' },
-            { id: 'monthly', label: '🪐 1 Aylık' },
-            { id: 'report', label: '📋 Danışman Raporu' }
-          ].map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setTimeframe(tab.id)}
-              className={`px-3 py-1.5 sm:px-4 sm:py-2 transition font-mono text-[11px] sm:text-xs font-bold rounded whitespace-nowrap ${
-                timeframe === tab.id
-                  ? 'bg-white text-[#107c41] shadow-xs'
-                  : 'text-emerald-100 hover:bg-[#0e6b37]'
-              }`}
-            >
-              {tab.label}
-            </button>
-          ))}
+        {/* 2. ZAMAN SEÇİCİ SEKMELER (Simetrik ve Birbirine Eşit Boyutta Butonlar) */}
+        <div className="max-w-7xl mx-auto px-2 sm:px-4 border-t border-[#0e6b37] pt-2 pb-1.5">
+          <div className="grid grid-cols-2 sm:grid-cols-5 gap-1.5 w-full">
+            {[
+              { id: 'daily', label: '📊 24 Saatlik' },
+              { id: '12h', label: '⚡ 12 Saatlik' },
+              { id: 'weekly', label: '📈 1 Haftalık' },
+              { id: 'monthly', label: '🪐 1 Aylık' },
+              { id: 'report', label: '📋 Danışman Raporu' }
+            ].map((tab, idx) => (
+              <button
+                key={tab.id}
+                onClick={() => setTimeframe(tab.id)}
+                className={`h-9 flex items-center justify-center transition font-mono text-[11px] sm:text-xs font-bold rounded shadow-xs text-center ${
+                  idx === 4 ? 'col-span-2 sm:col-span-1' : ''
+                } ${
+                  timeframe === tab.id
+                    ? 'bg-white text-[#107c41] shadow-xs'
+                    : 'text-emerald-100 bg-[#0e6b37] hover:bg-[#0b5e30]'
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
         </div>
       </header>
 
