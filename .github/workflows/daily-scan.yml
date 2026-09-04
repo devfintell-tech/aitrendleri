@@ -53,5 +53,5 @@ jobs:
         run: |
           git config --global user.name "AI Trend Bot"
           git config --global user.email "bot@aitrendleri.com"
-          git add src/data/latest-report.json
+          git add src/data/
           git diff --quiet && git diff --staged --quiet || (git commit -m "🤖 Otonom Günlük Rapor Güncellemesi [skip ci]" && git push)
