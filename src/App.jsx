@@ -180,9 +180,9 @@ export default function App() {
       {/* 4. KATEGORİ VE ÇALIŞMA ALANI */}
       <main className="max-w-7xl mx-auto px-2 sm:px-4 py-4 w-full flex-1 space-y-4">
         
-        {/* Kategori Filtre Çubuğu (Excel Veri Filtresi - Taşmayı Önleyen flex-wrap) */}
-        <div className="bg-white border border-[#d1d5db] p-2 rounded-sm shadow-xs flex flex-wrap items-center gap-1.5">
-          <div className="flex items-center gap-1 text-[11px] font-mono text-slate-500 font-bold px-2 whitespace-nowrap">
+        {/* Kategori Filtre Çubuğu (Mobilde Yatay Kaydırılabilir, Masaüstünde wrap) */}
+        <div className="bg-white border border-[#d1d5db] p-2 rounded-sm shadow-xs flex items-center gap-1.5 overflow-x-auto no-scrollbar sm:flex-wrap">
+          <div className="flex items-center gap-1 text-[11px] font-mono text-slate-500 font-bold px-2 whitespace-nowrap flex-shrink-0">
             <Filter className="w-3 h-3 text-[#107c41]" />
             <span>KATEGORİ:</span>
           </div>
@@ -190,7 +190,7 @@ export default function App() {
             <button
               key={cat.id}
               onClick={() => setSelectedCategory(cat.id)}
-              className={`px-2.5 py-1 text-xs font-medium whitespace-nowrap transition border rounded-xs ${
+              className={`px-2.5 py-1 text-xs font-medium whitespace-nowrap transition border rounded-xs flex-shrink-0 ${
                 selectedCategory === cat.id
                   ? 'bg-[#107c41] text-white border-[#107c41] font-bold shadow-xs'
                   : 'bg-[#f9fafb] text-slate-700 hover:bg-slate-100 border-[#e5e7eb]'
@@ -201,33 +201,33 @@ export default function App() {
           ))}
         </div>
 
-        {/* 5. EXCEL IZGARA TABLOSU (Tam Eşit Boyda Satırlar & Ekrana Sığan Tablo) */}
+        {/* 5. EXCEL IZGARA TABLOSU (Mobilde Akıllı & Masaüstünde Tam Tablo) */}
         {timeframe !== 'report' && (
-          <div className="bg-white border border-[#d1d5db] shadow-xs overflow-hidden">
-            <table className="w-full table-fixed text-left border-collapse font-sans text-xs">
+          <div className="bg-white border border-[#d1d5db] shadow-xs overflow-x-auto">
+            <table className="w-full min-w-[340px] md:min-w-full table-fixed text-left border-collapse font-sans text-xs">
               
               {/* Sütun Harfleri ve Başlıklar (A - G) */}
               <thead>
                 {/* Excel Sütun Harfleri Satırı */}
                 <tr className="bg-[#f8fafc] border-b border-[#d1d5db] text-[10px] font-mono text-slate-500 select-none">
-                  <th className="w-12 text-center py-1 border-r border-[#e2e8f0]">A</th>
-                  <th className="w-44 sm:w-52 px-3 py-1 border-r border-[#e2e8f0] text-left">B</th>
-                  <th className="w-40 sm:w-44 px-3 py-1 border-r border-[#e2e8f0] text-left">C</th>
-                  <th className="px-3 py-1 border-r border-[#e2e8f0] text-left">D</th>
-                  <th className="w-24 px-3 py-1 border-r border-[#e2e8f0] text-right">E</th>
-                  <th className="w-20 px-3 py-1 border-r border-[#e2e8f0] text-right">F</th>
-                  <th className="w-28 px-3 py-1 text-center">G</th>
+                  <th className="w-10 sm:w-12 text-center py-1 border-r border-[#e2e8f0]">A</th>
+                  <th className="w-36 sm:w-48 md:w-52 px-2 sm:px-3 py-1 border-r border-[#e2e8f0] text-left">B</th>
+                  <th className="w-28 sm:w-36 md:w-44 px-2 sm:px-3 py-1 border-r border-[#e2e8f0] text-left">C</th>
+                  <th className="hidden md:table-cell px-3 py-1 border-r border-[#e2e8f0] text-left">D</th>
+                  <th className="w-20 sm:w-24 px-2 sm:px-3 py-1 border-r border-[#e2e8f0] text-right">E</th>
+                  <th className="w-16 sm:w-20 px-2 sm:px-3 py-1 border-r border-[#e2e8f0] text-right">F</th>
+                  <th className="hidden md:table-cell w-28 px-3 py-1 text-center">G</th>
                 </tr>
 
                 {/* Sütun İsimleri Satırı */}
                 <tr className="bg-[#f1f5f9] border-b-2 border-[#cbd5e1] text-[11px] font-semibold text-slate-700 select-none">
-                  <th className="w-12 text-center py-2.5 border-r border-[#cbd5e1]">Sıra</th>
-                  <th className="w-44 sm:w-52 px-3 py-2.5 border-r border-[#cbd5e1] text-left">Model / Ürün Adı</th>
-                  <th className="w-40 sm:w-44 px-3 py-2.5 border-r border-[#cbd5e1] text-left">Kategori</th>
-                  <th className="px-3 py-2.5 border-r border-[#cbd5e1] text-left">Temel Yetenek &amp; Fonksiyon</th>
-                  <th className="w-24 px-3 py-2.5 border-r border-[#cbd5e1] text-right">Hype Skoru</th>
-                  <th className="w-20 px-3 py-2.5 border-r border-[#cbd5e1] text-right">Delta (Δ)</th>
-                  <th className="w-28 px-3 py-2.5 text-center">Topluluk Kaynak</th>
+                  <th className="w-10 sm:w-12 text-center py-2.5 border-r border-[#cbd5e1]">Sıra</th>
+                  <th className="w-36 sm:w-48 md:w-52 px-2 sm:px-3 py-2.5 border-r border-[#cbd5e1] text-left">Model / Ürün Adı</th>
+                  <th className="w-28 sm:w-36 md:w-44 px-2 sm:px-3 py-2.5 border-r border-[#cbd5e1] text-left">Kategori</th>
+                  <th className="hidden md:table-cell px-3 py-2.5 border-r border-[#cbd5e1] text-left">Temel Yetenek &amp; Fonksiyon</th>
+                  <th className="w-20 sm:w-24 px-2 sm:px-3 py-2.5 border-r border-[#cbd5e1] text-right">Hype Skoru</th>
+                  <th className="w-16 sm:w-20 px-2 sm:px-3 py-2.5 border-r border-[#cbd5e1] text-right">Delta (Δ)</th>
+                  <th className="hidden md:table-cell w-28 px-3 py-2.5 text-center">Topluluk Kaynak</th>
                 </tr>
               </thead>
 
@@ -255,58 +255,59 @@ export default function App() {
                         }`}
                       >
                         {/* Kolon A: Sıra */}
-                        <td className="w-12 text-center font-mono font-bold text-slate-600 border-r border-[#e2e8f0]">
+                        <td className="w-10 sm:w-12 text-center font-mono font-bold text-slate-600 border-r border-[#e2e8f0]">
                           #{idx + 1}
                         </td>
 
                         {/* Kolon B: Model Adı */}
-                        <td className="w-44 sm:w-52 px-3 border-r border-[#e2e8f0] truncate">
-                          <span className="font-bold text-slate-900 hover:text-[#107c41] transition truncate">
+                        <td className="w-36 sm:w-48 md:w-52 px-2 sm:px-3 border-r border-[#e2e8f0] truncate">
+                          <span className="font-bold text-slate-900 hover:text-[#107c41] transition truncate block">
                             {tool.name}
                           </span>
                         </td>
 
-                        {/* Kolon C: Kategori (Taşmayan, Tam Okunan Rozet) */}
-                        <td className="w-40 sm:w-44 px-3 border-r border-[#e2e8f0]">
-                          <span className={`inline-block font-mono text-[11px] px-2 py-0.5 rounded border ${getCategoryBadgeClass(tool.category)} whitespace-nowrap`}>
+                        {/* Kolon C: Kategori (Taşmayan Rozet) */}
+                        <td className="w-28 sm:w-36 md:w-44 px-2 sm:px-3 border-r border-[#e2e8f0]">
+                          <span className={`inline-block font-mono text-[10px] sm:text-[11px] px-1.5 sm:px-2 py-0.5 rounded border ${getCategoryBadgeClass(tool.category)} whitespace-nowrap`}>
                             {tool.category}
                           </span>
                         </td>
 
-                        {/* Kolon D: Temel Fonksiyon (Eşit Boy - Tıklayınca Tamamı Açılır) */}
-                        <td className="px-3 border-r border-[#e2e8f0] text-slate-700">
+                        {/* Kolon D: Temel Fonksiyon (Masaüstünde Görünür, Mobilde Tıklayınca Açılan Kartta) */}
+                        <td className="hidden md:table-cell px-3 border-r border-[#e2e8f0] text-slate-700">
                           <div className="truncate text-xs text-slate-700" title="Tüm açıklamayı okumak için tıklayın">
                             {tool.primaryFunction}
                           </div>
                         </td>
 
                         {/* Kolon E: Hype Skoru */}
-                        <td className="w-24 px-3 text-right border-r border-[#e2e8f0] font-mono">
-                          <span className="font-black text-slate-900 text-sm">
+                        <td className="w-20 sm:w-24 px-2 sm:px-3 text-right border-r border-[#e2e8f0] font-mono">
+                          <span className="font-black text-slate-900 text-xs sm:text-sm">
                             {tool.hypeScore}
                           </span>
-                          <span className="text-[10px] text-slate-400">/10</span>
+                          <span className="text-[10px] text-slate-400 font-normal">/10</span>
                         </td>
 
-                        {/* Kolon F: Delta */}
-                        <td className="w-20 px-3 text-right border-r border-[#e2e8f0] font-mono font-bold">
-                          <div className="flex items-center justify-end gap-0.5">
-                            {isPositive && <ArrowUpRight className="w-3.5 h-3.5 text-emerald-600" />}
-                            {isNegative && <ArrowDownRight className="w-3.5 h-3.5 text-rose-600" />}
-                            {!isPositive && !isNegative && <Minus className="w-3.5 h-3.5 text-slate-400" />}
-                            <span className={isPositive ? 'text-emerald-700' : isNegative ? 'text-rose-700' : 'text-slate-500'}>
-                              {isPositive ? `+${tool.scoreDelta}` : tool.scoreDelta}
-                            </span>
+                        {/* Kolon F: Delta Skoru */}
+                        <td className="w-16 sm:w-20 px-2 sm:px-3 text-right border-r border-[#e2e8f0] font-mono">
+                          <div className={`inline-flex items-center justify-end gap-0.5 text-xs font-bold ${
+                            isPositive ? 'text-emerald-700' : isNegative ? 'text-rose-700' : 'text-slate-500'
+                          }`}>
+                            <span>{isPositive ? `+${tool.scoreDelta}` : tool.scoreDelta}</span>
                           </div>
                         </td>
 
-                        {/* Kolon G: Kaynaklar / Açma Butonu */}
-                        <td className="w-28 px-3 text-center text-slate-500 font-mono text-[11px]">
+                        {/* Kolon G: Topluluk Kaynak (Masaüstünde Görünür) */}
+                        <td className="hidden md:table-cell w-28 px-3 text-center font-mono text-[11px] text-slate-600">
                           <div className="flex items-center justify-center gap-1">
-                            <span className="text-[10px] text-slate-600 bg-slate-100 px-1.5 py-0.5 rounded border border-slate-200 truncate">
-                              {tool.sources?.[0] || 'r/ai'}
+                            <span className="truncate max-w-[80px]">
+                              {tool.sources?.[0] || 'Reddit'}
                             </span>
-                            {isExpanded ? <ChevronUp className="w-3.5 h-3.5 text-[#107c41] flex-shrink-0" /> : <ChevronDown className="w-3.5 h-3.5 text-slate-400 flex-shrink-0" />}
+                            {isExpanded ? (
+                              <ChevronUp className="w-3 h-3 text-[#107c41] flex-shrink-0" />
+                            ) : (
+                              <ChevronDown className="w-3 h-3 text-slate-400 flex-shrink-0" />
+                            )}
                           </div>
                         </td>
                       </tr>
@@ -314,9 +315,9 @@ export default function App() {
                       {/* 6. SADE VE OKUNAKLI TIKLANAN DETAY KARTI */}
                       {isExpanded && (
                         <tr className="bg-[#f8fafc] border-b-2 border-[#107c41]">
-                          <td colSpan={7} className="p-4 sm:p-5">
+                          <td colSpan={7} className="p-2.5 sm:p-4 md:p-5">
                             
-                            <div className="bg-white border border-[#cbd5e1] rounded-md p-4 space-y-4 shadow-xs">
+                            <div className="bg-white border border-[#cbd5e1] rounded-md p-3 sm:p-4 space-y-3 sm:space-y-4 shadow-xs">
                               
                               {/* 1. Kısım: Modelin Tam Açıklaması (Tıklayınca Tam Okunur) */}
                               <div className="space-y-1 border-b border-[#e2e8f0] pb-3">
