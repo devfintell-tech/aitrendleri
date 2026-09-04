@@ -16,7 +16,7 @@ import {
 } from 'lucide-react';
 
 export default function App() {
-  const [timeframe, setTimeframe] = useState('12h'); // '12h' | 'daily' | 'weekly' | 'monthly' | 'report'
+  const [timeframe, setTimeframe] = useState('daily'); // 'daily' | '12h' | 'weekly' | 'monthly' | 'report'
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [expandedId, setExpandedId] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
@@ -434,8 +434,8 @@ export default function App() {
           </div>
         )}
 
-        {/* 7. DANIŞMAN RAPORU (Bölüm 1 Dahil 4 Bölüm) */}
-        {(timeframe === 'report' || timeframe === 'daily') && (
+        {/* 7. DANIŞMAN RAPORU (Bölüm 1 Dahil 4 Bölüm - 12s ve 24s Dahil Her Görünümde) */}
+        {(timeframe === 'report' || timeframe === 'daily' || timeframe === '12h' || timeframe === 'weekly' || timeframe === 'monthly') && (
           <section className="bg-white border border-[#cbd5e1] shadow-xs rounded-sm p-4 sm:p-6 space-y-4">
             <div className="border-b border-[#e2e8f0] pb-3 flex items-center justify-between">
               <div className="flex items-center gap-2">
