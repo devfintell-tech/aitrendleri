@@ -1,7 +1,8 @@
 import React, { useState, useMemo } from 'react';
 import { MOCK_TOOLS_DATA, LATEST_CONSULTANT_REPORT, CATEGORY_DEFINITIONS } from './data/mockData';
 import latestReportData from './data/latest-report.json';
-import { ArrowUpRight, ArrowDownRight, Minus, ChevronDown, ChevronUp } from 'lucide-react';
+import toolHistoryData from './data/tool-history.json';
+import { ArrowUpRight, ArrowDownRight, Minus, ChevronDown, ChevronUp, History } from 'lucide-react';
 
 export default function App() {
   const [timeframe, setTimeframe] = useState('daily'); // 'daily' | 'weekly' | 'monthly'
@@ -222,31 +223,120 @@ export default function App() {
                   </div>
 
                   {/* Tıklanınca Açılan Detay Kutusu */}
-                  {isExpanded && (
-                    <div className="mt-3 pt-3 border-t border-slate-800 text-xs bg-slate-900/60 p-3 rounded-lg grid grid-cols-1 sm:grid-cols-3 gap-3 animate-in fade-in">
-                      <div className="sm:col-span-2 space-y-1">
-                        <span className="text-slate-400 font-mono block text-[10px] uppercase font-bold">
-                          Neden Trend Oldu? (Topluluk Sentezi)
-                        </span>
-                        <p className="text-slate-200 leading-relaxed">
-                          {tool.whyTrending}
-                        </p>
-                      </div>
+                  {isExpanded && (() => {
+                    const historyRecord = toolHistoryData?.[tool.id] || 
+                      Object.values(toolHistoryData || {}).find(h => h.name?.toLowerCase() === tool.name?.toLowerCase());
+                    const historyEntries = historyRecord?.history || [];
 
-                      <div className="space-y-1">
-                        <span className="text-slate-400 font-mono block text-[10px] uppercase font-bold">
-                          Kaynak Topluluklar
-                        </span>
-                        <div className="flex flex-wrap gap-1">
-                          {tool.sources.map((s, i) => (
-                            <span key={i} className="font-mono text-[11px] px-1.5 py-0.5 rounded bg-slate-800 text-slate-300">
-                              {s}
+                    const getSentimentBadge = (sent) => {
+                      switch (sent) {
+                        case 'coşkulu':
+                          return 'bg-emerald-950/80 text-emerald-300 border-emerald-500/30';
+                        case 'eleştirel':
+                          return 'bg-amber-950/80 text-amber-300 border-amber-500/30';
+                        case 'düşüş':
+                          return 'bg-rose-950/80 text-rose-300 border-rose-500/30';
+                        default:
+                          return 'bg-slate-800/80 text-slate-300 border-slate-700';
+                      }
+                    };
+
+                    const getSentimentLabel = (sent) => {
+                      switch (sent) {
+                        case 'coşkulu':
+                          return '🔥 Hype / Coşku';
+                        case 'eleştirel':
+                          return '⚠️ Eleştiri / Şikayet';
+                        case 'düşüş':
+                          return '📉 Düşüş / Rezalet';
+                        default:
+                          return '⚖️ Stabil / Dengeli';
+                      }
+                    };
+
+                    return (
+                      <div className="mt-3 pt-3 border-t border-slate-800 text-xs bg-slate-900/60 p-3.5 rounded-lg space-y-3 animate-in fade-in">
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                          <div className="sm:col-span-2 space-y-1">
+                            <span className="text-slate-400 font-mono block text-[10px] uppercase font-bold">
+                              Bugün Neden Trend Oldu? (Güncel Sentez)
                             </span>
-                          ))}
+                            <p className="text-slate-200 leading-relaxed">
+                              {tool.whyTrending}
+                            </p>
+                          </div>
+
+                          <div className="space-y-1">
+                            <span className="text-slate-400 font-mono block text-[10px] uppercase font-bold">
+                              Kaynak Topluluklar
+                            </span>
+                            <div className="flex flex-wrap gap-1">
+                              {tool.sources.map((s, i) => (
+                                <span key={i} className="font-mono text-[11px] px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700/60">
+                                  {s}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Tarihsel Seyir & Topluluk Değerlendirmeleri Günlüğü (Timeline) */}
+                        <div className="pt-3 border-t border-slate-800/80">
+                          <div className="flex items-center justify-between mb-2.5">
+                            <div className="flex items-center gap-1.5">
+                              <History className="w-3.5 h-3.5 text-emerald-400" />
+                              <span className="text-slate-300 font-mono text-[11px] uppercase font-bold tracking-wider">
+                                Tarihsel Seyir &amp; Topluluk Değerlendirmeleri Günlüğü
+                              </span>
+                            </div>
+                            <span className="text-[10px] font-mono text-slate-500">
+                              {historyEntries.length > 0 ? `${historyEntries.length} Günlük Kayıt` : 'Yeni Araç'}
+                            </span>
+                          </div>
+
+                          {historyEntries.length > 0 ? (
+                            <div className="space-y-2">
+                              {historyEntries.map((entry, hIdx) => (
+                                <div key={hIdx} className="bg-slate-950/70 border border-slate-800/80 rounded-lg p-3 hover:border-slate-700 transition">
+                                  <div className="flex flex-wrap items-center justify-between gap-1.5 mb-1.5">
+                                    <div className="flex items-center gap-2 flex-wrap">
+                                      <span className="font-mono text-slate-400 text-xs font-semibold">{entry.date}</span>
+                                      <span className={`font-mono text-[10px] px-2 py-0.5 rounded border ${getSentimentBadge(entry.sentiment)}`}>
+                                        {getSentimentLabel(entry.sentiment)}
+                                      </span>
+                                      <span className="font-bold text-white text-xs">{entry.headline}</span>
+                                    </div>
+                                    <div className="flex items-center gap-1 font-mono text-xs">
+                                      <span className="text-slate-400">Skor:</span>
+                                      <span className="font-black text-white">{entry.hypeScore}</span>
+                                      <span className="text-slate-500 text-[10px]">/10</span>
+                                    </div>
+                                  </div>
+                                  <p className="text-slate-300 text-xs leading-relaxed pl-2 border-l-2 border-slate-800">
+                                    {entry.summary}
+                                  </p>
+                                  {entry.sources && entry.sources.length > 0 && (
+                                    <div className="mt-2 flex items-center gap-1 text-[10px] font-mono text-slate-500">
+                                      <span>Kaynaklar:</span>
+                                      {entry.sources.map((src, sIdx) => (
+                                        <span key={sIdx} className="text-slate-400 bg-slate-900 px-1.5 py-0.5 rounded border border-slate-800/80">
+                                          {src}
+                                        </span>
+                                      ))}
+                                    </div>
+                                  )}
+                                </div>
+                              ))}
+                            </div>
+                          ) : (
+                            <div className="bg-slate-950/40 border border-slate-800/60 rounded-lg p-3 text-slate-400 text-xs font-mono">
+                              ℹ️ Bu araç radarımıza yeni katıldı. Gün gün performans değişimi, ilk coşkusu ve sonrasındaki kullanıcı şikayet/övgü kayıtları bir sonraki otomatik taramalarda burada birikecektir.
+                            </div>
+                          )}
                         </div>
                       </div>
-                    </div>
-                  )}
+                    );
+                  })()}
 
                 </div>
               );

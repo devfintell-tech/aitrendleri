@@ -295,7 +295,72 @@ async function main() {
   const outputPath = path.join(__dirname, "../src/data/latest-report.json");
   fs.writeFileSync(outputPath, JSON.stringify(finalOutput, null, 2), "utf-8");
   console.log(`🎉 Rapor başarıyla oluşturuldu ve kaydedildi: ${outputPath}`);
+
+  // Araç bazlı tarihsel hafıza ve topluluk duygu günlüğünü güncelle
+  updateToolHistory(finalOutput, dateStr);
+
   console.log(`⏱️ Toplam Çalışma Süresi: ${duration} saniye.`);
+}
+
+/**
+ * Araçların gün gün performansını, hype skorunu ve topluluk nabzını kalıcı olarak tool-history.json dosyasına işler.
+ */
+function updateToolHistory(reportData, dateStr) {
+  const historyPath = path.join(__dirname, "../src/data/tool-history.json");
+  let historyData = {};
+  if (fs.existsSync(historyPath)) {
+    try {
+      historyData = JSON.parse(fs.readFileSync(historyPath, "utf-8"));
+    } catch (e) {
+      console.warn("⚠️ tool-history.json okunamadı, sıfırdan oluşturuluyor.");
+    }
+  }
+
+  const allItems = [...(reportData.daily || []), ...(reportData.weekly || [])];
+  const processedIds = new Set();
+
+  for (const item of allItems) {
+    if (!item.id || processedIds.has(item.id)) continue;
+    processedIds.add(item.id);
+
+    if (!historyData[item.id]) {
+      historyData[item.id] = {
+        name: item.name,
+        category: item.category,
+        history: []
+      };
+    }
+
+    let sentiment = "stabil";
+    if (item.scoreDelta >= 0.3 || item.trend === "skyrocketing") {
+      sentiment = "coşkulu";
+    } else if (item.scoreDelta <= -0.3 || item.trend === "cooling") {
+      sentiment = "eleştirel";
+    } else if (item.scoreDelta < -0.8) {
+      sentiment = "düşüş";
+    }
+
+    const headline = item.badge ? `${item.badge}` : `${item.name} Gelişmesi`;
+
+    const historyEntry = {
+      date: dateStr,
+      hypeScore: item.hypeScore,
+      sentiment: sentiment,
+      headline: headline,
+      summary: item.whyTrending || item.primaryFunction,
+      sources: item.sources || []
+    };
+
+    const existingIndex = historyData[item.id].history.findIndex(h => h.date === dateStr);
+    if (existingIndex >= 0) {
+      historyData[item.id].history[existingIndex] = historyEntry;
+    } else {
+      historyData[item.id].history.push(historyEntry);
+    }
+  }
+
+  fs.writeFileSync(historyPath, JSON.stringify(historyData, null, 2), "utf-8");
+  console.log(`📚 Tarihsel araç veri tabanı (${Object.keys(historyData).length} araç) başarıyla güncellendi.`);
 }
 
 main().catch(err => {
