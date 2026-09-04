@@ -138,16 +138,11 @@ export default function App() {
       <header className="bg-[#107c41] text-white select-none shadow-sm">
         {/* Üst Logo ve Dosya Adı */}
         <div className="max-w-7xl mx-auto px-4 py-2.5 flex flex-wrap items-center justify-between gap-3">
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5">
             <div className="flex items-center justify-center w-7 h-7 bg-white text-[#107c41] font-black rounded text-xs shadow-inner tracking-tighter">
               AI
             </div>
-            <div>
-              <span className="font-semibold text-sm tracking-wide font-mono">aitrendleri.com</span>
-              <p className="text-[11px] text-emerald-100/90 font-mono">
-                50 Seçkin Topluluk • 12 Saatlik &amp; Günlük Yapay Zeka Hype ve Trend Tablosu ({report.date})
-              </p>
-            </div>
+            <span className="font-bold text-base tracking-wide font-mono">aitrendleri.com</span>
           </div>
 
           {/* Sağ Durum, Geçmiş Tarih Seçici ve Saat Bilgisi */}
@@ -346,7 +341,7 @@ export default function App() {
                         {/* Kolon E: Hype Skoru */}
                         <td className="w-24 px-3 text-right border-r border-[#e2e8f0] font-mono">
                           <span className="font-black text-slate-900 text-sm">
-                            {tool.hypeScore}
+                            {Number(tool.hypeScore || 0).toFixed(1)}
                           </span>
                           <span className="text-[10px] text-slate-400 font-normal">/10</span>
                         </td>
@@ -537,17 +532,13 @@ export default function App() {
                       </div>
                     </div>
 
-                    {/* Sağ Taraf: Hype Skoru + Delta + Ok İkonu */}
+                    {/* Sağ Taraf: Hype Skoru + Ok İkonu */}
                     <div className="flex items-center gap-2 flex-shrink-0 font-mono text-right">
-                      <div>
-                        <div className="font-black text-slate-900 text-xs sm:text-sm leading-none">
-                          {tool.hypeScore}<span className="text-[9px] text-slate-400 font-normal">/10</span>
-                        </div>
-                        <div className={`text-[10px] font-bold pt-0.5 ${
-                          isPositive ? 'text-emerald-700' : isNegative ? 'text-rose-700' : 'text-slate-500'
-                        }`}>
-                          {isPositive ? `+${tool.scoreDelta}` : tool.scoreDelta}
-                        </div>
+                      <div className="w-14 text-right">
+                        <span className="font-black text-slate-900 text-sm">
+                          {Number(tool.hypeScore || 0).toFixed(1)}
+                        </span>
+                        <span className="text-[10px] text-slate-400 font-normal">/10</span>
                       </div>
                       <div className="text-slate-400">
                         {isExpanded ? (
