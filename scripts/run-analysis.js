@@ -231,6 +231,7 @@ async function main() {
     {
       "executiveSummary": "1-2 paragraflık derin makro yönetici özeti",
       "daily": [
+        // DİKKAT: EN AZ 10 ADET (10-14 arası) konuşulan model ve aracı listele! Kesinlikle 10'dan az olmasın.
         {
           "id": "model-id",
           "name": "Model/Araç/Donanım Adı",
@@ -247,13 +248,13 @@ async function main() {
           "sources": ["r/vibecoding", "r/hardware"]
         }
       ],
-      "weekly": [ ...aynı formatta haftalık 10-12 araç... ],
-      "monthly": [ ...aynı formatta aylık 6-8 araç... ],
+      "weekly": [ /* aynı formatta en az 10-12 araç... */ ],
+      "monthly": [ /* aynı formatta en az 6-8 araç... */ ],
       "sections": [
         {
-          "title": "BÖLÜM 1: 🛠️ MODEL SIRALAMALARI VE YAPAY ZEKA ARAÇLARI DASHBOARD'U",
-          "badge": "Liderlik",
-          "contentHtml": "<p>...</p>"
+          "title": "BÖLÜM 1: 🌐 GÜNÜN EKOSİSTEM DENGESİ & MODELLER ARASI GÜÇ SAVAŞI",
+          "badge": "Ekosistem Dengesi",
+          "contentHtml": "<p>Anthropic, OpenAI, Google ve Açık Kaynak (DeepSeek/Llama/vLLM) kamplarının geliştirici zihnindeki hakimiyeti ve günün pazar kırılma noktaları hakkında derinlemesine 2-3 analitik paragraf (asla tablo listesi tekrarı yapma).</p>"
         },
         {
           "title": "BÖLÜM 2: 💡 DERİN TEKNİK İÇGÖRÜLER, VIBE CODING & GPU/ALTYAPI DENGESİ",

@@ -24,15 +24,8 @@ export default function App() {
   const report = latestReportData ? {
     date: latestReportData.date,
     executiveSummary: latestReportData.executiveSummary,
-    sections: (latestReportData.sections || LATEST_CONSULTANT_REPORT.sections).filter(
-      sec => !sec.title?.toLowerCase().includes('bölüm 1') && !sec.title?.toLowerCase().includes('sıralama')
-    )
-  } : {
-    ...LATEST_CONSULTANT_REPORT,
-    sections: LATEST_CONSULTANT_REPORT.sections.filter(
-      sec => !sec.title?.toLowerCase().includes('bölüm 1') && !sec.title?.toLowerCase().includes('sıralama')
-    )
-  };
+    sections: latestReportData.sections || LATEST_CONSULTANT_REPORT.sections
+  } : LATEST_CONSULTANT_REPORT;
 
   const rawTools = {
     daily: latestReportData?.daily || MOCK_TOOLS_DATA.daily,
@@ -106,9 +99,6 @@ export default function App() {
             <div>
               <div className="flex items-center gap-2">
                 <span className="font-semibold text-sm tracking-wide font-mono">aitrendleri.xlsx</span>
-                <span className="text-[10px] bg-[#0c5e31] px-2 py-0.5 rounded font-mono text-emerald-200">
-                  Resmi Çalışma Sayfası
-                </span>
               </div>
               <p className="text-[11px] text-emerald-100/90 font-mono">
                 50 Seçkin Topluluk • Günlük Yapay Zeka Hype ve Trend Tablosu ({report.date})
