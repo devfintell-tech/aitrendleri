@@ -16,7 +16,7 @@ import {
 } from 'lucide-react';
 
 export default function App() {
-  const [timeframe, setTimeframe] = useState('daily'); // 'daily' | 'weekly' | 'monthly' | 'report'
+  const [timeframe, setTimeframe] = useState('12h'); // '12h' | 'daily' | 'weekly' | 'monthly' | 'report'
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [expandedId, setExpandedId] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
@@ -28,6 +28,7 @@ export default function App() {
   } : LATEST_CONSULTANT_REPORT;
 
   const rawTools = {
+    '12h': latestReportData?.twelveHours || MOCK_TOOLS_DATA.twelveHours || latestReportData?.daily || MOCK_TOOLS_DATA.daily,
     daily: latestReportData?.daily || MOCK_TOOLS_DATA.daily,
     weekly: latestReportData?.weekly || MOCK_TOOLS_DATA.weekly,
     monthly: latestReportData?.monthly || MOCK_TOOLS_DATA.monthly
@@ -99,7 +100,7 @@ export default function App() {
             <div>
               <span className="font-semibold text-sm tracking-wide font-mono">aitrendleri.xlsx</span>
               <p className="text-[11px] text-emerald-100/90 font-mono">
-                50 Seçkin Topluluk • Günlük Yapay Zeka Hype ve Trend Tablosu ({report.date})
+                50 Seçkin Topluluk • 12 Saatlik &amp; Günlük Yapay Zeka Hype ve Trend Tablosu ({report.date})
               </p>
             </div>
           </div>
@@ -111,14 +112,15 @@ export default function App() {
               <span>Canlı Veri Akışı</span>
             </div>
             <div className="hidden sm:block text-[11px] opacity-90">
-              Güncelleme: 03:00 &amp; 15:00 TSİ
+              Güncelleme: 03:00 &amp; 15:00 TSİ (12 Saatlik)
             </div>
           </div>
         </div>
 
-        {/* 2. ZAMAN SEÇİCİ SEKMELER (24s, 1 Hafta, 1 Ay, Rapor - YUKARIDA!) */}
+        {/* 2. ZAMAN SEÇİCİ SEKMELER (12s, 24s, 1 Hafta, 1 Ay, Rapor - YUKARIDA!) */}
         <div className="max-w-7xl mx-auto px-4 flex items-center gap-1 text-xs border-t border-[#0e6b37] pt-1 overflow-x-auto no-scrollbar">
           {[
+            { id: '12h', label: '⚡ 12 Saatlik (Son Döngü)' },
             { id: 'daily', label: '📊 24 Saatlik (Günlük)' },
             { id: 'weekly', label: '📈 1 Haftalık (Delta)' },
             { id: 'monthly', label: '🪐 1 Aylık (Pazar)' },

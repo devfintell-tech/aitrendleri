@@ -230,6 +230,24 @@ async function main() {
     İSTENEN JSON ŞEMASI:
     {
       "executiveSummary": "1-2 paragraflık derin makro yönetici özeti",
+      "twelveHours": [
+        // SON 12 SAAT: Günde 2 kez yapılan taramanın son 12 saatteki en ani çıkış yapanları, son döngüde kırılma yaşayan modeller/araçlar (en az 10 adet)
+        {
+          "id": "model-id",
+          "name": "Model/Araç/Donanım Adı",
+          "category": "LLM (Model) | Yerel Model | IDE / Editör | CLI / Terminal | Otonom Agent | Otomasyon | Altyapı & SDK | Medya / Üretim | Şirket / Lab",
+          "badge": "Örn: 12s Patlaması",
+          "hypeScore": 9.7,
+          "prevScore": 8.9,
+          "scoreDelta": 0.8,
+          "trend": "skyrocketing | rising | stable | cooling",
+          "mentions": 650,
+          "sparkline": [8.0, 8.3, 8.7, 9.0, 9.3, 9.5, 9.7],
+          "primaryFunction": "Temel işlev ve yetenek",
+          "whyTrending": "Son 12 saatteki ani yükseliş ve kırılma gerekçesi",
+          "sources": ["r/vibecoding", "r/hardware"]
+        }
+      ],
       "daily": [
         // DİKKAT: EN AZ 10 ADET (10-14 arası) konuşulan model ve aracı listele! Kesinlikle 10'dan az olmasın.
         {
@@ -317,7 +335,7 @@ function updateToolHistory(reportData, dateStr) {
     }
   }
 
-  const allItems = [...(reportData.daily || []), ...(reportData.weekly || [])];
+  const allItems = [...(reportData.twelveHours || []), ...(reportData.daily || []), ...(reportData.weekly || [])];
   const processedIds = new Set();
 
   for (const item of allItems) {

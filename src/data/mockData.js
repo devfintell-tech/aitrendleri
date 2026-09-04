@@ -12,6 +12,53 @@ export const CATEGORY_DEFINITIONS = [
 ];
 
 export const MOCK_TOOLS_DATA = {
+  twelveHours: [
+    {
+      id: "gpt-6-astra",
+      name: "GPT-6 Astra",
+      category: "LLM (Model)",
+      badge: "12s Patlaması",
+      hypeScore: 9.9,
+      prevScore: 9.1,
+      scoreDelta: +0.8,
+      trend: "skyrocketing",
+      mentions: 1420,
+      sparkline: [8.5, 8.8, 9.0, 9.2, 9.5, 9.8, 9.9],
+      primaryFunction: "Uç seviye akıl yürütme, LEAN tabanlı matematik ispatı ve çoklu ajanlı otonom simülasyon üretimi",
+      whyTrending: "Son 12 saatte FrontierMath Erdős benchmark'ında rekor kırmasıyla küresel AI topluluklarında bir numaraya yerleşti.",
+      sources: ["r/singularity", "r/OpenAI", "r/ArtificialInteligence"]
+    },
+    {
+      id: "amd-threadripper-halo",
+      name: "AMD Threadripper Halo Station (MI350P)",
+      category: "Şirket / Lab",
+      badge: "Donanım Çıkışı",
+      hypeScore: 9.2,
+      prevScore: 8.2,
+      scoreDelta: +1.0,
+      trend: "skyrocketing",
+      mentions: 650,
+      sparkline: [7.5, 7.8, 8.0, 8.3, 8.6, 8.9, 9.2],
+      primaryFunction: "96 çekirdek CPU, 576GB GPU belleği ve 2TB sistem belleği ile ultra büyük model yerel çıkarımı ve fine-tuning",
+      whyTrending: "Son 12 saatte bağımsız donanım kanallarında yerel model çıkarım rekorları kırmasıyla donanım subredditlerini salladı.",
+      sources: ["r/hardware", "r/AMD_Stock"]
+    },
+    {
+      id: "claude-3-7-sonnet",
+      name: "Claude 3.7 Sonnet",
+      category: "LLM (Model)",
+      badge: "Lider Model",
+      hypeScore: 9.8,
+      prevScore: 9.0,
+      scoreDelta: +0.8,
+      trend: "skyrocketing",
+      mentions: 1240,
+      sparkline: [8.1, 8.4, 8.7, 8.9, 9.2, 9.5, 9.8],
+      primaryFunction: "Hibrit Düşünme (Standart Hız + Derin Akıl Yürütme) ve Üst Düzey Kod Yazımı",
+      whyTrending: "Hibrit düşünme modu geliştiriciler arasında son 12 saatte en yüksek skorlu kod modeli seçildi.",
+      sources: ["r/ClaudeAI", "r/vibecoding", "r/CursorAI"]
+    }
+  ],
   daily: [
     {
       id: "claude-3-7-sonnet",
