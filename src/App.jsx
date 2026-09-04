@@ -201,33 +201,33 @@ export default function App() {
           ))}
         </div>
 
-        {/* 5. EXCEL IZGARA TABLOSU (Mobilde Akıllı & Masaüstünde Tam Tablo) */}
+        {/* 5. MASAÜSTÜ EXCEL IZGARA TABLOSU (hidden md:block) */}
         {timeframe !== 'report' && (
-          <div className="bg-white border border-[#d1d5db] shadow-xs overflow-x-auto">
-            <table className="w-full min-w-[340px] md:min-w-full table-fixed text-left border-collapse font-sans text-xs">
+          <div className="hidden md:block bg-white border border-[#d1d5db] shadow-xs overflow-hidden">
+            <table className="w-full table-fixed text-left border-collapse font-sans text-xs">
               
               {/* Sütun Harfleri ve Başlıklar (A - G) */}
               <thead>
                 {/* Excel Sütun Harfleri Satırı */}
                 <tr className="bg-[#f8fafc] border-b border-[#d1d5db] text-[10px] font-mono text-slate-500 select-none">
-                  <th className="w-10 sm:w-12 text-center py-1 border-r border-[#e2e8f0]">A</th>
-                  <th className="w-36 sm:w-48 md:w-52 px-2 sm:px-3 py-1 border-r border-[#e2e8f0] text-left">B</th>
-                  <th className="w-28 sm:w-36 md:w-44 px-2 sm:px-3 py-1 border-r border-[#e2e8f0] text-left">C</th>
-                  <th className="hidden md:table-cell px-3 py-1 border-r border-[#e2e8f0] text-left">D</th>
-                  <th className="w-20 sm:w-24 px-2 sm:px-3 py-1 border-r border-[#e2e8f0] text-right">E</th>
-                  <th className="w-16 sm:w-20 px-2 sm:px-3 py-1 border-r border-[#e2e8f0] text-right">F</th>
-                  <th className="hidden md:table-cell w-28 px-3 py-1 text-center">G</th>
+                  <th className="w-12 text-center py-1 border-r border-[#e2e8f0]">A</th>
+                  <th className="w-52 px-3 py-1 border-r border-[#e2e8f0] text-left">B</th>
+                  <th className="w-44 px-3 py-1 border-r border-[#e2e8f0] text-left">C</th>
+                  <th className="px-3 py-1 border-r border-[#e2e8f0] text-left">D</th>
+                  <th className="w-24 px-3 py-1 border-r border-[#e2e8f0] text-right">E</th>
+                  <th className="w-20 px-3 py-1 border-r border-[#e2e8f0] text-right">F</th>
+                  <th className="w-28 px-3 py-1 text-center">G</th>
                 </tr>
 
                 {/* Sütun İsimleri Satırı */}
                 <tr className="bg-[#f1f5f9] border-b-2 border-[#cbd5e1] text-[11px] font-semibold text-slate-700 select-none">
-                  <th className="w-10 sm:w-12 text-center py-2.5 border-r border-[#cbd5e1]">Sıra</th>
-                  <th className="w-36 sm:w-48 md:w-52 px-2 sm:px-3 py-2.5 border-r border-[#cbd5e1] text-left">Model / Ürün Adı</th>
-                  <th className="w-28 sm:w-36 md:w-44 px-2 sm:px-3 py-2.5 border-r border-[#cbd5e1] text-left">Kategori</th>
-                  <th className="hidden md:table-cell px-3 py-2.5 border-r border-[#cbd5e1] text-left">Temel Yetenek &amp; Fonksiyon</th>
-                  <th className="w-20 sm:w-24 px-2 sm:px-3 py-2.5 border-r border-[#cbd5e1] text-right">Hype Skoru</th>
-                  <th className="w-16 sm:w-20 px-2 sm:px-3 py-2.5 border-r border-[#cbd5e1] text-right">Delta (Δ)</th>
-                  <th className="hidden md:table-cell w-28 px-3 py-2.5 text-center">Topluluk Kaynak</th>
+                  <th className="w-12 text-center py-2.5 border-r border-[#cbd5e1]">Sıra</th>
+                  <th className="w-52 px-3 py-2.5 border-r border-[#cbd5e1] text-left">Model / Ürün Adı</th>
+                  <th className="w-44 px-3 py-2.5 border-r border-[#cbd5e1] text-left">Kategori</th>
+                  <th className="px-3 py-2.5 border-r border-[#cbd5e1] text-left">Temel Yetenek &amp; Fonksiyon</th>
+                  <th className="w-24 px-3 py-2.5 border-r border-[#cbd5e1] text-right">Hype Skoru</th>
+                  <th className="w-20 px-3 py-2.5 border-r border-[#cbd5e1] text-right">Delta (Δ)</th>
+                  <th className="w-28 px-3 py-2.5 text-center">Topluluk Kaynak</th>
                 </tr>
               </thead>
 
@@ -255,41 +255,41 @@ export default function App() {
                         }`}
                       >
                         {/* Kolon A: Sıra */}
-                        <td className="w-10 sm:w-12 text-center font-mono font-bold text-slate-600 border-r border-[#e2e8f0]">
+                        <td className="w-12 text-center font-mono font-bold text-slate-600 border-r border-[#e2e8f0]">
                           #{idx + 1}
                         </td>
 
                         {/* Kolon B: Model Adı */}
-                        <td className="w-36 sm:w-48 md:w-52 px-2 sm:px-3 border-r border-[#e2e8f0] truncate">
+                        <td className="w-52 px-3 border-r border-[#e2e8f0] truncate">
                           <span className="font-bold text-slate-900 hover:text-[#107c41] transition truncate block">
                             {tool.name}
                           </span>
                         </td>
 
-                        {/* Kolon C: Kategori (Taşmayan Rozet) */}
-                        <td className="w-28 sm:w-36 md:w-44 px-2 sm:px-3 border-r border-[#e2e8f0]">
-                          <span className={`inline-block font-mono text-[10px] sm:text-[11px] px-1.5 sm:px-2 py-0.5 rounded border ${getCategoryBadgeClass(tool.category)} whitespace-nowrap`}>
+                        {/* Kolon C: Kategori */}
+                        <td className="w-44 px-3 border-r border-[#e2e8f0]">
+                          <span className={`inline-block font-mono text-[11px] px-2 py-0.5 rounded border ${getCategoryBadgeClass(tool.category)} whitespace-nowrap`}>
                             {tool.category}
                           </span>
                         </td>
 
-                        {/* Kolon D: Temel Fonksiyon (Masaüstünde Görünür, Mobilde Tıklayınca Açılan Kartta) */}
-                        <td className="hidden md:table-cell px-3 border-r border-[#e2e8f0] text-slate-700">
+                        {/* Kolon D: Temel Fonksiyon */}
+                        <td className="px-3 border-r border-[#e2e8f0] text-slate-700">
                           <div className="truncate text-xs text-slate-700" title="Tüm açıklamayı okumak için tıklayın">
                             {tool.primaryFunction}
                           </div>
                         </td>
 
                         {/* Kolon E: Hype Skoru */}
-                        <td className="w-20 sm:w-24 px-2 sm:px-3 text-right border-r border-[#e2e8f0] font-mono">
-                          <span className="font-black text-slate-900 text-xs sm:text-sm">
+                        <td className="w-24 px-3 text-right border-r border-[#e2e8f0] font-mono">
+                          <span className="font-black text-slate-900 text-sm">
                             {tool.hypeScore}
                           </span>
                           <span className="text-[10px] text-slate-400 font-normal">/10</span>
                         </td>
 
                         {/* Kolon F: Delta Skoru */}
-                        <td className="w-16 sm:w-20 px-2 sm:px-3 text-right border-r border-[#e2e8f0] font-mono">
+                        <td className="w-20 px-3 text-right border-r border-[#e2e8f0] font-mono">
                           <div className={`inline-flex items-center justify-end gap-0.5 text-xs font-bold ${
                             isPositive ? 'text-emerald-700' : isNegative ? 'text-rose-700' : 'text-slate-500'
                           }`}>
@@ -297,8 +297,8 @@ export default function App() {
                           </div>
                         </td>
 
-                        {/* Kolon G: Topluluk Kaynak (Masaüstünde Görünür) */}
-                        <td className="hidden md:table-cell w-28 px-3 text-center font-mono text-[11px] text-slate-600">
+                        {/* Kolon G: Topluluk Kaynak */}
+                        <td className="w-28 px-3 text-center font-mono text-[11px] text-slate-600">
                           <div className="flex items-center justify-center gap-1">
                             <span className="truncate max-w-[80px]">
                               {tool.sources?.[0] || 'Reddit'}
@@ -431,6 +431,149 @@ export default function App() {
                 })}
               </tbody>
             </table>
+          </div>
+        )}
+
+        {/* 5b. MOBİL EXCEL KARTLARI (block md:hidden - Sağa Kaydırma Yok, Tek Ekranda Bütün Veriler) */}
+        {timeframe !== 'report' && (
+          <div className="block md:hidden space-y-3">
+            {filteredTools.map((tool, idx) => {
+              const isPositive = tool.scoreDelta > 0;
+              const isNegative = tool.scoreDelta < 0;
+              const isExpanded = expandedId === tool.id;
+
+              const historyRecord = toolHistoryData?.[tool.id] || 
+                Object.values(toolHistoryData || {}).find(h => h.name?.toLowerCase() === tool.name?.toLowerCase());
+              const historyEntries = historyRecord?.history || [];
+
+              return (
+                <div 
+                  key={tool.id}
+                  className="bg-white border border-[#cbd5e1] rounded-sm shadow-xs overflow-hidden"
+                >
+                  {/* Kart Başlığı: Sıra, Model Adı, Hype & Delta */}
+                  <div className="bg-[#f8fafc] border-b border-[#e2e8f0] px-3 py-2 flex items-center justify-between">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <span className="font-mono font-black text-xs text-[#107c41] bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded">
+                        #{idx + 1}
+                      </span>
+                      <span className="font-bold text-slate-900 text-sm">
+                        {tool.name}
+                      </span>
+                    </div>
+                    
+                    {/* Hype ve Delta */}
+                    <div className="flex items-center gap-1.5 font-mono">
+                      <div className="text-right">
+                        <span className="font-black text-slate-900 text-sm">{tool.hypeScore}</span>
+                        <span className="text-[10px] text-slate-400">/10</span>
+                      </div>
+                      <span className={`text-xs font-bold px-1.5 py-0.5 rounded ${
+                        isPositive ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' :
+                        isNegative ? 'bg-rose-50 text-rose-700 border border-rose-200' :
+                        'bg-slate-50 text-slate-600 border border-slate-200'
+                      }`}>
+                        {isPositive ? `+${tool.scoreDelta}` : tool.scoreDelta}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Kart Gövdesi: Kategori + Temel Yetenek + Topluluk Görüşü */}
+                  <div className="p-3 space-y-2.5 text-xs">
+                    {/* Kategori */}
+                    <div className="flex items-center gap-2">
+                      <span className="text-[10px] font-mono text-slate-400 font-bold uppercase">KATEGORİ:</span>
+                      <span className={`font-mono text-[11px] px-2 py-0.5 rounded border ${getCategoryBadgeClass(tool.category)} whitespace-nowrap`}>
+                        {tool.category}
+                      </span>
+                    </div>
+
+                    {/* Temel Yetenek & Fonksiyon (Doğrudan Tam Metin) */}
+                    <div className="space-y-1 bg-[#fbfcfd] p-2.5 rounded border border-[#f1f5f9]">
+                      <span className="text-[10px] font-mono font-bold text-[#107c41] uppercase flex items-center gap-1">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#107c41]"></span>
+                        TEMEL YETENEK &amp; FONKSİYONU:
+                      </span>
+                      <p className="text-slate-800 leading-relaxed font-medium">
+                        {tool.primaryFunction}
+                      </p>
+                    </div>
+
+                    {/* Neden Trend Oldu? (Topluluk Görüşü) */}
+                    <div className="space-y-1 bg-[#f8fafc] p-2.5 rounded border border-[#e2e8f0]">
+                      <span className="text-[10px] font-mono font-bold text-slate-700 uppercase flex items-center gap-1">
+                        🔥 TOPLULUK ANALİZİ &amp; GEREKÇE:
+                      </span>
+                      <p className="text-slate-700 leading-relaxed">
+                        {tool.whyTrending}
+                      </p>
+                      <div className="flex items-center gap-1 pt-1.5 flex-wrap">
+                        <span className="text-[10px] font-mono text-slate-400">Kaynaklar:</span>
+                        {tool.sources?.map((s, i) => (
+                          <span key={i} className="text-[10px] font-mono px-1.5 py-0.5 bg-white text-slate-600 rounded border border-[#cbd5e1]">
+                            {s}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Geçmiş Performans / Zaman Çizelgesi (Varsa) */}
+                    {historyEntries.length > 0 && (
+                      <div className="border-t border-[#e2e8f0] pt-2">
+                        <button
+                          onClick={() => setExpandedId(isExpanded ? null : tool.id)}
+                          className="w-full flex items-center justify-between text-[11px] font-mono text-slate-600 bg-[#f8fafc] hover:bg-[#f1f5f9] px-2.5 py-1.5 rounded border border-[#e2e8f0] transition"
+                        >
+                          <span className="flex items-center gap-1 text-[#107c41] font-bold">
+                            <History className="w-3.5 h-3.5" />
+                            <span>Geçmiş Nabız &amp; Duygu Kayıtları ({historyEntries.length} Gün)</span>
+                          </span>
+                          {isExpanded ? <ChevronUp className="w-3.5 h-3.5 text-[#107c41]" /> : <ChevronDown className="w-3.5 h-3.5 text-slate-400" />}
+                        </button>
+
+                        {isExpanded && (
+                          <div className="mt-2 space-y-1.5 bg-[#f9fafb] p-2.5 rounded border border-[#e2e8f0]">
+                            {historyEntries.map((entry, hIdx) => {
+                              const getSentBadge = (sent) => {
+                                switch (sent) {
+                                  case 'coşkulu': return 'bg-emerald-100 text-emerald-800 border-emerald-300';
+                                  case 'eleştirel': return 'bg-amber-100 text-amber-900 border-amber-300';
+                                  case 'düşüş': return 'bg-rose-100 text-rose-800 border-rose-300';
+                                  default: return 'bg-slate-100 text-slate-700 border-slate-300';
+                                }
+                              };
+                              const getSentLabel = (sent) => {
+                                switch (sent) {
+                                  case 'coşkulu': return '🔥 Coşku';
+                                  case 'eleştirel': return '⚠️ Eleştiri';
+                                  case 'düşüş': return '📉 Düşüş';
+                                  default: return '⚖️ Stabil';
+                                }
+                              };
+                              return (
+                                <div key={hIdx} className="border-b border-[#e2e8f0] pb-1.5 last:border-0 last:pb-0 space-y-0.5">
+                                  <div className="flex items-center justify-between font-mono text-[10px]">
+                                    <span className="text-slate-500">{entry.date}</span>
+                                    <span className={`px-1.5 py-0.2 rounded font-bold border ${getSentBadge(entry.sentiment)}`}>
+                                      {getSentLabel(entry.sentiment)}
+                                    </span>
+                                    <span className="font-bold text-slate-900">{entry.hypeScore}/10</span>
+                                  </div>
+                                  <p className="text-slate-700 text-[11px] leading-tight">
+                                    <strong className="text-slate-900">{entry.headline}: </strong>
+                                    {entry.summary}
+                                  </p>
+                                </div>
+                              );
+                            })}
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
           </div>
         )}
 
