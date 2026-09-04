@@ -120,6 +120,8 @@ export default function App() {
         return 'bg-cyan-50 text-cyan-900 border-cyan-300';
       case 'Altyapı & SDK':
         return 'bg-slate-100 text-slate-800 border-slate-300';
+      case 'Bulut & Platform':
+        return 'bg-sky-50 text-sky-900 border-sky-300';
       case 'Medya / Üretim':
         return 'bg-rose-50 text-rose-900 border-rose-300';
       case 'Şirket / Lab':

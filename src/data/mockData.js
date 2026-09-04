@@ -7,6 +7,7 @@ export const CATEGORY_DEFINITIONS = [
   { id: "Otonom Agent", label: "Otonom Agent", desc: "Rol ve hedef odaklı çoklu ajan framework'leri", badgeColor: "bg-purple-950/60 text-purple-300 border-purple-600/40" },
   { id: "Otomasyon", label: "Otomasyon", desc: "İş süreçleri ve görsel API otomasyon araçları", badgeColor: "bg-cyan-950/60 text-cyan-300 border-cyan-600/40" },
   { id: "Altyapı & SDK", label: "Altyapı & SDK", desc: "Yerel model sunucuları, kütüphaneler ve geliştirici SDK'ları", badgeColor: "bg-slate-800 text-slate-200 border-slate-600" },
+  { id: "Bulut & Platform", label: "Bulut & Platform", desc: "Model test/playground, bulut GPU ve kurumsal dağıtım (Google AI Studio, Colab, Vertex AI, RunPod, AWS Bedrock)", badgeColor: "bg-sky-950/60 text-sky-300 border-sky-600/40" },
   { id: "Medya / Üretim", label: "Medya / Üretim", desc: "Görsel, ses ve video üretim modelleri/araçları", badgeColor: "bg-rose-950/60 text-rose-300 border-rose-600/40" },
   { id: "Şirket / Lab", label: "Şirket / Lab", desc: "Yapay zeka araştırma laboratuvarları ve ekosistem liderleri", badgeColor: "bg-orange-950/60 text-orange-300 border-orange-600/40" }
 ];

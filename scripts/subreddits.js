@@ -27,13 +27,13 @@ export const SUBREDDIT_BATCHES = [
   },
   {
     name: "Yazılım Geliştirici, API & Kodlama Dünyası",
-    slug: "LLMDevs+PromptEngineering+AI_Tools+GenerativeAI+webdev+programming",
-    subreddits: ["LLMDevs", "PromptEngineering", "AI_Tools", "GenerativeAI", "webdev", "programming"]
+    slug: "LLMDevs+PromptEngineering+AI_Tools+GenerativeAI+webdev+programming+datascience",
+    subreddits: ["LLMDevs", "PromptEngineering", "AI_Tools", "GenerativeAI", "webdev", "programming", "datascience"]
   },
   {
     name: "Donanım, GPU, CPU & Bulut Altyapısı",
-    slug: "hardware+nvidia+AMD_Stock+sysadmin+devops+Cloud+technology",
-    subreddits: ["hardware", "nvidia", "AMD_Stock", "sysadmin", "devops", "Cloud", "technology"]
+    slug: "hardware+nvidia+AMD_Stock+sysadmin+devops+Cloud+GoogleCloud",
+    subreddits: ["hardware", "nvidia", "AMD_Stock", "sysadmin", "devops", "Cloud", "GoogleCloud"]
   },
   {
     name: "Görsel, Video & Medya Üretimi",

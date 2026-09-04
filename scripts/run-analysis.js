@@ -291,11 +291,12 @@ async function main() {
     - "Otonom Agent" : CrewAI, LangGraph, AutoGPT gibi çoklu ajan framework'leri.
     - "Otomasyon" : n8n, Zapier AI gibi iş akışı otomasyonları.
     - "Altyapı & SDK" : Ollama, vLLM, PydanticAI, GPU sunucuları, API maliyet/yönetim kütüphaneleri.
+    - "Bulut & Platform" : Google AI Studio, Google Colab, Vertex AI (Google Cloud), AWS Bedrock, RunPod, Modal, Hugging Face Spaces gibi model test/playground, bulut GPU, notebook ve kurumsal dağıtım platformları.
     - "Medya / Üretim" : ComfyUI, Flux, Midjourney, Wan 2.1 gibi görsel ve video üretim araçları.
     - "Şirket / Lab" : NVIDIA, OpenAI, Anthropic, DeepSeek, AMD gibi çip ve model üreticisi şirketler.
 
-    DONANIM, GPU/CPU VE MALİYET VURGUSU:
-    Raporun içinde yapay zeka modellerinin çalışması için gereken donanım (NVIDIA RTX/Blackwell, Apple M4, AMD, CPU çıkarımı), API token maliyetleri ve sunucu yükü tartışmalarına mutlaka yer ver.
+    DONANIM, GPU/CPU, BULUT PLATFORMLARI VE MALİYET VURGUSU:
+    Raporun içinde yapay zeka modellerinin çalışması için gereken donanım (NVIDIA RTX/Blackwell, Apple M4, AMD, CPU çıkarımı), API token maliyetleri ve geliştirici bulut platformlarını (Google AI Studio, Google Colab, Vertex AI, AWS Bedrock, RunPod) mutlaka değerlendir. Kota değişimleri veya test ortamı güncellemeleri varsa bunları "Bulut & Platform" kategorisiyle listeye al.
 
     İSTENEN JSON ŞEMASI:
     {
@@ -305,7 +306,7 @@ async function main() {
         {
           "id": "model-id",
           "name": "Model/Araç/Donanım Adı",
-          "category": "LLM (Model) | Yerel Model | IDE / Editör | CLI / Terminal | Otonom Agent | Otomasyon | Altyapı & SDK | Medya / Üretim | Şirket / Lab",
+          "category": "LLM (Model) | Yerel Model | IDE / Editör | CLI / Terminal | Otonom Agent | Otomasyon | Altyapı & SDK | Bulut & Platform | Medya / Üretim | Şirket / Lab",
           "badge": "Örn: 12s Patlaması",
           "hypeScore": 9.7,
           "prevScore": 8.9,
