@@ -2,52 +2,64 @@
 
 @layer base {
   body {
-    background-color: #090d16;
-    color: #f1f5f9;
+    background-color: #0f172a;
+    color: #e2e8f0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   }
 }
 
-/* Custom glassmorphism and terminal glow styles */
-.glass-panel {
-  background: rgba(15, 23, 42, 0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+/* Excel Spreadsheet Styles */
+.excel-grid-table {
+  border-collapse: collapse;
+  font-size: 12px;
 }
 
-.glass-card {
-  background: linear-gradient(135deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.8) 100%);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.07);
+.excel-cell {
+  border-right: 1px solid #1e293b;
+  border-bottom: 1px solid #1e293b;
+  padding: 6px 10px;
+  white-space: nowrap;
 }
 
-.glass-card:hover {
-  border-color: rgba(99, 102, 241, 0.4);
-  box-shadow: 0 8px 24px -6px rgba(99, 102, 241, 0.15);
+.excel-header-col {
+  background-color: #0b1120;
+  color: #94a3b8;
+  font-weight: 600;
+  text-align: center;
+  border-right: 1px solid #1e293b;
+  border-bottom: 1px solid #334155;
+  padding: 4px 8px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
-.glow-indigo {
-  box-shadow: 0 0 20px -3px rgba(99, 102, 241, 0.35);
+.excel-header-row {
+  background-color: #0b1120;
+  color: #94a3b8;
+  font-weight: 600;
+  text-align: center;
+  border-right: 1px solid #334155;
+  border-bottom: 1px solid #1e293b;
+  padding: 4px 6px;
+  width: 40px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
-.glow-emerald {
-  box-shadow: 0 0 20px -3px rgba(16, 185, 129, 0.35);
+.excel-cell-selected {
+  outline: 2px solid #107c41;
+  background-color: rgba(16, 124, 65, 0.15) !important;
 }
 
-.glow-rose {
-  box-shadow: 0 0 20px -3px rgba(244, 63, 94, 0.35);
-}
-
-/* Custom scrollbar */
+/* Custom Scrollbars */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #0b0f19;
+  background: #090d16;
 }
 ::-webkit-scrollbar-thumb {
   background: #1e293b;
+  border: 2px solid #090d16;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
