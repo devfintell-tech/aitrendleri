@@ -10,15 +10,19 @@ jobs:
   crawl-analyze-and-notify:
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    permissions:
+      contents: write # Repoya commit & push izni
 
     steps:
       - name: Kodu Çek
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Node.js Kurulumu
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: 'npm'
 
       - name: Bağımlılıkları Yükle
