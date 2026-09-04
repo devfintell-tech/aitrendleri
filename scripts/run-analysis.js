@@ -7,11 +7,11 @@ import { SUBREDDIT_BATCHES, REDDIT_USER_AGENT } from './subreddits.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// 3 Farklı Gemini API Anahtar Havuzu (Yedekli ve Rotasyonlu)
+// 3 Farklı Gemini API Anahtar Havuzu (Yedekli ve Rotasyonlu - Sadece ortam değişkenlerinden okunur)
 const GEMINI_API_KEYS = [
-  process.env.GEMINI_API_KEY || "AIzaSyDNxwcKWSpib1dvX6sEYA29CyqzoB0ewuY",
-  process.env.GEMINI_API_KEY_2 || "AIzaSyB8UrTMckuRlXsBHlbowNnQTxxEH8_0fmo",
-  process.env.GEMINI_API_KEY_3 || "AIzaSyB2N1DVVGtmkO3x7PeqAJ4Fn0ODpK3sU6I"
+  process.env.GEMINI_API_KEY,
+  process.env.GEMINI_API_KEY_2,
+  process.env.GEMINI_API_KEY_3
 ].filter(Boolean);
 
 const parser = new XMLParser({
