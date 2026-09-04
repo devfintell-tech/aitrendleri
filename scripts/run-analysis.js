@@ -385,7 +385,28 @@ async function main() {
   fs.writeFileSync(outputPath, JSON.stringify(finalOutput, null, 2), "utf-8");
   console.log(`🎉 Rapor başarıyla oluşturuldu ve kaydedildi: ${outputPath}`);
 
-  // Araç bazlı tarihsel hafıza ve topluluk duygu günlüğünü güncelle
+  // 2. Gün bazında kalıcı arşiv dosyası oluştur (src/data/archive/YYYY-MM-DD.json)
+  const archiveDir = path.join(__dirname, "../src/data/archive");
+  if (!fs.existsSync(archiveDir)) {
+    fs.mkdirSync(archiveDir, { recursive: true });
+  }
+  const isoDate = new Date().toISOString().split("T")[0]; // örn. "2026-09-05"
+  const archivePath = path.join(archiveDir, `${isoDate}.json`);
+  fs.writeFileSync(archivePath, JSON.stringify(finalOutput, null, 2), "utf-8");
+  console.log(`📦 Günlük arşiv kalıcı olarak saklandı: ${archivePath}`);
+
+  // 3. Arşiv İndeksini güncelle (archive-index.json)
+  const indexPath = path.join(archiveDir, "archive-index.json");
+  let archiveIndex = [];
+  if (fs.existsSync(indexPath)) {
+    try { archiveIndex = JSON.parse(fs.readFileSync(indexPath, "utf-8")); } catch (e) {}
+  }
+  if (!archiveIndex.find(item => item.isoDate === isoDate)) {
+    archiveIndex.unshift({ isoDate, dateStr, count: (finalOutput.daily || []).length });
+    fs.writeFileSync(indexPath, JSON.stringify(archiveIndex, null, 2), "utf-8");
+  }
+
+  // 4. Araç bazlı tarihsel hafıza ve topluluk duygu günlüğünü güncelle
   updateToolHistory(finalOutput, dateStr);
 
   console.log(`⏱️ Toplam Çalışma Süresi: ${duration} saniye.`);
