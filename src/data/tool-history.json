@@ -9,7 +9,11 @@
         "sentiment": "coşkulu",
         "headline": "🚀 Büyük Coşku & Benchmark Zirvesi",
         "summary": "1M token bağlam penceresi ve yeni akıl yürütme motoruyla piyasaya sürüldü. Toplulukta Claude ve GPT modellerini tahtından indirdiği iddia edilerek büyük bir hype dalgası oluştu.",
-        "sources": ["r/GoogleGemini", "r/MachineLearning", "r/Singularity"]
+        "sources": [
+          "r/GoogleGemini",
+          "r/MachineLearning",
+          "r/Singularity"
+        ]
       },
       {
         "date": "3 Eylül 2026",
@@ -17,7 +21,11 @@
         "sentiment": "eleştirel",
         "headline": "⚠️ Yoğun Yük Altında 503 Hataları & Bağlam Kirlenmesi",
         "summary": "API'da sık sık 'Service Unavailable 503' kesintileri başladı. Geliştiriciler uzun promptlarda bağlam unutkanlığı ve token yakım hızının astronomik artışından şikayet etmeye başladı.",
-        "sources": ["r/vibecoding", "r/ChatGPTCoding", "r/LLMDevs"]
+        "sources": [
+          "r/vibecoding",
+          "r/ChatGPTCoding",
+          "r/LLMDevs"
+        ]
       },
       {
         "date": "5 Eylül 2026",
@@ -25,7 +33,21 @@
         "sentiment": "düşüş",
         "headline": "📉 'Balon Söndü' Tartışmaları & Yerel Modellere Göç",
         "summary": "API kotalarının anında dolması ve sunucu kararsızlığı nedeniyle geliştiriciler 'İlk gün harikaydı, şu an rezalet çalışıyor' yorumlarıyla DeepSeek ve yerel modellere dönmeye başladı.",
-        "sources": ["r/LocalLLaMA", "r/ClaudeDev"]
+        "sources": [
+          "r/LocalLLaMA",
+          "r/ClaudeDev"
+        ]
+      },
+      {
+        "date": "4 Eylül 2026",
+        "hypeScore": 7.3,
+        "sentiment": "eleştirel",
+        "headline": "Soğuma Dönemi",
+        "summary": "Yoğun yük altındaki 503 hataları ve geliştiricilerin daha tutarlı açık ağırlıklı yerel modellere yönelmesi düşüşü sürdürüyor.",
+        "sources": [
+          "r/ChatGPTCoding",
+          "r/ClaudeAI"
+        ]
       }
     ]
   },
@@ -39,7 +61,10 @@
         "sentiment": "coşkulu",
         "headline": "🔥 'Vibe Coding' Devriminin Tek Lideri",
         "summary": "Composer özelliği ve derin repo indekslemesiyle geliştiricilerin bir numaralı vazgeçilmezi ilan edildi. Herkes geleneksel IDE'leri terk ettiğini yazdı.",
-        "sources": ["r/CursorAI", "r/vibecoding"]
+        "sources": [
+          "r/CursorAI",
+          "r/vibecoding"
+        ]
       },
       {
         "date": "2 Eylül 2026",
@@ -47,7 +72,10 @@
         "sentiment": "stabil",
         "headline": "⚖️ Yeni Model Desteği ve Fiyatlandırma Homurtuları",
         "summary": "Yeni modeller eklendi ancak 20$ Pro aboneliğindeki hızlı istek limitlerinin çok çabuk bitmesi profesyonellerin tepkisini çekmeye başladı.",
-        "sources": ["r/CursorAI", "r/webdev"]
+        "sources": [
+          "r/CursorAI",
+          "r/webdev"
+        ]
       },
       {
         "date": "5 Eylül 2026",
@@ -55,7 +83,22 @@
         "sentiment": "eleştirel",
         "headline": "⚠️ Küresel Kesintiler & CLI Araçlarına Kaçış",
         "summary": "Aşırı yük sebebiyle saatler süren bağlantı kopmaları yaşandı. Geliştiriciler Cursor'a bağımlı kalmamak için Claude Code ve Aider gibi açık terminal ajanlarını yedeklemeye başladı.",
-        "sources": ["r/CursorAI", "r/ChatGPTCoding", "r/ClaudeDev"]
+        "sources": [
+          "r/CursorAI",
+          "r/ChatGPTCoding",
+          "r/ClaudeDev"
+        ]
+      },
+      {
+        "date": "4 Eylül 2026",
+        "hypeScore": 9.1,
+        "sentiment": "eleştirel",
+        "headline": "Haftalık Düşüş (-0.7)",
+        "summary": "Fiyatlandırma homurtuları, token yakım hızının artışı ve kesintiler nedeniyle geliştirici memnuniyetinde gerileme kaydetti.",
+        "sources": [
+          "r/CursorAI",
+          "r/ChatGPTCoding"
+        ]
       }
     ]
   },
@@ -69,7 +112,10 @@
         "sentiment": "coşkulu",
         "headline": "⚡ Terminal Ajanlarında Yeni Standart",
         "summary": "Anthropic'in resmi CLI aracı doğrudan bash ve git entegrasyonuyla piyasaya çıktı. Çoklu dosya refactoring yeteneğiyle büyük övgü aldı.",
-        "sources": ["r/ClaudeAI", "r/ClaudeDev"]
+        "sources": [
+          "r/ClaudeAI",
+          "r/ClaudeDev"
+        ]
       },
       {
         "date": "3 Eylül 2026",
@@ -77,7 +123,10 @@
         "sentiment": "coşkulu",
         "headline": "🚀 Repo Hijyeni ve Büyük Proje Başarısı",
         "summary": "Geliştiriciler 50.000 satırlık projelerde tek komutla testleri geçirip PR açabilmesini 'büyüleyici' olarak nitelendirdi.",
-        "sources": ["r/programming", "r/vibecoding"]
+        "sources": [
+          "r/programming",
+          "r/vibecoding"
+        ]
       },
       {
         "date": "5 Eylül 2026",
@@ -85,7 +134,21 @@
         "sentiment": "coşkulu",
         "headline": "🏆 Kurumsal Liderlik ve Limit Artışı",
         "summary": "Kullanım limitlerinin esnetilmesi ve eski test fixture'larını aşma taktikleriyle Cursor kesintilerinde en büyük güvenli liman haline geldi.",
-        "sources": ["r/ClaudeDev", "r/ChatGPTCoding"]
+        "sources": [
+          "r/ClaudeDev",
+          "r/ChatGPTCoding"
+        ]
+      },
+      {
+        "date": "4 Eylül 2026",
+        "hypeScore": 9.6,
+        "sentiment": "coşkulu",
+        "headline": "Kurumsal CLI Standardı",
+        "summary": "Büyük kurumsal depoları tekilleştirilmiş bağlamla hatasız yönetmesi, GUI editörlerindeki çöküşler sırasında geliştirici sığınağı oldu.",
+        "sources": [
+          "r/ClaudeDev",
+          "r/vibecoding"
+        ]
       }
     ]
   },
@@ -99,15 +162,21 @@
         "sentiment": "stabil",
         "headline": "🌱 Yeni Bir One-Shot Motoru Doğuyor",
         "summary": "Kapalı beta testlerinde karmaşık 3D ve tam yığın web demolarıyla dikkat çekti.",
-        "sources": ["r/Singularity", "r/vibecoding"]
+        "sources": [
+          "r/Singularity",
+          "r/vibecoding"
+        ]
       },
       {
         "date": "4 Eylül 2026",
-        "hypeScore": 8.9,
+        "hypeScore": 9.7,
         "sentiment": "coşkulu",
-        "headline": "📈 Blender MCP Entegrasyonuyla Dikkat Çekti",
-        "summary": "Blender üzerinden oyun haritalarını ve 3D sahneleri tek komutla oluşturma demoları paylaşıldı.",
-        "sources": ["r/vibecoding"]
+        "headline": "Viral Çok Modlu",
+        "summary": "Blender MCP ve yerel görsel AI entegrasyonuyla tek promptta karmaşık 3D sahne inşa edebilmesi toplulukta infial yarattı.",
+        "sources": [
+          "r/ClaudeAI",
+          "r/vibecoding"
+        ]
       },
       {
         "date": "5 Eylül 2026",
@@ -115,7 +184,10 @@
         "sentiment": "coşkulu",
         "headline": "💥 Viral Patlama: 1 Dakikada Çalışan Web & Müzik Uygulamaları",
         "summary": "Tek istemle (one-shot) sıfırdan beat-maker ve etkileşimli haritalar çıkarmasıyla Reddit genelinde günün en çok konuşulan aracı oldu.",
-        "sources": ["r/vibecoding", "r/ClaudeAI"]
+        "sources": [
+          "r/vibecoding",
+          "r/ClaudeAI"
+        ]
       }
     ]
   },
@@ -129,7 +201,10 @@
         "sentiment": "stabil",
         "headline": "⚙️ Açık Kaynak İş Akışlarında Ajan Desteği",
         "summary": "LangChain ve yerel modellerle entegre edilebilen yeni görsel düğüm mimarisi tanıtıldı.",
-        "sources": ["r/n8n", "r/selfhosted"]
+        "sources": [
+          "r/n8n",
+          "r/selfhosted"
+        ]
       },
       {
         "date": "2 Eylül 2026",
@@ -137,7 +212,10 @@
         "sentiment": "coşkulu",
         "headline": "📈 Kurumsal Şirketlerin Tercihi Haline Geldi",
         "summary": "Zapier maliyetlerinden kaçan ekiplerin n8n'i Docker üzerinde ayağa kaldırıp binlerce agent görevi çalıştırdığı açıklandı.",
-        "sources": ["r/Automate", "r/devops"]
+        "sources": [
+          "r/Automate",
+          "r/devops"
+        ]
       },
       {
         "date": "5 Eylül 2026",
@@ -145,7 +223,21 @@
         "sentiment": "coşkulu",
         "headline": "🛡️ 'Sessiz Hata' Önleme & MCP Standardı",
         "summary": "Ajanların yeşil yanan ama yanlış dönen sahte testlerini yakalayan hata denetim katmanlarıyla kurumsal otomasyonun omurgası oldu.",
-        "sources": ["r/n8n", "r/Automate"]
+        "sources": [
+          "r/n8n",
+          "r/Automate"
+        ]
+      },
+      {
+        "date": "4 Eylül 2026",
+        "hypeScore": 9.3,
+        "sentiment": "stabil",
+        "headline": "Kurumsal Ajan Dağıtımı",
+        "summary": "Kurumsal şirketlerin kapalı devre AI ajanlarını üretim ortamına taşımada en güvenli middleware seçeneği olarak benimsendi.",
+        "sources": [
+          "r/selfhosted",
+          "r/OpenSourceAI"
+        ]
       }
     ]
   },
@@ -155,11 +247,14 @@
     "history": [
       {
         "date": "1 Eylül 2026",
-        "hypeScore": 9.0,
+        "hypeScore": 9,
         "sentiment": "coşkulu",
         "headline": "🔓 Açık Ağırlıklı Vision Devrimi",
         "summary": "Kapalı ticari modeller seviyesinde multimodal yetenek sunan MIT lisanslı model duyuruldu.",
-        "sources": ["r/LocalLLaMA", "r/MachineLearning"]
+        "sources": [
+          "r/LocalLLaMA",
+          "r/MachineLearning"
+        ]
       },
       {
         "date": "3 Eylül 2026",
@@ -167,7 +262,10 @@
         "sentiment": "stabil",
         "headline": "🖥️ Mac Studio & Apple Silicon Testleri",
         "summary": "Apple M4 Max ve Ultra çiplerde birleşik bellek sayesinde tam hızda çalıştığı ve sıfır API maliyeti sağladığı raporlandı.",
-        "sources": ["r/LocalLLaMA", "r/hardware"]
+        "sources": [
+          "r/LocalLLaMA",
+          "r/hardware"
+        ]
       },
       {
         "date": "5 Eylül 2026",
@@ -175,7 +273,21 @@
         "sentiment": "coşkulu",
         "headline": "⚡ GB200 Kümeleme & vLLM Dağıtımı",
         "summary": "Kurumsal veri merkezlerinde vLLM üzerinde saniyede 120 token çıkarım hızıyla self-hosted altyapıların referans modeli oldu.",
-        "sources": ["r/LLMDevs", "r/LocalLLaMA"]
+        "sources": [
+          "r/LLMDevs",
+          "r/LocalLLaMA"
+        ]
+      },
+      {
+        "date": "4 Eylül 2026",
+        "hypeScore": 9.3,
+        "sentiment": "stabil",
+        "headline": "Hızlı Görsel LLM",
+        "summary": "Düşük VRAM tüketimiyle görsel-metin işleme işlerinde Apple Silicon ve vLLM ortamlarında yaygınlaşıyor.",
+        "sources": [
+          "Hugging Face",
+          "r/LocalLLaMA"
+        ]
       }
     ]
   },
@@ -189,7 +301,10 @@
         "sentiment": "coşkulu",
         "headline": "🧠 Hibrit Düşünme Motorunun Doğuşu",
         "summary": "Standart yanıt ve derin akıl yürütmeyi tek modelde birleştiren mimari geliştiricileri büyüledi.",
-        "sources": ["r/ClaudeAI", "r/Singularity"]
+        "sources": [
+          "r/ClaudeAI",
+          "r/Singularity"
+        ]
       },
       {
         "date": "1 Eylül 2026",
@@ -197,7 +312,10 @@
         "sentiment": "coşkulu",
         "headline": "🏆 Kodlama Benchmarklarında Rekor",
         "summary": "SWE-bench ve pratik yazılım projelerinde hata payını %5'in altına indirerek sektörün referansı oldu.",
-        "sources": ["r/ChatGPTCoding", "r/vibecoding"]
+        "sources": [
+          "r/ChatGPTCoding",
+          "r/vibecoding"
+        ]
       },
       {
         "date": "5 Eylül 2026",
@@ -205,7 +323,21 @@
         "sentiment": "coşkulu",
         "headline": "👑 Tartışmasız Sektör Standardı",
         "summary": "Tüm editörlerin ve ajanların ana beyni olarak benimsendi; alternatif modeller sadece fiyat avantajı sebebiyle tartışılıyor.",
-        "sources": ["r/ClaudeAI", "r/programming"]
+        "sources": [
+          "r/ClaudeAI",
+          "r/programming"
+        ]
+      },
+      {
+        "date": "4 Eylül 2026",
+        "hypeScore": 9.8,
+        "sentiment": "coşkulu",
+        "headline": "Günün Lideri",
+        "summary": "Yazılım mühendisliğinde hem düşünme süresi hem kod doğruluğu ile tartışmasız altın standart olarak liderliğini koruyor.",
+        "sources": [
+          "r/ClaudeAI",
+          "r/vibecoding"
+        ]
       }
     ]
   },
@@ -219,7 +351,10 @@
         "sentiment": "coşkulu",
         "headline": "🏗️ Yeni Nesil Veri Merkezi Mimarisi",
         "summary": "NVLink 5 ve sıvı soğutmalı sunucu raflarıyla yapay zeka çıkarımında 30 kat enerji tasarrufu vaadi.",
-        "sources": ["r/nvidia", "r/hardware"]
+        "sources": [
+          "r/nvidia",
+          "r/hardware"
+        ]
       },
       {
         "date": "31 Ağustos 2026",
@@ -227,7 +362,10 @@
         "sentiment": "eleştirel",
         "headline": "⚠️ Termal Tasarım ve Teslimat Gecikmeleri",
         "summary": "Bulut sağlayıcıların sıvı soğutma entegrasyonunda karşılaştığı mühendislik zorlukları ve yüksek maliyet tartışıldı.",
-        "sources": ["r/hardware", "r/sysadmin"]
+        "sources": [
+          "r/hardware",
+          "r/sysadmin"
+        ]
       },
       {
         "date": "5 Eylül 2026",
@@ -235,7 +373,293 @@
         "sentiment": "coşkulu",
         "headline": "🚀 Büyük Dil Modeli Fabrikaları Faaliyette",
         "summary": "Tier-1 bulut sağlayıcıların Blackwell raflarını devreye almasıyla token başına maliyetlerin hızla düşeceği beklentisi oluştu.",
-        "sources": ["r/nvidia", "r/Cloud", "r/technology"]
+        "sources": [
+          "r/nvidia",
+          "r/Cloud",
+          "r/technology"
+        ]
+      },
+      {
+        "date": "4 Eylül 2026",
+        "hypeScore": 9.6,
+        "sentiment": "stabil",
+        "headline": "Kurumsal Donanım",
+        "summary": "Teslimat sancılarını aşarak büyük dil modeli fabrikalarının ana omurgası olduğunu kanıtladı.",
+        "sources": [
+          "r/LocalLLaMA",
+          "Hugging Face"
+        ]
+      }
+    ]
+  },
+  "ellm-cpu-inference": {
+    "name": "eLLM CPU Inference Framework",
+    "category": "Altyapı & SDK",
+    "history": [
+      {
+        "date": "4 Eylül 2026",
+        "hypeScore": 9.6,
+        "sentiment": "coşkulu",
+        "headline": "12s Çıkışı",
+        "summary": "DDR bellek bant genişliğini avantaja çevirerek uzun bağlamlı çıkarımda GPU'ları geride bırakan Rust motoru Beta sürümünü duyurdu.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/OpenSourceAI"
+        ]
+      }
+    ]
+  },
+  "cursor-degradation": {
+    "name": "Cursor",
+    "category": "IDE / Editör",
+    "history": [
+      {
+        "date": "4 Eylül 2026",
+        "hypeScore": 8.7,
+        "sentiment": "eleştirel",
+        "headline": "Servis Krizi",
+        "summary": "Küresel ölçekte 'High Load' hataları ve aşırı yavaşlama bildirimleriyle geliştiricilerin CLI alternatiflerine yönelmesine yol açtı.",
+        "sources": [
+          "r/CursorAI",
+          "r/vibecoding"
+        ]
+      }
+    ]
+  },
+  "minimax-h3-vdn": {
+    "name": "VDN-Minimax-H3",
+    "category": "Medya / Üretim",
+    "history": [
+      {
+        "date": "4 Eylül 2026",
+        "hypeScore": 9.5,
+        "sentiment": "coşkulu",
+        "headline": "Ultra Hızlı Video",
+        "summary": "B200 GPU üzerinde oynatma süresinden daha hızlı (11.2 saniyede 14.4s video) çıkarım sağlayan hibrit dikkat LoRA adaptörleri yayınlandı.",
+        "sources": [
+          "r/StableDiffusion",
+          "r/comfyui"
+        ]
+      }
+    ]
+  },
+  "nvidia-huggingface": {
+    "name": "NVIDIA / Hugging Face Ortaklığı",
+    "category": "Şirket / Lab",
+    "history": [
+      {
+        "date": "4 Eylül 2026",
+        "hypeScore": 9.4,
+        "sentiment": "coşkulu",
+        "headline": "12.9B$ Tartışması",
+        "summary": "Unicode U+1F917 göndermeli 12.93 milyar dolarlık hisse/yatırım hamlesi açık kaynak bağımsızlığı tartışmalarını alevlendirdi.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/ollama"
+        ]
+      }
+    ]
+  },
+  "claude-usage-reset": {
+    "name": "Claude 3.7 Sonnet Rate Limits",
+    "category": "LLM (Model)",
+    "history": [
+      {
+        "date": "4 Eylül 2026",
+        "hypeScore": 9.8,
+        "sentiment": "coşkulu",
+        "headline": "Kapasite Rahatlaması",
+        "summary": "Anthropic'in kullanım limitlerini sıfırlaması ve güvenlik araştırmaları itirafları eşliğinde geliştirici ilgisi tavan yaptı.",
+        "sources": [
+          "r/ClaudeAI",
+          "r/ClaudeDev"
+        ]
+      }
+    ]
+  },
+  "viggle-animate-minimax": {
+    "name": "Viggle-Animate (MiniMax-H3)",
+    "category": "Medya / Üretim",
+    "history": [
+      {
+        "date": "4 Eylül 2026",
+        "hypeScore": 9.3,
+        "sentiment": "coşkulu",
+        "headline": "3-Pass Distill",
+        "summary": "Yalnızca 3 ileri geçiş adımıyla, maske veya poz zorunluluğu olmadan tek boyalı kare üzerinden video karakter değişimi sağladı.",
+        "sources": [
+          "r/StableDiffusion",
+          "Hugging Face"
+        ]
+      }
+    ]
+  },
+  "copilot-office-regression": {
+    "name": "Microsoft 365 Copilot",
+    "category": "LLM (Model)",
+    "history": [
+      {
+        "date": "4 Eylül 2026",
+        "hypeScore": 7.1,
+        "sentiment": "eleştirel",
+        "headline": "Kullanıcı Tepkisi",
+        "summary": "Word/Outlook son güncellemesinde Autorewrite fonksiyonunun kenar çubuğuna zorlanması ve aşırı yavaşlaması tepki çekti.",
+        "sources": [
+          "r/Copilot"
+        ]
+      }
+    ]
+  },
+  "dlss-5-comfyui": {
+    "name": "NVIDIA DLSS Frame Interpolation Node",
+    "category": "Medya / Üretim",
+    "history": [
+      {
+        "date": "4 Eylül 2026",
+        "hypeScore": 9.1,
+        "sentiment": "coşkulu",
+        "headline": "Yeni Comfy Node",
+        "summary": "Yerel ComfyUI iş akışlarında doğrudan DLSS 5 kare enterpolasyonu ve çözünürlük yükseltme düğümlerinin duyurulması.",
+        "sources": [
+          "r/StableDiffusion",
+          "r/comfyui"
+        ]
+      }
+    ]
+  },
+  "netbird-draft-mode": {
+    "name": "NetBird 0.78",
+    "category": "Altyapı & SDK",
+    "history": [
+      {
+        "date": "4 Eylül 2026",
+        "hypeScore": 8.9,
+        "sentiment": "coşkulu",
+        "headline": "Ağ Otomasyonu",
+        "summary": "Control Center için Draft Mode desteği ile ağ topolojisi ve erişim kurallarının görsel tuval üzerinden canlıya alınabilmesi.",
+        "sources": [
+          "r/selfhosted",
+          "r/OpenSourceAI"
+        ]
+      }
+    ]
+  },
+  "unsloth-qwen-3-8": {
+    "name": "Unsloth Qwen 3.8 27B GGUF",
+    "category": "Yerel Model",
+    "history": [
+      {
+        "date": "4 Eylül 2026",
+        "hypeScore": 9.7,
+        "sentiment": "coşkulu",
+        "headline": "10M İndirme Eşiği",
+        "summary": "Hugging Face'te 9.95 milyon indirmeye ulaşarak yerel model dağıtımlarında endüstriyel standart haline geldi.",
+        "sources": [
+          "Hugging Face",
+          "r/LocalLLaMA"
+        ]
+      }
+    ]
+  },
+  "minimax-h3": {
+    "name": "MiniMax-H3",
+    "category": "Yerel Model",
+    "history": [
+      {
+        "date": "4 Eylül 2026",
+        "hypeScore": 9.6,
+        "sentiment": "coşkulu",
+        "headline": "Açık Video Standardı",
+        "summary": "5.1 milyon indirme ve REF2VA/FL2VA teknikleriyle fotogerçekçi sinematik video üretiminin merkez üssü haline geldi.",
+        "sources": [
+          "Hugging Face",
+          "r/StableDiffusion"
+        ]
+      }
+    ]
+  },
+  "fable-5-1-daily": {
+    "name": "Fable 5.1",
+    "category": "LLM (Model)",
+    "history": [
+      {
+        "date": "4 Eylül 2026",
+        "hypeScore": 9.7,
+        "sentiment": "coşkulu",
+        "headline": "MCP Uyumluluk Şampiyonu",
+        "summary": "Blender, yerel görsel modeller ve API entegrasyonlarında sıfır hata ile tek promptta çalışan 3D projeler üretmesiyle zirvede.",
+        "sources": [
+          "r/ClaudeAI",
+          "r/vibecoding"
+        ]
+      }
+    ]
+  },
+  "ltx-2-5": {
+    "name": "Lightricks LTX-2.5",
+    "category": "Medya / Üretim",
+    "history": [
+      {
+        "date": "4 Eylül 2026",
+        "hypeScore": 9.2,
+        "sentiment": "coşkulu",
+        "headline": "Hızlı İğneleme",
+        "summary": "Hugging Face'te 1.4 milyon indirmeyi geçerek gerçek zamanlı video üretim pipeline'larında standart hale geldi.",
+        "sources": [
+          "Hugging Face",
+          "r/comfyui"
+        ]
+      }
+    ]
+  },
+  "cursor-daily": {
+    "name": "Cursor",
+    "category": "IDE / Editör",
+    "history": [
+      {
+        "date": "4 Eylül 2026",
+        "hypeScore": 9,
+        "sentiment": "eleştirel",
+        "headline": "Yüksek Yük Baskısı",
+        "summary": "Yüksek yük kaynaklı bağlantı sorunları ve son güncellemelerdeki token tüketim dengesizliği geliştirici eleştirilerine hedef oldu.",
+        "sources": [
+          "r/CursorAI",
+          "r/ChatGPTCoding"
+        ]
+      }
+    ]
+  },
+  "nvidia-blackwell": {
+    "name": "NVIDIA Blackwell GB200",
+    "category": "Şirket / Lab",
+    "history": [
+      {
+        "date": "4 Eylül 2026",
+        "hypeScore": 9.6,
+        "sentiment": "stabil",
+        "headline": "Altyapı Tekeli",
+        "summary": "Hugging Face hamlesi ve 8x B200 kümelerinde MiniMax H3 modellerinin gerçek zamanlı çıkarım sunması donanım gücünü tescilledi.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/StableDiffusion"
+        ]
+      }
+    ]
+  },
+  "glm-5-3-flash": {
+    "name": "GLM-5.3 Flash",
+    "category": "Yerel Model",
+    "history": [
+      {
+        "date": "4 Eylül 2026",
+        "hypeScore": 9.1,
+        "sentiment": "coşkulu",
+        "headline": "Yüksek Hızlı Multimodal",
+        "summary": "650 bin indirmeye hızla ulaşarak düşük kaynaklı GPU ortamlarında hafif çok modlu görevlerin gözdesi oldu.",
+        "sources": [
+          "Hugging Face",
+          "r/LocalLLaMA"
+        ]
       }
     ]
   }

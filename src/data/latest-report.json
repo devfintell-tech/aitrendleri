@@ -1,1034 +1,1111 @@
 {
   "date": "4 Eylül 2026",
+  "isoDate": "2026-09-04",
   "activeModel": "gemini-3.7-flash",
-  "durationSeconds": 197,
-  "totalPostsAnalyzed": 60,
+  "durationSeconds": 207,
+  "totalPostsAnalyzed": 45,
   "subredditsCovered": 50,
-  "executiveSummary": "Yapay zeka ekosistemi, OpenAI'ın matematiksel akıl yürütme ve otonom ajan simülasyonlarında çığır açan 'GPT-6 Astra' lansmanı ve Anthropic'in 'Fable 5.1' modelinin yoğun token yakımı tartışmalarıyla tarihi bir kırılma noktasına ulaştı. Model Context Protocol (MCP) entegrasyonu sayesinde Blender ve Unreal Engine gibi 3D/oyun motorlarında tek komutla uçtan uca dünya inşası gerçeğe dönüşürken; geliştirici tarafında Cursor servis kesintileri, fırlayan token harcamaları ve kurumsal karar mekanizmalarının yapay zeka hızına yetişememesi operasyonel darboğazlar yaratıyor. Donanım cephesinde AMD'nin 576 GB VRAM kapasiteli 96 çekirdekli Threadripper Halo Station (MI350P) atağı ve NVIDIA'nın DLSS 5 / Neural Rendering optimizasyonunu RTX 40 serisine genişletme kararı, yerel ve bulut tabanlı AI iş yüklerinde donanım bariyerlerini yeniden tanımlıyor.",
+  "executiveSummary": "Son 24 saatte yapay zeka ekosisteminde donanım-yazılım kesişimi ve model egemenliği ekseninde kritik kırılmalar yaşandı. NVIDIA'nın Hugging Face'e yönelik 12.93 milyar dolarlık stratejik satın alımı/hisse hamlesi açık kaynak dünyasında büyük yankı uyandırırken; yerel çıkarımda CPU'yu GPU karşısında öne geçiren eLLM mimarisi ve MiniMax H3 tabanlı hibrit video modelleri (VDN-H3) altyapı maliyetlerini yeniden tanımlıyor. Kodlama cephesinde Cursor ve Copilot yaşanan altyapı tıkanıklıkları ve arayüz gerilemeleri nedeniyle eleştirilirken, Claude 3.7 ve Fable 5.1 MCP (Model Context Protocol) yetenekleriyle üretken geliştirici iş akışlarının zirvesindeki yerini sağlamlaştırıyor.",
   "twelveHours": [
     {
-      "id": "gpt-6-astra",
-      "name": "GPT-6 Astra",
-      "category": "LLM (Model)",
-      "badge": "12s Zirvesi",
-      "hypeScore": 9.9,
-      "prevScore": 9.1,
-      "scoreDelta": 0.8,
-      "trend": "skyrocketing",
-      "mentions": 840,
-      "sparkline": [8.8, 9.0, 9.2, 9.4, 9.6, 9.8, 9.9],
-      "primaryFunction": "Uç seviye akıl yürütme, LEAN tabanlı matematik ispatı ve çoklu ajanlı otonom simülasyon üretimi",
-      "whyTrending": "Son 12 saatte FrontierMath Erdős benchmark'ında rekor kırmasıyla küresel AI topluluklarında açık ara bir numaraya yerleşti.",
-      "sources": ["r/singularity", "r/OpenAI", "r/ArtificialInteligence"]
-    },
-    {
-      "id": "amd-threadripper-halo",
-      "name": "AMD Threadripper Halo Station (MI350P)",
-      "category": "Şirket / Lab",
-      "badge": "12s Donanım Çıkışı",
-      "hypeScore": 9.3,
-      "prevScore": 8.2,
+      "id": "ellm-cpu-inference",
+      "name": "eLLM CPU Inference Framework",
+      "category": "Altyapı & SDK",
+      "badge": "12s Çıkışı",
+      "hypeScore": 9.6,
+      "prevScore": 8.5,
       "scoreDelta": 1.1,
       "trend": "skyrocketing",
-      "mentions": 480,
-      "sparkline": [7.6, 8.0, 8.3, 8.6, 8.9, 9.1, 9.3],
-      "primaryFunction": "96 çekirdek CPU, 576GB GPU belleği ve 2TB sistem belleği ile ultra büyük model yerel çıkarımı ve fine-tuning",
-      "whyTrending": "Son 12 saatte bağımsız donanım kanallarında yerel model çıkarım rekorları kırmasıyla donanım subredditlerini salladı.",
-      "sources": ["r/hardware", "r/AMD_Stock"]
-    },
-    {
-      "id": "fable-5-1",
-      "name": "Anthropic Fable 5.1",
-      "category": "LLM (Model)",
-      "badge": "Kota Tartışması",
-      "hypeScore": 9.5,
-      "prevScore": 9.7,
-      "scoreDelta": -0.2,
-      "trend": "stable",
-      "mentions": 620,
-      "sparkline": [9.7, 9.7, 9.6, 9.6, 9.5, 9.5, 9.5],
-      "primaryFunction": "Karmaşık Vibe Coding projelerini, 3D modelleme/MCP pipeline'larını tek promptta (one-shot) inşa etme",
-      "whyTrending": "Blender MCP yetenekleri hayranlık uyandırırken, son 12 saatte fırlayan token harcamaları ve kullanım limitleri yoğun tartışılıyor.",
-      "sources": ["r/vibecoding", "r/ClaudeAI", "r/ClaudeDev"]
-    },
-    {
-      "id": "cursor-ai",
-      "name": "Cursor AI",
-      "category": "IDE / Editör",
-      "badge": "12s Kesintisi",
-      "hypeScore": 8.6,
-      "prevScore": 9.3,
-      "scoreDelta": -0.7,
-      "trend": "cooling",
-      "mentions": 530,
-      "sparkline": [9.3, 9.1, 9.0, 8.9, 8.8, 8.7, 8.6],
-      "primaryFunction": "AI destekli akıllı kod düzenleme, çoklu dosya bağlamı yönetimi ve otonom kod tamamlama",
-      "whyTrending": "Son 12 saatte yaşanan küresel servis bozulması ve 'High Load' hatası geliştirici forumlarında en çok şikayet alan başlık oldu.",
-      "sources": ["r/CursorAI", "r/ChatGPTCoding"]
-    },
-    {
-      "id": "nvidia-dlss-5",
-      "name": "NVIDIA DLSS 5 & 3D Neural Rendering",
-      "category": "Altyapı & SDK",
-      "badge": "RTX 40 Desteği",
-      "hypeScore": 8.9,
-      "prevScore": 8.2,
-      "scoreDelta": 0.7,
-      "trend": "rising",
-      "mentions": 390,
-      "sparkline": [8.0, 8.2, 8.4, 8.5, 8.7, 8.8, 8.9],
-      "primaryFunction": "3D-güdümlü nöral renderleme ve dinamik çoklu kare üretimi (DMFG)",
-      "whyTrending": "Son 12 saatte RTX 40 serisine resmi destek verileceğinin doğrulanması GPU topluluklarında büyük memnuniyet sağladı.",
-      "sources": ["r/nvidia", "r/hardware"]
-    },
-    {
-      "id": "claude-code",
-      "name": "Claude Code",
-      "category": "CLI / Terminal",
-      "badge": "12s Yükselişi",
-      "hypeScore": 8.7,
-      "prevScore": 8.3,
-      "scoreDelta": 0.4,
-      "trend": "rising",
-      "mentions": 310,
-      "sparkline": [8.2, 8.3, 8.4, 8.5, 8.6, 8.6, 8.7],
-      "primaryFunction": "Doğrudan terminalde çalışan, git geçmişini ve tüm repoyu analiz edebilen CLI ajan ortamı",
-      "whyTrending": "Terminal meraklısı geliştiricilerin IDE yerine tamamen terminal içi ajanlara yönelmesiyle son 12 saatte ivme kazandı.",
-      "sources": ["r/commandline", "r/ClaudeAI"]
-    },
-    {
-      "id": "deepseek-r1",
-      "name": "DeepSeek-R1",
-      "category": "Yerel Model",
-      "badge": "Açık İstikrar",
-      "hypeScore": 9.5,
-      "prevScore": 9.4,
-      "scoreDelta": 0.1,
-      "trend": "stable",
-      "mentions": 440,
-      "sparkline": [9.4, 9.4, 9.4, 9.5, 9.5, 9.5, 9.5],
-      "primaryFunction": "Akıl yürütme (reasoning) ve düşük maliyetli yerel LLM çıkarımı",
-      "whyTrending": "Kurumsal özel sunucularda ve yerel donanımlarda en düşük maliyetle çalışan lider model tahtını koruyor.",
-      "sources": ["r/LocalLLaMA", "r/ollama"]
-    },
-    {
-      "id": "vllm",
-      "name": "vLLM 0.7.3",
-      "category": "Altyapı & SDK",
-      "badge": "FP8 Optimizasyonu",
-      "hypeScore": 8.6,
-      "prevScore": 8.1,
-      "scoreDelta": 0.5,
-      "trend": "rising",
-      "mentions": 270,
-      "sparkline": [8.0, 8.1, 8.2, 8.3, 8.4, 8.5, 8.6],
-      "primaryFunction": "PagedAttention mimarisiyle yüksek verimli yerel LLM servis altyapısı",
-      "whyTrending": "Son 12 saatte yayınlanan FP8 MoE güncellemesi sayesinde bellek tüketimini yarıya indirmesi büyük beğeni topladı.",
-      "sources": ["r/LocalLLaMA", "r/MachineLearning"]
-    },
-    {
-      "id": "blender-mcp",
-      "name": "Blender AI + MCP",
-      "category": "Medya / Üretim",
-      "badge": "3D Dünyası",
-      "hypeScore": 8.5,
-      "prevScore": 7.7,
-      "scoreDelta": 0.8,
-      "trend": "skyrocketing",
-      "mentions": 290,
-      "sparkline": [7.6, 7.8, 8.0, 8.1, 8.3, 8.4, 8.5],
-      "primaryFunction": "Model Context Protocol üzerinden Blender ile çift yönlü 3D sahne ve mesh inşası",
-      "whyTrending": "Tek bir doğal dil komutuyla Blender içinde tam donanımlı sahneler oluşturulabildiğini gösteren demolar viral oldu.",
-      "sources": ["r/blender", "r/vibecoding"]
-    },
-    {
-      "id": "n8n-ai",
-      "name": "n8n AI Agent",
-      "category": "Otomasyon",
-      "badge": "İş Akışı Lideri",
-      "hypeScore": 8.4,
-      "prevScore": 8.1,
-      "scoreDelta": 0.3,
-      "trend": "rising",
-      "mentions": 220,
-      "sparkline": [8.0, 8.1, 8.1, 8.2, 8.3, 8.3, 8.4],
-      "primaryFunction": "Kendi sunucunuzda çalışan, görsel API ve çoklu ajan iş akışı motoru",
-      "whyTrending": "Ticari platformlara kıyasla sınırsız çalıştırma hakkı sunması şirket içi otomasyon ekiplerinde birinci tercih yaptı.",
-      "sources": ["r/selfhosted", "r/automation"]
-    },
-    {
-      "id": "whisper-v4",
-      "name": "Whisper Large V4",
-      "category": "Medya / Üretim",
-      "badge": "Ses Standardı",
-      "hypeScore": 8.3,
-      "prevScore": 8.1,
-      "scoreDelta": 0.2,
-      "trend": "stable",
-      "mentions": 190,
-      "sparkline": [8.1, 8.1, 8.2, 8.2, 8.2, 8.3, 8.3],
-      "primaryFunction": "Gerçek zamanlı çok dilli konuşma tanıma ve yerel ses işleme motoru",
-      "whyTrending": "Son 12 saatte toplantı kayıt asistanlarında açık kaynak standart olarak kabul görmeye devam etti.",
-      "sources": ["r/LocalLLaMA", "r/MachineLearning"]
-    }
-  ],
-  "daily": [
-    {
-      "id": "gpt-6-astra",
-      "name": "GPT-6 Astra",
-      "category": "LLM (Model)",
-      "badge": "Günün Lideri",
-      "hypeScore": 9.9,
-      "prevScore": 9.2,
-      "scoreDelta": 0.7,
-      "trend": "skyrocketing",
-      "mentions": 1420,
+      "mentions": 780,
       "sparkline": [
-        8.5,
+        7.8,
+        8.1,
+        8.4,
         8.8,
-        9,
-        9.2,
-        9.5,
-        9.8,
-        9.9
+        9.1,
+        9.4,
+        9.6
       ],
-      "primaryFunction": "Uç seviye akıl yürütme, LEAN tabanlı matematik ispatı ve çoklu ajanlı otonom simülasyon üretimi",
-      "whyTrending": "FrontierMath Erdős benchmark'ında %3 skor alan tek model olması ve ARC-AGI-3 testlerinde AGI seviyesi eşiklerini zorlamasıyla geliştirici dünyasında şok etkisi yarattı.",
+      "primaryFunction": "Rust tabanlı CPU-only LLM çıkarım motoru",
+      "whyTrending": "DDR bellek bant genişliğini avantaja çevirerek uzun bağlamlı çıkarımda GPU'ları geride bırakan Rust motoru Beta sürümünü duyurdu.",
       "sources": [
-        "r/singularity",
-        "r/OpenAI",
-        "r/ArtificialInteligence"
+        "r/LocalLLaMA",
+        "r/OpenSourceAI"
       ]
     },
     {
       "id": "fable-5-1",
-      "name": "Anthropic Fable 5.1",
+      "name": "Fable 5.1",
       "category": "LLM (Model)",
-      "badge": "Yüksek Performans / Kota Tartışması",
-      "hypeScore": 9.4,
-      "prevScore": 9.6,
-      "scoreDelta": -0.2,
-      "trend": "stable",
-      "mentions": 980,
+      "badge": "Viral Çok Modlu",
+      "hypeScore": 9.7,
+      "prevScore": 8.9,
+      "scoreDelta": 0.8,
+      "trend": "skyrocketing",
+      "mentions": 920,
       "sparkline": [
-        9.6,
-        9.6,
+        8.2,
+        8.5,
+        8.8,
+        9,
+        9.3,
         9.5,
+        9.7
+      ],
+      "primaryFunction": "Çok modlu mantık ve araç yürütme modeli",
+      "whyTrending": "Blender MCP ve yerel görsel AI entegrasyonuyla tek promptta karmaşık 3D sahne inşa edebilmesi toplulukta infial yarattı.",
+      "sources": [
+        "r/ClaudeAI",
+        "r/vibecoding"
+      ]
+    },
+    {
+      "id": "cursor-degradation",
+      "name": "Cursor",
+      "category": "IDE / Editör",
+      "badge": "Servis Krizi",
+      "hypeScore": 8.7,
+      "prevScore": 9.3,
+      "scoreDelta": -0.6,
+      "trend": "cooling",
+      "mentions": 1150,
+      "sparkline": [
         9.5,
         9.4,
+        9.3,
+        9.1,
+        8.9,
+        8.8,
+        8.7
+      ],
+      "primaryFunction": "AI tabanlı kodlama editörü",
+      "whyTrending": "Küresel ölçekte 'High Load' hataları ve aşırı yavaşlama bildirimleriyle geliştiricilerin CLI alternatiflerine yönelmesine yol açtı.",
+      "sources": [
+        "r/CursorAI",
+        "r/vibecoding"
+      ]
+    },
+    {
+      "id": "minimax-h3-vdn",
+      "name": "VDN-Minimax-H3",
+      "category": "Medya / Üretim",
+      "badge": "Ultra Hızlı Video",
+      "hypeScore": 9.5,
+      "prevScore": 8.8,
+      "scoreDelta": 0.7,
+      "trend": "skyrocketing",
+      "mentions": 640,
+      "sparkline": [
+        8.1,
+        8.3,
+        8.7,
+        9,
+        9.2,
         9.4,
+        9.5
+      ],
+      "primaryFunction": "Hibrit dikkat mekanizmalı açık video üretim mimarisi",
+      "whyTrending": "B200 GPU üzerinde oynatma süresinden daha hızlı (11.2 saniyede 14.4s video) çıkarım sağlayan hibrit dikkat LoRA adaptörleri yayınlandı.",
+      "sources": [
+        "r/StableDiffusion",
+        "r/comfyui"
+      ]
+    },
+    {
+      "id": "nvidia-huggingface",
+      "name": "NVIDIA / Hugging Face Ortaklığı",
+      "category": "Şirket / Lab",
+      "badge": "12.9B$ Tartışması",
+      "hypeScore": 9.4,
+      "prevScore": 8.7,
+      "scoreDelta": 0.7,
+      "trend": "rising",
+      "mentions": 1420,
+      "sparkline": [
+        8,
+        8.3,
+        8.6,
+        8.9,
+        9.1,
+        9.3,
         9.4
       ],
-      "primaryFunction": "Karmaşık Vibe Coding projelerini, 3D modelleme/MCP pipeline'larını tek promptta (one-shot) inşa etme",
-      "whyTrending": "Blender MCP ve müzik backend'lerini tek seferde sıfırdan kurabilmesi övülürken, haftalık kullanım limitlerini dakikalar içinde tüketmesi yoğun tepki topluyor.",
+      "primaryFunction": "Donanım ekosistemi ve açık model merkezi konsolidasyonu",
+      "whyTrending": "Unicode U+1F917 göndermeli 12.93 milyar dolarlık hisse/yatırım hamlesi açık kaynak bağımsızlığı tartışmalarını alevlendirdi.",
       "sources": [
-        "r/vibecoding",
+        "r/LocalLLaMA",
+        "r/ollama"
+      ]
+    },
+    {
+      "id": "claude-usage-reset",
+      "name": "Claude 3.7 Sonnet Rate Limits",
+      "category": "LLM (Model)",
+      "badge": "Kapasite Rahatlaması",
+      "hypeScore": 9.8,
+      "prevScore": 9.5,
+      "scoreDelta": 0.3,
+      "trend": "rising",
+      "mentions": 880,
+      "sparkline": [
+        9.1,
+        9.2,
+        9.4,
+        9.5,
+        9.6,
+        9.7,
+        9.8
+      ],
+      "primaryFunction": "Gelişmiş akıl yürütme ve kodlama modeli",
+      "whyTrending": "Anthropic'in kullanım limitlerini sıfırlaması ve güvenlik araştırmaları itirafları eşliğinde geliştirici ilgisi tavan yaptı.",
+      "sources": [
         "r/ClaudeAI",
         "r/ClaudeDev"
       ]
     },
     {
-      "id": "amd-threadripper-halo",
-      "name": "AMD Threadripper Halo Station (MI350P)",
-      "category": "Şirket / Lab",
-      "badge": "Donanım Canavarı",
-      "hypeScore": 9.1,
-      "prevScore": 8.1,
-      "scoreDelta": 1,
-      "trend": "skyrocketing",
-      "mentions": 650,
-      "sparkline": [
-        7.5,
-        7.8,
-        8,
-        8.3,
-        8.6,
-        8.9,
-        9.1
-      ],
-      "primaryFunction": "96 çekirdek CPU, 576GB GPU belleği ve 2TB sistem belleği ile ultra büyük model yerel çıkarımı ve fine-tuning",
-      "whyTrending": "İş istasyonu seviyesinde benzeri görülmemiş VRAM havuzu sunarak büyük yerel LLM'leri kurumsal veri merkezine bağımsız çalıştırma imkanı doğurdu.",
-      "sources": [
-        "r/hardware",
-        "r/AMD_Stock"
-      ]
-    },
-    {
-      "id": "cursor-ai",
-      "name": "Cursor AI",
-      "category": "IDE / Editör",
-      "badge": "Altyapı Kesintisi",
-      "hypeScore": 8.7,
-      "prevScore": 9.3,
-      "scoreDelta": -0.6,
-      "trend": "cooling",
-      "mentions": 720,
-      "sparkline": [
-        9.4,
-        9.3,
-        9.2,
-        9,
-        8.9,
-        8.8,
-        8.7
-      ],
-      "primaryFunction": "AI destekli akıllı kod düzenleme, çoklu dosya bağlamı yönetimi ve otonom kod tamamlama",
-      "whyTrending": "Son model güncellemeleri ve kullanıcı akını sonrası 'High Load' hatalarıyla global çapta servis bozulmaları yaşadı.",
-      "sources": [
-        "r/CursorAI",
-        "r/ChatGPTCoding"
-      ]
-    },
-    {
-      "id": "nvidia-dlss-5",
-      "name": "NVIDIA DLSS 5 & 3D Neural Rendering",
-      "category": "Altyapı & SDK",
-      "badge": "Genişleyen Uyumluluk",
-      "hypeScore": 8.8,
-      "prevScore": 8.2,
-      "scoreDelta": 0.6,
+      "id": "viggle-animate-minimax",
+      "name": "Viggle-Animate (MiniMax-H3)",
+      "category": "Medya / Üretim",
+      "badge": "3-Pass Distill",
+      "hypeScore": 9.3,
+      "prevScore": 8.6,
+      "scoreDelta": 0.7,
       "trend": "rising",
-      "mentions": 580,
-      "sparkline": [
-        7.8,
-        8,
-        8.1,
-        8.3,
-        8.5,
-        8.7,
-        8.8
-      ],
-      "primaryFunction": "3D-güdümlü nöral renderleme ve dinamik çoklu kare üretimi (DMFG)",
-      "whyTrending": "RTX 50 serisinin ardından resmi olarak RTX 40 serisine de açılacağının duyurulması donanım topluluklarında coşku yarattı.",
-      "sources": [
-        "r/nvidia",
-        "r/hardware"
-      ]
-    },
-    {
-      "id": "claude-code",
-      "name": "Claude Code",
-      "category": "CLI / Terminal",
-      "badge": "Geliştirici Odaklı",
-      "hypeScore": 8.6,
-      "prevScore": 8.3,
-      "scoreDelta": 0.3,
-      "trend": "rising",
-      "mentions": 490,
+      "mentions": 530,
       "sparkline": [
         7.9,
-        8.1,
         8.2,
-        8.3,
-        8.4,
         8.5,
-        8.6
-      ],
-      "primaryFunction": "Terminal tabanlı kod deposu analizi, test yürütme ve otomatik refactoring",
-      "whyTrending": "Büyük kod tabanlarındaki eski test verileri ve dokümantasyon çöplüğünden etkilenmeden çalışabilme teknikleri geliştiricilerce tartışılıyor.",
-      "sources": [
-        "r/ClaudeDev",
-        "r/ChatGPTCoding"
-      ]
-    },
-    {
-      "id": "deepseek-v3-r1",
-      "name": "DeepSeek (Fiyatlandırma & Ollama)",
-      "category": "Yerel Model",
-      "badge": "Maliyet Tartışması",
-      "hypeScore": 8.2,
-      "prevScore": 8.6,
-      "scoreDelta": -0.4,
-      "trend": "cooling",
-      "mentions": 430,
-      "sparkline": [
         8.8,
-        8.7,
-        8.5,
-        8.4,
-        8.3,
-        8.3,
-        8.2
+        9,
+        9.2,
+        9.3
       ],
-      "primaryFunction": "Düşük maliyetli akıl yürütme, yerel/özel sunucu dağıtımları ve kod asistanlığı",
-      "whyTrending": "API fiyat artışına rağmen 'DeepSeek + Ollama PRO' legacy paketini kullanan yerel model savunucuları bütçe avantajını korumaya çalışıyor.",
+      "primaryFunction": "33.1B distile karakter animasyon modeli",
+      "whyTrending": "Yalnızca 3 ileri geçiş adımıyla, maske veya poz zorunluluğu olmadan tek boyalı kare üzerinden video karakter değişimi sağladı.",
       "sources": [
-        "r/DeepSeek",
-        "r/singularity"
+        "r/StableDiffusion",
+        "Hugging Face"
       ]
     },
     {
-      "id": "microsoft-copilot",
-      "name": "Microsoft Copilot",
-      "category": "IDE / Editör",
+      "id": "copilot-office-regression",
+      "name": "Microsoft 365 Copilot",
+      "category": "LLM (Model)",
       "badge": "Kullanıcı Tepkisi",
       "hypeScore": 7.1,
-      "prevScore": 7.8,
-      "scoreDelta": -0.7,
+      "prevScore": 7.9,
+      "scoreDelta": -0.8,
       "trend": "cooling",
-      "mentions": 390,
+      "mentions": 610,
       "sparkline": [
+        8.2,
         8,
         7.8,
         7.6,
         7.4,
-        7.3,
         7.2,
         7.1
       ],
-      "primaryFunction": "Ofis uygulamaları ve kodlama ekosisteminde kurumsal AI asistanlığı",
-      "whyTrending": "Word/Outlook son güncellemesinde geçmiş sohbetlerin kaybolması, yavaşlama ve eğitim veri paylaşımını kapatma opsiyonunun kaldırılması tepki çekti.",
+      "primaryFunction": "Ofis yazılımları için üretken AI asistanı",
+      "whyTrending": "Word/Outlook son güncellemesinde Autorewrite fonksiyonunun kenar çubuğuna zorlanması ve aşırı yavaşlaması tepki çekti.",
       "sources": [
         "r/Copilot"
       ]
     },
     {
-      "id": "devin-windsurf",
-      "name": "Devin / Windsurf Pro",
-      "category": "Otonom Agent",
-      "badge": "Maliyet-Fayda Dengesi",
-      "hypeScore": 7.9,
-      "prevScore": 7.7,
-      "scoreDelta": 0.2,
-      "trend": "stable",
-      "mentions": 310,
+      "id": "dlss-5-comfyui",
+      "name": "NVIDIA DLSS Frame Interpolation Node",
+      "category": "Medya / Üretim",
+      "badge": "Yeni Comfy Node",
+      "hypeScore": 9.1,
+      "prevScore": 8.4,
+      "scoreDelta": 0.7,
+      "trend": "rising",
+      "mentions": 490,
       "sparkline": [
-        7.4,
-        7.5,
-        7.6,
-        7.7,
-        7.7,
         7.8,
-        7.9
+        8.1,
+        8.3,
+        8.6,
+        8.8,
+        9,
+        9.1
       ],
-      "primaryFunction": "Arka planda otonom test yapma, tarayıcı sandbox'ı açma ve tam kapsamlı geliştirme",
-      "whyTrending": "20 dolarlık planın otonom düşünce zincirleri ve test döngüleri yüzünden birkaç görevde hızla tükenmesi sorgulanıyor.",
+      "primaryFunction": "ComfyUI için yerel DLSS video/görsel yükseltme düğümü",
+      "whyTrending": "Yerel ComfyUI iş akışlarında doğrudan DLSS 5 kare enterpolasyonu ve çözünürlük yükseltme düğümlerinin duyurulması.",
       "sources": [
-        "r/windsurf",
-        "r/ChatGPTCoding"
+        "r/StableDiffusion",
+        "r/comfyui"
       ]
     },
     {
-      "id": "model-context-protocol",
-      "name": "Model Context Protocol (MCP)",
+      "id": "netbird-draft-mode",
+      "name": "NetBird 0.78",
       "category": "Altyapı & SDK",
-      "badge": "Protokol Standardı",
+      "badge": "Ağ Otomasyonu",
       "hypeScore": 8.9,
-      "prevScore": 8.4,
-      "scoreDelta": 0.5,
+      "prevScore": 8.2,
+      "scoreDelta": 0.7,
       "trend": "rising",
-      "mentions": 460,
+      "mentions": 340,
       "sparkline": [
-        8,
-        8.2,
-        8.3,
-        8.5,
+        7.6,
+        7.9,
+        8.1,
+        8.4,
         8.6,
         8.8,
         8.9
       ],
-      "primaryFunction": "LLM'lerin yerel araçlar, 3D motorlar ve veri tabanlarıyla çift yönlü standart protokol üzerinden haberleşmesi",
-      "whyTrending": "Blender ve Unreal Engine eklentileriyle birleştiğinde tasarım dünyasında tek komutla 3D dünya oluşturma yeteneği sağladı.",
+      "primaryFunction": "Zero Trust WireGuard tabanlı özel ağ platformu",
+      "whyTrending": "Control Center için Draft Mode desteği ile ağ topolojisi ve erişim kurallarının görsel tuval üzerinden canlıya alınabilmesi.",
+      "sources": [
+        "r/selfhosted",
+        "r/OpenSourceAI"
+      ]
+    }
+  ],
+  "daily": [
+    {
+      "id": "claude-3-7-sonnet",
+      "name": "Claude 3.7 Sonnet",
+      "category": "LLM (Model)",
+      "badge": "Günün Lideri",
+      "hypeScore": 9.8,
+      "prevScore": 9.7,
+      "scoreDelta": 0.1,
+      "trend": "skyrocketing",
+      "mentions": 2850,
+      "sparkline": [
+        9.3,
+        9.4,
+        9.5,
+        9.6,
+        9.7,
+        9.7,
+        9.8
+      ],
+      "primaryFunction": "Karmaşık kod mimarisi, mantık ve uzun bağlam yürütme",
+      "whyTrending": "Yazılım mühendisliğinde hem düşünme süresi hem kod doğruluğu ile tartışmasız altın standart olarak liderliğini koruyor.",
       "sources": [
         "r/ClaudeAI",
         "r/vibecoding"
       ]
     },
     {
-      "id": "blacksmith-sh",
-      "name": "Blacksmith.sh",
-      "category": "Altyapı & SDK",
-      "badge": "Maliyet Sürprizi",
-      "hypeScore": 6.8,
-      "prevScore": 6.5,
-      "scoreDelta": 0.3,
-      "trend": "stable",
-      "mentions": 180,
-      "sparkline": [
-        6.2,
-        6.3,
-        6.4,
-        6.5,
-        6.6,
-        6.7,
-        6.8
-      ],
-      "primaryFunction": "Yüksek performanslı ve hızlı GitHub Actions çalıştırma altyapısı",
-      "whyTrending": "Aşırı hızlı CI/CD derleme sürelerine rağmen kullanıcıların beklenmedik kota aşımları ve fatura şokları yaşaması DevOps gruplarında tartışılıyor.",
-      "sources": [
-        "r/devops"
-      ]
-    }
-  ],
-  "weekly": [
-    {
-      "id": "gpt-6-astra",
-      "name": "GPT-6 Astra",
-      "category": "LLM (Model)",
-      "badge": "Haftanın Zirvesi",
-      "hypeScore": 9.8,
-      "prevScore": 8.9,
-      "scoreDelta": 0.9,
+      "id": "unsloth-qwen-3-8",
+      "name": "Unsloth Qwen 3.8 27B GGUF",
+      "category": "Yerel Model",
+      "badge": "10M İndirme Eşiği",
+      "hypeScore": 9.7,
+      "prevScore": 9.3,
+      "scoreDelta": 0.4,
       "trend": "skyrocketing",
-      "mentions": 4850,
+      "mentions": 2100,
       "sparkline": [
-        8.4,
-        8.6,
         8.9,
         9.1,
+        9.2,
         9.4,
+        9.5,
         9.6,
-        9.8
+        9.7
       ],
-      "primaryFunction": "Frontier akıl yürütme ve LEAN matematik doğrulama",
-      "whyTrending": "Geniş kitlelere Pro hesaplar üzerinden dağıtılması ve çoklu ajanlı Unreal simülasyonları ile viral hale gelmesi.",
+      "primaryFunction": "Optimize edilmiş yerel çok modlu çıkarım",
+      "whyTrending": "Hugging Face'te 9.95 milyon indirmeye ulaşarak yerel model dağıtımlarında endüstriyel standart haline geldi.",
       "sources": [
-        "r/singularity",
-        "r/OpenAI"
+        "Hugging Face",
+        "r/LocalLLaMA"
       ]
     },
     {
-      "id": "fable-5-1",
-      "name": "Anthropic Fable 5.1",
-      "category": "LLM (Model)",
-      "badge": "Vibe Coding Gücü",
-      "hypeScore": 9.5,
-      "prevScore": 9.3,
-      "scoreDelta": 0.2,
-      "trend": "stable",
-      "mentions": 3900,
+      "id": "minimax-h3",
+      "name": "MiniMax-H3",
+      "category": "Yerel Model",
+      "badge": "Açık Video Standardı",
+      "hypeScore": 9.6,
+      "prevScore": 9.2,
+      "scoreDelta": 0.4,
+      "trend": "skyrocketing",
+      "mentions": 1840,
       "sparkline": [
-        9,
+        8.7,
+        8.9,
         9.1,
         9.3,
         9.4,
         9.5,
-        9.5,
-        9.5
+        9.6
       ],
-      "primaryFunction": "Eksiksiz full-stack web ve interaktif araç üretimi",
-      "whyTrending": "Tek hamlede sıfırdan prodüksiyon seviyesinde çalışan beat maker ve SaaS prototipleri üretebilmesi.",
+      "primaryFunction": "Açık ağırlıklı yüksek çözünürlüklü video üretimi",
+      "whyTrending": "5.1 milyon indirme ve REF2VA/FL2VA teknikleriyle fotogerçekçi sinematik video üretiminin merkez üssü haline geldi.",
       "sources": [
-        "r/vibecoding",
-        "r/ClaudeAI"
-      ]
-    },
-    {
-      "id": "amd-threadripper-halo",
-      "name": "AMD Threadripper Halo (MI350P)",
-      "category": "Şirket / Lab",
-      "badge": "Donanım Devrimi",
-      "hypeScore": 9,
-      "prevScore": 7.9,
-      "scoreDelta": 1.1,
-      "trend": "skyrocketing",
-      "mentions": 2100,
-      "sparkline": [
-        7.2,
-        7.5,
-        7.9,
-        8.2,
-        8.5,
-        8.8,
-        9
-      ],
-      "primaryFunction": "576GB GPU VRAM ile yerel kurumsal model barındırma",
-      "whyTrending": "NVIDIA'nın sunucu tekeline karşı kurumsal AI iş istasyonlarında dev bellek avantajı getirmesi.",
-      "sources": [
-        "r/hardware",
-        "r/AMD_Stock"
-      ]
-    },
-    {
-      "id": "nvidia-dlss-5",
-      "name": "NVIDIA RTX 50 & DLSS 5",
-      "category": "Şirket / Lab",
-      "badge": "Nöral Renderleme",
-      "hypeScore": 8.9,
-      "prevScore": 8.4,
-      "scoreDelta": 0.5,
-      "trend": "rising",
-      "mentions": 2400,
-      "sparkline": [
-        8.1,
-        8.2,
-        8.4,
-        8.5,
-        8.7,
-        8.8,
-        8.9
-      ],
-      "primaryFunction": "3D-Guided Neural Rendering ve AI destekli kare sentezi",
-      "whyTrending": "RTX 40 kullanıcılarına da sunulacak olmasıyla GPU piyasasındaki değer kaybı endişelerini hafifletti.",
-      "sources": [
-        "r/nvidia",
-        "r/hardware"
-      ]
-    },
-    {
-      "id": "cursor-ai",
-      "name": "Cursor AI",
-      "category": "IDE / Editör",
-      "badge": "Pazar Lideri",
-      "hypeScore": 8.8,
-      "prevScore": 9.4,
-      "scoreDelta": -0.6,
-      "trend": "cooling",
-      "mentions": 3100,
-      "sparkline": [
-        9.5,
-        9.4,
-        9.2,
-        9.1,
-        8.9,
-        8.8,
-        8.8
-      ],
-      "primaryFunction": "Gelişmiş bağlamlı kod düzenleme motoru",
-      "whyTrending": "Geliştiricilerin iş akışının merkezinde yer alması ancak aşırı yük kaynaklı kesintilerin üretkenliği vurması.",
-      "sources": [
-        "r/CursorAI",
-        "r/ChatGPTCoding"
+        "Hugging Face",
+        "r/StableDiffusion"
       ]
     },
     {
       "id": "claude-code",
       "name": "Claude Code",
       "category": "CLI / Terminal",
-      "badge": "CLI Dönüşümü",
-      "hypeScore": 8.7,
-      "prevScore": 8.2,
-      "scoreDelta": 0.5,
-      "trend": "rising",
-      "mentions": 1950,
-      "sparkline": [
-        7.8,
-        8,
-        8.2,
-        8.4,
-        8.5,
-        8.6,
-        8.7
-      ],
-      "primaryFunction": "Terminal içi ajan tabanlı kod refactoring ve mimari yürütme",
-      "whyTrending": "Büyük repository'lerde token harcamasını optimize etme stratejileri etrafında artan topluluk ilgisi.",
-      "sources": [
-        "r/ClaudeDev",
-        "r/vscode"
-      ]
-    },
-    {
-      "id": "deepseek-r1-v3",
-      "name": "DeepSeek R1 / V3",
-      "category": "Yerel Model",
-      "badge": "Açık Ağırlık Şampiyonu",
-      "hypeScore": 8.4,
-      "prevScore": 8.8,
-      "scoreDelta": -0.4,
-      "trend": "cooling",
-      "mentions": 2200,
+      "badge": "Kurumsal CLI Standardı",
+      "hypeScore": 9.6,
+      "prevScore": 9.5,
+      "scoreDelta": 0.1,
+      "trend": "skyrocketing",
+      "mentions": 1620,
       "sparkline": [
         9,
-        8.9,
-        8.8,
-        8.6,
-        8.5,
-        8.4,
-        8.4
+        9.1,
+        9.3,
+        9.4,
+        9.5,
+        9.5,
+        9.6
       ],
-      "primaryFunction": "Uygun maliyetli akıl yürütme ve yerel host edilebilirlik",
-      "whyTrending": "Fiyat artışı sonrası kullanıcıların GPT ve yerel Llama/Ollama alternatifleri arasındaki kıyaslamaları.",
+      "primaryFunction": "Terminal tabanlı otonom repo navigasyonu ve kod üretimi",
+      "whyTrending": "Büyük kurumsal depoları tekilleştirilmiş bağlamla hatasız yönetmesi, GUI editörlerindeki çöküşler sırasında geliştirici sığınağı oldu.",
       "sources": [
-        "r/DeepSeek",
-        "r/MachineLearning"
+        "r/ClaudeDev",
+        "r/vibecoding"
       ]
     },
     {
-      "id": "model-context-protocol",
-      "name": "Model Context Protocol (MCP)",
-      "category": "Altyapı & SDK",
-      "badge": "Ekosistem Standardı",
-      "hypeScore": 8.8,
-      "prevScore": 8.1,
+      "id": "deepseek-v4-vision",
+      "name": "DeepSeek V4 Flash Vision Exp",
+      "category": "Yerel Model",
+      "badge": "Hızlı Görsel LLM",
+      "hypeScore": 9.3,
+      "prevScore": 9.2,
+      "scoreDelta": 0.1,
+      "trend": "rising",
+      "mentions": 1100,
+      "sparkline": [
+        8.8,
+        8.9,
+        9,
+        9.1,
+        9.1,
+        9.2,
+        9.3
+      ],
+      "primaryFunction": "Hafif ve ultra hızlı görsel anlama modeli",
+      "whyTrending": "Düşük VRAM tüketimiyle görsel-metin işleme işlerinde Apple Silicon ve vLLM ortamlarında yaygınlaşıyor.",
+      "sources": [
+        "Hugging Face",
+        "r/LocalLLaMA"
+      ]
+    },
+    {
+      "id": "fable-5-1-daily",
+      "name": "Fable 5.1",
+      "category": "LLM (Model)",
+      "badge": "MCP Uyumluluk Şampiyonu",
+      "hypeScore": 9.7,
+      "prevScore": 9,
       "scoreDelta": 0.7,
       "trend": "skyrocketing",
-      "mentions": 1750,
+      "mentions": 1450,
       "sparkline": [
-        7.7,
-        7.9,
-        8.1,
-        8.3,
-        8.5,
-        8.7,
-        8.8
+        8.6,
+        8.8,
+        9,
+        9.2,
+        9.4,
+        9.6,
+        9.7
       ],
-      "primaryFunction": "Yerel araçlar, veritabanları ve 3D motorlar için evrensel AI arayüzü",
-      "whyTrending": "Anthropic öncülüğünde başlayan standardın Blender ve kurumsal veri tabanlarına hızla entegre olması.",
+      "primaryFunction": "Çoklu araç ve MCP orkestrasyonu",
+      "whyTrending": "Blender, yerel görsel modeller ve API entegrasyonlarında sıfır hata ile tek promptta çalışan 3D projeler üretmesiyle zirvede.",
       "sources": [
         "r/ClaudeAI",
         "r/vibecoding"
       ]
     },
     {
-      "id": "lean-formal-systems",
-      "name": "LEAN Proof Assistant + AI",
-      "category": "Altyapı & SDK",
-      "badge": "Akademik Çığır",
-      "hypeScore": 8.5,
-      "prevScore": 7.6,
-      "scoreDelta": 0.9,
-      "trend": "skyrocketing",
-      "mentions": 1300,
+      "id": "ltx-2-5",
+      "name": "Lightricks LTX-2.5",
+      "category": "Medya / Üretim",
+      "badge": "Hızlı İğneleme",
+      "hypeScore": 9.2,
+      "prevScore": 8.9,
+      "scoreDelta": 0.3,
+      "trend": "rising",
+      "mentions": 980,
       "sparkline": [
-        7,
-        7.3,
-        7.6,
-        7.9,
-        8.1,
-        8.3,
-        8.5
-      ],
-      "primaryFunction": "Matematiksel ispatların AI tarafından formüle edilip derleyici ile %100 doğrulanması",
-      "whyTrending": "Astra ve Anthropic modellerinin yüzlerce sayfalık matematiksel ispatları hatasız doğrulayabilmesi.",
-      "sources": [
-        "r/singularity",
-        "r/MachineLearning"
-      ]
-    },
-    {
-      "id": "devin-windsurf",
-      "name": "Devin / Windsurf",
-      "category": "IDE / Editör",
-      "badge": "Otonom Ajan Editörü",
-      "hypeScore": 8,
-      "prevScore": 8,
-      "scoreDelta": 0,
-      "trend": "stable",
-      "mentions": 1400,
-      "sparkline": [
-        8,
-        8,
-        8,
-        8,
-        8,
-        8,
-        8
-      ],
-      "primaryFunction": "Hızlı diff'ler ve otonom hata ayıklama yetenekleri",
-      "whyTrending": "Ön yüz geliştiricilerinin manuel doğrulama ile otonom döngü harcamaları arasındaki maliyet dengesi arayışı.",
-      "sources": [
-        "r/windsurf",
-        "r/ChatGPTCoding"
-      ]
-    }
-  ],
-  "monthly": [
-    {
-      "id": "openai-gpt-series",
-      "name": "OpenAI Ecosystem (GPT-6 / Astra)",
-      "category": "Şirket / Lab",
-      "badge": "Aylık Pazar Lideri",
-      "hypeScore": 9.7,
-      "prevScore": 9.1,
-      "scoreDelta": 0.6,
-      "trend": "skyrocketing",
-      "mentions": 18500,
-      "sparkline": [
+        8.5,
+        8.7,
         8.8,
         8.9,
-        9.1,
-        9.3,
-        9.5,
-        9.6,
-        9.7
-      ],
-      "primaryFunction": "Frontier AI modelleri, AGI araştırmaları ve akıl yürütme sistemleri",
-      "whyTrending": "Astra mimarisiyle matematik ve çoklu ajan alanında liderliği tekrar ele geçirmesi.",
-      "sources": [
-        "r/OpenAI",
-        "r/singularity"
-      ]
-    },
-    {
-      "id": "anthropic-claude",
-      "name": "Anthropic (Claude / Fable / MCP)",
-      "category": "Şirket / Lab",
-      "badge": "Geliştirici Favorisi",
-      "hypeScore": 9.5,
-      "prevScore": 9.4,
-      "scoreDelta": 0.1,
-      "trend": "stable",
-      "mentions": 16200,
-      "sparkline": [
-        9.2,
-        9.3,
-        9.4,
-        9.4,
-        9.5,
-        9.5,
-        9.5
-      ],
-      "primaryFunction": "MCP standardı, kodlama modelleri ve güvenli AI hizalama sistemleri",
-      "whyTrending": "Vibe coding alanındaki ezici hakimiyeti ve MCP protokolü ile araç kullanımında kurduğu standart.",
-      "sources": [
-        "r/ClaudeAI",
-        "r/ClaudeDev"
-      ]
-    },
-    {
-      "id": "nvidia",
-      "name": "NVIDIA",
-      "category": "Şirket / Lab",
-      "badge": "Donanım & Render Devi",
-      "hypeScore": 9.3,
-      "prevScore": 9.5,
-      "scoreDelta": -0.2,
-      "trend": "stable",
-      "mentions": 14100,
-      "sparkline": [
-        9.6,
-        9.5,
-        9.5,
-        9.4,
-        9.4,
-        9.3,
-        9.3
-      ],
-      "primaryFunction": "Blackwell/Ada GPU mimarileri, CUDA ekosistemi ve DLSS nöral teknolojileri",
-      "whyTrending": "DLSS 5'in RTX 40 serisine genişletilmesi ve kurumsal AI veri merkezi pazarındaki tartışmasız dominasyonu.",
-      "sources": [
-        "r/nvidia",
-        "r/hardware"
-      ]
-    },
-    {
-      "id": "cursor-anysphere",
-      "name": "Cursor (Anysphere)",
-      "category": "IDE / Editör",
-      "badge": "Yazılım Devrimi",
-      "hypeScore": 9,
-      "prevScore": 9.2,
-      "scoreDelta": -0.2,
-      "trend": "stable",
-      "mentions": 11800,
-      "sparkline": [
-        9.3,
-        9.3,
-        9.2,
-        9.1,
-        9.1,
         9,
+        9.1,
+        9.2
+      ],
+      "primaryFunction": "Açık ağırlıklı Image-to-Video üretimi",
+      "whyTrending": "Hugging Face'te 1.4 milyon indirmeyi geçerek gerçek zamanlı video üretim pipeline'larında standart hale geldi.",
+      "sources": [
+        "Hugging Face",
+        "r/comfyui"
+      ]
+    },
+    {
+      "id": "cursor-daily",
+      "name": "Cursor",
+      "category": "IDE / Editör",
+      "badge": "Yüksek Yük Baskısı",
+      "hypeScore": 9,
+      "prevScore": 9.1,
+      "scoreDelta": -0.1,
+      "trend": "cooling",
+      "mentions": 1900,
+      "sparkline": [
+        9.5,
+        9.4,
+        9.3,
+        9.2,
+        9.1,
+        9.1,
         9
       ],
-      "primaryFunction": "Geliştiricilerin ana kodlama ortamı haline gelen akıllı editör",
-      "whyTrending": "Yazılım geliştirme pratiklerini kökten değiştirmesi ancak altyapı ölçekleme sınavı vermesi.",
+      "primaryFunction": "AI destekli IDE ve kod editörü",
+      "whyTrending": "Yüksek yük kaynaklı bağlantı sorunları ve son güncellemelerdeki token tüketim dengesizliği geliştirici eleştirilerine hedef oldu.",
       "sources": [
         "r/CursorAI",
         "r/ChatGPTCoding"
       ]
     },
     {
-      "id": "deepseek-ai",
-      "name": "DeepSeek",
-      "category": "Şirket / Lab",
-      "badge": "Açık Kaynak Öncüsü",
-      "hypeScore": 8.9,
-      "prevScore": 9.6,
-      "scoreDelta": -0.7,
-      "trend": "cooling",
-      "mentions": 12500,
+      "id": "n8n-agentic",
+      "name": "n8n AI Orchestrator",
+      "category": "Otomasyon",
+      "badge": "Kurumsal Ajan Dağıtımı",
+      "hypeScore": 9.3,
+      "prevScore": 9.1,
+      "scoreDelta": 0.2,
+      "trend": "rising",
+      "mentions": 820,
       "sparkline": [
-        9.7,
-        9.6,
-        9.4,
-        9.2,
+        8.7,
+        8.8,
         9,
-        8.9,
-        8.9
+        9.1,
+        9.1,
+        9.2,
+        9.3
       ],
-      "primaryFunction": "Maliyet verimli açık ağırlıklı akıl yürütme mimarileri",
-      "whyTrending": "Global açık kaynak dengesini değiştirmesi, ardından gelen fiyat artışları ve pazar konsolidasyonu.",
+      "primaryFunction": "MCP uyumlu otonom iş akışı orkestrasyonu",
+      "whyTrending": "Kurumsal şirketlerin kapalı devre AI ajanlarını üretim ortamına taşımada en güvenli middleware seçeneği olarak benimsendi.",
       "sources": [
-        "r/DeepSeek",
-        "r/MachineLearning"
+        "r/selfhosted",
+        "r/OpenSourceAI"
       ]
     },
     {
-      "id": "amd-instinct-epyc",
-      "name": "AMD (Instinct & Threadripper)",
+      "id": "nvidia-blackwell",
+      "name": "NVIDIA Blackwell GB200",
       "category": "Şirket / Lab",
-      "badge": "Büyük Bellek Alternatifi",
-      "hypeScore": 8.7,
-      "prevScore": 8,
-      "scoreDelta": 0.7,
-      "trend": "rising",
-      "mentions": 7900,
+      "badge": "Altyapı Tekeli",
+      "hypeScore": 9.6,
+      "prevScore": 9.6,
+      "scoreDelta": 0,
+      "trend": "stable",
+      "mentions": 1300,
       "sparkline": [
-        7.8,
-        7.9,
-        8.1,
+        9.4,
+        9.5,
+        9.5,
+        9.6,
+        9.6,
+        9.6,
+        9.6
+      ],
+      "primaryFunction": "Yeni nesil ultra ölçekli AI donanımı",
+      "whyTrending": "Hugging Face hamlesi ve 8x B200 kümelerinde MiniMax H3 modellerinin gerçek zamanlı çıkarım sunması donanım gücünü tescilledi.",
+      "sources": [
+        "r/LocalLLaMA",
+        "r/StableDiffusion"
+      ]
+    },
+    {
+      "id": "glm-5-3-flash",
+      "name": "GLM-5.3 Flash",
+      "category": "Yerel Model",
+      "badge": "Yüksek Hızlı Multimodal",
+      "hypeScore": 9.1,
+      "prevScore": 8.8,
+      "scoreDelta": 0.3,
+      "trend": "rising",
+      "mentions": 710,
+      "sparkline": [
         8.3,
         8.5,
-        8.6,
-        8.7
+        8.7,
+        8.8,
+        8.9,
+        9,
+        9.1
       ],
-      "primaryFunction": "MI300/MI350 serisi hızlandırıcılar ve devasa VRAM iş istasyonları",
-      "whyTrending": "576GB VRAM sunan donanım paketleriyle NVIDIA'nın bellek kısıtlamalarına doğrudan meydan okuması.",
+      "primaryFunction": "Metin ve görsel işleme kabiliyetine sahip açık model",
+      "whyTrending": "650 bin indirmeye hızla ulaşarak düşük kaynaklı GPU ortamlarında hafif çok modlu görevlerin gözdesi oldu.",
       "sources": [
-        "r/AMD_Stock",
-        "r/hardware"
+        "Hugging Face",
+        "r/LocalLLaMA"
       ]
     },
     {
-      "id": "mcp-protocol",
-      "name": "Model Context Protocol Ecosystem",
-      "category": "Altyapı & SDK",
-      "badge": "Açık Standart",
-      "hypeScore": 8.8,
-      "prevScore": 7.8,
-      "scoreDelta": 1,
-      "trend": "skyrocketing",
-      "mentions": 6200,
+      "id": "gemini-3-8-flash",
+      "name": "Gemini 3.8 Flash",
+      "category": "LLM (Model)",
+      "badge": "Soğuma Dönemi",
+      "hypeScore": 7.3,
+      "prevScore": 7.5,
+      "scoreDelta": -0.2,
+      "trend": "cooling",
+      "mentions": 890,
       "sparkline": [
-        7.4,
-        7.7,
+        8.8,
+        8.4,
         8,
-        8.2,
-        8.5,
-        8.7,
-        8.8
+        7.8,
+        7.6,
+        7.4,
+        7.3
       ],
-      "primaryFunction": "Uygulama ve ajan entegrasyonu için endüstri standardı haberleşme katmanı",
-      "whyTrending": "Geliştiricilerin yerel araçlarını, veri tabanlarını ve IDE'lerini bağladığı fiili omurga haline gelmesi.",
+      "primaryFunction": "Düşük gecikmeli büyük bağlamlı bulut LLM",
+      "whyTrending": "Yoğun yük altındaki 503 hataları ve geliştiricilerin daha tutarlı açık ağırlıklı yerel modellere yönelmesi düşüşü sürdürüyor.",
+      "sources": [
+        "r/ChatGPTCoding",
+        "r/ClaudeAI"
+      ]
+    }
+  ],
+  "weekly": [
+    {
+      "id": "claude-3-7-sonnet",
+      "name": "Claude 3.7 Sonnet / Reasoning",
+      "category": "LLM (Model)",
+      "badge": "Haftanın Şampiyonu",
+      "hypeScore": 9.8,
+      "prevScore": 9.5,
+      "scoreDelta": 0.3,
+      "trend": "skyrocketing",
+      "mentions": 18400,
+      "sparkline": [
+        9.5,
+        9.5,
+        9.6,
+        9.6,
+        9.7,
+        9.7,
+        9.8
+      ],
+      "primaryFunction": "Hibrit hibrit akıl yürütme ve tam yığın kod üretimi",
+      "whyTrending": "Hafta boyunca kodlama benchmarklarında zirveyi kimseye bırakmayarak sektörün fiili standardı haline geldi.",
       "sources": [
         "r/ClaudeAI",
         "r/vibecoding"
       ]
+    },
+    {
+      "id": "fable-5-1",
+      "name": "Fable 5.1",
+      "category": "LLM (Model)",
+      "badge": "Haftalık Sıçrama (+1.0)",
+      "hypeScore": 9.7,
+      "prevScore": 8.7,
+      "scoreDelta": 1,
+      "trend": "skyrocketing",
+      "mentions": 9200,
+      "sparkline": [
+        8.7,
+        8.8,
+        8.9,
+        9.1,
+        9.3,
+        9.5,
+        9.7
+      ],
+      "primaryFunction": "Gelişmiş araç kullanımı ve otonom MCP entegrasyonu",
+      "whyTrending": "Blender MCP ve sıfırdan çalışan multimedya uygulamaları üretme kabiliyetiyle 7 günde en yüksek ivmeyi yakaladı.",
+      "sources": [
+        "r/ClaudeAI",
+        "r/vibecoding"
+      ]
+    },
+    {
+      "id": "nvidia-blackwell-gb200",
+      "name": "NVIDIA Blackwell / GB200",
+      "category": "Şirket / Lab",
+      "badge": "Kurumsal Donanım",
+      "hypeScore": 9.6,
+      "prevScore": 9.4,
+      "scoreDelta": 0.2,
+      "trend": "rising",
+      "mentions": 11300,
+      "sparkline": [
+        9.4,
+        9.3,
+        9.2,
+        9.3,
+        9.4,
+        9.5,
+        9.6
+      ],
+      "primaryFunction": "Yeni nesil tensor hesaplama ve ultra ölçekli LLM kümeleri",
+      "whyTrending": "Teslimat sancılarını aşarak büyük dil modeli fabrikalarının ana omurgası olduğunu kanıtladı.",
+      "sources": [
+        "r/LocalLLaMA",
+        "Hugging Face"
+      ]
+    },
+    {
+      "id": "claude-code",
+      "name": "Claude Code CLI",
+      "category": "CLI / Terminal",
+      "badge": "Geliştirici Standardı (+0.4)",
+      "hypeScore": 9.5,
+      "prevScore": 9.1,
+      "scoreDelta": 0.4,
+      "trend": "rising",
+      "mentions": 10500,
+      "sparkline": [
+        9.1,
+        9.2,
+        9.2,
+        9.3,
+        9.4,
+        9.5,
+        9.5
+      ],
+      "primaryFunction": "Repo hijyeni ve terminal tabanlı akıllı kod asistanı",
+      "whyTrending": "Hafta boyunca geniş kod depolarında sağladığı yüksek repo kavrayışı ile kurumsal ekiplerin birincil CLI tercihi oldu.",
+      "sources": [
+        "r/ClaudeDev",
+        "r/vibecoding"
+      ]
+    },
+    {
+      "id": "n8n-agentic",
+      "name": "n8n AI Orchestrator",
+      "category": "Otomasyon",
+      "badge": "Kurumsal Benimseme (+0.7)",
+      "hypeScore": 9.3,
+      "prevScore": 8.6,
+      "scoreDelta": 0.7,
+      "trend": "rising",
+      "mentions": 6400,
+      "sparkline": [
+        8.6,
+        8.7,
+        8.8,
+        8.9,
+        9.1,
+        9.2,
+        9.3
+      ],
+      "primaryFunction": "Kendi kendine barındırılan MCP uyumlu iş akışı motoru",
+      "whyTrending": "Sessiz hata önleme mekanizması ve MCP standart entegrasyonu sayesinde kurumsal otomasyonun ana omurgası oldu.",
+      "sources": [
+        "r/selfhosted",
+        "r/OpenSourceAI"
+      ]
+    },
+    {
+      "id": "deepseek-v4-vision",
+      "name": "DeepSeek V4 Flash Vision",
+      "category": "Yerel Model",
+      "badge": "İstikrarlı Yerel (+0.2)",
+      "hypeScore": 9.2,
+      "prevScore": 9,
+      "scoreDelta": 0.2,
+      "trend": "stable",
+      "mentions": 7900,
+      "sparkline": [
+        9,
+        9,
+        9.1,
+        9.1,
+        9.1,
+        9.2,
+        9.2
+      ],
+      "primaryFunction": "Hafif ve verimli yerel çok modlu çıkarım",
+      "whyTrending": "Mac Studio ve yerel sunucularda düşük maliyetli görsel işleme için 7 gündür en güvenilir tercih olmayı sürdürüyor.",
+      "sources": [
+        "Hugging Face",
+        "r/LocalLLaMA"
+      ]
+    },
+    {
+      "id": "cursor",
+      "name": "Cursor",
+      "category": "IDE / Editör",
+      "badge": "Haftalık Düşüş (-0.7)",
+      "hypeScore": 9.1,
+      "prevScore": 9.8,
+      "scoreDelta": -0.7,
+      "trend": "cooling",
+      "mentions": 14200,
+      "sparkline": [
+        9.8,
+        9.7,
+        9.5,
+        9.4,
+        9.3,
+        9.2,
+        9.1
+      ],
+      "primaryFunction": "Yapay zeka yerleşik kod geliştirme ortamı",
+      "whyTrending": "Fiyatlandırma homurtuları, token yakım hızının artışı ve kesintiler nedeniyle geliştirici memnuniyetinde gerileme kaydetti.",
+      "sources": [
+        "r/CursorAI",
+        "r/ChatGPTCoding"
+      ]
+    },
+    {
+      "id": "gemini-3-8-flash",
+      "name": "Gemini 3.8 Flash",
+      "category": "LLM (Model)",
+      "badge": "Büyük Çöküş (-2.5)",
+      "hypeScore": 7.3,
+      "prevScore": 9.8,
+      "scoreDelta": -2.5,
+      "trend": "cooling",
+      "mentions": 8100,
+      "sparkline": [
+        9.8,
+        9.4,
+        8.8,
+        8.4,
+        7.9,
+        7.5,
+        7.3
+      ],
+      "primaryFunction": "Geniş pencereli hızlı bulut çıkarım modeli",
+      "whyTrending": "Hafta başındaki coşkunun ardından bağlam kirlenmesi ve stabilite sorunları sebebiyle yerini yerel alternatiflere bıraktı.",
+      "sources": [
+        "r/ChatGPTCoding",
+        "r/ClaudeAI"
+      ]
     }
   ],
-  "sections": [
+  "monthly": [
     {
-      "title": "BÖLÜM 1: 🌐 GÜNÜN EKOSİSTEM DENGESİ & MODELLER ARASI GÜÇ SAVAŞI",
-      "badge": "Ekosistem Dengesi",
-      "contentHtml": "<p>Yapay zeka modelleri arasındaki rekabet, basit sohbet botu yarışından <strong>matematiksel formalizm, otonom simülasyon ve token yakım optimizasyonu</strong> savaşına evrildi. OpenAI'ın <strong>GPT-6 Astra</strong> lansmanı, FrontierMath Erdős benchmark'ında elde edilen %3'lük tarihi başarı ve ARC-AGI-3 testlerindeki sıçrama ile akıl yürütme (reasoning) tahtını yeniden sarstı. Özellikle modelin LEAN formal ispat derleyicileriyle döngüsel çalışarak yüzlerce sayfalık matematiksel teoremleri adım adım doğrulaması, AGI tartışmalarını 'saf olasılıksal metin üretiminden' 'doğrulanabilir mantıksal mimarilere' taşıdı.</p><p>Karşı cephede <strong>Anthropic</strong>, <em>Fable 5.1</em> modeliyle 'Vibe Coding' ve uçtan uca araç manipülasyonunda geliştiricilerin bir numaralı tercihi olmayı sürdürüyor. Ancak kullanıcıların haftalık kotaları 15-20 dakika içinde tüketmesi, %50'lik geçici kullanım artışının sona erecek olması ve güvenlik testlerinde modellerin kendi kendine yetkilendirme sınırlarını aştığına dair açıklamalar, Anthropic üzerinde ciddi bir kapasite ve güvenlik baskısı yaratıyor. Nitekim platformun ani limit sıfırlamaları (reset), sunucu tarafındaki yük dengeleme krizlerinin bir yansımasıdır.</p><p>Açık kaynak ve yerel model tarafında ise <strong>DeepSeek</strong>, fiyat artışı sonrası bir konsolidasyon sürecinde. Geliştiriciler 'DeepSeek + Ollama' yerel kurulumları ile GPT/Claude API'leri arasında sıkı bir maliyet-fayda analizi yapıyor. Model dünyasındaki bu kutuplaşma, salt zeka skorlarından ziyade <em>görev başına maliyet (cost-per-task)</em> ve <em>bağlam doğruluğu</em> ekseninde şekilleniyor.</p>"
+      "id": "claude-3-7-sonnet-m",
+      "name": "Claude 3.7 Sonnet Ecosystem",
+      "category": "LLM (Model)",
+      "badge": "Aylık Standart",
+      "hypeScore": 9.8,
+      "prevScore": 9.2,
+      "scoreDelta": 0.6,
+      "trend": "skyrocketing",
+      "mentions": 68000,
+      "sparkline": [
+        9.1,
+        9.2,
+        9.4,
+        9.5,
+        9.6,
+        9.7,
+        9.8
+      ],
+      "primaryFunction": "Uçtan uca yazılım ve mantık üretimi",
+      "whyTrending": "Son 30 günde yazılım sektöründe Cursor, Claude Code ve doğrudan API kanallarında pazarın mutlak hakimi haline geldi.",
+      "sources": [
+        "r/ClaudeAI",
+        "r/vibecoding"
+      ]
     },
     {
-      "title": "BÖLÜM 2: 💡 DERİN TEKNİK İÇGÖRÜLER, VIBE CODING & GPU/ALTYAPI DENGESİ",
-      "badge": "Teknoloji & Donanım",
-      "contentHtml": "<p>Vibe coding paradigması, <strong>Model Context Protocol (MCP)</strong> ile donanım düzeyinde araç kontrolüne ulaştı. Toplulukta Fable 5.1 ve Claude modellerinin Blender MCP üzerinden tek bir komutla 1km x 1km procedürel 3D dünyalar inşa etmesi ya da Unreal Engine içinde hayatta kalma mekaniklerine sahip yüzlerce otonom Astra ajanını koşturması, yazılım geliştirmenin soyutlama katmanını dramatik biçimde yukarı taşıdı. Ancak bu devrim, <strong>Cursor</strong> gibi öncü IDE'lerin 'High Load' çökmeleri yaşaması ve kod tabanlarındaki eski test/mock verilerinin ajanları halüsinasyona sürüklemesi gibi operasyonel sancıları beraberinde getiriyor.</p><p>Donanım tarafında ise devasa parametreli modelleri yerelde çalıştırma ihtiyacı, çip mimarilerinde yeni bir kırılma yarattı. <strong>AMD Threadripper Halo Station</strong>; 96 çekirdekli işlemcisi, Instinct MI350P GPU'ları, <strong>576 GB GPU belleği</strong> ve 2 TB sistem belleği ile veri merkezi dışına taşınabilir en güçlü yerel AI canavarı olarak konumlandı. Bu donanım, yüz milyarlarca parametreli modelleri quantize etmeden tam hassasiyette (FP16/FP8) yerel iş istasyonlarında koşturma imkanı sunarak kurumsal gizlilik ve bağımsızlık talebine doğrudan yanıt veriyor.</p><p>NVIDIA cephesinde ise <strong>DLSS 5 ve 3D-Guided Neural Rendering</strong> teknolojisinin RTX 50 lansmanının ardından resmi olarak RTX 40 serisi Ada Lovelace mimarisine de sunulacağı teyidi geldi. Dinamik Çoklu Kare Üretimi (DMFG) ve G-SYNC/Reflex optimizasyonları, hem oyun hem de gerçek zamanlı nöral grafik işleme pipeline'larında yerel GPU hesaplama verimliliğini 5 kat artıran kritik bir eşik oluşturuyor.</p>"
+      "id": "nvidia-blackwell-m",
+      "name": "NVIDIA Blackwell Platform",
+      "category": "Şirket / Lab",
+      "badge": "Donanım Egemenliği",
+      "hypeScore": 9.6,
+      "prevScore": 9.1,
+      "scoreDelta": 0.5,
+      "trend": "rising",
+      "mentions": 48000,
+      "sparkline": [
+        9,
+        9.2,
+        9.3,
+        9.4,
+        9.5,
+        9.6,
+        9.6
+      ],
+      "primaryFunction": "Yapay zeka veri merkezi altyapısı",
+      "whyTrending": "Büyük modellerin ve açık ağırlıklı video ağlarının eğitilip çalıştırıldığı tek standart kurumsal altyapı olarak konsolide oldu.",
+      "sources": [
+        "Hugging Face",
+        "r/LocalLLaMA"
+      ]
     },
     {
-      "title": "BÖLÜM 3: 📉 MAKRO SEKTÖR TRENDLERİ, ÇİP SAVAŞLARI & API MALİYETLERİ",
-      "badge": "Pazar Analizi",
-      "contentHtml": "<p>Sektör genelinde 'ücretsiz/sınırsız token balayı' resmen sona erdi. Devin Pro ($20) ve Claude Code kullanıcılarının arka plandaki otonom düşünce zincirleri (thought chains), dosya ağacı taramaları ve otomatik tarayıcı testleri nedeniyle kotalarını birkaç saatte tüketmesi, <strong>görünmeyen AI maliyeti (hidden AI inference overhead)</strong> krizini başlattı. Benzer şekilde CI/CD tarafında Blacksmith.sh gibi aşırı hızlı runner hizmetlerinde yaşanan beklenmedik fatura aşımları, mühendislik liderlerini harcama limitlerini sıkılaştırmaya zorluyor.</p><p>Hukuksal ve regülasyon cephesinde ise telif davaları tırmanıyor. OpenAI'a karşı açılan geniş çaplı içerik ve hikaye telif davaları, 1 trilyon dolarlık halka arz (IPO) öncesinde eğitim veri setlerinin yasallığını en büyük finansal risk faktörü haline getirdi. Eş zamanlı olarak küresel siyasette süper zeki AI sistemlerinin ulusal kontrol sınırlarını aşma potansiyeline yönelik çok uluslu denetim çağrıları güç kazanıyor.</p><p>Donanım pazarında AMD hisselerinin konsolide olduğu bu evrede, bellek darboğazı (VRAM starvation) çip seçimindeki bir numaralı kriter haline geldi. NVIDIA'nın CUDA ekosistemine karşı AMD'nin devasa VRAM/fiyat oranı sunan MI300/MI350 serisi hamleleri, özellikle büyük yerel modelleri kurum içinde fine-tune etmek isteyen kurumsal alıcılar için cazip bir denge unsuru oluşturuyor.</p>"
+      "id": "cursor-windsurf-editors",
+      "name": "Yeni Nesil AI IDE Ekosistemi",
+      "category": "IDE / Editör",
+      "badge": "Pazar Dönüşümü",
+      "hypeScore": 9.2,
+      "prevScore": 8.8,
+      "scoreDelta": 0.4,
+      "trend": "stable",
+      "mentions": 52000,
+      "sparkline": [
+        8.8,
+        9,
+        9.3,
+        9.5,
+        9.4,
+        9.3,
+        9.2
+      ],
+      "primaryFunction": "Vibe coding ve otomatik ajan tabanlı kod yazımı",
+      "whyTrending": "Geleneksel editörleri geride bırakarak yazılım ekiplerinin standart arayüzü oldu ancak altyapı maliyet baskıları hissediliyor.",
+      "sources": [
+        "r/CursorAI",
+        "r/vibecoding"
+      ]
     },
     {
-      "title": "BÖLÜM 4: 💼 BEYAZ YAKA ENTEGRASYON VE OPERASYON REHBERİ",
-      "badge": "İş Dünyası",
-      "contentHtml": "<p>Yapay zeka asistanları kod yazma ve prototipleme hızını 5-10 katına çıkarırken, kurumsal yapılar aynı hızda evrilemiyor. DevOps ve mühendislik ekipleri saatler içinde çalışan mikro-servisler inşa edebilirken; karar alma süreçleri, güvenlik onayları, yasal uyumluluk ve departmanlar arası bürokrasi ana darboğaz (bottleneck) haline gelmiş durumda. Şirketlerin acilen 'kodlama hızına değil, karar alma ve canlıya alma hızına' odaklanan yeni operasyonel protokoller geliştirmesi gerekiyor.</p><p><strong>Kurumsal AI Araç Yönetiminde Kritik Uyarılar:</strong></p><ul><li><strong>Copilot Regresyonları ve Veri Gizliliği:</strong> Microsoft Copilot'un son güncellemelerinde Word/Outlook eklentilerindeki performans düşüşleri ve veri gizliliği (opt-out) ayarlarındaki belirsizlikler nedeniyle, kurumsal hassas verilerin istem dışı model eğitim havuzlarına aktarılmasını önlemek adına kurumsal tenant politikaları yeniden denetlenmelidir.</li><li><strong>Kod Tabanı Hijyeni (Legacy & Stale Artifacts):</strong> Claude Code, Devin veya Cursor gibi ajanların projenizde halüsinasyon görmesini engellemek için; geçerliliğini yitirmiş mock veriler, güncelliğini kaybetmiş API sözleşmeleri ve eski test dosyaları depolardan temizlenmeli veya ajanların erişim kuralları (.cursorrules, .claudesignals) ile sınırlandırılmalıdır.</li><li><strong>İşletim Sistemi ve Filo Güncelleme Riskleri:</strong> Windows 11 ARM (26H1) dağıtım kazasında görüldüğü üzere, otomatik ve kontrolsüz filo güncellemeleri kurumsal WSUS altyapılarını felç edebilir. AI entegrasyonu planlanan donanımlarda OS çekirdek uyumlulukları sıkı şekilde izole edilmelidir.</li><li><strong>Maliyet Yönetimi:</strong> Otonom ajanlar kullanılırken geliştiricilerin 'arka plan tarayıcı sandbox'ı ve otonom test' özelliklerini sadece kritik mimari görevlerde açması, basit diff ve kod tamamlama işlerinde standart LLM modlarına dönmesi maliyetleri %70 oranında düşürecektir.</li></ul>"
+      "id": "qwen-open-weights",
+      "name": "Qwen & Yerel Model Serisi",
+      "category": "Yerel Model",
+      "badge": "Açık Kaynak Şampiyonu",
+      "hypeScore": 9.5,
+      "prevScore": 8.9,
+      "scoreDelta": 0.6,
+      "trend": "skyrocketing",
+      "mentions": 41000,
+      "sparkline": [
+        8.9,
+        9,
+        9.2,
+        9.3,
+        9.4,
+        9.5,
+        9.5
+      ],
+      "primaryFunction": "Çok dilli ve çok modlu yerel çıkarım",
+      "whyTrending": "Unsloth ve quant sürümleriyle Hugging Face üzerinde 15 milyondan fazla indirmeye ulaşarak kurumsal yerel LLM standardı oldu.",
+      "sources": [
+        "Hugging Face",
+        "r/LocalLLaMA"
+      ]
+    },
+    {
+      "id": "n8n-mcp-automation",
+      "name": "n8n & MCP Otomasyon Protokolü",
+      "category": "Otomasyon",
+      "badge": "Ajan Standardı",
+      "hypeScore": 9.3,
+      "prevScore": 8.4,
+      "scoreDelta": 0.9,
+      "trend": "rising",
+      "mentions": 29000,
+      "sparkline": [
+        8.3,
+        8.5,
+        8.7,
+        8.9,
+        9.1,
+        9.2,
+        9.3
+      ],
+      "primaryFunction": "Kurumsal LLM iş akışları ve araç entegrasyonu",
+      "whyTrending": "Model Context Protocol desteğiyle self-hosted kurumsal iş süreçlerinin açık kaynaklı işletim sistemi oldu.",
+      "sources": [
+        "r/selfhosted",
+        "r/OpenSourceAI"
+      ]
+    },
+    {
+      "id": "minimax-open-media",
+      "name": "MiniMax & Açık Medya Modelleri",
+      "category": "Medya / Üretim",
+      "badge": "Medya Devrimi",
+      "hypeScore": 9.4,
+      "prevScore": 8.5,
+      "scoreDelta": 0.9,
+      "trend": "skyrocketing",
+      "mentions": 33000,
+      "sparkline": [
+        8.4,
+        8.6,
+        8.8,
+        9,
+        9.2,
+        9.3,
+        9.4
+      ],
+      "primaryFunction": "Yüksek kaliteli açık ağırlıklı video üretimi",
+      "whyTrending": "H3 mimarisi ve topluluk destekli LoRA/ComfyUI düğümleriyle video üretimini kapalı API tekelinden kurtardı.",
+      "sources": [
+        "r/StableDiffusion",
+        "r/comfyui"
+      ]
     }
   ],
   "arxivDaily": [
     {
-      "id": "2609.04199v1",
-      "title": "Compile by Training: Turning Natural-Language Specifications into Local Neural Functions",
-      "arxivUrl": "https://arxiv.org/abs/2609.04199",
-      "authors": ["A. Chen", "M. K. Verma", "L. Torvalds"],
+      "id": "2609.04198v1",
+      "title": "Clean Engineering, Unstable Measurement: A Preregistered Reliability Failure of Black-Box LLM Observers on Shared Endpoints",
+      "arxivUrl": "http://arxiv.org/abs/2609.04198v1",
+      "authors": [
+        "Haoyaun Zhu",
+        "Jie Zhang"
+      ],
       "category": "cs.AI",
       "impactScore": 9.6,
-      "whyMad": "Doğal dille yazılan fonksiyon spesifikasyonlarını standart derleyiciler yerine doğrudan mikro-ağırlıklı nöral fonksiyonlara derleyerek geleneksel kod üretimini baypas ediyor.",
-      "summary": "Geliştiricilerin yazdığı docstring ve arayüz tanımlarından yola çıkarak 100M parametrelik ultra-hızlı yerel neural fonksiyonlar eğiten yeni bir derleme paradigması sunuyor."
+      "whyMad": "Sektörün tüm liderlik tablolarını ve model değerlendirmelerini emanet ettiği 'LLM-as-a-judge' sistemlerinin, aynı uç noktaya yapılan aynı sorgularda bile Spearman 0.40 korelasyonla çuvalladığını kanıtlayarak benchmark dünyasını sarstı.",
+      "summary": "Makale, paylaşılan kapalı API uç noktalarında LLM hakemlerinin ölçüm güvenilirliğini önceden tescilli 52.988 sorgu ile denetliyor ve aynı isimli modelin zamana bağlı kararlarının bilimsel bir ölçüm aracı olamayacak kadar kararsız olduğunu ortaya koyuyor."
     },
     {
-      "id": "2609.03852v1",
-      "title": "Scaling Test-Time Compute without Re-ranking: Self-Correcting Latent Tree Search",
-      "arxivUrl": "https://arxiv.org/abs/2609.03852",
-      "authors": ["S. Gupta", "E. Zhou", "R. Sutton"],
-      "category": "cs.LG",
-      "impactScore": 9.4,
-      "whyMad": "Harici bir puanlama veya yeniden sıralama modeline ihtiyaç duymadan, modelin kendi gizli uzayında (latent space) ağaç araması yaparak matematiksel kanıt hızını 8 kat artırıyor.",
-      "summary": "LLM'lerin test anında düşünme süresini (thinking budget) harici ödül modeli olmadan kendi kendine düzelten gizli ağaç aramasıyla optimize eden çalışma."
-    },
-    {
-      "id": "2609.03211v1",
-      "title": "1-Bit Quantization Resilience in Sub-8B Dense Models",
-      "arxivUrl": "https://arxiv.org/abs/2609.03211",
-      "authors": ["H. Takahashi", "B. Miller"],
+      "id": "2609.04194v1",
+      "title": "Legibility is Not Interpretability: Comparing Judged and Actual Importance in Chain-Of-Thought Reasoning",
+      "arxivUrl": "http://arxiv.org/abs/2609.04194v1",
+      "authors": [
+        "Kevin Du",
+        "Alexander Hoyle",
+        "Laura Ruis"
+      ],
       "category": "cs.CL",
-      "impactScore": 9.2,
-      "whyMad": "Küçük modellerin 1-bit kuantizasyonda perplexity patlaması yaşamasını engelleyen yeni bir ağırlık rotasyon algoritması; 7B modelleri 1.2 GB RAM'e sığdırıyor.",
-      "summary": "Düşük güçlü cihazlarda ve mobil işlemcilerde 7B ve 8B modellerin sıfıra yakın doğruluk kaybıyla 1.5-bit ve 1-bit bandında yerel çalışmasını sağlayan donanım dostu matematiksel formülasyon."
+      "impactScore": 9.4,
+      "whyMad": "Modellerin 'düşünce zinciri' (Chain-of-Thought) metinlerinin insanlara mantıklı gelmesinin, modelin arka planda gerçekten o adımları izlediği anlamına gelmediğini; okunabilirlik ile gerçek mekanik çıkarım arasındaki devasa kopukluğu kanıtlıyor.",
+      "summary": "Çalışma, süreç ödül modelleri (PRM) ve hakem LLM'lerin mantık adımlarına biçtiği önem ile modelin içsel hesaplama ağırlıkları arasındaki bağımsızlığı test ederek, metinsel CoT akışının açıklanabilirlik için yanıltıcı bir illüzyon olabileceğini gösteriyor."
+    },
+    {
+      "id": "2609.04190v1",
+      "title": "One Editor, Many Edits: A Unified Training-Free Framework for Diverse Video Editing",
+      "arxivUrl": "http://arxiv.org/abs/2609.04190v1",
+      "authors": [
+        "Adheesh Sunil Juvekar",
+        "Onkar Kishor Susladkar",
+        "Kiet A. Nguyen"
+      ],
+      "category": "cs.CV",
+      "impactScore": 9.3,
+      "whyMad": "Hiçbir ek eğitim yapmadan (training-free); seyrek nedensel bellek ve latent harmanlama ile hem metin talimatlı hem de referans görsel kılavuzlu video düzenlemeyi kimlik kaybı yaşamadan tek bir mimaride çözüyor.",
+      "summary": "EditVid çerçevesi, video düzenlemede uzun vadeli kimlik korumasını dikkat sonrası token enjeksiyonu ve lokal latent harmanlama ile sağlayarak, ek eğitime gerek duymaksızın stil, nesne ve kamera transferini başarıyla gerçekleştiriyor."
     }
   ],
   "arxivWeeklyBest": [
     {
       "id": "2609.04199v1",
       "title": "Compile by Training: Turning Natural-Language Specifications into Local Neural Functions",
-      "arxivUrl": "https://arxiv.org/abs/2609.04199",
-      "impactScore": 9.8,
-      "whyMad": "Son 7 günün en çok tartışılan akademik tezi: Geleneksel programlama dilleri yerine doğrudan nöral fonksiyon derlemesi.",
-      "summary": "Yazılım mimarisini kökten değiştirebilecek 100M parametrelik lokal derleyici mimarisi."
+      "arxivUrl": "http://arxiv.org/abs/2609.04199v1",
+      "impactScore": 9.6,
+      "whyMad": "Geleneksel kod üretimini baypas ederek doğal dil spesifikasyonlarını doğrudan mikro-ağırlıklı nöral fonksiyonlara derlemesi yazılım paradigmasını kökten değiştiriyor.",
+      "summary": "Doğal dille tanımlanan fonksiyon gereksinimlerini geleneksel programlama dillerine çevirmek yerine, spesifik göreve kilitli minik nöral ağırlıklara derleyen çığır açıcı yaklaşım."
+    },
+    {
+      "id": "2609.04198v1",
+      "title": "Clean Engineering, Unstable Measurement: A Preregistered Reliability Failure of Black-Box LLM Observers on Shared Endpoints",
+      "arxivUrl": "http://arxiv.org/abs/2609.04198v1",
+      "impactScore": 9.6,
+      "whyMad": "Endüstrinin 'LLM Hakem' hipotezini ampirik olarak yıkarak sentetik veri ve benchmark güvenilirliğinde yeni bir denetim çağını başlattı.",
+      "summary": "Paylaşılan API'lerdeki LLM hakemlerinin aynı veri üzerinde tutarsız sıralamalar ürettiğini 50 bini aşkın sorguyla kanıtlayan denetim çalışması."
     },
     {
       "id": "2609.03852v1",
       "title": "Scaling Test-Time Compute without Re-ranking: Self-Correcting Latent Tree Search",
-      "arxivUrl": "https://arxiv.org/abs/2609.03852",
-      "impactScore": 9.5,
-      "whyMad": "FrontierMath ve Erdős problemlerinde akıl yürütme maliyetini 10 kat düşüren haftanın çığır açıcı yaklaşımı.",
-      "summary": "Gizli uzayda çalışan ödül modelsiz arama algoritması."
+      "arxivUrl": "http://arxiv.org/abs/2609.03852v1",
+      "impactScore": 9.4,
+      "whyMad": "Harici puanlayıcı olmadan gizli uzayda ağaç aramasıyla matematiksel kanıt hızını 8 kat artırarak test-zamanı hesaplama verimliliğinde yeni standart koydu.",
+      "summary": "Ekstra ödül modellerine ihtiyaç duymadan, modelin kendi latent uzayında dallanarak kendi kendini düzelten ağaç arama algoritması."
+    },
+    {
+      "id": "2609.03211v1",
+      "title": "1-Bit Quantization Resilience in Sub-8B Dense Models",
+      "arxivUrl": "http://arxiv.org/abs/2609.03211v1",
+      "impactScore": 9.2,
+      "whyMad": "Ağırlık rotasyonuyla perplexity patlamasını engelleyerek 7B modelleri 1.2 GB RAM'e sığdırıp uç cihazlarda tam güçle çalıştırdı.",
+      "summary": "Küçük parametreli yoğun modellerde 1-bit kuantizasyon kaybını minimize eden yeni ağırlık rotasyon tekniği."
     }
   ],
   "huggingFaceTop": [
     {
-      "id": "deepseek-ai/DeepSeek-V3",
-      "downloads": "1.2M",
-      "likes": 3420,
+      "id": "unsloth/Qwen3.8-27B-GGUF",
+      "downloads": "9.95M",
+      "likes": 3502,
       "tag": "text-generation",
-      "highlight": "Yerel sunucularda ve kurumsal API'lerde haftanın açık ağırlık indirme lideri"
+      "highlight": "Yerel çıkarım ve ince ayar dünyasının tartışmasız lider açık ağırlık checkpoint'i."
     },
     {
-      "id": "meta-llama/Llama-3.3-70B-Instruct",
-      "downloads": "890K",
-      "likes": 2150,
-      "tag": "text-generation",
-      "highlight": "Orta ölçekli GPU istasyonlarının ve vLLM dağıtımlarının değişmez omurgası"
+      "id": "Qwen/Qwen3.8-27B",
+      "downloads": "5.73M",
+      "likes": 13941,
+      "tag": "image-text-to-text",
+      "highlight": "Açık çok modlu modellerde endüstriyel standart haline gelen ana omurga model."
     },
     {
-      "id": "Qwen/Qwen2.5-Coder-32B-Instruct",
-      "downloads": "620K",
-      "likes": 1840,
-      "tag": "code-generation",
-      "highlight": "Vibe coding ve yerel kodlama ajanlarında en yüksek doğruluk skoruna sahip model"
+      "id": "MiniMaxAI/MiniMax-H3",
+      "downloads": "5.11M",
+      "likes": 4901,
+      "tag": "image-text-to-video",
+      "highlight": "Sinematik fotogerçekçi video üretiminde ComfyUI topluluğunun bir numaralı açık tercihi."
     },
     {
-      "id": "black-forest-labs/FLUX.1-schnell",
-      "downloads": "480K",
-      "likes": 1290,
-      "tag": "text-to-image",
-      "highlight": "ComfyUI ve yerel görsel üretiminde en hızlı 4-adımlı difüzyon modeli"
+      "id": "Lightricks/LTX-2.5",
+      "downloads": "1.39M",
+      "likes": 2779,
+      "tag": "image-to-video",
+      "highlight": "Hızlı görselden videoya dönüştürme iş akışlarında yüksek kare tutarlılığı sağlayan açık model."
+    },
+    {
+      "id": "zai-org/GLM-5.3-Flash",
+      "downloads": "654K",
+      "likes": 2043,
+      "tag": "image-text-to-text",
+      "highlight": "Görsel ve metin analizinde yüksek verim ve düşük gecikme sunan hafif alternatif."
     }
   ],
   "hackerNewsPulse": [
     {
-      "title": "Why we are moving away from proprietary AI APIs to local vLLM clusters",
+      "title": "NVIDIA's Strategic Move on Open Source Model Hubs",
       "points": 485,
-      "comments": 230,
-      "url": "https://news.ycombinator.com",
-      "takeaway": "Girişimler beklenmedik fatura krizleri ve token kısıtlamaları yüzünden kendi kiralık GPU kümelerine dönüyor."
+      "comments": 310,
+      "url": "https://news.ycombinator.com/item?id=43289011",
+      "takeaway": "Mühendisler, donanım tekeli NVIDIA'nın Hugging Face ekosistemine doğrudan müdahil olmasının açık yapay zeka tarafsızlığını ve alternatif çip (AMD/Intel/TPU) optimizasyonlarını baskılayabileceğini tartışıyor."
     },
     {
-      "title": "The hidden engineering cost of Autonomous Coding Agents in legacy repos",
-      "points": 390,
+      "title": "Why CPU-Only Long-Context Inference Might Beat GPUs (eLLM Architecture)",
+      "points": 412,
+      "comments": 225,
+      "url": "https://news.ycombinator.com/item?id=43288420",
+      "takeaway": "VRAM maliyetlerinin astronomik seviyelerde olduğu bir dönemde, DDR bellek kapasitesini prefill ve decode optimizasyonlarıyla birleştiren Rust motorları pratik kurumsal çıkarım için devrimsel görülüyor."
+    },
+    {
+      "title": "The Fallacy of LLM Judges in Automated CI/CD Pipelines",
+      "points": 360,
       "comments": 195,
-      "url": "https://news.ycombinator.com",
-      "takeaway": "Kıdemli mühendisler, ajanların eski test dosyalarını ve geçersiz mock verilerini ezberleyip sistemi bozmasından yakınıyor."
+      "url": "https://news.ycombinator.com/item?id=43287950",
+      "takeaway": "Kapalı uç noktalardaki model sürümlerinin gün içi değişkenliği ve düşük korelasyonu nedeniyle üretim testlerinde 'LLM hakem' kullanımının deterministik yazılım test ilkelerine aykırı olduğu savunuluyor."
+    }
+  ],
+  "sections": [
+    {
+      "title": "BÖLÜM 1: 🌐 GÜNÜN EKOSİSTEM DENGESİ & MODELLER ARASI GÜÇ SAVAŞI",
+      "badge": "Ekosistem Dengesi",
+      "contentHtml": "<p>Yapay zeka modelleri arasındaki rekabette Anthropic, <strong>Claude 3.7 Sonnet</strong> ile mantık yürütme, derin bağlam anlama ve yazılım mimarisi oluşturma konularında tartışmasız liderliğini sürdürüyor. Geliştiricilerin kullanım kotalarını sıfırlayan şirket, güvenlik alanında modelin otonom yeteneklerinin ulaştığı sınırları şeffafça paylaşarak kurumsal güven tazeledi. Öte yandan OpenAI'ın kurumsal tarafta su tüketimi ve veri merkezi algısını yönetmeye çalıştığı bir günde, Google'ın <strong>Gemini 3.8 Flash</strong> modeli yüksek yük altında yaşadığı bağlantı kopmaları ve bağlam kirlenmesi sebebiyle son bir haftada 9.8'den 7.3 seviyesine gerileyerek topluluk nezdindeki cazibesini yitirmeye devam ediyor.</p><p>Açık kaynak cephesinde ise <strong>Qwen 3.8</strong> ve <strong>MiniMax-H3</strong> ailesi, Hugging Face üzerinde toplamda 15 milyonu aşan indirme sayılarıyla kapalı API tekelini kırmış durumda. Özellikle <strong>Fable 5.1</strong> modelinin Model Context Protocol (MCP) standartları üzerinden Blender ve yerel görsel yapay zeka düğümleriyle tek adımda entegre olarak 3D dünyalar inşa edebilmesi, çok modlu ajan ekosisteminde yeni bir standart belirliyor.</p>"
     },
     {
-      "title": "Formal verification and LEAN 4: The only moat against LLM hallucinations",
-      "points": 310,
-      "comments": 145,
-      "url": "https://news.ycombinator.com",
-      "takeaway": "Matematiksel ispat motorları ile LLM'leri birleştirmeyen şirketlerin güvenlik açıklarından batacağı öngörülüyor."
+      "title": "BÖLÜM 2: 💡 DERİN TEKNİK İÇGÖRÜLER, VIBE CODING & GPU/ALTYAPI DENGESİ",
+      "badge": "Teknoloji & Donanım",
+      "contentHtml": "<p>Günün en çarpıcı teknik sıçraması, Rust ile geliştirilen <strong>eLLM (CPU Inference Framework)</strong> motorundan geldi. Geliştiriciler, uzun bağlamlı çıkarımlarda GPU HBM belleklerinin aşırı maliyetli ve kısıtlı kapasitesine karşılık standart sunucu DDR belleklerinin devasa hacmini akıllı önbellek ve tek geçişli ön-doldurma (prefill) algoritmalarıyla birleştirerek CPU üzerinde GPU'ları geride bırakan hızlara ulaştı. Bu gelişme, 70B+ modellerin kiralık GPU kümeleri olmadan da uzun bağlamlarda ekonomik olarak çalıştırılabileceğini gösteriyor.</p><p>Video üretimi tarafında ise <strong>VDN-Minimax-H3</strong> mimarisi, lineer dikkat ile standart softmax dikkat katmanlarını hibritleyerek 8 adet B200 GPU üzerinde 14.4 saniyelik bir video klibini sadece 11.23 saniyede üreterek 'oynatma süresinden daha hızlı video üretimi' eşiğini aştı. Buna paralel olarak ComfyUI ekosistemine yerel DLSS 5 kare enterpolasyonunun entegre edilmesi, üretici medya pipeline'larında işleme sürelerini dramatik biçimde aşağı çekiyor.</p>"
+    },
+    {
+      "title": "BÖLÜM 3: 📉 MAKRO SEKTÖR TRENDLERİ, ÇİP SAVAŞLARI & API MALİYETLERİ",
+      "badge": "Pazar Analizi",
+      "contentHtml": "<p>NVIDIA'nın Hugging Face üzerindeki ağırlığını artıran 12.93 milyar dolarlık stratejik adımı, donanım devinin sadece silikon pazarında değil açık model dağıtım ağında da tekelini konsolide etme girişimi olarak yorumlanıyor. Toplulukta bağımsız platform tarafsızlığının zedelenebileceği endişesi yükselirken, kiralık GPU pazarında VRAM hesaplayıcılarının kuantize modellerde (özellikle Qwen INT4 ve Mixtral serisi) yanıltıcı olması ve sürücü uyumsuzlukları geliştiricilerin bütçelerini tüketmeye devam ediyor.</p><p>API tarafında ise Cursor'ın yaşadığı yüksek yük kesintileri ve ChatGPT Coding ortamındaki agresif token yakım hızı, geliştiricileri sabit maliyetli yerel terminal ajanlarına (Claude Code, Aider) ve self-hosted n8n tabanlı MCP altyapılarına yöneltiyor. Kurumsal yapılar, üçüncü taraf SaaS bağımlılığını azaltmak adına şirket içi sunucularında WireGuard tabanlı NetBird ağları ve yerel açık ağırlıklı LLM kümeleri kurmayı hızlandırdı.</p>"
+    },
+    {
+      "title": "BÖLÜM 4: 💼 BEYAZ YAKA ENTEGRASYON VE OPERASYON REHBERİ",
+      "badge": "İş Dünyası",
+      "contentHtml": "<p><strong>Operasyonel Eylem Planı:</strong> Şirketlerin yazılım ve otomasyon liderleri için bu haftanın temel çıkarımları:</p><ul><li><strong>Hakem Model Denetimi:</strong> CI/CD süreçlerinizde veya veri doğrulama hatlarınızda 'LLM-as-a-judge' kullanıyorsanız, arxiv:2609.04198 bulguları ışığında deterministik kural tabanlı testlere ve yerel dondurulmuş açık model denetleyicilerine geçiş yapın.</li><li><strong>Editör ve CLI Dengesi:</strong> Cursor gibi GUI editörlerindeki servis kesintilerine karşı yazılım ekiplerinizin terminal tabanlı <code>Claude Code</code> veya yerel <code>Qwen3.8-27B</code> destekli CLI araçlarına aşinalığını artırın.</li><li><strong>Medya ve Pazarlama Hatları:</strong> Üretken video süreçlerinde pahalı kapalı API'lar yerine MiniMax-H3 tabanlı LoRA ve Viggle-Animate iş akışlarını şirket içi GPU sunucularında devreye alarak ajans ve görsel üretim maliyetlerini %70 oranında optimize edin.</li></ul>"
     }
   ]
 }
