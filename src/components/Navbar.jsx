@@ -17,10 +17,10 @@ export default function Navbar({ onOpenArchive, onOpenSubreddits, onOpenDomainGu
             <div>
               <div className="flex items-center space-x-2">
                 <span className="font-extrabold text-lg tracking-tight bg-gradient-to-r from-white via-slate-100 to-slate-400 bg-clip-text text-transparent">
-                  AI HYPE RADAR
+                  AI TRENDLERİ
                 </span>
                 <span className="px-2 py-0.5 text-[10px] font-bold tracking-wide uppercase rounded-full bg-indigo-950/80 text-indigo-400 border border-indigo-500/30">
-                  Cloudflare Edge
+                  aitrendleri.com
                 </span>
               </div>
               <p className="text-[11px] text-slate-400 flex items-center gap-1.5 font-mono">

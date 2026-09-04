@@ -8,7 +8,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "crawl": "node scripts/run-analysis.js",
-    "seed": "node scripts/seed-data.js"
+    "deploy": "vite build && wrangler pages deploy dist --project-name aitrendleri",
+    "update-live": "node scripts/run-analysis.js && vite build && wrangler pages deploy dist --project-name aitrendleri"
   },
   "dependencies": {
     "clsx": "^2.1.1",
