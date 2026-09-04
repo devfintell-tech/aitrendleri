@@ -1,95 +1,145 @@
-import React, { useState } from 'react';
-import { MOCK_TOOLS_DATA, LATEST_CONSULTANT_REPORT } from './data/mockData';
+import React, { useState, useMemo } from 'react';
+import { MOCK_TOOLS_DATA, LATEST_CONSULTANT_REPORT, CATEGORY_DEFINITIONS } from './data/mockData';
 import latestReportData from './data/latest-report.json';
-import { ArrowUpRight, ArrowDownRight, Minus, ExternalLink, RefreshCw } from 'lucide-react';
+import { ArrowUpRight, ArrowDownRight, Minus, ChevronDown, ChevronUp } from 'lucide-react';
 
 export default function App() {
   const [timeframe, setTimeframe] = useState('daily'); // 'daily' | 'weekly' | 'monthly'
+  const [selectedCategory, setSelectedCategory] = useState('all');
   const [expandedId, setExpandedId] = useState(null);
 
-  // Live report data fallback to mock
   const report = latestReportData ? {
     date: latestReportData.date,
     executiveSummary: latestReportData.executiveSummary,
     sections: latestReportData.sections || LATEST_CONSULTANT_REPORT.sections
   } : LATEST_CONSULTANT_REPORT;
 
-  const tools = {
+  const rawTools = {
     daily: latestReportData?.daily || MOCK_TOOLS_DATA.daily,
     weekly: latestReportData?.weekly || MOCK_TOOLS_DATA.weekly,
     monthly: latestReportData?.monthly || MOCK_TOOLS_DATA.monthly
   }[timeframe] || MOCK_TOOLS_DATA.daily;
 
+  // Filter tools by category
+  const filteredTools = useMemo(() => {
+    if (selectedCategory === 'all') return rawTools;
+    return rawTools.filter(t => t.category === selectedCategory);
+  }, [rawTools, selectedCategory]);
+
+  // Helper for category badge color
+  const getCategoryBadgeClass = (category) => {
+    switch (category) {
+      case 'LLM (Model)':
+        return 'bg-amber-950/70 text-amber-300 border-amber-500/30';
+      case 'IDE / Editör':
+        return 'bg-blue-950/70 text-blue-300 border-blue-500/30';
+      case 'CLI / Terminal':
+        return 'bg-emerald-950/70 text-emerald-300 border-emerald-500/30';
+      case 'Otonom Agent':
+        return 'bg-purple-950/70 text-purple-300 border-purple-500/30';
+      case 'Otomasyon':
+        return 'bg-cyan-950/70 text-cyan-300 border-cyan-500/30';
+      case 'Altyapı & SDK':
+        return 'bg-slate-800/80 text-slate-300 border-slate-600/40';
+      case 'Medya / Üretim':
+        return 'bg-rose-950/70 text-rose-300 border-rose-500/30';
+      case 'Şirket / Lab':
+        return 'bg-orange-950/70 text-orange-300 border-orange-500/30';
+      default:
+        return 'bg-slate-800 text-slate-300 border-slate-700';
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-[#0b0f19] text-slate-200 font-sans antialiased selection:bg-[#107c41] selection:text-white">
+    <div className="min-h-screen bg-[#090d16] text-slate-200 font-sans antialiased selection:bg-[#107c41] selection:text-white">
       
-      {/* 1. Sade ve Şık Üst Başlık */}
-      <header className="border-b border-slate-800 bg-[#070a12]/80 sticky top-0 z-20 backdrop-blur-md">
-        <div className="max-w-5xl mx-auto px-4 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+      {/* 1. Sade Üst Başlık & Zaman Seçici */}
+      <header className="border-b border-slate-800 bg-[#070a12]/90 sticky top-0 z-30 backdrop-blur-md">
+        <div className="max-w-6xl mx-auto px-4 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
             <div className="flex items-center gap-2">
               <span className="w-2.5 h-2.5 rounded-full bg-[#107c41]"></span>
-              <h1 className="text-lg sm:text-xl font-bold tracking-tight text-white font-mono">
+              <h1 className="text-xl font-bold tracking-tight text-white font-mono">
                 aitrendleri.com
               </h1>
             </div>
             <p className="text-xs text-slate-400 mt-0.5">
-              43+ Reddit topluluğundan toplanan yapay zeka araçları ve model sıralaması
+              43+ Reddit AI topluluğu sinyal analizi ve model sıralaması
             </p>
           </div>
 
-          {/* Sadece 3 Temiz Zaman Butonu */}
+          {/* 3 Sade Zaman Butonu */}
           <div className="flex items-center bg-slate-900 p-1 rounded-lg border border-slate-800 self-start sm:self-auto">
             <button
               onClick={() => setTimeframe('daily')}
-              className={`px-3 py-1.5 rounded-md text-xs font-medium transition ${
+              className={`px-3 py-1.5 rounded text-xs font-medium transition ${
                 timeframe === 'daily'
-                  ? 'bg-[#107c41] text-white shadow-sm font-semibold'
+                  ? 'bg-[#107c41] text-white font-semibold'
                   : 'text-slate-400 hover:text-white'
               }`}
             >
-              Günlük
+              Günlük (24s)
             </button>
             <button
               onClick={() => setTimeframe('weekly')}
-              className={`px-3 py-1.5 rounded-md text-xs font-medium transition ${
+              className={`px-3 py-1.5 rounded text-xs font-medium transition ${
                 timeframe === 'weekly'
-                  ? 'bg-[#107c41] text-white shadow-sm font-semibold'
+                  ? 'bg-[#107c41] text-white font-semibold'
                   : 'text-slate-400 hover:text-white'
               }`}
             >
-              Haftalık
+              Haftalık (Delta)
             </button>
             <button
               onClick={() => setTimeframe('monthly')}
-              className={`px-3 py-1.5 rounded-md text-xs font-medium transition ${
+              className={`px-3 py-1.5 rounded text-xs font-medium transition ${
                 timeframe === 'monthly'
-                  ? 'bg-[#107c41] text-white shadow-sm font-semibold'
+                  ? 'bg-[#107c41] text-white font-semibold'
                   : 'text-slate-400 hover:text-white'
               }`}
             >
-              Aylık
+              Aylık (Pazar)
             </button>
           </div>
         </div>
       </header>
 
-      {/* 2. Ana Gövde */}
-      <main className="max-w-5xl mx-auto px-4 py-8 space-y-10">
+      {/* 2. Ana Çalışma Alanı */}
+      <main className="max-w-6xl mx-auto px-4 py-8 space-y-8">
         
-        {/* Alt Alta Sıralı Temiz Liste */}
-        <section className="space-y-3">
-          <div className="flex items-center justify-between text-xs text-slate-400 font-mono px-1">
-            <span>
-              {timeframe === 'daily' && "⚡ SON 24 SAATİN EN ÇOK KONUŞULANLARI"}
-              {timeframe === 'weekly' && "📊 7 GÜNLÜK NET TREND VE DEĞİŞİM (DELTA)"}
-              {timeframe === 'monthly' && "🪐 30 GÜNLÜK KALICI SEKTÖR LİDERLERİ"}
-            </span>
-            <span>{tools.length} Araç Listelendi</span>
+        {/* Kategori Filtre Çubuğu */}
+        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 text-xs no-scrollbar">
+          <span className="text-slate-500 font-mono text-[11px] mr-1 hidden sm:inline">Kategori:</span>
+          {CATEGORY_DEFINITIONS.map((cat) => (
+            <button
+              key={cat.id}
+              onClick={() => setSelectedCategory(cat.id)}
+              className={`px-2.5 py-1 rounded text-xs font-medium whitespace-nowrap transition border ${
+                selectedCategory === cat.id
+                  ? 'bg-[#107c41] text-white border-[#107c41]'
+                  : 'bg-slate-900 text-slate-400 hover:text-slate-200 border-slate-800'
+              }`}
+            >
+              {cat.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Ana Tablo / Hizalı Liste */}
+        <section className="space-y-2">
+          
+          {/* Kolon Başlıkları (Masaüstü için Kusursuz Hiza) */}
+          <div className="hidden md:flex items-center px-4 py-2 text-[11px] font-mono text-slate-400 uppercase tracking-wider border-b border-slate-800/80">
+            <span className="w-10 text-center">Sıra</span>
+            <span className="w-48 pl-2">Model / Ürün</span>
+            <span className="w-36 text-left pl-1">Kategori</span>
+            <span className="flex-1 pl-3">Temel Yetenek &amp; İşlev</span>
+            <span className="w-28 text-right pr-2">Hype &amp; Delta</span>
           </div>
 
+          {/* Alt Alta Sıralı Liste (Hizalanmış Kolonlar) */}
           <div className="bg-[#0f172a] border border-slate-800 rounded-xl overflow-hidden shadow-xl divide-y divide-slate-800/80">
-            {tools.map((tool, idx) => {
+            {filteredTools.map((tool, idx) => {
               const isPositive = tool.scoreDelta > 0;
               const isNegative = tool.scoreDelta < 0;
               const isExpanded = expandedId === tool.id;
@@ -98,46 +148,60 @@ export default function App() {
                 <div
                   key={tool.id}
                   onClick={() => setExpandedId(isExpanded ? null : tool.id)}
-                  className="p-4 sm:p-5 hover:bg-slate-850/50 hover:bg-slate-800/30 transition cursor-pointer"
+                  className="p-3 sm:p-4 hover:bg-slate-800/30 transition cursor-pointer"
                 >
-                  <div className="flex items-start justify-between gap-3">
+                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 sm:gap-4">
                     
-                    {/* Sol: Sıra ve İsim */}
-                    <div className="flex items-start gap-3.5">
-                      <span className="font-mono font-bold text-sm text-slate-500 pt-0.5 w-6 text-center">
+                    {/* 1. Sıra */}
+                    <div className="flex items-center gap-3">
+                      <span className="font-mono font-bold text-sm text-slate-500 w-6 sm:w-10 text-center flex-shrink-0">
                         #{idx + 1}
                       </span>
-                      <div>
-                        <div className="flex items-center gap-2 flex-wrap">
-                          <h3 className="font-bold text-base text-white hover:text-emerald-400 transition">
-                            {tool.name}
-                          </h3>
-                          <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">
-                            {tool.category}
-                          </span>
-                          {tool.badge && (
-                            <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded bg-[#107c41]/30 text-emerald-300 border border-emerald-500/20 font-mono">
-                              {tool.badge}
-                            </span>
-                          )}
-                        </div>
 
-                        <p className="text-xs text-slate-300 mt-1 line-clamp-1 sm:line-clamp-none">
-                          {tool.primaryFunction}
-                        </p>
+                      {/* 2. Model / Ürün Adı */}
+                      <div className="w-44 sm:w-48 flex-shrink-0">
+                        <div className="flex items-center gap-1.5">
+                          <span className="font-bold text-sm sm:text-base text-white hover:text-emerald-400 transition truncate">
+                            {tool.name}
+                          </span>
+                        </div>
+                        {tool.badge && (
+                          <span className="text-[10px] font-mono text-slate-400 block sm:hidden">
+                            {tool.badge}
+                          </span>
+                        )}
+                      </div>
+
+                      {/* 3. Kategori (HER SATIRDA TAM AYNI DİKEY HİZADA) */}
+                      <div className="w-32 sm:w-36 flex-shrink-0">
+                        <span className={`inline-block font-mono text-[11px] px-2.5 py-0.5 rounded border ${getCategoryBadgeClass(tool.category)}`}>
+                          {tool.category}
+                        </span>
                       </div>
                     </div>
 
-                    {/* Sağ: Hype Skoru ve Değişim */}
-                    <div className="flex items-center gap-3 sm:gap-4 flex-shrink-0">
-                      <div className="text-right">
-                        <div className="flex items-baseline justify-end gap-1">
-                          <span className="text-lg font-black font-mono text-white">
+                    {/* 4. Temel Yetenek / Açıklama */}
+                    <div className="flex-1 md:px-3 text-xs text-slate-300 line-clamp-1 sm:line-clamp-2">
+                      {tool.primaryFunction}
+                    </div>
+
+                    {/* 5. Hype Skoru ve Delta */}
+                    <div className="flex items-center justify-between md:justify-end gap-3 w-full md:w-28 flex-shrink-0 pt-2 md:pt-0 border-t md:border-t-0 border-slate-800/50">
+                      
+                      {/* Mobil Kategori Etiketi (Küçük ekranda da görünür) */}
+                      <span className="md:hidden text-[10px] font-mono text-slate-500">
+                        {tool.sources[0]}
+                      </span>
+
+                      <div className="text-right flex items-center md:flex-col md:items-end gap-2 md:gap-0">
+                        <div className="flex items-baseline gap-1">
+                          <span className="text-base sm:text-lg font-black font-mono text-white">
                             {tool.hypeScore}
                           </span>
                           <span className="text-[10px] font-mono text-slate-500">/10</span>
                         </div>
-                        <div className="text-[11px] font-mono font-bold flex items-center justify-end gap-0.5">
+
+                        <div className="text-[11px] font-mono font-bold flex items-center gap-0.5">
                           {isPositive && <ArrowUpRight className="w-3 h-3 text-emerald-400" />}
                           {isNegative && <ArrowDownRight className="w-3 h-3 text-rose-400" />}
                           {!isPositive && !isNegative && <Minus className="w-3 h-3 text-slate-500" />}
@@ -146,23 +210,29 @@ export default function App() {
                           </span>
                         </div>
                       </div>
+
+                      <div className="text-slate-500">
+                        {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                      </div>
+
                     </div>
 
                   </div>
 
-                  {/* Tıklayınca Açılan Sade Detay Kutusu */}
+                  {/* Tıklanınca Açılan Detay Kutusu */}
                   {isExpanded && (
-                    <div className="mt-4 pt-4 border-t border-slate-800/80 grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs bg-slate-900/50 p-3 rounded-lg animate-in fade-in">
-                      <div className="sm:col-span-2">
-                        <span className="text-slate-400 font-mono block text-[10px] uppercase font-bold mb-1">
-                          Neden Trend Oldu?
+                    <div className="mt-3 pt-3 border-t border-slate-800 text-xs bg-slate-900/60 p-3 rounded-lg grid grid-cols-1 sm:grid-cols-3 gap-3 animate-in fade-in">
+                      <div className="sm:col-span-2 space-y-1">
+                        <span className="text-slate-400 font-mono block text-[10px] uppercase font-bold">
+                          Neden Trend Oldu? (Topluluk Sentezi)
                         </span>
                         <p className="text-slate-200 leading-relaxed">
                           {tool.whyTrending}
                         </p>
                       </div>
-                      <div>
-                        <span className="text-slate-400 font-mono block text-[10px] uppercase font-bold mb-1">
+
+                      <div className="space-y-1">
+                        <span className="text-slate-400 font-mono block text-[10px] uppercase font-bold">
                           Kaynak Topluluklar
                         </span>
                         <div className="flex flex-wrap gap-1">
@@ -182,7 +252,7 @@ export default function App() {
           </div>
         </section>
 
-        {/* 3. Danışman Bülteni ve Yönetici Raporu (Alt Kısımda Tertemiz) */}
+        {/* 3. Danışman Bülteni & Rapor Bölümü */}
         <section className="bg-[#0f172a] border border-slate-800 rounded-xl p-5 sm:p-7 shadow-xl space-y-6">
           
           <div className="border-b border-slate-800 pb-4 flex items-center justify-between">
@@ -210,7 +280,7 @@ export default function App() {
             {report.executiveSummary}
           </div>
 
-          {/* 4 Bölümlü Bülten İçeriği */}
+          {/* 4 Bölümlü Analizler */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {report.sections.map((sec, idx) => (
               <div key={idx} className="p-4 rounded-lg bg-slate-900/60 border border-slate-800/80 space-y-2">
@@ -236,7 +306,7 @@ export default function App() {
 
       {/* 4. Sade Footer */}
       <footer className="border-t border-slate-800 bg-[#070a12] py-6 px-4 text-center text-xs text-slate-500 font-mono">
-        <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
           <span>aitrendleri.com • 43+ Reddit AI Topluluğu Sinyal Sentezi</span>
           <span>Her gün otomatik güncellenir</span>
         </div>
