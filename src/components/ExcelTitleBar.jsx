@@ -12,7 +12,7 @@ export default function ExcelTitleBar({ onTriggerScan, isScanning, lastUpdateDat
             X
           </div>
           <span className="font-bold text-sm tracking-tight text-white flex items-center gap-2">
-            <span>aitrendleri.xlsx</span>
+            <span>aitrendleri.com</span>
             <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-[#0b5e30] text-emerald-200 border border-emerald-400/30">
               Otomatik Kaydedildi
             </span>
