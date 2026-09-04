@@ -217,7 +217,7 @@ async function main() {
     - Claude, Gemini, GPT-4.5 gibi kapalı API modellerini "LLM (Model)" olarak kategorilendir.
   `;
 
-  const fallbackModels = ["gemini-3.7-flash", "gemini-3.7-pro", "gemini-2.5-flash", "gemini-2.5-pro"];
+  const fallbackModels = ["gemini-3.8-flash", "gemini-3.7-flash", "gemini-2.5-flash", "gemini-2.5-pro"];
   let resultJson = null;
   let activeModelUsed = "";
 

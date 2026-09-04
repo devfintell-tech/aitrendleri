@@ -1,13 +1,13 @@
-name: Günlük Reddit AI Trend Taraması
+name: Günlük Reddit AI Trend Taraması & Canlı Dağıtım
 
 on:
   schedule:
     # Her sabah 06:00 UTC (Türkiye saatiyle 09:00) otomatik çalışır
     - cron: '0 6 * * *'
-  workflow_dispatch: # GitHub arayüzünden manuel 'Run workflow' ile istediğiniz an tetikleme
+  workflow_dispatch: # GitHub üzerinden tek tıkla manuel tetikleme
 
 jobs:
-  analyze-and-deploy:
+  crawl-analyze-and-notify:
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
@@ -24,14 +24,28 @@ jobs:
       - name: Bağımlılıkları Yükle
         run: npm ci || npm install
 
-      - name: Reddit Verilerini Çek & Gemini ile Analiz Et
+      - name: 43 Reddit Sub Taraması & Gemini 3.8 Analizi
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: npm run crawl
 
+      - name: Siteyi Derle & Cloudflare Pages'e Doğrudan Canlıya Al
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          npm run build
+          npx wrangler pages deploy dist --project-name aitrendleri
+
+      - name: Bilgilendirme E-postası Gönder
+        env:
+          ALICI_MAIL: ${{ secrets.ALICI_MAIL || 'orhaner1907@gmail.com' }}
+          GAS_WEBHOOK_URL: ${{ secrets.GAS_WEBHOOK_URL }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+        run: node scripts/send-notification.js
+
       - name: Güncel Verileri Git Deposuna Kaydet
         run: |
           git config --global user.name "AI Trend Bot"
-          git config --global user.email "bot@aitrendradar.local"
+          git config --global user.email "bot@aitrendleri.com"
           git add src/data/latest-report.json
           git diff --quiet && git diff --staged --quiet || (git commit -m "🤖 Otonom Günlük Rapor Güncellemesi [skip ci]" && git push)
