@@ -36,76 +36,122 @@ function sleep(ms) {
 
 /**
  * Reddit RSS beslemesini akıllı retry ve sakin bekleme ile çeker.
+ * Hem son 24 saatin "hot" beslemesini hem de son 1 haftanın en çok oylanan "top.rss?t=week" beslemesini çeker.
  */
 async function fetchBatchPosts(batch) {
-  const url = `https://www.reddit.com/r/${batch.slug}/hot.rss?limit=30`;
-  console.log(`📡 Çekiliyor: [${batch.name}] -> (${batch.subreddits.length} sub, en sıcak başlıklar)...`);
+  const feeds = [
+    { label: "Günlük Sıcak", url: `https://www.reddit.com/r/${batch.slug}/hot.rss?limit=25` },
+    { label: "1 Haftalık En Çok Oylanan", url: `https://www.reddit.com/r/${batch.slug}/top.rss?t=week&limit=15` }
+  ];
 
-  for (let attempt = 1; attempt <= 2; attempt++) {
-    try {
-      const res = await fetch(url, {
-        headers: {
-          "User-Agent": REDDIT_USER_AGENT,
-          "Accept": "application/atom+xml,application/xml,text/xml"
-        }
-      });
+  const posts = [];
+  const seenLinks = new Set();
 
-      if (res.status === 429) {
-        console.warn(`⏳ Reddit 429 verdi [${batch.name}]. 10 saniye sakinleşip tekrar deneniyor (Deneme ${attempt}/2)...`);
-        await sleep(10000);
-        continue;
-      }
+  for (const feedConfig of feeds) {
+    console.log(`📡 Çekiliyor: [${batch.name}] -> (${feedConfig.label})...`);
 
-      if (!res.ok) {
-        console.warn(`⚠️ HTTP ${res.status} [${batch.name}]: ${res.statusText}`);
-        return [];
-      }
+    for (let attempt = 1; attempt <= 2; attempt++) {
+      try {
+        const res = await fetch(feedConfig.url, {
+          headers: {
+            "User-Agent": REDDIT_USER_AGENT,
+            "Accept": "application/atom+xml,application/xml,text/xml"
+          }
+        });
 
-      const xml = await res.text();
-      const jsonObj = parser.parse(xml);
-      const feed = jsonObj.feed;
-      if (!feed || !feed.entry) return [];
-
-      const entries = Array.isArray(feed.entry) ? feed.entry : [feed.entry];
-      const posts = [];
-
-      for (const entry of entries.slice(0, 20)) {
-        let content = "";
-        if (entry.content && typeof entry.content === "string") {
-          content = entry.content;
-        } else if (entry.content && entry.content["#text"]) {
-          content = entry.content["#text"];
-        }
-
-        // Sabitlenmiş moderatör duyurularını ve kuralları ele
-        const title = entry.title ? decodeHtmlEntities(typeof entry.title === "string" ? entry.title : entry.title["#text"] || "") : "";
-        if (title.toLowerCase().includes("monthly discussion") || title.toLowerCase().includes("weekly thread") || title.toLowerCase().includes("rules")) {
+        if (res.status === 429) {
+          console.warn(`⏳ Reddit 429 verdi [${batch.name} - ${feedConfig.label}]. 10 saniye sakinleşip tekrar deneniyor (Deneme ${attempt}/2)...`);
+          await sleep(10000);
           continue;
         }
 
-        // HTML etiketlerini temizle
-        content = content.replace(/<\/?[^>]+(>|$)/g, "");
-        content = decodeHtmlEntities(content);
-        if (content.length > 800) content = content.substring(0, 800) + "...";
+        if (!res.ok) {
+          console.warn(`⚠️ HTTP ${res.status} [${batch.name} - ${feedConfig.label}]: ${res.statusText}`);
+          break;
+        }
 
-        const link = entry.link && entry.link["@_href"] ? entry.link["@_href"] : "";
+        const xml = await res.text();
+        const jsonObj = parser.parse(xml);
+        const feed = jsonObj.feed;
+        if (!feed || !feed.entry) break;
 
-        posts.push({
-          title,
-          link,
-          content: content.trim()
-        });
+        const entries = Array.isArray(feed.entry) ? feed.entry : [feed.entry];
+
+        for (const entry of entries.slice(0, 15)) {
+          const link = entry.link && entry.link["@_href"] ? entry.link["@_href"] : "";
+          if (seenLinks.has(link)) continue;
+          if (link) seenLinks.add(link);
+
+          let content = "";
+          if (entry.content && typeof entry.content === "string") {
+            content = entry.content;
+          } else if (entry.content && entry.content["#text"]) {
+            content = entry.content["#text"];
+          }
+
+          const title = entry.title ? decodeHtmlEntities(typeof entry.title === "string" ? entry.title : entry.title["#text"] || "") : "";
+          if (title.toLowerCase().includes("monthly discussion") || title.toLowerCase().includes("weekly thread") || title.toLowerCase().includes("rules")) {
+            continue;
+          }
+
+          content = content.replace(/<\/?[^>]+(>|$)/g, "");
+          content = decodeHtmlEntities(content);
+          if (content.length > 800) content = content.substring(0, 800) + "...";
+
+          posts.push({
+            label: feedConfig.label,
+            title,
+            link,
+            content: content.trim()
+          });
+        }
+        break; // Başarılı, döngüden çık
+      } catch (err) {
+        console.error(`❌ Hata [${batch.name} - ${feedConfig.label}]:`, err.message);
+        if (attempt < 2) await sleep(4000);
       }
-
-      console.log(`✅ [${batch.name}] için ${posts.length} sıcak başlık başarıyla alındı.`);
-      return posts;
-    } catch (err) {
-      console.error(`❌ Hata [${batch.name}]:`, err.message);
-      if (attempt < 2) await sleep(5000);
     }
+    // İki besleme arasında kısa nefes alma
+    await sleep(2000);
   }
 
-  return [];
+  console.log(`✅ [${batch.name}] için toplam ${posts.length} başlık (sıcak + 1 haftalık) başarıyla alındı.`);
+  return posts;
+}
+
+/**
+ * tool-history.json dosyasından sistemin kendi geçmiş kayıtlarını derleyip Gemini'ye beslenebilir özet metin haline getirir.
+ */
+function loadToolHistorySummary() {
+  const historyPath = path.join(__dirname, "../src/data/tool-history.json");
+  if (!fs.existsSync(historyPath)) return "Veritabanında henüz kayıtlı geçmiş veri bulunmuyor.";
+
+  try {
+    const raw = JSON.parse(fs.readFileSync(historyPath, "utf-8"));
+    const summaries = [];
+
+    for (const [toolId, info] of Object.entries(raw)) {
+      const history = info.history || [];
+      if (history.length === 0) continue;
+
+      const latest = history[history.length - 1];
+      const older7d = history.length > 1 ? history[Math.max(0, history.length - 3)] : history[0];
+      const delta7d = (latest.hypeScore - older7d.hypeScore).toFixed(1);
+      const sentimentFlow = history.map(h => `${h.date}: ${h.hypeScore} (${h.sentiment})`).join(" -> ");
+      const headlines = history.slice(-2).map(h => `"${h.headline}"`).join(", ");
+
+      summaries.push(`- [${toolId}] ${info.name} (${info.category}):
+  * Veritabanındaki Son Skor: ${latest.hypeScore} (${latest.date})
+  * 7 Günlük Kayıt Değişimi: ${older7d.hypeScore} -> ${latest.hypeScore} (7 Günlük Fark: ${Number(delta7d) >= 0 ? '+' + delta7d : delta7d})
+  * Zaman Çizgisi ve Hissiyat: ${sentimentFlow}
+  * Kayıtlı Olaylar: ${headlines}`);
+    }
+
+    return summaries.join("\n\n");
+  } catch (err) {
+    console.warn("⚠️ tool-history.json okunamadı:", err.message);
+    return "Veritabanı okuma hatası.";
+  }
 }
 
 /**
@@ -201,16 +247,40 @@ async function main() {
     process.exit(1);
   }
 
-  console.log(`📊 Toplam ${totalPosts} adet en sıcak gönderi toplandı (${successfulBatches}/${SUBREDDIT_BATCHES.length} grup). Gemini şelale analizine geçiliyor...`);
+  const historySummary = loadToolHistorySummary();
+  console.log(`📊 Toplam ${totalPosts} adet gönderi toplandı (Günlük sıcak + 1 haftalık en çok oylananlar).`);
+  console.log(`📚 Sistemin yerel hafıza veritabanı analiz promptuna enjekte ediliyor...`);
 
   const prompt = `
     Sen kıdemli bir "Yapay Zeka, GPU/Donanım ve Yazılım Ekosistemi Baş Danışmanısın".
-    Aşağıda 50 seçkin Reddit topluluğundan (Vibe coding, Ajanlar, LLM'ler, Açık kaynak, Donanım/GPU/CPU, Bulut altyapısı ve Yazılım) toplanan en güncel tartışmalar yer almaktadır:
+    Aşağıda 50 seçkin Reddit topluluğundan toplanan en güncel tartışmalar (Günlük Sıcak + 1 Haftalık En Çok Oylanan) yer almaktadır:
 
     ${allDiscussions}
 
-    GÖREV:
-    Bu verileri analiz ederek günlük, haftalık ve aylık Hype Skorlarını (1.0 - 10.0) ve 4 bölümlü derin danışman bültenini JSON formatında üret.
+    ════════════════════════════════════════════════════════════════════
+    📌 SİSTEMİN KALICI VERİTABANI HAFIZASI (TOOL-HISTORY DATABASE):
+    Aşağıda sistemimizin daha önceki günlerde ve haftalarda kaydettiği gerçek model ve araç skorları, zaman çizgisi ve hissiyat akışı yer almaktadır:
+
+    ${historySummary}
+    ════════════════════════════════════════════════════════════════════
+
+    GÖREV VE ZAMAN DİLİMLERİ HESAPLAMA KURALLARI:
+    1. "twelveHours" (12 Saatlik Sekme):
+       - Reddit'in son 12 saatteki anlık çıkışlarına ve sıcak tartışmalarına dayanmalıdır.
+       - En taze duyurulan, ani kırılma yaşayan veya servis çöküşü yaşayan modelleri listele (en az 10 adet).
+
+    2. "daily" (24 Saatlik Sekme):
+       - Bugünün genel günlüğünü temsil eder (en az 10-14 adet).
+       - scoreDelta: Dün kaydedilen skora göre 24 saatlik net değişim.
+
+    3. "weekly" (1 Haftalık Sekme - VERİTABANI VE 1 HAFTALIK REDDIT VERİSİ):
+       - KESİNLİKLE yukarıdaki "SİSTEMİN KALICI VERİTABANI HAFIZASI"ndaki son 7 günlük kayıtları ve Reddit'in "1 Haftalık En Çok Oylanan" başlıklarını harmanla!
+       - scoreDelta: Veritabanındaki 7 gün önceki kayıt ile bugünkü skor arasındaki gerçek 7 günlük net farkı (7d Delta) yansıtmalıdır.
+       - Eğer bir model (örn. ilk günlerde büyük coşkuyla karşılanıp sonra 503 hataları, kota bitmesi veya servis çöküşü nedeniyle eleştirilen bir araç) son 7 günde düşüşe geçtiyse ("balon söndü"), haftalık skorda bu düşüşü negatif delta (-1.5, -2.0 gibi) olarak yansıt.
+       - sparkline: Son 7 günün puan akışını temsil eden 7 adet sayı dizisi olmalıdır (en az 10-12 araç).
+
+    4. "monthly" (1 Aylık Sekme - VERİTABANI VE PAZAR DİNAMİKLERİ):
+       - Veritabanındaki 30 günlük genel trendi, kurumsal benimsenmeyi ve pazar konsolidasyonunu yansıtmalıdır.
 
     KATEGORİLENDİRME KURALLARI:
     Her araca veya modele MUTLAKA şu kategorilerden tam olarak birini ver:
