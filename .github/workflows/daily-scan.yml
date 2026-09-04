@@ -2,8 +2,8 @@ name: Günlük Reddit AI Trend Taraması & Canlı Dağıtım
 
 on:
   schedule:
-    # Her sabah 06:00 UTC (Türkiye saatiyle 09:00) otomatik çalışır
-    - cron: '0 6 * * *'
+    # Her gün gece 03:00 TSİ (00:00 UTC) ve öğleden sonra 15:00 TSİ (12:00 UTC) çalışır
+    - cron: '0 0,12 * * *'
   workflow_dispatch: # GitHub üzerinden tek tıkla manuel tetikleme
 
 jobs:
