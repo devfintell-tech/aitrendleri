@@ -31,6 +31,8 @@ export default function App() {
     switch (category) {
       case 'LLM (Model)':
         return 'bg-amber-950/70 text-amber-300 border-amber-500/30';
+      case 'Yerel Model':
+        return 'bg-teal-950/70 text-teal-300 border-teal-500/30';
       case 'IDE / Editör':
         return 'bg-blue-950/70 text-blue-300 border-blue-500/30';
       case 'CLI / Terminal':

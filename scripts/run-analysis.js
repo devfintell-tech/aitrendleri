@@ -34,8 +34,9 @@ function sleep(ms) {
  * Multi-Subreddit RSS beslemesini güvenli şekilde çeker.
  */
 async function fetchBatchPosts(batch) {
-  const url = `https://www.reddit.com/r/${batch.slug}/hot.rss?limit=15`;
-  console.log(`📡 Çekiliyor: [${batch.name}] -> (${batch.subreddits.length} sub)...`);
+  // En sıcak (hot) 30 içeriği çekip en yüksek sinyallileri süzüyoruz
+  const url = `https://www.reddit.com/r/${batch.slug}/hot.rss?limit=30`;
+  console.log(`📡 Çekiliyor: [${batch.name}] -> (${batch.subreddits.length} sub, en sıcak içerikler)...`);
 
   try {
     const res = await fetch(url, {
@@ -58,7 +59,7 @@ async function fetchBatchPosts(batch) {
     const entries = Array.isArray(feed.entry) ? feed.entry : [feed.entry];
     const posts = [];
 
-    for (const entry of entries.slice(0, 10)) {
+    for (const entry of entries.slice(0, 18)) {
       let content = "";
       if (entry.content && typeof entry.content === "string") {
         content = entry.content;
@@ -66,12 +67,17 @@ async function fetchBatchPosts(batch) {
         content = entry.content["#text"];
       }
 
+      // Sabitlenmiş moderatör duyurularını ve kuralları ele
+      const title = entry.title ? decodeHtmlEntities(typeof entry.title === "string" ? entry.title : entry.title["#text"] || "") : "";
+      if (title.toLowerCase().includes("monthly discussion") || title.toLowerCase().includes("weekly thread") || title.toLowerCase().includes("rules")) {
+        continue;
+      }
+
       // HTML etiketlerini temizle
       content = content.replace(/<\/?[^>]+(>|$)/g, "");
       content = decodeHtmlEntities(content);
-      if (content.length > 700) content = content.substring(0, 700) + "...";
+      if (content.length > 800) content = content.substring(0, 800) + "...";
 
-      const title = entry.title ? decodeHtmlEntities(typeof entry.title === "string" ? entry.title : entry.title["#text"] || "") : "";
       const link = entry.link && entry.link["@_href"] ? entry.link["@_href"] : "";
 
       posts.push({
@@ -167,6 +173,9 @@ async function main() {
           "category": "Vibe Coding | Temel LLM | Otonom Ajanlar | Açık Kaynak | Görsel & Medya",
           "badge": "Örn: Günün Lideri",
           "hypeScore": 9.5,
+          "category": "LLM (Model) | Yerel Model | IDE / Editör | CLI / Terminal | Otonom Agent | Otomasyon | Altyapı & SDK | Medya / Üretim | Şirket / Lab",
+          "badge": "Örn: Günün Lideri",
+          "hypeScore": 9.5,
           "prevScore": 9.0,
           "scoreDelta": 0.5,
           "trend": "skyrocketing | rising | stable | cooling",
@@ -177,34 +186,38 @@ async function main() {
           "sources": ["r/vibecoding", "r/CursorAI"]
         }
       ],
-      "weekly": [ ...aynı formatta haftalık 6-8 araç... ],
-      "monthly": [ ...aynı formatta aylık 4-6 araç... ],
+      "weekly": [ ...aynı formatta haftalık 8-10 araç... ],
+      "monthly": [ ...aynı formatta aylık 6-8 araç... ],
       "sections": [
         {
-          "title": "🛠️ Model Sıralaması & Radar",
+          "title": "BÖLÜM 1: 🛠️ MODEL SIRALAMALARI VE YAPAY ZEKA ARAÇLARI DASHBOARD'U",
           "badge": "Liderlik",
           "contentHtml": "<p>...</p>"
         },
         {
-          "title": "💡 Vibe Coding & Teknik İçgörüler",
+          "title": "BÖLÜM 2: 💡 DERİN TEKNİK İÇGÖRÜLER, MODELLER & VIBE CODING",
           "badge": "Kodlama Devrimi",
           "contentHtml": "<p>...</p>"
         },
         {
-          "title": "📉 Makro Sektör Trendleri & Rekabet Dengesi",
+          "title": "BÖLÜM 3: 📉 MAKRO SEKTÖR TRENDLERİ VE REKABET DENGESİ",
           "badge": "Pazar Analizi",
           "contentHtml": "<p>...</p>"
         },
         {
-          "title": "💼 Beyaz Yaka Entegrasyon ve Operasyon Rehberi",
+          "title": "BÖLÜM 4: 💼 BEYAZ YAKA ENTEGRASYON VE OPERASYON REHBERİ",
           "badge": "İş Dünyası",
           "contentHtml": "<p>...</p>"
         }
       ]
     }
+
+    ÖNEMLİ KATEGORİLEME KURALI:
+    - DeepSeek-R1, Qwen, Llama, Mistral gibi açık ağırlıklı veya yerel çalıştırılabilen modelleri MUTLAKA "Yerel Model" olarak kategorilendir!
+    - Claude, Gemini, GPT-4.5 gibi kapalı API modellerini "LLM (Model)" olarak kategorilendir.
   `;
 
-  const fallbackModels = ["gemini-2.5-flash", "gemini-2.5-pro", "gemini-1.5-flash"];
+  const fallbackModels = ["gemini-3.7-flash", "gemini-3.7-pro", "gemini-2.5-flash", "gemini-2.5-pro"];
   let resultJson = null;
   let activeModelUsed = "";
 

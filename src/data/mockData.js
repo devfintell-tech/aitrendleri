@@ -1,6 +1,7 @@
 export const CATEGORY_DEFINITIONS = [
   { id: "all", label: "Tümü", badgeColor: "bg-slate-800 text-slate-300 border-slate-700" },
   { id: "LLM (Model)", label: "LLM (Model)", desc: "Büyük dil ve akıl yürütme modelleri", badgeColor: "bg-amber-950/60 text-amber-300 border-amber-600/40" },
+  { id: "Yerel Model", label: "Yerel Model", desc: "Açık ağırlıklı, yerel cihazda çalışabilen modeller (DeepSeek, Llama, Qwen)", badgeColor: "bg-teal-950/60 text-teal-300 border-teal-600/40" },
   { id: "IDE / Editör", label: "IDE / Editör", desc: "Yeni nesil AI kod editörleri ve çalışma ortamları", badgeColor: "bg-blue-950/60 text-blue-300 border-blue-600/40" },
   { id: "CLI / Terminal", label: "CLI / Terminal", desc: "Komut satırı ve terminalde çalışan otonom kodlama ajanları", badgeColor: "bg-emerald-950/60 text-emerald-300 border-emerald-600/40" },
   { id: "Otonom Agent", label: "Otonom Agent", desc: "Rol ve hedef odaklı çoklu ajan framework'leri", badgeColor: "bg-purple-950/60 text-purple-300 border-purple-600/40" },
@@ -45,7 +46,7 @@ export const MOCK_TOOLS_DATA = {
     {
       id: "deepseek-r1",
       name: "DeepSeek-R1 / V3",
-      category: "LLM (Model)",
+      category: "Yerel Model",
       badge: "Açık Standart",
       hypeScore: 9.5,
       prevScore: 9.5,
