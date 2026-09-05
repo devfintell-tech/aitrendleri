@@ -753,88 +753,43 @@ export default function App() {
               </div>
             )}
 
-            {/* 6. 🤗 HUGGING FACE & ⚡ HACKER NEWS SENTEZİ */}
-            {(report.huggingFaceTop?.length > 0 || report.hackerNewsPulse?.length > 0) && (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2 border-t border-[#e2e8f0]">
-                {/* Hugging Face Açık Kaynak Liderleri */}
-                {report.huggingFaceTop?.length > 0 && (
-                  <div className="p-3.5 rounded bg-[#f8fafc] border border-[#d1d5db] space-y-2.5">
-                    <div className="flex items-center justify-between border-b border-[#e2e8f0] pb-2">
-                      <div className="flex items-center gap-1.5">
-                        <span className="text-base">🤗</span>
-                        <h4 className="text-xs font-bold text-slate-900 font-mono uppercase">
-                          Hugging Face Yerel Model Nabzı
-                        </h4>
-                      </div>
-                      <span className="text-[10px] font-mono text-slate-500">İndirme &amp; Beğeni</span>
-                    </div>
-
-                    <div className="space-y-1.5">
-                      {report.huggingFaceTop.map((hf, hfIdx) => (
-                        <div key={hfIdx} className="bg-white border border-[#e2e8f0] rounded p-2 text-xs flex items-center justify-between gap-2 shadow-2xs">
-                          <div className="min-w-0 flex-1">
-                            <span className="font-mono font-bold text-slate-900 truncate block text-[11px]">
-                              {hf.id}
-                            </span>
-                            <span className="text-[10px] text-slate-500 truncate block">
-                              {hf.highlight || hf.tag}
-                            </span>
-                          </div>
-                          <div className="text-right font-mono flex-shrink-0">
-                            <span className="font-black text-emerald-700 text-xs block">
-                              ⬇ {hf.downloads}
-                            </span>
-                            <span className="text-[9px] text-slate-400">
-                              ❤️ {hf.likes}
-                            </span>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
+            {/* 6. 🤗 HUGGING FACE YEREL MODEL VE AÇIK KAYNAK NABZI */}
+            {report.huggingFaceTop?.length > 0 && (
+              <div className="pt-2 border-t border-[#e2e8f0] space-y-2.5">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-base">🤗</span>
+                    <h4 className="text-xs sm:text-sm font-bold text-slate-900 font-mono uppercase">
+                      Hugging Face Yerel Model &amp; Açık Kaynak Nabzı
+                    </h4>
                   </div>
-                )}
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-50 text-amber-800 border border-amber-200 font-bold">
+                    Gerçek İndirme Sayıları
+                  </span>
+                </div>
 
-                {/* Hacker News Mühendis Eleştirileri */}
-                {report.hackerNewsPulse?.length > 0 && (
-                  <div className="p-3.5 rounded bg-[#f8fafc] border border-[#d1d5db] space-y-2.5">
-                    <div className="flex items-center justify-between border-b border-[#e2e8f0] pb-2">
-                      <div className="flex items-center gap-1.5">
-                        <span className="text-base">⚡</span>
-                        <h4 className="text-xs font-bold text-slate-900 font-mono uppercase">
-                          Hacker News Mühendis Eleştirileri
-                        </h4>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
+                  {report.huggingFaceTop.map((hf, hfIdx) => (
+                    <div key={hfIdx} className="bg-white border border-[#cbd5e1] rounded p-2.5 text-xs flex flex-col justify-between gap-1.5 shadow-2xs">
+                      <div>
+                        <span className="font-mono font-bold text-slate-900 truncate block text-[11px]" title={hf.id}>
+                          {hf.id}
+                        </span>
+                        <span className="text-[10px] text-slate-500 leading-tight line-clamp-2 pt-0.5">
+                          {hf.highlight || hf.tag}
+                        </span>
                       </div>
-                      <span className="text-[10px] font-mono text-orange-600 font-bold">Silikon Vadisi</span>
+                      <div className="flex items-center justify-between pt-1 border-t border-[#f1f5f9] font-mono text-[11px]">
+                        <span className="font-black text-emerald-700">
+                          ⬇ {hf.downloads}
+                        </span>
+                        <span className="text-slate-400 text-[10px]">
+                          ❤️ {hf.likes}
+                        </span>
+                      </div>
                     </div>
-
-                    <div className="space-y-1.5">
-                      {report.hackerNewsPulse.map((hn, hnIdx) => (
-                        <div key={hnIdx} className="bg-white border border-[#e2e8f0] rounded p-2 text-xs space-y-1 shadow-2xs">
-                          <div className="flex items-start justify-between gap-2">
-                            <a 
-                              href={hn.url} 
-                              target="_blank" 
-                              rel="noopener noreferrer"
-                              className="font-bold text-[11px] text-slate-900 hover:text-orange-600 transition flex-1 leading-tight inline-flex items-center gap-1 group"
-                            >
-                              <span className="group-hover:underline">{hn.title}</span>
-                              <ExternalLink className="w-2.5 h-2.5 flex-shrink-0 text-slate-400 group-hover:text-orange-600" />
-                            </a>
-                            <span className="font-mono text-[9px] font-bold text-orange-700 bg-orange-50 px-1.5 py-0.5 rounded border border-orange-200 flex-shrink-0">
-                              ▲ {hn.points}
-                            </span>
-                          </div>
-                          {hn.takeaway && (
-                            <p className="text-[10px] text-slate-600 leading-snug">
-                              <strong className="text-slate-700">Eleştiri: </strong>
-                              {hn.takeaway}
-                            </p>
-                          )}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
+                  ))}
+                </div>
               </div>
             )}
           </section>

@@ -36,14 +36,14 @@ function sleep(ms) {
 
 /**
  * 1. REDDİT GÜNLÜK SICAK (HOT) BESLEMESİ
- * Haftalık/aylık için ayrı ağır tarama yapmayız; gün gün biriken veri haftalık ve aylık görünümü oluşturur.
+ * 50 topluluktan en güncel sıcak tartışmaları ve flaş duyuruları çeker.
  */
 async function fetchBatchPosts(batch) {
-  const feedUrl = `https://www.reddit.com/r/${batch.slug}/hot.rss?limit=25`;
+  const feedUrl = `https://www.reddit.com/r/${batch.slug}/hot.rss?limit=30`;
   const posts = [];
   const seenLinks = new Set();
 
-  console.log(`📡 Çekiliyor: [${batch.name}] -> (Günlük Sıcak)...`);
+  console.log(`📡 Çekiliyor: [${batch.name}] -> (Günlük Sıcak & Flaş)...`);
 
   for (let attempt = 1; attempt <= 2; attempt++) {
     try {
@@ -91,7 +91,7 @@ async function fetchBatchPosts(batch) {
 
         content = content.replace(/<\/?[^>]+(>|$)/g, "");
         content = decodeHtmlEntities(content);
-        if (content.length > 700) content = content.substring(0, 700) + "...";
+        if (content.length > 750) content = content.substring(0, 750) + "...";
 
         posts.push({
           title,
@@ -110,37 +110,7 @@ async function fetchBatchPosts(batch) {
 }
 
 /**
- * 2. HACKER NEWS API (Algolia - %100 Ücretsiz & Sınırsız)
- * Silikon Vadisi mühendislerinin son 24 saatteki teknik tartışmaları ve eleştirileri.
- */
-async function fetchHackerNewsPosts() {
-  console.log("⚡ Hacker News Algolia API'den teknik tartışmalar çekiliyor...");
-  try {
-    const oneDayAgo = Math.floor(Date.now() / 1000) - 86400;
-    const url = `https://hn.algolia.com/api/v1/search?query=AI+OR+LLM+OR+model&tags=story&numericFilters=created_at_i>${oneDayAgo}&hitsPerPage=15`;
-    const res = await fetch(url, { headers: { "Accept": "application/json" } });
-    if (!res.ok) {
-      console.warn(`⚠️ Hacker News HTTP ${res.status}`);
-      return [];
-    }
-    const data = await res.json();
-    const hits = (data.hits || []).filter(h => (h.points || 0) >= 15).slice(0, 10);
-
-    return hits.map(h => ({
-      title: h.title,
-      points: h.points,
-      comments: h.num_comments,
-      url: h.url || `https://news.ycombinator.com/item?id=${h.objectID}`,
-      hnUrl: `https://news.ycombinator.com/item?id=${h.objectID}`
-    }));
-  } catch (err) {
-    console.warn("⚠️ Hacker News çekilemedi:", err.message);
-    return [];
-  }
-}
-
-/**
- * 3. HUGGING FACE API (%100 Ücretsiz Açık Uç Nokta)
+ * 2. HUGGING FACE API (%100 Ücretsiz Açık Uç Nokta)
  * Açık kaynak & yerel modellerin gerçek indirme ve beğeni sayıları.
  */
 async function fetchHuggingFaceTrending() {
@@ -167,7 +137,7 @@ async function fetchHuggingFaceTrending() {
 }
 
 /**
- * 4. ARXİV API (%100 Ücretsiz & Sınırsız)
+ * 3. ARXİV API (%100 Ücretsiz & Sınırsız)
  * Son günlerde çıkan yapay zeka makalelerini çeker ve daha önce görülmemiş olanları seçer.
  */
 async function fetchArxivCandidatePapers(seenIds = new Set()) {
@@ -189,7 +159,7 @@ async function fetchArxivCandidatePapers(seenIds = new Set()) {
       const fullId = e.id ? String(e.id) : "";
       const rawId = fullId.replace("http://arxiv.org/abs/", "").replace("https://arxiv.org/abs/", "").trim();
       
-      // MÜKERRERLİK KONTROLÜ: Daha önce getirilmiş makaleleri kesinlikle eliyoruz!
+      // MÜKERRERLİK KONTROLÜ: Daha önce getirilmiş makaleleri eliyoruz!
       if (seenIds.has(rawId) || seenIds.has(fullId)) continue;
 
       let authors = [];
@@ -298,23 +268,36 @@ function loadToolHistorySummary() {
 
 /**
  * Belirtilen model ve API anahtarı ile Gemini çağrısı yapar.
+ * Google Search Grounding destekli çalışır.
  */
 async function callGemini(model, apiKey, prompt) {
   const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
   
   const payload = {
     contents: [{ parts: [{ text: prompt }] }],
+    tools: [{ googleSearch: {} }],
     generationConfig: {
       temperature: 0.2,
       responseMimeType: "application/json"
     }
   };
 
-  const res = await fetch(apiUrl, {
+  let res = await fetch(apiUrl, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload)
   });
+
+  // Eğer model sürümü googleSearch ile responseMimeType: application/json kombinasyonunu desteklemezse tools'suz tekrar dener
+  if (!res.ok && res.status === 400) {
+    console.log("ℹ️ Google Search aracı yalın JSON moduna devrediliyor...");
+    delete payload.tools;
+    res = await fetch(apiUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+  }
 
   if (!res.ok) {
     throw new Error(`HTTP ${res.status}: ${await res.text()}`);
@@ -327,7 +310,6 @@ async function callGemini(model, apiKey, prompt) {
 
 /**
  * EN YÜKSEK ÖNCELİK: gemini-3.8-flash İLK SIRADA ÇALIŞIR!
- * 3.8 -> 3.7 -> 3.6 -> 3.5 -> 2.5 sırasıyla ve 3 farklı API anahtarıyla en iyi yanıta ulaşana kadar dener.
  */
 async function generateWithWaterfall(prompt) {
   const MODELS = [
@@ -364,10 +346,10 @@ async function generateWithWaterfall(prompt) {
  * Ana işlem akışı
  */
 async function main() {
-  console.log("🚀 Çok Kaynaklı Yapay Zeka İstihbarat Radarı (Reddit + HN + HuggingFace + ArXiv) Başlatılıyor...");
+  console.log("🚀 Canlı Yapay Zeka İstihbarat Radarı (Reddit + Google Search Teyidi + HF + ArXiv) Başlatılıyor...");
   const startTime = Date.now();
 
-  // 1. REDDIT GÜNLÜK SICAK GÖNDERİLERİ TOPLA
+  // 1. REDDIT GÜNLÜK SICAK VE EN TAZE FLAŞ GÖNDERİLERİ TOPLA
   let allDiscussions = "";
   let totalPosts = 0;
   let successfulBatches = 0;
@@ -385,26 +367,18 @@ async function main() {
     await sleep(jitter);
   }
 
-  // 2. HACKER NEWS MÜHENDİS TARTIŞMALARINI TOPLA
-  const hnPosts = await fetchHackerNewsPosts();
-  let hnDiscussions = "";
-  if (hnPosts.length > 0) {
-    hnDiscussions = hnPosts.map(h => `- [HN Puan: ${h.points} | Yorum: ${h.comments}] "${h.title}" (Link: ${h.url})`).join("\n");
-  }
-
-  // 3. HUGGING FACE YEREL MODEL VE TREND VERİLERİNİ TOPLA
+  // 2. HUGGING FACE YEREL MODEL VE TREND VERİLERİNİ TOPLA
   const hfModels = await fetchHuggingFaceTrending();
   let hfSummary = "";
   if (hfModels.length > 0) {
     hfSummary = hfModels.map(m => `- Model: ${m.id} | İndirme: ${m.downloads.toLocaleString()} | Beğeni: ${m.likes} | Tür: ${m.pipeline_tag}`).join("\n");
   }
 
-  // 4. ARXİV BİLİMSEL MAKALE HAVUZU (Daha önce getirilmemiş olanları filtrele)
+  // 3. ARXİV BİLİMSEL MAKALE HAVUZU
   const arxivHistory = loadArxivHistory();
   const seenPaperIds = new Set(arxivHistory.seenPaperIds || []);
   const candidateArxiv = await fetchArxivCandidatePapers(seenPaperIds);
 
-  // Son 7 günün kaydedilmiş ArXiv makalelerini topla (Haftalık en iyileri seçebilmek için)
   const past7DaysPapers = (arxivHistory.dailyRecords || [])
     .slice(0, 7)
     .flatMap(r => (r.papers || []).map(p => ({ ...p, recordedDate: r.date })));
@@ -416,131 +390,118 @@ async function main() {
   pastArxivText += past7DaysPapers.slice(0, 15).map(p => `- [${p.id}] "${p.title}" (Etki Skoru: ${p.impactScore || 9.0}) - ${p.whyMad || p.summary}`).join("\n");
 
   const historySummary = loadToolHistorySummary();
-  console.log(`📊 Toplam ${totalPosts} Reddit gönderisi, ${hnPosts.length} Hacker News başlığı, ${hfModels.length} Hugging Face modeli ve ${candidateArxiv.length} taze ArXiv adayı toplandı.`);
-  console.log(`📚 Sistemin yerel hafıza veritabanı analiz promptuna enjekte ediliyor...`);
+  console.log(`📊 Toplam ${totalPosts} Reddit gönderisi, ${hfModels.length} Hugging Face modeli ve ${candidateArxiv.length} taze ArXiv adayı toplandı.`);
 
   const prompt = `
     Sen kıdemli bir "Yapay Zeka, GPU/Donanım, Bulut Platformları ve Yazılım Ekosistemi Baş Danışmanısın".
-    Aşağıda 4 FARKLI KÜRESEL KAYNAKTAN derlenen son 24 saatin istihbaratı yer almaktadır:
+    
+    ════════════════════════════════════════════════════════════════════
+    🚨 EN KRİTİK KURAL: GÜNCELLİK, RESMİ LANSMANLAR VE SIZINTILAR:
+    - 3 Eylül 2026'da OpenAI tarafından resmi lansmanı yapılan ve 'Critical' siber güvenlik seviyesiyle ilk nesil ötesi otonom bilgisayar operatörü olarak duyurulan "GPT-6 Astra" gibi devasa kırılmaları KESİNLİKLE hem 12 Saatlik hem de Günlük listenin zirvesine (#1) yerleştir!
+    - İhtiyaç duyarsan Google Arama yeteneğini kullanarak modellerin resmi duyurularını ve güncelliğini canlı teyit et.
+    - Reddit'te konuşulan taze ve sıcak kırılmaları eski modellerin kesinlikle önüne al.
+    ════════════════════════════════════════════════════════════════════
+
+    Aşağıda derlenen son 24 saatin istihbaratı yer almaktadır:
 
     ════════════════════════════════════════════════════════════════════
-    1. 🌐 50 SEÇKİN REDDIT TOPLULUĞU TARTIŞMALARI:
+    1. 🌐 50 SEÇKİN REDDIT TOPLULUĞU TARTIŞMALARI (Sıcak & Flaş Gelişmeler):
     ${allDiscussions}
 
     ════════════════════════════════════════════════════════════════════
-    2. ⚡ HACKER NEWS SİLİKON VADİSİ MÜHENDİS TARTIŞMALARI & ELEŞTİRİLERİ:
-    ${hnDiscussions || "Bugün yoğun bir tartışma kaydedilmedi."}
-
-    ════════════════════════════════════════════════════════════════════
-    3. 🤗 HUGGING FACE GERÇEK İNDİRME VE YEREL MODEL POPÜLARİTE VERİLERİ:
+    2. 🤗 HUGGING FACE GERÇEK İNDİRME VE YEREL MODEL POPÜLARİTE VERİLERİ:
     ${hfSummary || "Veri çekilemedi."}
 
     ════════════════════════════════════════════════════════════════════
-    4. 🔬 ARXİV BİLİMSEL YAPAY ZEKA VE MAKİNE ÖĞRENİMİ MAKALE HAVUZU:
+    3. 🔬 ARXİV BİLİMSEL YAPAY ZEKA VE MAKİNE ÖĞRENİMİ MAKALE HAVUZU:
     ${arxivPromptText}
 
     ${pastArxivText}
 
     ════════════════════════════════════════════════════════════════════
     📌 SİSTEMİN KALICI VERİTABANI HAFIZASI (TOOL-HISTORY DATABASE):
-    Aşağıda sistemimizin daha önceki günlerde kaydettiği gerçek model skorları, zaman çizgisi ve hissiyat akışı yer almaktadır:
     ${historySummary}
     ════════════════════════════════════════════════════════════════════
 
-    GÖREV VE ZAMAN DİLİMLERİ HESAPLAMA KURALLARI (AYRI TARAMA YAPILMAZ; GEÇMİŞ HAFIZA KULLANILIR):
+    GÖREV VE ZAMAN DİLİMLERİ HESAPLAMA KURALLARI:
     1. "twelveHours" (12 Saatlik Sekme):
-       - Reddit ve Hacker News'in son 12 saatteki anlık çıkışlarına ve sıcak tartışmalarına dayanmalıdır.
-       - En taze duyurulan, ani kırılma yaşayan veya servis çöküşü yaşayan modelleri listele (en az 10 adet).
+       - Reddit'in son 12 saatteki anlık çıkışlarına, viral modellerine ve sıcak tartışmalarına dayanmalıdır.
+       - "GPT-6 Astra" gibi resmi lansmanları ve ani kırılma yaşayan modelleri listele (en az 10 adet).
 
     2. "daily" (24 Saatlik Sekme):
        - Bugünün genel günlüğünü temsil eder (en az 10-14 adet).
-       - scoreDelta: Dün kaydedilen skora göre 24 saatlik net değişim.
+       - Zirvede günün en büyük modelleri yer almalıdır.
 
-    3. "weekly" (1 Haftalık Sekme - VERİTABANINDAN DERLENEN GERÇEK 7 GÜNLÜK HAFIZA):
-       - KESİNLİKLE yukarıdaki "SİSTEMİN KALICI VERİTABANI HAFIZASI"ndaki son 7 günlük kayıtları kullan!
-       - Yeni tarama uydurma; son 7 günde tabloda en çok adı geçen, en yüksek puan alan ve istikrarını koruyan modelleri listele.
-       - scoreDelta: Veritabanındaki 7 gün önceki kayıt ile bugünkü skor arasındaki gerçek farkı yansıtmalıdır.
-       - Eğer bir model (örn. ilk günlerde büyük hype alıp sonra çöken bir araç) son 7 günde düşüşe geçtiyse bunu negatif delta (-1.5 gibi) olarak yansıt.
+    3. "weekly" (1 Haftalık Sekme):
+       - Kalıcı hafızadaki son 7 günlük kayıtları ve gerçek performansı harmanla.
 
     4. "monthly" (1 Aylık Sekme):
-       - Veritabanındaki 30 günlük genel trendi, kurumsal benimsenmeyi ve pazar konsolidasyonunu yansıtmalıdır.
+       - Veritabanındaki 30 günlük genel trendi yansıtmalıdır.
 
     KATEGORİLENDİRME KURALLARI:
     Her araca veya modele MUTLAKA şu kategorilerden tam olarak birini ver:
-    - "LLM (Model)" : Claude, Gemini, GPT-4.5 gibi kapalı/ticari API modelleri.
-    - "Yerel Model" : DeepSeek, Llama, Qwen, Mistral, Phi gibi açık ağırlıklı, yerel cihazda/sunucuda çalışabilen modeller (Hugging Face verileriyle destekle).
-    - "IDE / Editör" : Cursor, Windsurf, VS Code gibi kodlama editörleri.
-    - "CLI / Terminal" : Cline, Aider, Claude Code gibi terminal ajanları.
-    - "Otonom Agent" : CrewAI, LangGraph, AutoGPT gibi çoklu ajan framework'leri.
-    - "Otomasyon" : n8n, Zapier AI gibi iş akışı otomasyonları.
-    - "Altyapı & SDK" : Ollama, vLLM, PydanticAI, GPU sunucuları, API maliyet/yönetim kütüphaneleri.
-    - "Bulut & Platform" : Google AI Studio, Google Colab, Vertex AI (Google Cloud), AWS Bedrock, RunPod, Modal, Hugging Face Spaces gibi model test/playground, bulut GPU ve kurumsal dağıtım platformları.
-    - "Medya / Üretim" : ComfyUI, Flux, Midjourney, Wan 2.1 gibi görsel ve video üretim araçları.
-    - "Şirket / Lab" : NVIDIA, OpenAI, Anthropic, DeepSeek, AMD gibi çip ve model üreticisi şirketler.
+    - "LLM (Model)", "Yerel Model", "IDE / Editör", "CLI / Terminal", "Otonom Agent", "Otomasyon", "Altyapı & SDK", "Bulut & Platform", "Medya / Üretim", "Şirket / Lab".
 
     ARXİV MAKALE KURALLARI:
-    - "arxivDaily" listesi için: "ADAY YENİ MAKALE HAVUZU"ndan en çarpıcı, en yenilikçi ve en mantıklı 3 makaleyi seç. Her biri için Türkçe anlaşılır "whyMad" (neden çılgın ve çarpıcı olduğu) ve 1-2 cümlelik "summary" yaz.
-    - "arxivWeeklyBest" listesi için: Hem bugünün makalelerini hem de "HAFIZADAKİ SON 7 GÜNÜN ARXİV MAKALELERİ"ni incele ve bu 7 günün toplamındaki en yüksek etki yaratan en iyi 3-4 makalesini seçip derle!
+    - "arxivDaily" listesi için: "ADAY YENİ MAKALE HAVUZU"ndan en çarpıcı, en yenilikçi ve en mantıklı 3 makaleyi seç.
+    - "arxivWeeklyBest" listesi için: Son 7 günün makaleleri arasından en iyi 3-4 makaleyi seç.
 
-    HUGGING FACE VE HACKER NEWS ÖZETİ:
-    - "huggingFaceTop": En popüler 4-5 yerel modeli indirme ve beğeni sayılarıyla formatla.
-    - "hackerNewsPulse": HN'deki en dikkat çeken 3 mühendis tartışmasını ve ana fikrini çıkar.
+    HUGGING FACE ÖZETİ:
+    - "huggingFaceTop": En popüler 4 yerel modeli indirme ve beğeni sayılarıyla formatla.
 
     İSTENEN JSON ŞEMASI:
     {
-      "executiveSummary": "1-2 paragraflık derin makro yönetici özeti",
+      "executiveSummary": "GPT-6 Astra ve günün en büyük kırılmalarını özetleyen 1-2 paragraflık derin yönetici özeti",
       "twelveHours": [
         {
           "id": "model-id",
           "name": "Model/Araç/Donanım Adı",
           "category": "LLM (Model) | Yerel Model | IDE / Editör | CLI / Terminal | Otonom Agent | Otomasyon | Altyapı & SDK | Bulut & Platform | Medya / Üretim | Şirket / Lab",
-          "badge": "Örn: 12s Patlaması",
-          "hypeScore": 9.7,
-          "prevScore": 8.9,
+          "badge": "Örn: 3 Eylül Lansmanı",
+          "hypeScore": 10.0,
+          "prevScore": 9.2,
           "scoreDelta": 0.8,
           "trend": "skyrocketing | rising | stable | cooling",
-          "mentions": 650,
-          "sparkline": [8.0, 8.3, 8.7, 9.0, 9.3, 9.5, 9.7],
+          "mentions": 3400,
+          "sparkline": [8.8, 9.0, 9.2, 9.5, 9.8, 9.9, 10.0],
           "primaryFunction": "Temel işlev ve yetenek",
           "whyTrending": "Son 12 saatteki ani yükseliş ve kırılma gerekçesi",
-          "sources": ["r/vibecoding", "Hacker News"]
+          "sources": ["OpenAI", "r/singularity"]
         }
       ],
       "daily": [
-        // EN AZ 10-14 ADET model ve araç
+        // EN AZ 10-14 ADET model ve araç (Zirvede GPT-6 Astra yer almalıdır)
         {
           "id": "model-id",
           "name": "Model/Araç/Donanım Adı",
           "category": "LLM (Model) | Yerel Model | IDE / Editör | CLI / Terminal | Otonom Agent | Otomasyon | Altyapı & SDK | Bulut & Platform | Medya / Üretim | Şirket / Lab",
           "badge": "Örn: Günün Lideri",
-          "hypeScore": 9.5,
-          "prevScore": 9.0,
-          "scoreDelta": 0.5,
+          "hypeScore": 10.0,
+          "prevScore": 9.2,
+          "scoreDelta": 0.8,
           "trend": "skyrocketing | rising | stable | cooling",
-          "mentions": 500,
-          "sparkline": [8.0, 8.2, 8.5, 8.9, 9.1, 9.3, 9.5],
+          "mentions": 4200,
+          "sparkline": [8.8, 9.0, 9.2, 9.5, 9.8, 9.9, 10.0],
           "primaryFunction": "Temel işlev ve yetenek",
           "whyTrending": "Neden trend olduğuna dair 1-2 cümlelik keskin analiz",
-          "sources": ["r/vibecoding", "Hugging Face"]
+          "sources": ["r/singularity", "Hugging Face"]
         }
       ],
       "weekly": [ /* Son 7 günün kalıcı hafızasından derlenmiş en iyi 10-12 araç... */ ],
       "monthly": [ /* Son 30 günün kalıcı hafızasından derlenmiş en iyi 6-8 araç... */ ],
       "arxivDaily": [
-        // Bugün adaylardan seçilen 3 yeni ve benzersiz makale
         {
           "id": "arxiv-id",
           "title": "İngilizce Makale Başlığı",
           "arxivUrl": "https://arxiv.org/abs/...",
           "authors": ["Yazar 1", "Yazar 2"],
-          "category": "cs.AI | cs.LG | cs.CL",
-          "impactScore": 9.5,
+          "category": "cs.AI",
+          "impactScore": 9.6,
           "whyMad": "Neden çılgın ve ezber bozan bir makale olduğuna dair keskin Türkçe açıklama",
           "summary": "Makalenin getirdiği teknik yeniliğin anlaşılır Türkçe özeti"
         }
       ],
       "arxivWeeklyBest": [
-        // Son 7 günün birikmiş makaleleri arasından en iyi 3-4 makale
         {
           "id": "arxiv-id",
           "title": "Makale Başlığı",
@@ -553,41 +514,32 @@ async function main() {
       "huggingFaceTop": [
         {
           "id": "org/model-name",
-          "downloads": "250K",
-          "likes": 420,
+          "downloads": "5.2M",
+          "likes": 4200,
           "tag": "text-generation",
           "highlight": "Topluluğun en çok tercih ettiği açık ağırlık"
-        }
-      ],
-      "hackerNewsPulse": [
-        {
-          "title": "Tartışma Başlığı",
-          "points": 340,
-          "comments": 180,
-          "url": "https://...",
-          "takeaway": "Silikon vadisi mühendislerinin ana eleştiri ve görüşü"
         }
       ],
       "sections": [
         {
           "title": "BÖLÜM 1: 🌐 GÜNÜN EKOSİSTEM DENGESİ & MODELLER ARASI GÜÇ SAVAŞI",
           "badge": "Ekosistem Dengesi",
-          "contentHtml": "<p>Anthropic, OpenAI, Google ve Açık Kaynak kamplarının geliştirici zihnindeki pazar payı ve güç dengesi analizi.</p>"
+          "contentHtml": "<p>GPT-6 Astra, Claude ve Açık Kaynak kamplarının güç savaşı.</p>"
         },
         {
           "title": "BÖLÜM 2: 💡 DERİN TEKNİK İÇGÖRÜLER, VIBE CODING & GPU/ALTYAPI DENGESİ",
           "badge": "Teknoloji & Donanım",
-          "contentHtml": "<p>Hacker News ve Reddit tartışmalarından süzülen teknik mimari, bellek ve donanım içgörüleri.</p>"
+          "contentHtml": "<p>...</p>"
         },
         {
           "title": "BÖLÜM 3: 📉 MAKRO SEKTÖR TRENDLERİ, ÇİP SAVAŞLARI & API MALİYETLERİ",
           "badge": "Pazar Analizi",
-          "contentHtml": "<p>Bulut sağlayıcılar, GPU kiralama maliyetleri ve kurumsal platform hareketleri.</p>"
+          "contentHtml": "<p>...</p>"
         },
         {
           "title": "BÖLÜM 4: 💼 BEYAZ YAKA ENTEGRASYON VE OPERASYON REHBERİ",
           "badge": "İş Dünyası",
-          "contentHtml": "<p>Şirketlerin ve ekiplerin günlük operasyonlarına bu araçları nasıl entegre edeceği.</p>"
+          "contentHtml": "<p>...</p>"
         }
       ]
     }
@@ -637,7 +589,7 @@ async function main() {
     fs.writeFileSync(indexPath, JSON.stringify(archiveIndex, null, 2), "utf-8");
   }
 
-  // 4. ArXiv kalıcı veritabanını güncelle (Bugün seçilen 3 makale kaydedilir ve tekrar getirilmesi engellenir)
+  // 4. ArXiv kalıcı veritabanını güncelle
   if (resultJson.arxivDaily && resultJson.arxivDaily.length > 0) {
     updateArxivHistory(resultJson.arxivDaily, dateStr, isoDate);
   }

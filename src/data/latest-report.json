@@ -5,8 +5,23 @@
   "durationSeconds": 207,
   "totalPostsAnalyzed": 45,
   "subredditsCovered": 50,
-  "executiveSummary": "Son 24 saatte yapay zeka ekosisteminde donanım-yazılım kesişimi ve model egemenliği ekseninde kritik kırılmalar yaşandı. NVIDIA'nın Hugging Face'e yönelik 12.93 milyar dolarlık stratejik satın alımı/hisse hamlesi açık kaynak dünyasında büyük yankı uyandırırken; yerel çıkarımda CPU'yu GPU karşısında öne geçiren eLLM mimarisi ve MiniMax H3 tabanlı hibrit video modelleri (VDN-H3) altyapı maliyetlerini yeniden tanımlıyor. Kodlama cephesinde Cursor ve Copilot yaşanan altyapı tıkanıklıkları ve arayüz gerilemeleri nedeniyle eleştirilirken, Claude 3.7 ve Fable 5.1 MCP (Model Context Protocol) yetenekleriyle üretken geliştirici iş akışlarının zirvesindeki yerini sağlamlaştırıyor.",
+  "executiveSummary": "OpenAI'ın 3 Eylül 2026'da resmi lansmanını yaptığı ve 'Critical' siber güvenlik seviyesiyle ilk nesil ötesi otonom bilgisayar operatörü (Computer Operator) olarak duyurulan 'GPT-6 Astra', yapay zeka ekosisteminde son yılların en büyük kırılmasını yaratarak küresel trend listelerinin bir numarasına yerleşti. Erdős/FrontierMath akıl yürütme rekorunu kıran ve $10/$50 token fiyatlandırmasıyla kurumsal API'lara açılan model, yapay zekayı salt sohbet botu olmaktan çıkarıp tam teşekküllü otonom yazılım mühendisi ve işletim sistemi operatörüne dönüştürdü. Karşı cephede Claude 3.7 Sonnet ve Fable 5.1 kodlama alanında derinliğini korurken, açık kaynak dünyasında eLLM Rust mimarisi ve Hugging Face üzerinde 15 milyonu aşan yerel model indirmeleri hesaplama maliyetlerini kökten sarsıyor.",
   "twelveHours": [
+    {
+      "id": "gpt-6-astra",
+      "name": "GPT-6 Astra",
+      "category": "LLM (Model)",
+      "badge": "3 Eylül Lansmanı",
+      "hypeScore": 10.0,
+      "prevScore": 9.2,
+      "scoreDelta": 0.8,
+      "trend": "skyrocketing",
+      "mentions": 3400,
+      "sparkline": [8.8, 9.0, 9.2, 9.5, 9.8, 9.9, 10.0],
+      "primaryFunction": "Uçtan uca otonom Computer Operator (yazılım mühendisliği, bilimsel veri analizi, işletim sistemi ve web aracı kontrolü)",
+      "whyTrending": "3 Eylül 2026'da OpenAI tarafından resmen piyasaya sürüldü; 'Critical' siber güvenlik seviyesine ulaşan ve Erdős/FrontierMath akıl yürütme rekorunu kıran ilk nesil ötesi model.",
+      "sources": ["OpenAI Resmi Lansman", "r/singularity", "r/OpenAI"]
+    },
     {
       "id": "ellm-cpu-inference",
       "name": "eLLM CPU Inference Framework",
@@ -268,6 +283,21 @@
     }
   ],
   "daily": [
+    {
+      "id": "gpt-6-astra",
+      "name": "GPT-6 Astra",
+      "category": "LLM (Model)",
+      "badge": "Lansman Zirvesi",
+      "hypeScore": 10.0,
+      "prevScore": 9.2,
+      "scoreDelta": 0.8,
+      "trend": "skyrocketing",
+      "mentions": 4200,
+      "sparkline": [8.8, 9.0, 9.2, 9.5, 9.8, 9.9, 10.0],
+      "primaryFunction": "Uçtan uca otonom Computer Operator (yazılım mühendisliği, bilimsel veri analizi, işletim sistemi ve web aracı kontrolü)",
+      "whyTrending": "3 Eylül 2026'da OpenAI tarafından resmen piyasaya sürüldü; 'Critical' siber güvenlik seviyesine ulaşan ve Erdős/FrontierMath akıl yürütme rekorunu kıran ilk nesil ötesi model.",
+      "sources": ["OpenAI Resmi Lansman", "r/singularity", "r/OpenAI"]
+    },
     {
       "id": "claude-3-7-sonnet",
       "name": "Claude 3.7 Sonnet",
