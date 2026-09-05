@@ -1063,29 +1063,99 @@
       "highlight": "Görsel ve metin analizinde yüksek verim ve düşük gecikme sunan hafif alternatif."
     }
   ],
-  "hackerNewsPulse": [
-    {
-      "title": "NVIDIA's Strategic Move on Open Source Model Hubs",
-      "points": 485,
-      "comments": 310,
-      "url": "https://news.ycombinator.com/item?id=43289011",
-      "takeaway": "Mühendisler, donanım tekeli NVIDIA'nın Hugging Face ekosistemine doğrudan müdahil olmasının açık yapay zeka tarafsızlığını ve alternatif çip (AMD/Intel/TPU) optimizasyonlarını baskılayabileceğini tartışıyor."
-    },
-    {
-      "title": "Why CPU-Only Long-Context Inference Might Beat GPUs (eLLM Architecture)",
-      "points": 412,
-      "comments": 225,
-      "url": "https://news.ycombinator.com/item?id=43288420",
-      "takeaway": "VRAM maliyetlerinin astronomik seviyelerde olduğu bir dönemde, DDR bellek kapasitesini prefill ve decode optimizasyonlarıyla birleştiren Rust motorları pratik kurumsal çıkarım için devrimsel görülüyor."
-    },
-    {
-      "title": "The Fallacy of LLM Judges in Automated CI/CD Pipelines",
-      "points": 360,
-      "comments": 195,
-      "url": "https://news.ycombinator.com/item?id=43287950",
-      "takeaway": "Kapalı uç noktalardaki model sürümlerinin gün içi değişkenliği ve düşük korelasyonu nedeniyle üretim testlerinde 'LLM hakem' kullanımının deterministik yazılım test ilkelerine aykırı olduğu savunuluyor."
-    }
-  ],
+  "hackerNewsPulse": {
+    "summary24h": "4 Eylül 2026'da Hacker News gündeminde NVIDIA'nın açık model hub'larına stratejik ilgisi, CPU tabanlı uzun bağlamlı çıkarım motorları (eLLM Rust), üretim CI/CD boru hatlarında LLM hakem kullanımının sınırları ve kurumsal açık kaynak göçü öne çıktı.",
+    "discussions": [
+      {
+        "id": "43289011",
+        "title": "NVIDIA's Strategic Move on Open Source Model Hubs",
+        "titleTr": "NVIDIA'nın Açık Kaynak Model Merkezlerine Yönelik Stratejik Hamlesi",
+        "points": 485,
+        "comments": 310,
+        "hnUrl": "https://news.ycombinator.com/item?id=43289011",
+        "category": "Donanım & Açık Kaynak",
+        "analysis": "Mühendisler, donanım tekeli NVIDIA'nın Hugging Face ve açık model havuzlarına doğrudan müdahil olmasının yapay zeka tarafsızlığını zedeleyebileceğini tartışıyor. AMD ve Intel gibi alternatif çip mimarilerine yönelik optimizasyonların baskılanabileceği endişesi dile getiriliyor.",
+        "usefulInsight": "Altyapı mimarisinde tek bir donanım sağlayıcısının optimize ettiği checkpoint formatlarına bağımlı kalmamak ve vLLM/Triton gibi çoklu sağlayıcı destekli çıkarım katmanlarını tercih etmek kritik önem taşır."
+      },
+      {
+        "id": "43288420",
+        "title": "Why CPU-Only Long-Context Inference Might Beat GPUs (eLLM Architecture)",
+        "titleTr": "GPU Olmadan Yalnızca CPU ile Uzun Bağlam Çıkarımı Neden Daha Avantajlı Olabilir?",
+        "points": 412,
+        "comments": 225,
+        "hnUrl": "https://news.ycombinator.com/item?id=43288420",
+        "category": "Sistem Mimarisi & Donanım",
+        "analysis": "VRAM maliyetlerinin astronomik seviyelere ulaştığı bir ortamda, DDR5 bellek kapasitesini prefill ve decode optimizasyonlarıyla birleştiren Rust motorları pratik kurumsal çıkarım için devrimsel görülüyor. 128GB sunucu RAM'i üzerinde 70B modellerin sıfır GPU yatırımıyla koşturulabilmesi büyük ilgi uyandırdı.",
+        "usefulInsight": "Ağır batch işlemler yerine düşük eşzamanlılıklı kurumsal iç araçlarda GPU kiralamak yerine ucuz DDR5 sunucular üzerinde CPU motorları maliyetleri %80 oranında düşürebilir."
+      },
+      {
+        "id": "43287950",
+        "title": "The Fallacy of LLM Judges in Automated CI/CD Pipelines",
+        "titleTr": "Otomatik CI/CD Süreçlerinde 'LLM Hakem' Kullanımının Yanılgısı",
+        "points": 360,
+        "comments": 195,
+        "hnUrl": "https://news.ycombinator.com/item?id=43287950",
+        "category": "Yazılım Mühendisliği & Test",
+        "analysis": "Kapalı uç noktalardaki model sürümlerinin gün içi değişkenliği ve düşük korelasyonu nedeniyle üretim testlerinde 'LLM hakem' kullanımının deterministik yazılım test ilkelerine aykırı olduğu savunuluyor. Aynı promptun gün içinde farklı test sonuçları vermesi regression testlerini tutarsızlaştırıyor.",
+        "usefulInsight": "CI/CD pipeline'larında değerlendirme yaparken kapalı API'ler yerine dondurulmuş yerel modeller ve deterministik kural tabanlı doğrulamalar (JSON şema, tip kontrolleri) kullanılmalıdır."
+      },
+      {
+        "id": "43287102",
+        "title": "Rust-Based React Compiler Reaches Production Readiness",
+        "titleTr": "Rust Tabanlı Yeni React Derleyicisi Canlı Ortam Standardına Ulaştı",
+        "points": 315,
+        "comments": 142,
+        "hnUrl": "https://news.ycombinator.com/item?id=43287102",
+        "category": "Geliştirici Araçları",
+        "analysis": "Büyük ölçekli web uygulamalarında React bileşen ağaçlarını otomatik memoize eden Rust motoru, derleme sürelerini 8 kat hızlandırırken gereksiz render maliyetlerini ortadan kaldırıyor.",
+        "usefulInsight": "Frontend ekipleri manuel useMemo ve useCallback optimizasyonlarını azaltarak yeni derleyiciye geçiş hazırlığı yapmalıdır."
+      },
+      {
+        "id": "43286540",
+        "title": "Local AI Workstations: Threadripper vs Multi-GPU Benchmarks",
+        "titleTr": "Yerel Yapay Zeka İş İstasyonları: Threadripper ile Çoklu GPU Kıyaslaması",
+        "points": 290,
+        "comments": 168,
+        "hnUrl": "https://news.ycombinator.com/item?id=43286540",
+        "category": "Donanım Kıyaslama",
+        "analysis": "Büyük bellekli iş istasyonlarında AMD Threadripper platformunun geniş PCIe hatları ve yüksek bellek bant genişliği sayesinde 4x RTX 4090 kurulumlarında yaşanan darboğazları çözdüğü gösterildi.",
+        "usefulInsight": "Yerel LLM fine-tuning için iş istasyonu toplanırken CPU PCIe hat sayısı en az GPU gücü kadar belirleyici bir metriktir."
+      },
+      {
+        "id": "43285910",
+        "title": "Memory Leak Vectors in Autonomous Agent Tool Loops",
+        "titleTr": "Otonom Ajan Araç Döngülerinde Bellek Sızıntısı ve Bağlam Şişmesi",
+        "points": 275,
+        "comments": 130,
+        "hnUrl": "https://news.ycombinator.com/item?id=43285910",
+        "category": "Ajan Mimarisi",
+        "analysis": "Ajanların çok adımlı görevlerde tüm terminal ve araç çıktılarını bağlamda biriktirmesi, 15-20 adım sonra token maliyetini katlarken akıl yürütme kalitesini düşürüyor.",
+        "usefulInsight": "Ajan döngülerinde her araç çağrısından sonra çıktıların yapısal özetini çıkaran bağlam budama (context pruning) filtreleri zorunludur."
+      },
+      {
+        "id": "43285220",
+        "title": "Security Risks of Embedding Models in Enterprise RAG",
+        "titleTr": "Kurumsal RAG Sistemlerinde Embedding Modellerinin Güvenlik Açıkları",
+        "points": 260,
+        "comments": 112,
+        "hnUrl": "https://news.ycombinator.com/item?id=43285220",
+        "category": "Siber Güvenlik",
+        "analysis": "Vektör veritabanlarına enjekte edilen gizli prompt injection saldırılarının, embedding benzerliği üzerinden ajanları istenmeyen komutlar çalıştırmaya zorlayabildiği kanıtlandı.",
+        "usefulInsight": "Vektör arama sonuçları modele beslenmeden önce girdi sanitizasyonu ve yetki etiketleri (role-based chunk filtering) uygulanmalıdır."
+      },
+      {
+        "id": "43284700",
+        "title": "The Economic Reality of Running 70B Models On-Premise",
+        "titleTr": "Şirket İçinde 70B Parametreli Model Çalıştırmanın Gerçek Ekonomisi",
+        "points": 245,
+        "comments": 138,
+        "hnUrl": "https://news.ycombinator.com/item?id=43284700",
+        "category": "Kurumsal AI Ekonomisi",
+        "analysis": "Elektrik, soğutma, donanım amortismanı ve mühendislik maliyetleri hesaba katıldığında, günlük 50.000 istek altındaki iş yüklerinde sunucusuz API'lerin hala daha karlı olduğu ortaya kondu.",
+        "usefulInsight": "Yerel donanım yatırımı yalnızca hassas veri regülasyonları veya çok yüksek token hacmi olan şirketler için ilk 12 ayda kendini amorti eder."
+      }
+    ]
+  },
   "sections": [
     {
       "title": "BÖLÜM 1: 🌐 GÜNÜN EKOSİSTEM DENGESİ & MODELLER ARASI GÜÇ SAVAŞI",
@@ -1106,6 +1176,130 @@
       "title": "BÖLÜM 4: 💼 BEYAZ YAKA ENTEGRASYON VE OPERASYON REHBERİ",
       "badge": "İş Dünyası",
       "contentHtml": "<p><strong>Operasyonel Eylem Planı:</strong> Şirketlerin yazılım ve otomasyon liderleri için bu haftanın temel çıkarımları:</p><ul><li><strong>Hakem Model Denetimi:</strong> CI/CD süreçlerinizde veya veri doğrulama hatlarınızda 'LLM-as-a-judge' kullanıyorsanız, arxiv:2609.04198 bulguları ışığında deterministik kural tabanlı testlere ve yerel dondurulmuş açık model denetleyicilerine geçiş yapın.</li><li><strong>Editör ve CLI Dengesi:</strong> Cursor gibi GUI editörlerindeki servis kesintilerine karşı yazılım ekiplerinizin terminal tabanlı <code>Claude Code</code> veya yerel <code>Qwen3.8-27B</code> destekli CLI araçlarına aşinalığını artırın.</li><li><strong>Medya ve Pazarlama Hatları:</strong> Üretken video süreçlerinde pahalı kapalı API'lar yerine MiniMax-H3 tabanlı LoRA ve Viggle-Animate iş akışlarını şirket içi GPU sunucularında devreye alarak ajans ve görsel üretim maliyetlerini %70 oranında optimize edin.</li></ul>"
+    }
+  ],
+  "huggingFaceBest": [
+    {
+      "rank": 1,
+      "id": "deepseek-ai/DeepSeek-V3",
+      "name": "DeepSeek V3",
+      "downloads": "11.8M",
+      "likes": 4650,
+      "tag": "Genel Zeka",
+      "function": "671B parametreli (37B aktif) MoE mimarili genel zeka, kodlama ve ileri düzey akıl yürütme modeli.",
+      "distinction": "MLA ve DeepSeekMoE mimarisi sayesinde GPT-4o kalitesini 10 kat daha düşük maliyetle sunar.",
+      "whyHype": "Açık ağırlıklı modellerin kapalı tekellere meydan okuyabileceğini kanıtladı.",
+      "environment": "8x H100 GPU kümeleri veya 64GB+ Apple Silicon Mac Studio."
+    },
+    {
+      "rank": 2,
+      "id": "meta-llama/Llama-3.3-70B-Instruct",
+      "name": "Llama 3.3 70B",
+      "downloads": "8.40M",
+      "likes": 2080,
+      "tag": "Kurumsal",
+      "function": "70 milyar parametreli kurumsal sınıf dil, stratejik analiz ve talimat takip modeli.",
+      "distinction": "Llama 3.1 405B modelinin damıtılmasıyla üretildi; 405B mantık gücünü hafif 70B boyutunda sunar.",
+      "whyHype": "Kurumsal şirketlerin şirket içi veri gizliliğiyle en çok lisansladığı fiili standart.",
+      "environment": "Çift RTX 3090/4090 (48GB VRAM) 4-bit, vLLM, Ollama, LM Studio."
+    },
+    {
+      "rank": 3,
+      "id": "Qwen/Qwen2.5-Coder-32B-Instruct",
+      "name": "Qwen 2.5 Coder 32B",
+      "downloads": "5.90M",
+      "likes": 1790,
+      "tag": "Kodlama",
+      "function": "32 milyar parametreli uzman yazılım geliştirme, mimari kod üretimi ve test modeli.",
+      "distinction": "EvalPlus ve HumanEval testlerinde 70B'lik kod modellerini geride bırakır.",
+      "whyHype": "Cursor ve Continue.dev gibi yerel IDE ortamlarında 24GB tek GPU'da en akıcı çalışan kod motoru.",
+      "environment": "Tek RTX 3090 / 4090 (24GB VRAM), Ollama, vLLM, Aider."
+    },
+    {
+      "rank": 4,
+      "id": "black-forest-labs/FLUX.1-schnell",
+      "name": "FLUX.1 Schnell",
+      "downloads": "4.60M",
+      "likes": 1240,
+      "tag": "Görsel",
+      "function": "12 milyar parametreli rectified flow transformer tabanlı fotogerçekçi metinden görsel üretme modeli.",
+      "distinction": "Yalnızca 1-4 adımda Midjourney v6 kalitesinde kusursuz tipografiyle görsel üretir.",
+      "whyHype": "Yerel görsel üretim sürelerini 2-3 saniye seviyesine indirdi.",
+      "environment": "ComfyUI, Stable Diffusion WebUI, 12GB+ VRAM (FP8 ile 8GB VRAM)."
+    },
+    {
+      "rank": 5,
+      "id": "openai/whisper-large-v3-turbo",
+      "name": "Whisper Large v3",
+      "downloads": "3.80M",
+      "likes": 2350,
+      "tag": "Ses / STT",
+      "function": "Çok dilli konuşmadan metne dönüştürme ve sesli çeviri modeli.",
+      "distinction": "Kod çözücü katmanları azaltılarak doğruluk kaybı olmadan 8 kat hızlı çıkarım sağlar.",
+      "whyHype": "Gerçek zamanlı sesli toplantı deşifresinde endüstri standardı haline geldi.",
+      "environment": "faster-whisper / whisper.cpp ile CPU üzerinde bile yüksek hızlı, 4GB+ GPU VRAM."
+    }
+  ],
+  "huggingFaceTrending": [
+    {
+      "rank": 1,
+      "id": "unsloth/Qwen3.8-27B-GGUF",
+      "name": "Qwen 3.8 27B GGUF",
+      "downloads": "9.95M",
+      "likes": 3502,
+      "tag": "24s Zirvesi",
+      "function": "Unsloth tarafından optimize edilmiş 27B parametreli dinamik kalibre edilmiş yeni nesil model.",
+      "distinction": "Geleneksel 4-bit kuantizasyondaki akıl yürütme kaybını sıfıra indiren dinamik kalibrasyon sağlar.",
+      "whyHype": "16GB RAM'li dizüstü bilgisayarlarda 40 token/saniye hızla akıcı çalışabiliyor.",
+      "environment": "Ollama, llama.cpp, LM Studio, 16GB+ RAM."
+    },
+    {
+      "rank": 2,
+      "id": "Qwen/Qwen3.8-27B",
+      "name": "Qwen 3.8 27B",
+      "downloads": "5.73M",
+      "likes": 13941,
+      "tag": "Çok Modlu",
+      "function": "Görsel ve metin analizinde yüksek verim ve düşük gecikme sunan ana omurga model.",
+      "distinction": "Görsel soru-cevap ve OCR görevlerinde kapalı API seviyesinde doğruluk sunar.",
+      "whyHype": "Açık çok modlu modellerde endüstriyel standart haline gelmesi.",
+      "environment": "vLLM, Ollama, 24GB VRAM."
+    },
+    {
+      "rank": 3,
+      "id": "MiniMaxAI/MiniMax-H3",
+      "name": "MiniMax H3 Video",
+      "downloads": "5.11M",
+      "likes": 4901,
+      "tag": "Hızlı Video",
+      "function": "Açık ağırlıklı, yüksek çözünürlüklü sinematik video üretim difüzyon modeli.",
+      "distinction": "FL2VA referans latent kılavuzu ile 10+ saniyelik sahnelerde karakter erimesini engeller.",
+      "whyHype": "ComfyUI topluluğunun fotogerçekçi video üretiminde bir numaralı açık tercihi.",
+      "environment": "ComfyUI, Diffusers, 24GB+ VRAM."
+    },
+    {
+      "rank": 4,
+      "id": "Lightricks/LTX-2.5",
+      "name": "LTX 2.5 Video",
+      "downloads": "1.39M",
+      "likes": 2779,
+      "tag": "Video-to-Video",
+      "function": "Gerçek zamanlı kamera hareketi ve nesne kontrolüne sahip Image-to-Video modeli.",
+      "distinction": "Mevcut video modellerine göre 4 kat daha hızlı kare oluşturabilen uzamsal latent mimarisi.",
+      "whyHype": "Yüksek kare tutarlılığı ile canlı video manipülasyonunda sıfır gecikme sağlaması.",
+      "environment": "ComfyUI (LTX-Video wrapper), 16GB+ GPU VRAM."
+    },
+    {
+      "rank": 5,
+      "id": "zai-org/GLM-5.3-Flash",
+      "name": "GLM 5.3 Flash",
+      "downloads": "654K",
+      "likes": 2043,
+      "tag": "Hafif Model",
+      "function": "Düşük gecikmeli metin ve görsel işleme yeteneğine sahip hafif model.",
+      "distinction": "Ekran görüntüsü anlama ve GUI ajanlarında sadece 9B bellek ayak iziyle çalışır.",
+      "whyHype": "Yerel otonom GUI ajanlarında ultra hızlı yanıt alabilmesi nedeniyle yükselişte.",
+      "environment": "vLLM, Ollama, 12GB+ VRAM veya Apple M serisi Mac."
     }
   ]
 }

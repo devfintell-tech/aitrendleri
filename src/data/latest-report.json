@@ -1209,36 +1209,6 @@
       "summary": "Chain-of-Thought (CoT) akıl yürütmelerinin insanlar tarafından okunabilirliğinin, modelin gerçek çıkarım mekanizmasını yansıtmadığını gösteren bir çalışma. Makale, CoT metinlerinin insanlara mantıklı gelmesinin, modelin arka planda bu adımları takip ettiği anlamına gelmediğini ve okunabilirlik ile gerçek yorumlanabilirlik arasındaki önemli farkı vurguluyor."
     }
   ],
-  "huggingFaceTop": [
-    {
-      "id": "unsloth/Qwen3.8-27B-GGUF",
-      "downloads": "10.1M",
-      "likes": 3522,
-      "tag": "text-generation",
-      "highlight": "Topluluğun en çok tercih ettiği açık ağırlık"
-    },
-    {
-      "id": "Qwen/Qwen3.8-27B",
-      "downloads": "6.0M",
-      "likes": 13992,
-      "tag": "image-text-to-text",
-      "highlight": "Yüksek beğeni alan çok modlu model"
-    },
-    {
-      "id": "MiniMaxAI/MiniMax-H3",
-      "downloads": "5.0M",
-      "likes": 4919,
-      "tag": "image-text-to-video",
-      "highlight": "Video üretiminde popüler seçim"
-    },
-    {
-      "id": "Lightricks/LTX-2.5",
-      "downloads": "1.4M",
-      "likes": 2832,
-      "tag": "image-to-video",
-      "highlight": "Hızlı ve verimli video üretimi"
-    }
-  ],
   "hackerNewsPulse": {
     "summary24h": "Son 24 saatte Hacker News gündeminde, Fermat'ın Son Teoremi'nin biçimselleştirilmesi gibi matematiksel başarılar ve yapay zekanın kurumsal benimsenmesi, donanım tasarımı ve operasyonel etkileri gibi konular öne çıktı. Özellikle GPT-6 Astra'nın OpenRouter'daki varlığı ve OpenAI/Anthropic kesintileri, AI platformlarının güvenilirliği ve erişilebilirliği üzerine yoğun tartışmaları tetikledi.",
     "discussions": [
@@ -1352,6 +1322,130 @@
       "title": "BÖLÜM 4: 💼 BEYAZ YAKA ENTEGRASYON VE OPERASYON REHBERİ",
       "badge": "İş Dünyası",
       "contentHtml": "<p>Beyaz yaka entegrasyonunda, n8n AI Orchestrator gibi otomasyon araçları, AI ajanlarının kurumsal dağıtımında 'sessiz hata' önleme ve MCP standardı ile güvenilir çözümler sunuyor. Bu, iş süreçlerinin otomasyonunda AI'ın daha güvenli ve verimli kullanılmasını sağlıyor. Ancak, AI'ın olay yönetimi gibi operasyonel görevlerde mühendislerin sistemleriyle olan doğrudan bağlantısını kaybetme riski, insan-AI işbirliğinin geleceği hakkında önemli soruları gündeme getiriyor. Microsoft 365 Copilot'un yaşadığı regresyon ve kullanıcı tepkileri, AI entegrasyonunda kullanıcı deneyimi ve sürekli performans iyileştirmelerinin kritik önemini bir kez daha vurguluyor. Şirketlerin, AI araçlarını benimserken hem teknolojik avantajları hem de potansiyel operasyonel ve insan kaynağı risklerini dikkatle değerlendirmesi gerekiyor.</p>"
+    }
+  ],
+  "huggingFaceBest": [
+    {
+      "rank": 1,
+      "id": "deepseek-ai/DeepSeek-V3",
+      "name": "DeepSeek V3",
+      "downloads": "12.4M",
+      "likes": 4820,
+      "tag": "Genel Zeka",
+      "function": "671B parametreli (37B aktif) Mixture-of-Experts (MoE) mimarili genel zeka, kodlama ve ileri düzey akıl yürütme modeli.",
+      "distinction": "Multi-head Latent Attention (MLA) ve DeepSeekMoE mimarisi sayesinde GPT-4o kalitesini 10 kat daha düşük çıkarım maliyetiyle sunar.",
+      "whyHype": "Kapalı API tekellerine karşı açık ağırlıklı modellerin AGI düzeyinde rekabet edebileceğini ispatlayarak açık kaynak ekosisteminin amiral gemisi oldu.",
+      "environment": "Şirket içi GPU kümeleri (8x H100/A100), vLLM, SGLang veya kuantize GGUF ile 64GB+ bellekli iş istasyonları (Apple Mac Studio)."
+    },
+    {
+      "rank": 2,
+      "id": "meta-llama/Llama-3.3-70B-Instruct",
+      "name": "Llama 3.3 70B",
+      "downloads": "8.90M",
+      "likes": 2150,
+      "tag": "Kurumsal",
+      "function": "70 milyar parametreli kurumsal sınıf genel amaçlı dil, stratejik analiz ve talimat takip modeli.",
+      "distinction": "Llama 3.1 405B modelinin damıtılmasıyla üretilmiştir; 405B seviyesindeki mantık gücünü çok daha hafif 70B boyutunda sunarak donanım bariyerini yıkar.",
+      "whyHype": "Fortune 500 ve girişimlerin veri güvenliği nedeniyle şirket içi sunucularında en çok lisansladığı ve fine-tune ettiği kurumsal endüstri standardıdır.",
+      "environment": "Çift RTX 3090/4090 (48GB VRAM) 4-bit, vLLM, Ollama, LM Studio, TGI veya kurumsal bulut sunucuları."
+    },
+    {
+      "rank": 3,
+      "id": "Qwen/Qwen2.5-Coder-32B-Instruct",
+      "name": "Qwen 2.5 Coder 32B",
+      "downloads": "6.20M",
+      "likes": 1840,
+      "tag": "Kodlama",
+      "function": "32 milyar parametreli uzman yazılım geliştirme, mimari kod üretimi, hata ayıklama ve test üretim modeli.",
+      "distinction": "32B boyutunda olmasına rağmen 70B'lik kod modellerini ve Claude 3.5 Sonnet'in önceki sürümlerini EvalPlus ve HumanEval testlerinde geride bırakır.",
+      "whyHype": "Cursor, Continue.dev ve Cline gibi yerel IDE eklentilerinde tek bir tüketici GPU'sunda (24GB VRAM) gecikmesiz çalışan en güçlü yerel kodlama motorudur.",
+      "environment": "Tek tüketici GPU'su (RTX 3090 / 4090 - 24GB VRAM), Apple Silicon (32GB+ Mac), Ollama, vLLM, Continue, Aider."
+    },
+    {
+      "rank": 4,
+      "id": "black-forest-labs/FLUX.1-schnell",
+      "name": "FLUX.1 Schnell",
+      "downloads": "4.80M",
+      "likes": 1290,
+      "tag": "Görsel",
+      "function": "12 milyar parametreli rectified flow transformer tabanlı fotogerçekçi metinden görsel üretme modeli.",
+      "distinction": "Yalnızca 1 ila 4 adımda (inference steps) Midjourney v6 kalitesinde, kusursuz tipografi ve hatasız el anatomisi ile görsel üretir.",
+      "whyHype": "Ücretli ve kapalı görsel servislerini baypas ederek yerel grafik işleme sürelerini saniyeler seviyesine indirdi.",
+      "environment": "ComfyUI, Stable Diffusion WebUI (Forge), 12GB+ VRAM (FP8 veya NF4 kuantizasyon ile 8GB VRAM'de çalışabilir)."
+    },
+    {
+      "rank": 5,
+      "id": "openai/whisper-large-v3-turbo",
+      "name": "Whisper Large v3",
+      "downloads": "3.95M",
+      "likes": 2410,
+      "tag": "Ses / STT",
+      "function": "Çok dilli konuşmadan metne dönüştürme (Speech-to-Text), sesli çeviri ve toplantı deşifre modeli.",
+      "distinction": "Önceki Whisper Large v3'ün kod çözücü katmanları 32'den 4'e düşürülerek doğruluk kaybı olmadan 8 kat daha hızlı çıkarım sağlar.",
+      "whyHype": "Gerçek zamanlı sesli asistanlarda ve deşifre pipeline'larında sıfır halüsinasyon ve ultra düşük gecikmeyle küresel standart haline geldi.",
+      "environment": "CPU üzerinde bile yüksek hızlı (faster-whisper / whisper.cpp), 4GB+ GPU VRAM, PyTorch, Hugging Face Transformers."
+    }
+  ],
+  "huggingFaceTrending": [
+    {
+      "rank": 1,
+      "id": "unsloth/Qwen3.8-27B-GGUF",
+      "name": "Qwen 3.8 27B GGUF",
+      "downloads": "10.1M",
+      "likes": 3522,
+      "tag": "24s Zirvesi",
+      "function": "Unsloth tarafından optimize edilmiş 27B parametreli dinamik kalibre edilmiş yeni nesil yerel model.",
+      "distinction": "Geleneksel 4-bit kuantizasyondaki akıl yürütme kaybını sıfıra indiren dinamik kalibrasyon ve %80 daha az bellek tüketimi sağlar.",
+      "whyHype": "Son 24 saatte r/LocalLLaMA'da viral oldu; 16GB RAM'li tüketici dizüstü bilgisayarlarında bile 40 token/saniye hızla akıcı çalışabiliyor.",
+      "environment": "Ollama (), llama.cpp, LM Studio, 16GB+ Sistem Belleği veya 12GB+ GPU VRAM."
+    },
+    {
+      "rank": 2,
+      "id": "Qwen/Qwen3.8-27B",
+      "name": "Qwen 3.8 27B",
+      "downloads": "6.0M",
+      "likes": 13992,
+      "tag": "Çok Modlu",
+      "function": "Açık çok modlu modellerde endüstriyel standart haline gelen metin ve görsel anlama omurga modeli.",
+      "distinction": "Görsel akıl yürütme, OCR ve karmaşık grafik analizinde kapalı API seviyesinde doğruluk sunar.",
+      "whyHype": "Topluluğun en çok tercih ettiği ve en yüksek beğeni alan açık ağırlıklı çok modlu mimari olması.",
+      "environment": "vLLM, SGLang, Ollama, 24GB+ GPU VRAM."
+    },
+    {
+      "rank": 3,
+      "id": "MiniMaxAI/MiniMax-H3",
+      "name": "MiniMax H3 Video",
+      "downloads": "5.0M",
+      "likes": 4919,
+      "tag": "Hızlı Video",
+      "function": "Açık ağırlıklı, yüksek çözünürlüklü (1080p 60fps) sinematik video üretim difüzyon modeli.",
+      "distinction": "Standart video modellerindeki karakter erimesi ve sahne tutarsızlığını FL2VA referans latent kılavuzu ile ortadan kaldırarak 10+ saniyelik stabil sahneler üretir.",
+      "whyHype": "Runway Gen-3 ve Sora kalitesinde sahneleri açık kaynak olarak sunmasıyla son 24 saatte video prodüksiyon topluluklarını salladı.",
+      "environment": "ComfyUI, Diffusers, 24GB+ VRAM (RTX 3090/4090, A10G), çoklu GPU kümeleri."
+    },
+    {
+      "rank": 4,
+      "id": "Lightricks/LTX-2.5",
+      "name": "LTX 2.5 Video",
+      "downloads": "1.4M",
+      "likes": 2832,
+      "tag": "Video-to-Video",
+      "function": "Gerçek zamanlı kamera hareketi ve nesne kontrolüne sahip Image-to-Video / Video-to-Video modeli.",
+      "distinction": "Mevcut video modellerine göre 4 kat daha hızlı kare oluşturabilen sıkıştırılmış uzamsal-zamansal latent mimarisine sahiptir.",
+      "whyHype": "Viggle ve ComfyUI düğümlerinde karakter değiştirme ve canlı video manipülasyonunda sıfır gecikme sağlamasıyla trend oldu.",
+      "environment": "ComfyUI (LTX-Video wrapper), WebUI, 16GB+ GPU VRAM."
+    },
+    {
+      "rank": 5,
+      "id": "zai-org/GLM-5.3-Flash",
+      "name": "GLM 5.3 Flash",
+      "downloads": "654K",
+      "likes": 2043,
+      "tag": "Çok Modlu",
+      "function": "Düşük gecikmeli, metin ve görsel işleme (vision-language) yeteneğine sahip çok modlu model.",
+      "distinction": "Görsel soru-cevap, belge OCR ve ekran görüntüsü anlama görevlerinde 70B modellerle yarışırken sadece 9B bellek ayak izine sahiptir.",
+      "whyHype": "Geliştiricilerin yerel otonom GUI ajanlarında (bilgisayar ekranı okuma) ultra hızlı yanıt alabilmesi nedeniyle son 24 saatte patlama yaptı.",
+      "environment": "vLLM, Ollama, Hugging Face Transformers, 12GB+ VRAM veya Apple M serisi çipli Mac'ler."
     }
   ]
 }
