@@ -733,22 +733,15 @@ export default function App() {
                           </a>
                         </div>
 
-                        {/* 3. Sarı Kısım: Neden Ezber Bozuyor? (Yüksek kontrast, net ve tam okunaklı, taşma ve kesilme yok) */}
-                        <div className="bg-[#fffbeb] border-l-4 border-l-amber-500 border border-amber-200 rounded-r p-3 space-y-1 min-h-[110px] flex flex-col justify-center">
-                          <div className="flex items-center gap-1.5 text-[11px] font-mono font-bold text-amber-900 uppercase tracking-wide">
-                            <span className="text-amber-600 font-bold">⚡</span>
-                            <span>NEDEN EZBER BOZUYOR?</span>
-                          </div>
-                          <p className="text-xs text-slate-900 font-normal leading-relaxed">
+                        {/* 3. Sarı Kısım: Doğrudan konuya giren çarpıcı etki (başlık etiketsiz) */}
+                        <div className="bg-[#fffbeb] border-l-4 border-l-amber-500 border border-amber-200 rounded-r p-3 min-h-[95px] flex items-center">
+                          <p className="text-xs text-slate-900 font-medium leading-relaxed">
                             {paper.whyMad}
                           </p>
                         </div>
 
-                        {/* 4. Alt Kısım: Teknik Özet (Kesilme ve taşma olmadan tam okunabilir) */}
-                        <div className="space-y-1 min-h-[80px]">
-                          <span className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-wider block">
-                            Araştırma Özeti:
-                          </span>
+                        {/* 4. Alt Kısım: Doğrudan araştırma özeti (başlık etiketsiz) */}
+                        <div className="min-h-[75px]">
                           <p className="text-xs text-slate-600 leading-relaxed">
                             {paper.summary}
                           </p>
@@ -1093,22 +1086,15 @@ export default function App() {
                           </a>
                         </div>
 
-                        {/* Yararlı Teknik Bilgi / Hap Bilgi Kutusu */}
-                        {disc.usefulInsight && (
-                          <div className="bg-[#f0fdf4] border-l-2 border-emerald-600 p-2.5 rounded-r text-xs text-slate-800 leading-relaxed">
-                            <strong className="text-emerald-900 block text-[10px] font-mono uppercase mb-0.5 flex items-center gap-1 font-bold">
-                              <span>💡</span>
-                              <span>YARARLI TEKNİK BİLGİ &amp; ÇIKARIM:</span>
-                            </strong>
-                            <p className="text-slate-800">{disc.usefulInsight}</p>
-                          </div>
-                        )}
+                        {/* Derin Teknik Analiz (Doğrudan konuya girer, başlık etiketsiz) */}
+                        <p className="text-xs text-slate-800 leading-relaxed font-normal">
+                          {disc.analysis || disc.keyTakeaway}
+                        </p>
 
-                        {/* Tartışılan Konu & Topluluk Eleştirisi */}
-                        {disc.keyTakeaway && (
-                          <div className="text-xs text-slate-600 leading-relaxed">
-                            <strong className="text-slate-900 font-semibold mr-1">Tartışmanın Özü:</strong>
-                            <span>{disc.keyTakeaway}</span>
+                        {/* Mühendis Çıkarımı / Pratik Bilgi Kutusu (Etiketsiz, temiz ve vurgulu) */}
+                        {disc.usefulInsight && (
+                          <div className="bg-[#f0fdf4] border-l-2 border-emerald-600 p-2.5 rounded-r text-xs text-slate-900 leading-relaxed">
+                            <p className="font-medium text-slate-800">{disc.usefulInsight}</p>
                           </div>
                         )}
                       </div>

@@ -145,7 +145,7 @@ async function fetchHackerNews24h() {
   console.log("⚡ Hacker News API'den son 24 saatin teknik tartışmaları çekiliyor...");
   try {
     const oneDayAgo = Math.floor(Date.now() / 1000) - 86400;
-    const queries = ["AI", "LLM"];
+    const queries = ["AI", "LLM", "model", "OpenAI", "Anthropic", "GPU", "Rust"];
     const allHits = new Map();
 
     for (const q of queries) {
@@ -586,14 +586,17 @@ async function main() {
       "hackerNewsPulse": {
         "summary24h": "Son 24 saatte Hacker News gündeminde öne çıkan geliştirici tartışmalarının ve ekosistem nabzının 1-2 cümlelik özeti.",
         "discussions": [
+          // TAM OLARAK 8 ADET DOYGUN VE DERİN HABER (Ara başlık etiketleri olmadan doğrudan konuya giren)
           {
-            "title": "Hacker News Başlığı",
+            "id": "hn-id",
+            "title": "İngilizce Orijinal Başlık",
+            "titleTr": "Akıcı Türkçe Başlık",
             "points": 340,
             "comments": 180,
             "hnUrl": "https://news.ycombinator.com/item?id=...",
-            "category": "E-Ticaret / Kurumsal / Teori / Donanım / Ajan Güvenliği",
-            "keyTakeaway": "Mühendislerin tartıştığı ana konu ve eleştirisi",
-            "usefulInsight": "Geliştiriciler veya teknoloji meraklıları için doğrudan işe yarar hap teknik bilgi veya çıkarım"
+            "category": "Kategori",
+            "analysis": "Doğrudan konuya giren, ara başlıksız, en az 3-4 cümlelik doyurucu ve derinlemesine teknik analiz.",
+            "usefulInsight": "Geliştiriciler için doğrudan işe yarar pratik çıkarım veya uyarı."
           }
         ]
       },
