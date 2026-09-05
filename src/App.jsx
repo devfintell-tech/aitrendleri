@@ -75,8 +75,8 @@ export default function App() {
     sections: activeReportData.sections || LATEST_CONSULTANT_REPORT.sections,
     arxivDaily: activeReportData.arxivDaily || [],
     arxivWeeklyBest: activeReportData.arxivWeeklyBest || [],
-    huggingFaceTop: activeReportData.huggingFaceTop || [],
-    hackerNewsPulse: activeReportData.hackerNewsPulse || []
+    huggingFaceBest: activeReportData.huggingFaceBest || [],
+    huggingFaceTrending: activeReportData.huggingFaceTrending || activeReportData.huggingFaceTop || []
   } : LATEST_CONSULTANT_REPORT;
 
   const rawTools = {
@@ -703,92 +703,167 @@ export default function App() {
                   </span>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   {(timeframe === 'weekly' && report.arxivWeeklyBest?.length > 0 ? report.arxivWeeklyBest : report.arxivDaily).map((paper, pIdx) => (
-                    <div key={pIdx} className="bg-[#fbfcfd] border border-[#cbd5e1] rounded p-3.5 space-y-2 flex flex-col justify-between shadow-2xs">
-                      <div className="space-y-1.5">
-                        <div className="flex items-start justify-between gap-2">
-                          <span className="font-mono text-[10px] font-bold text-[#107c41] bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200">
+                    <div key={pIdx} className="bg-white border border-[#cbd5e1] rounded p-4 flex flex-col justify-between shadow-xs hover:border-[#107c41] transition">
+                      <div>
+                        {/* 1. Rozet Satırı */}
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="font-mono text-[10px] font-bold text-[#107c41] bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             #{pIdx + 1} • {paper.id}
                           </span>
-                          {paper.impactScore && (
-                            <span className="font-mono text-[10px] font-black text-slate-800 bg-slate-100 px-1.5 py-0.5 rounded border border-[#cbd5e1]">
-                              Etki: {paper.impactScore}/10
-                            </span>
-                          )}
+                          <span className="font-mono text-[10px] text-slate-400">
+                            {paper.category || 'cs.AI'}
+                          </span>
                         </div>
 
+                        {/* 2. Türkçe Başlık Satırı (Sabit min/max yükseklikle 3 kartta da kusursuz hizada) */}
+                        <div className="min-h-[44px] max-h-[44px] flex items-start overflow-hidden mb-3">
+                          <a 
+                            href={paper.arxivUrl} 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className="font-bold text-xs text-slate-900 hover:text-[#107c41] transition inline-flex items-center gap-1 group leading-snug line-clamp-2"
+                            title={paper.title}
+                          >
+                            <span className="group-hover:underline">{paper.titleTr || paper.title}</span>
+                            <ExternalLink className="w-3 h-3 flex-shrink-0 text-slate-400 group-hover:text-[#107c41]" />
+                          </a>
+                        </div>
+
+                        {/* 3. Sarı Kısım: Neden Ezber Bozuyor? (3 kartta da birebir aynı yükseklik ve konum) */}
+                        <div className="min-h-[82px] max-h-[82px] overflow-hidden bg-amber-50/80 border border-amber-200 rounded p-2.5 mb-3 flex flex-col justify-start">
+                          <strong className="text-amber-800 block text-[10px] font-mono uppercase mb-0.5 font-bold">
+                            ⚡ Neden Ezber Bozuyor?
+                          </strong>
+                          <p className="text-[11px] text-amber-950 font-medium leading-relaxed line-clamp-3">
+                            {paper.whyMad}
+                          </p>
+                        </div>
+
+                        {/* 4. Alt Kısım: Teknik Özet (3 kartta da aynı hizada) */}
+                        <div className="min-h-[66px] max-h-[66px] overflow-hidden mb-3">
+                          <p className="text-[11px] text-slate-600 leading-relaxed line-clamp-3">
+                            {paper.summary}
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* 5. Alt Bar: Yazarlar */}
+                      <div className="mt-auto pt-2.5 border-t border-[#f1f5f9] flex items-center justify-between text-[10px] font-mono text-slate-400">
+                        <span className="truncate max-w-[200px]" title={paper.authors?.join(', ')}>
+                          {paper.authors && paper.authors.length > 0 ? `Yazarlar: ${paper.authors.join(', ')}` : 'ArXiv Preprint'}
+                        </span>
                         <a 
                           href={paper.arxivUrl} 
                           target="_blank" 
                           rel="noopener noreferrer" 
-                          className="font-bold text-xs text-slate-900 hover:text-[#107c41] transition inline-flex items-center gap-1 group leading-snug"
+                          className="text-[#107c41] hover:underline flex items-center gap-0.5 font-bold"
                         >
-                          <span className="group-hover:underline">{paper.title}</span>
-                          <ExternalLink className="w-3 h-3 flex-shrink-0 text-slate-400 group-hover:text-[#107c41]" />
+                          İncele →
                         </a>
-
-                        {paper.whyMad && (
-                          <div className="bg-amber-50/70 border border-amber-200 rounded p-2 text-[11px] text-amber-950 font-medium leading-relaxed">
-                            <strong className="text-amber-800 block text-[10px] font-mono uppercase mb-0.5">
-                              ⚡ Neden Ezber Bozuyor?
-                            </strong>
-                            {paper.whyMad}
-                          </div>
-                        )}
-
-                        <p className="text-[11px] text-slate-600 leading-relaxed">
-                          {paper.summary}
-                        </p>
                       </div>
-
-                      {paper.authors && paper.authors.length > 0 && (
-                        <div className="pt-2 border-t border-[#f1f5f9] text-[10px] font-mono text-slate-400 truncate">
-                          Yazarlar: {paper.authors.join(', ')}
-                        </div>
-                      )}
                     </div>
                   ))}
                 </div>
               </div>
             )}
 
-            {/* 6. 🤗 HUGGING FACE YEREL MODEL VE AÇIK KAYNAK NABZI */}
-            {report.huggingFaceTop?.length > 0 && (
-              <div className="pt-2 border-t border-[#e2e8f0] space-y-2.5">
+            {/* 6. 🤗 HUGGING FACE YEREL MODEL & AÇIK KAYNAK NABZI (Sol 5 En İyiler, Sağ 5 Trending) */}
+            {(report.huggingFaceBest?.length > 0 || report.huggingFaceTrending?.length > 0) && (
+              <div className="pt-3 border-t border-[#e2e8f0] space-y-3">
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-1.5">
+                  <div className="flex items-center gap-2">
                     <span className="text-base">🤗</span>
                     <h4 className="text-xs sm:text-sm font-bold text-slate-900 font-mono uppercase">
-                      Hugging Face Yerel Model &amp; Açık Kaynak Nabzı
+                      Hugging Face Yerel Model &amp; Açık Kaynak Liderlik Tablosu
                     </h4>
                   </div>
                   <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-50 text-amber-800 border border-amber-200 font-bold">
-                    Gerçek İndirme Sayıları
+                    Gerçek İndirme Verileri
                   </span>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
-                  {report.huggingFaceTop.map((hf, hfIdx) => (
-                    <div key={hfIdx} className="bg-white border border-[#cbd5e1] rounded p-2.5 text-xs flex flex-col justify-between gap-1.5 shadow-2xs">
-                      <div>
-                        <span className="font-mono font-bold text-slate-900 truncate block text-[11px]" title={hf.id}>
-                          {hf.id}
-                        </span>
-                        <span className="text-[10px] text-slate-500 leading-tight line-clamp-2 pt-0.5">
-                          {hf.highlight || hf.tag}
-                        </span>
-                      </div>
-                      <div className="flex items-center justify-between pt-1 border-t border-[#f1f5f9] font-mono text-[11px]">
-                        <span className="font-black text-emerald-700">
-                          ⬇ {hf.downloads}
-                        </span>
-                        <span className="text-slate-400 text-[10px]">
-                          ❤️ {hf.likes}
-                        </span>
-                      </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {/* SOL 5: MEVCUT EN İYİLER (Pazar Standartları) */}
+                  <div className="bg-white border border-[#cbd5e1] rounded shadow-xs overflow-hidden">
+                    <div className="bg-[#f8fafc] border-b border-[#cbd5e1] px-3 py-2 flex items-center justify-between">
+                      <span className="text-xs font-bold font-mono text-slate-800 flex items-center gap-1.5">
+                        <span>🏆</span>
+                        <span>Mevcut En İyiler (Endüstri Standartları)</span>
+                      </span>
+                      <span className="text-[10px] font-mono text-slate-500">Top 5 Model</span>
                     </div>
-                  ))}
+
+                    <div className="divide-y divide-[#e2e8f0]">
+                      {(report.huggingFaceBest || []).slice(0, 5).map((model, idx) => (
+                        <div key={idx} className="h-11 px-3 flex items-center justify-between text-xs hover:bg-[#fbfcfd] transition">
+                          <div className="flex items-center gap-2 min-w-0 flex-1">
+                            <span className="w-5 font-mono text-slate-400 font-bold text-[11px]">
+                              #{idx + 1}
+                            </span>
+                            <div className="min-w-0 flex-1">
+                              <span className="font-mono font-bold text-slate-900 truncate block text-xs" title={model.id}>
+                                {model.name || model.id}
+                              </span>
+                              <span className="text-[9px] font-mono text-slate-400 uppercase tracking-tight">
+                                {model.tag}
+                              </span>
+                            </div>
+                          </div>
+
+                          <div className="text-right font-mono flex-shrink-0 pl-3">
+                            <span className="font-black text-emerald-700 text-xs block">
+                              ⬇ {model.downloads}
+                            </span>
+                            <span className="text-[9px] text-slate-400">
+                              ❤️ {model.likes?.toLocaleString()}
+                            </span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* SAĞ 5: BUGÜN YÜKSELİŞE GEÇENLER (24s Trending) */}
+                  <div className="bg-white border border-[#cbd5e1] rounded shadow-xs overflow-hidden">
+                    <div className="bg-[#f8fafc] border-b border-[#cbd5e1] px-3 py-2 flex items-center justify-between">
+                      <span className="text-xs font-bold font-mono text-slate-800 flex items-center gap-1.5">
+                        <span>⚡</span>
+                        <span>Bugün Yükselişe Geçenler (24s Trending)</span>
+                      </span>
+                      <span className="text-[10px] font-mono text-orange-600 font-bold">Top 5 Trending</span>
+                    </div>
+
+                    <div className="divide-y divide-[#e2e8f0]">
+                      {(report.huggingFaceTrending || []).slice(0, 5).map((model, idx) => (
+                        <div key={idx} className="h-11 px-3 flex items-center justify-between text-xs hover:bg-[#fbfcfd] transition">
+                          <div className="flex items-center gap-2 min-w-0 flex-1">
+                            <span className="w-5 font-mono text-slate-400 font-bold text-[11px]">
+                              #{idx + 1}
+                            </span>
+                            <div className="min-w-0 flex-1">
+                              <span className="font-mono font-bold text-slate-900 truncate block text-xs" title={model.id}>
+                                {model.name || model.id}
+                              </span>
+                              <span className="text-[9px] font-mono text-orange-600 uppercase tracking-tight font-semibold">
+                                {model.tag || model.highlight}
+                              </span>
+                            </div>
+                          </div>
+
+                          <div className="text-right font-mono flex-shrink-0 pl-3">
+                            <span className="font-black text-emerald-700 text-xs block">
+                              ⬇ {model.downloads}
+                            </span>
+                            <span className="text-[9px] text-slate-400">
+                              ❤️ {model.likes?.toLocaleString()}
+                            </span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
             )}

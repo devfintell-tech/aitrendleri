@@ -983,19 +983,20 @@
     {
       "id": "2609.04198v1",
       "title": "Clean Engineering, Unstable Measurement: A Preregistered Reliability Failure of Black-Box LLM Observers on Shared Endpoints",
+      "titleTr": "LLM Hakemlerin Kararsızlığı: Paylaşılan Uç Noktalarda Kara Kutu Ölçüm Hataları",
       "arxivUrl": "http://arxiv.org/abs/2609.04198v1",
       "authors": [
         "Haoyaun Zhu",
         "Jie Zhang"
       ],
       "category": "cs.AI",
-      "impactScore": 9.6,
-      "whyMad": "Sektörün tüm liderlik tablolarını ve model değerlendirmelerini emanet ettiği 'LLM-as-a-judge' sistemlerinin, aynı uç noktaya yapılan aynı sorgularda bile Spearman 0.40 korelasyonla çuvalladığını kanıtlayarak benchmark dünyasını sarstı.",
-      "summary": "Makale, paylaşılan kapalı API uç noktalarında LLM hakemlerinin ölçüm güvenilirliğini önceden tescilli 52.988 sorgu ile denetliyor ve aynı isimli modelin zamana bağlı kararlarının bilimsel bir ölçüm aracı olamayacak kadar kararsız olduğunu ortaya koyuyor."
+      "whyMad": "Sektörün tüm liderlik tablolarını emanet ettiği 'LLM-as-a-judge' sistemlerinin aynı uç noktada yapılan sorgularda bile Spearman 0.40 korelasyonla çuvalladığını 52.000 sorguyla kanıtlayarak benchmark dünyasını sarstı.",
+      "summary": "Paylaşılan kapalı API uç noktalarında LLM hakemlerinin ölçüm güvenilirliğini denetleyen çalışma; aynı modelin zamana bağlı kararlarının bilimsel bir ölçüm aracı olamayacak kadar kararsız olduğunu belgeliyor."
     },
     {
       "id": "2609.04194v1",
       "title": "Legibility is Not Interpretability: Comparing Judged and Actual Importance in Chain-Of-Thought Reasoning",
+      "titleTr": "Okunabilirlik Açıklanabilirlik Değildir: Düşünce Zinciri (CoT) Mantığındaki İllüzyon",
       "arxivUrl": "http://arxiv.org/abs/2609.04194v1",
       "authors": [
         "Kevin Du",
@@ -1003,13 +1004,13 @@
         "Laura Ruis"
       ],
       "category": "cs.CL",
-      "impactScore": 9.4,
-      "whyMad": "Modellerin 'düşünce zinciri' (Chain-of-Thought) metinlerinin insanlara mantıklı gelmesinin, modelin arka planda gerçekten o adımları izlediği anlamına gelmediğini; okunabilirlik ile gerçek mekanik çıkarım arasındaki devasa kopukluğu kanıtlıyor.",
-      "summary": "Çalışma, süreç ödül modelleri (PRM) ve hakem LLM'lerin mantık adımlarına biçtiği önem ile modelin içsel hesaplama ağırlıkları arasındaki bağımsızlığı test ederek, metinsel CoT akışının açıklanabilirlik için yanıltıcı bir illüzyon olabileceğini gösteriyor."
+      "whyMad": "Modellerin 'düşünce zinciri' metinlerinin insanlara mantıklı gelmesinin, modelin arka planda gerçekten o adımları izlediği anlamına gelmediğini; okunabilirlik ile gerçek mekanik çıkarım arasındaki kopukluğu ispatladı.",
+      "summary": "Süreç ödül modelleri ve hakem LLM'lerin mantık adımlarına biçtiği önem ile modelin içsel hesaplama ağırlıkları arasındaki bağımsızlığı test ederek, metinsel CoT akışının bir yanılsama olabileceğini gösteriyor."
     },
     {
       "id": "2609.04190v1",
       "title": "One Editor, Many Edits: A Unified Training-Free Framework for Diverse Video Editing",
+      "titleTr": "Tek Düzenleyici, Çoklu Video: Eğitimsiz Birleşik Video Düzenleme Çerçevesi",
       "arxivUrl": "http://arxiv.org/abs/2609.04190v1",
       "authors": [
         "Adheesh Sunil Juvekar",
@@ -1017,104 +1018,49 @@
         "Kiet A. Nguyen"
       ],
       "category": "cs.CV",
-      "impactScore": 9.3,
-      "whyMad": "Hiçbir ek eğitim yapmadan (training-free); seyrek nedensel bellek ve latent harmanlama ile hem metin talimatlı hem de referans görsel kılavuzlu video düzenlemeyi kimlik kaybı yaşamadan tek bir mimaride çözüyor.",
-      "summary": "EditVid çerçevesi, video düzenlemede uzun vadeli kimlik korumasını dikkat sonrası token enjeksiyonu ve lokal latent harmanlama ile sağlayarak, ek eğitime gerek duymaksızın stil, nesne ve kamera transferini başarıyla gerçekleştiriyor."
+      "whyMad": "Hiçbir ek eğitim yapmadan (training-free); seyrek nedensel bellek ve latent harmanlama ile hem metin talimatlı hem de referans görsel kılavuzlu video düzenlemeyi kimlik kaybı yaşamadan tek bir mimaride çözdü.",
+      "summary": "EditVid çerçevesi, video düzenlemede uzun vadeli kimlik korumasını dikkat sonrası token enjeksiyonu ve lokal latent harmanlama ile sağlayarak ek eğitime gerek duymaksızın stil ve nesne transferi gerçekleştiriyor."
     }
   ],
   "arxivWeeklyBest": [
     {
       "id": "2609.04199v1",
       "title": "Compile by Training: Turning Natural-Language Specifications into Local Neural Functions",
+      "titleTr": "Eğitimle Derleme: Doğal Dil Tanımlarını Doğrudan Yerel Nöral Fonksiyonlara Dönüştürme",
       "arxivUrl": "http://arxiv.org/abs/2609.04199v1",
-      "impactScore": 9.6,
       "whyMad": "Geleneksel kod üretimini baypas ederek doğal dil spesifikasyonlarını doğrudan mikro-ağırlıklı nöral fonksiyonlara derlemesi yazılım paradigmasını kökten değiştiriyor.",
       "summary": "Doğal dille tanımlanan fonksiyon gereksinimlerini geleneksel programlama dillerine çevirmek yerine, spesifik göreve kilitli minik nöral ağırlıklara derleyen çığır açıcı yaklaşım."
     },
     {
       "id": "2609.04198v1",
       "title": "Clean Engineering, Unstable Measurement: A Preregistered Reliability Failure of Black-Box LLM Observers on Shared Endpoints",
+      "titleTr": "LLM Hakemlerin Kararsızlığı: Paylaşılan Uç Noktalarda Kara Kutu Ölçüm Hataları",
       "arxivUrl": "http://arxiv.org/abs/2609.04198v1",
-      "impactScore": 9.6,
       "whyMad": "Endüstrinin 'LLM Hakem' hipotezini ampirik olarak yıkarak sentetik veri ve benchmark güvenilirliğinde yeni bir denetim çağını başlattı.",
       "summary": "Paylaşılan API'lerdeki LLM hakemlerinin aynı veri üzerinde tutarsız sıralamalar ürettiğini 50 bini aşkın sorguyla kanıtlayan denetim çalışması."
     },
     {
       "id": "2609.03852v1",
       "title": "Scaling Test-Time Compute without Re-ranking: Self-Correcting Latent Tree Search",
+      "titleTr": "Test-Zamanı Hesaplamasını Ölçekleme: Kendi Kendini Düzelten Gizli Ağaç Araması",
       "arxivUrl": "http://arxiv.org/abs/2609.03852v1",
-      "impactScore": 9.4,
       "whyMad": "Harici puanlayıcı olmadan gizli uzayda ağaç aramasıyla matematiksel kanıt hızını 8 kat artırarak test-zamanı hesaplama verimliliğinde yeni standart koydu.",
       "summary": "Ekstra ödül modellerine ihtiyaç duymadan, modelin kendi latent uzayında dallanarak kendi kendini düzelten ağaç arama algoritması."
-    },
-    {
-      "id": "2609.03211v1",
-      "title": "1-Bit Quantization Resilience in Sub-8B Dense Models",
-      "arxivUrl": "http://arxiv.org/abs/2609.03211v1",
-      "impactScore": 9.2,
-      "whyMad": "Ağırlık rotasyonuyla perplexity patlamasını engelleyerek 7B modelleri 1.2 GB RAM'e sığdırıp uç cihazlarda tam güçle çalıştırdı.",
-      "summary": "Küçük parametreli yoğun modellerde 1-bit kuantizasyon kaybını minimize eden yeni ağırlık rotasyon tekniği."
     }
   ],
-  "huggingFaceTop": [
-    {
-      "id": "unsloth/Qwen3.8-27B-GGUF",
-      "downloads": "9.95M",
-      "likes": 3502,
-      "tag": "text-generation",
-      "highlight": "Yerel çıkarım ve ince ayar dünyasının tartışmasız lider açık ağırlık checkpoint'i."
-    },
-    {
-      "id": "Qwen/Qwen3.8-27B",
-      "downloads": "5.73M",
-      "likes": 13941,
-      "tag": "image-text-to-text",
-      "highlight": "Açık çok modlu modellerde endüstriyel standart haline gelen ana omurga model."
-    },
-    {
-      "id": "MiniMaxAI/MiniMax-H3",
-      "downloads": "5.11M",
-      "likes": 4901,
-      "tag": "image-text-to-video",
-      "highlight": "Sinematik fotogerçekçi video üretiminde ComfyUI topluluğunun bir numaralı açık tercihi."
-    },
-    {
-      "id": "Lightricks/LTX-2.5",
-      "downloads": "1.39M",
-      "likes": 2779,
-      "tag": "image-to-video",
-      "highlight": "Hızlı görselden videoya dönüştürme iş akışlarında yüksek kare tutarlılığı sağlayan açık model."
-    },
-    {
-      "id": "zai-org/GLM-5.3-Flash",
-      "downloads": "654K",
-      "likes": 2043,
-      "tag": "image-text-to-text",
-      "highlight": "Görsel ve metin analizinde yüksek verim ve düşük gecikme sunan hafif alternatif."
-    }
+  "huggingFaceBest": [
+    { "rank": 1, "id": "deepseek-ai/DeepSeek-V3", "name": "DeepSeek V3", "downloads": "12.4M", "likes": 4820, "tag": "Genel Zeka" },
+    { "rank": 2, "id": "meta-llama/Llama-3.3-70B-Instruct", "name": "Llama 3.3 70B", "downloads": "8.90M", "likes": 2150, "tag": "Kurumsal" },
+    { "rank": 3, "id": "Qwen/Qwen2.5-Coder-32B-Instruct", "name": "Qwen 2.5 Coder 32B", "downloads": "6.20M", "likes": 1840, "tag": "Kodlama" },
+    { "rank": 4, "id": "black-forest-labs/FLUX.1-schnell", "name": "FLUX.1 Schnell", "downloads": "4.80M", "likes": 1290, "tag": "Görsel" },
+    { "rank": 5, "id": "openai/whisper-large-v3-turbo", "name": "Whisper Large v3", "downloads": "3.95M", "likes": 2410, "tag": "Ses / STT" }
   ],
-  "hackerNewsPulse": [
-    {
-      "title": "NVIDIA's Strategic Move on Open Source Model Hubs",
-      "points": 485,
-      "comments": 310,
-      "url": "https://news.ycombinator.com/item?id=43289011",
-      "takeaway": "Mühendisler, donanım tekeli NVIDIA'nın Hugging Face ekosistemine doğrudan müdahil olmasının açık yapay zeka tarafsızlığını ve alternatif çip (AMD/Intel/TPU) optimizasyonlarını baskılayabileceğini tartışıyor."
-    },
-    {
-      "title": "Why CPU-Only Long-Context Inference Might Beat GPUs (eLLM Architecture)",
-      "points": 412,
-      "comments": 225,
-      "url": "https://news.ycombinator.com/item?id=43288420",
-      "takeaway": "VRAM maliyetlerinin astronomik seviyelerde olduğu bir dönemde, DDR bellek kapasitesini prefill ve decode optimizasyonlarıyla birleştiren Rust motorları pratik kurumsal çıkarım için devrimsel görülüyor."
-    },
-    {
-      "title": "The Fallacy of LLM Judges in Automated CI/CD Pipelines",
-      "points": 360,
-      "comments": 195,
-      "url": "https://news.ycombinator.com/item?id=43287950",
-      "takeaway": "Kapalı uç noktalardaki model sürümlerinin gün içi değişkenliği ve düşük korelasyonu nedeniyle üretim testlerinde 'LLM hakem' kullanımının deterministik yazılım test ilkelerine aykırı olduğu savunuluyor."
-    }
+  "huggingFaceTrending": [
+    { "rank": 1, "id": "unsloth/Qwen3.8-27B-GGUF", "name": "Qwen 3.8 27B GGUF", "downloads": "9.95M", "likes": 3502, "tag": "24s Zirvesi" },
+    { "rank": 2, "id": "MiniMaxAI/MiniMax-H3", "name": "MiniMax H3 Video", "downloads": "5.11M", "likes": 4901, "tag": "Hızlı Video" },
+    { "rank": 3, "id": "Lightricks/LTX-2.5", "name": "LTX 2.5 Video", "downloads": "1.39M", "likes": 2779, "tag": "Video-to-Video" },
+    { "rank": 4, "id": "zai-org/GLM-5.3-Flash", "name": "GLM 5.3 Flash", "downloads": "654K", "likes": 2043, "tag": "Çok Modlu" },
+    { "rank": 5, "id": "eLLM-Rust/CPU-Inference-GGUF", "name": "eLLM Rust CPU", "downloads": "420K", "likes": 1850, "tag": "CPU Motoru" }
   ],
   "sections": [
     {
