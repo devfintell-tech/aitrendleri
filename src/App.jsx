@@ -642,6 +642,25 @@ export default function App() {
     return (sum / filteredTools.length).toFixed(1);
   }, [filteredTools]);
 
+  // GitHub Radarı ve Hacker News için Satır Bazlı Hizalama Kümeleri (Subgrid chunking)
+  const githubChunks = useMemo(() => {
+    const list = (report.githubRadar && report.githubRadar[githubTimeframe]) || (report.githubRadar && report.githubRadar.daily) || [];
+    const chunks = [];
+    for (let i = 0; i < list.length; i += 3) {
+      chunks.push(list.slice(i, i + 3));
+    }
+    return chunks;
+  }, [report.githubRadar, githubTimeframe]);
+
+  const hnChunks = useMemo(() => {
+    const list = report.hackerNewsPulse?.discussions || [];
+    const chunks = [];
+    for (let i = 0; i < list.length; i += 2) {
+      chunks.push(list.slice(i, i + 2));
+    }
+    return chunks;
+  }, [report.hackerNewsPulse]);
+
   // Excel Category Badge Styles (Clean Excel Cell Style)
   const getCategoryBadgeClass = (category) => {
     switch (category) {
@@ -1235,51 +1254,52 @@ export default function App() {
                   </span>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-x-4 gap-y-4 md:[grid-template-rows:auto_auto_auto_1fr_auto] md:gap-y-3">
                   {(timeframe === 'weekly' && report.arxivWeeklyBest?.length > 0 ? report.arxivWeeklyBest : report.arxivDaily).map((paper, pIdx) => (
-                    <div key={pIdx} className="bg-white border border-[#cbd5e1] rounded-sm p-4 flex flex-col justify-between h-full shadow-xs hover:border-[#107c41] transition">
-                      <div className="flex-1 flex flex-col">
-                        {/* 1. Rozet Satırı - Sabit 24px */}
-                        <div className="h-6 flex items-center justify-between">
-                          <span className="font-mono text-[10px] font-bold text-[#107c41] bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-                            #{pIdx + 1} • {paper.id}
-                          </span>
-                          <span className="font-mono text-[10px] text-slate-400">
-                            {paper.category || 'cs.AI'}
-                          </span>
-                        </div>
+                    <div 
+                      key={pIdx} 
+                      className="bg-white border border-[#cbd5e1] rounded-sm p-4 shadow-xs hover:border-[#107c41] transition flex flex-col justify-between gap-3 md:row-span-5 md:grid md:[grid-template-rows:subgrid] md:gap-y-3"
+                    >
+                      {/* 1. Rozet Satırı */}
+                      <div className="flex items-center justify-between">
+                        <span className="font-mono text-[10px] font-bold text-[#107c41] bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                          #{pIdx + 1} • {paper.id}
+                        </span>
+                        <span className="font-mono text-[10px] text-slate-400">
+                          {paper.category || 'cs.AI'}
+                        </span>
+                      </div>
 
-                        {/* 2. Türkçe Başlık Satırı - Sabit 46px */}
-                        <div className="h-[46px] my-2 flex items-start overflow-hidden">
-                          <a 
-                            href={paper.arxivUrl} 
-                            target="_blank" 
-                            rel="noopener noreferrer" 
-                            className="font-bold text-xs sm:text-[13px] text-slate-900 hover:text-[#107c41] transition inline-flex items-start gap-1 group leading-snug line-clamp-2"
-                            title={paper.titleTr || paper.title}
-                          >
-                            <span className="group-hover:underline">{paper.titleTr || paper.title}</span>
-                            <ExternalLink className="w-3.5 h-3.5 flex-shrink-0 text-slate-400 group-hover:text-[#107c41] mt-0.5" />
-                          </a>
-                        </div>
+                      {/* 2. Türkçe Başlık Satırı */}
+                      <div className="flex items-start">
+                        <a 
+                          href={paper.arxivUrl} 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="font-bold text-xs sm:text-[13px] text-slate-900 hover:text-[#107c41] transition inline-flex items-start gap-1 group leading-snug"
+                          title={paper.titleTr || paper.title}
+                        >
+                          <span className="group-hover:underline">{paper.titleTr || paper.title}</span>
+                          <ExternalLink className="w-3.5 h-3.5 flex-shrink-0 text-slate-400 group-hover:text-[#107c41] mt-0.5" />
+                        </a>
+                      </div>
 
-                        {/* 3. Sarı Kısım: Doğrudan konuya giren çarpıcı etki - Sabit 125px (3 kartta da aynı hizada biter) */}
-                        <div className="bg-[#fffbeb] border-l-4 border-l-amber-500 border border-amber-200 rounded-r p-2.5 h-[125px] overflow-y-auto flex items-start">
-                          <p className="text-xs text-slate-900 font-medium leading-relaxed">
-                            {paper.whyMad}
-                          </p>
-                        </div>
+                      {/* 3. Sarı Kısım: Doğrudan konuya giren çarpıcı etki (Metne göre doğal genişler, kaydırma yok, 3 kart aynı hizada biter) */}
+                      <div className="bg-[#fffbeb] border-l-4 border-l-amber-500 border border-amber-200 rounded-r p-3 h-full flex flex-col justify-start">
+                        <p className="text-xs text-slate-900 font-medium leading-relaxed">
+                          {paper.whyMad}
+                        </p>
+                      </div>
 
-                        {/* 4. Alt Kısım: Doğrudan araştırma özeti - Sabit 115px (3 kartta da aynı hizada başlar ve biter) */}
-                        <div className="h-[115px] overflow-y-auto mt-2.5">
-                          <p className="text-xs text-slate-600 leading-relaxed">
-                            {paper.summary}
-                          </p>
-                        </div>
+                      {/* 4. Alt Kısım: Doğrudan araştırma özeti (3 kartta da aynı hizada başlar) */}
+                      <div className="flex flex-col justify-start text-xs text-slate-600 leading-relaxed">
+                        <p>
+                          {paper.summary}
+                        </p>
                       </div>
 
                       {/* 5. Alt Bar: Yazarlar ve İncele Linki */}
-                      <div className="mt-3 pt-3 border-t border-[#f1f5f9] flex items-center justify-between text-[11px] font-mono text-slate-500">
+                      <div className="pt-3 border-t border-[#f1f5f9] flex items-center justify-between text-[11px] font-mono text-slate-500">
                         <span className="truncate max-w-[180px]" title={paper.authors?.join(', ')}>
                           {paper.authors && paper.authors.length > 0 ? paper.authors.join(', ') : 'ArXiv Preprint'}
                         </span>
@@ -1597,104 +1617,105 @@ export default function App() {
                   Açık kaynak ekosisteminde en çok ivme kazanan otonom ajanlar, Deep Research motorları, OSINT araçları ve CLI kütüphaneleri.
                 </p>
 
-                {/* Repo Kartları Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-                  {((report.githubRadar && report.githubRadar[githubTimeframe]) || (report.githubRadar && report.githubRadar.daily) || []).map((repo, idx) => (
-                    <div 
-                      key={repo.id || `${repo.owner}/${repo.name}` || idx}
-                      className="bg-slate-50/70 rounded border border-[#cbd5e1] p-3 hover:border-slate-400 hover:bg-white transition-all flex flex-col justify-between h-full space-y-2.5 shadow-2xs group"
-                    >
-                      {/* Kart Üst: Sıra, Başlık, Kategori & Metrikler */}
-                      <div className="space-y-2.5 flex-1 flex flex-col">
-                        {/* Başlık & Kategori - Sabit 40px */}
-                        <div className="h-[40px] flex items-start justify-between gap-2 overflow-hidden">
-                          <div className="min-w-0">
-                            <div className="flex items-center gap-1.5 flex-wrap">
-                              <span className="font-mono text-[10px] font-bold text-slate-500">#{idx + 1}</span>
+                {/* Repo Kartları Grid (Satır bazlı subgrid ile hizalanır, kaydırma yok, doğal uzar) */}
+                <div className="space-y-3">
+                  {githubChunks.map((chunk, cIdx) => (
+                    <div key={cIdx} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-3 gap-y-4 lg:[grid-template-rows:auto_auto_auto_auto_auto] lg:gap-y-2.5">
+                      {chunk.map((repo, idx) => (
+                        <div 
+                          key={repo.id || `${repo.owner}/${repo.name}` || idx}
+                          className="bg-slate-50/70 rounded border border-[#cbd5e1] p-3 hover:border-slate-400 hover:bg-white transition-all shadow-2xs group flex flex-col justify-between gap-2.5 lg:row-span-5 lg:grid lg:[grid-template-rows:subgrid] lg:gap-y-2.5"
+                        >
+                          {/* 1. Başlık & Kategori */}
+                          <div className="flex items-start justify-between gap-2">
+                            <div className="min-w-0">
+                              <div className="flex items-center gap-1.5 flex-wrap">
+                                <span className="font-mono text-[10px] font-bold text-slate-500">#{cIdx * 3 + idx + 1}</span>
+                                <a
+                                  href={repo.url || `https://github.com/${repo.owner}/${repo.name}`}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="font-bold text-slate-900 hover:text-blue-600 transition-colors truncate font-mono text-xs inline-flex items-center gap-1"
+                                >
+                                  <span>{repo.name}</span>
+                                  <ExternalLink className="w-3 h-3 text-slate-400 group-hover:text-blue-500 shrink-0" />
+                                </a>
+                              </div>
+                              <span className="text-[10px] font-mono text-slate-400 block truncate">
+                                {repo.owner}
+                              </span>
+                            </div>
+
+                            {repo.category && (
+                              <span className="text-[9px] font-mono font-bold px-1.5 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200 shrink-0">
+                                {repo.category}
+                              </span>
+                            )}
+                          </div>
+
+                          {/* 2. Metrikler: Yıldız, Artış, Dil */}
+                          <div className="flex items-center gap-2 flex-wrap text-[11px] font-mono">
+                            <span className="inline-flex items-center gap-1 text-amber-700 bg-amber-50 px-1.5 py-0.5 rounded border border-amber-200/70 font-semibold">
+                              <Star className="w-3 h-3 fill-amber-500 text-amber-500" />
+                              {repo.stars}
+                            </span>
+                            {repo.deltaStars && (
+                              <span className="inline-flex items-center gap-1 text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200/70 font-semibold text-[10px]">
+                                🔥 {repo.deltaStars}
+                              </span>
+                            )}
+                            {repo.language && (
+                              <span className="text-slate-600 bg-slate-100 px-1.5 py-0.5 rounded border border-slate-200 text-[10px]">
+                                {repo.language}
+                              </span>
+                            )}
+                          </div>
+
+                          {/* 3. Ne İşe Yarar? (Doğal genişler, kaydırma yok, h-full ile diğerleri aynı seviyeye uzar) */}
+                          <div className="p-2.5 bg-white rounded border border-[#e2e8f0] h-full flex flex-col justify-start">
+                            <span className="font-mono text-[10px] font-bold text-slate-700 uppercase flex items-center gap-1 mb-1 shrink-0">
+                              <span>🎯</span>
+                              <span>Ne İşe Yarar?</span>
+                            </span>
+                            <p className="text-slate-800 text-[11px] leading-relaxed">
+                              {repo.function}
+                            </p>
+                          </div>
+
+                          {/* 4. Neden Yıldızlaştı? (Doğal genişler, kaydırma yok, h-full ile diğerleri aynı seviyeye uzar) */}
+                          <div className="p-2.5 bg-[#f8fafc] rounded border border-[#e2e8f0] h-full flex flex-col justify-start">
+                            <span className="font-mono text-[10px] font-bold text-indigo-700 uppercase flex items-center gap-1 mb-1 shrink-0">
+                              <span>⚡</span>
+                              <span>Neden Yıldızlaştı?</span>
+                            </span>
+                            <p className="text-slate-700 text-[11px] leading-relaxed">
+                              {repo.whyHype}
+                            </p>
+                          </div>
+
+                          {/* 5. Kart Alt: Kurulum Komutu & Link */}
+                          <div className="pt-2 border-t border-slate-200/80 space-y-2">
+                            <div className="bg-slate-900 text-emerald-400 font-mono text-[10px] px-2 py-1.5 rounded flex items-center justify-between gap-2 overflow-x-auto">
+                              <div className="flex items-center gap-1.5 min-w-0">
+                                <Terminal className="w-3 h-3 text-slate-400 shrink-0" />
+                                <code className="truncate select-all">{repo.installCommand || 'git clone ' + (repo.url || '')}</code>
+                              </div>
+                            </div>
+
+                            <div className="flex items-center justify-end">
                               <a
                                 href={repo.url || `https://github.com/${repo.owner}/${repo.name}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="font-bold text-slate-900 hover:text-blue-600 transition-colors truncate font-mono text-xs inline-flex items-center gap-1"
+                                className="inline-flex items-center gap-1 text-[11px] font-bold text-slate-700 hover:text-slate-950 font-mono hover:underline"
                               >
-                                <span>{repo.name}</span>
-                                <ExternalLink className="w-3 h-3 text-slate-400 group-hover:text-blue-500 shrink-0" />
+                                <span>Repoyu İncele</span>
+                                <ExternalLink className="w-3 h-3" />
                               </a>
                             </div>
-                            <span className="text-[10px] font-mono text-slate-400 block truncate">
-                              {repo.owner}
-                            </span>
-                          </div>
-
-                          {repo.category && (
-                            <span className="text-[9px] font-mono font-bold px-1.5 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200 shrink-0">
-                              {repo.category}
-                            </span>
-                          )}
-                        </div>
-
-                        {/* Metrikler: Yıldız, Artış, Dil - Sabit 24px */}
-                        <div className="h-[24px] flex items-center gap-2 flex-wrap text-[11px] font-mono">
-                          <span className="inline-flex items-center gap-1 text-amber-700 bg-amber-50 px-1.5 py-0.5 rounded border border-amber-200/70 font-semibold">
-                            <Star className="w-3 h-3 fill-amber-500 text-amber-500" />
-                            {repo.stars}
-                          </span>
-                          {repo.deltaStars && (
-                            <span className="inline-flex items-center gap-1 text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200/70 font-semibold text-[10px]">
-                              🔥 {repo.deltaStars}
-                            </span>
-                          )}
-                          {repo.language && (
-                            <span className="text-slate-600 bg-slate-100 px-1.5 py-0.5 rounded border border-slate-200 text-[10px]">
-                              {repo.language}
-                            </span>
-                          )}
-                        </div>
-
-                        {/* Ne İşe Yarar? - Sabit Yükseklik 96px: Aynı hizada başlar ve biter */}
-                        <div className="p-2.5 bg-white rounded border border-[#e2e8f0] h-[96px] flex flex-col justify-start overflow-y-auto">
-                          <span className="font-mono text-[10px] font-bold text-slate-700 uppercase flex items-center gap-1 mb-1 shrink-0">
-                            <span>🎯</span>
-                            <span>Ne İşe Yarar?</span>
-                          </span>
-                          <p className="text-slate-800 text-[11px] leading-relaxed">
-                            {repo.function}
-                          </p>
-                        </div>
-
-                        {/* Neden Yıldızlaştı? - Sabit Yükseklik 96px: Aynı hizada başlar ve biter */}
-                        <div className="p-2.5 bg-[#f8fafc] rounded border border-[#e2e8f0] h-[96px] flex flex-col justify-start overflow-y-auto">
-                          <span className="font-mono text-[10px] font-bold text-indigo-700 uppercase flex items-center gap-1 mb-1 shrink-0">
-                            <span>⚡</span>
-                            <span>Neden Yıldızlaştı?</span>
-                          </span>
-                          <p className="text-slate-700 text-[11px] leading-relaxed">
-                            {repo.whyHype}
-                          </p>
-                        </div>
-                      </div>
-
-                      {/* Kart Alt: Kurulum Komutu & Link */}
-                      <div className="pt-2 border-t border-slate-200/80 space-y-2">
-                        <div className="bg-slate-900 text-emerald-400 font-mono text-[10px] px-2 py-1.5 rounded flex items-center justify-between gap-2 overflow-x-auto h-[32px]">
-                          <div className="flex items-center gap-1.5 min-w-0">
-                            <Terminal className="w-3 h-3 text-slate-400 shrink-0" />
-                            <code className="truncate select-all">{repo.installCommand || 'git clone ' + (repo.url || '')}</code>
                           </div>
                         </div>
-
-                        <div className="flex items-center justify-end h-[24px]">
-                          <a
-                            href={repo.url || `https://github.com/${repo.owner}/${repo.name}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1 text-[11px] font-bold text-slate-700 hover:text-slate-950 font-mono hover:underline"
-                          >
-                            <span>Repoyu İncele</span>
-                            <ExternalLink className="w-3 h-3" />
-                          </a>
-                        </div>
-                      </div>
+                      ))}
                     </div>
                   ))}
                 </div>
@@ -1728,65 +1749,65 @@ export default function App() {
                   </div>
                 )}
 
-                {/* Tartışmalar ve Yararlı Bilgiler Listesi */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {(report.hackerNewsPulse.discussions || []).map((disc, dIdx) => (
-                    <div 
-                      key={dIdx} 
-                      className="bg-white border border-[#cbd5e1] rounded-sm p-3.5 flex flex-col justify-between hover:border-[#ff6600] transition h-full shadow-xs"
-                    >
-                      <div className="space-y-2.5 flex-1 flex flex-col">
-                        {/* Üst Kategori ve Puan/Yorum Barı - Sabit 24px */}
-                        <div className="h-6 flex items-center justify-between text-[10px] font-mono">
-                          <span className="bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-semibold border border-slate-200">
-                            {disc.category || 'Geliştirici Tartışması'}
-                          </span>
-                          <div className="flex items-center gap-2 text-slate-500 font-bold">
-                            <span className="text-[#ff6600]">▲ {disc.points} puan</span>
-                            <span>•</span>
-                            <span>💬 {disc.comments} yorum</span>
+                {/* Tartışmalar ve Yararlı Bilgiler Listesi (Çiftli subgrid ile hizalanır, kaydırma yok, doğal uzar) */}
+                <div className="space-y-4">
+                  {hnChunks.map((pair, pIdx) => (
+                    <div key={pIdx} className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-4 md:[grid-template-rows:auto_auto_1fr_auto_auto] md:gap-y-2.5">
+                      {pair.map((disc, dIdx) => (
+                        <div 
+                          key={disc.id || `${pIdx}-${dIdx}`}
+                          className="bg-white border border-[#cbd5e1] rounded-sm p-3.5 hover:border-[#ff6600] transition shadow-xs flex flex-col justify-between gap-2.5 md:row-span-5 md:grid md:[grid-template-rows:subgrid] md:gap-y-2.5"
+                        >
+                          {/* 1. Üst Kategori ve Puan/Yorum Barı */}
+                          <div className="flex items-center justify-between text-[10px] font-mono">
+                            <span className="bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-semibold border border-slate-200">
+                              {disc.category || 'Geliştirici Tartışması'}
+                            </span>
+                            <div className="flex items-center gap-2 text-slate-500 font-bold">
+                              <span className="text-[#ff6600]">▲ {disc.points} puan</span>
+                              <span>•</span>
+                              <span>💬 {disc.comments} yorum</span>
+                            </div>
+                          </div>
+
+                          {/* 2. Tartışma Başlığı */}
+                          <div className="flex items-start">
+                            <a 
+                              href={disc.hnUrl || disc.url} 
+                              target="_blank" 
+                              rel="noopener noreferrer" 
+                              className="font-bold text-xs sm:text-[13px] text-slate-900 hover:text-[#ff6600] transition inline-flex items-start gap-1 group leading-snug"
+                              title={disc.title}
+                            >
+                              <span className="group-hover:underline">{disc.titleTr || disc.title}</span>
+                              <ExternalLink className="w-3.5 h-3.5 flex-shrink-0 text-slate-400 group-hover:text-[#ff6600] mt-0.5" />
+                            </a>
+                          </div>
+
+                          {/* 3. Derin Teknik Analiz */}
+                          <div className="text-xs text-slate-800 leading-relaxed font-normal flex flex-col justify-start">
+                            <p>{disc.analysis || disc.keyTakeaway}</p>
+                          </div>
+
+                          {/* 4. Mühendis Çıkarımı / Pratik Bilgi Kutusu (Yeşil Kutu - Doğal uzar, kaydırma yok, iki kart aynı hizada başlar ve biter) */}
+                          <div className="bg-[#f0fdf4] border-l-2 border-emerald-600 p-2.5 rounded-r text-xs text-slate-900 leading-relaxed h-full flex flex-col justify-start">
+                            <p className="font-medium text-slate-800">{disc.usefulInsight || 'Topluluk tartışmasında kritik teknik içgörüler paylaşıldı.'}</p>
+                          </div>
+
+                          {/* 5. Alt Bar: HN Link */}
+                          <div className="pt-2 border-t border-[#f1f5f9] flex items-center justify-between text-[11px] font-mono text-slate-400">
+                            <span className="text-[10px] text-slate-400">Hacker News ID: #{disc.id || `${pIdx}-${dIdx}`}</span>
+                            <a 
+                              href={disc.hnUrl || disc.url} 
+                              target="_blank" 
+                              rel="noopener noreferrer" 
+                              className="text-[#ff6600] hover:underline flex items-center gap-0.5 font-bold"
+                            >
+                              HN Tartışmasını Aç →
+                            </a>
                           </div>
                         </div>
-
-                        {/* Tartışma Başlığı - Sabit 44px */}
-                        <div className="h-[44px] flex items-start overflow-hidden">
-                          <a 
-                            href={disc.hnUrl || disc.url} 
-                            target="_blank" 
-                            rel="noopener noreferrer" 
-                            className="font-bold text-xs sm:text-[13px] text-slate-900 hover:text-[#ff6600] transition inline-flex items-start gap-1 group leading-snug line-clamp-2"
-                            title={disc.title}
-                          >
-                            <span className="group-hover:underline">{disc.titleTr || disc.title}</span>
-                            <ExternalLink className="w-3.5 h-3.5 flex-shrink-0 text-slate-400 group-hover:text-[#ff6600] mt-0.5" />
-                          </a>
-                        </div>
-
-                        {/* Derin Teknik Analiz - Sabit 90px: Yeşil kutunun aynı hizada başlamasını sağlar */}
-                        <div className="h-[90px] overflow-y-auto">
-                          <p className="text-xs text-slate-800 leading-relaxed font-normal">
-                            {disc.analysis || disc.keyTakeaway}
-                          </p>
-                        </div>
-
-                        {/* Mühendis Çıkarımı / Pratik Bilgi Kutusu (Yeşil Kutu) - Sabit 88px: Aynı hizada başlar ve biter */}
-                        <div className="bg-[#f0fdf4] border-l-2 border-emerald-600 p-2.5 rounded-r text-xs text-slate-900 leading-relaxed h-[88px] overflow-y-auto flex items-start">
-                          <p className="font-medium text-slate-800">{disc.usefulInsight || 'Topluluk tartışmasında kritik teknik içgörüler paylaşıldı.'}</p>
-                        </div>
-                      </div>
-
-                      {/* Alt Bar: HN Link */}
-                      <div className="mt-3 pt-2 border-t border-[#f1f5f9] flex items-center justify-between text-[11px] font-mono text-slate-400">
-                        <span className="text-[10px] text-slate-400">Hacker News ID: #{disc.id || dIdx + 1}</span>
-                        <a 
-                          href={disc.hnUrl || disc.url} 
-                          target="_blank" 
-                          rel="noopener noreferrer" 
-                          className="text-[#ff6600] hover:underline flex items-center gap-0.5 font-bold"
-                        >
-                          HN Tartışmasını Aç →
-                        </a>
-                      </div>
+                      ))}
                     </div>
                   ))}
                 </div>
