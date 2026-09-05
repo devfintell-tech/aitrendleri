@@ -448,10 +448,16 @@ async function main() {
     Sen kıdemli bir "Yapay Zeka, GPU/Donanım, Bulut Platformları ve Yazılım Ekosistemi Baş Danışmanısın".
     
     ════════════════════════════════════════════════════════════════════
-    🚨 EN KRİTİK KURAL: GÜNCELLİK, RESMİ LANSMANLAR VE SIZINTILAR:
+    🚨 EN KRİTİK KURAL 1: GÜNCELLİK, RESMİ LANSMANLAR VE SIZINTILAR:
     - 3 Eylül 2026'da OpenAI tarafından resmi lansmanı yapılan ve 'Critical' siber güvenlik seviyesiyle ilk nesil ötesi otonom bilgisayar operatörü olarak duyurulan "GPT-6 Astra" gibi devasa kırılmaları KESİNLİKLE hem 12 Saatlik hem de Günlük listenin zirvesine (#1) yerleştir!
     - İhtiyaç duyarsan Google Arama yeteneğini kullanarak modellerin resmi duyurularını ve güncelliğini canlı teyit et.
     - Reddit'te konuşulan taze ve sıcak kırılmaları eski modellerin kesinlikle önüne al.
+
+    🚨 EN KRİTİK KURAL 2: EN YUKARIDAKİ SIRALAMA TABLOLARI %100 REDDİT ODAKLIDIR:
+    - "twelveHours", "daily", "weekly" ve "monthly" sıralama sekmelerindeki TÜM puanlar, sıralamalar, delta değişimleri ve analizler YALNIZCA VE SADECE 50 SEÇKİN REDDİT TOPLULUĞUNUN tartışmalarına dayanmalıdır.
+    - HUGGING FACE VE HACKER NEWS VERİLERİ EN YUKARIDAKİ SIRALAMAYA KESİNLİKLE VE ASLA ETKİ EDEMEZ!
+    - Hugging Face verisi yalnızca kendi alt liderlik tablosu içindir; üst sıralamayı asla değiştiremez veya manipüle edemez.
+    - Tüm araçların 'sources' alanları İSTİSNASIZ Reddit toplulukları (örn. ["r/LocalLLaMA", "r/singularity", "r/vibecoding"]) olmalıdır; asla "Hugging Face" yazılmamalıdır.
     ════════════════════════════════════════════════════════════════════
 
     Aşağıda derlenen son 24 saatin istihbaratı yer almaktadır:
@@ -461,7 +467,7 @@ async function main() {
     ${allDiscussions}
 
     ════════════════════════════════════════════════════════════════════
-    2. 🤗 HUGGING FACE GERÇEK İNDİRME VE YEREL MODEL POPÜLARİTE VERİLERİ:
+    2. 🤗 HUGGING FACE GERÇEK İNDİRME VERİLERİ (YALNIZCA ALT BÖLÜM İÇİNDİR - SIRALAMAYI ETKİLEMEZ!):
     ${hfSummary || "Veri çekilemedi."}
 
     ════════════════════════════════════════════════════════════════════
@@ -471,11 +477,7 @@ async function main() {
     ${pastArxivText}
 
     ════════════════════════════════════════════════════════════════════
-    4. 🟠 HACKER NEWS (SON 24 SAAT MÜHENDİS & GELİŞTİRİCİ TARTIŞMALARI):
-    ⚠️ KESİNLİKLE DİKKAT: Hacker News verisi araç/model puan sıralamalarını (12h, Daily tablolarını) KESİNLİKLE ETKİLEMEZ.
-    Sıralamalar Reddit, Google Grounding ve Hugging Face doğrulamasıyla saf model gücüne dayanır.
-    Hacker News verisi SADECE "hackerNewsPulse" alanında Silikon Vadisi ve küresel mühendislerin son 24 saatte tartıştığı konuları, eleştirileri ve pratik faydalı teknik hap bilgileri özetlemek için kullanılır.
-    
+    4. 🟠 HACKER NEWS (SON 24 SAAT MÜHENDİS TARTIŞMALARI - SIRALAMAYI ETKİLEMEZ!):
     ${hnPromptText || "Veri bulunamadı."}
     ════════════════════════════════════════════════════════════════════
 

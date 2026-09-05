@@ -201,7 +201,7 @@
       "whyTrending": "Yalnızca 3 ileri geçiş adımıyla, maske veya poz zorunluluğu olmadan tek boyalı kare üzerinden video karakter değişimi sağladı.",
       "sources": [
         "r/StableDiffusion",
-        "Hugging Face"
+        "r/comfyui"
       ]
     },
     {
@@ -344,10 +344,10 @@
         9.7
       ],
       "primaryFunction": "Optimize edilmiş yerel çok modlu çıkarım",
-      "whyTrending": "Hugging Face'te 9.95 milyon indirmeye ulaşarak yerel model dağıtımlarında endüstriyel standart haline geldi.",
+      "whyTrending": "r/LocalLLaMA topluluğunda Unsloth GGUF kuantizasyonları ve düşük VRAM performansı ile yerel model çalıştıranların bir numaralı tercihi haline geldi.",
       "sources": [
-        "Hugging Face",
-        "r/LocalLLaMA"
+        "r/LocalLLaMA",
+        "r/ollama"
       ]
     },
     {
@@ -370,10 +370,10 @@
         9.6
       ],
       "primaryFunction": "Açık ağırlıklı yüksek çözünürlüklü video üretimi",
-      "whyTrending": "5.1 milyon indirme ve REF2VA/FL2VA teknikleriyle fotogerçekçi sinematik video üretiminin merkez üssü haline geldi.",
+      "whyTrending": "r/StableDiffusion ve r/comfyui topluluklarında REF2VA/FL2VA teknikleriyle fotogerçekçi sinematik video üretiminin merkez üssü haline geldi.",
       "sources": [
-        "Hugging Face",
-        "r/StableDiffusion"
+        "r/StableDiffusion",
+        "r/comfyui"
       ]
     },
     {
@@ -424,8 +424,8 @@
       "primaryFunction": "Hafif ve ultra hızlı görsel anlama modeli",
       "whyTrending": "Düşük VRAM tüketimiyle görsel-metin işleme işlerinde Apple Silicon ve vLLM ortamlarında yaygınlaşıyor.",
       "sources": [
-        "Hugging Face",
-        "r/LocalLLaMA"
+        "r/LocalLLaMA",
+        "r/MachineLearning"
       ]
     },
     {
@@ -474,10 +474,10 @@
         9.2
       ],
       "primaryFunction": "Açık ağırlıklı Image-to-Video üretimi",
-      "whyTrending": "Hugging Face'te 1.4 milyon indirmeyi geçerek gerçek zamanlı video üretim pipeline'larında standart hale geldi.",
+      "whyTrending": "r/comfyui ve r/StableDiffusion iş akışlarında gerçek zamanlı video üretim düğümlerinde standart haline geldi.",
       "sources": [
-        "Hugging Face",
-        "r/comfyui"
+        "r/comfyui",
+        "r/StableDiffusion"
       ]
     },
     {
@@ -578,10 +578,10 @@
         9.1
       ],
       "primaryFunction": "Metin ve görsel işleme kabiliyetine sahip açık model",
-      "whyTrending": "650 bin indirmeye hızla ulaşarak düşük kaynaklı GPU ortamlarında hafif çok modlu görevlerin gözdesi oldu.",
+      "whyTrending": "Düşük kaynaklı GPU ve yerel çıkarım ortamlarında hafif çok modlu görevler için r/LocalLLaMA geliştiricilerinin gözdesi oldu.",
       "sources": [
-        "Hugging Face",
-        "r/LocalLLaMA"
+        "r/LocalLLaMA",
+        "r/ollama"
       ]
     },
     {
@@ -687,7 +687,7 @@
       "whyTrending": "Teslimat sancılarını aşarak büyük dil modeli fabrikalarının ana omurgası olduğunu kanıtladı.",
       "sources": [
         "r/LocalLLaMA",
-        "Hugging Face"
+        "r/hardware"
       ]
     },
     {
@@ -764,8 +764,8 @@
       "primaryFunction": "Hafif ve verimli yerel çok modlu çıkarım",
       "whyTrending": "Mac Studio ve yerel sunucularda düşük maliyetli görsel işleme için 7 gündür en güvenilir tercih olmayı sürdürüyor.",
       "sources": [
-        "Hugging Face",
-        "r/LocalLLaMA"
+        "r/LocalLLaMA",
+        "r/MachineLearning"
       ]
     },
     {
@@ -870,8 +870,8 @@
       "primaryFunction": "Yapay zeka veri merkezi altyapısı",
       "whyTrending": "Büyük modellerin ve açık ağırlıklı video ağlarının eğitilip çalıştırıldığı tek standart kurumsal altyapı olarak konsolide oldu.",
       "sources": [
-        "Hugging Face",
-        "r/LocalLLaMA"
+        "r/LocalLLaMA",
+        "r/hardware"
       ]
     },
     {
@@ -920,10 +920,10 @@
         9.5
       ],
       "primaryFunction": "Çok dilli ve çok modlu yerel çıkarım",
-      "whyTrending": "Unsloth ve quant sürümleriyle Hugging Face üzerinde 15 milyondan fazla indirmeye ulaşarak kurumsal yerel LLM standardı oldu.",
+      "whyTrending": "Unsloth ve quant sürümleriyle r/LocalLLaMA ve r/ollama üzerinde kurumsal yerel LLM standardı oldu.",
       "sources": [
-        "Hugging Face",
-        "r/LocalLLaMA"
+        "r/LocalLLaMA",
+        "r/ollama"
       ]
     },
     {
