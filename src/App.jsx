@@ -705,10 +705,10 @@ export default function App() {
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   {(timeframe === 'weekly' && report.arxivWeeklyBest?.length > 0 ? report.arxivWeeklyBest : report.arxivDaily).map((paper, pIdx) => (
-                    <div key={pIdx} className="bg-white border border-[#cbd5e1] rounded p-4 flex flex-col justify-between shadow-xs hover:border-[#107c41] transition">
-                      <div>
+                    <div key={pIdx} className="bg-white border border-[#cbd5e1] rounded-sm p-4 flex flex-col justify-between shadow-xs hover:border-[#107c41] transition">
+                      <div className="space-y-3">
                         {/* 1. Rozet Satırı */}
-                        <div className="flex items-center justify-between mb-2">
+                        <div className="flex items-center justify-between">
                           <span className="font-mono text-[10px] font-bold text-[#107c41] bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             #{pIdx + 1} • {paper.id}
                           </span>
@@ -717,50 +717,54 @@ export default function App() {
                           </span>
                         </div>
 
-                        {/* 2. Türkçe Başlık Satırı (Sabit min/max yükseklikle 3 kartta da kusursuz hizada) */}
-                        <div className="min-h-[44px] max-h-[44px] flex items-start overflow-hidden mb-3">
+                        {/* 2. Türkçe Başlık Satırı */}
+                        <div className="min-h-[44px] flex items-start">
                           <a 
                             href={paper.arxivUrl} 
                             target="_blank" 
                             rel="noopener noreferrer" 
-                            className="font-bold text-xs text-slate-900 hover:text-[#107c41] transition inline-flex items-center gap-1 group leading-snug line-clamp-2"
+                            className="font-bold text-xs sm:text-[13px] text-slate-900 hover:text-[#107c41] transition inline-flex items-start gap-1 group leading-snug"
                             title={paper.title}
                           >
                             <span className="group-hover:underline">{paper.titleTr || paper.title}</span>
-                            <ExternalLink className="w-3 h-3 flex-shrink-0 text-slate-400 group-hover:text-[#107c41]" />
+                            <ExternalLink className="w-3.5 h-3.5 flex-shrink-0 text-slate-400 group-hover:text-[#107c41] mt-0.5" />
                           </a>
                         </div>
 
-                        {/* 3. Sarı Kısım: Neden Ezber Bozuyor? (3 kartta da birebir aynı yükseklik ve konum) */}
-                        <div className="min-h-[82px] max-h-[82px] overflow-hidden bg-amber-50/80 border border-amber-200 rounded p-2.5 mb-3 flex flex-col justify-start">
-                          <strong className="text-amber-800 block text-[10px] font-mono uppercase mb-0.5 font-bold">
-                            ⚡ Neden Ezber Bozuyor?
-                          </strong>
-                          <p className="text-[11px] text-amber-950 font-medium leading-relaxed line-clamp-3">
+                        {/* 3. Sarı Kısım: Neden Ezber Bozuyor? (Yüksek kontrast, net ve tam okunaklı, taşma ve kesilme yok) */}
+                        <div className="bg-[#fffbeb] border-l-4 border-l-amber-500 border border-amber-200 rounded-r p-3 space-y-1 min-h-[110px] flex flex-col justify-center">
+                          <div className="flex items-center gap-1.5 text-[11px] font-mono font-bold text-amber-900 uppercase tracking-wide">
+                            <span className="text-amber-600 font-bold">⚡</span>
+                            <span>NEDEN EZBER BOZUYOR?</span>
+                          </div>
+                          <p className="text-xs text-slate-900 font-normal leading-relaxed">
                             {paper.whyMad}
                           </p>
                         </div>
 
-                        {/* 4. Alt Kısım: Teknik Özet (3 kartta da aynı hizada) */}
-                        <div className="min-h-[66px] max-h-[66px] overflow-hidden mb-3">
-                          <p className="text-[11px] text-slate-600 leading-relaxed line-clamp-3">
+                        {/* 4. Alt Kısım: Teknik Özet (Kesilme ve taşma olmadan tam okunabilir) */}
+                        <div className="space-y-1 min-h-[80px]">
+                          <span className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-wider block">
+                            Araştırma Özeti:
+                          </span>
+                          <p className="text-xs text-slate-600 leading-relaxed">
                             {paper.summary}
                           </p>
                         </div>
                       </div>
 
-                      {/* 5. Alt Bar: Yazarlar */}
-                      <div className="mt-auto pt-2.5 border-t border-[#f1f5f9] flex items-center justify-between text-[10px] font-mono text-slate-400">
-                        <span className="truncate max-w-[200px]" title={paper.authors?.join(', ')}>
-                          {paper.authors && paper.authors.length > 0 ? `Yazarlar: ${paper.authors.join(', ')}` : 'ArXiv Preprint'}
+                      {/* 5. Alt Bar: Yazarlar ve İncele Linki */}
+                      <div className="mt-4 pt-3 border-t border-[#f1f5f9] flex items-center justify-between text-[11px] font-mono text-slate-500">
+                        <span className="truncate max-w-[180px]" title={paper.authors?.join(', ')}>
+                          {paper.authors && paper.authors.length > 0 ? paper.authors.join(', ') : 'ArXiv Preprint'}
                         </span>
                         <a 
                           href={paper.arxivUrl} 
                           target="_blank" 
                           rel="noopener noreferrer" 
-                          className="text-[#107c41] hover:underline flex items-center gap-0.5 font-bold"
+                          className="text-[#107c41] hover:underline flex items-center gap-0.5 font-bold whitespace-nowrap"
                         >
-                          İncele →
+                          Makaleyi Aç →
                         </a>
                       </div>
                     </div>
