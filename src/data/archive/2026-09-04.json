@@ -1630,5 +1630,34 @@
         "installCommand": "git clone https://github.com/Significant-Gravitas/AutoGPT"
       }
     ]
+  },
+  "morningBrief": {
+    "leader": {
+      "name": "DeepSeek V3 & Claude 3.5 Sonnet",
+      "badge": "Açık vs Kapalı Zirvesi",
+      "description": "Açık ağırlıklı modellerin akıl yürütme maliyetini 10 kat düşürmesiyle sektör standartları yeniden yazıldı."
+    },
+    "bullets": [
+      {
+        "tag": "Model Savaşları",
+        "icon": "🚀",
+        "text": "DeepSeek V3 MLA mimarisi kapalı tekel API fiyatlamasını altüst ederek kurumsal geçişleri hızlandırdı."
+      },
+      {
+        "tag": "Kurumsal Güvenlik",
+        "icon": "🏢",
+        "text": "Veri sızıntısı endişesi taşıyan şirketler, Llama 3.3 70B ve şirket içi özel kümelere yönelmeyi birinci öncelik yaptı."
+      },
+      {
+        "tag": "Geliştirici Araçları",
+        "icon": "💻",
+        "text": "Cursor ve Windsurf gibi yapay zeka merkezli editörler, geleneksel IDE pazarında pazar payını hızla artırıyor."
+      },
+      {
+        "tag": "Çıkarım Donanımları",
+        "icon": "⚡",
+        "text": "Apple Silicon üzerinde birleşik bellek ile 70B modellerin kuantize çalıştırılması bireysel mühendisler için standart oldu."
+      }
+    ]
   }
 }

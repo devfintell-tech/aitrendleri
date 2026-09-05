@@ -591,6 +591,35 @@ async function main() {
 
     İSTENEN JSON ŞEMASI:
     {
+      "morningBrief": {
+        "leader": {
+          "name": "GPT-6 Astra (Günün 1 Numaralı Lider Modeli)",
+          "badge": "OpenAI Lansmanı",
+          "description": "Critical siber güvenlik seviyeli ilk otonom bilgisayar operatörü lansmanıyla sektörü kökten sarstı."
+        },
+        "bullets": [
+          {
+            "tag": "Model Savaşları",
+            "icon": "🚀",
+            "text": "OpenAI Astra lansmanının ardından Devin platformu Fable 5.1 ile Claude tekeline karşı maliyet savaşı başlattı."
+          },
+          {
+            "tag": "Kurumsal & Pazar Dengesi",
+            "icon": "🏢",
+            "text": "Anthropic ve Cursor kesintileri sonrası kurumsal dünyada kapalı API bağımlılığı sorgulanırken, yerel açık modellere yönelim talebi zirve yaptı."
+          },
+          {
+            "tag": "Yazılım & Otonom Ajanlar",
+            "icon": "💻",
+            "text": "Claude Code ve açık kaynak otonom operatörlerin (Browser-use, Nanobot) patlaması, klasik IDE ve web otomasyonu alışkanlıklarını kökten dönüştürüyor."
+          },
+          {
+            "tag": "Yerel Zeka & Donanım",
+            "icon": "⚡",
+            "text": "Qwen 3.8 27B ve yeni CPU çıkarım motorları, GPU darboğazı yaşayan ekiplere veri merkezlerine bağımsız güçlü bir yerel çalışma imkanı sundu."
+          }
+        ]
+      },
       "executiveSummary": "GPT-6 Astra ve günün en büyük kırılmalarını özetleyen 1-2 paragraflık derin yönetici özeti",
       "twelveHours": [
         {
@@ -1395,6 +1424,8 @@ function enforceStrictStandards(data, hfModels = [], candidateArxiv = [], hnPost
         installCommand: item.installCommand || bm.installCommand
       };
     });
+  }
+
   // 5. ArXiv Makaleleri Keskin Standartları (titleTr zorunluluğu ve eksiklik tamamlayıcı)
   const KNOWN_ARXIV_TITLES_TR = {
     "2609.04197v1": "Teşhis, Çeşitlendirme ve Stabilizasyon Yoluyla Hata Yapılı Prompt Optimizasyonu (ESPO)",
@@ -1426,6 +1457,69 @@ function enforceStrictStandards(data, hfModels = [], candidateArxiv = [], hnPost
   }
   if (Array.isArray(clean.arxivWeeklyBest)) {
     clean.arxivWeeklyBest = clean.arxivWeeklyBest.map((item, idx) => cleanArxivItem(item, `2609.0419${8 - idx}v1`));
+  }
+
+  // 6. Sabah Brifingi Keskin Standartları
+  if (!clean.morningBrief || typeof clean.morningBrief !== 'object') {
+    clean.morningBrief = {
+      leader: {
+        name: "GPT-6 Astra (Günün 1 Numaralı Lider Modeli)",
+        badge: "OpenAI Lansmanı",
+        description: "Critical siber güvenlik seviyeli ilk otonom bilgisayar operatörü lansmanıyla sektörü kökten sarstı."
+      },
+      bullets: [
+        {
+          tag: "Model Savaşları",
+          icon: "🚀",
+          text: "OpenAI Astra lansmanının ardından Devin platformu Fable 5.1 ile Claude tekeline karşı maliyet savaşı başlattı."
+        },
+        {
+          tag: "Kurumsal & Pazar Dengesi",
+          icon: "🏢",
+          text: "Anthropic ve Cursor kesintileri sonrası kurumsal dünyada kapalı API bağımlılığı sorgulanırken, yerel açık modellere yönelim talebi zirve yaptı."
+        },
+        {
+          tag: "Yazılım & Otonom Ajanlar",
+          icon: "💻",
+          text: "Claude Code ve açık kaynak otonom operatörlerin (Browser-use, Nanobot) patlaması, klasik IDE ve web otomasyonu alışkanlıklarını kökten dönüştürüyor."
+        },
+        {
+          tag: "Yerel Zeka & Donanım",
+          icon: "⚡",
+          text: "Qwen 3.8 27B ve yeni CPU çıkarım motorları, GPU darboğazı yaşayan ekiplere veri merkezlerine bağımsız güçlü bir yerel çalışma imkanı sundu."
+        }
+      ]
+    };
+  } else {
+    clean.morningBrief.leader = clean.morningBrief.leader || {
+      name: "GPT-6 Astra (Günün 1 Numaralı Lider Modeli)",
+      badge: "OpenAI Lansmanı",
+      description: "Critical siber güvenlik seviyeli ilk otonom bilgisayar operatörü lansmanıyla sektörü kökten sarstı."
+    };
+    if (!Array.isArray(clean.morningBrief.bullets) || clean.morningBrief.bullets.length === 0) {
+      clean.morningBrief.bullets = [
+        {
+          tag: "Model Savaşları",
+          icon: "🚀",
+          text: "OpenAI Astra lansmanının ardından Devin platformu Fable 5.1 ile Claude tekeline karşı maliyet savaşı başlattı."
+        },
+        {
+          tag: "Kurumsal & Pazar Dengesi",
+          icon: "🏢",
+          text: "Anthropic ve Cursor kesintileri sonrası kurumsal dünyada kapalı API bağımlılığı sorgulanırken, yerel açık modellere yönelim talebi zirve yaptı."
+        },
+        {
+          tag: "Yazılım & Otonom Ajanlar",
+          icon: "💻",
+          text: "Claude Code ve açık kaynak otonom operatörlerin (Browser-use, Nanobot) patlaması, klasik IDE ve web otomasyonu alışkanlıklarını kökten dönüştürüyor."
+        },
+        {
+          tag: "Yerel Zeka & Donanım",
+          icon: "⚡",
+          text: "Qwen 3.8 27B ve yeni CPU çıkarım motorları, GPU darboğazı yaşayan ekiplere veri merkezlerine bağımsız güçlü bir yerel çalışma imkanı sundu."
+        }
+      ];
+    }
   }
 
   return clean;

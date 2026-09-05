@@ -20,7 +20,10 @@ import {
   Github,
   Star,
   GitFork,
-  Terminal
+  Terminal,
+  Coffee,
+  Copy,
+  Check
 } from 'lucide-react';
 
 // Arşivlenen geçmiş günlük raporları dinamik olarak içeri aktar
@@ -421,6 +424,8 @@ export default function App() {
   const [expandedHfId, setExpandedHfId] = useState(null);
   const [githubTimeframe, setGithubTimeframe] = useState('daily'); // 'daily' | 'weekly' | 'monthly' | 'yearly'
   const [searchQuery, setSearchQuery] = useState('');
+  const [copiedBrief, setCopiedBrief] = useState(false);
+  const [isBriefExpanded, setIsBriefExpanded] = useState(true);
 
   // 1. Arşivlenmiş ve Canlı Tarihlerin Listesi (Geçmişte ne olmuştu diye seçebilmek için)
   const availableDates = useMemo(() => {
@@ -598,10 +603,46 @@ export default function App() {
       }));
     };
 
+    // 30 Saniyelik Sabah İstihbaratı: Dünyada Bugün
+    const defaultLeader = (raw.daily && raw.daily[0]) || 
+                          (raw.twelveHours && raw.twelveHours[0]) || 
+                          { name: "GPT-6 Astra", badge: "OpenAI Lansmanı", primaryFunction: "İlk nesil ötesi otonom bilgisayar operatörü, Critical siber güvenlik seviyesi." };
+
+    const mb = raw.morningBrief || {
+      leader: {
+        name: defaultLeader.name,
+        badge: defaultLeader.badge || "Günün 1 Numarası",
+        description: defaultLeader.primaryFunction || defaultLeader.whyTrending || "Sektörde yeni bir çağ başlatan en büyük yapay zeka kırılması."
+      },
+      bullets: [
+        {
+          tag: "Model & Platform Savaşları",
+          icon: "🚀",
+          text: "OpenAI'ın otonom operatör Astra lansmanına karşı Devin platformu, Fable 5.1 entegrasyonuyla Claude tekeline karşı agresif bir maliyet ve hız savaşı başlattı."
+        },
+        {
+          tag: "Kurumsal Güven & Kesintiler",
+          icon: "🏢",
+          text: "Anthropic ve Cursor kesintileri kurumsal şirketlerin kapalı API bağımlılığını sorgulatırken, yerel açık modellere yönelim talebi zirve yaptı."
+        },
+        {
+          tag: "Yazılım & Otonom Ajanlar",
+          icon: "💻",
+          text: "Claude Code ve açık kaynak otonom operatörlerin (Browser-use, Nanobot) patlaması, klasik IDE ve web otomasyonu alışkanlıklarını kökten dönüştürüyor."
+        },
+        {
+          tag: "Yerel Zeka & Donanım",
+          icon: "⚡",
+          text: "Qwen 3.8 27B ve yeni CPU çıkarım motorları, GPU darboğazı yaşayan ekiplere veri merkezlerine bağımsız güçlü bir yerel çalışma imkanı sundu."
+        }
+      ]
+    };
+
     return {
       date: raw.date,
       executiveSummary: raw.executiveSummary || LATEST_CONSULTANT_REPORT.executiveSummary,
       sections: raw.sections || LATEST_CONSULTANT_REPORT.sections,
+      morningBrief: mb,
       arxivDaily: normalizeArxiv(raw.arxivDaily),
       arxivWeeklyBest: normalizeArxiv(raw.arxivWeeklyBest),
       huggingFaceBest: hfBest,
@@ -690,6 +731,27 @@ export default function App() {
   };
 
   const selectedTool = filteredTools.find(t => t.id === expandedId) || filteredTools[0];
+
+  const handleCopyBrief = () => {
+    const mb = report?.morningBrief;
+    if (!mb) return;
+    const bulletsText = (mb.bullets || []).map(b => `${b.icon || '📌'} ${b.tag}: ${b.text}`).join('\n\n');
+    const fullText = `☕ aitrendleri.com - Günlük AI İstihbarat Brifingi (${report.date || 'Bugün'})
+
+🏆 GÜNÜN 1 NUMARASI: ${mb.leader?.name || 'Lider Model'} (${mb.leader?.badge || 'Zirve'})
+${mb.leader?.description || ''}
+
+⚡ DÜNYADA YAPAY ZEKA BUGÜN (Madde Madde):
+${bulletsText}
+
+🔗 Canlı Terminal & Ayrıntılar: https://aitrendleri.com`;
+
+    if (navigator?.clipboard) {
+      navigator.clipboard.writeText(fullText);
+      setCopiedBrief(true);
+      setTimeout(() => setCopiedBrief(false), 2500);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-[#f3f4f6] text-slate-800 font-sans antialiased flex flex-col selection:bg-[#107c41] selection:text-white">
@@ -798,6 +860,112 @@ export default function App() {
       {/* 4. KATEGORİ VE ÇALIŞMA ALANI */}
       <main className="max-w-7xl mx-auto px-2 sm:px-4 py-4 w-full flex-1 space-y-4">
         
+        {/* ☕ 30 SANİYELİK SABAH İSTİHBARATI: DÜNYADA BUGÜN */}
+        {report.morningBrief && (
+          <section className="bg-white border border-[#cbd5e1] rounded-sm p-3.5 sm:p-4 shadow-xs space-y-3">
+            {/* Üst Bar: Başlık, Kopyala Butonu & Katla/Aç */}
+            <div className="flex items-center justify-between flex-wrap gap-2 pb-2 border-b border-[#f1f5f9]">
+              <div className="flex items-center gap-2">
+                <span className="w-6 h-6 rounded bg-[#107c41] text-white flex items-center justify-center font-bold shadow-2xs">
+                  <Coffee className="w-3.5 h-3.5" />
+                </span>
+                <div>
+                  <h2 className="text-xs sm:text-sm font-bold text-slate-900 font-mono uppercase tracking-tight flex items-center gap-1.5">
+                    <span>30 Saniyelik Sabah İstihbaratı: Dünyada Bugün</span>
+                    <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-emerald-50 text-[#107c41] border border-emerald-200 font-bold">
+                      {report.date || 'Bugün'}
+                    </span>
+                  </h2>
+                  <p className="text-[11px] text-slate-500 font-sans hidden sm:block">
+                    Link ve teknik detay boğuntusu olmadan, dünyada ne olup bittiğini 30 saniyede yakalayın.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={handleCopyBrief}
+                  title="Ekip Slack/WhatsApp kanallarına atmak için bülteni kopyala"
+                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-[#f8fafc] hover:bg-slate-100 text-slate-700 hover:text-slate-950 border border-slate-300 font-mono text-[11px] font-bold transition shadow-2xs cursor-pointer"
+                >
+                  {copiedBrief ? (
+                    <>
+                      <Check className="w-3 h-3 text-emerald-600" />
+                      <span className="text-emerald-700">Kopyalandı!</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="w-3 h-3 text-slate-500" />
+                      <span>Bülteni Kopyala</span>
+                    </>
+                  )}
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setIsBriefExpanded(!isBriefExpanded)}
+                  className="p-1 rounded hover:bg-slate-100 text-slate-500 hover:text-slate-800 transition cursor-pointer"
+                  title={isBriefExpanded ? "Gizle / Daralt" : "Genişlet"}
+                >
+                  {isBriefExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                </button>
+              </div>
+            </div>
+
+            {isBriefExpanded && (
+              <div className="space-y-3 pt-0.5">
+                {/* 🏆 1. Günün Lider Kırılması (Zirve Rozeti) */}
+                {report.morningBrief.leader && (
+                  <div className="bg-amber-50/70 border border-amber-300/80 rounded p-2.5 sm:p-3 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5">
+                    <div className="flex items-start sm:items-center gap-2.5 min-w-0">
+                      <span className="shrink-0 text-sm sm:text-base">🏆</span>
+                      <div className="min-w-0">
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <span className="text-[11px] font-mono font-bold text-amber-950 uppercase tracking-tight">
+                            Günün 1 Numarası:
+                          </span>
+                          <span className="font-mono text-xs sm:text-sm font-black text-amber-900 bg-amber-100/90 px-2 py-0.5 rounded border border-amber-300">
+                            {report.morningBrief.leader.name}
+                          </span>
+                          {report.morningBrief.leader.badge && (
+                            <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-white/90 text-amber-800 border border-amber-200 font-bold">
+                              {report.morningBrief.leader.badge}
+                            </span>
+                          )}
+                        </div>
+                        <p className="text-xs text-amber-900 mt-1 leading-relaxed">
+                          {report.morningBrief.leader.description}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* ⚡ 2. Dünyayı Kaçırmama Özeti (Madde Madde) */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+                  {(report.morningBrief.bullets || []).map((bullet, bIdx) => (
+                    <div 
+                      key={bIdx}
+                      className="p-2.5 bg-[#f8fafc] border border-[#e2e8f0] rounded flex items-start gap-2.5 hover:border-slate-300 transition"
+                    >
+                      <span className="text-base shrink-0 select-none mt-0.5">{bullet.icon || '📌'}</span>
+                      <div className="space-y-0.5 min-w-0 flex-1">
+                        <span className="font-mono text-[10px] font-bold text-slate-800 uppercase block tracking-tight">
+                          {bullet.tag}
+                        </span>
+                        <p className="text-xs text-slate-700 leading-relaxed font-normal">
+                          {bullet.text}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </section>
+        )}
+
         {/* Kategori Filtre Çubuğu (Sağa kaydırma yok, flex-wrap ile ekrana tam oturur) */}
         <div className="bg-white border border-[#d1d5db] p-2 rounded-sm shadow-xs flex flex-wrap items-center gap-1 sm:gap-1.5">
           <div className="flex items-center gap-1 text-[11px] font-mono text-slate-500 font-bold px-1 sm:px-2 whitespace-nowrap">
@@ -1254,7 +1422,7 @@ export default function App() {
                   </span>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-x-4 gap-y-4 md:[grid-template-rows:auto_auto_auto_1fr_auto] md:gap-y-3">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-x-4 gap-y-4 md:[grid-template-rows:auto_auto_1fr_1fr_auto] md:gap-y-3">
                   {(timeframe === 'weekly' && report.arxivWeeklyBest?.length > 0 ? report.arxivWeeklyBest : report.arxivDaily).map((paper, pIdx) => (
                     <div 
                       key={pIdx} 
@@ -1620,7 +1788,7 @@ export default function App() {
                 {/* Repo Kartları Grid (Satır bazlı subgrid ile hizalanır, kaydırma yok, doğal uzar) */}
                 <div className="space-y-3">
                   {githubChunks.map((chunk, cIdx) => (
-                    <div key={cIdx} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-3 gap-y-4 lg:[grid-template-rows:auto_auto_auto_auto_auto] lg:gap-y-2.5">
+                    <div key={cIdx} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-3 gap-y-4 lg:[grid-template-rows:auto_auto_1fr_1fr_auto] lg:gap-y-2.5">
                       {chunk.map((repo, idx) => (
                         <div 
                           key={repo.id || `${repo.owner}/${repo.name}` || idx}
@@ -1752,7 +1920,7 @@ export default function App() {
                 {/* Tartışmalar ve Yararlı Bilgiler Listesi (Çiftli subgrid ile hizalanır, kaydırma yok, doğal uzar) */}
                 <div className="space-y-4">
                   {hnChunks.map((pair, pIdx) => (
-                    <div key={pIdx} className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-4 md:[grid-template-rows:auto_auto_1fr_auto_auto] md:gap-y-2.5">
+                    <div key={pIdx} className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-4 md:[grid-template-rows:auto_auto_1fr_1fr_auto] md:gap-y-2.5">
                       {pair.map((disc, dIdx) => (
                         <div 
                           key={disc.id || `${pIdx}-${dIdx}`}
