@@ -30,12 +30,12 @@
       {
         "date": "5 Eylül 2026",
         "hypeScore": 7.3,
-        "sentiment": "düşüş",
-        "headline": "📉 'Balon Söndü' Tartışmaları & Yerel Modellere Göç",
-        "summary": "API kotalarının anında dolması ve sunucu kararsızlığı nedeniyle geliştiriciler 'İlk gün harikaydı, şu an rezalet çalışıyor' yorumlarıyla DeepSeek ve yerel modellere dönmeye başladı.",
+        "sentiment": "eleştirel",
+        "headline": "Balon Söndü",
+        "summary": "Başlangıçtaki coşkulu lansmanının ardından performans beklentilerini karşılayamaması ve yerel modellere göç tartışmalarıyla skorunda büyük düşüş yaşaması.",
         "sources": [
-          "r/LocalLLaMA",
-          "r/ClaudeDev"
+          "r/singularity",
+          "r/LocalLLaMA"
         ]
       },
       {
@@ -79,14 +79,12 @@
       },
       {
         "date": "5 Eylül 2026",
-        "hypeScore": 9.1,
+        "hypeScore": 9,
         "sentiment": "eleştirel",
-        "headline": "⚠️ Küresel Kesintiler & CLI Araçlarına Kaçış",
-        "summary": "Aşırı yük sebebiyle saatler süren bağlantı kopmaları yaşandı. Geliştiriciler Cursor'a bağımlı kalmamak için Claude Code ve Aider gibi açık terminal ajanlarını yedeklemeye başladı.",
+        "headline": "Yüksek Yük Baskısı",
+        "summary": "Yaşanan büyük hizmet kesintilerine rağmen hala geniş bir kullanıcı tabanına sahip olması, ancak güvenilirlik endişelerinin artması.",
         "sources": [
-          "r/CursorAI",
-          "r/ChatGPTCoding",
-          "r/ClaudeDev"
+          "r/CursorAI"
         ]
       },
       {
@@ -130,13 +128,14 @@
       },
       {
         "date": "5 Eylül 2026",
-        "hypeScore": 9.5,
-        "sentiment": "coşkulu",
-        "headline": "🏆 Kurumsal Liderlik ve Limit Artışı",
-        "summary": "Kullanım limitlerinin esnetilmesi ve eski test fixture'larını aşma taktikleriyle Cursor kesintilerinde en büyük güvenli liman haline geldi.",
+        "hypeScore": 9.6,
+        "sentiment": "stabil",
+        "headline": "Geliştirici Favorisi",
+        "summary": "ADHD'li geliştiriciler için özel eklentiler ve kişisel projelerde kullanım kolaylığı ile toplulukta öne çıkması.",
         "sources": [
           "r/ClaudeDev",
-          "r/ChatGPTCoding"
+          "r/ClaudeAI",
+          "r/ollama"
         ]
       },
       {
@@ -180,12 +179,12 @@
       },
       {
         "date": "5 Eylül 2026",
-        "hypeScore": 9.7,
-        "sentiment": "coşkulu",
-        "headline": "💥 Viral Patlama: 1 Dakikada Çalışan Web & Müzik Uygulamaları",
-        "summary": "Tek istemle (one-shot) sıfırdan beat-maker ve etkileşimli haritalar çıkarmasıyla Reddit genelinde günün en çok konuşulan aracı oldu.",
+        "hypeScore": 9.8,
+        "sentiment": "stabil",
+        "headline": "Devin'de Canlı",
+        "summary": "Devin platformunda canlıya alınması, daha uygun maliyetli olması ve Astra ile karşılaştırmalı tartışmaların artması.",
         "sources": [
-          "r/vibecoding",
+          "r/windsurf",
           "r/ClaudeAI"
         ]
       }
@@ -220,12 +219,12 @@
       {
         "date": "5 Eylül 2026",
         "hypeScore": 9.3,
-        "sentiment": "coşkulu",
-        "headline": "🛡️ 'Sessiz Hata' Önleme & MCP Standardı",
-        "summary": "Ajanların yeşil yanan ama yanlış dönen sahte testlerini yakalayan hata denetim katmanlarıyla kurumsal otomasyonun omurgası oldu.",
+        "sentiment": "stabil",
+        "headline": "Kurumsal Ajan Dağıtımı",
+        "summary": "'Sessiz Hata' önleme ve MCP standardı ile kurumsal ajan dağıtımında güvenilir bir çözüm olarak öne çıkması.",
         "sources": [
-          "r/n8n",
-          "r/Automate"
+          "r/singularity",
+          "r/selfhosted"
         ]
       },
       {
@@ -320,12 +319,12 @@
       {
         "date": "5 Eylül 2026",
         "hypeScore": 9.8,
-        "sentiment": "coşkulu",
-        "headline": "👑 Tartışmasız Sektör Standardı",
-        "summary": "Tüm editörlerin ve ajanların ana beyni olarak benimsendi; alternatif modeller sadece fiyat avantajı sebebiyle tartışılıyor.",
+        "sentiment": "stabil",
+        "headline": "Tartışmasız Sektör Standardı",
+        "summary": "Kurumsal alanda tartışmasız liderliğini sürdürmesi ve kullanım limitlerinin sıfırlanmasıyla kullanıcı memnuniyetini artırması.",
         "sources": [
           "r/ClaudeAI",
-          "r/programming"
+          "r/ClaudeDev"
         ]
       },
       {
@@ -370,13 +369,12 @@
       {
         "date": "5 Eylül 2026",
         "hypeScore": 9.6,
-        "sentiment": "coşkulu",
-        "headline": "🚀 Büyük Dil Modeli Fabrikaları Faaliyette",
-        "summary": "Tier-1 bulut sağlayıcıların Blackwell raflarını devreye almasıyla token başına maliyetlerin hızla düşeceği beklentisi oluştu.",
+        "sentiment": "stabil",
+        "headline": "Altyapı Tekeli",
+        "summary": "Büyük dil modeli fabrikalarının faaliyete geçmesi ve kurumsal donanım pazarındaki tartışmasız liderliği.",
         "sources": [
-          "r/nvidia",
-          "r/Cloud",
-          "r/technology"
+          "r/singularity",
+          "r/artificial"
         ]
       },
       {
@@ -406,6 +404,17 @@
           "r/LocalLLaMA",
           "r/OpenSourceAI"
         ]
+      },
+      {
+        "date": "5 Eylül 2026",
+        "hypeScore": 9.6,
+        "sentiment": "stabil",
+        "headline": "CPU Performans Rekoru",
+        "summary": "Uzun bağlamlı çıkarımda CPU'larda GPU'ları geride bırakan performansı ve beta sürümünün yayınlanması.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/OpenSourceAI"
+        ]
       }
     ]
   },
@@ -422,6 +431,16 @@
         "sources": [
           "r/CursorAI",
           "r/vibecoding"
+        ]
+      },
+      {
+        "date": "5 Eylül 2026",
+        "hypeScore": 8.7,
+        "sentiment": "eleştirel",
+        "headline": "Major Degradation",
+        "summary": "Kullanıcıların 'High Load' hatası alması ve hizmette yaşanan büyük aksaklıklar nedeniyle yoğun eleştiri alması.",
+        "sources": [
+          "r/CursorAI"
         ]
       }
     ]
@@ -474,6 +493,16 @@
           "r/ClaudeAI",
           "r/ClaudeDev"
         ]
+      },
+      {
+        "date": "5 Eylül 2026",
+        "hypeScore": 9.8,
+        "sentiment": "stabil",
+        "headline": "Kapasite Rahatlaması",
+        "summary": "Kullanıcılar için olumlu bir gelişme olarak limitlerin sıfırlandığının duyurulması.",
+        "sources": [
+          "r/ClaudeAI"
+        ]
       }
     ]
   },
@@ -504,6 +533,16 @@
         "sentiment": "eleştirel",
         "headline": "Kullanıcı Tepkisi",
         "summary": "Word/Outlook son güncellemesinde Autorewrite fonksiyonunun kenar çubuğuna zorlanması ve aşırı yavaşlaması tepki çekti.",
+        "sources": [
+          "r/Copilot"
+        ]
+      },
+      {
+        "date": "5 Eylül 2026",
+        "hypeScore": 7.1,
+        "sentiment": "stabil",
+        "headline": "Kullanıcı Tepkisi",
+        "summary": "Kullanıcıların regresyon ve performans sorunları nedeniyle olumsuz geri bildirimlerde bulunması.",
         "sources": [
           "r/Copilot"
         ]
@@ -558,6 +597,17 @@
           "Hugging Face",
           "r/LocalLLaMA"
         ]
+      },
+      {
+        "date": "5 Eylül 2026",
+        "hypeScore": 9.7,
+        "sentiment": "stabil",
+        "headline": "10M İndirme Eşiği",
+        "summary": "Hugging Face'te 10 milyon indirme eşiğini aşarak yerel LLM topluluğunun en çok tercih ettiği açık ağırlık olması.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/ollama"
+        ]
       }
     ]
   },
@@ -574,6 +624,18 @@
         "sources": [
           "Hugging Face",
           "r/StableDiffusion"
+        ]
+      },
+      {
+        "date": "5 Eylül 2026",
+        "hypeScore": 9.7,
+        "sentiment": "stabil",
+        "headline": "Video Üretiminde Lider",
+        "summary": "Yeni LoRA'lar, gelişmiş yüz değiştirme yetenekleri ve REF2VA, FL2VA, LightX2V kalitelerini birleştiren iş akışlarıyla sürekli yenilik sunması.",
+        "sources": [
+          "r/ComfyUI",
+          "r/midjourney",
+          "r/SORA"
         ]
       }
     ]
@@ -659,6 +721,106 @@
         "sources": [
           "Hugging Face",
           "r/LocalLLaMA"
+        ]
+      }
+    ]
+  },
+  "gpt-6-astra": {
+    "name": "GPT-6 Astra",
+    "category": "LLM (Model)",
+    "history": [
+      {
+        "date": "5 Eylül 2026",
+        "hypeScore": 10,
+        "sentiment": "coşkulu",
+        "headline": "3 Eylül Lansmanı",
+        "summary": "OpenAI tarafından 3 Eylül 2026'da yapılan resmi lansmanı ve otonom yetenekleriyle sektörde büyük bir kırılma yaratması.",
+        "sources": [
+          "r/singularity",
+          "r/ClaudeAI",
+          "r/huggingface"
+        ]
+      }
+    ]
+  },
+  "qwen3-8-27b": {
+    "name": "Qwen3.8-27B",
+    "category": "Yerel Model",
+    "history": [
+      {
+        "date": "5 Eylül 2026",
+        "hypeScore": 9.7,
+        "sentiment": "stabil",
+        "headline": "Wikipedia Oyunu Şampiyonu",
+        "summary": "Wikipedia oyununu 6 tıklamada çözmesi ve yerel LLM kullanıcıları arasında 'favori' olarak öne çıkması.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/ollama"
+        ]
+      }
+    ]
+  },
+  "turing-ai-os": {
+    "name": "Turing AI OS",
+    "category": "Otonom Agent",
+    "history": [
+      {
+        "date": "5 Eylül 2026",
+        "hypeScore": 9,
+        "sentiment": "coşkulu",
+        "headline": "Deneysel AI İşletim Sistemi",
+        "summary": "14 yıllık bir PC'de bile çalışabilen, AI Sidebar, NLP Terminal gibi özelliklere sahip yeni bir ajan tabanlı işletim sistemi olarak tanıtılması.",
+        "sources": [
+          "r/OpenSourceAI"
+        ]
+      }
+    ]
+  },
+  "mistral-ai-criticism": {
+    "name": "Mistral AI",
+    "category": "Şirket / Lab",
+    "history": [
+      {
+        "date": "5 Eylül 2026",
+        "hypeScore": 8.5,
+        "sentiment": "eleştirel",
+        "headline": "Avrupa'nın AI Egemenliği Tartışması",
+        "summary": "Fransa Maliye Bakanı'nın 'Avrupa'nın AI egemenliği Mistral'a bağlıysa mahvoluruz' şeklindeki eleştirel açıklamaları.",
+        "sources": [
+          "r/MistralAI"
+        ]
+      }
+    ]
+  },
+  "deepseek-v4-flash-vision": {
+    "name": "DeepSeek V4 Flash Vision",
+    "category": "Yerel Model",
+    "history": [
+      {
+        "date": "5 Eylül 2026",
+        "hypeScore": 9.3,
+        "sentiment": "stabil",
+        "headline": "Hızlı Görsel LLM",
+        "summary": "GB200 kümeleme ve vLLM dağıtımı ile entegrasyonu sayesinde hızlı görsel LLM yetenekleriyle dikkat çekmesi.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/OpenSourceAI"
+        ]
+      }
+    ]
+  },
+  "self-hosting-cost": {
+    "name": "Self-Hosting",
+    "category": "Altyapı & SDK",
+    "history": [
+      {
+        "date": "5 Eylül 2026",
+        "hypeScore": 8,
+        "sentiment": "eleştirel",
+        "headline": "Maliyet Endişeleri",
+        "summary": "PC parçalarının ve depolama maliyetlerinin artmasıyla self-hosting'in giderek daha pahalı hale gelmesi ve Google One gibi bulut çözümlerine yönelme tartışmaları.",
+        "sources": [
+          "r/selfhosted"
         ]
       }
     ]

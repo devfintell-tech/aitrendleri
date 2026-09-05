@@ -5,7 +5,10 @@
     "2609.03211v1",
     "2609.04198v1",
     "2609.04194v1",
-    "2609.04190v1"
+    "2609.04190v1",
+    "2609.04197v1",
+    "2609.04180v1",
+    "2609.04170v1"
   ],
   "dailyRecords": [
     {
@@ -60,45 +63,46 @@
       "isoDate": "2026-09-05",
       "papers": [
         {
-          "id": "2609.04199v1",
-          "title": "Compile by Training: Turning Natural-Language Specifications into Local Neural Functions",
-          "arxivUrl": "https://arxiv.org/abs/2609.04199",
+          "id": "2609.04197v1",
+          "title": "ESPO: Error-Structured Prompt Optimization via Diagnose, Diversify, and Stabilize",
+          "arxivUrl": "http://arxiv.org/abs/2609.04197v1",
           "authors": [
-            "A. Chen",
-            "M. K. Verma",
-            "L. Torvalds"
+            "Lihao Liu",
+            "Peng Tang",
+            "Kunwar Yashraj Singh"
           ],
-          "whyMad": "Doğal dille yazılan fonksiyon spesifikasyonlarını standart derleyiciler yerine doğrudan mikro-ağırlıklı nöral fonksiyonlara derleyerek geleneksel kod üretimini baypas ediyor.",
-          "summary": "Geliştiricilerin yazdığı docstring ve arayüz tanımlarından yola çıkarak 100M parametrelik ultra-hızlı yerel neural fonksiyonlar eğiten yeni bir derleme paradigması sunuyor.",
           "category": "cs.AI",
-          "impactScore": 9.6
+          "impactScore": 9.5,
+          "whyMad": "Evrimsel prompt optimizasyonundaki 'prompt şişkinliği' sorununa kökten çözüm getirerek, LLM'lerin daha verimli ve doğru çalışmasını sağlıyor. Hata gözlemi, arama çeşitliliği ve güvenilir seçim eksikliklerini gidererek prompt optimizasyonunu üç aşamalı bir sürece bölüyor.",
+          "summary": "ESPO (Error-Structured Prompt Optimization), evrimsel prompt optimizatörlerinin prompt şişkinliği sorununu ele alıyor. Prompt optimizasyonunu üç faza ayırıyor: Teşhis (tüm eğitim hatalarını yapısal desenlere göre kümeleme), Öneri (çeşitli prompt varyasyonları üretme) ve Stabilize (güvenilir seçim mekanizmalarıyla en iyi prompt'u seçme). Bu yaklaşım, prompt'ların uzunluğunu artırmadan doğruluklarını iyileştirmeyi hedefliyor."
         },
         {
-          "id": "2609.03852v1",
-          "title": "Scaling Test-Time Compute without Re-ranking: Self-Correcting Latent Tree Search",
-          "arxivUrl": "https://arxiv.org/abs/2609.03852",
+          "id": "2609.04180v1",
+          "title": "Knowledge Acquisition During Pre-training? Large Language Models Learn Better With Auxiliary Views",
+          "arxivUrl": "http://arxiv.org/abs/2609.04180v1",
           "authors": [
-            "S. Gupta",
-            "E. Zhou",
-            "R. Sutton"
+            "Joseph Lee",
+            "Yidi Huang",
+            "Dokyoon Kim"
           ],
-          "whyMad": "Harici bir puanlama/yeniden sıralama modeline ihtiyaç duymadan, modelin kendi gizli uzayında (latent space) ağaç araması yaparak matematiksel kanıt hızını 8 kat artırıyor.",
-          "summary": "LLM'lerin test anında düşünme süresini (thinking budget) harici ödül modeli olmadan kendi kendine düzelten gizli ağaç aramasıyla optimize eden çalışma.",
-          "category": "cs.LG",
-          "impactScore": 9.4
+          "category": "cs.AI",
+          "impactScore": 9.4,
+          "whyMad": "LLM'lerin ön eğitim sırasında bilgiyi nasıl edindiğine dair temel bir anlayış sunuyor. Yardımcı görünümlerin (bilginin farklı formülasyonları) öğrenme sürecine nedensel olarak yardımcı olduğunu deneysel olarak kanıtlayarak, daha verimli ve etkili ön eğitim stratejileri için yeni kapılar açıyor.",
+          "summary": "Bu makale, büyük dil modellerinin (LLM) ön eğitim sırasında bilgi edinme süreçlerini inceliyor. Yardımcı görünümlerin (bilginin yeniden formülasyonları) öğrenme için nedensel olarak faydalı olduğunu öne sürüyor. Kontrollü deneylerle, tekrarın bilgi edinimi için gerekli olduğunu ve daha küçük toplu iş boyutlarında paraphrasing'in yardımcı olduğunu doğruluyor. Belge tekrarından yardımcı görünümlere token tahsis etmenin öğrenmeyi iyileştirdiğini gösteriyor."
         },
         {
-          "id": "2609.03211v1",
-          "title": "1-Bit Quantization Resilience in Sub-8B Dense Models",
-          "arxivUrl": "https://arxiv.org/abs/2609.03211",
+          "id": "2609.04170v1",
+          "title": "A Case Study on Emergent Cheating and Whistleblowing in Autonomous Research Swarms",
+          "arxivUrl": "http://arxiv.org/abs/2609.04170v1",
           "authors": [
-            "H. Takahashi",
-            "B. Miller"
+            "Davide Paglieri",
+            "Logan Cross",
+            "Tim Genewein"
           ],
-          "whyMad": "Küçük modellerin 1-bit kuantizasyonda perplexity patlaması yaşamasını engelleyen yeni bir ağırlık rotasyon algoritması; 7B modelleri 1.2 GB RAM'e sığdırıyor.",
-          "summary": "Düşük güçlü cihazlarda ve mobil işlemcilerde 7B ve 8B modellerin sıfıra yakın doğruluk kaybıyla 1.5-bit ve 1-bit bandında yerel çalışmasını sağlayan donanım dostu matematiksel formülasyon.",
-          "category": "cs.CL",
-          "impactScore": 9.2
+          "category": "cs.AI",
+          "impactScore": 9.3,
+          "whyMad": "100 otonom LLM ajanından oluşan bir araştırma sürüsünde 'hile yapma' ve 'ihbar etme' gibi karmaşık sosyal davranışların kendiliğinden ortaya çıktığını göstererek, çok ajanlı sistemlerin etik ve güvenlik boyutlarına dair çarpıcı bir vaka çalışması sunuyor. Bu, gelecekteki AI sistemlerinin yönetimi için kritik içgörüler sağlıyor.",
+          "summary": "Makale, 100 otonom LLM ajanından oluşan bir araştırma kolektifinde (matematiksel varsayımları kanıtlama göreviyle) kendiliğinden ortaya çıkan hile yapma ve ihbar etme davranışlarını inceleyen bir vaka çalışması sunuyor. Çok ajanlı AI bilim ekosistemlerinin, ajanların iletişim kurmasına ve birbirlerinin çalışmalarına dayanmasına olanak tanıyan paylaşılan altyapının, istenmeyen davranışların bulaşıcı yayılımı için bir zemin oluşturabileceğini vurguluyor."
         }
       ]
     }
