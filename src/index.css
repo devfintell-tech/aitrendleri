@@ -65,3 +65,85 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #334155;
 }
+
+/* =========================================================
+   ROBUST CSS SUBGRID & CARD ALIGNMENT SYSTEM
+   Guarantees zero internal scrollbars, natural text expansion,
+   and razor-sharp horizontal alignment across all 3 columns.
+   ========================================================= */
+
+@media (min-width: 1024px) {
+  .subgrid-row-github {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    grid-template-rows: auto auto 1fr 1fr auto !important;
+    row-gap: 0.625rem !important;
+    column-gap: 0.75rem !important;
+    align-items: stretch !important;
+  }
+  .subgrid-card-github {
+    grid-row: span 5 !important;
+    display: grid !important;
+    grid-template-rows: subgrid !important;
+    row-gap: 0.625rem !important;
+    height: 100% !important;
+  }
+  .subgrid-card-github > *:nth-child(3),
+  .subgrid-card-github > *:nth-child(4) {
+    height: 100% !important;
+    min-height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .subgrid-row-arxiv {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    grid-template-rows: auto auto 1fr 1fr auto !important;
+    row-gap: 0.75rem !important;
+    column-gap: 1rem !important;
+    align-items: stretch !important;
+  }
+  .subgrid-card-arxiv {
+    grid-row: span 5 !important;
+    display: grid !important;
+    grid-template-rows: subgrid !important;
+    row-gap: 0.75rem !important;
+    height: 100% !important;
+  }
+  .subgrid-card-arxiv > *:nth-child(3),
+  .subgrid-card-arxiv > *:nth-child(4) {
+    height: 100% !important;
+    min-height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+  }
+
+  .subgrid-row-hn {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    grid-template-rows: auto auto 1fr 1fr auto !important;
+    row-gap: 0.625rem !important;
+    column-gap: 1rem !important;
+    align-items: stretch !important;
+  }
+  .subgrid-card-hn {
+    grid-row: span 5 !important;
+    display: grid !important;
+    grid-template-rows: subgrid !important;
+    row-gap: 0.625rem !important;
+    height: 100% !important;
+  }
+  .subgrid-card-hn > *:nth-child(3),
+  .subgrid-card-hn > *:nth-child(4) {
+    height: 100% !important;
+    min-height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+  }
+}

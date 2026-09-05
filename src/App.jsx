@@ -1422,11 +1422,11 @@ ${bulletsText}
                   </span>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-x-4 gap-y-4 md:[grid-template-rows:auto_auto_1fr_1fr_auto] md:gap-y-3">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-x-4 gap-y-4 md:gap-y-3 subgrid-row-arxiv">
                   {(timeframe === 'weekly' && report.arxivWeeklyBest?.length > 0 ? report.arxivWeeklyBest : report.arxivDaily).map((paper, pIdx) => (
                     <div 
                       key={pIdx} 
-                      className="bg-white border border-[#cbd5e1] rounded-sm p-4 shadow-xs hover:border-[#107c41] transition flex flex-col justify-between gap-3 md:row-span-5 md:grid md:[grid-template-rows:subgrid] md:gap-y-3"
+                      className="bg-white border border-[#cbd5e1] rounded-sm p-4 shadow-xs hover:border-[#107c41] transition flex flex-col justify-between gap-3 subgrid-card-arxiv"
                     >
                       {/* 1. Rozet Satırı */}
                       <div className="flex items-center justify-between">
@@ -1788,11 +1788,11 @@ ${bulletsText}
                 {/* Repo Kartları Grid (Satır bazlı subgrid ile hizalanır, kaydırma yok, doğal uzar) */}
                 <div className="space-y-3">
                   {githubChunks.map((chunk, cIdx) => (
-                    <div key={cIdx} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-3 gap-y-4 lg:[grid-template-rows:auto_auto_1fr_1fr_auto] lg:gap-y-2.5">
+                    <div key={cIdx} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-3 gap-y-4 lg:gap-y-2.5 subgrid-row-github">
                       {chunk.map((repo, idx) => (
                         <div 
                           key={repo.id || `${repo.owner}/${repo.name}` || idx}
-                          className="bg-slate-50/70 rounded border border-[#cbd5e1] p-3 hover:border-slate-400 hover:bg-white transition-all shadow-2xs group flex flex-col justify-between gap-2.5 lg:row-span-5 lg:grid lg:[grid-template-rows:subgrid] lg:gap-y-2.5"
+                          className="bg-slate-50/70 rounded border border-[#cbd5e1] p-3 hover:border-slate-400 hover:bg-white transition-all shadow-2xs group flex flex-col justify-between gap-2.5 subgrid-card-github"
                         >
                           {/* 1. Başlık & Kategori */}
                           <div className="flex items-start justify-between gap-2">
@@ -1920,11 +1920,11 @@ ${bulletsText}
                 {/* Tartışmalar ve Yararlı Bilgiler Listesi (Çiftli subgrid ile hizalanır, kaydırma yok, doğal uzar) */}
                 <div className="space-y-4">
                   {hnChunks.map((pair, pIdx) => (
-                    <div key={pIdx} className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-4 md:[grid-template-rows:auto_auto_1fr_1fr_auto] md:gap-y-2.5">
+                    <div key={pIdx} className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-4 md:gap-y-2.5 subgrid-row-hn">
                       {pair.map((disc, dIdx) => (
                         <div 
                           key={disc.id || `${pIdx}-${dIdx}`}
-                          className="bg-white border border-[#cbd5e1] rounded-sm p-3.5 hover:border-[#ff6600] transition shadow-xs flex flex-col justify-between gap-2.5 md:row-span-5 md:grid md:[grid-template-rows:subgrid] md:gap-y-2.5"
+                          className="bg-white border border-[#cbd5e1] rounded-sm p-3.5 hover:border-[#ff6600] transition shadow-xs flex flex-col justify-between gap-2.5 subgrid-card-hn"
                         >
                           {/* 1. Üst Kategori ve Puan/Yorum Barı */}
                           <div className="flex items-center justify-between text-[10px] font-mono">
