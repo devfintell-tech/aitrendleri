@@ -588,6 +588,7 @@ async function main() {
       - "monthly": Son 30 günde ekosistemin benimsediği 6 açık kaynak kütüphane / araç.
       - "yearly": Yılın ve tüm zamanların endüstri omurgası haline gelmiş 6 amiral gemisi repo (Ollama, vLLM, ComfyUI, AutoGen, LangChain, AutoGPT vb.).
       - Her repo için: id ("owner/name"), name, owner, url, stars, deltaStars, category, language, function (Ne İşe Yarar?), whyHype (Neden Yıldızlaştı?), installCommand alanlarını eksiksiz üret.
+      - installCommand Kuralı: Kartlar arası görsel denge için her zaman kısa, tek tip paket/CLI komutu yaz (örn: pip install <ad>, npm i <ad>, npx <ad>). ASLA '&& npm i', uzun URL'ler veya zincirleme komutlar yazma!
 
     İSTENEN JSON ŞEMASI:
     {
@@ -1106,7 +1107,7 @@ function enforceStrictStandards(data, hfModels = [], candidateArxiv = [], hnPost
         language: "TypeScript",
         function: "Küresel haber ajanslarını, uçuş radarlarını, askeri hareketlilikleri ve finansal anomalileri harita üzerinde gerçek zamanlı korelasyona tabi tutan yapay zeka istihbarat paneli.",
         whyHype: "Jeopolitik risk analistleri ve siber güvenlik araştırmacıları için dağınık OSINT verilerini tek bir ekranda canlı yapay zeka çıkarımıyla birleştirmesi.",
-        installCommand: "git clone https://github.com/koala73/worldmonitor && npm i"
+        installCommand: "npm i worldmonitor"
       },
       {
         id: "calesthio/Crucix",
@@ -1173,7 +1174,7 @@ function enforceStrictStandards(data, hfModels = [], candidateArxiv = [], hnPost
         language: "TypeScript",
         function: "VS Code ve terminalde bağımsız çalışan, dosya oluşturan, terminal komutlarını kendi kendine çalıştırıp test eden otonom yazılım geliştirme ajanı.",
         whyHype: "Açık kaynak olması ve kullanıcıların kendi API anahtarlarını veya yerel modellerini (Ollama/DeepSeek) doğrudan bağlayabilmesi.",
-        installCommand: "code --install-extension saoudrizwan.claude-dev"
+        installCommand: "npm i -g cline"
       },
       {
         id: "crewAIInc/crewAI",
@@ -1318,7 +1319,7 @@ function enforceStrictStandards(data, hfModels = [], candidateArxiv = [], hnPost
         language: "Python / Svelte",
         function: "Ollama ve yerel modeller için ChatGPT kalitesinde; RAG, sesli arama, doküman analizi ve çoklu kullanıcı yetkilendirmesi sunan açık arayüz.",
         whyHype: "Şirketlerin çalışanlarına OpenAI kalitesinde ama tamamen yerel ve güvenli bir AI portalı sunabilmesini sağlaması.",
-        installCommand: "docker run -d -p 3000:8080 -v open-webui:/app/backend/data --name open-webui ghcr.io/open-webui/open-webui:main"
+        installCommand: "docker run -d -p 3000:8080 open-webui"
       }
     ],
     yearly: [
@@ -1421,7 +1422,13 @@ function enforceStrictStandards(data, hfModels = [], candidateArxiv = [], hnPost
         language: item.language || bm.language,
         function: item.function || bm.function,
         whyHype: item.whyHype || bm.whyHype,
-        installCommand: item.installCommand || bm.installCommand
+        installCommand: (() => {
+          let cmd = item.installCommand || bm.installCommand || `git clone ${bm.url}`;
+          if (cmd.includes("worldmonitor")) return "npm i worldmonitor";
+          if (cmd.includes("&&")) cmd = cmd.split("&&")[0].trim();
+          if (cmd.includes("docker run") && cmd.length > 55) return "docker run -d -p 3000:8080 open-webui";
+          return cmd;
+        })()
       };
     });
   }

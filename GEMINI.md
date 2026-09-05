@@ -51,6 +51,11 @@ Bu belge, bu projenin tüm tasarım, veri mimarisi ve geliştirme standartların
 3. **Subgrid Hizalaması:**
    - 3'lü sütun gruplarında *"Ne İşe Yarar?"* ve *"Neden Yıldızlaştı?"* kutuları, o gruptaki en uzun kutuya göre doğal olarak uzar ve aynı çizgide biter.
 
+4. **Tek Tip ve Dengeli Terminal Komutları (`installCommand`):**
+   - Komutlar kartlar arasında görsel ve yapısal dengeyi bozmayacak tek tip, kısa ve kompakt bir yapıda olmalıdır (`pip install <repo>`, `npm i <repo>`, `npx <repo>` vb.).
+   - `git clone https://... && npm i` gibi uzun URL'ler ve `&&` ile birbirine bağlanmış zincir komutlar KESİNLİKLE YASAKTIR.
+   - Komut kutusu asla sağ kenara dayanmamalı, taşma sınırına gelmemeli ve her dilde en doğrudan paket/CLI formatı kullanılmalıdır.
+
 ---
 
 ## 🟢 4. Hacker News Geliştirici Nabzı

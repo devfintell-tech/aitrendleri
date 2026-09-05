@@ -1335,7 +1335,7 @@
         "language": "TypeScript",
         "function": "Küresel haber ajanslarını, uçuş radarlarını, askeri hareketlilikleri ve finansal anomalileri harita üzerinde gerçek zamanlı korelasyona tabi tutan yapay zeka istihbarat paneli.",
         "whyHype": "Jeopolitik risk analistleri ve siber güvenlik araştırmacıları için dağınık OSINT verilerini tek bir ekranda canlı yapay zeka çıkarımıyla birleştirmesi.",
-        "installCommand": "git clone https://github.com/koala73/worldmonitor && npm i"
+        "installCommand": "npm i worldmonitor"
       },
       {
         "id": "calesthio/Crucix",
@@ -1374,7 +1374,7 @@
         "language": "Python",
         "function": "Web sitelerine bir insan gibi tıklayan, form dolduran, CAPTCHA aşabilen ve çok adımlı e-ticaret/bankacılık süreçlerini yöneten tarayıcı kontrol ajanı.",
         "whyHype": "API'si olmayan legacy kurumsal web portalları üzerinde sıfır entegrasyon maliyetiyle uçtan uca otomasyon sağlaması.",
-        "installCommand": "pip install browser-use playwright"
+        "installCommand": "pip install browser-use"
       },
       {
         "id": "HKUDS/nanobot",
@@ -1508,7 +1508,7 @@
         "language": "TypeScript / Python",
         "function": "RAG boru hatları, çoklu ajan iş akışları ve model yönetimini sürükle-bırak görsel arayüz ve tek tıkla API olarak sunan kurumsal geliştirme platformu.",
         "whyHype": "Teknik olmayan departmanların bile şirket verileri üzerinde dakikalar içinde kurumsal yapay zeka ajanları inşa etmesini sağlaması.",
-        "installCommand": "cd docker && docker compose up -d"
+        "installCommand": "cd docker"
       },
       {
         "id": "qdrant/qdrant",
@@ -1547,7 +1547,7 @@
         "language": "Python / Svelte",
         "function": "Ollama ve yerel modeller için ChatGPT kalitesinde; RAG, sesli arama, doküman analizi ve çoklu kullanıcı yetkilendirmesi sunan açık arayüz.",
         "whyHype": "Şirketlerin çalışanlarına OpenAI kalitesinde ama tamamen yerel ve güvenli bir AI portalı sunabilmesini sağlaması.",
-        "installCommand": "docker run -d -p 3000:8080 -v open-webui:/app/backend/data --name open-webui ghcr.io/open-webui/open-webui:main"
+        "installCommand": "docker run -d -p 3000:8080 open-webui"
       }
     ],
     "yearly": [

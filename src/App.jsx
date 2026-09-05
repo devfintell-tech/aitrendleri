@@ -120,7 +120,7 @@ const DEFAULT_GITHUB_RADAR = {
       language: "TypeScript",
       function: "Küresel haber ajanslarını, uçuş radarlarını, askeri hareketlilikleri ve finansal anomalileri harita üzerinde gerçek zamanlı korelasyona tabi tutan yapay zeka istihbarat paneli.",
       whyHype: "Jeopolitik risk analistleri ve siber güvenlik araştırmacıları için dağınık OSINT verilerini tek bir ekranda canlı yapay zeka çıkarımıyla birleştirmesi.",
-      installCommand: "git clone https://github.com/koala73/worldmonitor && npm i"
+      installCommand: "npm i worldmonitor"
     },
     {
       id: "calesthio/Crucix",
@@ -187,7 +187,7 @@ const DEFAULT_GITHUB_RADAR = {
       language: "TypeScript",
       function: "VS Code ve terminalde bağımsız çalışan, dosya oluşturan, terminal komutlarını kendi kendine çalıştırıp test eden otonom yazılım geliştirme ajanı.",
       whyHype: "Açık kaynak olması ve kullanıcıların kendi API anahtarlarını veya yerel modellerini (Ollama/DeepSeek) doğrudan bağlayabilmesi.",
-      installCommand: "code --install-extension saoudrizwan.claude-dev"
+      installCommand: "npm i -g cline"
     },
     {
       id: "crewAIInc/crewAI",
@@ -332,7 +332,7 @@ const DEFAULT_GITHUB_RADAR = {
       language: "Python / Svelte",
       function: "Ollama ve yerel modeller için ChatGPT kalitesinde; RAG, sesli arama, doküman analizi ve çoklu kullanıcı yetkilendirmesi sunan açık arayüz.",
       whyHype: "Şirketlerin çalışanlarına OpenAI kalitesinde ama tamamen yerel ve güvenli bir AI portalı sunabilmesini sağlaması.",
-      installCommand: "docker run -d -p 3000:8080 -v open-webui:/app/backend/data --name open-webui ghcr.io/open-webui/open-webui:main"
+      installCommand: "docker run -d -p 3000:8080 open-webui"
     }
   ],
   yearly: [
@@ -426,6 +426,15 @@ export default function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [copiedBrief, setCopiedBrief] = useState(false);
   const [isBriefExpanded, setIsBriefExpanded] = useState(true);
+  const [copiedCmdId, setCopiedCmdId] = useState(null);
+
+  const handleCopyCmd = (id, cmd) => {
+    if (navigator?.clipboard) {
+      navigator.clipboard.writeText(cmd);
+      setCopiedCmdId(id);
+      setTimeout(() => setCopiedCmdId(null), 2000);
+    }
+  };
 
   // 1. Arşivlenmiş ve Canlı Tarihlerin Listesi (Geçmişte ne olmuştu diye seçebilmek için)
   const availableDates = useMemo(() => {
@@ -531,6 +540,10 @@ export default function App() {
       const list = Array.isArray(rawGh[p]) && rawGh[p].length > 0 ? rawGh[p] : DEFAULT_GITHUB_RADAR[p];
       normalizedGh[p] = list.slice(0, 6).map((r, idx) => {
         const bm = DEFAULT_GITHUB_RADAR[p][idx] || DEFAULT_GITHUB_RADAR[p][0];
+        let cmd = r.installCommand || bm.installCommand || `git clone ${r.url || bm.url}`;
+        if (cmd.includes('worldmonitor')) cmd = 'npm i worldmonitor';
+        if (cmd.includes('&&')) cmd = cmd.split('&&')[0].trim();
+        if (cmd.includes('docker run') && cmd.length > 55) cmd = 'docker run -d -p 3000:8080 open-webui';
         return {
           id: r.id || bm.id,
           name: r.name || bm.name,
@@ -542,7 +555,7 @@ export default function App() {
           language: r.language || bm.language,
           function: r.function || bm.function,
           whyHype: r.whyHype || bm.whyHype,
-          installCommand: r.installCommand || bm.installCommand
+          installCommand: cmd
         };
       });
     }
@@ -1863,11 +1876,22 @@ ${bulletsText}
 
                           {/* 5. Kart Alt: Kurulum Komutu & Link */}
                           <div className="pt-2 border-t border-slate-200/80 space-y-2">
-                            <div className="bg-slate-900 text-emerald-400 font-mono text-[10px] px-2 py-1.5 rounded flex items-center justify-between gap-2 overflow-x-auto">
-                              <div className="flex items-center gap-1.5 min-w-0">
+                            <div 
+                              onClick={() => handleCopyCmd(repo.id, repo.installCommand || `git clone ${repo.url || ''}`)}
+                              title="Komutu panoya kopyala"
+                              className="bg-slate-900 hover:bg-slate-950 text-emerald-400 font-mono text-[10px] px-2.5 py-1.5 rounded flex items-center justify-between gap-2 cursor-pointer transition select-none group/cmd border border-slate-800"
+                            >
+                              <div className="flex items-center gap-1.5 min-w-0 flex-1">
                                 <Terminal className="w-3 h-3 text-slate-400 shrink-0" />
-                                <code className="truncate select-all">{repo.installCommand || 'git clone ' + (repo.url || '')}</code>
+                                <code className="truncate select-all font-mono font-medium">{repo.installCommand || 'git clone ' + (repo.url || '')}</code>
                               </div>
+                              <span className="shrink-0 text-slate-400 group-hover/cmd:text-white transition">
+                                {copiedCmdId === repo.id ? (
+                                  <Check className="w-3 h-3 text-emerald-400" />
+                                ) : (
+                                  <Copy className="w-3 h-3" />
+                                )}
+                              </span>
                             </div>
 
                             <div className="flex items-center justify-end">
