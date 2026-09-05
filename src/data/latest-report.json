@@ -1049,18 +1049,128 @@
     }
   ],
   "huggingFaceBest": [
-    { "rank": 1, "id": "deepseek-ai/DeepSeek-V3", "name": "DeepSeek V3", "downloads": "12.4M", "likes": 4820, "tag": "Genel Zeka" },
-    { "rank": 2, "id": "meta-llama/Llama-3.3-70B-Instruct", "name": "Llama 3.3 70B", "downloads": "8.90M", "likes": 2150, "tag": "Kurumsal" },
-    { "rank": 3, "id": "Qwen/Qwen2.5-Coder-32B-Instruct", "name": "Qwen 2.5 Coder 32B", "downloads": "6.20M", "likes": 1840, "tag": "Kodlama" },
-    { "rank": 4, "id": "black-forest-labs/FLUX.1-schnell", "name": "FLUX.1 Schnell", "downloads": "4.80M", "likes": 1290, "tag": "Görsel" },
-    { "rank": 5, "id": "openai/whisper-large-v3-turbo", "name": "Whisper Large v3", "downloads": "3.95M", "likes": 2410, "tag": "Ses / STT" }
+    {
+      "rank": 1,
+      "id": "deepseek-ai/DeepSeek-V3",
+      "name": "DeepSeek V3",
+      "downloads": "12.4M",
+      "likes": 4820,
+      "tag": "Genel Zeka",
+      "function": "671B parametreli (37B aktif) Mixture-of-Experts (MoE) mimarili genel zeka, kodlama ve ileri düzey akıl yürütme modeli.",
+      "distinction": "Multi-head Latent Attention (MLA) ve DeepSeekMoE mimarisi sayesinde GPT-4o ve Claude 3.5 kalitesini 10 kat daha düşük çıkarım ve bellek maliyetiyle sunar.",
+      "whyHype": "Kapalı API tekellerine karşı açık ağırlıklı modellerin AGI düzeyinde rekabet edebileceğini ispatlayarak açık kaynak ekosisteminin amiral gemisi oldu.",
+      "environment": "Şirket içi GPU kümeleri (8x H100/A100), vLLM, SGLang veya kuantize GGUF ile 64GB+ bellekli iş istasyonları (Apple Mac Studio)."
+    },
+    {
+      "rank": 2,
+      "id": "meta-llama/Llama-3.3-70B-Instruct",
+      "name": "Llama 3.3 70B",
+      "downloads": "8.90M",
+      "likes": 2150,
+      "tag": "Kurumsal",
+      "function": "70 milyar parametreli kurumsal sınıf genel amaçlı dil, stratejik analiz ve talimat takip modeli.",
+      "distinction": "Llama 3.1 405B modelinin damıtılmasıyla (distillation) üretilmiştir; 405B seviyesindeki mantık gücünü çok daha hafif 70B boyutunda sunarak donanım bariyerini yıkar.",
+      "whyHype": "Fortune 500 ve girişimlerin veri güvenliği nedeniyle şirket içi sunucularında en çok lisansladığı ve fine-tune ettiği kurumsal endüstri standardıdır.",
+      "environment": "Çift RTX 3090/4090 (48GB VRAM) 4-bit, vLLM, Ollama, LM Studio, TGI veya kurumsal bulut sunucuları."
+    },
+    {
+      "rank": 3,
+      "id": "Qwen/Qwen2.5-Coder-32B-Instruct",
+      "name": "Qwen 2.5 Coder 32B",
+      "downloads": "6.20M",
+      "likes": 1840,
+      "tag": "Kodlama",
+      "function": "32 milyar parametreli uzman yazılım geliştirme, mimari kod üretimi, hata ayıklama ve test üretim modeli.",
+      "distinction": "32B boyutunda olmasına rağmen 70B'lik kod modellerini ve Claude 3.5 Sonnet'in önceki sürümlerini EvalPlus ve HumanEval testlerinde geride bırakır.",
+      "whyHype": "Cursor, Continue.dev ve Cline gibi yerel IDE eklentilerinde tek bir tüketici GPU'sunda (24GB VRAM) gecikmesiz çalışan en güçlü yerel kodlama motorudur.",
+      "environment": "Tek tüketici GPU'su (RTX 3090 / 4090 - 24GB VRAM), Apple Silicon (32GB+ Mac), Ollama, vLLM, Continue, Aider."
+    },
+    {
+      "rank": 4,
+      "id": "black-forest-labs/FLUX.1-schnell",
+      "name": "FLUX.1 Schnell",
+      "downloads": "4.80M",
+      "likes": 1290,
+      "tag": "Görsel",
+      "function": "12 milyar parametreli rectified flow transformer tabanlı fotogerçekçi metinden görsel üretme modeli.",
+      "distinction": "Yalnızca 1 ila 4 adımda (inference steps) Midjourney v6 kalitesinde, kusursuz tipografi ve hatasız el anatomisi ile görsel üretir.",
+      "whyHype": "Ücretli ve kapalı görsel servislerini baypas ederek yerel grafik işleme sürelerini saniyeler seviyesine indirdi.",
+      "environment": "ComfyUI, Stable Diffusion WebUI (Forge), 12GB+ VRAM (FP8 veya NF4 kuantizasyon ile 8GB VRAM'de çalışabilir)."
+    },
+    {
+      "rank": 5,
+      "id": "openai/whisper-large-v3-turbo",
+      "name": "Whisper Large v3",
+      "downloads": "3.95M",
+      "likes": 2410,
+      "tag": "Ses / STT",
+      "function": "Çok dilli konuşmadan metne dönüştürme (Speech-to-Text), sesli çeviri ve toplantı deşifre modeli.",
+      "distinction": "Önceki Whisper Large v3'ün kod çözücü katmanları 32'den 4'e düşürülerek doğruluk kaybı olmadan 8 kat daha hızlı çıkarım sağlar.",
+      "whyHype": "Gerçek zamanlı sesli asistanlarda ve deşifre pipeline'larında sıfır halüsinasyon ve ultra düşük gecikmeyle küresel standart haline geldi.",
+      "environment": "CPU üzerinde bile yüksek hızlı (faster-whisper / whisper.cpp), 4GB+ GPU VRAM, PyTorch, Hugging Face Transformers."
+    }
   ],
   "huggingFaceTrending": [
-    { "rank": 1, "id": "unsloth/Qwen3.8-27B-GGUF", "name": "Qwen 3.8 27B GGUF", "downloads": "9.95M", "likes": 3502, "tag": "24s Zirvesi" },
-    { "rank": 2, "id": "MiniMaxAI/MiniMax-H3", "name": "MiniMax H3 Video", "downloads": "5.11M", "likes": 4901, "tag": "Hızlı Video" },
-    { "rank": 3, "id": "Lightricks/LTX-2.5", "name": "LTX 2.5 Video", "downloads": "1.39M", "likes": 2779, "tag": "Video-to-Video" },
-    { "rank": 4, "id": "zai-org/GLM-5.3-Flash", "name": "GLM 5.3 Flash", "downloads": "654K", "likes": 2043, "tag": "Çok Modlu" },
-    { "rank": 5, "id": "eLLM-Rust/CPU-Inference-GGUF", "name": "eLLM Rust CPU", "downloads": "420K", "likes": 1850, "tag": "CPU Motoru" }
+    {
+      "rank": 1,
+      "id": "unsloth/Qwen3.8-27B-GGUF",
+      "name": "Qwen 3.8 27B GGUF",
+      "downloads": "9.95M",
+      "likes": 3502,
+      "tag": "24s Zirvesi",
+      "function": "Unsloth tarafından optimize edilmiş 27B parametreli dinamik kalibre edilmiş yeni nesil yerel model.",
+      "distinction": "Geleneksel 4-bit kuantizasyondaki akıl yürütme kaybını sıfıra indiren dinamik kalibrasyon ve %80 daha az bellek tüketimi sağlar.",
+      "whyHype": "Son 24 saatte r/LocalLLaMA'da viral oldu; 16GB RAM'li tüketici dizüstü bilgisayarlarında bile 40 token/saniye hızla akıcı çalışabiliyor.",
+      "environment": "Ollama (`ollama run qwen3.8:27b`), llama.cpp, LM Studio, 16GB+ Sistem Belleği veya 12GB+ GPU VRAM."
+    },
+    {
+      "rank": 2,
+      "id": "MiniMaxAI/MiniMax-H3",
+      "name": "MiniMax H3 Video",
+      "downloads": "5.11M",
+      "likes": 4901,
+      "tag": "Hızlı Video",
+      "function": "Açık ağırlıklı, yüksek çözünürlüklü (1080p 60fps) sinematik video üretim difüzyon modeli.",
+      "distinction": "Standart video modellerindeki karakter erimesi ve sahne tutarsızlığını FL2VA referans latent kılavuzu ile ortadan kaldırarak 10+ saniyelik stabil sahneler üretir.",
+      "whyHype": "Runway Gen-3 ve Sora kalitesinde sahneleri açık kaynak olarak sunmasıyla son 24 saatte video prodüksiyon topluluklarını salladı.",
+      "environment": "ComfyUI, Diffusers, 24GB+ VRAM (RTX 3090/4090, A10G), çoklu GPU kümeleri."
+    },
+    {
+      "rank": 3,
+      "id": "Lightricks/LTX-2.5",
+      "name": "LTX 2.5 Video",
+      "downloads": "1.39M",
+      "likes": 2779,
+      "tag": "Video-to-Video",
+      "function": "Gerçek zamanlı kamera hareketi ve nesne kontrolüne sahip Image-to-Video / Video-to-Video modeli.",
+      "distinction": "Mevcut video modellerine göre 4 kat daha hızlı kare oluşturabilen sıkıştırılmış uzamsal-zamansal latent mimarisine sahiptir.",
+      "whyHype": "Viggle ve ComfyUI düğümlerinde karakter değiştirme ve canlı video manipülasyonunda sıfır gecikme sağlamasıyla trend oldu.",
+      "environment": "ComfyUI (LTX-Video wrapper), WebUI, 16GB+ GPU VRAM."
+    },
+    {
+      "rank": 4,
+      "id": "zai-org/GLM-5.3-Flash",
+      "name": "GLM 5.3 Flash",
+      "downloads": "654K",
+      "likes": 2043,
+      "tag": "Çok Modlu",
+      "function": "Düşük gecikmeli, metin ve görsel işleme (vision-language) yeteneğine sahip çok modlu model.",
+      "distinction": "Görsel soru-cevap, belge OCR ve ekran görüntüsü anlama görevlerinde 70B modellerle yarışırken sadece 9B bellek ayak izine sahiptir.",
+      "whyHype": "Geliştiricilerin yerel otonom GUI ajanlarında (bilgisayar ekranı okuma) ultra hızlı yanıt alabilmesi nedeniyle son 24 saatte patlama yaptı.",
+      "environment": "vLLM, Ollama, Hugging Face Transformers, 12GB+ VRAM veya Apple M serisi çipli Mac'ler."
+    },
+    {
+      "rank": 5,
+      "id": "eLLM-Rust/CPU-Inference-GGUF",
+      "name": "eLLM Rust CPU",
+      "downloads": "420K",
+      "likes": 1850,
+      "tag": "CPU Motoru",
+      "function": "Tamamen Rust ile yazılmış, GPU olmadan yalnızca sunucu CPU ve RAM'i üzerinden çalışan yüksek hızlı çıkarım motoru ve model ağırlığı.",
+      "distinction": "GPU VRAM sınırını baypas ederek standart 64GB/128GB DDR5 sunucu RAM'inde 70B modelleri sıfır bellek darboğazıyla çalıştırır.",
+      "whyHype": "GPU kiralama maliyetlerinden kaçan kurumsal geliştiricilerin ucuz CPU VPS sunucularda LLM çalıştırmasını sağlayarak viral oldu.",
+      "environment": "Herhangi bir modern CPU (x86 AVX-512 veya ARM Neon), Linux/macOS/Windows, 16GB-64GB RAM, sıfır GPU gereksinimi."
+    }
   ],
   "hackerNewsPulse": {
     "summary24h": "Son 24 saatte Hacker News gündemine kurumsal şirketlerin açık kaynak AI'a kitlesel göçü, Google AI Modu'nun e-ticaretteki yüksek fiyat sapması (%21.6), donanımda yapay zeka destekli PCB tasarımının sınırları ve LLM'lerin sadece 'kelime tahmincisi' olmadığına dair teorik tartışmalar damgasını vurdu.",

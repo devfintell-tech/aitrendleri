@@ -26,6 +26,7 @@ export default function App() {
   const [timeframe, setTimeframe] = useState('daily'); // 'daily' | '12h' | 'weekly' | 'monthly' | 'report'
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [expandedId, setExpandedId] = useState(null);
+  const [expandedHfId, setExpandedHfId] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
 
   // 1. Arşivlenmiş ve Canlı Tarihlerin Listesi (Geçmişte ne olmuştu diye seçebilmek için)
@@ -76,7 +77,8 @@ export default function App() {
     arxivDaily: activeReportData.arxivDaily || [],
     arxivWeeklyBest: activeReportData.arxivWeeklyBest || [],
     huggingFaceBest: activeReportData.huggingFaceBest || [],
-    huggingFaceTrending: activeReportData.huggingFaceTrending || activeReportData.huggingFaceTop || []
+    huggingFaceTrending: activeReportData.huggingFaceTrending || activeReportData.huggingFaceTop || [],
+    hackerNewsPulse: activeReportData.hackerNewsPulse || null
   } : LATEST_CONSULTANT_REPORT;
 
   const rawTools = {
@@ -800,32 +802,111 @@ export default function App() {
                     </div>
 
                     <div className="divide-y divide-[#e2e8f0]">
-                      {(report.huggingFaceBest || []).slice(0, 5).map((model, idx) => (
-                        <div key={idx} className="h-11 px-3 flex items-center justify-between text-xs hover:bg-[#fbfcfd] transition">
-                          <div className="flex items-center gap-2 min-w-0 flex-1">
-                            <span className="w-5 font-mono text-slate-400 font-bold text-[11px]">
-                              #{idx + 1}
-                            </span>
-                            <div className="min-w-0 flex-1">
-                              <span className="font-mono font-bold text-slate-900 truncate block text-xs" title={model.id}>
-                                {model.name || model.id}
-                              </span>
-                              <span className="text-[9px] font-mono text-slate-400 uppercase tracking-tight">
-                                {model.tag}
-                              </span>
-                            </div>
-                          </div>
+                      {(report.huggingFaceBest || []).slice(0, 5).map((model, idx) => {
+                        const isExpanded = expandedHfId === model.id;
+                        return (
+                          <div key={idx} className="transition-colors">
+                            {/* Satır Başlığı - Tıklanabilir */}
+                            <div 
+                              onClick={() => setExpandedHfId(isExpanded ? null : model.id)}
+                              className={`h-11 px-3 flex items-center justify-between text-xs cursor-pointer select-none transition ${
+                                isExpanded ? 'bg-emerald-50/70 font-semibold' : 'hover:bg-[#fbfcfd]'
+                              }`}
+                            >
+                              <div className="flex items-center gap-2 min-w-0 flex-1">
+                                <span className="w-5 font-mono text-slate-400 font-bold text-[11px]">
+                                  #{idx + 1}
+                                </span>
+                                <div className="min-w-0 flex-1">
+                                  <span className="font-mono font-bold text-slate-900 truncate block text-xs" title={model.id}>
+                                    {model.name || model.id}
+                                  </span>
+                                  <span className="text-[9px] font-mono text-slate-400 uppercase tracking-tight">
+                                    {model.tag}
+                                  </span>
+                                </div>
+                              </div>
 
-                          <div className="text-right font-mono flex-shrink-0 pl-3">
-                            <span className="font-black text-emerald-700 text-xs block">
-                              ⬇ {model.downloads}
-                            </span>
-                            <span className="text-[9px] text-slate-400">
-                              ❤️ {model.likes?.toLocaleString()}
-                            </span>
+                              <div className="flex items-center gap-2 pl-3 flex-shrink-0">
+                                <div className="text-right font-mono">
+                                  <span className="font-black text-emerald-700 text-xs block">
+                                    ⬇ {model.downloads}
+                                  </span>
+                                  <span className="text-[9px] text-slate-400">
+                                    ❤️ {model.likes?.toLocaleString()}
+                                  </span>
+                                </div>
+                                <div className="text-slate-400">
+                                  {isExpanded ? <ChevronUp className="w-3.5 h-3.5 text-[#107c41]" /> : <ChevronDown className="w-3.5 h-3.5" />}
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* Tıklanınca Açılan Detay Paneli */}
+                            {isExpanded && (
+                              <div className="p-3 bg-[#f8fafc] border-t border-[#e2e8f0] space-y-2.5 text-xs shadow-inner">
+                                {/* 1. Ne İşe Yarar? (Temel Yetenek & Fonksiyon) */}
+                                <div className="space-y-0.5">
+                                  <span className="font-mono text-[10px] font-bold text-emerald-800 uppercase flex items-center gap-1">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                                    Ne İşe Yarar? (Temel Görev &amp; Fonksiyon)
+                                  </span>
+                                  <p className="text-slate-800 leading-relaxed pl-2.5">
+                                    {model.function || 'Açık kaynaklı yapay zeka modeli.'}
+                                  </p>
+                                </div>
+
+                                {/* 2. Diğerlerinden Farkı (Neden Bu Model?) */}
+                                <div className="space-y-0.5">
+                                  <span className="font-mono text-[10px] font-bold text-blue-800 uppercase flex items-center gap-1">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
+                                    Diğerlerinden Farkı &amp; Ayrışan Yönü
+                                  </span>
+                                  <p className="text-slate-800 leading-relaxed pl-2.5">
+                                    {model.distinction || 'Kendi kategorisinde optimize edilmiş açık mimari.'}
+                                  </p>
+                                </div>
+
+                                {/* 3. Neden Hypelandı? (Topluluk Tercihi & Yükseliş Nedeni) */}
+                                <div className="space-y-0.5">
+                                  <span className="font-mono text-[10px] font-bold text-orange-800 uppercase flex items-center gap-1">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
+                                    Neden Hypelandı? (Topluluk Tercihi)
+                                  </span>
+                                  <p className="text-slate-800 leading-relaxed pl-2.5">
+                                    {model.whyHype || 'Topluluk tarafından yoğun talep gördü.'}
+                                  </p>
+                                </div>
+
+                                {/* 4. Çalışma Ortamı & Donanım Gereksinimi */}
+                                <div className="p-2 bg-white rounded border border-[#e2e8f0] space-y-1">
+                                  <span className="font-mono text-[10px] font-bold text-purple-800 uppercase flex items-center gap-1">
+                                    <span>⚙️</span>
+                                    <span>Çalışma Ortamı &amp; Donanım Gereksinimi:</span>
+                                  </span>
+                                  <p className="text-slate-700 font-mono text-[11px] leading-relaxed">
+                                    {model.environment || 'vLLM, Ollama, Hugging Face Transformers.'}
+                                  </p>
+                                </div>
+
+                                {/* 5. Hugging Face Link Butonu */}
+                                <div className="pt-1 flex items-center justify-between">
+                                  <span className="text-[10px] font-mono text-slate-400">Model ID: {model.id}</span>
+                                  <a 
+                                    href={`https://huggingface.co/${model.id}`} 
+                                    target="_blank" 
+                                    rel="noopener noreferrer" 
+                                    className="inline-flex items-center gap-1 text-[11px] font-bold text-[#107c41] hover:underline bg-emerald-50 px-2.5 py-1 rounded border border-emerald-200"
+                                  >
+                                    <span>🤗 Hugging Face Sayfası</span>
+                                    <ExternalLink className="w-3 h-3" />
+                                  </a>
+                                </div>
+                              </div>
+                            )}
                           </div>
-                        </div>
-                      ))}
+                        );
+                      })}
                     </div>
                   </div>
 
@@ -840,32 +921,111 @@ export default function App() {
                     </div>
 
                     <div className="divide-y divide-[#e2e8f0]">
-                      {(report.huggingFaceTrending || []).slice(0, 5).map((model, idx) => (
-                        <div key={idx} className="h-11 px-3 flex items-center justify-between text-xs hover:bg-[#fbfcfd] transition">
-                          <div className="flex items-center gap-2 min-w-0 flex-1">
-                            <span className="w-5 font-mono text-slate-400 font-bold text-[11px]">
-                              #{idx + 1}
-                            </span>
-                            <div className="min-w-0 flex-1">
-                              <span className="font-mono font-bold text-slate-900 truncate block text-xs" title={model.id}>
-                                {model.name || model.id}
-                              </span>
-                              <span className="text-[9px] font-mono text-orange-600 uppercase tracking-tight font-semibold">
-                                {model.tag || model.highlight}
-                              </span>
-                            </div>
-                          </div>
+                      {(report.huggingFaceTrending || []).slice(0, 5).map((model, idx) => {
+                        const isExpanded = expandedHfId === model.id;
+                        return (
+                          <div key={idx} className="transition-colors">
+                            {/* Satır Başlığı - Tıklanabilir */}
+                            <div 
+                              onClick={() => setExpandedHfId(isExpanded ? null : model.id)}
+                              className={`h-11 px-3 flex items-center justify-between text-xs cursor-pointer select-none transition ${
+                                isExpanded ? 'bg-orange-50/70 font-semibold' : 'hover:bg-[#fbfcfd]'
+                              }`}
+                            >
+                              <div className="flex items-center gap-2 min-w-0 flex-1">
+                                <span className="w-5 font-mono text-slate-400 font-bold text-[11px]">
+                                  #{idx + 1}
+                                </span>
+                                <div className="min-w-0 flex-1">
+                                  <span className="font-mono font-bold text-slate-900 truncate block text-xs" title={model.id}>
+                                    {model.name || model.id}
+                                  </span>
+                                  <span className="text-[9px] font-mono text-orange-600 uppercase tracking-tight font-semibold">
+                                    {model.tag || model.highlight}
+                                  </span>
+                                </div>
+                              </div>
 
-                          <div className="text-right font-mono flex-shrink-0 pl-3">
-                            <span className="font-black text-emerald-700 text-xs block">
-                              ⬇ {model.downloads}
-                            </span>
-                            <span className="text-[9px] text-slate-400">
-                              ❤️ {model.likes?.toLocaleString()}
-                            </span>
+                              <div className="flex items-center gap-2 pl-3 flex-shrink-0">
+                                <div className="text-right font-mono">
+                                  <span className="font-black text-emerald-700 text-xs block">
+                                    ⬇ {model.downloads}
+                                  </span>
+                                  <span className="text-[9px] text-slate-400">
+                                    ❤️ {model.likes?.toLocaleString()}
+                                  </span>
+                                </div>
+                                <div className="text-slate-400">
+                                  {isExpanded ? <ChevronUp className="w-3.5 h-3.5 text-orange-600" /> : <ChevronDown className="w-3.5 h-3.5" />}
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* Tıklanınca Açılan Detay Paneli */}
+                            {isExpanded && (
+                              <div className="p-3 bg-[#f8fafc] border-t border-[#e2e8f0] space-y-2.5 text-xs shadow-inner">
+                                {/* 1. Ne İşe Yarar? (Temel Yetenek & Fonksiyon) */}
+                                <div className="space-y-0.5">
+                                  <span className="font-mono text-[10px] font-bold text-orange-800 uppercase flex items-center gap-1">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-orange-600"></span>
+                                    Ne İşe Yarar? (Temel Görev &amp; Fonksiyon)
+                                  </span>
+                                  <p className="text-slate-800 leading-relaxed pl-2.5">
+                                    {model.function || 'Son 24 saatte hızla yükselen yerel model.'}
+                                  </p>
+                                </div>
+
+                                {/* 2. Diğerlerinden Farkı (Neden Bu Model?) */}
+                                <div className="space-y-0.5">
+                                  <span className="font-mono text-[10px] font-bold text-blue-800 uppercase flex items-center gap-1">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
+                                    Diğerlerinden Farkı &amp; Ayrışan Yönü
+                                  </span>
+                                  <p className="text-slate-800 leading-relaxed pl-2.5">
+                                    {model.distinction || 'Önceki nesillere göre belirgin performans veya hız avantajı.'}
+                                  </p>
+                                </div>
+
+                                {/* 3. Neden Hypelandı? (Topluluk Tercihi & Yükseliş Nedeni) */}
+                                <div className="space-y-0.5">
+                                  <span className="font-mono text-[10px] font-bold text-amber-800 uppercase flex items-center gap-1">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                                    Neden Hypelandı? (24 Saatlik Patlama Nedeni)
+                                  </span>
+                                  <p className="text-slate-800 leading-relaxed pl-2.5">
+                                    {model.whyHype || 'Toplulukta yoğun indirme ve kullanım artışı yaşadı.'}
+                                  </p>
+                                </div>
+
+                                {/* 4. Çalışma Ortamı & Donanım Gereksinimi */}
+                                <div className="p-2 bg-white rounded border border-[#e2e8f0] space-y-1">
+                                  <span className="font-mono text-[10px] font-bold text-purple-800 uppercase flex items-center gap-1">
+                                    <span>⚙️</span>
+                                    <span>Çalışma Ortamı &amp; Donanım Gereksinimi:</span>
+                                  </span>
+                                  <p className="text-slate-700 font-mono text-[11px] leading-relaxed">
+                                    {model.environment || 'vLLM, Ollama, Hugging Face Transformers.'}
+                                  </p>
+                                </div>
+
+                                {/* 5. Hugging Face Link Butonu */}
+                                <div className="pt-1 flex items-center justify-between">
+                                  <span className="text-[10px] font-mono text-slate-400">ID: {model.id}</span>
+                                  <a 
+                                    href={`https://huggingface.co/${model.id}`} 
+                                    target="_blank" 
+                                    rel="noopener noreferrer" 
+                                    className="inline-flex items-center gap-1 text-[11px] font-bold text-orange-600 hover:underline bg-orange-50 px-2.5 py-1 rounded border border-orange-200"
+                                  >
+                                    <span>🤗 Hugging Face Sayfası</span>
+                                    <ExternalLink className="w-3 h-3" />
+                                  </a>
+                                </div>
+                              </div>
+                            )}
                           </div>
-                        </div>
-                      ))}
+                        );
+                      })}
                     </div>
                   </div>
                 </div>
