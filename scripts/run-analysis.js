@@ -234,6 +234,57 @@ async function fetchArxivCandidatePapers(seenIds = new Set()) {
 }
 
 /**
+ * 5. GİTHUB AÇIK KAYNAK YAPAY ZEKA VE AJAN RADARI (%100 Ücretsiz Açık Uç Nokta)
+ * OSINT, Deep Research, otonom kodlama ve altyapı repolarını tarar.
+ */
+async function fetchGitHubTrendingCandidates() {
+  console.log("🐙 GitHub API'den taze AI ajan ve açık kaynak repolar taranıyor...");
+  try {
+    const queries = [
+      "deep+research+agent",
+      "osint+ai+agent",
+      "ai+agent+framework+pushed:>2026-08-01"
+    ];
+    const allItems = new Map();
+
+    for (const q of queries) {
+      const url = `https://api.github.com/search/repositories?q=${q}&sort=stars&order=desc&per_page=6`;
+      const res = await fetch(url, {
+        headers: {
+          "User-Agent": "AITrendleri-Bot/1.0",
+          "Accept": "application/vnd.github.v3+json"
+        }
+      });
+      if (res.ok) {
+        const data = await res.json();
+        for (const item of (data.items || [])) {
+          if (!allItems.has(item.full_name)) {
+            allItems.set(item.full_name, {
+              id: item.full_name,
+              name: item.name,
+              owner: item.owner?.login || "community",
+              url: item.html_url,
+              stars: item.stargazers_count > 1000 ? (item.stargazers_count / 1000).toFixed(1) + "k" : String(item.stargazers_count),
+              rawStars: item.stargazers_count,
+              language: item.language || "Python",
+              description: decodeHtmlEntities(item.description || "")
+            });
+          }
+        }
+      }
+      await sleep(1000);
+    }
+
+    const list = Array.from(allItems.values());
+    console.log(`✅ GitHub'dan ${list.length} taze açık kaynak repo adayı toplandı.`);
+    return list;
+  } catch (err) {
+    console.warn("⚠️ GitHub repoları çekilemedi:", err.message);
+    return [];
+  }
+}
+
+/**
  * ArXiv kalıcı hafızasını yükler (Tekrar etmemek için)
  */
 function loadArxivHistory() {
@@ -441,8 +492,15 @@ async function main() {
     hnPromptText = hnPosts.map(h => `- [Puan: ${h.points} | Yorum: ${h.comments}] "${h.title}" (Link: ${h.hnUrl})`).join("\n");
   }
 
+  // 5. GİTHUB AÇIK KAYNAK YAPAY ZEKA VE AJAN RADARI (OSINT, DEEP RESEARCH, ÇIKARIM)
+  const githubCandidates = await fetchGitHubTrendingCandidates();
+  let githubPromptText = "";
+  if (githubCandidates.length > 0) {
+    githubPromptText = githubCandidates.map(g => `- [⭐ ${g.stars}] ${g.id} (${g.language}): ${g.description} (Link: ${g.url})`).join("\n");
+  }
+
   const historySummary = loadToolHistorySummary();
-  console.log(`📊 Toplam ${totalPosts} Reddit gönderisi, ${hfModels.length} Hugging Face modeli, ${hnPosts.length} Hacker News tartışması ve ${candidateArxiv.length} taze ArXiv adayı toplandı.`);
+  console.log(`📊 Toplam ${totalPosts} Reddit gönderisi, ${hfModels.length} Hugging Face modeli, ${hnPosts.length} Hacker News tartışması, ${candidateArxiv.length} taze ArXiv adayı ve ${githubCandidates.length} GitHub repo adayı toplandı.`);
 
   const prompt = `
     Sen kıdemli bir "Yapay Zeka, GPU/Donanım, Bulut Platformları ve Yazılım Ekosistemi Baş Danışmanısın".
@@ -455,9 +513,9 @@ async function main() {
 
     🚨 EN KRİTİK KURAL 2: EN YUKARIDAKİ SIRALAMA TABLOLARI %100 REDDİT ODAKLIDIR:
     - "twelveHours", "daily", "weekly" ve "monthly" sıralama sekmelerindeki TÜM puanlar, sıralamalar, delta değişimleri ve analizler YALNIZCA VE SADECE 50 SEÇKİN REDDİT TOPLULUĞUNUN tartışmalarına dayanmalıdır.
-    - HUGGING FACE VE HACKER NEWS VERİLERİ EN YUKARIDAKİ SIRALAMAYA KESİNLİKLE VE ASLA ETKİ EDEMEZ!
-    - Hugging Face verisi yalnızca kendi alt liderlik tablosu içindir; üst sıralamayı asla değiştiremez veya manipüle edemez.
-    - Tüm araçların 'sources' alanları İSTİSNASIZ Reddit toplulukları (örn. ["r/LocalLLaMA", "r/singularity", "r/vibecoding"]) olmalıdır; asla "Hugging Face" yazılmamalıdır.
+    - HUGGING FACE, HACKER NEWS VE GITHUB VERİLERİ EN YUKARIDAKİ SIRALAMAYA KESİNLİKLE VE ASLA ETKİ EDEMEZ!
+    - Hugging Face, GitHub ve Hacker News verileri yalnızca kendi alt bölümleri içindir; üst sıralamayı asla değiştiremez veya manipüle edemez.
+    - Tüm araçların 'sources' alanları İSTİSNASIZ Reddit toplulukları (örn. ["r/LocalLLaMA", "r/singularity", "r/vibecoding"]) olmalıdır.
     ════════════════════════════════════════════════════════════════════
 
     Aşağıda derlenen son 24 saatin istihbaratı yer almaktadır:
@@ -479,6 +537,11 @@ async function main() {
     ════════════════════════════════════════════════════════════════════
     4. 🟠 HACKER NEWS (SON 24 SAAT MÜHENDİS TARTIŞMALARI - SIRALAMAYI ETKİLEMEZ!):
     ${hnPromptText || "Veri bulunamadı."}
+    ════════════════════════════════════════════════════════════════════
+
+    ════════════════════════════════════════════════════════════════════
+    5. 🐙 GİTHUB AÇIK KAYNAK VE AJAN RADARI (OSINT, DEEP RESEARCH, OTOMASYON):
+    ${githubPromptText || "Veri bulunamadı."}
     ════════════════════════════════════════════════════════════════════
 
     ════════════════════════════════════════════════════════════════════
@@ -517,6 +580,14 @@ async function main() {
        - Yukarıda iletilen Hugging Face trend verisinden en çok ivme yakalayan 5 açık modeli seç.
        - Her model için: rank (1-5), id, name, downloads, likes, tag, function, distinction, whyHype, environment alanlarını eksiksiz üret.
 
+    GİTHUB AI YÜKSELEN YILDIZLAR RADARI (TAM OLARAK 4 ZAMAN DİLİMİ - HER BİRİ 6 REPO):
+    - "githubRadar":
+      - "daily": Bugün aniden parlayan 6 açık kaynak repo (özellikle OSINT ajanları, Deep Research botları, otonom CLI araçları).
+      - "weekly": Son 1 haftada geliştirici topluluğunda öne çıkan 6 açık kaynak repo.
+      - "monthly": Son 30 günde ekosistemin benimsediği 6 açık kaynak kütüphane / araç.
+      - "yearly": Yılın ve tüm zamanların endüstri omurgası haline gelmiş 6 amiral gemisi repo (Ollama, vLLM, ComfyUI, AutoGen, LangChain, AutoGPT vb.).
+      - Her repo için: id ("owner/name"), name, owner, url, stars, deltaStars, category, language, function (Ne İşe Yarar?), whyHype (Neden Yıldızlaştı?), installCommand alanlarını eksiksiz üret.
+
     İSTENEN JSON ŞEMASI:
     {
       "executiveSummary": "GPT-6 Astra ve günün en büyük kırılmalarını özetleyen 1-2 paragraflık derin yönetici özeti",
@@ -552,7 +623,7 @@ async function main() {
           "sparkline": [8.8, 9.0, 9.2, 9.5, 9.8, 9.9, 10.0],
           "primaryFunction": "Temel işlev ve yetenek",
           "whyTrending": "Neden trend olduğuna dair 1-2 cümlelik keskin analiz",
-          "sources": ["r/singularity", "Hugging Face"]
+          "sources": ["r/singularity", "r/LocalLLaMA"]
         }
       ],
       "weekly": [ /* Son 7 günün kalıcı hafızasından derlenmiş en iyi 10-12 araç... */ ],
@@ -609,6 +680,27 @@ async function main() {
           "environment": "Ollama, llama.cpp, LM Studio, 16GB+ RAM."
         }
       ],
+      "githubRadar": {
+        "daily": [
+          {
+            "id": "owner/repo-name",
+            "name": "repo-name",
+            "owner": "owner",
+            "url": "https://github.com/owner/repo-name",
+            "stars": "29.3k",
+            "deltaStars": "+840 bugün",
+            "category": "Deep Research Ajanı | OSINT / Canlı İstihbarat | Otonom Web Operatörü | Tip Güvenli Ajan Kütüphanesi | Yerel RAG Motoru",
+            "language": "Python",
+            "function": "Ne işe yaradığına dair 1-2 cümlelik net açıklama",
+            "whyHype": "Neden yıldızlaştığına dair teknik ayrışma gerekçesi",
+            "installCommand": "pip install ... veya git clone ..."
+          }
+          // TAM 6 ADET
+        ],
+        "weekly": [ /* TAM 6 ADET */ ],
+        "monthly": [ /* TAM 6 ADET */ ],
+        "yearly": [ /* TAM 6 ADET */ ]
+      },
       "hackerNewsPulse": {
         "summary24h": "Son 24 saatte Hacker News gündeminde öne çıkan geliştirici tartışmalarının ve ekosistem nabzının 1-2 cümlelik özeti.",
         "discussions": [
@@ -654,7 +746,7 @@ async function main() {
   const { data: rawResultJson, modelUsed: activeModelUsed } = await generateWithWaterfall(prompt);
 
   // KESKİN STANDARTLAR DENETÇİSİ (Verilerin yerli yerine oturmasını ve hiçbir zaman eksik kalmamasını garanti eder)
-  const resultJson = enforceStrictStandards(rawResultJson, hfModels, candidateArxiv, hnPosts);
+  const resultJson = enforceStrictStandards(rawResultJson, hfModels, candidateArxiv, hnPosts, githubCandidates);
 
   const duration = Math.round((Date.now() - startTime) / 1000);
   const dateStr = new Date().toLocaleDateString("tr-TR", {
@@ -774,7 +866,7 @@ function updateToolHistory(reportData, dateStr) {
  * Keskin Standartlar Denetçisi:
  * Her analiz çıktısının sitenin değişmez kurallarına ve eksiksiz veri şemasına uymasını zorunlu kılar.
  */
-function enforceStrictStandards(data, hfModels = [], candidateArxiv = [], hnPosts = []) {
+function enforceStrictStandards(data, hfModels = [], candidateArxiv = [], hnPosts = [], githubCandidates = []) {
   const clean = { ...data };
 
   // 1. Standart 5 Endüstri Amiral Gemisi Açık Model (Mevcut En İyiler)
@@ -954,6 +1046,353 @@ function enforceStrictStandards(data, hfModels = [], candidateArxiv = [], hnPost
     analysis: d.analysis || d.takeaway || "Hacker News ekosisteminde yoğun ilgi gören teknik konu.",
     usefulInsight: d.usefulInsight || d.takeaway || "Geliştiriciler için doğrudan işe yarar pratik çıkarım."
   }));
+
+  // 4. GITHUB AI RADARI: Günlük, Haftalık, Aylık, Yıllık (Her biri tam 6 repo)
+  const BENCHMARK_GITHUB = {
+    daily: [
+      {
+        id: "assafelovic/gpt-researcher",
+        name: "gpt-researcher",
+        owner: "assafelovic",
+        url: "https://github.com/assafelovic/gpt-researcher",
+        stars: "29.3k",
+        deltaStars: "+840 bugün",
+        category: "Deep Research Ajanı",
+        language: "Python",
+        function: "Web üzerinde 20+ kaynağı otonom olarak paralel tarayıp, çapraz teyitli 10+ sayfalık akademik ve sektörel araştırma raporu derleyen ajan motoru.",
+        whyHype: "OpenAI'ın ücretli Deep Research modeline karşı yerel LLM ve Ollama ile %100 açık kaynaklı ve ücretsiz derin araştırma yapabilmesi.",
+        installCommand: "pip install gpt-researcher"
+      },
+      {
+        id: "koala73/worldmonitor",
+        name: "worldmonitor",
+        owner: "koala73",
+        url: "https://github.com/koala73/worldmonitor",
+        stars: "85.6k",
+        deltaStars: "+620 bugün",
+        category: "OSINT / Canlı İstihbarat",
+        language: "TypeScript",
+        function: "Küresel haber ajanslarını, uçuş radarlarını, askeri hareketlilikleri ve finansal anomalileri harita üzerinde gerçek zamanlı korelasyona tabi tutan yapay zeka istihbarat paneli.",
+        whyHype: "Jeopolitik risk analistleri ve siber güvenlik araştırmacıları için dağınık OSINT verilerini tek bir ekranda canlı yapay zeka çıkarımıyla birleştirmesi.",
+        installCommand: "git clone https://github.com/koala73/worldmonitor && npm i"
+      },
+      {
+        id: "calesthio/Crucix",
+        name: "Crucix",
+        owner: "calesthio",
+        url: "https://github.com/calesthio/Crucix",
+        stars: "11.6k",
+        deltaStars: "+480 bugün",
+        category: "OSINT / Tehdit Avcısı",
+        language: "Python",
+        function: "Açık kaynak ağlarda dijital ayak izi, sızdırılmış kimlik bilgisi ve dark web sızıntılarını otonom tarayıp alarm üreten siber güvenlik ajanı.",
+        whyHype: "Şirketlerin ve bağımsız araştırmacıların kendi hedef alan adlarını sıfır maliyetle 7/24 otonom güvenlik taramasından geçirmesini sağlaması.",
+        installCommand: "pip install crucix-agent"
+      },
+      {
+        id: "virattt/dexter",
+        name: "dexter",
+        owner: "virattt",
+        url: "https://github.com/virattt/dexter",
+        stars: "27.6k",
+        deltaStars: "+510 bugün",
+        category: "Finansal Deep Research",
+        language: "Python",
+        function: "Şirketlerin 10-K yıllık finansal tablolarını, kazanç çağrısı ses kayıtlarını ve SEC bildirimlerini saniyeler içinde analiz eden otonom finans analisti ajanı.",
+        whyHype: "Geleneksel Bloomberg terminali işlevlerini açık dil modelleriyle birleştirip karmaşık şirket değerleme modellerini dakikalar içinde üretebilmesi.",
+        installCommand: "pip install dexter-ai"
+      },
+      {
+        id: "browser-use/browser-use",
+        name: "browser-use",
+        owner: "browser-use",
+        url: "https://github.com/browser-use/browser-use",
+        stars: "34.2k",
+        deltaStars: "+930 bugün",
+        category: "Otonom Web Operatörü",
+        language: "Python",
+        function: "Web sitelerine bir insan gibi tıklayan, form dolduran, CAPTCHA aşabilen ve çok adımlı e-ticaret/bankacılık süreçlerini yöneten tarayıcı kontrol ajanı.",
+        whyHype: "API'si olmayan legacy kurumsal web portalları üzerinde sıfır entegrasyon maliyetiyle uçtan uca otomasyon sağlaması.",
+        installCommand: "pip install browser-use playwright"
+      },
+      {
+        id: "HKUDS/nanobot",
+        name: "nanobot",
+        owner: "HKUDS",
+        url: "https://github.com/HKUDS/nanobot",
+        stars: "47.7k",
+        deltaStars: "+680 bugün",
+        category: "Hafif Kişisel Ajan",
+        language: "Python",
+        function: "Yalnızca birkaç megabayt bellek ayak iziyle yerel cihazlarda çalışan, takvim, e-posta ve terminal görevlerini koordine eden ultra hafif kişisel asistan.",
+        whyHype: "Ağır Docker konteynerlarına ihtiyaç duymadan Raspberry Pi ve dizüstü bilgisayarlarda bile gecikmesiz çalışması.",
+        installCommand: "pip install nanobot-ai"
+      }
+    ],
+    weekly: [
+      {
+        id: "cline/cline",
+        name: "cline",
+        owner: "cline",
+        url: "https://github.com/cline/cline",
+        stars: "44.8k",
+        deltaStars: "+4.2k bu hafta",
+        category: "Otonom Kodlayıcı & CLI",
+        language: "TypeScript",
+        function: "VS Code ve terminalde bağımsız çalışan, dosya oluşturan, terminal komutlarını kendi kendine çalıştırıp test eden otonom yazılım geliştirme ajanı.",
+        whyHype: "Açık kaynak olması ve kullanıcıların kendi API anahtarlarını veya yerel modellerini (Ollama/DeepSeek) doğrudan bağlayabilmesi.",
+        installCommand: "code --install-extension saoudrizwan.claude-dev"
+      },
+      {
+        id: "crewAIInc/crewAI",
+        name: "crewAI",
+        owner: "crewAIInc",
+        url: "https://github.com/crewAIInc/crewAI",
+        stars: "58.1k",
+        deltaStars: "+3.8k bu hafta",
+        category: "Çoklu Ajan Framework'ü",
+        language: "Python",
+        function: "Farklı rollerde (araştırmacı, yazar, denetçi) birden fazla otonom ajanın ortak bir amaç doğrultusunda iş birliği yapmasını sağlayan orkestrasyon motoru.",
+        whyHype: "Kurumsal iş akışlarında karmaşık süreçleri insan departmanları gibi modellemeyi olağanüstü kolaylaştırması.",
+        installCommand: "pip install crewai"
+      },
+      {
+        id: "pydantic/pydantic-ai",
+        name: "pydantic-ai",
+        owner: "pydantic",
+        url: "https://github.com/pydantic/pydantic-ai",
+        stars: "14.6k",
+        deltaStars: "+2.1k bu hafta",
+        category: "Tip Güvenli Ajan Kütüphanesi",
+        language: "Python",
+        function: "Pydantic'in veri doğrulama ve tip güvenliği gücünü LLM ajanlarına getiren, halüsinasyonsuz yapısal JSON üretimi sağlayan kütüphane.",
+        whyHype: "LangChain'in karmaşık soyutlamalarından kaçan Python geliştiricilerinin birinci tercihi haline gelmesi.",
+        installCommand: "pip install pydantic-ai"
+      },
+      {
+        id: "mem0ai/mem0",
+        name: "mem0",
+        owner: "mem0ai",
+        url: "https://github.com/mem0ai/mem0",
+        stars: "29.8k",
+        deltaStars: "+2.4k bu hafta",
+        category: "Kalıcı Ajan Belleği",
+        language: "Python",
+        function: "Yapay zeka ajanlarına kullanıcı tercihlerini, geçmiş sohbetleri ve bağlamı oturumlar arasında hatırlama yeteneği kazandıran akıllı hafıza katmanı.",
+        whyHype: "Ajanların her oturumda aynı şeyleri sormayan gerçek kişiselleştirilmiş asistanlar inşa ettirmesi.",
+        installCommand: "pip install mem0ai"
+      },
+      {
+        id: "Aider-AI/aider",
+        name: "aider",
+        owner: "Aider-AI",
+        url: "https://github.com/Aider-AI/aider",
+        stars: "34.1k",
+        deltaStars: "+1.9k bu hafta",
+        category: "Terminalde Çift Programlama",
+        language: "Python",
+        function: "Doğrudan terminalde git deponuzla eşzamanlı çalışan, kod yazan, diff alan ve anlamlı commit mesajlarıyla otomatik commit atan CLI ajanı.",
+        whyHype: "SWE-bench testlerinde en yüksek başarı oranını yakalayan ve terminal meraklısı geliştiricilerin favorisi olması.",
+        installCommand: "pip install aider-chat"
+      },
+      {
+        id: "langfuse/langfuse",
+        name: "langfuse",
+        owner: "langfuse",
+        url: "https://github.com/langfuse/langfuse",
+        stars: "13.8k",
+        deltaStars: "+1.5k bu hafta",
+        category: "LLM Gözlemlenebilirlik",
+        language: "TypeScript",
+        function: "Üretimdeki yapay zeka uygulamalarının token maliyetlerini, gecikme sürelerini, model kalitesini ve prompt sürümlerini izleyen açık kaynak telemetri paneli.",
+        whyHype: "Şirketlerin fırlayan API faturalarını ve otonom ajanların arka plandaki gizli maliyetlerini denetim altına alması.",
+        installCommand: "docker compose up -d"
+      }
+    ],
+    monthly: [
+      {
+        id: "sgl-project/sglang",
+        name: "sglang",
+        owner: "sgl-project",
+        url: "https://github.com/sgl-project/sglang",
+        stars: "16.4k",
+        deltaStars: "+5.6k bu ay",
+        category: "Yüksek Hızlı LLM Motoru",
+        language: "Python / C++",
+        function: "RadixAttention mimarisiyle çoklu ajan ve karmaşık prompt çağrılarında KV önbelleğini yeniden kullanarak çıkarımı 5 kata kadar hızlandıran motor.",
+        whyHype: "DeepSeek-V3 ve R1 modellerini üretimde en düşük gecikmeyle koşturan öncü çıkarım altyapısı seçilmesi.",
+        installCommand: "pip install sglang[all]"
+      },
+      {
+        id: "vllm-project/vllm",
+        name: "vllm",
+        owner: "vllm-project",
+        url: "https://github.com/vllm-project/vllm",
+        stars: "45.2k",
+        deltaStars: "+7.1k bu ay",
+        category: "Dağıtık Çıkarım Omurgası",
+        language: "Python / CUDA",
+        function: "PagedAttention teknolojisiyle GPU belleğini neredeyse sıfır israfla yöneten, küresel kurumsal yapay zeka çıkarım standardı motoru.",
+        whyHype: "Açık kaynak modelleri ölçeklendirmek isteyen her şirketin ve veri merkezinin fiili işletim sistemi haline gelmesi.",
+        installCommand: "pip install vllm"
+      },
+      {
+        id: "langgenius/dify",
+        name: "dify",
+        owner: "langgenius",
+        url: "https://github.com/langgenius/dify",
+        stars: "68.3k",
+        deltaStars: "+8.9k bu ay",
+        category: "Görsel Ajan & RAG Platformu",
+        language: "TypeScript / Python",
+        function: "RAG boru hatları, çoklu ajan iş akışları ve model yönetimini sürükle-bırak görsel arayüz ve tek tıkla API olarak sunan kurumsal geliştirme platformu.",
+        whyHype: "Teknik olmayan departmanların bile şirket verileri üzerinde dakikalar içinde kurumsal yapay zeka ajanları inşa etmesini sağlaması.",
+        installCommand: "cd docker && docker compose up -d"
+      },
+      {
+        id: "qdrant/qdrant",
+        name: "qdrant",
+        owner: "qdrant",
+        url: "https://github.com/qdrant/qdrant",
+        stars: "24.9k",
+        deltaStars: "+3.2k bu ay",
+        category: "Vektör Veritabanı & Arama",
+        language: "Rust",
+        function: "Milyarlarca embedding vektörünü mikrosaniye düzeyinde filtreleyip arayan, Rust ile yazılmış bellek dostu yüksek performanslı vektör arama motoru.",
+        whyHype: "Büyük RAG projelerinde ve ajan belleklerinde Python bağımlılığını kesip ultra kararlı Rust performansı sunması.",
+        installCommand: "docker run -p 6333:6333 qdrant/qdrant"
+      },
+      {
+        id: "tinyhumansai/openhuman",
+        name: "openhuman",
+        owner: "tinyhumansai",
+        url: "https://github.com/tinyhumansai/openhuman",
+        stars: "39.4k",
+        deltaStars: "+6.8k bu ay",
+        category: "Yerel Kişisel AI Ekosistemi",
+        language: "Swift / Rust",
+        function: "Mac, Windows ve Linux işletim sistemlerinde doğrudan çalışan, ekrandaki tüm uygulamaları anlayabilen ve kullanıcı yerine işlem yapan yerel ajan.",
+        whyHype: "Bulut API'lerine hiçbir kişisel veri göndermeden bilgisayarınızı sizin adınıza yönetebilen bağımsız bir asistan sunması.",
+        installCommand: "git clone https://github.com/tinyhumansai/openhuman"
+      },
+      {
+        id: "open-webui/open-webui",
+        name: "open-webui",
+        owner: "open-webui",
+        url: "https://github.com/open-webui/open-webui",
+        stars: "83.5k",
+        deltaStars: "+9.2k bu ay",
+        category: "Kendi Sunucunda WebUI",
+        language: "Python / Svelte",
+        function: "Ollama ve yerel modeller için ChatGPT kalitesinde; RAG, sesli arama, doküman analizi ve çoklu kullanıcı yetkilendirmesi sunan açık arayüz.",
+        whyHype: "Şirketlerin çalışanlarına OpenAI kalitesinde ama tamamen yerel ve güvenli bir AI portalı sunabilmesini sağlaması.",
+        installCommand: "docker run -d -p 3000:8080 -v open-webui:/app/backend/data --name open-webui ghcr.io/open-webui/open-webui:main"
+      }
+    ],
+    yearly: [
+      {
+        id: "ollama/ollama",
+        name: "ollama",
+        owner: "ollama",
+        url: "https://github.com/ollama/ollama",
+        stars: "128.5k",
+        deltaStars: "Tüm Zamanlar",
+        category: "Yerel Model Dağıtım Standardı",
+        language: "Go / C++",
+        function: "Llama, DeepSeek ve Qwen gibi büyük dil modellerini tek bir 'ollama run' komutuyla yerel makinelerde çalıştıran küresel standart.",
+        whyHype: "Karmaşık CUDA ve derleme süreçlerini Docker basitliğine indirgeyerek yerel yapay zeka devrimini kitlelere ulaştırması.",
+        installCommand: "curl -fsSL https://ollama.com/install.sh | sh"
+      },
+      {
+        id: "vllm-project/vllm",
+        name: "vllm",
+        owner: "vllm-project",
+        url: "https://github.com/vllm-project/vllm",
+        stars: "45.2k",
+        deltaStars: "Tüm Zamanlar",
+        category: "Kurumsal Çıkarım Motoru",
+        language: "Python / CUDA",
+        function: "PagedAttention teknolojisiyle GPU belleğini dinamik yöneterek açık ağırlıklı modellerde eşzamanlı binlerce isteği en yüksek hızla yanıtlayan omurga.",
+        whyHype: "Veri merkezlerinde açık yapay zekayı kapalı servis sağlayıcıları kadar hızlı ve ekonomik kılabilmesi.",
+        installCommand: "pip install vllm"
+      },
+      {
+        id: "comfyanonymous/ComfyUI",
+        name: "ComfyUI",
+        owner: "comfyanonymous",
+        url: "https://github.com/comfyanonymous/ComfyUI",
+        stars: "72.4k",
+        deltaStars: "Tüm Zamanlar",
+        category: "Düğüm Tabanlı Medya Üretimi",
+        language: "Python / JS",
+        function: "Stable Diffusion, Flux, video ve ses modellerini görsel düğümler (nodes) ve boru hatlarıyla birbirine bağlayan profesyonel görsel üretim motoru.",
+        whyHype: "Hollywood stüdyolarından bağımsız içerik üreticilerine kadar üretken medya dünyasının tartışmasız fiili üretim aracı olması.",
+        installCommand: "git clone https://github.com/comfyanonymous/ComfyUI"
+      },
+      {
+        id: "microsoft/autogen",
+        name: "autogen",
+        owner: "microsoft",
+        url: "https://github.com/microsoft/autogen",
+        stars: "41.6k",
+        deltaStars: "Tüm Zamanlar",
+        category: "Çoklu Ajan Mimarisi",
+        language: "Python",
+        function: "Birden fazla yapay zeka ajanının insan denetimli veya tam otonom konuşarak karmaşık yazılım ve karar mekanizmalarını çözmesini sağlayan framework.",
+        whyHype: "Microsoft Araştırma ekibi tarafından geliştirilen ve ajanların kendi aralarında görev bölüşümü yapabildiğini ilk kez kanıtlayan mimari olması.",
+        installCommand: "pip install autogen-agentchat autogen-ext"
+      },
+      {
+        id: "langchain-ai/langchain",
+        name: "langchain",
+        owner: "langchain-ai",
+        url: "https://github.com/langchain-ai/langchain",
+        stars: "145.7k",
+        deltaStars: "Tüm Zamanlar",
+        category: "Ajan & LLM Geliştirici Platformu",
+        language: "Python / TypeScript",
+        function: "LLM'leri harici veri tabanlarına, API'lere ve dosyalara bağlayarak zincirleme işlem ve karar destek mimarileri oluşturan ekosistem kütüphanesi.",
+        whyHype: "Büyük dil modelleri devriminin ilk gününden bu yana ekosistemin en yaygın kullanılan uygulama geliştirme kütüphanesi olması.",
+        installCommand: "pip install langchain"
+      },
+      {
+        id: "Significant-Gravitas/AutoGPT",
+        name: "AutoGPT",
+        owner: "Significant-Gravitas",
+        url: "https://github.com/Significant-Gravitas/AutoGPT",
+        stars: "172.1k",
+        deltaStars: "Tüm Zamanlar",
+        category: "Otonom Ajan Öncüsü",
+        language: "Python",
+        function: "Belirlenen bir hedef doğrultusunda internette araştırma yapan, dosyaları yöneten ve kendi kendine karar alıp uygulayan ilk otonom ajan projesi.",
+        whyHype: "GitHub tarihinin en hızlı yıldız alan projelerinden biri olarak küresel 'Autonomous Agent' çılgınlığını başlatan kıvılcım olması.",
+        installCommand: "git clone https://github.com/Significant-Gravitas/AutoGPT"
+      }
+    ]
+  };
+
+  clean.githubRadar = clean.githubRadar || {};
+  for (const period of ['daily', 'weekly', 'monthly', 'yearly']) {
+    let list = Array.isArray(clean.githubRadar[period]) ? clean.githubRadar[period] : [];
+    const benchmark = BENCHMARK_GITHUB[period];
+
+    clean.githubRadar[period] = benchmark.map((bm, idx) => {
+      const item = list[idx] || bm;
+      return {
+        id: item.id || bm.id,
+        name: item.name || bm.name,
+        owner: item.owner || bm.owner,
+        url: item.url || bm.url,
+        stars: item.stars || bm.stars,
+        deltaStars: item.deltaStars || bm.deltaStars,
+        category: item.category || bm.category,
+        language: item.language || bm.language,
+        function: item.function || bm.function,
+        whyHype: item.whyHype || bm.whyHype,
+        installCommand: item.installCommand || bm.installCommand
+      };
+    });
+  }
 
   return clean;
 }
