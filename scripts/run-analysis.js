@@ -137,7 +137,52 @@ async function fetchHuggingFaceTrending() {
 }
 
 /**
- * 3. ARXİV API (%100 Ücretsiz & Sınırsız)
+ * 3. HACKER NEWS ALGOLIA API (%100 Ücretsiz Açık Uç Nokta)
+ * Son 24 saatte en çok oylanan ve tartışılan yapay zeka/mühendislik konuları.
+ * DİKKAT: Sıralamaya KESİNLİKLE etki etmez, yalnızca özet ve faydalı bilgi içindir.
+ */
+async function fetchHackerNews24h() {
+  console.log("⚡ Hacker News API'den son 24 saatin teknik tartışmaları çekiliyor...");
+  try {
+    const oneDayAgo = Math.floor(Date.now() / 1000) - 86400;
+    const queries = ["AI", "LLM"];
+    const allHits = new Map();
+
+    for (const q of queries) {
+      const url = `https://hn.algolia.com/api/v1/search?query=${q}&tags=story&numericFilters=created_at_i>${oneDayAgo}&hitsPerPage=15`;
+      const res = await fetch(url, { headers: { "Accept": "application/json" } });
+      if (res.ok) {
+        const data = await res.json();
+        for (const h of (data.hits || [])) {
+          if ((h.points || 0) >= 15 && !allHits.has(h.objectID)) {
+            allHits.set(h.objectID, {
+              id: h.objectID,
+              title: decodeHtmlEntities(h.title || ""),
+              points: h.points || 0,
+              comments: h.num_comments || 0,
+              url: h.url || `https://news.ycombinator.com/item?id=${h.objectID}`,
+              hnUrl: `https://news.ycombinator.com/item?id=${h.objectID}`
+            });
+          }
+        }
+      }
+      await sleep(500);
+    }
+
+    const sorted = Array.from(allHits.values())
+      .sort((a, b) => b.points - a.points)
+      .slice(0, 8);
+
+    console.log(`✅ Hacker News'den ${sorted.length} taze mühendis tartışması alındı.`);
+    return sorted;
+  } catch (err) {
+    console.warn("⚠️ Hacker News çekilemedi:", err.message);
+    return [];
+  }
+}
+
+/**
+ * 4. ARXİV API (%100 Ücretsiz & Sınırsız)
  * Son günlerde çıkan yapay zeka makalelerini çeker ve daha önce görülmemiş olanları seçer.
  */
 async function fetchArxivCandidatePapers(seenIds = new Set()) {
@@ -389,8 +434,15 @@ async function main() {
   let pastArxivText = `HAFIZADAKİ SON 7 GÜNÜN ARXİV MAKALELERİ (Haftalık En İyileri Seçmek İçin Kaynak):\n`;
   pastArxivText += past7DaysPapers.slice(0, 15).map(p => `- [${p.id}] "${p.title}" (Etki Skoru: ${p.impactScore || 9.0}) - ${p.whyMad || p.summary}`).join("\n");
 
+  // 4. HACKER NEWS SON 24 SAAT TARTIŞMALARI (SIRALAMAYA KESİNLİKLE ETKİ ETMEZ!)
+  const hnPosts = await fetchHackerNews24h();
+  let hnPromptText = "";
+  if (hnPosts.length > 0) {
+    hnPromptText = hnPosts.map(h => `- [Puan: ${h.points} | Yorum: ${h.comments}] "${h.title}" (Link: ${h.hnUrl})`).join("\n");
+  }
+
   const historySummary = loadToolHistorySummary();
-  console.log(`📊 Toplam ${totalPosts} Reddit gönderisi, ${hfModels.length} Hugging Face modeli ve ${candidateArxiv.length} taze ArXiv adayı toplandı.`);
+  console.log(`📊 Toplam ${totalPosts} Reddit gönderisi, ${hfModels.length} Hugging Face modeli, ${hnPosts.length} Hacker News tartışması ve ${candidateArxiv.length} taze ArXiv adayı toplandı.`);
 
   const prompt = `
     Sen kıdemli bir "Yapay Zeka, GPU/Donanım, Bulut Platformları ve Yazılım Ekosistemi Baş Danışmanısın".
@@ -417,6 +469,15 @@ async function main() {
     ${arxivPromptText}
 
     ${pastArxivText}
+
+    ════════════════════════════════════════════════════════════════════
+    4. 🟠 HACKER NEWS (SON 24 SAAT MÜHENDİS & GELİŞTİRİCİ TARTIŞMALARI):
+    ⚠️ KESİNLİKLE DİKKAT: Hacker News verisi araç/model puan sıralamalarını (12h, Daily tablolarını) KESİNLİKLE ETKİLEMEZ.
+    Sıralamalar Reddit, Google Grounding ve Hugging Face doğrulamasıyla saf model gücüne dayanır.
+    Hacker News verisi SADECE "hackerNewsPulse" alanında Silikon Vadisi ve küresel mühendislerin son 24 saatte tartıştığı konuları, eleştirileri ve pratik faydalı teknik hap bilgileri özetlemek için kullanılır.
+    
+    ${hnPromptText || "Veri bulunamadı."}
+    ════════════════════════════════════════════════════════════════════
 
     ════════════════════════════════════════════════════════════════════
     📌 SİSTEMİN KALICI VERİTABANI HAFIZASI (TOOL-HISTORY DATABASE):
@@ -520,6 +581,20 @@ async function main() {
           "highlight": "Topluluğun en çok tercih ettiği açık ağırlık"
         }
       ],
+      "hackerNewsPulse": {
+        "summary24h": "Son 24 saatte Hacker News gündeminde öne çıkan geliştirici tartışmalarının ve ekosistem nabzının 1-2 cümlelik özeti.",
+        "discussions": [
+          {
+            "title": "Hacker News Başlığı",
+            "points": 340,
+            "comments": 180,
+            "hnUrl": "https://news.ycombinator.com/item?id=...",
+            "category": "E-Ticaret / Kurumsal / Teori / Donanım / Ajan Güvenliği",
+            "keyTakeaway": "Mühendislerin tartıştığı ana konu ve eleştirisi",
+            "usefulInsight": "Geliştiriciler veya teknoloji meraklıları için doğrudan işe yarar hap teknik bilgi veya çıkarım"
+          }
+        ]
+      },
       "sections": [
         {
           "title": "BÖLÜM 1: 🌐 GÜNÜN EKOSİSTEM DENGESİ & MODELLER ARASI GÜÇ SAVAŞI",

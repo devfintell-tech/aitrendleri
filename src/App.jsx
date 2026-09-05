@@ -871,6 +871,105 @@ export default function App() {
                 </div>
               </div>
             )}
+
+            {/* 7. 🟠 HACKER NEWS: SON 24 SAAT GELİŞTİRİCİ NABZI & TARTIŞMALARI (Sıralamaya Etkisiz) */}
+            {report.hackerNewsPulse && (
+              <div className="pt-3 border-t border-[#e2e8f0] space-y-3">
+                <div className="flex items-center justify-between flex-wrap gap-2">
+                  <div className="flex items-center gap-2">
+                    <span className="w-5 h-5 bg-[#ff6600] text-white font-black text-xs flex items-center justify-center rounded-xs font-mono shadow-2xs">
+                      Y
+                    </span>
+                    <h4 className="text-xs sm:text-sm font-bold text-slate-900 font-mono uppercase">
+                      Hacker News: Son 24 Saatin Geliştirici &amp; Mühendis Nabzı
+                    </h4>
+                  </div>
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-orange-50 text-orange-800 border border-orange-200 font-bold">
+                    Sıralamaya Etkisiz • Saf Teknik İstihbarat
+                  </span>
+                </div>
+
+                {/* 24 Saatlik Geliştirici Gündemi Özeti */}
+                {report.hackerNewsPulse.summary24h && (
+                  <div className="p-3 bg-[#fffaf5] border-l-4 border-l-[#ff6600] border-y border-r border-orange-200 rounded-r text-xs text-slate-800 leading-relaxed">
+                    <span className="font-mono font-bold text-orange-950 uppercase text-[10px] block mb-0.5">
+                      📌 SON 24 SAATİN ÖZETİ &amp; MÜHENDİS HİSSİYATI:
+                    </span>
+                    <p className="text-slate-800">{report.hackerNewsPulse.summary24h}</p>
+                  </div>
+                )}
+
+                {/* Tartışmalar ve Yararlı Bilgiler Listesi */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {(report.hackerNewsPulse.discussions || []).map((disc, dIdx) => (
+                    <div 
+                      key={dIdx} 
+                      className="bg-white border border-[#cbd5e1] rounded-sm p-3.5 flex flex-col justify-between hover:border-[#ff6600] transition space-y-3 shadow-xs"
+                    >
+                      <div className="space-y-2.5">
+                        {/* Üst Kategori ve Puan/Yorum Barı */}
+                        <div className="flex items-center justify-between text-[10px] font-mono">
+                          <span className="bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-semibold border border-slate-200">
+                            {disc.category || 'Geliştirici Tartışması'}
+                          </span>
+                          <div className="flex items-center gap-2 text-slate-500 font-bold">
+                            <span className="text-[#ff6600]">▲ {disc.points} puan</span>
+                            <span>•</span>
+                            <span>💬 {disc.comments} yorum</span>
+                          </div>
+                        </div>
+
+                        {/* Tartışma Başlığı */}
+                        <div>
+                          <a 
+                            href={disc.hnUrl || disc.url} 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className="font-bold text-xs sm:text-[13px] text-slate-900 hover:text-[#ff6600] transition inline-flex items-start gap-1 group leading-snug"
+                            title={disc.title}
+                          >
+                            <span className="group-hover:underline">{disc.titleTr || disc.title}</span>
+                            <ExternalLink className="w-3.5 h-3.5 flex-shrink-0 text-slate-400 group-hover:text-[#ff6600] mt-0.5" />
+                          </a>
+                        </div>
+
+                        {/* Yararlı Teknik Bilgi / Hap Bilgi Kutusu */}
+                        {disc.usefulInsight && (
+                          <div className="bg-[#f0fdf4] border-l-2 border-emerald-600 p-2.5 rounded-r text-xs text-slate-800 leading-relaxed">
+                            <strong className="text-emerald-900 block text-[10px] font-mono uppercase mb-0.5 flex items-center gap-1 font-bold">
+                              <span>💡</span>
+                              <span>YARARLI TEKNİK BİLGİ &amp; ÇIKARIM:</span>
+                            </strong>
+                            <p className="text-slate-800">{disc.usefulInsight}</p>
+                          </div>
+                        )}
+
+                        {/* Tartışılan Konu & Topluluk Eleştirisi */}
+                        {disc.keyTakeaway && (
+                          <div className="text-xs text-slate-600 leading-relaxed">
+                            <strong className="text-slate-900 font-semibold mr-1">Tartışmanın Özü:</strong>
+                            <span>{disc.keyTakeaway}</span>
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Alt Bar: HN Link */}
+                      <div className="pt-2 border-t border-[#f1f5f9] flex items-center justify-between text-[11px] font-mono text-slate-400">
+                        <span className="text-[10px] text-slate-400">Hacker News ID: #{disc.id || dIdx + 1}</span>
+                        <a 
+                          href={disc.hnUrl || disc.url} 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="text-[#ff6600] hover:underline flex items-center gap-0.5 font-bold"
+                        >
+                          HN Tartışmasını Aç →
+                        </a>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </section>
         )}
 
