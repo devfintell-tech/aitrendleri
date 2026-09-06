@@ -8,9 +8,61 @@
     "2609.04190v1",
     "2609.04197v1",
     "2609.04180v1",
-    "2609.04170v1"
+    "2609.04170v1",
+    "2609.04167v1",
+    "2609.04172v1",
+    "2609.04166v1"
   ],
   "dailyRecords": [
+    {
+      "date": "6 Eylül 2026",
+      "isoDate": "2026-09-06",
+      "papers": [
+        {
+          "id": "2609.04167v1",
+          "titleTr": "SWE-Gate: Yazılım Mühendisliği Ajanları İçin Fonksiyonel Testleri Geçmek Yeterli Değil",
+          "title": "SWE-Gate: Passing Functional Tests Is Not Enough for Software Engineering Agents",
+          "arxivUrl": "http://arxiv.org/abs/2609.04167v1",
+          "authors": [
+            "Xin He",
+            "Yanlin Wang",
+            "Mingwei Liu"
+          ],
+          "category": "cs.AI",
+          "impactScore": 9.7,
+          "whyMad": "Mevcut yazılım mühendisliği ajanlarının değerlendirme metriklerinin eksikliğini ortaya koyarak, gerçek dünya yazılım geliştirmede kabul edilebilir bir yama için sadece fonksiyonel testleri geçmenin yeterli olmadığını kanıtlıyor. İnceleme kısıtlamalarını (review constraints) dikkate alan yeni bir benchmark sunarak, ajanların pratik değerini artırma potansiyeli taşıyor.",
+          "summary": "SWE-Gate, yazılım mühendisliği ajanları için repository düzeyinde yeni bir benchmark sunar. Bu benchmark, ajanların ürettiği yamaların sadece fonksiyonel testleri geçip geçmediğini değil, aynı zamanda gerçek dünya yazılım geliştirmede kabul edilebilirliği etkileyen inceleme kısıtlamalarına uyup uymadığını da değerlendirir. Bu, ajanların daha pratik ve kabul edilebilir çözümler üretmesi için kritik bir adımdır."
+        },
+        {
+          "id": "2609.04172v1",
+          "titleTr": "Büyük Dil Modellerinin On-Policy Distilasyonunu Yeniden Düşünmek II: Tek Bir Eğitim Örneği",
+          "title": "Rethinking On-Policy Distillation of Large Language Models II: One Training Example",
+          "arxivUrl": "http://arxiv.org/abs/2609.04172v1",
+          "authors": [
+            "Zixuan Fu",
+            "Bingxiang He",
+            "Yuxin Zuo"
+          ],
+          "category": "cs.CL",
+          "impactScore": 9.6,
+          "whyMad": "On-policy distilasyonun (OPD) veri minimal limitinde bile şaşırtıcı derecede etkili olduğunu göstererek, LLM eğitiminde veri verimliliği konusunda ezber bozan bir içgörü sunuyor. Tek bir sorguyla bile tam veri OPD'nin kazanımlarının çoğunu geri kazanabilmesi, gelecekteki LLM optimizasyonları için yeni yollar açıyor.",
+          "summary": "Bu makale, on-policy distilasyonun (OPD) eğitim verisinin rolünü inceler ve tek bir sorguyla eğitim yapıldığında bile OPD'nin yüzlerce adım boyunca gelişmeye devam ettiğini ve tam veri OPD'nin kazanımlarının çoğunu geri kazandığını deneysel olarak gösterir. Bu sonuç, eğitim sırasında ziyaret edilen durumlar üzerinden açıklanır ve LLM'lerin veri verimliliği konusunda yeni perspektifler sunar."
+        },
+        {
+          "id": "2609.04166v1",
+          "titleTr": "Yanlış Çıktılardan Yanıltıcı Mekanizmalara: Dil Modeli Aldatma Araştırması İçin Nedensel Bir Çerçeve",
+          "title": "From Deceptive Outputs to Deceptive Mechanisms: A Causal Framework for Language-Model Deception Research",
+          "arxivUrl": "http://arxiv.org/abs/2609.04166v1",
+          "authors": [
+            "Yakov Pyotr Shkolnikov"
+          ],
+          "category": "cs.AI",
+          "impactScore": 9.5,
+          "whyMad": "Dil modellerinin 'aldatma' davranışını insan benzeri zihinsel durumlarla ilişkilendiren mevcut araştırmalardaki bulanıklığı gidererek, davranışsal aldatma ile mekanik aldatma arasındaki kritik ayrımı nedensel bir çerçeveyle netleştiriyor. Bu, AI etiği ve güvenliği araştırmaları için temel bir kavramsal araç sunuyor.",
+          "summary": "Makale, dil modellerinin aldatma araştırmalarında insan benzeri zihinsel durum atıflarının yarattığı karışıklığı ele alır. Davranışsal aldatma ile mekanik aldatma arasındaki ayrımı netleştiren nedensel bir taksonomi sunar. Bu çerçeve, modellerin niyetini, tercihlerini ve yanıltıcı çıktıların kökenini daha doğru bir şekilde analiz etmeyi sağlar, böylece AI güvenliği ve etiği alanında daha sağlam araştırmalara olanak tanır."
+        }
+      ]
+    },
     {
       "date": "4 Eylül 2026",
       "isoDate": "2026-09-04",

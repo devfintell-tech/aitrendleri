@@ -187,6 +187,18 @@
           "r/windsurf",
           "r/ClaudeAI"
         ]
+      },
+      {
+        "date": "6 Eylül 2026",
+        "hypeScore": 9.9,
+        "sentiment": "stabil",
+        "headline": "Devin'de Canlı",
+        "summary": "Devin'in Fusion harness ile Fable-level zekayı daha ucuza sunması ve Claude'a karşı rekabeti artırması.",
+        "sources": [
+          "r/windsurf",
+          "r/ClaudeDev",
+          "r/singularity"
+        ]
       }
     ]
   },
@@ -236,6 +248,18 @@
         "sources": [
           "r/selfhosted",
           "r/OpenSourceAI"
+        ]
+      },
+      {
+        "date": "6 Eylül 2026",
+        "hypeScore": 9.3,
+        "sentiment": "stabil",
+        "headline": "Kurumsal Ajan Dağıtımı",
+        "summary": "Kurumsal düzeyde ajan dağıtımı ve otomasyon yetenekleriyle iş süreçlerini dönüştürmesi.",
+        "sources": [
+          "r/OpenSourceAI",
+          "r/selfhosted",
+          "r/singularity"
         ]
       }
     ]
@@ -337,6 +361,18 @@
           "r/ClaudeAI",
           "r/vibecoding"
         ]
+      },
+      {
+        "date": "6 Eylül 2026",
+        "hypeScore": 9.8,
+        "sentiment": "stabil",
+        "headline": "Sektör Standardı",
+        "summary": "Tartışmasız sektör standardı haline gelmesi ve geliştiriciler arasında popülerliğini koruması.",
+        "sources": [
+          "r/ClaudeAI",
+          "r/ClaudeDev",
+          "r/ChatGPTCoding"
+        ]
       }
     ]
   },
@@ -387,6 +423,18 @@
           "r/LocalLLaMA",
           "Hugging Face"
         ]
+      },
+      {
+        "date": "6 Eylül 2026",
+        "hypeScore": 9.6,
+        "sentiment": "stabil",
+        "headline": "Altyapı Tekeli",
+        "summary": "AI altyapısındaki tartışmasız tekeli ve kurumsal donanım standardı olarak konumunu güçlendirmesi.",
+        "sources": [
+          "r/singularity",
+          "r/hardware",
+          "r/nvidia"
+        ]
       }
     ]
   },
@@ -415,6 +463,18 @@
           "r/LocalLLaMA",
           "r/OpenSourceAI"
         ]
+      },
+      {
+        "date": "6 Eylül 2026",
+        "hypeScore": 9.6,
+        "sentiment": "stabil",
+        "headline": "CPU Performans Rekoru",
+        "summary": "12 saniyelik çıkış süresi ve CPU üzerinde rekor performansıyla GPU bağımlılığını azaltması.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/selfhosted",
+          "r/ollama"
+        ]
       }
     ]
   },
@@ -441,6 +501,18 @@
         "summary": "Kullanıcıların 'High Load' hatası alması ve hizmette yaşanan büyük aksaklıklar nedeniyle yoğun eleştiri alması.",
         "sources": [
           "r/CursorAI"
+        ]
+      },
+      {
+        "date": "6 Eylül 2026",
+        "hypeScore": 8.7,
+        "sentiment": "stabil",
+        "headline": "Major Degradation",
+        "summary": "Yüksek yük baskısı, RAM sızıntıları ve genel performans düşüşü nedeniyle kullanıcıların yaşadığı sorunlar.",
+        "sources": [
+          "r/CursorAI",
+          "r/ChatGPTCoding",
+          "r/vibecoding"
         ]
       }
     ]
@@ -608,6 +680,18 @@
           "r/LocalLLaMA",
           "r/ollama"
         ]
+      },
+      {
+        "date": "6 Eylül 2026",
+        "hypeScore": 9.7,
+        "sentiment": "stabil",
+        "headline": "10M İndirme Eşiği",
+        "summary": "10 milyon indirme eşiğini aşması ve 16GB RAM'li sistemlerde bile yüksek performans sunarak yerel LLM pazarında liderliğini pekiştirmesi.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/ollama",
+          "r/huggingface"
+        ]
       }
     ]
   },
@@ -635,6 +719,18 @@
         "sources": [
           "r/ComfyUI",
           "r/midjourney",
+          "r/SORA"
+        ]
+      },
+      {
+        "date": "6 Eylül 2026",
+        "hypeScore": 9.7,
+        "sentiment": "stabil",
+        "headline": "Video Üretiminde Lider",
+        "summary": "ComfyUI entegrasyonları, Storyboard Tools ve H3 OutpaintPrep gibi araçlarla video üretim ekosisteminde merkezi bir rol oynaması.",
+        "sources": [
+          "r/comfyui",
+          "r/StableDiffusion",
           "r/SORA"
         ]
       }
@@ -740,6 +836,18 @@
           "r/ClaudeAI",
           "r/huggingface"
         ]
+      },
+      {
+        "date": "6 Eylül 2026",
+        "hypeScore": 10,
+        "sentiment": "coşkulu",
+        "headline": "3 Eylül Lansmanı",
+        "summary": "OpenAI tarafından yapılan resmi lansman ve otonom bilgisayar operatörü yetenekleriyle sektörde devrim yaratması.",
+        "sources": [
+          "r/singularity",
+          "r/artificial",
+          "r/OpenAI"
+        ]
       }
     ]
   },
@@ -806,6 +914,18 @@
           "r/LocalLLaMA",
           "r/OpenSourceAI"
         ]
+      },
+      {
+        "date": "6 Eylül 2026",
+        "hypeScore": 9.3,
+        "sentiment": "stabil",
+        "headline": "Hızlı Görsel LLM",
+        "summary": "GB200 kümeleme ve vLLM dağıtımı ile yüksek performans sunması, hızlı görsel LLM ihtiyacını karşılaması.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/ollama",
+          "r/OpenSourceAI"
+        ]
       }
     ]
   },
@@ -821,6 +941,220 @@
         "summary": "PC parçalarının ve depolama maliyetlerinin artmasıyla self-hosting'in giderek daha pahalı hale gelmesi ve Google One gibi bulut çözümlerine yönelme tartışmaları.",
         "sources": [
           "r/selfhosted"
+        ]
+      }
+    ]
+  },
+  "cursor-ram-leak": {
+    "name": "Cursor (RAM Sızıntısı)",
+    "category": "IDE / Editör",
+    "history": [
+      {
+        "date": "6 Eylül 2026",
+        "hypeScore": 8.5,
+        "sentiment": "eleştirel",
+        "headline": "Major Degradation",
+        "summary": "Son güncellemeler sonrası 9-10 GB RAM tüketimi ve sistem çökertme sorunlarıyla kullanıcıların büyük tepkisini çekmesi.",
+        "sources": [
+          "r/CursorAI",
+          "r/ChatGPTCoding",
+          "r/vibecoding"
+        ]
+      }
+    ]
+  },
+  "ollama-self-hosted-workspace": {
+    "name": "Ollama Tabanlı Self-Hosted AI Workspace",
+    "category": "Altyapı & SDK",
+    "history": [
+      {
+        "date": "6 Eylül 2026",
+        "hypeScore": 9.7,
+        "sentiment": "stabil",
+        "headline": "Tek Komutla Kurulum",
+        "summary": "Tek komutla kurulum kolaylığı, yerel model desteği ve hosted servislere bağımlılığı ortadan kaldırması.",
+        "sources": [
+          "r/ollama",
+          "r/LocalLLaMA",
+          "r/selfhosted"
+        ]
+      }
+    ]
+  },
+  "minimax-h3-video": {
+    "name": "MiniMax H3 (Video Üretimi)",
+    "category": "Medya / Üretim",
+    "history": [
+      {
+        "date": "6 Eylül 2026",
+        "hypeScore": 9.8,
+        "sentiment": "stabil",
+        "headline": "Ultra Hızlı Video",
+        "summary": "SLA dikkat mekanizması ve 4 adımlı LoRA ile 3080 Ti'da bile ultra hızlı (5-10 saniye) anime video üretimi.",
+        "sources": [
+          "r/comfyui",
+          "r/StableDiffusion",
+          "r/SORA"
+        ]
+      }
+    ]
+  },
+  "qwen3-8-27b-gquf": {
+    "name": "Qwen3.8-27B-GGUF (Unsloth)",
+    "category": "Yerel Model",
+    "history": [
+      {
+        "date": "6 Eylül 2026",
+        "hypeScore": 9.7,
+        "sentiment": "stabil",
+        "headline": "10M İndirme Eşiği",
+        "summary": "10 milyon indirme eşiğini aşması ve 16GB RAM'li sistemlerde bile yüksek performans sunması.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/ollama",
+          "r/huggingface"
+        ]
+      }
+    ]
+  },
+  "claude-code-dev": {
+    "name": "Claude Code (Geliştirici Sorunları)",
+    "category": "CLI / Terminal",
+    "history": [
+      {
+        "date": "6 Eylül 2026",
+        "hypeScore": 9,
+        "sentiment": "eleştirel",
+        "headline": "Geliştirici Favorisi",
+        "summary": "Geliştiricilerin Claude Code'un davranışları ve tutarlılığı hakkında sorular sorması, bazı sorunların tartışılması.",
+        "sources": [
+          "r/ClaudeDev",
+          "r/ClaudeAI",
+          "r/ChatGPTCoding"
+        ]
+      }
+    ]
+  },
+  "otaku-llm-frontend": {
+    "name": "Otaku (LLM Frontend)",
+    "category": "Altyapı & SDK",
+    "history": [
+      {
+        "date": "6 Eylül 2026",
+        "hypeScore": 9.5,
+        "sentiment": "stabil",
+        "headline": "SillyTavern Alternatifi",
+        "summary": "SillyTavern'e alternatif olarak sunulması, Ollama desteği ve hem web hem terminal arayüzü sunması.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/ollama",
+          "r/selfhosted"
+        ]
+      }
+    ]
+  },
+  "windsurf-devin-bloat": {
+    "name": "Windsurf / Devin (Bloat Sorunları)",
+    "category": "IDE / Editör",
+    "history": [
+      {
+        "date": "6 Eylül 2026",
+        "hypeScore": 8.2,
+        "sentiment": "eleştirel",
+        "headline": "Karmaşık Güncelleme",
+        "summary": "Windsurf'ün Devin ile değiştirilmesi sonrası Codeium ve Windsurf'e ait kalıntı klasörlerin bırakılması ve kullanıcıların temizlik sorunları yaşaması.",
+        "sources": [
+          "r/windsurf",
+          "r/CursorAI",
+          "r/ChatGPTCoding"
+        ]
+      }
+    ]
+  },
+  "ai-memory-vault": {
+    "name": "AI Memory Vault",
+    "category": "Altyapı & SDK",
+    "history": [
+      {
+        "date": "6 Eylül 2026",
+        "hypeScore": 9.3,
+        "sentiment": "stabil",
+        "headline": "Yerel Bellek",
+        "summary": "AI sağlayıcılarına bağımlı olmadan değerli AI konuşma bağlamını kişisel kontrol altında tutma imkanı sunması.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/selfhosted",
+          "r/singularity"
+        ]
+      }
+    ]
+  },
+  "open-source-will-win": {
+    "name": "Açık Kaynak AI (Rekabet)",
+    "category": "Şirket / Lab",
+    "history": [
+      {
+        "date": "6 Eylül 2026",
+        "hypeScore": 9.6,
+        "sentiment": "stabil",
+        "headline": "Pazar Analizi",
+        "summary": "En yeni açık kaynak modellerin, frontier lab'lerin en iyileriyle farkı kapatması ve hatta geçmesi beklentisi.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/OpenSourceAI",
+          "r/singularity"
+        ]
+      }
+    ]
+  },
+  "eidon-self-hosted-ai": {
+    "name": "Eidon (Self-Hosted AI Platformu)",
+    "category": "Otonom Agent",
+    "history": [
+      {
+        "date": "6 Eylül 2026",
+        "hypeScore": 9.4,
+        "sentiment": "stabil",
+        "headline": "Hepsi Bir Arada",
+        "summary": "Tek bir Docker konteynerinde Grok benzeri ajanlar ve otomasyonlar sunarak kolay dağıtım ve kapsamlı yetenekler sağlaması.",
+        "sources": [
+          "r/OpenSourceAI",
+          "r/selfhosted",
+          "r/LocalLLaMA"
+        ]
+      }
+    ]
+  },
+  "copilot-chat-missing": {
+    "name": "Copilot (Chat Fonksiyonu Eksikliği)",
+    "category": "LLM (Model)",
+    "history": [
+      {
+        "date": "6 Eylül 2026",
+        "hypeScore": 7.5,
+        "sentiment": "coşkulu",
+        "headline": "Kullanıcı Sorunu",
+        "summary": "Android uygulamasında kişisel aboneliğe rağmen Chat fonksiyonunun kaybolması ve kullanıcıların çözüm bulamaması.",
+        "sources": [
+          "r/copilot",
+          "r/ChatGPTCoding"
+        ]
+      }
+    ]
+  },
+  "vscode-spell-checker": {
+    "name": "VS Code Spell Checker (Yeni Ayar)",
+    "category": "IDE / Editör",
+    "history": [
+      {
+        "date": "6 Eylül 2026",
+        "hypeScore": 8.8,
+        "sentiment": "stabil",
+        "headline": "Kullanıcı Deneyimi",
+        "summary": "Yazım denetiminin yalnızca kelimeler arasında veya yeni paragraflarda çalışmasını sağlayan yeni ayar ile daha sakin bir deneyim sunması.",
+        "sources": [
+          "r/vscode",
+          "r/vibecoding"
         ]
       }
     ]
