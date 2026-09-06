@@ -11,7 +11,10 @@
     "2609.04170v1",
     "2609.04167v1",
     "2609.04172v1",
-    "2609.04166v1"
+    "2609.04166v1",
+    "2609.04189v1",
+    "2609.04183v1",
+    "2609.04177v1"
   ],
   "dailyRecords": [
     {
@@ -19,47 +22,48 @@
       "isoDate": "2026-09-06",
       "papers": [
         {
-          "id": "2609.04167v1",
-          "titleTr": "SWE-Gate: Yazılım Mühendisliği Ajanları İçin Fonksiyonel Testleri Geçmek Yeterli Değil",
-          "title": "SWE-Gate: Passing Functional Tests Is Not Enough for Software Engineering Agents",
-          "arxivUrl": "http://arxiv.org/abs/2609.04167v1",
+          "id": "2609.04189v1",
+          "titleTr": "Eşzamanlı Stokastik Oyunların Sağlam PAC Öğrenimi",
+          "title": "Robust PAC Learning of Concurrent Stochastic Games",
+          "arxivUrl": "http://arxiv.org/abs/2609.04189v1",
           "authors": [
-            "Xin He",
-            "Yanlin Wang",
-            "Mingwei Liu"
+            "Angel Y. He",
+            "David Parker"
           ],
           "category": "cs.AI",
-          "impactScore": 9.7,
-          "whyMad": "Mevcut yazılım mühendisliği ajanlarının değerlendirme metriklerinin eksikliğini ortaya koyarak, gerçek dünya yazılım geliştirmede kabul edilebilir bir yama için sadece fonksiyonel testleri geçmenin yeterli olmadığını kanıtlıyor. İnceleme kısıtlamalarını (review constraints) dikkate alan yeni bir benchmark sunarak, ajanların pratik değerini artırma potansiyeli taşıyor.",
-          "summary": "SWE-Gate, yazılım mühendisliği ajanları için repository düzeyinde yeni bir benchmark sunar. Bu benchmark, ajanların ürettiği yamaların sadece fonksiyonel testleri geçip geçmediğini değil, aynı zamanda gerçek dünya yazılım geliştirmede kabul edilebilirliği etkileyen inceleme kısıtlamalarına uyup uymadığını da değerlendirir. Bu, ajanların daha pratik ve kabul edilebilir çözümler üretmesi için kritik bir adımdır."
-        },
-        {
-          "id": "2609.04172v1",
-          "titleTr": "Büyük Dil Modellerinin On-Policy Distilasyonunu Yeniden Düşünmek II: Tek Bir Eğitim Örneği",
-          "title": "Rethinking On-Policy Distillation of Large Language Models II: One Training Example",
-          "arxivUrl": "http://arxiv.org/abs/2609.04172v1",
-          "authors": [
-            "Zixuan Fu",
-            "Bingxiang He",
-            "Yuxin Zuo"
-          ],
-          "category": "cs.CL",
           "impactScore": 9.6,
-          "whyMad": "On-policy distilasyonun (OPD) veri minimal limitinde bile şaşırtıcı derecede etkili olduğunu göstererek, LLM eğitiminde veri verimliliği konusunda ezber bozan bir içgörü sunuyor. Tek bir sorguyla bile tam veri OPD'nin kazanımlarının çoğunu geri kazanabilmesi, gelecekteki LLM optimizasyonları için yeni yollar açıyor.",
-          "summary": "Bu makale, on-policy distilasyonun (OPD) eğitim verisinin rolünü inceler ve tek bir sorguyla eğitim yapıldığında bile OPD'nin yüzlerce adım boyunca gelişmeye devam ettiğini ve tam veri OPD'nin kazanımlarının çoğunu geri kazandığını deneysel olarak gösterir. Bu sonuç, eğitim sırasında ziyaret edilen durumlar üzerinden açıklanır ve LLM'lerin veri verimliliği konusunda yeni perspektifler sunar."
+          "whyMad": "Geçiş belirsizliği olan genel toplamlı eşzamanlı stokastik oyunlar için ilk kez Sağlam PAC öğrenme çerçevesini sunarak, Nash denge varlığı sorununu ele alıyor ve veri odaklı güven setleri ile sağlam bir çözüm sunuyor.",
+          "summary": "Bu makale, geçiş belirsizliği olan eşzamanlı stokastik oyunlar için Sağlam PAC öğrenme çerçevesini tanıtıyor. Algoritma, geçiş çekirdekleri üzerinde veri odaklı L1 güven setleri tutar ve sosyal refahı optimize eden bir ε-Nash dengesi hesaplamak için sağlam bir CSG çözer. Robust MDP tabanlı keşif mekanizması, ortak durum-eylem kapsamını yönlendirmek için kullanılır."
         },
         {
-          "id": "2609.04166v1",
-          "titleTr": "Yanlış Çıktılardan Yanıltıcı Mekanizmalara: Dil Modeli Aldatma Araştırması İçin Nedensel Bir Çerçeve",
-          "title": "From Deceptive Outputs to Deceptive Mechanisms: A Causal Framework for Language-Model Deception Research",
-          "arxivUrl": "http://arxiv.org/abs/2609.04166v1",
+          "id": "2609.04183v1",
+          "titleTr": "Sentezden Önce Görmek: Zayıf Denetimli Yoğun Video Altyazılama için VLM Rehberli Geçiş Olayı Keşfi",
+          "title": "Seeing Before Synthesizing: VLM-Guided Transition Event Discovery for Weakly-Supervised Dense Video Captioning",
+          "arxivUrl": "http://arxiv.org/abs/2609.04183v1",
           "authors": [
-            "Yakov Pyotr Shkolnikov"
+            "Ye-Chan Kim",
+            "Seunghee Choi",
+            "SeungJu Cha"
           ],
           "category": "cs.AI",
           "impactScore": 9.5,
-          "whyMad": "Dil modellerinin 'aldatma' davranışını insan benzeri zihinsel durumlarla ilişkilendiren mevcut araştırmalardaki bulanıklığı gidererek, davranışsal aldatma ile mekanik aldatma arasındaki kritik ayrımı nedensel bir çerçeveyle netleştiriyor. Bu, AI etiği ve güvenliği araştırmaları için temel bir kavramsal araç sunuyor.",
-          "summary": "Makale, dil modellerinin aldatma araştırmalarında insan benzeri zihinsel durum atıflarının yarattığı karışıklığı ele alır. Davranışsal aldatma ile mekanik aldatma arasındaki ayrımı netleştiren nedensel bir taksonomi sunar. Bu çerçeve, modellerin niyetini, tercihlerini ve yanıltıcı çıktıların kökenini daha doğru bir şekilde analiz etmeyi sağlar, böylece AI güvenliği ve etiği alanında daha sağlam araştırmalara olanak tanır."
+          "whyMad": "Zayıf denetimli yoğun video altyazılama alanında, LLM'ler tarafından sentezlenen yardımcı geçiş altyazılarının görsel temellendirme eksikliğini ve sabit konum/süre sorununu ele alarak, VLM rehberli adaptif bir keşif çerçevesi sunuyor.",
+          "summary": "Zayıf denetimli yoğun video altyazılama, kırpılmamış videolardaki birden fazla olayı, yalnızca sıralı olay düzeyinde altyazılarla yerelleştirmeyi ve tanımlamayı amaçlar. Bu çalışma, LLM'ler tarafından sentezlenen yardımcı geçiş altyazılarının görsel temellendirme eksikliğini ve sabit konum/süre sorununu ele almak için 'Sentezden Önce Görmek (SBS)' adlı bir çerçeve öneriyor. SBS, adaptif bir keşif mekanizması sağlar."
+        },
+        {
+          "id": "2609.04177v1",
+          "titleTr": "Nedensel Olasılıksal Açıklama için Hesaplamalı Olarak Uygulanabilir Bir Çerçeve",
+          "title": "A Computationally Feasible Framework for Causal Probabilistic Explanation",
+          "arxivUrl": "http://arxiv.org/abs/2609.04177v1",
+          "authors": [
+            "Rafal Urbaniak",
+            "Sam Witty",
+            "Daniel Waxman"
+          ],
+          "category": "cs.AI",
+          "impactScore": 9.4,
+          "whyMad": "Mevcut nedensel açıklama araçlarının (gerçek nedensellik) hesaplama maliyeti ve ölçeklenebilirlik sorunlarını gidererek, nedensel yapıyı kısmen göz ardı eden SHAP gibi yöntemlerin eksikliklerini, hesaplamalı olarak uygulanabilir yeni bir çerçeve ile çözüyor.",
+          "summary": "Belirli bir sonucun neden meydana geldiğini ve hangi girdilerin suçlanması veya övülmesi gerektiğini açıklamak, felsefi, bilimsel ve politika analizinin merkezindedir. Mevcut araçlar ikiye ayrılır: gerçek nedensellik teorisi prensipli kararlar verir ancak yalnızca oyuncak boyutlu modeller için, çünkü bunları hesaplamak karşıolgusal senaryoları listelemeyi gerektirir. SHAP gibi ölçeklenebilir atıf yöntemleri ise veriyi üreten nedensel yapıyı kısmen göz ardı eder."
         }
       ]
     },

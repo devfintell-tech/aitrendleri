@@ -148,6 +148,17 @@
           "r/ClaudeDev",
           "r/vibecoding"
         ]
+      },
+      {
+        "date": "6 Eylül 2026",
+        "hypeScore": 9.6,
+        "sentiment": "coşkulu",
+        "headline": "Geliştirici Favorisi",
+        "summary": "Geliştiriciler arasında popülerliğini artırması ve kurumsal CLI standardı haline gelmesi.",
+        "sources": [
+          "r/ClaudeDev",
+          "r/AI_Agents"
+        ]
       }
     ]
   },
@@ -193,11 +204,9 @@
         "hypeScore": 9.9,
         "sentiment": "stabil",
         "headline": "Devin'de Canlı",
-        "summary": "Devin'in Fusion harness ile Fable-level zekayı daha ucuza sunması ve Claude'a karşı rekabeti artırması.",
+        "summary": "Devin entegrasyonuyla Claude'a karşı güçlü bir alternatif sunması ve kullanıcılar arasında olumlu geri bildirimler alması.",
         "sources": [
-          "r/windsurf",
-          "r/ClaudeDev",
-          "r/singularity"
+          "r/ClaudeAI"
         ]
       }
     ]
@@ -255,11 +264,9 @@
         "hypeScore": 9.3,
         "sentiment": "stabil",
         "headline": "Kurumsal Ajan Dağıtımı",
-        "summary": "Kurumsal düzeyde ajan dağıtımı ve otomasyon yetenekleriyle iş süreçlerini dönüştürmesi.",
+        "summary": "Kurumsal düzeyde ajan dağıtımında standart haline gelmesi ve esnek otomasyon yetenekleri sunması.",
         "sources": [
-          "r/OpenSourceAI",
-          "r/selfhosted",
-          "r/singularity"
+          "r/AI_Agents"
         ]
       }
     ]
@@ -367,11 +374,10 @@
         "hypeScore": 9.8,
         "sentiment": "stabil",
         "headline": "Sektör Standardı",
-        "summary": "Tartışmasız sektör standardı haline gelmesi ve geliştiriciler arasında popülerliğini koruması.",
+        "summary": "Kurumsal ve geliştirici topluluklarında yüksek performansıyla sektör standardı haline gelmesi.",
         "sources": [
-          "r/ClaudeAI",
-          "r/ClaudeDev",
-          "r/ChatGPTCoding"
+          "r/agenticAI",
+          "r/ClaudeDev"
         ]
       }
     ]
@@ -429,11 +435,9 @@
         "hypeScore": 9.6,
         "sentiment": "stabil",
         "headline": "Altyapı Tekeli",
-        "summary": "AI altyapısındaki tartışmasız tekeli ve kurumsal donanım standardı olarak konumunu güçlendirmesi.",
+        "summary": "Yapay zeka altyapısındaki liderliğini sürdürmesi ve yeni nesil modeller için temel donanım sağlaması.",
         "sources": [
-          "r/singularity",
-          "r/hardware",
-          "r/nvidia"
+          "r/singularity"
         ]
       }
     ]
@@ -469,11 +473,9 @@
         "hypeScore": 9.6,
         "sentiment": "stabil",
         "headline": "CPU Performans Rekoru",
-        "summary": "12 saniyelik çıkış süresi ve CPU üzerinde rekor performansıyla GPU bağımlılığını azaltması.",
+        "summary": "CPU'larda LLM performansında rekor kırarak, GPU bağımlılığını azaltma potansiyeli sunması.",
         "sources": [
-          "r/LocalLLaMA",
-          "r/selfhosted",
-          "r/ollama"
+          "r/LocalLLaMA"
         ]
       }
     ]
@@ -508,11 +510,9 @@
         "hypeScore": 8.7,
         "sentiment": "stabil",
         "headline": "Major Degradation",
-        "summary": "Yüksek yük baskısı, RAM sızıntıları ve genel performans düşüşü nedeniyle kullanıcıların yaşadığı sorunlar.",
+        "summary": "Son güncellemelerle yaşanan performans düşüşleri ve bellek sızıntıları nedeniyle eleştiri toplaması.",
         "sources": [
-          "r/CursorAI",
-          "r/ChatGPTCoding",
-          "r/vibecoding"
+          "r/CursorAI"
         ]
       }
     ]
@@ -686,11 +686,9 @@
         "hypeScore": 9.7,
         "sentiment": "stabil",
         "headline": "10M İndirme Eşiği",
-        "summary": "10 milyon indirme eşiğini aşması ve 16GB RAM'li sistemlerde bile yüksek performans sunarak yerel LLM pazarında liderliğini pekiştirmesi.",
+        "summary": "10 milyon indirme eşiğini aşarak yerel LLM pazarında liderliğini pekiştirmesi ve erişilebilirliği.",
         "sources": [
-          "r/LocalLLaMA",
-          "r/ollama",
-          "r/huggingface"
+          "r/LocalLLaMA"
         ]
       }
     ]
@@ -727,11 +725,9 @@
         "hypeScore": 9.7,
         "sentiment": "stabil",
         "headline": "Video Üretiminde Lider",
-        "summary": "ComfyUI entegrasyonları, Storyboard Tools ve H3 OutpaintPrep gibi araçlarla video üretim ekosisteminde merkezi bir rol oynaması.",
+        "summary": "Video üretiminde sağladığı hız ve kalite ile sektörde lider konumunu güçlendirmesi.",
         "sources": [
-          "r/comfyui",
-          "r/StableDiffusion",
-          "r/SORA"
+          "r/generativeAI"
         ]
       }
     ]
@@ -841,12 +837,13 @@
         "date": "6 Eylül 2026",
         "hypeScore": 10,
         "sentiment": "coşkulu",
-        "headline": "3 Eylül Lansmanı",
-        "summary": "OpenAI tarafından yapılan resmi lansman ve otonom bilgisayar operatörü yetenekleriyle sektörde devrim yaratması.",
+        "headline": "Critical Lansman",
+        "summary": "3 Eylül'deki resmi lansmanı ve 'Critical' siber güvenlik seviyesiyle duyurulması, otonom ajan yeteneklerinde devrim yaratması.",
         "sources": [
-          "r/singularity",
-          "r/artificial",
-          "r/OpenAI"
+          "r/ClaudeAI",
+          "r/AI_Agents",
+          "r/LangChain",
+          "r/windsurf"
         ]
       }
     ]
@@ -920,11 +917,9 @@
         "hypeScore": 9.3,
         "sentiment": "stabil",
         "headline": "Hızlı Görsel LLM",
-        "summary": "GB200 kümeleme ve vLLM dağıtımı ile yüksek performans sunması, hızlı görsel LLM ihtiyacını karşılaması.",
+        "summary": "GB200 kümeleme ve vLLM dağıtımı ile yüksek hızlı görsel LLM performansında öne çıkması.",
         "sources": [
-          "r/LocalLLaMA",
-          "r/ollama",
-          "r/OpenSourceAI"
+          "r/LocalLLaMA"
         ]
       }
     ]
@@ -954,11 +949,9 @@
         "hypeScore": 8.5,
         "sentiment": "eleştirel",
         "headline": "Major Degradation",
-        "summary": "Son güncellemeler sonrası 9-10 GB RAM tüketimi ve sistem çökertme sorunlarıyla kullanıcıların büyük tepkisini çekmesi.",
+        "summary": "Son güncellemeler sonrası aşırı bellek tüketimi ve sistem çökmesi sorunları yaşanması, kullanıcılar arasında ciddi endişe yaratıyor.",
         "sources": [
-          "r/CursorAI",
-          "r/ChatGPTCoding",
-          "r/vibecoding"
+          "r/CursorAI"
         ]
       }
     ]
@@ -1080,11 +1073,9 @@
         "hypeScore": 9.3,
         "sentiment": "stabil",
         "headline": "Yerel Bellek",
-        "summary": "AI sağlayıcılarına bağımlı olmadan değerli AI konuşma bağlamını kişisel kontrol altında tutma imkanı sunması.",
+        "summary": "Ajanların uzun süreli ve güvenilir bellek yönetimi sorununa yerel bir çözüm sunması.",
         "sources": [
-          "r/LocalLLaMA",
-          "r/selfhosted",
-          "r/singularity"
+          "r/AutoGPT"
         ]
       }
     ]
@@ -1155,6 +1146,185 @@
         "sources": [
           "r/vscode",
           "r/vibecoding"
+        ]
+      }
+    ]
+  },
+  "n8n-backup-manager": {
+    "name": "n8n Backup Manager v1.5",
+    "category": "Otomasyon",
+    "history": [
+      {
+        "date": "6 Eylül 2026",
+        "hypeScore": 9.3,
+        "sentiment": "coşkulu",
+        "headline": "Disaster Recovery",
+        "summary": "n8n'in dahili yedekleme eksikliklerini gideren, bağımsız ve güvenilir bir çözüm sunması.",
+        "sources": [
+          "r/AI_Agents"
+        ]
+      }
+    ]
+  },
+  "routed-agent-router": {
+    "name": "Routed (AI Agent Skills Router)",
+    "category": "Altyapı & SDK",
+    "history": [
+      {
+        "date": "6 Eylül 2026",
+        "hypeScore": 9.2,
+        "sentiment": "coşkulu",
+        "headline": "Local-First Router",
+        "summary": "Ajan iş akışlarındaki bağlam penceresi ve token maliyeti sorunlarına CPU üzerinde çalışan açık kaynaklı bir çözüm sunması.",
+        "sources": [
+          "r/AI_Agents"
+        ]
+      }
+    ]
+  },
+  "vscode-theme-mixer": {
+    "name": "VS Code Theme Mixer",
+    "category": "IDE / Editör",
+    "history": [
+      {
+        "date": "6 Eylül 2026",
+        "hypeScore": 9,
+        "sentiment": "coşkulu",
+        "headline": "Yeni Uzantı",
+        "summary": "Geliştiricilerin kişiselleştirilmiş bir kodlama ortamı oluşturmasına olanak tanıyan pratik ve görsel bir araç olması.",
+        "sources": [
+          "r/vscode"
+        ]
+      }
+    ]
+  },
+  "copilot-daily-life": {
+    "name": "Copilot (Kişisel Kullanım)",
+    "category": "LLM (Model)",
+    "history": [
+      {
+        "date": "6 Eylül 2026",
+        "hypeScore": 8.8,
+        "sentiment": "coşkulu",
+        "headline": "Yeni Kullanım Alanı",
+        "summary": "Copilot'ın iş dışı, kişisel yaşamda ve engelli bireylerin bağımsızlığını artırmada sağladığı benzersiz faydaların vurgulanması.",
+        "sources": [
+          "r/Copilot"
+        ]
+      }
+    ]
+  },
+  "cozy-game-vibe-coding": {
+    "name": "Vibe Coding Cozy Game",
+    "category": "Yazılım Geliştirici",
+    "history": [
+      {
+        "date": "6 Eylül 2026",
+        "hypeScore": 8.7,
+        "sentiment": "stabil",
+        "headline": "Geliştirici Deneyimi",
+        "summary": "Yapay zeka araçlarının geliştirme deneyimi olmayan bireylere bile yaratıcı projeler yapma imkanı sunması.",
+        "sources": [
+          "r/vibecoding",
+          "r/ClaudeAI"
+        ]
+      }
+    ]
+  },
+  "llm-agent-harness": {
+    "name": "LLM Agent Harness (Abandoned)",
+    "category": "Yazılım Geliştirici",
+    "history": [
+      {
+        "date": "6 Eylül 2026",
+        "hypeScore": 8.6,
+        "sentiment": "eleştirel",
+        "headline": "Geliştirici İtirafları",
+        "summary": "Ajan geliştirme süreçlerindeki aşırı mühendislik ve karmaşıklık sorunlarına dair dürüst bir vaka çalışması sunması.",
+        "sources": [
+          "r/AI_Agents",
+          "r/programming"
+        ]
+      }
+    ]
+  },
+  "code-complexity-router": {
+    "name": "Code Complexity Router",
+    "category": "Otonom Agent",
+    "history": [
+      {
+        "date": "6 Eylül 2026",
+        "hypeScore": 9.1,
+        "sentiment": "stabil",
+        "headline": "Astra Optimizasyonu",
+        "summary": "Astra'nın artan yetenekleriyle birlikte ortaya çıkan görev yönetimi sorununa pratik bir çözüm sunması.",
+        "sources": [
+          "r/AI_Agents"
+        ]
+      }
+    ]
+  },
+  "vscode-colorize-folder-tree": {
+    "name": "VS Code Colorize Folder Tree",
+    "category": "IDE / Editör",
+    "history": [
+      {
+        "date": "6 Eylül 2026",
+        "hypeScore": 8.9,
+        "sentiment": "stabil",
+        "headline": "Kullanıcı Deneyimi",
+        "summary": "Geliştiricilerin karmaşık proje yapılarında daha kolay gezinmesini sağlayan basit ama etkili bir çözüm sunması.",
+        "sources": [
+          "r/vscode",
+          "r/webdev"
+        ]
+      }
+    ]
+  },
+  "lume-ide": {
+    "name": "Lume IDE",
+    "category": "IDE / Editör",
+    "history": [
+      {
+        "date": "6 Eylül 2026",
+        "hypeScore": 8.5,
+        "sentiment": "coşkulu",
+        "headline": "Cursor Alternatifi",
+        "summary": "Cursor'ın yüksek maliyetleri ve kısıtlamalarına karşı açık kaynaklı ve kullanıcı dostu bir alternatif sunma potansiyeli.",
+        "sources": [
+          "r/CursorAI"
+        ]
+      }
+    ]
+  },
+  "writ-ai-writing-checklist": {
+    "name": "Writ (AI Yazım Kontrol Listesi)",
+    "category": "Yazılım Geliştirici",
+    "history": [
+      {
+        "date": "6 Eylül 2026",
+        "hypeScore": 9,
+        "sentiment": "coşkulu",
+        "headline": "AI Etiği & Güvenliği",
+        "summary": "AI tarafından üretilen metinlerin kalitesini ve özgünlüğünü artırmak için pratik bir araç sunması.",
+        "sources": [
+          "r/programming"
+        ]
+      }
+    ]
+  },
+  "hermes-workflow": {
+    "name": "Hermes Workflow (Self-Learning Browser Agent)",
+    "category": "Otonom Agent",
+    "history": [
+      {
+        "date": "6 Eylül 2026",
+        "hypeScore": 9.2,
+        "sentiment": "coşkulu",
+        "headline": "Tarayıcı Ajanı",
+        "summary": "Ajanların web'de gezinme ve bilgi edinme yeteneklerini geliştiren, onay adımlı ve öğrenme yeteneğine sahip yenilikçi bir yaklaşım sunması.",
+        "sources": [
+          "r/AI_Agents"
         ]
       }
     ]
