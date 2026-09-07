@@ -165,11 +165,14 @@
         "hypeScore": 9.6,
         "sentiment": "stabil",
         "headline": "Geliştirici Favorisi",
-        "summary": "İş arama motoru oluşturma, kod geçmişini görselleştirme ve genel geliştirme süreçlerindeki etkinliğiyle sürekli gündemde.",
+        "summary": "Yüksek kullanım oranları, iş arama motoru entegrasyonu gibi yenilikçi kullanımlar ve maliyet/performans tartışmalarıyla gündemde kalması.",
         "sources": [
-          "r/ClaudeAI",
+          "r/AI_Agents",
+          "r/LLMDevs",
+          "r/windsurf",
           "r/ClaudeDev",
-          "r/agenticAI"
+          "r/agenticAI",
+          "r/ClaudeAI"
         ]
       }
     ]
@@ -225,11 +228,10 @@
         "date": "7 Eylül 2026",
         "hypeScore": 9.9,
         "sentiment": "stabil",
-        "headline": "Astra Rakibi",
-        "summary": "GPT-6 Astra ile doğrudan karşılaştırmalara konu olması ve kendi ajanının tutarsızlıkları bulmaya yönelik açık meydan okumasıyla dikkat çekti.",
+        "headline": "Devin'de Canlı",
+        "summary": "Devin entegrasyonu ve Astra'ya rakip olarak konumlandırılmasıyla dikkat çekmesi.",
         "sources": [
-          "r/AutoGPT",
-          "r/vibecoding"
+          "r/LocalLLaMA"
         ]
       }
     ]
@@ -297,9 +299,9 @@
         "hypeScore": 9.3,
         "sentiment": "stabil",
         "headline": "Kurumsal Ajan Dağıtımı",
-        "summary": "Kurumsal düzeyde ajan dağıtımı ve otomasyon yetenekleriyle öne çıkarak, iş süreçlerini optimize etmek isteyen şirketlerin ilgisini çekti.",
+        "summary": "Kurumsal düzeyde ajan dağıtımı ve otomasyon yetenekleriyle şirketlerin ilgisini çekmesi.",
         "sources": [
-          "r/n8n",
+          "r/AI_Agents",
           "r/Automate"
         ]
       }
@@ -419,7 +421,7 @@
         "hypeScore": 9.8,
         "sentiment": "stabil",
         "headline": "Sektör Standardı",
-        "summary": "Günün lideri olmaya devam eden, kurumsal CLI standardı olarak kabul edilen ve geliştiriciler tarafından yoğun olarak kullanılan bir model.",
+        "summary": "Sektörde güvenilir bir standart olarak kabul edilmesi ve tutarlı performansıyla öne çıkması.",
         "sources": [
           "r/ClaudeAI",
           "r/ClaudeDev"
@@ -490,10 +492,9 @@
         "hypeScore": 9.6,
         "sentiment": "stabil",
         "headline": "Altyapı Tekeli",
-        "summary": "AI altyapısındaki liderliğini sürdürmesi ve kurumsal donanım çözümlerinde standart haline gelmesiyle haftanın en önemli donanım gelişmesi.",
+        "summary": "AI altyapısındaki lider konumunu koruması ve yeni nesil modeller için temel donanım çözümü olması.",
         "sources": [
-          "r/singularity",
-          "r/LocalLLaMA"
+          "r/singularity"
         ]
       }
     ]
@@ -539,10 +540,9 @@
         "hypeScore": 9.6,
         "sentiment": "stabil",
         "headline": "CPU Performans Rekoru",
-        "summary": "GPU bağımlılığını azaltarak yerel ve maliyet etkin AI çözümleri arayan geliştiriciler için büyük bir atılım sunması.",
+        "summary": "CPU'da AI çıkarımında yeni performans rekorları kırması ve donanım bağımsızlığı sağlaması.",
         "sources": [
-          "r/LocalLLaMA",
-          "r/programming"
+          "r/LocalLLaMA"
         ]
       }
     ]
@@ -774,10 +774,9 @@
         "hypeScore": 9.7,
         "sentiment": "stabil",
         "headline": "10M İndirme Eşiği",
-        "summary": "Hugging Face'te 10 milyon indirme eşiğini aşarak yerel LLM'ler arasında popülaritesini kanıtladı ve düşük donanım gereksinimleriyle yüksek performans sunuyor.",
+        "summary": "10 milyon indirme eşiğini aşarak yerel model topluluğunda büyük bir başarıya imza atması ve yüksek performans sunması.",
         "sources": [
-          "r/LocalLLaMA",
-          "r/datascience"
+          "r/LocalLLaMA"
         ]
       }
     ]
@@ -939,12 +938,10 @@
         "date": "7 Eylül 2026",
         "hypeScore": 10,
         "sentiment": "coşkulu",
-        "headline": "Critical Lansman",
-        "summary": "3 Eylül 2026'da OpenAI tarafından resmi lansmanı yapılan ve 'Critical' siber güvenlik seviyesiyle duyurulan bu model, otonom yetenekleri ve hızla etkileşimli web siteleri oluşturma becerisiyle sektörü kökten sarstı.",
+        "headline": "Son 12 Saat Patlaması",
+        "summary": "30 dakikada interaktif web sitesi oluşturma yeteneğiyle 'çılgın' olarak nitelendirilmesi ve geliştiriciler arasında büyük heyecan yaratması.",
         "sources": [
-          "r/vibecoding",
-          "r/agenticAI",
-          "r/singularity"
+          "r/vibecoding"
         ]
       }
     ]
@@ -1028,10 +1025,9 @@
         "hypeScore": 9.3,
         "sentiment": "stabil",
         "headline": "Hızlı Görsel LLM",
-        "summary": "GB200 kümeleme ve vLLM dağıtımı ile entegrasyonu sayesinde hızlı görsel işleme yetenekleri sunmasıyla dikkat çekti.",
+        "summary": "GB200 kümeleme ve vLLM dağıtımı ile yüksek performans göstermesi ve hızlı görsel LLM olarak öne çıkması.",
         "sources": [
-          "r/LocalLLaMA",
-          "r/datascience"
+          "r/LocalLLaMA"
         ]
       }
     ]
@@ -1206,9 +1202,8 @@
         "hypeScore": 9.3,
         "sentiment": "stabil",
         "headline": "Yerel Bellek",
-        "summary": "Ajanların uzun süreli öğrenme ve tutarlılık sorunlarına yerel bir çözüm sunmasıyla, güvenilir ajan geliştirme için kritik bir bileşen olarak öne çıktı.",
+        "summary": "Ajanların dağınık geçmişini yönetme sorununa yerel ve merkezi bir çözüm sunması.",
         "sources": [
-          "r/LangChain",
           "r/AI_Agents"
         ]
       }
@@ -1301,12 +1296,11 @@
       {
         "date": "7 Eylül 2026",
         "hypeScore": 9.3,
-        "sentiment": "stabil",
+        "sentiment": "coşkulu",
         "headline": "Disaster Recovery",
-        "summary": "n8n kullanıcılarının kritik veri güvenliği ve felaket kurtarma ihtiyaçlarına bağımsız ve açık kaynaklı bir çözüm sunmasıyla büyük ilgi gördü.",
+        "summary": "Kendi kendine barındırılan n8n kurulumları için kritik bir sorun olan veri güvenliği ve felaket kurtarma çözümünü sunması.",
         "sources": [
-          "r/n8n",
-          "r/Automate"
+          "r/AI_Agents"
         ]
       }
     ]
@@ -1327,13 +1321,14 @@
       },
       {
         "date": "7 Eylül 2026",
-        "hypeScore": 9.2,
-        "sentiment": "stabil",
+        "hypeScore": 9.8,
+        "sentiment": "coşkulu",
         "headline": "Yeni Açık Kaynak",
-        "summary": "Ajanik iş akışlarındaki bağlam penceresi ve LLM yönlendirici maliyeti sorunlarına pratik, açık kaynaklı ve çevrimdışı bir çözüm sunmasıyla dikkat çekti.",
+        "summary": "Ajan iş akışlarındaki yönlendirme sorununu (token maliyeti, gecikme) çözmesi, açık kaynak olması ve yerel çalışmasıyla büyük ilgi gördü.",
         "sources": [
           "r/programming",
-          "r/webdev",
+          "r/LLMDevs",
+          "r/PromptEngineering",
           "r/vibecoding"
         ]
       }
@@ -1356,12 +1351,11 @@
       {
         "date": "7 Eylül 2026",
         "hypeScore": 9,
-        "sentiment": "stabil",
+        "sentiment": "coşkulu",
         "headline": "Yeni Uzantı",
-        "summary": "Kullanıcıların IDE'lerini daha kişisel ve verimli hale getirme arayışına yenilikçi bir çözüm sunmasıyla popüler oldu.",
+        "summary": "Geliştiricilere VS Code deneyimlerini kişiselleştirmek için yenilikçi ve esnek bir yol sunması.",
         "sources": [
-          "r/vscode",
-          "r/webdev"
+          "r/vscode"
         ]
       }
     ]
@@ -1517,7 +1511,7 @@
         "hypeScore": 8.7,
         "sentiment": "stabil",
         "headline": "İlham Veren Hikaye",
-        "summary": "Para kazandırmayan 'vibecoded' projelerin, yüksek maaşlı bir iş bulmada nasıl etkili olduğunu gösteren ilham verici bir başarı hikayesi.",
+        "summary": "Vibecoding ile yapılan projelerin doğrudan para kazandırmasa da, yüksek maaşlı bir iş bulmaya yardımcı olmasıyla ilham vermesi.",
         "sources": [
           "r/vibecoding"
         ]
@@ -1550,10 +1544,9 @@
         "hypeScore": 9,
         "sentiment": "stabil",
         "headline": "Yeni Kullanım Alanı",
-        "summary": "Geleneksel slayt editörlerini atlayarak, 'Artifact as Code' yaklaşımıyla sunumları kod olarak yazma fikri geliştiriciler arasında ilgi uyandırdı.",
+        "summary": "Geleneksel slayt editörlerine olan ihtiyacı ortadan kaldıran yenilikçi bir 'Artifact as Code' yaklaşımı sunması.",
         "sources": [
-          "r/CursorAI",
-          "r/vibecoding"
+          "r/ChatGPTCoding"
         ]
       }
     ]
@@ -1567,7 +1560,7 @@
         "hypeScore": 8.2,
         "sentiment": "eleştirel",
         "headline": "Teknik Sorun",
-        "summary": "Yeni ve güçlü Astra modelinin mevcut geliştirme ortamlarına entegrasyonunda yaşanan teknik aksaklıklar, kullanıcılar arasında hayal kırıklığı yarattı.",
+        "summary": "Kullanıcıların Astra'yı kullanamaması ve güncelleme sonrası oluşan 'bloat' sorunları nedeniyle geliştirici topluluğunda hayal kırıklığı yaratması.",
         "sources": [
           "r/windsurf"
         ]
@@ -1583,10 +1576,9 @@
         "hypeScore": 8.5,
         "sentiment": "stabil",
         "headline": "Kritik Tartışma",
-        "summary": "Ajanların çıktısına insan kontrolü olmadan ne zaman güvenileceği ve bu güveni sağlayacak sistemlerin eksikliği üzerine derinlemesine bir tartışma başladı.",
+        "summary": "Otonom ajanların yaygınlaşmasının önündeki temel engellerden biri olarak güven sistemlerinin önemi vurgulanıyor.",
         "sources": [
-          "r/LangChain",
-          "r/AI_Agents"
+          "r/LangChain"
         ]
       }
     ]
@@ -1600,10 +1592,10 @@
         "hypeScore": 8,
         "sentiment": "eleştirel",
         "headline": "Sürdürülebilirlik Tartışması",
-        "summary": "Şirketlerin yüzlerce veya binlerce geliştirici için AI ajan maliyetlerini nasıl yönettiği ve bu maliyetlerin gerçekten karşılığını verip vermediği üzerine kritik bir tartışma başladı.",
+        "summary": "AI ajanlarının artan maliyetleri ve bu yatırımların sürdürülebilirliği konusunda sektör genelinde devam eden endişeler.",
         "sources": [
-          "r/ChatGPTCoding",
-          "r/programming"
+          "r/AI_Agents",
+          "r/LLMDevs"
         ]
       }
     ]
@@ -1637,6 +1629,71 @@
         "sources": [
           "r/ClaudeAI",
           "r/AI_Agents"
+        ]
+      }
+    ]
+  },
+  "notion-mcp-connector": {
+    "name": "Notion's Official MCP Connector",
+    "category": "Bulut & Platform",
+    "history": [
+      {
+        "date": "7 Eylül 2026",
+        "hypeScore": 9.5,
+        "sentiment": "eleştirel",
+        "headline": "Etik Tartışma",
+        "summary": "Kullanıcıların izni olmadan görev sırasında ürün reklamı enjekte etmesi ve şeffaflık eksikliği nedeniyle yoğun eleştiri alması.",
+        "sources": [
+          "r/ClaudeAI"
+        ]
+      }
+    ]
+  },
+  "together-ai-anyscale-poll": {
+    "name": "Together AI / Anyscale (LLM Ölçekleme)",
+    "category": "Bulut & Platform",
+    "history": [
+      {
+        "date": "7 Eylül 2026",
+        "hypeScore": 8.5,
+        "sentiment": "stabil",
+        "headline": "Pazar Araştırması",
+        "summary": "LLM'leri ölçeklendirme konusunda Together AI ve Anyscale arasındaki rekabetin ve tercihlerin geliştiriciler arasında tartışılması.",
+        "sources": [
+          "r/AutoGPT",
+          "r/crewai"
+        ]
+      }
+    ]
+  },
+  "python-interpreter-1024bytes": {
+    "name": "Python Interpreter (1024 bytes)",
+    "category": "Yazılım Geliştirici",
+    "history": [
+      {
+        "date": "7 Eylül 2026",
+        "hypeScore": 8.8,
+        "sentiment": "stabil",
+        "headline": "Teknik Başarı",
+        "summary": "Minimalist kodlama ve dil tasarımı alanında etkileyici bir teknik başarı olarak dikkat çekmesi.",
+        "sources": [
+          "r/programming"
+        ]
+      }
+    ]
+  },
+  "ai-mandates-shame": {
+    "name": "AI Mandateleri ve Utanç",
+    "category": "Yazılım Geliştirici",
+    "history": [
+      {
+        "date": "7 Eylül 2026",
+        "hypeScore": 7.8,
+        "sentiment": "eleştirel",
+        "headline": "Geliştirici Duyguları",
+        "summary": "AI'ın geliştirme süreçlerine entegrasyonunun insan faktörü üzerindeki olumsuz etkileri ve etik ikilemlerin tartışılması.",
+        "sources": [
+          "r/LLMDevs"
         ]
       }
     ]

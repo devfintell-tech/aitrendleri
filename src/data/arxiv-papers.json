@@ -17,7 +17,10 @@
     "2609.04177v1",
     "2609.04173v1",
     "2609.04159v1",
-    "2609.04148v1"
+    "2609.04148v1",
+    "2609.05415v1",
+    "2609.05401v1",
+    "2609.05405v1"
   ],
   "dailyRecords": [
     {
@@ -25,49 +28,49 @@
       "isoDate": "2026-09-07",
       "papers": [
         {
-          "id": "2609.04173v1",
-          "titleTr": "Son Çeviri Kıyaslaması: Model Sınırlarını Test Etme ve Hata Durumlarını Anlama",
-          "title": "Last Translation Benchmark",
-          "arxivUrl": "http://arxiv.org/abs/2609.04173v1",
+          "id": "2609.05415v1",
+          "titleTr": "UniMate: Çeşitli İskeletleri Canlandırmak İçin Tek Bir Birleşik Model",
+          "title": "UniMate: One Unified Model to Animate Diverse Skeletons",
+          "arxivUrl": "http://arxiv.org/abs/2609.05415v1",
           "authors": [
-            "Vilém Zouhar",
-            "Niyati Bafna",
-            "Mukund Choudhary"
-          ],
-          "category": "cs.CL",
-          "impactScore": 9.2,
-          "whyMad": "Mevcut makine çevirisi kıyaslamalarının doygunluğa ulaşması ve otomatik metriklerin güvenilmezliği sorunlarına odaklanarak, modellerin gerçek sınırlarını test eden ve hata durumlarını ortaya koyan yeni bir yaklaşım sunuyor.",
-          "summary": "Makale, bilimsel ilerleme için modellerin sınırlarını test eden ve hata durumları hakkında bilgi veren kıyaslamalara ihtiyaç duyulduğunu belirtiyor. Mevcut otomatik çeviri metriklerinin güvenilmezliğini ve insan değerlendirmesinin tekrarlanabilirlik eksikliklerini ele alarak, bu sorunları aşacak yeni bir değerlendirme çerçevesi öneriyor."
-        },
-        {
-          "id": "2609.04159v1",
-          "titleTr": "SENTINEL-RL: Güvenlik Operasyon Merkezinde LLM Ajanlarından Topolojik Akıl Yürütmeyi Ayırma",
-          "title": "SENTINEL-RL: Offloading Topological Reasoning from LLM Agents in the Security Operations Center",
-          "arxivUrl": "http://arxiv.org/abs/2609.04159v1",
-          "authors": [
-            "Uday Vallabhaneni",
-            "Cassie L. Cagwin",
-            "David J. Wild"
-          ],
-          "category": "cs.CR",
-          "impactScore": 9.5,
-          "whyMad": "LLM ajanlarının otonom SOC analistleri olarak kullanılması önündeki iki temel sınırlamayı (sonlu bağlam penceresi ve topolojik tutarsızlık) ele alarak, topolojik akıl yürütmeyi semantik akıl yürütmeden ayıran yenilikçi bir mimari sunuyor.",
-          "summary": "Makale, LLM ajanlarının binlerce ana bilgisayarlı kimlik doğrulama grafiğini yönetememesi ve önerilen eylemlerin topolojiyle tutarlı olmaması sorunlarını çözmek için Sentinel-RL mimarisini tanıtıyor. Bu mimari, topolojik akıl yürütmeyi heterojen bir grafik dikkat ağına devrederek LLM'lerin güvenlik operasyonlarındaki güvenilirliğini artırıyor."
-        },
-        {
-          "id": "2609.04148v1",
-          "titleTr": "Terminal-Universe: Ajan Trajektörlerini Ölçeklenebilir Terminal Ortamlarına Dönüştürme",
-          "title": "Terminal-Universe: Turning Agent Trajectories into Scalable Terminal Environments",
-          "arxivUrl": "http://arxiv.org/abs/2609.04148v1",
-          "authors": [
-            "Jie Wu",
-            "Zhenru Zhang",
-            "Beichen Zhang"
+            "Linzhan Mou",
+            "Jiahui Lei",
+            "Zhiyang Dou"
           ],
           "category": "cs.AI",
-          "impactScore": 9.3,
-          "whyMad": "Terminal tabanlı kod ajanlarının yaygınlaşmasıyla biriken ajan trajektörlerini, doğrulanabilir görevler ve yürütme geri bildirimi sağlayan gerçekçi, yürütülebilir ortamlara dönüştürme sorununa çözüm getiriyor.",
-          "summary": "Makale, ajan trajektörlerinin tek bir donmuş gösterim olmaktan öte, araç yürütme geçmişlerinin ortam yapısını ortaya çıkardığını gözlemleyerek, bu trajektörleri ölçeklenebilir terminal ortamlarına dönüştüren bir yöntem sunuyor. Bu, ajanların eğitim sonrası süreçleri için kritik bir ihtiyaç olan gerçekçi ortam eksikliğini gideriyor."
+          "impactScore": 9.6,
+          "whyMad": "Bu makale, otomatik rigging ile elde edilen 3D varlıklar için hareket üretme darboğazını ortadan kaldırıyor. UniMate, herhangi bir iskelet için, test zamanı optimizasyonu veya referans hareketler gerektirmeden, rigged 3D varlık ve metin isteminden eklemli hareket sentezleyebilen birleşik bir temel model sunuyor. Bu, animasyon üretimini kökten değiştirecek bir yenilik.",
+          "summary": "UniMate, topoloji kısıtlamalı mevcut animatörlerin aksine, herhangi bir iskelet için rigged 3D varlık ve metin isteminden eklemli hareket sentezleyebilen birleşik bir temel modeldir. Bu model, kategoriye özgü şablonlara veya iskelet başına ince ayara ihtiyaç duymadan, animasyon üretimini ölçeklendirilebilir ve erişilebilir hale getiriyor."
+        },
+        {
+          "id": "2609.05401v1",
+          "titleTr": "Aynı Trajektori, Çelişkili Ödüller (ROBORMBENCH): Görsel Dil Ödül Modellerinde Paraphrase Kırılganlığı",
+          "title": "Same Trajectory, Contradictory Rewards (ROBORMBENCH): Paraphrase Fragility in Vision Language Reward Models",
+          "arxivUrl": "http://arxiv.org/abs/2609.05401v1",
+          "authors": [
+            "Wonje Jeung",
+            "Sangyeon Yoon",
+            "Hyesoo Hong"
+          ],
+          "category": "cs.AI",
+          "impactScore": 9.5,
+          "whyMad": "Bu makale, robotik öğrenmede ödül fonksiyonu olarak kullanılan görsel dil modellerinin (VLM) kritik bir zayıflığını ortaya koyuyor: paraphrase değişmezliği eksikliği. Aynı robotik davranışın, sadece talimatın farklı bir şekilde ifade edilmesiyle tamamen farklı ödüller alabileceğini, hatta başarısızlık ve başarı arasında gidip gelebileceğini gösteriyor. Bu, VLM tabanlı robotik sistemlerin güvenilirliği için ciddi bir uyarı.",
+          "summary": "ROBORMBENCH, VLM ödül modellerinin paraphrase değişmezliğini ihlal ettiğini gösteren bir kıyaslama sunuyor. Semantik olarak eşdeğer hedef açıklamaları altında aynı trajektorinin farklı ödüller alması, bu modellerin robotik öğrenmedeki güvenilirliğini sorgulatıyor ve bu kırılganlığı ölçmek için yeni bir yöntem sunuyor."
+        },
+        {
+          "id": "2609.05405v1",
+          "titleTr": "WearableQA: Gerçek Dünya Giyilebilir Veriler Üzerinden Sağlık Akıl Yürütme İçin Bir Kıyaslama",
+          "title": "WearableQA: A Benchmark for Health Reasoning over Real-World Wearable Data",
+          "arxivUrl": "http://arxiv.org/abs/2609.05405v1",
+          "authors": [
+            "Ji Soo Lee",
+            "Xilun Chen",
+            "Pierce Chuang"
+          ],
+          "category": "cs.AI",
+          "impactScore": 9.4,
+          "whyMad": "Giyilebilir sensörlerden elde edilen gerçek dünya, uzunlamasına sağlık verileri üzerinde AI sistemlerinin akıl yürütme yeteneğini değerlendiren ilk kapsamlı kıyaslamayı sunuyor. 200 gerçek kullanıcının 500 güne kadar günlük ölçümlerini içeren 4.084 çoktan seçmeli soru ile, AI'ın kişiselleştirilmiş sağlık takibindeki potansiyelini ve mevcut sınırlamalarını ortaya koyuyor.",
+          "summary": "WearableQA, 200 gerçek kullanıcının giyilebilir zaman serileri, kan biyobelirteçleri ve demografik verilerinden oluşturulan 4.084 çoktan seçmeli sorudan oluşan bir kıyaslamadır. AI sistemlerinin gerçek kullanıcıların uzunlamasına giyilebilir kayıtları üzerinde sağlık akıl yürütme yeteneklerini değerlendirerek, kişiselleştirilmiş sağlık AI'ı için yeni bir standart belirliyor."
         }
       ]
     },

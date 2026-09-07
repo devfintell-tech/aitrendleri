@@ -1650,6 +1650,8 @@ function enforceStrictStandards(data, hfModels = [], candidateArxiv = [], hnPost
     name: "Günün Öne Çıkan AI Modeli",
     badge: "Topluluk Gündemi",
     primaryFunction: "Toplulukta en yüksek tartışma ve ilgi gören yapay zeka aracı."
+  };
+
   const cleanStrName = (val) => {
     if (!val || typeof val !== 'string') return "";
     return val.replace(/\s*\([^)]*(günün|lider|numara|seçilen|modeli|1\s*numara)[^)]*\)/gi, "").trim();
