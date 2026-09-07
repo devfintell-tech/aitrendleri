@@ -26,11 +26,12 @@ if (fs.existsSync(envPath)) {
   }
 }
 
-// 3 Farklı Gemini API Anahtar Havuzu (Yedekli ve Rotasyonlu - Sadece ortam değişkenlerinden okunur)
+// 4 Farklı Gemini API Anahtar Havuzu (Yedekli ve Rotasyonlu - Sadece ortam değişkenlerinden okunur)
 const GEMINI_API_KEYS = [
   process.env.GEMINI_API_KEY,
   process.env.GEMINI_API_KEY_2,
-  process.env.GEMINI_API_KEY_3
+  process.env.GEMINI_API_KEY_3,
+  process.env.GEMINI_API_KEY_4
 ].filter(Boolean);
 
 const parser = new XMLParser({

@@ -20,7 +20,10 @@
     "2609.04148v1",
     "2609.05415v1",
     "2609.05401v1",
-    "2609.05405v1"
+    "2609.05405v1",
+    "2609.05404v1",
+    "2609.05395v1",
+    "2609.05385v1"
   ],
   "dailyRecords": [
     {
@@ -28,49 +31,47 @@
       "isoDate": "2026-09-07",
       "papers": [
         {
-          "id": "2609.05415v1",
-          "titleTr": "UniMate: Çeşitli İskeletleri Canlandırmak İçin Tek Bir Birleşik Model",
-          "title": "UniMate: One Unified Model to Animate Diverse Skeletons",
-          "arxivUrl": "http://arxiv.org/abs/2609.05415v1",
+          "id": "2609.05404v1",
+          "titleTr": "Difüzyon TV: Somut, Bedensel Etkileşim Yoluyla Difüzyon Modellerini Deneyimlemek",
+          "title": "Diffusion TV: Experiencing Diffusion Models through Tangible, Embodied Interaction",
+          "arxivUrl": "http://arxiv.org/abs/2609.05404v1",
           "authors": [
-            "Linzhan Mou",
-            "Jiahui Lei",
-            "Zhiyang Dou"
+            "Sihwa Park"
           ],
           "category": "cs.AI",
           "impactScore": 9.6,
-          "whyMad": "Bu makale, otomatik rigging ile elde edilen 3D varlıklar için hareket üretme darboğazını ortadan kaldırıyor. UniMate, herhangi bir iskelet için, test zamanı optimizasyonu veya referans hareketler gerektirmeden, rigged 3D varlık ve metin isteminden eklemli hareket sentezleyebilen birleşik bir temel model sunuyor. Bu, animasyon üretimini kökten değiştirecek bir yenilik.",
-          "summary": "UniMate, topoloji kısıtlamalı mevcut animatörlerin aksine, herhangi bir iskelet için rigged 3D varlık ve metin isteminden eklemli hareket sentezleyebilen birleşik bir temel modeldir. Bu model, kategoriye özgü şablonlara veya iskelet başına ince ayara ihtiyaç duymadan, animasyon üretimini ölçeklendirilebilir ve erişilebilir hale getiriyor."
+          "whyMad": "Difüzyon modellerini fiziksel bir CRT TV ve anten manipülasyonu ile deneyimleme imkanı sunarak, AI sanatını somut ve bedensel bir etkileşime dönüştürüyor. Bu, AI ile insan etkileşimi konusunda yeni bir paradigma sunuyor.",
+          "summary": "Diffusion TV, modifiye edilmiş bir CRT TV aracılığıyla difüzyon modellerinin somut ve bedensel bir deneyimini sunan interaktif bir AI sanat enstalasyonudur. Fiziksel olarak TV'nin antenini manipüle ederek, izleyiciler AI tarafından üretilen görüntü ve seslerin netliğini kontrol eder, böylece difüzyon tabanlı üretimin temelini oluşturan gürültü giderme sürecini metaforik olarak canlandırır."
         },
         {
-          "id": "2609.05401v1",
-          "titleTr": "Aynı Trajektori, Çelişkili Ödüller (ROBORMBENCH): Görsel Dil Ödül Modellerinde Paraphrase Kırılganlığı",
-          "title": "Same Trajectory, Contradictory Rewards (ROBORMBENCH): Paraphrase Fragility in Vision Language Reward Models",
-          "arxivUrl": "http://arxiv.org/abs/2609.05401v1",
+          "id": "2609.05395v1",
+          "titleTr": "Kore Açık Kamu API'leri Üzerinden Çok Adımlı Araç Çağırma: Bir Kıyaslama ve Veri Sentezi Reçetesi",
+          "title": "Multi-Step Tool-Calling over Korean Open Public APIs: A Benchmark and a Data-Synthesis Recipe",
+          "arxivUrl": "http://arxiv.org/abs/2609.05395v1",
           "authors": [
-            "Wonje Jeung",
-            "Sangyeon Yoon",
-            "Hyesoo Hong"
+            "Dain Kim",
+            "Eungi Cho",
+            "Kyumin Kim"
           ],
           "category": "cs.AI",
           "impactScore": 9.5,
-          "whyMad": "Bu makale, robotik öğrenmede ödül fonksiyonu olarak kullanılan görsel dil modellerinin (VLM) kritik bir zayıflığını ortaya koyuyor: paraphrase değişmezliği eksikliği. Aynı robotik davranışın, sadece talimatın farklı bir şekilde ifade edilmesiyle tamamen farklı ödüller alabileceğini, hatta başarısızlık ve başarı arasında gidip gelebileceğini gösteriyor. Bu, VLM tabanlı robotik sistemlerin güvenilirliği için ciddi bir uyarı.",
-          "summary": "ROBORMBENCH, VLM ödül modellerinin paraphrase değişmezliğini ihlal ettiğini gösteren bir kıyaslama sunuyor. Semantik olarak eşdeğer hedef açıklamaları altında aynı trajektorinin farklı ödüller alması, bu modellerin robotik öğrenmedeki güvenilirliğini sorgulatıyor ve bu kırılganlığı ölçmek için yeni bir yöntem sunuyor."
+          "whyMad": "Açık kaynak LLM ajanlarının çok adımlı araç çağırma yeteneklerindeki eksikliği gideren ilk kapsamlı Korece kıyaslama ve veri sentezi metodolojisini sunuyor. Bu, gerçek dünya hükümet API'leriyle çalışan ajanların geliştirilmesi için kritik bir adım.",
+          "summary": "Veri egemenliği düzenlemeleri, kamu kurumlarının birden fazla araç çağrısını zincirleyen açık kaynak, şirket içi LLM ajanları dağıtmasını giderek daha fazla gerektirmektedir. Ancak, açık kaynak modeller bu çok adımlı ortamda sürekli olarak düşük performans göstermekte ve mevcut hiçbir kıyaslama bu boşluğu ölçmemektedir. Bu boşluğu kapatmak için, 145 gerçek dünya görevinden oluşan Kore Açık Kamu API Kıyaslaması'nı (KOPA-Bench) tanıtıyoruz ve araç çağırma veri sentezi için Yürütme Temelli Dinamik Grafik (EDGE) adlı bir reçete sunuyoruz."
         },
         {
-          "id": "2609.05405v1",
-          "titleTr": "WearableQA: Gerçek Dünya Giyilebilir Veriler Üzerinden Sağlık Akıl Yürütme İçin Bir Kıyaslama",
-          "title": "WearableQA: A Benchmark for Health Reasoning over Real-World Wearable Data",
-          "arxivUrl": "http://arxiv.org/abs/2609.05405v1",
+          "id": "2609.05385v1",
+          "titleTr": "Gerekli mi Yoksa Yeterli mi? Davranışsal Kanıtlarla LLM Açıklamalarını Değerlendirme",
+          "title": "Necessary or Sufficient? Evaluating LLM Explanations With Behavioural Evidence",
+          "arxivUrl": "http://arxiv.org/abs/2609.05385v1",
           "authors": [
-            "Ji Soo Lee",
-            "Xilun Chen",
-            "Pierce Chuang"
+            "Urja Pawar",
+            "Rajitha Ramanayake",
+            "Nabeel Kemal"
           ],
           "category": "cs.AI",
           "impactScore": 9.4,
-          "whyMad": "Giyilebilir sensörlerden elde edilen gerçek dünya, uzunlamasına sağlık verileri üzerinde AI sistemlerinin akıl yürütme yeteneğini değerlendiren ilk kapsamlı kıyaslamayı sunuyor. 200 gerçek kullanıcının 500 güne kadar günlük ölçümlerini içeren 4.084 çoktan seçmeli soru ile, AI'ın kişiselleştirilmiş sağlık takibindeki potansiyelini ve mevcut sınırlamalarını ortaya koyuyor.",
-          "summary": "WearableQA, 200 gerçek kullanıcının giyilebilir zaman serileri, kan biyobelirteçleri ve demografik verilerinden oluşturulan 4.084 çoktan seçmeli sorudan oluşan bir kıyaslamadır. AI sistemlerinin gerçek kullanıcıların uzunlamasına giyilebilir kayıtları üzerinde sağlık akıl yürütme yeteneklerini değerlendirerek, kişiselleştirilmiş sağlık AI'ı için yeni bir standart belirliyor."
+          "whyMad": "LLM'lerin ürettiği açıklamaların, modelin gerçek karar verme mekanizmasıyla ne kadar uyumlu olduğunu sorgulayan kritik bir çalışma. Açıklamaların sadece 'okunabilir' olmasının, modelin gerçekten o adımları izlediği anlamına gelmediğini gösteriyor.",
+          "summary": "Ajan iş akışlarında çalışabilen LLM karar bileşenleri, genellikle eylemle ilgili öneriler veya yargılarla birlikte açıklamalar üretir. Operatörler, adlandırılmış faktörleri bir sistemi izlemek, hataları teşhis etmek veya bir çıktıyı ne zaman yükselteceklerine karar vermek için kullanabilirler. Bu tür bir kullanım, açıklamaların bileşenin gözlemlenebilir karar davranışıyla uyumlu olduğunu varsayar. Adlandırılmış faktörlerin iki yorumunu test ediyoruz: gereklilik, yani bir faktörü değiştirmenin çıktıyı değiştireceği anlamına gelir ve yeterlilik, yani..."
         }
       ]
     },

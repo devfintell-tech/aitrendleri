@@ -1,40 +1,40 @@
 ================================================================================
 🤖 AITRENDLERI.COM OTONOM TARAMA VE ANALİZ TERMİNAL RAPORU
-Tarih: 7 Eylül 2026 | İşlem Süresi: 266s
+Tarih: 7 Eylül 2026 | İşlem Süresi: 363s
 ================================================================================
 
 [1. MODEL & ŞELALE AKTİVİTESİ]
   ✔ Aktif Çalışan Model : gemini-2.5-flash
-  ✔ Seçilen API Anahtarı : GEMINI_API_KEY #1
+  ✔ Seçilen API Anahtarı : GEMINI_API_KEY #2
   ✔ Yürütme Durumu       : BAŞARILI (HTTP 200 OK)
 
 [2. 50 REDDIT TOPLULUĞU TARAMA TELEMETRİSİ]
-  ✔ Toplam Analiz Edilen Gönderi : 44
+  ✔ Toplam Analiz Edilen Gönderi : 45
   ✔ Başarılı Kategori / Batch   : 3 / 7
   ------------------------------------------------------------------------------
   1. [🟢 OK 200] Vibe Coding & Yeni Nesil Editörler: 15 gönderi
      └─ Dağılım: r/ClaudeAI: 2, r/vibecoding: 2, r/vscode: 2, r/ChatGPTCoding: 3, r/Copilot: 1, r/CursorAI: 2, r/windsurf: 2, r/ClaudeDev: 1
-  2. [🟢 OK 200] Otonom Ajanlar & Süreç Otomasyonu: 14 gönderi
-     └─ Dağılım: r/AI_Agents: 4, r/n8n: 2, r/AutoGPT: 1, r/LangChain: 3, r/crewai: 1, r/agenticAI: 3, r/Automate: 1
-  3. [🔴 ERR 429] Büyük Dil Modelleri & Araştırma Devleri: 0 gönderi
+  2. [🔴 ERR 429] Otonom Ajanlar & Süreç Otomasyonu: 0 gönderi
      └─ Hata/Uyarı: Reddit HTTP 429 (Rate Limit)
+  3. [🟢 OK 200] Büyük Dil Modelleri & Araştırma Devleri: 15 gönderi
+     └─ Dağılım: r/singularity: 3, r/OpenAI: 4, r/DeepSeek: 1, r/ArtificialInteligence: 2, r/MachineLearning: 1, r/Anthropic: 2, r/GoogleGemini: 2
   4. [🔴 ERR 429] Açık Kaynak, Yerel Modeller & Self-Hosted: 0 gönderi
-     └─ Hata/Uyarı: Reddit HTTP 429 (Rate Limit)
-  5. [🟢 OK 200] Yazılım Geliştirici, API & Kodlama Dünyası: 15 gönderi
-     └─ Dağılım: r/programming: 2, r/webdev: 2, r/generativeAI: 1, r/PromptEngineering: 2, r/LLMDevs: 6, r/ai_tools: 1, r/datascience: 1
-  6. [🔴 ERR 429] Donanım, GPU, CPU & Bulut Altyapısı: 0 gönderi
-     └─ Hata/Uyarı: Reddit HTTP 429 (Rate Limit)
+     └─ Hata/Uyarı: fetch failed
+  5. [🔴 ERR 200] Yazılım Geliştirici, API & Kodlama Dünyası: 0 gönderi
+     └─ Hata/Uyarı: fetch failed
+  6. [🟢 OK 200] Donanım, GPU, CPU & Bulut Altyapısı: 15 gönderi
+     └─ Dağılım: r/hardware: 2, r/nvidia: 4, r/sysadmin: 2, r/devops: 1, r/AMD_Stock: 1, r/googlecloud: 1, r/Cloud: 4
   7. [🔴 ERR 429] Görsel, Video & Medya Üretimi: 0 gönderi
      └─ Hata/Uyarı: Reddit HTTP 429 (Rate Limit)
 
 [3. SUBREDDİT VERİTABANI İÇGÖRÜLERİ (src/data/subreddit-stats.json)]
   ✔ Toplam Takip Edilen Subreddit : 49
-  ✔ Yüksek Sinyal Verenler        : 49
-  ✔ Aktif Düzenli Kaynaklar       : 0
+  ✔ Yüksek Sinyal Verenler        : 29
+  ✔ Aktif Düzenli Kaynaklar       : 20
   ✔ Düşük Sinyal / Takiptekiler   : 0
   ✔ Sıfır Çekenler (Dead Sub)     : 0
   ------------------------------------------------------------------------------
-  🏆 En Çok Katkı Sağlayanlar: r/LLMDevs (7), r/AI_Agents (5), r/ChatGPTCoding (4), r/LangChain (4), r/vibecoding (3)
+  🏆 En Çok Katkı Sağlayanlar: r/ChatGPTCoding (7), r/LLMDevs (7), r/vibecoding (5), r/CursorAI (5), r/windsurf (5)
   ⚠️ Düşük Sinyal Verenler   : Yok
   🚫 Değiştirilmesi Önerilen : Yok (Tümü veri sağlıyor)
 
@@ -45,7 +45,7 @@ Tarih: 7 Eylül 2026 | İşlem Süresi: 266s
   ✔ GitHub Radar        : 6 repo
 
 [5. GÜNÜN ORGANİK 1 NUMARALI LİDERİ]
-  👑 GPT-6 Astra (Skor: 99/100 - Günün Lideri)
-  📝 Neden Seçildi: 30 dakikada interaktif web sitesi oluşturma yeteneğiyle 'çılgın' olarak nitelendirilmesi ve geliştiriciler arasında büyük heyecan yaratması.
+  👑 Routed (Skor: 99/100 - Yeni Açık Kaynak)
+  📝 Neden Seçildi: Ajan iş akışlarındaki yönlendirme sorununu düşük gecikme ve sıfır token maliyetiyle yerel olarak çözmesi, geliştiriciler arasında büyük ilgi gördü.
 
 ================================================================================
