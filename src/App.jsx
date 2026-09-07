@@ -1071,7 +1071,7 @@ ${bulletsText}
                   <th className="w-52 px-3 py-2.5 border-r border-[#cbd5e1] text-left">Model / Ürün Adı</th>
                   <th className="w-44 px-3 py-2.5 border-r border-[#cbd5e1] text-left">Kategori</th>
                   <th className="px-3 py-2.5 border-r border-[#cbd5e1] text-left">Temel Yetenek &amp; Fonksiyon</th>
-                  <th className="w-24 px-3 py-2.5 border-r border-[#cbd5e1] text-right">Hype Skoru</th>
+                  <th className="w-24 px-3 py-2.5 border-r border-[#cbd5e1] text-right">Topluluk Puanı</th>
                   <th className="w-20 px-3 py-2.5 border-r border-[#cbd5e1] text-right">Delta (Δ)</th>
                   <th className="w-28 px-3 py-2.5 text-center">Topluluk Kaynak</th>
                 </tr>
@@ -1126,9 +1126,12 @@ ${bulletsText}
                           </div>
                         </td>
 
-                        {/* Kolon E: Hype Skoru */}
+                        {/* Kolon E: Topluluk Puanı */}
                         <td className="w-24 px-3 text-right border-r border-[#e2e8f0] font-mono">
-                          <span className="font-black text-slate-900 text-sm">
+                          <span className={`font-black text-sm ${
+                            (tool.hypeScore || 0) >= 8.5 ? 'text-slate-900' :
+                            (tool.hypeScore || 0) >= 7.0 ? 'text-amber-700' : 'text-rose-600'
+                          }`}>
                             {Number(tool.hypeScore || 0).toFixed(1)}
                           </span>
                           <span className="text-[10px] text-slate-400 font-normal">/10</span>
@@ -1320,10 +1323,13 @@ ${bulletsText}
                       </div>
                     </div>
 
-                    {/* Sağ Taraf: Hype Skoru + Ok İkonu */}
+                    {/* Sağ Taraf: Topluluk Puanı + Ok İkonu */}
                     <div className="flex items-center gap-2 flex-shrink-0 font-mono text-right">
                       <div className="w-14 text-right">
-                        <span className="font-black text-slate-900 text-sm">
+                        <span className={`font-black text-sm ${
+                          (tool.hypeScore || 0) >= 8.5 ? 'text-slate-900' :
+                          (tool.hypeScore || 0) >= 7.0 ? 'text-amber-700' : 'text-rose-600'
+                        }`}>
                           {Number(tool.hypeScore || 0).toFixed(1)}
                         </span>
                         <span className="text-[10px] text-slate-400 font-normal">/10</span>

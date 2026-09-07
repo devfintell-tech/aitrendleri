@@ -573,6 +573,20 @@ async function main() {
     🚨 EN KRİTİK KURAL 4: 'name' ALANINDA ASLA PARANTEZ KULLANILAMAZ:
     - 'name' alanı YALNIZCA ve SADECE ürünün saf marka/yazılım adıdır.
     - Asla parantez açma veya parantez içinde açıklama ekleme.
+
+    🚨 EN KRİTİK KURAL 5: PUANLAMA VE DUYGU ANALİZİ (TOPLULUK NASIL KONUŞUYOR?):
+    - Sıralamaya giren ürünlerin hepsi zaten konuşulmaktadır; ancak bizim için önemli olan TOPLULUĞUN ONLARA KAÇ PUAN VERDİĞİDİR.
+    - Bir ürün çok konuşuluyor diye otomatik olarak 9-10 puan verilemez. Nasıl konuşulduğu esastır:
+      * EĞER TOPLULUK BİR MODEL VEYA ÜRÜN HAKKINDA OLUMSUZ/ELEŞTİREL KONUŞUYORSA (örn: reklam enjeksiyonu, bellek sızıntısı, güncelleme sonrası bozulma, sansür, fahiş fiyat, hayal kırıklığı):
+        -> KESİNLİKLE DÜŞÜK PUAN VER (4.5 - 6.8 arası).
+        -> scoreDelta'yı EKSİ yaz (-0.5, -1.2, -1.8 gibi).
+        -> trend: "cooling" yap.
+        -> badge: "Reklam Tepkisi", "Eleştiriliyor", "Bellek Sorunu", "Regresyon" gibi rozetler koy.
+      * EĞER TOPLULUK ARACI ÖVÜYOR VE TAVSİYE EDİYORSA:
+        -> YÜKSEK PUAN VER (8.5 - 9.8 arası).
+        -> scoreDelta'yı ARTI yaz (+0.4, +0.8 gibi).
+        -> trend: "rising" veya "skyrocketing" yap.
+    - Tüm ürünlere tekdüze 9-10 puan vermek yasaktır; eleştirilen araçların puanları ve deltaları sert biçimde düşmelidir.
     ════════════════════════════════════════════════════════════════════
 
     Aşağıda derlenen son 24 saatin istihbaratı yer almaktadır:
