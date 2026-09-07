@@ -1,0 +1,37 @@
+================================================================================
+🤖 AITRENDLERI.COM OTONOM TARAMA VE ANALİZ TERMİNAL RAPORU
+Tarih: 7 Eylül 2026 | İşlem Süresi: 332s
+================================================================================
+
+[1. MODEL & ŞELALE AKTİVİTESİ]
+  ✔ Aktif Çalışan Model : gemini-2.5-flash
+  ✔ Seçilen API Anahtarı : GEMINI_API_KEY #1
+  ✔ Yürütme Durumu       : BAŞARILI (HTTP 200 OK)
+
+[2. 50 REDDIT TOPLULUĞU TARAMA TELEMETRİSİ]
+  ✔ Toplam Analiz Edilen Gönderi : 44
+  ✔ Başarılı Kategori / Batch   : 0 / 7
+  ------------------------------------------------------------------------------
+
+[3. SUBREDDİT VERİTABANI İÇGÖRÜLERİ (src/data/subreddit-stats.json)]
+  ✔ Toplam Takip Edilen Subreddit : 49
+  ✔ Yüksek Sinyal Verenler        : 0
+  ✔ Aktif Düzenli Kaynaklar       : 49
+  ✔ Düşük Sinyal / Takiptekiler   : 0
+  ✔ Sıfır Çekenler (Dead Sub)     : 0
+  ------------------------------------------------------------------------------
+  🏆 En Çok Katkı Sağlayanlar: r/vibecoding (1), r/CursorAI (1), r/windsurf (1), r/ChatGPTCoding (1), r/ClaudeAI (1)
+  ⚠️ Düşük Sinyal Verenler   : Yok
+  🚫 Değiştirilmesi Önerilen : Yok (Tümü veri sağlıyor)
+
+[4. DİĞER VERİ KAYNAKLARI]
+  ✔ ArXiv Makaleleri    : 3 taze makale (Türkçe özetli)
+  ✔ Hugging Face Modeller: 5 trend model
+  ✔ Hacker News         : 8 derin tartışma
+  ✔ GitHub Radar        : 6 repo
+
+[5. GÜNÜN ORGANİK 1 NUMARALI LİDERİ]
+  👑 GPT-6 Astra (Skor: 99/100 - Günün Lideri)
+  📝 Neden Seçildi: OpenAI'nin 3 Eylül 2026'daki resmi lansmanıyla duyurulan Astra, otonom yetenekleri ve hızla etkileşimli web siteleri oluşturma becerisiyle geliştirici dünyasında büyük bir heyecan yarattı.
+
+================================================================================

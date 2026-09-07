@@ -3,6 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { SUBREDDIT_BATCHES, REDDIT_USER_AGENT } from './subreddits.js';
+import { sendNotification } from './send-notification.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -60,6 +61,9 @@ async function fetchBatchPosts(batch) {
   const feedUrl = `https://www.reddit.com/r/${batch.slug}/hot.rss?limit=30`;
   const posts = [];
   const seenLinks = new Set();
+  const detectedSubreddits = {};
+  let lastStatus = 200;
+  let errorMessage = null;
 
   console.log(`📡 Çekiliyor: [${batch.name}] -> (Günlük Sıcak & Flaş)...`);
 
@@ -71,22 +75,28 @@ async function fetchBatchPosts(batch) {
           "Accept": "application/atom+xml,application/xml,text/xml"
         }
       });
+      lastStatus = res.status;
 
       if (res.status === 429) {
         console.warn(`⏳ Reddit 429 verdi [${batch.name}]. 10 saniye bekleniyor (Deneme ${attempt}/2)...`);
+        errorMessage = "Reddit HTTP 429 (Rate Limit)";
         await sleep(10000);
         continue;
       }
 
       if (!res.ok) {
         console.warn(`⚠️ HTTP ${res.status} [${batch.name}]: ${res.statusText}`);
+        errorMessage = `HTTP ${res.status} (${res.statusText})`;
         break;
       }
 
       const xml = await res.text();
       const jsonObj = parser.parse(xml);
       const feed = jsonObj.feed;
-      if (!feed || !feed.entry) break;
+      if (!feed || !feed.entry) {
+        errorMessage = "Boş feed yanıtı (gönderi yok)";
+        break;
+      }
 
       const entries = Array.isArray(feed.entry) ? feed.entry : [feed.entry];
 
@@ -94,6 +104,11 @@ async function fetchBatchPosts(batch) {
         const link = entry.link && entry.link["@_href"] ? entry.link["@_href"] : "";
         if (seenLinks.has(link)) continue;
         if (link) seenLinks.add(link);
+
+        // Hangi alt topluluktan (subreddit) geldiğini URL'den tespit et
+        const subMatch = link.match(/\/r\/([^/]+)\//i);
+        const subName = subMatch ? subMatch[1] : (entry.category?.["@_term"] || "Bilinmiyor");
+        detectedSubreddits[subName] = (detectedSubreddits[subName] || 0) + 1;
 
         let content = "";
         if (entry.content && typeof entry.content === "string") {
@@ -114,17 +129,32 @@ async function fetchBatchPosts(batch) {
         posts.push({
           title,
           link,
+          subreddit: subName,
           content: content.trim()
         });
       }
+      errorMessage = null;
       break;
     } catch (err) {
       console.error(`❌ Hata [${batch.name}]:`, err.message);
+      errorMessage = err.message;
       if (attempt < 2) await sleep(4000);
     }
   }
 
-  return posts;
+  return {
+    posts,
+    batchLog: {
+      name: batch.name,
+      slug: batch.slug,
+      subreddits: batch.subreddits || batch.slug.split("+"),
+      statusCode: lastStatus,
+      success: posts.length > 0,
+      postCount: posts.length,
+      detectedSubreddits,
+      error: errorMessage
+    }
+  };
 }
 
 /**
@@ -427,12 +457,10 @@ async function callGemini(model, apiKey, prompt) {
  */
 async function generateWithWaterfall(prompt) {
   const MODELS = [
-    "gemini-3.8-flash", // 🥇 HER ZAMAN İLK ÇALIŞTIRILIR!
-    "gemini-3.7-flash",
-    "gemini-3.6-flash",
-    "gemini-3.5-flash",
-    "gemini-2.5-flash",
-    "gemini-2.5-pro"
+    "gemini-3.8-flash", // 🥇 1. ÖNCELİK: Hızlı, yüksek bağlamlı ve taze model
+    "gemini-3.7-flash", // 🥈 2. ÖNCELİK: Gelişmiş akıl yürütmeli flaş model
+    "gemini-2.5-flash", // 🥉 3. ÖNCELİK: Hafif ve ultra hızlı yedek model
+    "gemini-2.5-pro"    // 🏅 4. ÖNCELİK: Derin muhakeme ve analitik yedek model
   ];
 
   for (const model of MODELS) {
@@ -445,7 +473,7 @@ async function generateWithWaterfall(prompt) {
         const result = await callGemini(model, apiKey, prompt);
         if (result && result.daily && result.daily.length > 0) {
           console.log(`🎯 MÜKEMMEL BAŞARI! Model [${model}] (Anahtar #${i + 1}) ile veri işlendi.`);
-          return { data: result, modelUsed: model };
+          return { data: result, modelUsed: model, keyIndex: i + 1 };
         }
       } catch (err) {
         console.warn(`⚠️ [${model}] (Anahtar #${i + 1}) başarısız: ${err.message.substring(0, 100)}... Sıradaki deneniyor.`);
@@ -467,10 +495,12 @@ async function main() {
   let allDiscussions = "";
   let totalPosts = 0;
   let successfulBatches = 0;
+  const batchTelemetry = [];
 
   for (const batch of SUBREDDIT_BATCHES) {
-    const posts = await fetchBatchPosts(batch);
-    if (posts.length > 0) {
+    const { posts, batchLog } = await fetchBatchPosts(batch);
+    batchTelemetry.push(batchLog);
+    if (posts && posts.length > 0) {
       successfulBatches++;
       totalPosts += posts.length;
       allDiscussions += `\n\n=== REDDIT KATEGORİ: ${batch.name} (Subredditler: ${batch.slug}) ===\n`;
@@ -524,10 +554,10 @@ async function main() {
     Sen kıdemli bir "Yapay Zeka, GPU/Donanım, Bulut Platformları ve Yazılım Ekosistemi Baş Danışmanısın".
     
     ════════════════════════════════════════════════════════════════════
-    🚨 EN KRİTİK KURAL 1: GÜNCELLİK, RESMİ LANSMANLAR VE SIZINTILAR:
-    - 3 Eylül 2026'da OpenAI tarafından resmi lansmanı yapılan ve 'Critical' siber güvenlik seviyesiyle ilk nesil ötesi otonom bilgisayar operatörü olarak duyurulan "GPT-6 Astra" gibi devasa kırılmaları KESİNLİKLE hem 12 Saatlik hem de Günlük listenin zirvesine (#1) yerleştir!
-    - İhtiyaç duyarsan Google Arama yeteneğini kullanarak modellerin resmi duyurularını ve güncelliğini canlı teyit et.
-    - Reddit'te konuşulan taze ve sıcak kırılmaları eski modellerin kesinlikle önüne al.
+    🚨 EN KRİTİK KURAL 1: %100 DOĞAL, MANİPÜLASYONSUZ VE ORGANİK SIRALAMA:
+    - Kesinlikle hiçbir modeli, şirketi veya aracı önceden şart koşma veya yapay olarak 1 numaraya zorlama!
+    - Reddit topluluklarında, ArXiv'de ve teknoloji gündeminde o gün EN ÇOK KONUŞULAN, EN YÜKSEK HYPE VE İVMEYE SAHİP GERÇEK MODEL/ARAÇ HANGİSİYSE DOĞAL OLARAK ONU 1 NUMARAYA (#1) YERLEŞTİR.
+    - Reddit'te konuşulan taze ve sıcak kırılmaları eski modellerin önüne al, ancak her şey tamamen toplanan veriye dayansın.
 
     🚨 EN KRİTİK KURAL 2: EN YUKARIDAKİ SIRALAMA TABLOLARI %100 REDDİT ODAKLIDIR:
     - "twelveHours", "daily", "weekly" ve "monthly" sıralama sekmelerindeki TÜM puanlar, sıralamalar, delta değişimleri ve analizler YALNIZCA VE SADECE 50 SEÇKİN REDDİT TOPLULUĞUNUN tartışmalarına dayanmalıdır.
@@ -570,7 +600,7 @@ async function main() {
     GÖREV VE ZAMAN DİLİMLERİ HESAPLAMA KURALLARI:
     1. "twelveHours" (12 Saatlik Sekme):
        - Reddit'in son 12 saatteki anlık çıkışlarına, viral modellerine ve sıcak tartışmalarına dayanmalıdır.
-       - "GPT-6 Astra" gibi resmi lansmanları ve ani kırılma yaşayan modelleri listele (en az 10 adet).
+       - Resmi lansmanları ve ani kırılma yaşayan modelleri toplanan veriye göre listele (en az 10 adet).
 
     2. "daily" (24 Saatlik Sekme):
        - Bugünün genel günlüğünü temsil eder (en az 10-14 adet).
@@ -612,40 +642,40 @@ async function main() {
     {
       "morningBrief": {
         "leader": {
-          "name": "GPT-6 Astra (Günün 1 Numaralı Lider Modeli)",
-          "badge": "OpenAI Lansmanı",
-          "description": "Critical siber güvenlik seviyeli ilk otonom bilgisayar operatörü lansmanıyla sektörü kökten sarstı."
+          "name": "Günün 1 Numaralı Lider Modeli/Aracı (Toplulukta o gün en çok konuşulan ve en yüksek ivmeli)",
+          "badge": "Örn: Resmi Lansman / Açık Kaynak Kırılması",
+          "description": "Toplulukta neden günün en büyük kırılması olduğuna dair 1 cümlelik vurucu açıklama."
         },
         "bullets": [
           {
             "tag": "Model Savaşları",
             "icon": "🚀",
-            "text": "OpenAI Astra lansmanının ardından Devin platformu Fable 5.1 ile Claude tekeline karşı maliyet savaşı başlattı."
+            "text": "O gün modeller arasındaki en büyük rekabet, fiyat/performans veya lansman yarışı."
           },
           {
             "tag": "Kurumsal & Pazar Dengesi",
             "icon": "🏢",
-            "text": "Anthropic ve Cursor kesintileri sonrası kurumsal dünyada kapalı API bağımlılığı sorgulanırken, yerel açık modellere yönelim talebi zirve yaptı."
+            "text": "Şirketler, API kesintileri veya kurumsal entegrasyon tarafındaki en sıcak gelişme."
           },
           {
             "tag": "Yazılım & Otonom Ajanlar",
             "icon": "💻",
-            "text": "Claude Code ve açık kaynak otonom operatörlerin (Browser-use, Nanobot) patlaması, klasik IDE ve web otomasyonu alışkanlıklarını kökten dönüştürüyor."
+            "text": "Geliştirici araçları, CLI ajanları veya otonom kodlama alanındaki günün kırılması."
           },
           {
             "tag": "Yerel Zeka & Donanım",
             "icon": "⚡",
-            "text": "Qwen 3.8 27B ve yeni CPU çıkarım motorları, GPU darboğazı yaşayan ekiplere veri merkezlerine bağımsız güçlü bir yerel çalışma imkanı sundu."
+            "text": "Açık modeller, GPU/CPU donanım veya çıkarım motorlarındaki son durum."
           }
         ]
       },
-      "executiveSummary": "GPT-6 Astra ve günün en büyük kırılmalarını özetleyen 1-2 paragraflık derin yönetici özeti",
+      "executiveSummary": "Günün en büyük kırılmalarını ve teknoloji dengesini özetleyen 1-2 paragraflık derin yönetici özeti",
       "twelveHours": [
         {
           "id": "model-id",
           "name": "Model/Araç/Donanım Adı",
           "category": "LLM (Model) | Yerel Model | IDE / Editör | CLI / Terminal | Otonom Agent | Otomasyon | Altyapı & SDK | Bulut & Platform | Medya / Üretim | Şirket / Lab",
-          "badge": "Örn: 3 Eylül Lansmanı",
+          "badge": "Örn: Son 12 Saat Patlaması",
           "hypeScore": 10.0,
           "prevScore": 9.2,
           "scoreDelta": 0.8,
@@ -654,11 +684,11 @@ async function main() {
           "sparkline": [8.8, 9.0, 9.2, 9.5, 9.8, 9.9, 10.0],
           "primaryFunction": "Temel işlev ve yetenek",
           "whyTrending": "Son 12 saatteki ani yükseliş ve kırılma gerekçesi",
-          "sources": ["OpenAI", "r/singularity"]
+          "sources": ["r/LocalLLaMA", "r/singularity"]
         }
       ],
       "daily": [
-        // EN AZ 10-14 ADET model ve araç (Zirvede GPT-6 Astra yer almalıdır)
+        // EN AZ 10-14 ADET model ve araç (Toplulukta en yüksek ivme yakalayanlar zirvede olmalıdır)
         {
           "id": "model-id",
           "name": "Model/Araç/Donanım Adı",
@@ -773,7 +803,7 @@ async function main() {
         {
           "title": "BÖLÜM 1: 🌐 GÜNÜN EKOSİSTEM DENGESİ & MODELLER ARASI GÜÇ SAVAŞI",
           "badge": "Ekosistem Dengesi",
-          "contentHtml": "<p>GPT-6 Astra, Claude ve Açık Kaynak kamplarının güç savaşı.</p>"
+          "contentHtml": "<p>Günün öne çıkan modelleri ve açık/kapalı kaynak kamplarının güç savaşı.</p>"
         },
         {
           "title": "BÖLÜM 2: 💡 DERİN TEKNİK İÇGÖRÜLER, VIBE CODING & GPU/ALTYAPI DENGESİ",
@@ -794,7 +824,7 @@ async function main() {
     }
   `;
 
-  const { data: rawResultJson, modelUsed: activeModelUsed } = await generateWithWaterfall(prompt);
+  const { data: rawResultJson, modelUsed: activeModelUsed, keyIndex: activeKeyIndex } = await generateWithWaterfall(prompt);
 
   // KESKİN STANDARTLAR DENETÇİSİ (Verilerin yerli yerine oturmasını ve hiçbir zaman eksik kalmamasını garanti eder)
   const resultJson = enforceStrictStandards(rawResultJson, hfModels, candidateArxiv, hnPosts, githubCandidates);
@@ -811,9 +841,13 @@ async function main() {
     date: dateStr,
     isoDate: isoDate,
     activeModel: activeModelUsed,
+    keyIndex: activeKeyIndex,
     durationSeconds: duration,
     totalPostsAnalyzed: totalPosts,
     subredditsCovered: 50,
+    successfulBatches,
+    totalBatches: SUBREDDIT_BATCHES.length,
+    batchTelemetry,
     ...resultJson
   };
 
@@ -848,6 +882,12 @@ async function main() {
 
   // 5. Araç bazlı tarihsel hafıza ve topluluk duygu günlüğünü güncelle
   updateToolHistory(finalOutput, dateStr);
+
+  // 6. Subreddit istatistik ve sağlık veri tabanını güncelle (src/data/subreddit-stats.json)
+  const subredditStats = updateSubredditStats(batchTelemetry, isoDate);
+
+  // 7. Terminal icra raporu oluştur ve e-posta bildirimini tetikle
+  await sendNotification(finalOutput, subredditStats);
 
   console.log(`⏱️ Toplam Çalışma Süresi: ${duration} saniye.`);
 }
@@ -911,6 +951,127 @@ function updateToolHistory(reportData, dateStr) {
 
   fs.writeFileSync(historyPath, JSON.stringify(historyData, null, 2), "utf-8");
   console.log(`📚 Tarihsel araç veri tabanı (${Object.keys(historyData).length} araç) başarıyla güncellendi.`);
+}
+
+/**
+ * 50 Subreddit'in her taramadaki performansını, veri sıklığını ve sinyal kalitesini
+ * src/data/subreddit-stats.json dosyasında kümülatif olarak takip eder.
+ */
+function updateSubredditStats(batchTelemetry, isoDate) {
+  const statsPath = path.join(__dirname, "../src/data/subreddit-stats.json");
+  let stats = {
+    lastUpdated: new Date().toISOString(),
+    totalRuns: 0,
+    summary: {
+      totalSubreddits: 0,
+      highSignalSubreddits: 0,
+      activeSubreddits: 0,
+      lowSignalSubreddits: 0,
+      deadSubreddits: 0
+    },
+    batches: {},
+    subreddits: {}
+  };
+
+  if (fs.existsSync(statsPath)) {
+    try {
+      stats = JSON.parse(fs.readFileSync(statsPath, "utf-8"));
+    } catch (e) {
+      console.warn("⚠️ subreddit-stats.json okunamadı, yeniden oluşturuluyor.");
+    }
+  }
+
+  stats.totalRuns = (stats.totalRuns || 0) + 1;
+  stats.lastUpdated = new Date().toISOString();
+
+  if (!stats.batches) stats.batches = {};
+  if (!stats.subreddits) stats.subreddits = {};
+
+  for (const bLog of batchTelemetry) {
+    if (!stats.batches[bLog.name]) {
+      stats.batches[bLog.name] = {
+        name: bLog.name,
+        slug: bLog.slug,
+        totalRuns: 0,
+        successRuns: 0,
+        failedRuns: 0,
+        totalPosts: 0,
+        lastStatus: "INIT",
+        lastPostCount: 0
+      };
+    }
+    const bStat = stats.batches[bLog.name];
+    bStat.totalRuns++;
+    if (bLog.success) {
+      bStat.successRuns++;
+      bStat.totalPosts += bLog.postCount;
+      bStat.lastStatus = "SUCCESS";
+    } else {
+      bStat.failedRuns++;
+      bStat.lastStatus = `FAILED (${bLog.statusCode || 'ERR'})`;
+    }
+    bStat.lastPostCount = bLog.postCount;
+
+    const subsInBatch = bLog.subreddits || bLog.slug.split("+");
+    for (const sub of subsInBatch) {
+      const cleanSub = sub.replace(/^r\//, "");
+      if (!stats.subreddits[cleanSub]) {
+        stats.subreddits[cleanSub] = {
+          name: `r/${cleanSub}`,
+          category: bLog.name,
+          totalScans: 0,
+          successfulYieldScans: 0,
+          zeroYieldScans: 0,
+          totalPostsFetched: 0,
+          lastYield: 0,
+          lastScanDate: isoDate,
+          signalScore: 0,
+          health: "ACTIVE 🟡",
+          recommendation: "KEEP (Takip Ediliyor)"
+        };
+      }
+      const sStat = stats.subreddits[cleanSub];
+      sStat.totalScans++;
+      sStat.lastScanDate = isoDate;
+      const count = (bLog.detectedSubreddits && bLog.detectedSubreddits[cleanSub]) || 0;
+      sStat.lastYield = count;
+      if (count > 0) {
+        sStat.successfulYieldScans++;
+        sStat.totalPostsFetched += count;
+      } else {
+        sStat.zeroYieldScans++;
+      }
+
+      sStat.signalScore = Math.round((sStat.successfulYieldScans / sStat.totalScans) * 100);
+
+      if (sStat.totalScans >= 3 && sStat.successfulYieldScans === 0) {
+        sStat.health = "DEAD / NO SIGNAL 🔴";
+        sStat.recommendation = "REPLACE (Başka bir subreddit ile değiştirilmeli)";
+      } else if (sStat.signalScore < 20 && sStat.totalScans >= 3) {
+        sStat.health = "LOW SIGNAL 🟠";
+        sStat.recommendation = "WATCHLIST (Takipte kal, veri vermezse değiştir)";
+      } else if (sStat.signalScore >= 50) {
+        sStat.health = "HIGH SIGNAL 🟢";
+        sStat.recommendation = "EXCELLENT (Kritik haber kaynağı)";
+      } else {
+        sStat.health = "ACTIVE 🟡";
+        sStat.recommendation = "KEEP (Düzenli veri sağlıyor)";
+      }
+    }
+  }
+
+  const allSubKeys = Object.keys(stats.subreddits);
+  stats.summary = {
+    totalSubreddits: allSubKeys.length,
+    highSignalSubreddits: allSubKeys.filter(k => (stats.subreddits[k].health || "").includes("HIGH")).length,
+    activeSubreddits: allSubKeys.filter(k => (stats.subreddits[k].health || "").includes("ACTIVE")).length,
+    lowSignalSubreddits: allSubKeys.filter(k => (stats.subreddits[k].health || "").includes("LOW")).length,
+    deadSubreddits: allSubKeys.filter(k => (stats.subreddits[k].health || "").includes("DEAD")).length
+  };
+
+  fs.writeFileSync(statsPath, JSON.stringify(stats, null, 2), "utf-8");
+  console.log(`📊 Subreddit İstatistik Veritabanı güncellendi: ${statsPath} (${allSubKeys.length} sub analiz edildi)`);
+  return stats;
 }
 
 /**
@@ -1484,64 +1645,70 @@ function enforceStrictStandards(data, hfModels = [], candidateArxiv = [], hnPost
     clean.arxivWeeklyBest = clean.arxivWeeklyBest.map((item, idx) => cleanArxivItem(item, `2609.0419${8 - idx}v1`));
   }
 
-  // 6. Sabah Brifingi Keskin Standartları
+  // 6. Sabah Brifingi Keskin Standartları (Dinamik ve Organik)
+  const dynamicLeader = (clean.daily && clean.daily[0]) || (clean.twelveHours && clean.twelveHours[0]) || {
+    name: "Günün Öne Çıkan AI Modeli",
+    badge: "Topluluk Gündemi",
+    primaryFunction: "Toplulukta en yüksek tartışma ve ilgi gören yapay zeka aracı."
+  };
+
   if (!clean.morningBrief || typeof clean.morningBrief !== 'object') {
     clean.morningBrief = {
       leader: {
-        name: "GPT-6 Astra (Günün 1 Numaralı Lider Modeli)",
-        badge: "OpenAI Lansmanı",
-        description: "Critical siber güvenlik seviyeli ilk otonom bilgisayar operatörü lansmanıyla sektörü kökten sarstı."
+        name: `${dynamicLeader.name} (Günün 1 Numaralı Lider Modeli)`,
+        badge: dynamicLeader.badge || "Topluluk Zirvesi",
+        description: dynamicLeader.primaryFunction || dynamicLeader.whyTrending || "Günün en yüksek ilgi ve tartışma çeken yapay zeka gelişmesi."
       },
       bullets: [
         {
           tag: "Model Savaşları",
           icon: "🚀",
-          text: "OpenAI Astra lansmanının ardından Devin platformu Fable 5.1 ile Claude tekeline karşı maliyet savaşı başlattı."
+          text: "Kapalı ve açık kaynak yapay zeka modelleri arasında fiyat/performans rekabeti hız kesmeden sürüyor."
         },
         {
           tag: "Kurumsal & Pazar Dengesi",
           icon: "🏢",
-          text: "Anthropic ve Cursor kesintileri sonrası kurumsal dünyada kapalı API bağımlılığı sorgulanırken, yerel açık modellere yönelim talebi zirve yaptı."
+          text: "Şirketler veri güvenliği ve maliyet avantajı sebebiyle şirket içi çalışabilen modellere yatırımı artırıyor."
         },
         {
           tag: "Yazılım & Otonom Ajanlar",
           icon: "💻",
-          text: "Claude Code ve açık kaynak otonom operatörlerin (Browser-use, Nanobot) patlaması, klasik IDE ve web otomasyonu alışkanlıklarını kökten dönüştürüyor."
+          text: "Geliştirici dünyasında otonom CLI ajanları ve kodlama araçları iş akışlarını dönüştürmeye devam ediyor."
         },
         {
           tag: "Yerel Zeka & Donanım",
           icon: "⚡",
-          text: "Qwen 3.8 27B ve yeni CPU çıkarım motorları, GPU darboğazı yaşayan ekiplere veri merkezlerine bağımsız güçlü bir yerel çalışma imkanı sundu."
+          text: "Tüketici donanımlarında yüksek verimle çalışan optimize modeller GPU darboğazını hafifletiyor."
         }
       ]
     };
   } else {
     clean.morningBrief.leader = clean.morningBrief.leader || {
-      name: "GPT-6 Astra (Günün 1 Numaralı Lider Modeli)",
-      badge: "OpenAI Lansmanı",
-      description: "Critical siber güvenlik seviyeli ilk otonom bilgisayar operatörü lansmanıyla sektörü kökten sarstı."
+      name: `${dynamicLeader.name} (Günün 1 Numaralı Lider Modeli)`,
+      badge: dynamicLeader.badge || "Topluluk Zirvesi",
+      description: dynamicLeader.primaryFunction || dynamicLeader.whyTrending || "Günün en yüksek ilgi ve tartışma çeken yapay zeka gelişmesi."
     };
     if (!Array.isArray(clean.morningBrief.bullets) || clean.morningBrief.bullets.length === 0) {
       clean.morningBrief.bullets = [
         {
           tag: "Model Savaşları",
           icon: "🚀",
-          text: "OpenAI Astra lansmanının ardından Devin platformu Fable 5.1 ile Claude tekeline karşı maliyet savaşı başlattı."
+          text: "Kapalı ve açık kaynak yapay zeka modelleri arasında fiyat/performans rekabeti hız kesmeden sürüyor."
         },
         {
           tag: "Kurumsal & Pazar Dengesi",
           icon: "🏢",
-          text: "Anthropic ve Cursor kesintileri sonrası kurumsal dünyada kapalı API bağımlılığı sorgulanırken, yerel açık modellere yönelim talebi zirve yaptı."
+          text: "Şirketler veri güvenliği ve maliyet avantajı sebebiyle şirket içi çalışabilen modellere yatırımı artırıyor."
         },
         {
           tag: "Yazılım & Otonom Ajanlar",
           icon: "💻",
-          text: "Claude Code ve açık kaynak otonom operatörlerin (Browser-use, Nanobot) patlaması, klasik IDE ve web otomasyonu alışkanlıklarını kökten dönüştürüyor."
+          text: "Geliştirici dünyasında otonom CLI ajanları ve kodlama araçları iş akışlarını dönüştürmeye devam ediyor."
         },
         {
           tag: "Yerel Zeka & Donanım",
           icon: "⚡",
-          text: "Qwen 3.8 27B ve yeni CPU çıkarım motorları, GPU darboğazı yaşayan ekiplere veri merkezlerine bağımsız güçlü bir yerel çalışma imkanı sundu."
+          text: "Tüketici donanımlarında yüksek verimle çalışan optimize modeller GPU darboğazını hafifletiyor."
         }
       ];
     }

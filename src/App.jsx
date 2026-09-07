@@ -619,7 +619,7 @@ export default function App() {
     // 30 Saniyelik Sabah İstihbaratı: Dünyada Bugün
     const defaultLeader = (raw.daily && raw.daily[0]) || 
                           (raw.twelveHours && raw.twelveHours[0]) || 
-                          { name: "GPT-6 Astra", badge: "OpenAI Lansmanı", primaryFunction: "İlk nesil ötesi otonom bilgisayar operatörü, Critical siber güvenlik seviyesi." };
+                          { name: "Günün Öne Çıkan AI Modeli", badge: "Topluluk Zirvesi", primaryFunction: "Toplulukta en yüksek tartışma ve ilgi gören yapay zeka aracı." };
 
     const mb = raw.morningBrief || {
       leader: {
@@ -631,12 +631,12 @@ export default function App() {
         {
           tag: "Model & Platform Savaşları",
           icon: "🚀",
-          text: "OpenAI'ın otonom operatör Astra lansmanına karşı Devin platformu, Fable 5.1 entegrasyonuyla Claude tekeline karşı agresif bir maliyet ve hız savaşı başlattı."
+          text: "Kapalı ve açık kaynak yapay zeka modelleri arasında fiyat/performans rekabeti hız kesmeden sürüyor."
         },
         {
           tag: "Kurumsal Güven & Kesintiler",
           icon: "🏢",
-          text: "Anthropic ve Cursor kesintileri kurumsal şirketlerin kapalı API bağımlılığını sorgulatırken, yerel açık modellere yönelim talebi zirve yaptı."
+          text: "Şirketler veri güvenliği ve kesinti risklerine karşı yerel ve şirket içi çalışabilen modellere yönelimi hızlandırdı."
         },
         {
           tag: "Yazılım & Otonom Ajanlar",
