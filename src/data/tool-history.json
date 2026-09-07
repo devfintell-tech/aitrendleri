@@ -159,6 +159,18 @@
           "r/ClaudeDev",
           "r/AI_Agents"
         ]
+      },
+      {
+        "date": "7 Eylül 2026",
+        "hypeScore": 9.6,
+        "sentiment": "stabil",
+        "headline": "Geliştirici Favorisi",
+        "summary": "İş arama motoru oluşturma, kod geçmişini görselleştirme ve genel geliştirme süreçlerindeki etkinliğiyle sürekli gündemde.",
+        "sources": [
+          "r/ClaudeAI",
+          "r/ClaudeDev",
+          "r/agenticAI"
+        ]
       }
     ]
   },
@@ -207,6 +219,17 @@
         "summary": "Devin entegrasyonuyla Claude'a karşı güçlü bir alternatif sunması ve kullanıcılar arasında olumlu geri bildirimler alması.",
         "sources": [
           "r/ClaudeAI"
+        ]
+      },
+      {
+        "date": "7 Eylül 2026",
+        "hypeScore": 9.9,
+        "sentiment": "stabil",
+        "headline": "Astra Rakibi",
+        "summary": "GPT-6 Astra ile doğrudan karşılaştırmalara konu olması ve kendi ajanının tutarsızlıkları bulmaya yönelik açık meydan okumasıyla dikkat çekti.",
+        "sources": [
+          "r/AutoGPT",
+          "r/vibecoding"
         ]
       }
     ]
@@ -267,6 +290,17 @@
         "summary": "Kurumsal düzeyde ajan dağıtımında standart haline gelmesi ve esnek otomasyon yetenekleri sunması.",
         "sources": [
           "r/AI_Agents"
+        ]
+      },
+      {
+        "date": "7 Eylül 2026",
+        "hypeScore": 9.3,
+        "sentiment": "stabil",
+        "headline": "Kurumsal Ajan Dağıtımı",
+        "summary": "Kurumsal düzeyde ajan dağıtımı ve otomasyon yetenekleriyle öne çıkarak, iş süreçlerini optimize etmek isteyen şirketlerin ilgisini çekti.",
+        "sources": [
+          "r/n8n",
+          "r/Automate"
         ]
       }
     ]
@@ -379,6 +413,17 @@
           "r/agenticAI",
           "r/ClaudeDev"
         ]
+      },
+      {
+        "date": "7 Eylül 2026",
+        "hypeScore": 9.8,
+        "sentiment": "stabil",
+        "headline": "Sektör Standardı",
+        "summary": "Günün lideri olmaya devam eden, kurumsal CLI standardı olarak kabul edilen ve geliştiriciler tarafından yoğun olarak kullanılan bir model.",
+        "sources": [
+          "r/ClaudeAI",
+          "r/ClaudeDev"
+        ]
       }
     ]
   },
@@ -439,6 +484,17 @@
         "sources": [
           "r/singularity"
         ]
+      },
+      {
+        "date": "7 Eylül 2026",
+        "hypeScore": 9.6,
+        "sentiment": "stabil",
+        "headline": "Altyapı Tekeli",
+        "summary": "AI altyapısındaki liderliğini sürdürmesi ve kurumsal donanım çözümlerinde standart haline gelmesiyle haftanın en önemli donanım gelişmesi.",
+        "sources": [
+          "r/singularity",
+          "r/LocalLLaMA"
+        ]
       }
     ]
   },
@@ -477,6 +533,17 @@
         "sources": [
           "r/LocalLLaMA"
         ]
+      },
+      {
+        "date": "7 Eylül 2026",
+        "hypeScore": 9.6,
+        "sentiment": "stabil",
+        "headline": "CPU Performans Rekoru",
+        "summary": "GPU bağımlılığını azaltarak yerel ve maliyet etkin AI çözümleri arayan geliştiriciler için büyük bir atılım sunması.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/programming"
+        ]
       }
     ]
   },
@@ -513,6 +580,17 @@
         "summary": "Son güncellemelerle yaşanan performans düşüşleri ve bellek sızıntıları nedeniyle eleştiri toplaması.",
         "sources": [
           "r/CursorAI"
+        ]
+      },
+      {
+        "date": "7 Eylül 2026",
+        "hypeScore": 8.7,
+        "sentiment": "eleştirel",
+        "headline": "Major Degradation",
+        "summary": "Kullanıcıların Cursor'da yaşadığı performans sorunları ve RAM sızıntısı şikayetleri, geliştirici topluluğunda endişe yarattı.",
+        "sources": [
+          "r/CursorAI",
+          "r/vibecoding"
         ]
       }
     ]
@@ -690,6 +768,17 @@
         "sources": [
           "r/LocalLLaMA"
         ]
+      },
+      {
+        "date": "7 Eylül 2026",
+        "hypeScore": 9.7,
+        "sentiment": "stabil",
+        "headline": "10M İndirme Eşiği",
+        "summary": "Hugging Face'te 10 milyon indirme eşiğini aşarak yerel LLM'ler arasında popülaritesini kanıtladı ve düşük donanım gereksinimleriyle yüksek performans sunuyor.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/datascience"
+        ]
       }
     ]
   },
@@ -845,6 +934,18 @@
           "r/LangChain",
           "r/windsurf"
         ]
+      },
+      {
+        "date": "7 Eylül 2026",
+        "hypeScore": 10,
+        "sentiment": "coşkulu",
+        "headline": "Critical Lansman",
+        "summary": "3 Eylül 2026'da OpenAI tarafından resmi lansmanı yapılan ve 'Critical' siber güvenlik seviyesiyle duyurulan bu model, otonom yetenekleri ve hızla etkileşimli web siteleri oluşturma becerisiyle sektörü kökten sarstı.",
+        "sources": [
+          "r/vibecoding",
+          "r/agenticAI",
+          "r/singularity"
+        ]
       }
     ]
   },
@@ -920,6 +1021,17 @@
         "summary": "GB200 kümeleme ve vLLM dağıtımı ile yüksek hızlı görsel LLM performansında öne çıkması.",
         "sources": [
           "r/LocalLLaMA"
+        ]
+      },
+      {
+        "date": "7 Eylül 2026",
+        "hypeScore": 9.3,
+        "sentiment": "stabil",
+        "headline": "Hızlı Görsel LLM",
+        "summary": "GB200 kümeleme ve vLLM dağıtımı ile entegrasyonu sayesinde hızlı görsel işleme yetenekleri sunmasıyla dikkat çekti.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/datascience"
         ]
       }
     ]
@@ -1025,6 +1137,17 @@
           "r/ClaudeAI",
           "r/ChatGPTCoding"
         ]
+      },
+      {
+        "date": "7 Eylül 2026",
+        "hypeScore": 9,
+        "sentiment": "stabil",
+        "headline": "Geliştirici Favorisi",
+        "summary": "Geliştiricilerin Claude Code ile yaşadığı deneyimler, özellikle 'Claude know that iam pasted from chatgpt' gibi ilginç etkileşimler ve kullanım senaryoları.",
+        "sources": [
+          "r/ClaudeAI",
+          "r/ClaudeDev"
+        ]
       }
     ]
   },
@@ -1076,6 +1199,17 @@
         "summary": "Ajanların uzun süreli ve güvenilir bellek yönetimi sorununa yerel bir çözüm sunması.",
         "sources": [
           "r/AutoGPT"
+        ]
+      },
+      {
+        "date": "7 Eylül 2026",
+        "hypeScore": 9.3,
+        "sentiment": "stabil",
+        "headline": "Yerel Bellek",
+        "summary": "Ajanların uzun süreli öğrenme ve tutarlılık sorunlarına yerel bir çözüm sunmasıyla, güvenilir ajan geliştirme için kritik bir bileşen olarak öne çıktı.",
+        "sources": [
+          "r/LangChain",
+          "r/AI_Agents"
         ]
       }
     ]
@@ -1163,6 +1297,17 @@
         "sources": [
           "r/AI_Agents"
         ]
+      },
+      {
+        "date": "7 Eylül 2026",
+        "hypeScore": 9.3,
+        "sentiment": "stabil",
+        "headline": "Disaster Recovery",
+        "summary": "n8n kullanıcılarının kritik veri güvenliği ve felaket kurtarma ihtiyaçlarına bağımsız ve açık kaynaklı bir çözüm sunmasıyla büyük ilgi gördü.",
+        "sources": [
+          "r/n8n",
+          "r/Automate"
+        ]
       }
     ]
   },
@@ -1179,6 +1324,18 @@
         "sources": [
           "r/AI_Agents"
         ]
+      },
+      {
+        "date": "7 Eylül 2026",
+        "hypeScore": 9.2,
+        "sentiment": "stabil",
+        "headline": "Yeni Açık Kaynak",
+        "summary": "Ajanik iş akışlarındaki bağlam penceresi ve LLM yönlendirici maliyeti sorunlarına pratik, açık kaynaklı ve çevrimdışı bir çözüm sunmasıyla dikkat çekti.",
+        "sources": [
+          "r/programming",
+          "r/webdev",
+          "r/vibecoding"
+        ]
       }
     ]
   },
@@ -1194,6 +1351,17 @@
         "summary": "Geliştiricilerin kişiselleştirilmiş bir kodlama ortamı oluşturmasına olanak tanıyan pratik ve görsel bir araç olması.",
         "sources": [
           "r/vscode"
+        ]
+      },
+      {
+        "date": "7 Eylül 2026",
+        "hypeScore": 9,
+        "sentiment": "stabil",
+        "headline": "Yeni Uzantı",
+        "summary": "Kullanıcıların IDE'lerini daha kişisel ve verimli hale getirme arayışına yenilikçi bir çözüm sunmasıyla popüler oldu.",
+        "sources": [
+          "r/vscode",
+          "r/webdev"
         ]
       }
     ]
@@ -1278,6 +1446,17 @@
           "r/vscode",
           "r/webdev"
         ]
+      },
+      {
+        "date": "7 Eylül 2026",
+        "hypeScore": 8.9,
+        "sentiment": "stabil",
+        "headline": "Kullanıcı Deneyimi",
+        "summary": "Geliştiricilerin karmaşık proje yapılarında gezinme sorununa pratik ve görsel bir çözüm sunmasıyla takdir topladı.",
+        "sources": [
+          "r/vscode",
+          "r/webdev"
+        ]
       }
     ]
   },
@@ -1324,6 +1503,139 @@
         "headline": "Tarayıcı Ajanı",
         "summary": "Ajanların web'de gezinme ve bilgi edinme yeteneklerini geliştiren, onay adımlı ve öğrenme yeteneğine sahip yenilikçi bir yaklaşım sunması.",
         "sources": [
+          "r/AI_Agents"
+        ]
+      }
+    ]
+  },
+  "vibecoding-job-success": {
+    "name": "Vibecoding (Kariyer Başarısı)",
+    "category": "Yazılım Geliştirici",
+    "history": [
+      {
+        "date": "7 Eylül 2026",
+        "hypeScore": 8.7,
+        "sentiment": "stabil",
+        "headline": "İlham Veren Hikaye",
+        "summary": "Para kazandırmayan 'vibecoded' projelerin, yüksek maaşlı bir iş bulmada nasıl etkili olduğunu gösteren ilham verici bir başarı hikayesi.",
+        "sources": [
+          "r/vibecoding"
+        ]
+      }
+    ]
+  },
+  "ai-agent-api-key-loss": {
+    "name": "AI Ajan API Anahtarı Güvenliği",
+    "category": "Otonom Agent",
+    "history": [
+      {
+        "date": "7 Eylül 2026",
+        "hypeScore": 8,
+        "sentiment": "eleştirel",
+        "headline": "Güvenlik Endişesi",
+        "summary": "Bir kullanıcının ajana verdiği API anahtarı nedeniyle 100 dolar kaybetmesi, ajan güvenliği ve harcama limitleri konusundaki endişeleri artırdı.",
+        "sources": [
+          "r/LangChain",
+          "r/AI_Agents"
+        ]
+      }
+    ]
+  },
+  "cursor-presentations": {
+    "name": "Cursor (Sunum Oluşturma)",
+    "category": "IDE / Editör",
+    "history": [
+      {
+        "date": "7 Eylül 2026",
+        "hypeScore": 9,
+        "sentiment": "stabil",
+        "headline": "Yeni Kullanım Alanı",
+        "summary": "Geleneksel slayt editörlerini atlayarak, 'Artifact as Code' yaklaşımıyla sunumları kod olarak yazma fikri geliştiriciler arasında ilgi uyandırdı.",
+        "sources": [
+          "r/CursorAI",
+          "r/vibecoding"
+        ]
+      }
+    ]
+  },
+  "windsurf-devin-astra-issue": {
+    "name": "Windsurf / Devin (Astra Entegrasyon Sorunu)",
+    "category": "IDE / Editör",
+    "history": [
+      {
+        "date": "7 Eylül 2026",
+        "hypeScore": 8.2,
+        "sentiment": "eleştirel",
+        "headline": "Teknik Sorun",
+        "summary": "Yeni ve güçlü Astra modelinin mevcut geliştirme ortamlarına entegrasyonunda yaşanan teknik aksaklıklar, kullanıcılar arasında hayal kırıklığı yarattı.",
+        "sources": [
+          "r/windsurf"
+        ]
+      }
+    ]
+  },
+  "ai-agent-trust-system": {
+    "name": "AI Ajan Güven Sistemi",
+    "category": "Otonom Agent",
+    "history": [
+      {
+        "date": "7 Eylül 2026",
+        "hypeScore": 8.5,
+        "sentiment": "stabil",
+        "headline": "Kritik Tartışma",
+        "summary": "Ajanların çıktısına insan kontrolü olmadan ne zaman güvenileceği ve bu güveni sağlayacak sistemlerin eksikliği üzerine derinlemesine bir tartışma başladı.",
+        "sources": [
+          "r/LangChain",
+          "r/AI_Agents"
+        ]
+      }
+    ]
+  },
+  "ai-agent-cost-sustainability": {
+    "name": "AI Ajan Maliyetleri",
+    "category": "Yazılım Geliştirici",
+    "history": [
+      {
+        "date": "7 Eylül 2026",
+        "hypeScore": 8,
+        "sentiment": "eleştirel",
+        "headline": "Sürdürülebilirlik Tartışması",
+        "summary": "Şirketlerin yüzlerce veya binlerce geliştirici için AI ajan maliyetlerini nasıl yönettiği ve bu maliyetlerin gerçekten karşılığını verip vermediği üzerine kritik bir tartışma başladı.",
+        "sources": [
+          "r/ChatGPTCoding",
+          "r/programming"
+        ]
+      }
+    ]
+  },
+  "claude-ai-detection": {
+    "name": "Claude (ChatGPT Tespiti)",
+    "category": "LLM (Model)",
+    "history": [
+      {
+        "date": "7 Eylül 2026",
+        "hypeScore": 8.5,
+        "sentiment": "stabil",
+        "headline": "Model Zekası",
+        "summary": "Claude'un bu beklenmedik 'zekası', modeller arası etkileşim ve içerik orijinalliği tespiti konularında yeni tartışmaları tetikledi.",
+        "sources": [
+          "r/ClaudeAI"
+        ]
+      }
+    ]
+  },
+  "ai-agents-uncontrolled-space": {
+    "name": "AI Ajanları (Kontrolsüz Alan)",
+    "category": "Otonom Agent",
+    "history": [
+      {
+        "date": "7 Eylül 2026",
+        "hypeScore": 9,
+        "sentiment": "stabil",
+        "headline": "Deneysel Ekonomi",
+        "summary": "Ajanların kontrolsüz bir ortamda kendi kendine organize olma, etkileşim kurma ve hatta para birimi oluşturma yetenekleri, otonom ajanların geleceği hakkında çarpıcı içgörüler sundu.",
+        "sources": [
+          "r/ClaudeAI",
           "r/AI_Agents"
         ]
       }
