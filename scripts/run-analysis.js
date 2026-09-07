@@ -642,8 +642,8 @@ async function main() {
     {
       "morningBrief": {
         "leader": {
-          "name": "Günün 1 Numaralı Lider Modeli/Aracı (Toplulukta o gün en çok konuşulan ve en yüksek ivmeli)",
-          "badge": "Örn: Resmi Lansman / Açık Kaynak Kırılması",
+          "name": "Yalnızca yalın model veya araç adı (Örn: Claude 3.7 Sonnet, DeepSeek V3, Cursor). KESİNLİKLE parantez, '(Günün 1 Numarası)' veya benzeri yapay sıfatlar EKLEME!",
+          "badge": "Örn: Lansman Zirvesi / Açık Model / Geliştirici",
           "description": "Toplulukta neden günün en büyük kırılması olduğuna dair 1 cümlelik vurucu açıklama."
         },
         "bullets": [
@@ -1650,12 +1650,15 @@ function enforceStrictStandards(data, hfModels = [], candidateArxiv = [], hnPost
     name: "Günün Öne Çıkan AI Modeli",
     badge: "Topluluk Gündemi",
     primaryFunction: "Toplulukta en yüksek tartışma ve ilgi gören yapay zeka aracı."
+  const cleanStrName = (val) => {
+    if (!val || typeof val !== 'string') return "";
+    return val.replace(/\s*\([^)]*(günün|lider|numara|seçilen|modeli|1\s*numara)[^)]*\)/gi, "").trim();
   };
 
   if (!clean.morningBrief || typeof clean.morningBrief !== 'object') {
     clean.morningBrief = {
       leader: {
-        name: `${dynamicLeader.name} (Günün 1 Numaralı Lider Modeli)`,
+        name: cleanStrName(dynamicLeader.name),
         badge: dynamicLeader.badge || "Topluluk Zirvesi",
         description: dynamicLeader.primaryFunction || dynamicLeader.whyTrending || "Günün en yüksek ilgi ve tartışma çeken yapay zeka gelişmesi."
       },
@@ -1684,10 +1687,12 @@ function enforceStrictStandards(data, hfModels = [], candidateArxiv = [], hnPost
     };
   } else {
     clean.morningBrief.leader = clean.morningBrief.leader || {
-      name: `${dynamicLeader.name} (Günün 1 Numaralı Lider Modeli)`,
+      name: cleanStrName(dynamicLeader.name),
       badge: dynamicLeader.badge || "Topluluk Zirvesi",
       description: dynamicLeader.primaryFunction || dynamicLeader.whyTrending || "Günün en yüksek ilgi ve tartışma çeken yapay zeka gelişmesi."
     };
+    clean.morningBrief.leader.name = cleanStrName(clean.morningBrief.leader.name);
+
     if (!Array.isArray(clean.morningBrief.bullets) || clean.morningBrief.bullets.length === 0) {
       clean.morningBrief.bullets = [
         {
@@ -1713,6 +1718,16 @@ function enforceStrictStandards(data, hfModels = [], candidateArxiv = [], hnPost
       ];
     }
   }
+
+  // Model ve araç isimlerindeki yapay parantez ve sıfatları temizle
+  ['twelveHours', 'daily', 'weekly', 'monthly'].forEach(key => {
+    if (Array.isArray(clean[key])) {
+      clean[key] = clean[key].map(item => ({
+        ...item,
+        name: cleanStrName(item.name)
+      }));
+    }
+  });
 
   return clean;
 }

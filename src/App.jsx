@@ -616,15 +616,20 @@ export default function App() {
       }));
     };
 
+    const cleanToolName = (name) => {
+      if (!name || typeof name !== 'string') return "";
+      return name.replace(/\s*\([^)]*(günün|lider|numara|seçilen|modeli|1\s*numara)[^)]*\)/gi, "").trim();
+    };
+
     // 30 Saniyelik Sabah İstihbaratı: Dünyada Bugün
     const defaultLeader = (raw.daily && raw.daily[0]) || 
                           (raw.twelveHours && raw.twelveHours[0]) || 
                           { name: "Günün Öne Çıkan AI Modeli", badge: "Topluluk Zirvesi", primaryFunction: "Toplulukta en yüksek tartışma ve ilgi gören yapay zeka aracı." };
 
-    const mb = raw.morningBrief || {
+    const mb = raw.morningBrief ? { ...raw.morningBrief } : {
       leader: {
-        name: defaultLeader.name,
-        badge: defaultLeader.badge || "Günün 1 Numarası",
+        name: cleanToolName(defaultLeader.name),
+        badge: defaultLeader.badge || "Topluluk Zirvesi",
         description: defaultLeader.primaryFunction || defaultLeader.whyTrending || "Sektörde yeni bir çağ başlatan en büyük yapay zeka kırılması."
       },
       bullets: [
@@ -651,6 +656,13 @@ export default function App() {
       ]
     };
 
+    if (mb.leader) {
+      mb.leader = {
+        ...mb.leader,
+        name: cleanToolName(mb.leader.name)
+      };
+    }
+
     return {
       date: raw.date,
       executiveSummary: raw.executiveSummary || LATEST_CONSULTANT_REPORT.executiveSummary,
@@ -665,12 +677,24 @@ export default function App() {
     };
   }, [activeReportData]);
 
-  const rawTools = {
-    '12h': activeReportData?.twelveHours || activeReportData?.daily || MOCK_TOOLS_DATA.daily,
-    daily: activeReportData?.daily || MOCK_TOOLS_DATA.daily,
-    weekly: activeReportData?.weekly || MOCK_TOOLS_DATA.weekly,
-    monthly: activeReportData?.monthly || MOCK_TOOLS_DATA.monthly
-  }[timeframe] || (activeReportData?.daily || MOCK_TOOLS_DATA.daily);
+  const rawTools = useMemo(() => {
+    const cleanToolNameGlobal = (name) => {
+      if (!name || typeof name !== 'string') return "";
+      return name.replace(/\s*\([^)]*(günün|lider|numara|seçilen|modeli|1\s*numara)[^)]*\)/gi, "").trim();
+    };
+
+    const list = {
+      '12h': activeReportData?.twelveHours || activeReportData?.daily || MOCK_TOOLS_DATA.daily,
+      daily: activeReportData?.daily || MOCK_TOOLS_DATA.daily,
+      weekly: activeReportData?.weekly || MOCK_TOOLS_DATA.weekly,
+      monthly: activeReportData?.monthly || MOCK_TOOLS_DATA.monthly
+    }[timeframe] || (activeReportData?.daily || MOCK_TOOLS_DATA.daily);
+
+    return (list || []).map(t => ({
+      ...t,
+      name: cleanToolNameGlobal(t.name)
+    }));
+  }, [activeReportData, timeframe]);
 
   // Filter tools by category and search
   const filteredTools = useMemo(() => {
