@@ -15,8 +15,8 @@ export const CATEGORY_DEFINITIONS = [
 export const MOCK_TOOLS_DATA = {
   twelveHours: [
     {
-      id: "gpt-6-astra",
-      name: "GPT-6 Astra",
+      id: "claude-3-7-sonnet",
+      name: "Claude 3.7 Sonnet",
       category: "LLM (Model)",
       badge: "12s Patlaması",
       hypeScore: 9.9,

@@ -618,7 +618,7 @@ export default function App() {
 
     const cleanToolName = (name) => {
       if (!name || typeof name !== 'string') return "";
-      return name.replace(/\s*\([^)]*(günün|lider|numara|seçilen|modeli|1\s*numara)[^)]*\)/gi, "").trim();
+      return name.replace(/\s*\([^)]*\)/g, "").trim();
     };
 
     // 30 Saniyelik Sabah İstihbaratı: Dünyada Bugün
@@ -680,8 +680,25 @@ export default function App() {
   const rawTools = useMemo(() => {
     const cleanToolNameGlobal = (name) => {
       if (!name || typeof name !== 'string') return "";
-      return name.replace(/\s*\([^)]*(günün|lider|numara|seçilen|modeli|1\s*numara)[^)]*\)/gi, "").trim();
+      return name.replace(/\s*\([^)]*\)/g, "").trim();
     };
+
+    const badConceptPatterns = [
+      /vibecoding/i,
+      /maliyet/i,
+      /utanç/i,
+      /mandate/i,
+      /güven sistemi/i,
+      /anket/i,
+      /felsefe/i,
+      /tartışma/i,
+      /kariyer/i,
+      /will-win/i,
+      /shame/i,
+      /loss/i,
+      /uncontrolled/i,
+      /astra/i
+    ];
 
     const list = {
       '12h': activeReportData?.twelveHours || activeReportData?.daily || MOCK_TOOLS_DATA.daily,
@@ -690,10 +707,16 @@ export default function App() {
       monthly: activeReportData?.monthly || MOCK_TOOLS_DATA.monthly
     }[timeframe] || (activeReportData?.daily || MOCK_TOOLS_DATA.daily);
 
-    return (list || []).map(t => ({
-      ...t,
-      name: cleanToolNameGlobal(t.name)
-    }));
+    return (list || [])
+      .filter(t => {
+        const n = t.name || '';
+        const id = t.id || '';
+        return !badConceptPatterns.some(p => p.test(n) || p.test(id));
+      })
+      .map(t => ({
+        ...t,
+        name: cleanToolNameGlobal(t.name)
+      }));
   }, [activeReportData, timeframe]);
 
   // Filter tools by category and search

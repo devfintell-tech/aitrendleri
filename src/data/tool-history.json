@@ -657,7 +657,7 @@
     ]
   },
   "viggle-animate-minimax": {
-    "name": "Viggle-Animate (MiniMax-H3)",
+    "name": "Viggle-Animate",
     "category": "Medya / Üretim",
     "history": [
       {
@@ -905,47 +905,6 @@
       }
     ]
   },
-  "gpt-6-astra": {
-    "name": "GPT-6 Astra",
-    "category": "LLM (Model)",
-    "history": [
-      {
-        "date": "5 Eylül 2026",
-        "hypeScore": 10,
-        "sentiment": "coşkulu",
-        "headline": "3 Eylül Lansmanı",
-        "summary": "OpenAI tarafından 3 Eylül 2026'da yapılan resmi lansmanı ve otonom yetenekleriyle sektörde büyük bir kırılma yaratması.",
-        "sources": [
-          "r/singularity",
-          "r/ClaudeAI",
-          "r/huggingface"
-        ]
-      },
-      {
-        "date": "6 Eylül 2026",
-        "hypeScore": 10,
-        "sentiment": "coşkulu",
-        "headline": "Critical Lansman",
-        "summary": "3 Eylül'deki resmi lansmanı ve 'Critical' siber güvenlik seviyesiyle duyurulması, otonom ajan yeteneklerinde devrim yaratması.",
-        "sources": [
-          "r/ClaudeAI",
-          "r/AI_Agents",
-          "r/LangChain",
-          "r/windsurf"
-        ]
-      },
-      {
-        "date": "7 Eylül 2026",
-        "hypeScore": 10,
-        "sentiment": "coşkulu",
-        "headline": "Son 12 Saat Patlaması",
-        "summary": "30 dakikada interaktif web sitesi oluşturma yeteneğiyle 'çılgın' olarak nitelendirilmesi ve geliştiriciler arasında büyük heyecan yaratması.",
-        "sources": [
-          "r/vibecoding"
-        ]
-      }
-    ]
-  },
   "qwen3-8-27b": {
     "name": "Qwen3.8-27B",
     "category": "Yerel Model",
@@ -1049,7 +1008,7 @@
     ]
   },
   "cursor-ram-leak": {
-    "name": "Cursor (RAM Sızıntısı)",
+    "name": "Cursor",
     "category": "IDE / Editör",
     "history": [
       {
@@ -1083,7 +1042,7 @@
     ]
   },
   "minimax-h3-video": {
-    "name": "MiniMax H3 (Video Üretimi)",
+    "name": "MiniMax H3",
     "category": "Medya / Üretim",
     "history": [
       {
@@ -1101,7 +1060,7 @@
     ]
   },
   "qwen3-8-27b-gquf": {
-    "name": "Qwen3.8-27B-GGUF (Unsloth)",
+    "name": "Qwen3.8-27B-GGUF",
     "category": "Yerel Model",
     "history": [
       {
@@ -1119,7 +1078,7 @@
     ]
   },
   "claude-code-dev": {
-    "name": "Claude Code (Geliştirici Sorunları)",
+    "name": "Claude Code",
     "category": "CLI / Terminal",
     "history": [
       {
@@ -1148,7 +1107,7 @@
     ]
   },
   "otaku-llm-frontend": {
-    "name": "Otaku (LLM Frontend)",
+    "name": "Otaku",
     "category": "Altyapı & SDK",
     "history": [
       {
@@ -1166,7 +1125,7 @@
     ]
   },
   "windsurf-devin-bloat": {
-    "name": "Windsurf / Devin (Bloat Sorunları)",
+    "name": "Windsurf / Devin",
     "category": "IDE / Editör",
     "history": [
       {
@@ -1209,26 +1168,8 @@
       }
     ]
   },
-  "open-source-will-win": {
-    "name": "Açık Kaynak AI (Rekabet)",
-    "category": "Şirket / Lab",
-    "history": [
-      {
-        "date": "6 Eylül 2026",
-        "hypeScore": 9.6,
-        "sentiment": "stabil",
-        "headline": "Pazar Analizi",
-        "summary": "En yeni açık kaynak modellerin, frontier lab'lerin en iyileriyle farkı kapatması ve hatta geçmesi beklentisi.",
-        "sources": [
-          "r/LocalLLaMA",
-          "r/OpenSourceAI",
-          "r/singularity"
-        ]
-      }
-    ]
-  },
   "eidon-self-hosted-ai": {
-    "name": "Eidon (Self-Hosted AI Platformu)",
+    "name": "Eidon",
     "category": "Otonom Agent",
     "history": [
       {
@@ -1246,7 +1187,7 @@
     ]
   },
   "copilot-chat-missing": {
-    "name": "Copilot (Chat Fonksiyonu Eksikliği)",
+    "name": "Copilot",
     "category": "LLM (Model)",
     "history": [
       {
@@ -1263,7 +1204,7 @@
     ]
   },
   "vscode-spell-checker": {
-    "name": "VS Code Spell Checker (Yeni Ayar)",
+    "name": "VS Code Spell Checker",
     "category": "IDE / Editör",
     "history": [
       {
@@ -1306,7 +1247,7 @@
     ]
   },
   "routed-agent-router": {
-    "name": "Routed (AI Agent Skills Router)",
+    "name": "Routed",
     "category": "Altyapı & SDK",
     "history": [
       {
@@ -1361,7 +1302,7 @@
     ]
   },
   "copilot-daily-life": {
-    "name": "Copilot (Kişisel Kullanım)",
+    "name": "Copilot",
     "category": "LLM (Model)",
     "history": [
       {
@@ -1394,7 +1335,7 @@
     ]
   },
   "llm-agent-harness": {
-    "name": "LLM Agent Harness (Abandoned)",
+    "name": "LLM Agent Harness",
     "category": "Yazılım Geliştirici",
     "history": [
       {
@@ -1471,7 +1412,7 @@
     ]
   },
   "writ-ai-writing-checklist": {
-    "name": "Writ (AI Yazım Kontrol Listesi)",
+    "name": "Writ",
     "category": "Yazılım Geliştirici",
     "history": [
       {
@@ -1487,7 +1428,7 @@
     ]
   },
   "hermes-workflow": {
-    "name": "Hermes Workflow (Self-Learning Browser Agent)",
+    "name": "Hermes Workflow",
     "category": "Otonom Agent",
     "history": [
       {
@@ -1502,41 +1443,8 @@
       }
     ]
   },
-  "vibecoding-job-success": {
-    "name": "Vibecoding (Kariyer Başarısı)",
-    "category": "Yazılım Geliştirici",
-    "history": [
-      {
-        "date": "7 Eylül 2026",
-        "hypeScore": 8.7,
-        "sentiment": "stabil",
-        "headline": "İlham Veren Hikaye",
-        "summary": "Vibecoding ile yapılan projelerin doğrudan para kazandırmasa da, yüksek maaşlı bir iş bulmaya yardımcı olmasıyla ilham vermesi.",
-        "sources": [
-          "r/vibecoding"
-        ]
-      }
-    ]
-  },
-  "ai-agent-api-key-loss": {
-    "name": "AI Ajan API Anahtarı Güvenliği",
-    "category": "Otonom Agent",
-    "history": [
-      {
-        "date": "7 Eylül 2026",
-        "hypeScore": 8,
-        "sentiment": "eleştirel",
-        "headline": "Güvenlik Endişesi",
-        "summary": "Bir kullanıcının ajana verdiği API anahtarı nedeniyle 100 dolar kaybetmesi, ajan güvenliği ve harcama limitleri konusundaki endişeleri artırdı.",
-        "sources": [
-          "r/LangChain",
-          "r/AI_Agents"
-        ]
-      }
-    ]
-  },
   "cursor-presentations": {
-    "name": "Cursor (Sunum Oluşturma)",
+    "name": "Cursor",
     "category": "IDE / Editör",
     "history": [
       {
@@ -1551,57 +1459,8 @@
       }
     ]
   },
-  "windsurf-devin-astra-issue": {
-    "name": "Windsurf / Devin (Astra Entegrasyon Sorunu)",
-    "category": "IDE / Editör",
-    "history": [
-      {
-        "date": "7 Eylül 2026",
-        "hypeScore": 8.2,
-        "sentiment": "eleştirel",
-        "headline": "Teknik Sorun",
-        "summary": "Kullanıcıların Astra'yı kullanamaması ve güncelleme sonrası oluşan 'bloat' sorunları nedeniyle geliştirici topluluğunda hayal kırıklığı yaratması.",
-        "sources": [
-          "r/windsurf"
-        ]
-      }
-    ]
-  },
-  "ai-agent-trust-system": {
-    "name": "AI Ajan Güven Sistemi",
-    "category": "Otonom Agent",
-    "history": [
-      {
-        "date": "7 Eylül 2026",
-        "hypeScore": 8.5,
-        "sentiment": "stabil",
-        "headline": "Kritik Tartışma",
-        "summary": "Otonom ajanların yaygınlaşmasının önündeki temel engellerden biri olarak güven sistemlerinin önemi vurgulanıyor.",
-        "sources": [
-          "r/LangChain"
-        ]
-      }
-    ]
-  },
-  "ai-agent-cost-sustainability": {
-    "name": "AI Ajan Maliyetleri",
-    "category": "Yazılım Geliştirici",
-    "history": [
-      {
-        "date": "7 Eylül 2026",
-        "hypeScore": 8,
-        "sentiment": "eleştirel",
-        "headline": "Sürdürülebilirlik Tartışması",
-        "summary": "AI ajanlarının artan maliyetleri ve bu yatırımların sürdürülebilirliği konusunda sektör genelinde devam eden endişeler.",
-        "sources": [
-          "r/AI_Agents",
-          "r/LLMDevs"
-        ]
-      }
-    ]
-  },
   "claude-ai-detection": {
-    "name": "Claude (ChatGPT Tespiti)",
+    "name": "Claude",
     "category": "LLM (Model)",
     "history": [
       {
@@ -1612,23 +1471,6 @@
         "summary": "Claude'un bu beklenmedik 'zekası', modeller arası etkileşim ve içerik orijinalliği tespiti konularında yeni tartışmaları tetikledi.",
         "sources": [
           "r/ClaudeAI"
-        ]
-      }
-    ]
-  },
-  "ai-agents-uncontrolled-space": {
-    "name": "AI Ajanları (Kontrolsüz Alan)",
-    "category": "Otonom Agent",
-    "history": [
-      {
-        "date": "7 Eylül 2026",
-        "hypeScore": 9,
-        "sentiment": "stabil",
-        "headline": "Deneysel Ekonomi",
-        "summary": "Ajanların kontrolsüz bir ortamda kendi kendine organize olma, etkileşim kurma ve hatta para birimi oluşturma yetenekleri, otonom ajanların geleceği hakkında çarpıcı içgörüler sundu.",
-        "sources": [
-          "r/ClaudeAI",
-          "r/AI_Agents"
         ]
       }
     ]
@@ -1650,7 +1492,7 @@
     ]
   },
   "together-ai-anyscale-poll": {
-    "name": "Together AI / Anyscale (LLM Ölçekleme)",
+    "name": "Together AI / Anyscale",
     "category": "Bulut & Platform",
     "history": [
       {
@@ -1667,7 +1509,7 @@
     ]
   },
   "python-interpreter-1024bytes": {
-    "name": "Python Interpreter (1024 bytes)",
+    "name": "Python Interpreter",
     "category": "Yazılım Geliştirici",
     "history": [
       {
@@ -1678,22 +1520,6 @@
         "summary": "Minimalist kodlama ve dil tasarımı alanında etkileyici bir teknik başarı olarak dikkat çekmesi.",
         "sources": [
           "r/programming"
-        ]
-      }
-    ]
-  },
-  "ai-mandates-shame": {
-    "name": "AI Mandateleri ve Utanç",
-    "category": "Yazılım Geliştirici",
-    "history": [
-      {
-        "date": "7 Eylül 2026",
-        "hypeScore": 7.8,
-        "sentiment": "eleştirel",
-        "headline": "Geliştirici Duyguları",
-        "summary": "AI'ın geliştirme süreçlerine entegrasyonunun insan faktörü üzerindeki olumsuz etkileri ve etik ikilemlerin tartışılması.",
-        "sources": [
-          "r/LLMDevs"
         ]
       }
     ]

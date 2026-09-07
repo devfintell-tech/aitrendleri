@@ -163,15 +163,15 @@
   ],
   "morningBrief": {
     "leader": {
-      "name": "GPT-6 Astra",
-      "badge": "Lansman Zirvesi",
-      "description": "GPT-6 Astra, karmaşık web sitelerini dakikalar içinde oluşturarak geliştirici topluluğunda büyük bir heyecan yarattı."
+      "name": "Routed",
+      "badge": "Yeni Açık Kaynak",
+      "description": "AI ajan yetenekleri için yerel, hibrit bir yönlendirici; sub-20ms gecikme ve sıfır token maliyetiyle CPU üzerinde çalışır."
     },
     "bullets": [
       {
         "tag": "Model Savaşları",
         "icon": "🚀",
-        "text": "GPT-6 Astra'nın 'çılgın' yetenekleri, özellikle hızlı web sitesi oluşturma konusunda, diğer modellerle rekabeti kızıştırdı."
+        "text": "Gelişmiş AI modellerinin 'çılgın' yetenekleri, özellikle hızlı web sitesi oluşturma konusunda, diğer modellerle rekabeti kızıştırdı."
       },
       {
         "tag": "Kurumsal & Pazar Dengesi",
@@ -190,36 +190,11 @@
       }
     ]
   },
-  "executiveSummary": "Bugünün AI ekosistemi, GPT-6 Astra'nın 'çılgın' yetenekleriyle zirveye ulaşırken, geliştirici araçları ve otonom ajanlar alanında önemli yenilikler yaşanıyor. Routed gibi yerel, sıfır token maliyetli AI ajan yönlendiricileri, karmaşık iş akışlarını optimize etme potansiyeliyle büyük ilgi görüyor. Öte yandan, Notion'ın AI ajanları aracılığıyla ürün reklamı enjekte etmesi gibi kurumsal etik ihlalleri, AI'ın şeffaflığı ve kullanıcı güveni konularında ciddi tartışmaları tetikledi. Geliştiriciler, Claude Code'un maliyetleri ve Windsurf/Devin gibi IDE'lerdeki entegrasyon sorunları gibi pratik zorluklarla yüzleşirken, n8n Backup Manager gibi araçlar otomasyon ve felaket kurtarma çözümleri sunarak operasyonel dayanıklılığı artırıyor. Genel olarak, AI'ın yetenekleri hızla genişlerken, maliyet, etik ve güvenilirlik gibi temel sorunlar da sektörün gündemini meşgul etmeye devam ediyor.",
+  "executiveSummary": "Bugünün AI ekosistemi, Yeni nesil otonom modellerin 'çılgın' yetenekleriyle zirveye ulaşırken, geliştirici araçları ve otonom ajanlar alanında önemli yenilikler yaşanıyor. Routed gibi yerel, sıfır token maliyetli AI ajan yönlendiricileri, karmaşık iş akışlarını optimize etme potansiyeliyle büyük ilgi görüyor. Öte yandan, Notion'ın AI ajanları aracılığıyla ürün reklamı enjekte etmesi gibi kurumsal etik ihlalleri, AI'ın şeffaflığı ve kullanıcı güveni konularında ciddi tartışmaları tetikledi. Geliştiriciler, Claude Code'un maliyetleri ve Windsurf/Devin gibi IDE'lerdeki entegrasyon sorunları gibi pratik zorluklarla yüzleşirken, n8n Backup Manager gibi araçlar otomasyon ve felaket kurtarma çözümleri sunarak operasyonel dayanıklılığı artırıyor. Genel olarak, AI'ın yetenekleri hızla genişlerken, maliyet, etik ve güvenilirlik gibi temel sorunlar da sektörün gündemini meşgul etmeye devam ediyor.",
   "twelveHours": [
     {
-      "id": "gpt-6-astra",
-      "name": "GPT-6 Astra",
-      "category": "LLM (Model)",
-      "badge": "Son 12 Saat Patlaması",
-      "hypeScore": 10,
-      "prevScore": 9.5,
-      "scoreDelta": 0.5,
-      "trend": "skyrocketing",
-      "mentions": 1,
-      "sparkline": [
-        9,
-        9.2,
-        9.4,
-        9.6,
-        9.8,
-        9.9,
-        10
-      ],
-      "primaryFunction": "Karmaşık görevleri yerine getiren, etkileşimli web siteleri gibi çıktıları hızlıca üreten gelişmiş bir dil modeli.",
-      "whyTrending": "30 dakikada interaktif web sitesi oluşturma yeteneğiyle 'çılgın' olarak nitelendirilmesi ve geliştiriciler arasında büyük heyecan yaratması.",
-      "sources": [
-        "r/vibecoding"
-      ]
-    },
-    {
       "id": "routed-agent-router",
-      "name": "Routed (AI Agent Skills Router)",
+      "name": "Routed",
       "category": "Altyapı & SDK",
       "badge": "Yeni Açık Kaynak",
       "hypeScore": 9.8,
@@ -351,84 +326,8 @@
       ]
     },
     {
-      "id": "vibecoding-job-success",
-      "name": "Vibecoding (Kariyer Başarısı)",
-      "category": "Yazılım Geliştirici",
-      "badge": "İlham Veren Hikaye",
-      "hypeScore": 8.7,
-      "prevScore": 8.5,
-      "scoreDelta": 0.2,
-      "trend": "rising",
-      "mentions": 1,
-      "sparkline": [
-        8.4,
-        8.5,
-        8.6,
-        8.6,
-        8.7,
-        8.7,
-        8.7
-      ],
-      "primaryFunction": "Kişisel projeler geliştirme ve portföy oluşturma pratiği.",
-      "whyTrending": "Vibecoding ile yapılan projelerin doğrudan para kazandırmasa da, yüksek maaşlı bir iş bulmaya yardımcı olmasıyla ilham vermesi.",
-      "sources": [
-        "r/vibecoding"
-      ]
-    },
-    {
-      "id": "windsurf-devin-astra-issue",
-      "name": "Windsurf / Devin (Astra Entegrasyon Sorunu)",
-      "category": "IDE / Editör",
-      "badge": "Teknik Sorun",
-      "hypeScore": 8.2,
-      "prevScore": 8.5,
-      "scoreDelta": -0.3,
-      "trend": "cooling",
-      "mentions": 2,
-      "sparkline": [
-        8.5,
-        8.4,
-        8.3,
-        8.2,
-        8.2,
-        8.2,
-        8.2
-      ],
-      "primaryFunction": "Windsurf ve Devin IDE'lerinde Astra entegrasyonu ve güncelleme sonrası oluşan sorunlar.",
-      "whyTrending": "Kullanıcıların Astra'yı kullanamaması ve güncelleme sonrası oluşan 'bloat' sorunları nedeniyle geliştirici topluluğunda hayal kırıklığı yaratması.",
-      "sources": [
-        "r/windsurf"
-      ]
-    },
-    {
-      "id": "ai-agent-cost-sustainability",
-      "name": "AI Ajan Maliyetleri",
-      "category": "Yazılım Geliştirici",
-      "badge": "Sürdürülebilirlik Tartışması",
-      "hypeScore": 8,
-      "prevScore": 8.2,
-      "scoreDelta": -0.2,
-      "trend": "cooling",
-      "mentions": 2,
-      "sparkline": [
-        8.3,
-        8.2,
-        8.1,
-        8,
-        8,
-        8,
-        8
-      ],
-      "primaryFunction": "Şirketlerin AI kodlama ajanlarının maliyetlerini yönetme ve üretkenlik kazancının bu maliyetleri haklı çıkarıp çıkarmadığı tartışması.",
-      "whyTrending": "AI ajanlarının artan maliyetleri ve bu yatırımların sürdürülebilirliği konusunda sektör genelinde devam eden endişeler.",
-      "sources": [
-        "r/AI_Agents",
-        "r/LLMDevs"
-      ]
-    },
-    {
       "id": "cursor-presentations",
-      "name": "Cursor (Sunum Oluşturma)",
+      "name": "Cursor",
       "category": "IDE / Editör",
       "badge": "Yeni Kullanım Alanı",
       "hypeScore": 9,
@@ -454,33 +353,8 @@
   ],
   "daily": [
     {
-      "id": "gpt-6-astra",
-      "name": "GPT-6 Astra",
-      "category": "LLM (Model)",
-      "badge": "Günün Lideri",
-      "hypeScore": 10,
-      "prevScore": 9.5,
-      "scoreDelta": 0.5,
-      "trend": "skyrocketing",
-      "mentions": 1,
-      "sparkline": [
-        9,
-        9.2,
-        9.4,
-        9.6,
-        9.8,
-        9.9,
-        10
-      ],
-      "primaryFunction": "Karmaşık görevleri yerine getiren, etkileşimli web siteleri gibi çıktıları hızlıca üreten gelişmiş bir dil modeli.",
-      "whyTrending": "30 dakikada interaktif web sitesi oluşturma yeteneğiyle 'çılgın' olarak nitelendirilmesi ve geliştiriciler arasında büyük heyecan yaratması.",
-      "sources": [
-        "r/vibecoding"
-      ]
-    },
-    {
       "id": "routed-agent-router",
-      "name": "Routed (AI Agent Skills Router)",
+      "name": "Routed",
       "category": "Altyapı & SDK",
       "badge": "Yeni Açık Kaynak",
       "hypeScore": 9.8,
@@ -612,84 +486,8 @@
       ]
     },
     {
-      "id": "vibecoding-job-success",
-      "name": "Vibecoding (Kariyer Başarısı)",
-      "category": "Yazılım Geliştirici",
-      "badge": "İlham Veren Hikaye",
-      "hypeScore": 8.7,
-      "prevScore": 8.5,
-      "scoreDelta": 0.2,
-      "trend": "rising",
-      "mentions": 1,
-      "sparkline": [
-        8.4,
-        8.5,
-        8.6,
-        8.6,
-        8.7,
-        8.7,
-        8.7
-      ],
-      "primaryFunction": "Kişisel projeler geliştirme ve portföy oluşturma pratiği.",
-      "whyTrending": "Vibecoding ile yapılan projelerin doğrudan para kazandırmasa da, yüksek maaşlı bir iş bulmaya yardımcı olmasıyla ilham vermesi.",
-      "sources": [
-        "r/vibecoding"
-      ]
-    },
-    {
-      "id": "ai-agent-cost-sustainability",
-      "name": "AI Ajan Maliyetleri",
-      "category": "Yazılım Geliştirici",
-      "badge": "Sürdürülebilirlik Tartışması",
-      "hypeScore": 8,
-      "prevScore": 8.2,
-      "scoreDelta": -0.2,
-      "trend": "cooling",
-      "mentions": 2,
-      "sparkline": [
-        8.3,
-        8.2,
-        8.1,
-        8,
-        8,
-        8,
-        8
-      ],
-      "primaryFunction": "Şirketlerin AI kodlama ajanlarının maliyetlerini yönetme ve üretkenlik kazancının bu maliyetleri haklı çıkarıp çıkarmadığı tartışması.",
-      "whyTrending": "AI ajanlarının artan maliyetleri ve bu yatırımların sürdürülebilirliği konusunda sektör genelinde devam eden endişeler.",
-      "sources": [
-        "r/AI_Agents",
-        "r/LLMDevs"
-      ]
-    },
-    {
-      "id": "windsurf-devin-astra-issue",
-      "name": "Windsurf / Devin (Astra Entegrasyon Sorunu)",
-      "category": "IDE / Editör",
-      "badge": "Teknik Sorun",
-      "hypeScore": 8.2,
-      "prevScore": 8.5,
-      "scoreDelta": -0.3,
-      "trend": "cooling",
-      "mentions": 2,
-      "sparkline": [
-        8.5,
-        8.4,
-        8.3,
-        8.2,
-        8.2,
-        8.2,
-        8.2
-      ],
-      "primaryFunction": "Windsurf ve Devin IDE'lerinde Astra entegrasyonu ve güncelleme sonrası oluşan sorunlar.",
-      "whyTrending": "Kullanıcıların Astra'yı kullanamaması ve güncelleme sonrası oluşan 'bloat' sorunları nedeniyle geliştirici topluluğunda hayal kırıklığı yaratması.",
-      "sources": [
-        "r/windsurf"
-      ]
-    },
-    {
       "id": "cursor-presentations",
-      "name": "Cursor (Sunum Oluşturma)",
+      "name": "Cursor",
       "category": "IDE / Editör",
       "badge": "Yeni Kullanım Alanı",
       "hypeScore": 9,
@@ -714,7 +512,7 @@
     },
     {
       "id": "together-ai-anyscale-poll",
-      "name": "Together AI / Anyscale (LLM Ölçekleme)",
+      "name": "Together AI / Anyscale",
       "category": "Bulut & Platform",
       "badge": "Pazar Araştırması",
       "hypeScore": 8.5,
@@ -739,33 +537,8 @@
       ]
     },
     {
-      "id": "ai-agent-trust-system",
-      "name": "AI Ajan Güven Sistemi",
-      "category": "Otonom Agent",
-      "badge": "Kritik Tartışma",
-      "hypeScore": 8.5,
-      "prevScore": 8.5,
-      "scoreDelta": 0,
-      "trend": "stable",
-      "mentions": 1,
-      "sparkline": [
-        8.4,
-        8.4,
-        8.5,
-        8.5,
-        8.5,
-        8.5,
-        8.5
-      ],
-      "primaryFunction": "Uzun süreli çalışan AI ajanlarının üretimde kullanılabilmesi için gerekli olan güven sistemlerinin eksikliği.",
-      "whyTrending": "Otonom ajanların yaygınlaşmasının önündeki temel engellerden biri olarak güven sistemlerinin önemi vurgulanıyor.",
-      "sources": [
-        "r/LangChain"
-      ]
-    },
-    {
       "id": "python-interpreter-1024bytes",
-      "name": "Python Interpreter (1024 bytes)",
+      "name": "Python Interpreter",
       "category": "Yazılım Geliştirici",
       "badge": "Teknik Başarı",
       "hypeScore": 8.8,
@@ -787,59 +560,9 @@
       "sources": [
         "r/programming"
       ]
-    },
-    {
-      "id": "ai-mandates-shame",
-      "name": "AI Mandateleri ve Utanç",
-      "category": "Yazılım Geliştirici",
-      "badge": "Geliştirici Duyguları",
-      "hypeScore": 7.8,
-      "prevScore": 8,
-      "scoreDelta": -0.2,
-      "trend": "cooling",
-      "mentions": 1,
-      "sparkline": [
-        8.1,
-        8,
-        7.9,
-        7.8,
-        7.8,
-        7.8,
-        7.8
-      ],
-      "primaryFunction": "Şirketlerde AI kullanımının zorunlu hale gelmesiyle geliştiricilerin yaşadığı memnuniyetsizlik ve sosyal stigma.",
-      "whyTrending": "AI'ın geliştirme süreçlerine entegrasyonunun insan faktörü üzerindeki olumsuz etkileri ve etik ikilemlerin tartışılması.",
-      "sources": [
-        "r/LLMDevs"
-      ]
     }
   ],
   "weekly": [
-    {
-      "id": "gpt-6-astra",
-      "name": "GPT-6 Astra",
-      "category": "LLM (Model)",
-      "badge": "Haftanın Zirvesi",
-      "hypeScore": 10,
-      "prevScore": 10,
-      "scoreDelta": 0,
-      "trend": "stable",
-      "mentions": 3,
-      "sparkline": [
-        10,
-        10,
-        10,
-        10,
-        10,
-        10,
-        10
-      ],
-      "primaryFunction": "Gelişmiş genel zeka ve kodlama yetenekleri sunan bir dil modeli.",
-      "whyTrending": "Hafta boyunca 'çılgın' yetenekleri ve hızlı prototipleme kapasitesiyle gündemde kalması.",
-      "sources": [
-        "r/vibecoding"
-      ]
-    },
     {
       "id": "claude-code",
       "name": "Claude Code",
@@ -974,7 +697,7 @@
     },
     {
       "id": "routed-agent-router",
-      "name": "Routed (AI Agent Skills Router)",
+      "name": "Routed",
       "category": "Altyapı & SDK",
       "badge": "Haftanın Çıkışı",
       "hypeScore": 9.2,
@@ -1102,31 +825,6 @@
     }
   ],
   "monthly": [
-    {
-      "id": "gpt-6-astra",
-      "name": "GPT-6 Astra",
-      "category": "LLM (Model)",
-      "badge": "Aylık Lider",
-      "hypeScore": 10,
-      "prevScore": 10,
-      "scoreDelta": 0,
-      "trend": "stable",
-      "mentions": 3,
-      "sparkline": [
-        10,
-        10,
-        10,
-        10,
-        10,
-        10,
-        10
-      ],
-      "primaryFunction": "Gelişmiş genel zeka ve kodlama yetenekleri sunan bir dil modeli.",
-      "whyTrending": "Ay boyunca 'çılgın' yetenekleri ve hızlı prototipleme kapasitesiyle gündemde kalması.",
-      "sources": [
-        "r/vibecoding"
-      ]
-    },
     {
       "id": "claude-code",
       "name": "Claude Code",

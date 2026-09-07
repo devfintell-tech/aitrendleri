@@ -564,6 +564,20 @@ async function main() {
     - HUGGING FACE, HACKER NEWS VE GITHUB VERİLERİ EN YUKARIDAKİ SIRALAMAYA KESİNLİKLE VE ASLA ETKİ EDEMEZ!
     - Hugging Face, GitHub ve Hacker News verileri yalnızca kendi alt bölümleri içindir; üst sıralamayı asla değiştiremez veya manipüle edemez.
     - Tüm araçların 'sources' alanları İSTİSNASIZ Reddit toplulukları (örn. ["r/LocalLLaMA", "r/singularity", "r/vibecoding"]) olmalıdır.
+
+    🚨 EN KRİTİK KURAL 3: SIRALAMADAKİ TÜM ÖĞELER SOMUT BİR 'ÜRÜN / MODEL / YAZILIM / ARAÇ' OLMAK ZORUNDADIR:
+    - Bir şirketin, topluluğun veya yazılımcının somut bir ürünü olmalıdır (LLM, Yerel Model, VLM, CLI Aracı, IDE / Editör, Otonom Ajan, Framework vb.).
+    - KESİNLİKLE genel kavramlar, felsefi akımlar, Reddit tartışma başlıkları veya soyut fikirler sıralamaya GİREMEZ!
+    - YASAK ÖRNEKLER: "Vibecoding", "AI Ajan Maliyetleri", "AI Mandateleri ve Utanç", "AI Ajan Güven Sistemi", "Prompt Mühendisliği", "Self-Hosting Felsefesi" gibi kavramlar ürün DEĞİLDİR, ASLA sıralama tablosuna ALINAMAZ!
+    - DOĞRU ÖRNEKLER: "Cursor", "Claude Code", "Routed", "DeepSeek-V3", "n8n", "vLLM", "Ollama", "Windsurf", "Qwen 2.5", "VS Code Theme Mixer" gibi somut, çalışan ürünler.
+
+    🚨 EN KRİTİK KURAL 4: 'name' ALANINDA ASLA PARANTEZ KULLANILAMAZ:
+    - 'name' alanı YALNIZCA ve SADECE ürünün saf marka/yazılım adıdır!
+    - Parantez içinde konu, özellik veya açıklama eklemek KESİNLİKLE YASAKTIR (Örn: "Cursor (Sunum Oluşturma)" YASAKTIR -> Doğrusu: "Cursor"; "Routed (AI Agent Skills Router)" YASAKTIR -> Doğrusu: "Routed").
+    - Tartışılan konuyu veya özelliği 'primaryFunction' veya 'whyTrending' alanlarına yaz.
+
+    🚨 EN KRİTİK KURAL 5: HAYALİ / KURGUSAL MODEL YASAKTIR:
+    - Gerçekte var olmayan veya kurgusal modeller ('GPT-6 Astra' vb.) KESİNLİKLE LİSTEYE ALINAMAZ. Gerçek dünyada var olan taze modelleri ve araçları listele.
     ════════════════════════════════════════════════════════════════════
 
     Aşağıda derlenen son 24 saatin istihbaratı yer almaktadır:
@@ -1654,8 +1668,25 @@ function enforceStrictStandards(data, hfModels = [], candidateArxiv = [], hnPost
 
   const cleanStrName = (val) => {
     if (!val || typeof val !== 'string') return "";
-    return val.replace(/\s*\([^)]*(günün|lider|numara|seçilen|modeli|1\s*numara)[^)]*\)/gi, "").trim();
+    return val.replace(/\s*\([^)]*\)/g, "").trim();
   };
+
+  const badConceptPatterns = [
+    /vibecoding/i,
+    /maliyet/i,
+    /utanç/i,
+    /mandate/i,
+    /güven sistemi/i,
+    /anket/i,
+    /felsefe/i,
+    /tartışma/i,
+    /kariyer/i,
+    /will-win/i,
+    /shame/i,
+    /loss/i,
+    /uncontrolled/i,
+    /astra/i
+  ];
 
   if (!clean.morningBrief || typeof clean.morningBrief !== 'object') {
     clean.morningBrief = {
@@ -1721,13 +1752,19 @@ function enforceStrictStandards(data, hfModels = [], candidateArxiv = [], hnPost
     }
   }
 
-  // Model ve araç isimlerindeki yapay parantez ve sıfatları temizle
+  // Model ve araç isimlerindeki yapay parantezleri temizle, soyut kavramları listeden çıkar
   ['twelveHours', 'daily', 'weekly', 'monthly'].forEach(key => {
     if (Array.isArray(clean[key])) {
-      clean[key] = clean[key].map(item => ({
-        ...item,
-        name: cleanStrName(item.name)
-      }));
+      clean[key] = clean[key]
+        .filter(item => {
+          const n = item.name || '';
+          const id = item.id || '';
+          return !badConceptPatterns.some(p => p.test(n) || p.test(id));
+        })
+        .map(item => ({
+          ...item,
+          name: cleanStrName(item.name)
+        }));
     }
   });
 
