@@ -567,17 +567,12 @@ async function main() {
 
     🚨 EN KRİTİK KURAL 3: SIRALAMADAKİ TÜM ÖĞELER SOMUT BİR 'ÜRÜN / MODEL / YAZILIM / ARAÇ' OLMAK ZORUNDADIR:
     - Bir şirketin, topluluğun veya yazılımcının somut bir ürünü olmalıdır (LLM, Yerel Model, VLM, CLI Aracı, IDE / Editör, Otonom Ajan, Framework vb.).
-    - KESİNLİKLE genel kavramlar, felsefi akımlar, Reddit tartışma başlıkları veya soyut fikirler sıralamaya GİREMEZ!
-    - YASAK ÖRNEKLER: "Vibecoding", "AI Ajan Maliyetleri", "AI Mandateleri ve Utanç", "AI Ajan Güven Sistemi", "Prompt Mühendisliği", "Self-Hosting Felsefesi" gibi kavramlar ürün DEĞİLDİR, ASLA sıralama tablosuna ALINAMAZ!
-    - DOĞRU ÖRNEKLER: "Cursor", "Claude Code", "Routed", "DeepSeek-V3", "n8n", "vLLM", "Ollama", "Windsurf", "Qwen 2.5", "VS Code Theme Mixer" gibi somut, çalışan ürünler.
+    - KESİNLİKLE genel kavramlar, felsefi akımlar, Reddit tartışma başlıkları veya soyut fikirler sıralamaya GİREMEZ.
+    - Yalnızca çalışan, gerçek yazılım ürünlerini listele.
 
     🚨 EN KRİTİK KURAL 4: 'name' ALANINDA ASLA PARANTEZ KULLANILAMAZ:
-    - 'name' alanı YALNIZCA ve SADECE ürünün saf marka/yazılım adıdır!
-    - Parantez içinde konu, özellik veya açıklama eklemek KESİNLİKLE YASAKTIR (Örn: "Cursor (Sunum Oluşturma)" YASAKTIR -> Doğrusu: "Cursor"; "Routed (AI Agent Skills Router)" YASAKTIR -> Doğrusu: "Routed").
-    - Tartışılan konuyu veya özelliği 'primaryFunction' veya 'whyTrending' alanlarına yaz.
-
-    🚨 EN KRİTİK KURAL 5: HAYALİ / KURGUSAL MODEL YASAKTIR:
-    - Gerçekte var olmayan veya kurgusal modeller ('GPT-6 Astra' vb.) KESİNLİKLE LİSTEYE ALINAMAZ. Gerçek dünyada var olan taze modelleri ve araçları listele.
+    - 'name' alanı YALNIZCA ve SADECE ürünün saf marka/yazılım adıdır.
+    - Asla parantez açma veya parantez içinde açıklama ekleme.
     ════════════════════════════════════════════════════════════════════
 
     Aşağıda derlenen son 24 saatin istihbaratı yer almaktadır:
