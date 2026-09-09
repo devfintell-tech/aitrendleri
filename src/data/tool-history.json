@@ -174,13 +174,12 @@
       {
         "date": "9 Eylül 2026",
         "hypeScore": 8.4,
-        "sentiment": "eleştirel",
-        "headline": "Geliştirici Favorisi",
-        "summary": "Rooftop.chat gibi yeni projelerde kullanılması ve video düzenleme iş akışlarında yer almasıyla pozitif ilgi görse de, Belay gibi araçların 'bellek sorununu' hedef alması hafif bir eleştiriye yol açtı.",
+        "sentiment": "stabil",
+        "headline": "Bellek Sorunu",
+        "summary": "Geliştiriciler arasında yaygın kullanımı devam etse de, 'bellek sorunu' ve tutarsız davranışlar hakkında sorular gündeme geldi.",
         "sources": [
-          "r/vibecoding",
           "r/ClaudeDev",
-          "r/generativeAI"
+          "r/ClaudeAI"
         ]
       }
     ]
@@ -453,11 +452,10 @@
         "hypeScore": 9.8,
         "sentiment": "stabil",
         "headline": "Sektör Standardı",
-        "summary": "Tutarlı yüksek performansı ve geliştiriciler tarafından yeni projelerde (Rooftop.chat, video düzenleme) aktif olarak kullanılmasıyla haftanın en stabil ve güvenilir modellerinden biri oldu.",
+        "summary": "Tutarlı yüksek performansı ve geniş kullanım alanı ile sektörde standart bir referans noktası olmaya devam ediyor.",
         "sources": [
-          "r/ClaudeDev",
-          "r/singularity",
-          "r/AI_Agents"
+          "r/ClaudeAI",
+          "r/LLMDevs"
         ]
       }
     ]
@@ -843,11 +841,10 @@
         "hypeScore": 9.7,
         "sentiment": "stabil",
         "headline": "10M İndirme Eşiği",
-        "summary": "10 milyon indirme eşiğini aşması ve 16GB RAM'li dizüstü bilgisayarlarda bile yüksek token/saniye hızları sunmasıyla yerel LLM topluluğunda haftanın en çok konuşulan modellerinden biri oldu.",
+        "summary": "16GB RAM'li dizüstü bilgisayarlarda bile 40 token/saniye hızla akıcı çalışabilmesi ve 10 milyon indirme eşiğini aşmasıyla yerel AI topluluğunda popülerliğini koruyor.",
         "sources": [
           "r/LocalLLaMA",
-          "r/singularity",
-          "r/ollama"
+          "r/Ollama"
         ]
       }
     ]
@@ -894,10 +891,10 @@
         "hypeScore": 9.7,
         "sentiment": "stabil",
         "headline": "Video Üretiminde Lider",
-        "summary": "Video üretiminde sunduğu hız ve kalite ile medya profesyonelleri arasında büyük ilgi gördü, özellikle 3-Pass Distill teknolojisiyle öne çıktı.",
+        "summary": "Video üretiminde sağladığı hız ve kalite ile içerik oluşturucular arasında tercih edilen bir araç olmaya devam ediyor.",
         "sources": [
           "r/generativeAI",
-          "r/AI_Tools"
+          "r/StableDiffusion"
         ]
       }
     ]
@@ -1076,11 +1073,10 @@
         "hypeScore": 9.3,
         "sentiment": "stabil",
         "headline": "Hızlı Görsel LLM",
-        "summary": "Görsel anlama ve üretimdeki hızı ve verimliliği ile öne çıkarak, özellikle GB200 kümeleme ve vLLM dağıtımı gibi altyapı entegrasyonlarıyla dikkat çekti.",
+        "summary": "Hızlı görsel anlama ve işlem yetenekleriyle toplulukta güçlü bir etkileşim yaratıyor.",
         "sources": [
           "r/LocalLLaMA",
-          "r/singularity",
-          "r/AI_Tools"
+          "r/singularity"
         ]
       }
     ]
@@ -1275,9 +1271,9 @@
         "hypeScore": 9.3,
         "sentiment": "stabil",
         "headline": "Yerel Bellek",
-        "summary": "Ajanların öğrenme ve bağlam tutma yeteneklerini geliştiren yerel bellek çözümleri sunmasıyla, daha akıllı ve tutarlı ajanlar geliştirmek isteyenler için önemliydi.",
+        "summary": "Agent'ların uzun vadeli hafıza sorununa yerel ve güvenli bir çözüm sunmasıyla dikkat çekiyor.",
         "sources": [
-          "r/AI_Agents",
+          "r/agenticAI",
           "r/LocalLLaMA"
         ]
       }
@@ -1390,10 +1386,10 @@
         "hypeScore": 9.8,
         "sentiment": "coşkulu",
         "headline": "Yeni Açık Kaynak",
-        "summary": "Yeni açık kaynak olarak duyurulması ve ajanların karmaşık görevlerde daha verimli çalışmasını sağlayan yerel yönlendirme yetenekleriyle hızla ilgi topladı.",
+        "summary": "Agent mühendisliğinde esneklik ve verimlilik sunan yeni açık kaynak bir çözüm olarak hızla benimseniyor.",
         "sources": [
           "r/AI_Agents",
-          "r/LLMDevs"
+          "r/LangChain"
         ]
       }
     ]
@@ -1718,12 +1714,12 @@
       {
         "date": "9 Eylül 2026",
         "hypeScore": 9.5,
-        "sentiment": "coşkulu",
+        "sentiment": "stabil",
         "headline": "Yeni Nesil Sosyal Kodlama",
-        "summary": "Claude Code ile inşa edilen bu sanal lounge, yalnız çalışan geliştiriciler için yeni bir sosyal etkileşim ve üretkenlik ortamı sunuyor.",
+        "summary": "AI destekli kodlama süreçlerinde artan yalnızlığa sosyal bir çözüm sunması ve Claude Code ile inşa edilmiş olması toplulukta heyecan yarattı.",
         "sources": [
           "r/vibecoding",
-          "r/ClaudeDev"
+          "r/ClaudeCode"
         ]
       }
     ]
@@ -1734,14 +1730,13 @@
     "history": [
       {
         "date": "9 Eylül 2026",
-        "hypeScore": 9.3,
+        "hypeScore": 9.8,
         "sentiment": "coşkulu",
-        "headline": "Yerel Agent Çözümü",
-        "summary": "ChatGPT destekli kodlama ve yönetim işleri için yerel, güvenli ve kapsamlı bir otomasyon çözümü sunmasıyla dikkat çekiyor.",
+        "headline": "Son 12 Saat Patlaması",
+        "summary": "ChatGPT'nin komutları söyleyip mekanik kısmı kullanıcının yapması sorununa doğrudan çözüm sunması ve tarayıcı sekme izolasyonu gibi yenilikçi özellikleriyle büyük ilgi gördü.",
         "sources": [
           "r/vibecoding",
-          "r/AI_Agents",
-          "r/programming"
+          "r/ChatGPTCoding"
         ]
       }
     ]
@@ -1755,10 +1750,9 @@
         "hypeScore": 9.1,
         "sentiment": "coşkulu",
         "headline": "Git Tabanlı Bellek",
-        "summary": "Ajanlar için paylaşılan belleği Git'in doğal yetenekleriyle (geçmiş, diff, dallanma) çözme yaklaşımı geliştiriciler arasında ilgi uyandırdı.",
+        "summary": "Agent'lar için paylaşılan bellek sorununa Git'in doğal yeteneklerini (geçmiş, diff'ler, dallanma) kullanarak yenilikçi bir çözüm sunması.",
         "sources": [
-          "r/generativeAI",
-          "r/LLMDevs"
+          "r/programming"
         ]
       }
     ]
@@ -1770,12 +1764,11 @@
       {
         "date": "9 Eylül 2026",
         "hypeScore": 8.9,
-        "sentiment": "coşkulu",
+        "sentiment": "stabil",
         "headline": "Hata Tekrarını Önleyici",
-        "summary": "Claude Code gibi ajanların 'bellek sorununu' ve aynı hataları tekrarlama eğilimini doğrudan hedef almasıyla geliştiricilerin dikkatini çekti.",
+        "summary": "Claude Code gibi agent'ların 'bellek sorununa' pratik ve yerel bir çözüm sunması, geliştiriciler arasında büyük ilgi gördü.",
         "sources": [
-          "r/agenticAI",
-          "r/ClaudeDev"
+          "r/agenticAI"
         ]
       }
     ]
@@ -1806,10 +1799,9 @@
         "hypeScore": 8.7,
         "sentiment": "coşkulu",
         "headline": "Hash Doğrulamalı Bağlam",
-        "summary": "API anahtarı, GPU veya üçüncü taraf bağımlılıkları olmadan yerel kod/metin indeksleme ve güvenli bağlam oluşturma yeteneğiyle öne çıktı.",
+        "summary": "Yerel, API anahtarı gerektirmeyen, GPU'suz ve vektör sunucusuz çalışmasıyla gizlilik ve maliyet odaklı geliştiricilerin dikkatini çekti.",
         "sources": [
-          "r/LLMDevs",
-          "r/programming"
+          "r/LLMDevs"
         ]
       }
     ]
@@ -1823,7 +1815,7 @@
         "hypeScore": 8.5,
         "sentiment": "stabil",
         "headline": "Yerel Kurulum Rehberi",
-        "summary": "Yerel modellerle MetaGPT'yi kurmaya yönelik kapsamlı teknik rehber, toplulukta ajanı kendi altyapısında çalıştırmak isteyenler için büyük ilgi gördü.",
+        "summary": "Yerel modellerle MetaGPT'yi kurmaya yönelik kapsamlı teknik rehber, agent geliştiricileri için değerli bir kaynak oldu.",
         "sources": [
           "r/crewai",
           "r/AutoGPT"
@@ -1840,7 +1832,7 @@
         "hypeScore": 4.8,
         "sentiment": "eleştirel",
         "headline": "Kritik Hata",
-        "summary": "Kullanıcıların 'Client error: Protocol error' ve 'infinite loop' gibi kritik hatalarla karşılaşması ve ücretsiz kullanıcılar için model erişiminin kısıtlanması büyük tepki çekti.",
+        "summary": "Ücretsiz kullanıcılar için model erişiminin olmaması ve sürekli 'protokol hatası' vermesi nedeniyle yoğun eleştiri aldı.",
         "sources": [
           "r/windsurf"
         ]
@@ -1856,10 +1848,9 @@
         "hypeScore": 6.2,
         "sentiment": "eleştirel",
         "headline": "Özellik Kaldırma Tepkisi",
-        "summary": "Masaüstü uygulamasından ekran paylaşımının kaldırılması ve 'mavi Copilot uygulaması'nın kaybolması gibi kullanıcı deneyimi sorunları nedeniyle eleştirildi.",
+        "summary": "Masaüstü uygulamasından ekran paylaşımı özelliğinin kaldırılması ve genel kullanımda yaşanan hayal kırıklıkları nedeniyle eleştirildi.",
         "sources": [
-          "r/Copilot",
-          "r/vscode"
+          "r/Copilot"
         ]
       }
     ]
@@ -1873,9 +1864,8 @@
         "hypeScore": 8.3,
         "sentiment": "coşkulu",
         "headline": "iPhone Not Entegrasyonu",
-        "summary": "ChatGPT'den alınan bilgileri doğrudan iPhone notlarına aktararak düzenleme, hatırlatıcı ekleme ve tablo oluşturma gibi pratik yetenekleriyle övgü topladı.",
+        "summary": "ChatGPT çıktılarını doğrudan iPhone notlarına kaydetme ve düzenleme kolaylığı sunarak kullanıcı deneyimini iyileştirmesi.",
         "sources": [
-          "r/generativeAI",
           "r/AI_Tools"
         ]
       }
@@ -1890,10 +1880,9 @@
         "hypeScore": 8.9,
         "sentiment": "stabil",
         "headline": "Büyük Refactor Yeteneği",
-        "summary": "Kapsamlı bir full-stack refactor projesinde kullanılması planlanması, aracın karmaşık görevleri yönetme yeteneğine olan güveni gösterdi.",
+        "summary": "Kapsamlı bir tam yığın refactor projesini yönetme yeteneği hakkında tartışmalar, aracın potansiyelini vurguladı.",
         "sources": [
-          "r/CursorAI",
-          "r/ChatGPTCoding"
+          "r/CursorAI"
         ]
       }
     ]
@@ -1905,12 +1894,11 @@
       {
         "date": "9 Eylül 2026",
         "hypeScore": 9,
-        "sentiment": "stabil",
+        "sentiment": "eleştirel",
         "headline": "Self-Hosting Esnekliği",
-        "summary": "Self-hosting seçenekleri ve ödeme mutabakatı gibi gerçek dünya kullanım senaryolarındaki yetenekleri, kullanıcılar arasında pozitif tartışmalara yol açtı.",
+        "summary": "Self-hosting seçenekleri ve VPS sağlayıcıları hakkındaki tartışmalar, platformun esnekliğini ve maliyet avantajlarını vurguladı.",
         "sources": [
-          "r/n8n",
-          "r/Automate"
+          "r/n8n"
         ]
       }
     ]
@@ -1924,10 +1912,9 @@
         "hypeScore": 8.7,
         "sentiment": "eleştirel",
         "headline": "Haftalık Düşüş",
-        "summary": "Hafta boyunca 'yüksek yük baskısı', 'bellek sızıntısı' ve 'major degradation' gibi sorunlarla eleştirilmesi, puanında belirgin bir düşüşe neden oldu.",
+        "summary": "Yüksek yük baskısı ve bellek sızıntısı gibi sorunlar nedeniyle puanında düşüş yaşadı, ancak hala popülerliğini koruyor.",
         "sources": [
           "r/CursorAI",
-          "r/vscode",
           "r/vibecoding"
         ]
       }
@@ -1942,10 +1929,42 @@
         "hypeScore": 5.5,
         "sentiment": "eleştirel",
         "headline": "Karmaşık Güncelleme",
-        "summary": "Kritik hatalar, ücretsiz kullanıcı kısıtlamaları ve genel performans sorunları nedeniyle hafta boyunca yoğun eleştiri alarak puanında sert bir düşüş yaşadı.",
+        "summary": "Son güncellemelerle birlikte ücretsiz kullanıcılar için model erişiminin kısıtlanması ve sürekli hatalar vermesi nedeniyle ciddi eleştiriler aldı.",
         "sources": [
           "r/windsurf",
-          "r/ChatGPTCoding"
+          "r/devin"
+        ]
+      }
+    ]
+  },
+  "mac-mcp-foss": {
+    "name": "Mac MCP FOSS",
+    "category": "Otonom Agent",
+    "history": [
+      {
+        "date": "9 Eylül 2026",
+        "hypeScore": 9.3,
+        "sentiment": "coşkulu",
+        "headline": "Açık Kaynak Agent",
+        "summary": "MIT lisanslı açık kaynak olarak yayınlanması ve tarayıcı sekme izolasyonu gibi pratik özellikleriyle geliştiricilerden olumlu geri dönüşler aldı.",
+        "sources": [
+          "r/LLMDevs"
+        ]
+      }
+    ]
+  },
+  "openclaw": {
+    "name": "OpenClaw",
+    "category": "Otonom Agent",
+    "history": [
+      {
+        "date": "9 Eylül 2026",
+        "hypeScore": 9.4,
+        "sentiment": "coşkulu",
+        "headline": "Bilimsel Keşif",
+        "summary": "Bir agent'ın (MoltFire) OpenClaw üzerinde çalışarak bir matematik rekoru kırması ve arXiv'de yayınlanması büyük ses getirdi.",
+        "sources": [
+          "r/vibecoding"
         ]
       }
     ]

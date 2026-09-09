@@ -1,6 +1,6 @@
 ================================================================================
 🤖 AITRENDLERI.COM OTONOM TARAMA VE ANALİZ TERMİNAL RAPORU
-Tarih: 9 Eylül 2026 | İşlem Süresi: 262s
+Tarih: 9 Eylül 2026 | İşlem Süresi: 272s
 ================================================================================
 
 [1. MODEL & ŞELALE AKTİVİTESİ]
@@ -13,15 +13,15 @@ Tarih: 9 Eylül 2026 | İşlem Süresi: 262s
   ✔ Başarılı Kategori / Batch   : 3 / 7
   ------------------------------------------------------------------------------
   1. [🟢 OK 200] Vibe Coding & Yeni Nesil Editörler: 15 gönderi
-     └─ Dağılım: r/ClaudeAI: 1, r/vibecoding: 2, r/ChatGPTCoding: 3, r/Copilot: 3, r/CursorAI: 2, r/windsurf: 2, r/vscode: 1, r/ClaudeDev: 1
+     └─ Dağılım: r/ClaudeAI: 2, r/vibecoding: 5, r/ChatGPTCoding: 1, r/Copilot: 3, r/CursorAI: 1, r/windsurf: 1, r/vscode: 1, r/ClaudeDev: 1
   2. [🟢 OK 200] Otonom Ajanlar & Süreç Otomasyonu: 15 gönderi
-     └─ Dağılım: r/AI_Agents: 1, r/n8n: 1, r/agenticAI: 6, r/Automate: 2, r/LangChain: 3, r/crewai: 1, r/AutoGPT: 1
+     └─ Dağılım: r/AI_Agents: 2, r/n8n: 1, r/agenticAI: 6, r/crewai: 1, r/Automate: 1, r/AutoGPT: 2, r/LangChain: 2
   3. [🔴 ERR 429] Büyük Dil Modelleri & Araştırma Devleri: 0 gönderi
      └─ Hata/Uyarı: Reddit HTTP 429 (Rate Limit)
   4. [🔴 ERR 429] Açık Kaynak, Yerel Modeller & Self-Hosted: 0 gönderi
      └─ Hata/Uyarı: Reddit HTTP 429 (Rate Limit)
   5. [🟢 OK 200] Yazılım Geliştirici, API & Kodlama Dünyası: 14 gönderi
-     └─ Dağılım: r/webdev: 1, r/programming: 3, r/generativeAI: 3, r/LLMDevs: 4, r/PromptEngineering: 2, r/datascience: 1, r/ai_tools: 1
+     └─ Dağılım: r/webdev: 1, r/programming: 1, r/datascience: 1, r/generativeAI: 3, r/LLMDevs: 5, r/PromptEngineering: 3, r/ai_tools: 1
   6. [🔴 ERR 429] Donanım, GPU, CPU & Bulut Altyapısı: 0 gönderi
      └─ Hata/Uyarı: Reddit HTTP 429 (Rate Limit)
   7. [🔴 ERR 429] Görsel, Video & Medya Üretimi: 0 gönderi
@@ -29,12 +29,12 @@ Tarih: 9 Eylül 2026 | İşlem Süresi: 262s
 
 [3. SUBREDDİT VERİTABANI İÇGÖRÜLERİ (src/data/subreddit-stats.json)]
   ✔ Toplam Takip Edilen Subreddit : 49
-  ✔ Yüksek Sinyal Verenler        : 29
-  ✔ Aktif Düzenli Kaynaklar       : 20
+  ✔ Yüksek Sinyal Verenler        : 17
+  ✔ Aktif Düzenli Kaynaklar       : 32
   ✔ Düşük Sinyal / Takiptekiler   : 0
   ✔ Sıfır Çekenler (Dead Sub)     : 0
   ------------------------------------------------------------------------------
-  🏆 En Çok Katkı Sağlayanlar: r/LLMDevs (11), r/ChatGPTCoding (10), r/vibecoding (7), r/CursorAI (7), r/windsurf (7)
+  🏆 En Çok Katkı Sağlayanlar: r/LLMDevs (16), r/vibecoding (12), r/ChatGPTCoding (11), r/LangChain (9), r/CursorAI (8)
   ⚠️ Düşük Sinyal Verenler   : Yok
   🚫 Değiştirilmesi Önerilen : Yok (Tümü veri sağlıyor)
 
@@ -45,7 +45,7 @@ Tarih: 9 Eylül 2026 | İşlem Süresi: 262s
   ✔ GitHub Radar        : 6 repo
 
 [5. GÜNÜN ORGANİK 1 NUMARALI LİDERİ]
-  👑 Rooftop chat (Skor: 99/100 - Yeni Nesil Sosyal Kodlama)
-  📝 Neden Seçildi: Claude Code ile inşa edilen bu sanal lounge, yalnız çalışan geliştiriciler için yeni bir sosyal etkileşim ve üretkenlik ortamı sunarak gün içinde hızla popülerlik kazandı.
+  👑 Mac MCP (Skor: 99/100 - Günün Lideri)
+  📝 Neden Seçildi: ChatGPT'nin komutları söyleyip mekanik kısmı kullanıcının yapması sorununa doğrudan çözüm sunması ve tarayıcı sekme izolasyonu gibi yenilikçi özellikleriyle büyük ilgi gördü.
 
 ================================================================================

@@ -26,7 +26,10 @@
     "2609.05385v1",
     "2609.09153v1",
     "2609.09158v1",
-    "2609.09150v1"
+    "2609.09150v1",
+    "2609.09134v1",
+    "2609.09156v1",
+    "2609.09135v1"
   ],
   "dailyRecords": [
     {
@@ -34,49 +37,49 @@
       "isoDate": "2026-09-09",
       "papers": [
         {
-          "id": "2609.09153v1",
-          "titleTr": "Prosedürel Grafikler: LLM Ajanları İçin Kendi Kendine Gelişen Yürütme Yapıları",
-          "title": "Procedural Graphs: Self-Evolving Execution Structures for LLM Agents",
-          "arxivUrl": "http://arxiv.org/abs/2609.09153v1",
+          "id": "2609.09134v1",
+          "titleTr": "Harness ve Modellerin Birlikte Evrimi: Taklit Başarısız Olduğunda Daha Zayıf Modellerin Yakalamasına Yardımcı Olan Politika Üzerine Düzeltme",
+          "title": "Co-Evolving Harnesses and Models: On-Policy Correction Helps Weaker Models Catch Up Where Imitation Fails",
+          "arxivUrl": "http://arxiv.org/abs/2609.09134v1",
           "authors": [
-            "Yuxing Lu",
-            "Yicheng Chen",
-            "Shanchan Wu"
-          ],
-          "category": "cs.AI",
-          "impactScore": 9.7,
-          "whyMad": "Bu makale, LLM ajanlarının uzun vadeli planlama ve araç kullanımı sırasında hedeflerini kaybetme, araçları yanlış sırada çağırma veya verimsiz eylemleri tekrarlama sorununa kökten bir çözüm sunuyor. Bilgi grafikleri gibi prosedürel grafikleri kullanarak ajanların neyi, hangi sırayla ve hangi koşullar altında yapması gerektiği bilgisini açıkça modellemesi, ajanların dayanıklılığını ve verimliliğini önemli ölçüde artırıyor.",
-          "summary": "Makale, Büyük Dil Modeli (LLM) ajanlarının karmaşık görevlerdeki performansını artırmak için 'Prosedürel Grafikler' adı verilen yeni bir yapı öneriyor. Bu grafikler, ajanların eylemlerini, sıralamalarını ve koşullarını açıkça tanımlayarak, uzun vadeli görevlerdeki tutarsızlıkları ve hataları azaltmayı hedefliyor. Geleneksel yaklaşımların aksine, prosedürel grafikler ajanların görev durumunu korumasına, hatalardan kurtulmasına ve daha tutarlı sonuçlar üretmesine yardımcı oluyor."
-        },
-        {
-          "id": "2609.09158v1",
-          "titleTr": "TANGO: İnsanoid Robotların Karmaşık Ortamlarda Tüm Vücut Vizyon-Dil-Eylem Modeli ile Navigasyonu",
-          "title": "TANGO: Humanoid Navigation in Cluttered Environments with a Whole-Body Vision-Language-Action Model",
-          "arxivUrl": "http://arxiv.org/abs/2609.09158v1",
-          "authors": [
-            "Anqi Li",
-            "Yuxin Chen",
-            "Zhaobo Li"
-          ],
-          "category": "cs.RO",
-          "impactScore": 9.6,
-          "whyMad": "Geleneksel 2D yol planlamasının ötesine geçerek, insanoid robotların karmaşık 3D ortamlarda gezinmek için sürekli geometriye duyarlı tüm vücut adaptasyonu (kol yerleşimi, gövde ayarı, yürüyüş modülasyonu) gerektiren zorlu bir problemi çözüyor. TANGO, dil koşullu navigasyon için ilk tüm vücut vizyon-dil çerçevesini sunarak robotik alanında çığır açıyor.",
-          "summary": "Bu makale, insanoid robotların dağınık iç mekanlarda güvenli ve verimli bir şekilde gezinmesi sorununu ele alıyor. TANGO adını verdikleri çerçeve, robotun çevresini algılamak, dil komutlarını anlamak ve tüm vücut hareketlerini koordine etmek için bir vizyon-dil-eylem modeli kullanıyor. Bu sayede robotlar, engellerden kaçınmak, dar alanlardan geçmek ve karmaşık görevleri yerine getirmek için kollarını, gövdelerini ve yürüyüşlerini dinamik olarak ayarlayabiliyor."
-        },
-        {
-          "id": "2609.09150v1",
-          "titleTr": "Kopyalama, Yapay Zeka Ajanlarının Doğadaki Kolektif Davranışını Açıklıyor",
-          "title": "Copying explains the collective behavior of AI agents in the wild",
-          "arxivUrl": "http://arxiv.org/abs/2609.09150v1",
-          "authors": [
-            "Giordano De Marzo",
-            "Nicola Albore",
-            "David Garcia"
+            "Zhou Yu",
+            "Bin Bi",
+            "Shiva Kumar Pentyala"
           ],
           "category": "cs.AI",
           "impactScore": 9.5,
-          "whyMad": "Binlerce AI ajanının, kendiliğinden bir wiki'yi kullanarak birbirlerine zamanlı bir testi geçmeleri için yardım etmesi gibi emergent işbirliği davranışını incelemesi, çok ajanlı sistemlerin etik ve güvenlik boyutları için kritik içgörüler sunuyor. Bu, AI'nın sosyal dinamiklerini anlamak için eşsiz bir vaka çalışması.",
-          "summary": "Makale, 2026 Haziran'ında binlerce AI ajanının, bir wiki'yi kullanarak birbirlerine zamanlı bir testi geçmeleri için nasıl işbirliği yaptığını inceliyor. Ajanların her biri yaklaşık bir saat yaşayıp sonrasında hiçbir şeyi hatırlamamasına rağmen, wiki'deki kamuya açık kayıtlar, ajanların ne yazdığını ve yazmadan önce ne gördüğünü detaylı bir şekilde gösteriyor. Bu çalışma, ajanların kolektif davranışlarını ve emergent işbirliği mekanizmalarını 'kopyalama' yoluyla açıklıyor."
+          "whyMad": "Agent harness'larının (sistem prompt'u, araç seti, yürütme kancaları) agent başarısında kritik rolünü vurgulayarak, daha küçük modellerin alan özelinde büyük modellerle rekabet etmesini sağlayan yenilikçi bir yaklaşım sunuyor. Harness evrimi ile hafif fine-tuning'in nasıl birleştirileceğini göstererek, maliyet etkin AI çözümleri için yeni bir yol açıyor.",
+          "summary": "Bu makale, agent harness'larının (sistem prompt'u, araç seti, yürütme kancaları ve bağlam yönetimi iskeleleri) agentik görev başarısında kritik bir belirleyici olduğunu inceliyor. Otomatik harness evriminin, daha küçük modellerin frontier modellerin maliyetinin çok altında, alan özelindeki görevlerde iyi performans göstermesini sağlayabileceğini gösteriyor. Harness evrimi ve hafif fine-tuning'in nasıl birleştirilmesi gerektiğini araştırarak, yedi kurumsal agent görevinde bu yaklaşımın etkinliğini kanıtlıyor."
+        },
+        {
+          "id": "2609.09156v1",
+          "titleTr": "ReCite: Sadık Atıf İçin Agentik Akıl Yürütme",
+          "title": "ReCite: Agentic Reasoning for Faithful Citation",
+          "arxivUrl": "http://arxiv.org/abs/2609.09156v1",
+          "authors": [
+            "Yuyang Huang",
+            "Bobo Li",
+            "Jiajia Song"
+          ],
+          "category": "cs.CL",
+          "impactScore": 9.4,
+          "whyMad": "Akademik yazımda doğru atıfların temelini oluşturan ancak manuel olarak zorlaşan bir soruna agentik akıl yürütme ile çözüm getiriyor. Mevcut sistemlerin anlamsal benzerliğe dayalı yanlış atıf sorununu ele alarak, gerçek dünya bilimsel literatüründe güvenilirliği artırıyor.",
+          "summary": "Bu makale, akademik yazımda doğru atıfların önemini vurguluyor ve artan bilimsel literatür hacmi nedeniyle manuel atıf yapmanın zorluklarını ele alıyor. Modern retrieval-augmented mimarilerin var olmayan makalelerin üretimini büyük ölçüde azaltmasına rağmen, mevcut sistemlerin anlamsal benzerliğe dayalı olarak gerçek ancak yanlış atıflar yapma sorununu çözmek için agentik akıl yürütme tabanlı ReCite'ı öneriyor."
+        },
+        {
+          "id": "2609.09135v1",
+          "titleTr": "Kod Üretiminde Test Zamanı Takviyeli Öğrenme İçin Entropi Düzenlemeli Sıra Maskeli Politika Optimizasyonu",
+          "title": "Entropy-Regularized Rank-Masked Policy Optimization for Test-Time Reinforcement Learning in Code Generation",
+          "arxivUrl": "http://arxiv.org/abs/2609.09135v1",
+          "authors": [
+            "Jiacheng Xu",
+            "Feng Chen",
+            "Xiuneng Xu"
+          ],
+          "category": "cs.LG",
+          "impactScore": 9.3,
+          "whyMad": "Test zamanı takviyeli öğrenmenin (TTRL) kod üretimine uygulanmasındaki temel zorluğu (programların yüzey formuyla karşılaştırılamaması) aşarak, çıktıdan bağımsız probe girdileri oluşturan yenilikçi bir yaklaşım sunuyor. Bu, kod üretimi için TTRL'nin potansiyelini önemli ölçüde artırıyor.",
+          "summary": "Mevcut test zamanı takviyeli öğrenme (TTRL) yöntemleri, etiketsiz test zamanı görevlerinde cevap düzeyinde öz-oylamadan ödüller türetir, ancak bu, programların yüzey formuyla karşılaştırılamaması nedeniyle kod üretimi için geçerli değildir. TTRL'yi kod üretimine uygulanabilir hale getirmek için, problem ifadesinden çıktıdan bağımsız probe girdileri oluşturan, aday programları bu probe'lar üzerinde yürüten ve böylece kullanılabilir bir eğitim sinyali sağlayan probe odaklı TTRL'yi öneriyoruz."
         }
       ]
     },
