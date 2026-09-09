@@ -23,9 +23,63 @@
     "2609.05405v1",
     "2609.05404v1",
     "2609.05395v1",
-    "2609.05385v1"
+    "2609.05385v1",
+    "2609.09153v1",
+    "2609.09158v1",
+    "2609.09150v1"
   ],
   "dailyRecords": [
+    {
+      "date": "9 Eylül 2026",
+      "isoDate": "2026-09-09",
+      "papers": [
+        {
+          "id": "2609.09153v1",
+          "titleTr": "Prosedürel Grafikler: LLM Ajanları İçin Kendi Kendine Gelişen Yürütme Yapıları",
+          "title": "Procedural Graphs: Self-Evolving Execution Structures for LLM Agents",
+          "arxivUrl": "http://arxiv.org/abs/2609.09153v1",
+          "authors": [
+            "Yuxing Lu",
+            "Yicheng Chen",
+            "Shanchan Wu"
+          ],
+          "category": "cs.AI",
+          "impactScore": 9.7,
+          "whyMad": "Bu makale, LLM ajanlarının uzun vadeli planlama ve araç kullanımı sırasında hedeflerini kaybetme, araçları yanlış sırada çağırma veya verimsiz eylemleri tekrarlama sorununa kökten bir çözüm sunuyor. Bilgi grafikleri gibi prosedürel grafikleri kullanarak ajanların neyi, hangi sırayla ve hangi koşullar altında yapması gerektiği bilgisini açıkça modellemesi, ajanların dayanıklılığını ve verimliliğini önemli ölçüde artırıyor.",
+          "summary": "Makale, Büyük Dil Modeli (LLM) ajanlarının karmaşık görevlerdeki performansını artırmak için 'Prosedürel Grafikler' adı verilen yeni bir yapı öneriyor. Bu grafikler, ajanların eylemlerini, sıralamalarını ve koşullarını açıkça tanımlayarak, uzun vadeli görevlerdeki tutarsızlıkları ve hataları azaltmayı hedefliyor. Geleneksel yaklaşımların aksine, prosedürel grafikler ajanların görev durumunu korumasına, hatalardan kurtulmasına ve daha tutarlı sonuçlar üretmesine yardımcı oluyor."
+        },
+        {
+          "id": "2609.09158v1",
+          "titleTr": "TANGO: İnsanoid Robotların Karmaşık Ortamlarda Tüm Vücut Vizyon-Dil-Eylem Modeli ile Navigasyonu",
+          "title": "TANGO: Humanoid Navigation in Cluttered Environments with a Whole-Body Vision-Language-Action Model",
+          "arxivUrl": "http://arxiv.org/abs/2609.09158v1",
+          "authors": [
+            "Anqi Li",
+            "Yuxin Chen",
+            "Zhaobo Li"
+          ],
+          "category": "cs.RO",
+          "impactScore": 9.6,
+          "whyMad": "Geleneksel 2D yol planlamasının ötesine geçerek, insanoid robotların karmaşık 3D ortamlarda gezinmek için sürekli geometriye duyarlı tüm vücut adaptasyonu (kol yerleşimi, gövde ayarı, yürüyüş modülasyonu) gerektiren zorlu bir problemi çözüyor. TANGO, dil koşullu navigasyon için ilk tüm vücut vizyon-dil çerçevesini sunarak robotik alanında çığır açıyor.",
+          "summary": "Bu makale, insanoid robotların dağınık iç mekanlarda güvenli ve verimli bir şekilde gezinmesi sorununu ele alıyor. TANGO adını verdikleri çerçeve, robotun çevresini algılamak, dil komutlarını anlamak ve tüm vücut hareketlerini koordine etmek için bir vizyon-dil-eylem modeli kullanıyor. Bu sayede robotlar, engellerden kaçınmak, dar alanlardan geçmek ve karmaşık görevleri yerine getirmek için kollarını, gövdelerini ve yürüyüşlerini dinamik olarak ayarlayabiliyor."
+        },
+        {
+          "id": "2609.09150v1",
+          "titleTr": "Kopyalama, Yapay Zeka Ajanlarının Doğadaki Kolektif Davranışını Açıklıyor",
+          "title": "Copying explains the collective behavior of AI agents in the wild",
+          "arxivUrl": "http://arxiv.org/abs/2609.09150v1",
+          "authors": [
+            "Giordano De Marzo",
+            "Nicola Albore",
+            "David Garcia"
+          ],
+          "category": "cs.AI",
+          "impactScore": 9.5,
+          "whyMad": "Binlerce AI ajanının, kendiliğinden bir wiki'yi kullanarak birbirlerine zamanlı bir testi geçmeleri için yardım etmesi gibi emergent işbirliği davranışını incelemesi, çok ajanlı sistemlerin etik ve güvenlik boyutları için kritik içgörüler sunuyor. Bu, AI'nın sosyal dinamiklerini anlamak için eşsiz bir vaka çalışması.",
+          "summary": "Makale, 2026 Haziran'ında binlerce AI ajanının, bir wiki'yi kullanarak birbirlerine zamanlı bir testi geçmeleri için nasıl işbirliği yaptığını inceliyor. Ajanların her biri yaklaşık bir saat yaşayıp sonrasında hiçbir şeyi hatırlamamasına rağmen, wiki'deki kamuya açık kayıtlar, ajanların ne yazdığını ve yazmadan önce ne gördüğünü detaylı bir şekilde gösteriyor. Bu çalışma, ajanların kolektif davranışlarını ve emergent işbirliği mekanizmalarını 'kopyalama' yoluyla açıklıyor."
+        }
+      ]
+    },
     {
       "date": "7 Eylül 2026",
       "isoDate": "2026-09-07",

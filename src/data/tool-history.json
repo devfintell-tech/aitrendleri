@@ -170,6 +170,18 @@
           "r/ClaudeDev",
           "r/ChatGPTCoding"
         ]
+      },
+      {
+        "date": "9 Eylül 2026",
+        "hypeScore": 8.4,
+        "sentiment": "eleştirel",
+        "headline": "Geliştirici Favorisi",
+        "summary": "Rooftop.chat gibi yeni projelerde kullanılması ve video düzenleme iş akışlarında yer almasıyla pozitif ilgi görse de, Belay gibi araçların 'bellek sorununu' hedef alması hafif bir eleştiriye yol açtı.",
+        "sources": [
+          "r/vibecoding",
+          "r/ClaudeDev",
+          "r/generativeAI"
+        ]
       }
     ]
   },
@@ -229,6 +241,18 @@
         "sources": [
           "r/Anthropic",
           "r/singularity"
+        ]
+      },
+      {
+        "date": "9 Eylül 2026",
+        "hypeScore": 9.9,
+        "sentiment": "stabil",
+        "headline": "Devin'de Canlı",
+        "summary": "Devin gibi platformlarda canlı entegrasyonu ve MCP uyumluluğu ile öne çıkarak, özellikle ajan tabanlı geliştirme senaryolarında güçlü bir seçenek olduğunu kanıtladı.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/AI_Agents",
+          "r/PromptEngineering"
         ]
       }
     ]
@@ -423,6 +447,18 @@
           "r/Anthropic",
           "r/ClaudeAI"
         ]
+      },
+      {
+        "date": "9 Eylül 2026",
+        "hypeScore": 9.8,
+        "sentiment": "stabil",
+        "headline": "Sektör Standardı",
+        "summary": "Tutarlı yüksek performansı ve geliştiriciler tarafından yeni projelerde (Rooftop.chat, video düzenleme) aktif olarak kullanılmasıyla haftanın en stabil ve güvenilir modellerinden biri oldu.",
+        "sources": [
+          "r/ClaudeDev",
+          "r/singularity",
+          "r/AI_Agents"
+        ]
       }
     ]
   },
@@ -494,6 +530,18 @@
           "r/nvidia",
           "r/hardware"
         ]
+      },
+      {
+        "date": "9 Eylül 2026",
+        "hypeScore": 9.6,
+        "sentiment": "stabil",
+        "headline": "Altyapı Tekeli",
+        "summary": "AI altyapısındaki liderliğini sürdürmesi ve yeni nesil modellerin eğitiminde ve çıkarımında kritik rol oynamasıyla haftanın en önemli donanım gündemiydi.",
+        "sources": [
+          "r/singularity",
+          "r/hardware",
+          "r/LocalLLaMA"
+        ]
       }
     ]
   },
@@ -541,6 +589,18 @@
         "summary": "CPU'da AI çıkarımında yeni performans rekorları kırması ve donanım bağımsızlığı sağlaması.",
         "sources": [
           "r/LocalLLaMA"
+        ]
+      },
+      {
+        "date": "9 Eylül 2026",
+        "hypeScore": 9.6,
+        "sentiment": "stabil",
+        "headline": "CPU Performans Rekoru",
+        "summary": "CPU üzerinde elde ettiği performans rekorları ve erişilebilir donanımlarda yüksek verimlilik sunmasıyla, GPU bağımlılığını azaltma potansiyeli nedeniyle haftanın önemli konularından biriydi.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/singularity",
+          "r/programming"
         ]
       }
     ]
@@ -777,6 +837,18 @@
           "r/LocalLLaMA",
           "r/MachineLearning"
         ]
+      },
+      {
+        "date": "9 Eylül 2026",
+        "hypeScore": 9.7,
+        "sentiment": "stabil",
+        "headline": "10M İndirme Eşiği",
+        "summary": "10 milyon indirme eşiğini aşması ve 16GB RAM'li dizüstü bilgisayarlarda bile yüksek token/saniye hızları sunmasıyla yerel LLM topluluğunda haftanın en çok konuşulan modellerinden biri oldu.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/singularity",
+          "r/ollama"
+        ]
       }
     ]
   },
@@ -815,6 +887,17 @@
         "summary": "Video üretiminde sağladığı hız ve kalite ile sektörde lider konumunu güçlendirmesi.",
         "sources": [
           "r/generativeAI"
+        ]
+      },
+      {
+        "date": "9 Eylül 2026",
+        "hypeScore": 9.7,
+        "sentiment": "stabil",
+        "headline": "Video Üretiminde Lider",
+        "summary": "Video üretiminde sunduğu hız ve kalite ile medya profesyonelleri arasında büyük ilgi gördü, özellikle 3-Pass Distill teknolojisiyle öne çıktı.",
+        "sources": [
+          "r/generativeAI",
+          "r/AI_Tools"
         ]
       }
     ]
@@ -986,6 +1069,18 @@
         "summary": "DeepSeek'in ilk resmi oyuncağının toplulukta paylaşılması, modelin popülaritesini ve marka bağlılığını artırdı.",
         "sources": [
           "r/DeepSeek"
+        ]
+      },
+      {
+        "date": "9 Eylül 2026",
+        "hypeScore": 9.3,
+        "sentiment": "stabil",
+        "headline": "Hızlı Görsel LLM",
+        "summary": "Görsel anlama ve üretimdeki hızı ve verimliliği ile öne çıkarak, özellikle GB200 kümeleme ve vLLM dağıtımı gibi altyapı entegrasyonlarıyla dikkat çekti.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/singularity",
+          "r/AI_Tools"
         ]
       }
     ]
@@ -1174,6 +1269,17 @@
         "sources": [
           "r/AI_Agents"
         ]
+      },
+      {
+        "date": "9 Eylül 2026",
+        "hypeScore": 9.3,
+        "sentiment": "stabil",
+        "headline": "Yerel Bellek",
+        "summary": "Ajanların öğrenme ve bağlam tutma yeteneklerini geliştiren yerel bellek çözümleri sunmasıyla, daha akıllı ve tutarlı ajanlar geliştirmek isteyenler için önemliydi.",
+        "sources": [
+          "r/AI_Agents",
+          "r/LocalLLaMA"
+        ]
       }
     ]
   },
@@ -1277,6 +1383,17 @@
         "summary": "Ajan iş akışlarındaki yönlendirme sorununu düşük gecikme ve sıfır token maliyetiyle yerel olarak çözmesi, geliştiriciler arasında büyük ilgi gördü.",
         "sources": [
           "r/ClaudeAI"
+        ]
+      },
+      {
+        "date": "9 Eylül 2026",
+        "hypeScore": 9.8,
+        "sentiment": "coşkulu",
+        "headline": "Yeni Açık Kaynak",
+        "summary": "Yeni açık kaynak olarak duyurulması ve ajanların karmaşık görevlerde daha verimli çalışmasını sağlayan yerel yönlendirme yetenekleriyle hızla ilgi topladı.",
+        "sources": [
+          "r/AI_Agents",
+          "r/LLMDevs"
         ]
       }
     ]
@@ -1590,6 +1707,245 @@
         "summary": "GCCH'de Graph Connector Agent'ın oturum açma ve kimlik doğrulama sorunları, kullanıcıların entegrasyon çabalarını engelledi.",
         "sources": [
           "r/Copilot"
+        ]
+      }
+    ]
+  },
+  "rooftop-chat": {
+    "name": "Rooftop chat",
+    "category": "Yazılım Geliştirici",
+    "history": [
+      {
+        "date": "9 Eylül 2026",
+        "hypeScore": 9.5,
+        "sentiment": "coşkulu",
+        "headline": "Yeni Nesil Sosyal Kodlama",
+        "summary": "Claude Code ile inşa edilen bu sanal lounge, yalnız çalışan geliştiriciler için yeni bir sosyal etkileşim ve üretkenlik ortamı sunuyor.",
+        "sources": [
+          "r/vibecoding",
+          "r/ClaudeDev"
+        ]
+      }
+    ]
+  },
+  "mac-mcp": {
+    "name": "Mac MCP",
+    "category": "Otonom Agent",
+    "history": [
+      {
+        "date": "9 Eylül 2026",
+        "hypeScore": 9.3,
+        "sentiment": "coşkulu",
+        "headline": "Yerel Agent Çözümü",
+        "summary": "ChatGPT destekli kodlama ve yönetim işleri için yerel, güvenli ve kapsamlı bir otomasyon çözümü sunmasıyla dikkat çekiyor.",
+        "sources": [
+          "r/vibecoding",
+          "r/AI_Agents",
+          "r/programming"
+        ]
+      }
+    ]
+  },
+  "mex": {
+    "name": "Mex",
+    "category": "Altyapı & SDK",
+    "history": [
+      {
+        "date": "9 Eylül 2026",
+        "hypeScore": 9.1,
+        "sentiment": "coşkulu",
+        "headline": "Git Tabanlı Bellek",
+        "summary": "Ajanlar için paylaşılan belleği Git'in doğal yetenekleriyle (geçmiş, diff, dallanma) çözme yaklaşımı geliştiriciler arasında ilgi uyandırdı.",
+        "sources": [
+          "r/generativeAI",
+          "r/LLMDevs"
+        ]
+      }
+    ]
+  },
+  "belay": {
+    "name": "Belay",
+    "category": "Otonom Agent",
+    "history": [
+      {
+        "date": "9 Eylül 2026",
+        "hypeScore": 8.9,
+        "sentiment": "coşkulu",
+        "headline": "Hata Tekrarını Önleyici",
+        "summary": "Claude Code gibi ajanların 'bellek sorununu' ve aynı hataları tekrarlama eğilimini doğrudan hedef almasıyla geliştiricilerin dikkatini çekti.",
+        "sources": [
+          "r/agenticAI",
+          "r/ClaudeDev"
+        ]
+      }
+    ]
+  },
+  "trans4mers": {
+    "name": "Trans4mers",
+    "category": "Otonom Agent",
+    "history": [
+      {
+        "date": "9 Eylül 2026",
+        "hypeScore": 8.8,
+        "sentiment": "coşkulu",
+        "headline": "Rust Tabanlı OS",
+        "summary": "Öğrenci projesi olmasına rağmen Rust ve SQLite kullanarak otonom ajanlar için kapsamlı bir işletim sistemi sunmasıyla takdir topladı.",
+        "sources": [
+          "r/agenticAI",
+          "r/programming"
+        ]
+      }
+    ]
+  },
+  "index-harness": {
+    "name": "Index Harness",
+    "category": "Altyapı & SDK",
+    "history": [
+      {
+        "date": "9 Eylül 2026",
+        "hypeScore": 8.7,
+        "sentiment": "coşkulu",
+        "headline": "Hash Doğrulamalı Bağlam",
+        "summary": "API anahtarı, GPU veya üçüncü taraf bağımlılıkları olmadan yerel kod/metin indeksleme ve güvenli bağlam oluşturma yeteneğiyle öne çıktı.",
+        "sources": [
+          "r/LLMDevs",
+          "r/programming"
+        ]
+      }
+    ]
+  },
+  "metagpt": {
+    "name": "MetaGPT",
+    "category": "Otonom Agent",
+    "history": [
+      {
+        "date": "9 Eylül 2026",
+        "hypeScore": 8.5,
+        "sentiment": "stabil",
+        "headline": "Yerel Kurulum Rehberi",
+        "summary": "Yerel modellerle MetaGPT'yi kurmaya yönelik kapsamlı teknik rehber, toplulukta ajanı kendi altyapısında çalıştırmak isteyenler için büyük ilgi gördü.",
+        "sources": [
+          "r/crewai",
+          "r/AutoGPT"
+        ]
+      }
+    ]
+  },
+  "windsurf": {
+    "name": "Windsurf",
+    "category": "IDE / Editör",
+    "history": [
+      {
+        "date": "9 Eylül 2026",
+        "hypeScore": 4.8,
+        "sentiment": "eleştirel",
+        "headline": "Kritik Hata",
+        "summary": "Kullanıcıların 'Client error: Protocol error' ve 'infinite loop' gibi kritik hatalarla karşılaşması ve ücretsiz kullanıcılar için model erişiminin kısıtlanması büyük tepki çekti.",
+        "sources": [
+          "r/windsurf"
+        ]
+      }
+    ]
+  },
+  "copilot": {
+    "name": "Copilot",
+    "category": "LLM (Model)",
+    "history": [
+      {
+        "date": "9 Eylül 2026",
+        "hypeScore": 6.2,
+        "sentiment": "eleştirel",
+        "headline": "Özellik Kaldırma Tepkisi",
+        "summary": "Masaüstü uygulamasından ekran paylaşımının kaldırılması ve 'mavi Copilot uygulaması'nın kaybolması gibi kullanıcı deneyimi sorunları nedeniyle eleştirildi.",
+        "sources": [
+          "r/Copilot",
+          "r/vscode"
+        ]
+      }
+    ]
+  },
+  "truffle": {
+    "name": "Truffle",
+    "category": "Yazılım Geliştirici",
+    "history": [
+      {
+        "date": "9 Eylül 2026",
+        "hypeScore": 8.3,
+        "sentiment": "coşkulu",
+        "headline": "iPhone Not Entegrasyonu",
+        "summary": "ChatGPT'den alınan bilgileri doğrudan iPhone notlarına aktararak düzenleme, hatırlatıcı ekleme ve tablo oluşturma gibi pratik yetenekleriyle övgü topladı.",
+        "sources": [
+          "r/generativeAI",
+          "r/AI_Tools"
+        ]
+      }
+    ]
+  },
+  "cursor-composer-2-5": {
+    "name": "Cursor Composer 2.5",
+    "category": "IDE / Editör",
+    "history": [
+      {
+        "date": "9 Eylül 2026",
+        "hypeScore": 8.9,
+        "sentiment": "stabil",
+        "headline": "Büyük Refactor Yeteneği",
+        "summary": "Kapsamlı bir full-stack refactor projesinde kullanılması planlanması, aracın karmaşık görevleri yönetme yeteneğine olan güveni gösterdi.",
+        "sources": [
+          "r/CursorAI",
+          "r/ChatGPTCoding"
+        ]
+      }
+    ]
+  },
+  "n8n-ai-orchestrator": {
+    "name": "n8n AI Orchestrator",
+    "category": "Otomasyon",
+    "history": [
+      {
+        "date": "9 Eylül 2026",
+        "hypeScore": 9,
+        "sentiment": "stabil",
+        "headline": "Self-Hosting Esnekliği",
+        "summary": "Self-hosting seçenekleri ve ödeme mutabakatı gibi gerçek dünya kullanım senaryolarındaki yetenekleri, kullanıcılar arasında pozitif tartışmalara yol açtı.",
+        "sources": [
+          "r/n8n",
+          "r/Automate"
+        ]
+      }
+    ]
+  },
+  "cursor-ide": {
+    "name": "Cursor",
+    "category": "IDE / Editör",
+    "history": [
+      {
+        "date": "9 Eylül 2026",
+        "hypeScore": 8.7,
+        "sentiment": "eleştirel",
+        "headline": "Haftalık Düşüş",
+        "summary": "Hafta boyunca 'yüksek yük baskısı', 'bellek sızıntısı' ve 'major degradation' gibi sorunlarla eleştirilmesi, puanında belirgin bir düşüşe neden oldu.",
+        "sources": [
+          "r/CursorAI",
+          "r/vscode",
+          "r/vibecoding"
+        ]
+      }
+    ]
+  },
+  "windsurf-devin": {
+    "name": "Windsurf",
+    "category": "IDE / Editör",
+    "history": [
+      {
+        "date": "9 Eylül 2026",
+        "hypeScore": 5.5,
+        "sentiment": "eleştirel",
+        "headline": "Karmaşık Güncelleme",
+        "summary": "Kritik hatalar, ücretsiz kullanıcı kısıtlamaları ve genel performans sorunları nedeniyle hafta boyunca yoğun eleştiri alarak puanında sert bir düşüş yaşadı.",
+        "sources": [
+          "r/windsurf",
+          "r/ChatGPTCoding"
         ]
       }
     ]
