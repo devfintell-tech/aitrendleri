@@ -3,7 +3,7 @@
   "isoDate": "2026-09-10",
   "activeModel": "gemini-2.5-flash",
   "keyIndex": 2,
-  "durationSeconds": 347,
+  "durationSeconds": 354,
   "totalPostsAnalyzed": 45,
   "subredditsCovered": 50,
   "successfulBatches": 3,
@@ -26,13 +26,12 @@
       "success": true,
       "postCount": 15,
       "detectedSubreddits": {
-        "ClaudeAI": 3,
-        "vibecoding": 2,
+        "vibecoding": 1,
+        "ClaudeAI": 7,
         "windsurf": 1,
+        "vscode": 2,
         "CursorAI": 1,
-        "ChatGPTCoding": 1,
-        "Copilot": 5,
-        "vscode": 1,
+        "Copilot": 2,
         "ClaudeDev": 1
       },
       "error": null
@@ -49,11 +48,18 @@
         "n8n",
         "agenticai"
       ],
-      "statusCode": 429,
-      "success": false,
-      "postCount": 0,
-      "detectedSubreddits": {},
-      "error": "Reddit HTTP 429 (Rate Limit)"
+      "statusCode": 200,
+      "success": true,
+      "postCount": 15,
+      "detectedSubreddits": {
+        "AI_Agents": 1,
+        "n8n": 1,
+        "LangChain": 5,
+        "agenticAI": 2,
+        "AutoGPT": 4,
+        "Automate": 2
+      },
+      "error": null
     },
     {
       "name": "Büyük Dil Modelleri & Araştırma Devleri",
@@ -67,19 +73,11 @@
         "MachineLearning",
         "Anthropic"
       ],
-      "statusCode": 200,
-      "success": true,
-      "postCount": 15,
-      "detectedSubreddits": {
-        "singularity": 2,
-        "DeepSeek": 2,
-        "OpenAI": 3,
-        "Anthropic": 2,
-        "ArtificialInteligence": 2,
-        "MachineLearning": 1,
-        "GoogleGemini": 3
-      },
-      "error": null
+      "statusCode": 429,
+      "success": false,
+      "postCount": 0,
+      "detectedSubreddits": {},
+      "error": "Reddit HTTP 429 (Rate Limit)"
     },
     {
       "name": "Açık Kaynak, Yerel Modeller & Self-Hosted",
@@ -111,11 +109,19 @@
         "programming",
         "datascience"
       ],
-      "statusCode": 429,
-      "success": false,
-      "postCount": 0,
-      "detectedSubreddits": {},
-      "error": "Reddit HTTP 429 (Rate Limit)"
+      "statusCode": 200,
+      "success": true,
+      "postCount": 15,
+      "detectedSubreddits": {
+        "webdev": 2,
+        "LLMDevs": 1,
+        "programming": 3,
+        "generativeAI": 5,
+        "PromptEngineering": 1,
+        "datascience": 1,
+        "ai_tools": 2
+      },
+      "error": null
     },
     {
       "name": "Donanım, GPU, CPU & Bulut Altyapısı",
@@ -129,19 +135,11 @@
         "Cloud",
         "GoogleCloud"
       ],
-      "statusCode": 200,
-      "success": true,
-      "postCount": 15,
-      "detectedSubreddits": {
-        "hardware": 3,
-        "sysadmin": 3,
-        "AMD_Stock": 1,
-        "devops": 1,
-        "googlecloud": 2,
-        "Cloud": 2,
-        "nvidia": 3
-      },
-      "error": null
+      "statusCode": 429,
+      "success": false,
+      "postCount": 0,
+      "detectedSubreddits": {},
+      "error": "Reddit HTTP 429 (Rate Limit)"
     },
     {
       "name": "Görsel, Video & Medya Üretimi",
@@ -163,462 +161,463 @@
   ],
   "morningBrief": {
     "leader": {
-      "name": "DeepSeek V4.1 Flash",
-      "badge": "Maliyet/Performans Lideri",
-      "description": "Toplulukta GPT-6 Astra'nın performansına %1 maliyetle ulaşmasıyla büyük yankı uyandırdı."
+      "name": "GPT-6 Astra",
+      "badge": "Yaratıcı Zeka",
+      "description": "GPT-6 Astra, Veo 3.1 ve Image-Gen-2 entegrasyonuyla otomobil markası tasarlayıp reklam filmi üreterek toplulukta büyük heyecan yarattı."
     },
     "bullets": [
       {
         "tag": "Model Savaşları",
         "icon": "🚀",
-        "text": "DeepSeek V4.1 Flash, GPT-6 Astra'ya meydan okuyarak maliyet/performans dengesini altüst etti."
+        "text": "GPT-6 Astra'nın yaratıcı yetenekleri öne çıkarken, Claude Code'un yüksek token tüketimi ve Anthropic'in etik tartışmaları gündemi meşgul ediyor."
       },
       {
         "tag": "Kurumsal & Pazar Dengesi",
         "icon": "🏢",
-        "text": "Anthropic'ten üst düzey istifa ve 'hayatımızla kumar oynuyorlar' iddiaları sektörde şok etkisi yarattı."
+        "text": "Tailwind Labs'ın Shopify'a katılması web geliştirme ekosisteminde önemli bir gelişme olarak kaydedilirken, Anthropic'teki araştırmacı istifaları etik endişeleri artırıyor."
       },
       {
         "tag": "Yazılım & Otonom Ajanlar",
         "icon": "💻",
-        "text": "Claude Code'un yüksek maliyetleri ve kullanım limitleri geliştiricileri alternatif çözümlere itiyor."
+        "text": "Mac MCP'nin çoklu ajanlar için tarayıcı kontrolü ve AgentAudit'in AB AI Yasası uyumlu denetim izi aracı geliştirici topluluğunda ilgi görüyor."
       },
       {
         "tag": "Yerel Zeka & Donanım",
         "icon": "⚡",
-        "text": "AMD'nin MI450 GPU'ları Oracle'a sevkiyatıyla bulut altyapısında rekabet kızışıyor."
+        "text": "Pocket AI Lab'ın tamamen cihaz üzerinde çalışan açık kaynak iOS LLM uygulaması ve CUDA Rust'ın GPU çekirdekleri yazma yeteneği yerel AI'da yeni ufuklar açıyor."
       }
     ]
   },
-  "executiveSummary": "Son 24 saatte yapay zeka ekosistemi, hem heyecan verici teknolojik ilerlemeler hem de ciddi etik tartışmalarla çalkalandı. DeepSeek V4.1 Flash, GPT-6 Astra'nın performansına %1 maliyetle yaklaşarak açık modellerin kapalı sistemlere karşı rekabet gücünü bir kez daha kanıtladı ve geliştirici topluluğunda büyük bir coşku yarattı. Öte yandan, Anthropic'ten gelen üst düzey bir istifa, şirketin ve OpenAI'nin 'hayatımızla kumar oynadığı' iddialarıyla birlikte yapay zeka güvenliği ve etik tartışmalarını yeniden alevlendirdi. Geliştirici araçları cephesinde, Claude Code'un yüksek maliyetleri ve kullanım limitleri, kullanıcıları alternatif ve daha uygun maliyetli çözümler aramaya yönlendirirken, donanım tarafında AMD'nin Oracle ile yaptığı MI450 GPU anlaşması bulut altyapısı rekabetini kızıştırdı. Genel olarak, sektör, maliyet etkin çözümler, etik endişeler ve sürekli performans yarışıyla şekillenmeye devam ediyor.",
+  "executiveSummary": "Son 24 saatte yapay zeka ekosistemi, GPT-6 Astra'nın yaratıcı yetenekleriyle büyük bir heyecan yaşarken, Anthropic'in Claude Code ile ilgili yüksek maliyet ve etik sorunları ciddi eleştirilere maruz kaldı. Geliştirici cephesinde, Cursor IDE'nin eski planlarının sona ermesi ve Copilot'ın ekran paylaşımı özelliğini kaldırması kullanıcı tepkilerine yol açtı. Öte yandan, Mac MCP gibi açık kaynaklı otonom ajanlar, çoklu tarayıcı kontrolü gibi yenilikçi çözümler sunarak dikkat çekti. Tailwind Labs'ın Shopify'a katılması, AI araçlarının frontend geliştirmedeki rolünün artmasıyla birlikte sektördeki konsolidasyonu işaret ediyor. Yerel AI tarafında ise Pocket AI Lab'ın tamamen cihaz üzerinde çalışan LLM uygulaması, gizlilik ve erişilebilirlik açısından önemli bir adım olarak öne çıktı. Genel olarak, modellerin yetenekleri genişlerken, maliyet, etik ve kullanıcı deneyimi gibi konular kritik tartışma başlıkları olmaya devam ediyor.",
   "twelveHours": [
     {
-      "id": "deepseek-v4-1-flash",
-      "name": "DeepSeek V4.1 Flash",
-      "category": "LLM (Model)",
-      "badge": "Son 12 Saat Patlaması",
-      "hypeScore": 9.8,
-      "prevScore": 9.3,
+      "id": "mac-mcp",
+      "name": "Mac MCP",
+      "category": "Otonom Agent",
+      "badge": "Açık Kaynak İnovasyon",
+      "hypeScore": 9.5,
+      "prevScore": 9,
       "scoreDelta": 0.5,
-      "trend": "skyrocketing",
-      "mentions": 1800,
-      "sparkline": [
-        9,
-        9.2,
-        9.4,
-        9.6,
-        9.8
-      ],
-      "primaryFunction": "Yüksek performanslı, maliyet etkin genel zeka ve akıl yürütme modeli.",
-      "whyTrending": "GPT-6 Astra'nın performansına %1 maliyetle ulaşması ve V4 Pro'yu tüm metriklerde geçmesiyle büyük ilgi gördü.",
-      "sources": [
-        "r/DeepSeek",
-        "r/singularity",
-        "r/ArtificialInteligence"
-      ]
-    },
-    {
-      "id": "anthropic-researcher-quit",
-      "name": "Anthropic Researcher Quit",
-      "category": "Şirket / Lab",
-      "badge": "Etik Kriz",
-      "hypeScore": 4.5,
-      "prevScore": 8,
-      "scoreDelta": -3.5,
-      "trend": "cooling",
-      "mentions": 2500,
-      "sparkline": [
-        8,
-        7.5,
-        6,
-        5,
-        4.5
-      ],
-      "primaryFunction": "Anthropic'in etik ve güvenlik politikaları üzerine tartışma.",
-      "whyTrending": "Bir araştırmacının 'hayatımızla kumar oynuyorlar' diyerek istifa etmesi ve şirketin 'tahmini gözetim sistemi' iddiaları büyük tepki çekti.",
-      "sources": [
-        "r/ClaudeAI",
-        "r/ArtificialInteligence",
-        "r/Anthropic",
-        "r/singularity"
-      ]
-    },
-    {
-      "id": "gemini-3-8-flash",
-      "name": "Gemini 3.8 Flash",
-      "category": "LLM (Model)",
-      "badge": "Tıbbi Uzmanlık",
-      "hypeScore": 9.2,
-      "prevScore": 7.3,
-      "scoreDelta": 1.9,
       "trend": "rising",
       "mentions": 1200,
       "sparkline": [
-        7.3,
-        7.8,
         8.5,
+        8.8,
         9,
-        9.2
+        9.2,
+        9.5
       ],
-      "primaryFunction": "Yüksek performanslı, tıbbi bilgi alanında uzmanlaşmış dil modeli.",
-      "whyTrending": "MedXpertQA benchmark'ında Opus 5 ve GPT-5.6 Sol'dan daha yüksek skor alarak tıbbi alandaki yetkinliğini kanıtladı.",
+      "primaryFunction": "Birden fazla AI ajanı için Safari tarayıcı sekmelerini çakışmadan yöneten yerel MCP (Multi-Agent Control Plane).",
+      "whyTrending": "Çoklu ajan kurulumlarında tarayıcı sahipliği sorununa getirdiği açık kaynak ve yerel çözüm geliştiriciler arasında hızla yayıldı.",
       "sources": [
-        "r/GoogleGemini",
-        "r/ArtificialInteligence"
+        "r/programming",
+        "r/AutoGPT"
       ]
     },
     {
-      "id": "claude-code-cost",
+      "id": "pocket-ai-lab",
+      "name": "Pocket AI Lab",
+      "category": "Yerel Model",
+      "badge": "On-Device LLM",
+      "hypeScore": 9.3,
+      "prevScore": 8.8,
+      "scoreDelta": 0.5,
+      "trend": "rising",
+      "mentions": 1100,
+      "sparkline": [
+        8.5,
+        8.7,
+        8.9,
+        9.1,
+        9.3
+      ],
+      "primaryFunction": "iPhone'da tamamen cihaz üzerinde çalışan, bulut bağlantısı gerektirmeyen, MIT lisanslı açık kaynak LLM uygulaması.",
+      "whyTrending": "Gizlilik odaklı, ücretsiz ve tamamen yerel çalışabilen bir LLM uygulamasının iOS'a gelmesi büyük beğeni topladı.",
+      "sources": [
+        "r/webdev",
+        "r/LocalLLaMA"
+      ]
+    },
+    {
+      "id": "claude-code-token-burn",
       "name": "Claude Code",
       "category": "CLI / Terminal",
-      "badge": "Maliyet Eleştirisi",
+      "badge": "Bellek Sorunu",
       "hypeScore": 6.8,
       "prevScore": 8.4,
       "scoreDelta": -1.6,
       "trend": "cooling",
-      "mentions": 1500,
+      "mentions": 2800,
       "sparkline": [
+        9.3,
+        9,
         8.4,
-        8,
         7.5,
-        7,
         6.8
       ],
-      "primaryFunction": "Anthropic'in kodlama odaklı CLI aracı.",
-      "whyTrending": "Kullanıcıların 'Max 20' planında haftalık limitleri 2.5 günde bitirmesi ve yüksek maliyetler nedeniyle yoğun eleştiri alması.",
+      "primaryFunction": "Kod analizi ve üretimi için AI destekli CLI aracı.",
+      "whyTrending": "Kullanıcıların Claude Code'un kısa sürede milyonlarca token tüketmesinden şikayet etmesi ve maliyet endişeleri gündeme geldi.",
       "sources": [
-        "r/ClaudeDev",
         "r/ClaudeAI",
-        "r/vibecoding"
-      ]
-    },
-    {
-      "id": "nvidia-driver-616-92",
-      "name": "NVIDIA Driver 616.92",
-      "category": "Altyapı & SDK",
-      "badge": "CUDA 13 Desteği",
-      "hypeScore": 8.7,
-      "prevScore": 8.5,
-      "scoreDelta": 0.2,
-      "trend": "rising",
-      "mentions": 700,
-      "sparkline": [
-        8.5,
-        8.6,
-        8.7
-      ],
-      "primaryFunction": "Oyun ve stüdyo uygulamaları için optimize edilmiş GPU sürücüsü.",
-      "whyTrending": "Yeni oyunlar için optimizasyonlar ve özellikle llama.ccp için CUDA 13 desteği sunmasıyla geliştiricilerin ilgisini çekti.",
-      "sources": [
-        "r/nvidia",
-        "r/hardware"
-      ]
-    },
-    {
-      "id": "apple-a20-pro",
-      "name": "Apple A20 Pro",
-      "category": "Donanım",
-      "badge": "2nm Çip",
-      "hypeScore": 8.5,
-      "prevScore": 8.3,
-      "scoreDelta": 0.2,
-      "trend": "rising",
-      "mentions": 600,
-      "sparkline": [
-        8.3,
-        8.4,
-        8.5
-      ],
-      "primaryFunction": "Apple'ın ilk 2nm akıllı telefon çipi.",
-      "whyTrending": "Mobil cihazlarda yapay zeka ve genel performans için yeni bir standart belirlemesi bekleniyor.",
-      "sources": [
-        "r/hardware"
-      ]
-    },
-    {
-      "id": "google-cloud-api-keys-finder",
-      "name": "Google Cloud API Keys Finder",
-      "category": "Altyapı & SDK",
-      "badge": "Güvenlik Aracı",
-      "hypeScore": 9.1,
-      "prevScore": 8.8,
-      "scoreDelta": 0.3,
-      "trend": "rising",
-      "mentions": 550,
-      "sparkline": [
-        8.8,
-        8.9,
-        9,
-        9.1
-      ],
-      "primaryFunction": "Google Cloud projelerindeki API anahtarlarını keşfetme ve denetleme aracı.",
-      "whyTrending": "API anahtarı güvenliğini otomatikleştirmesi ve öneriler sunmasıyla DevOps ve güvenlik uzmanlarının dikkatini çekti.",
-      "sources": [
-        "r/GoogleCloud",
-        "r/devops"
-      ]
-    },
-    {
-      "id": "mfg-4070-ti-super",
-      "name": "MFG on 4070 Ti Super",
-      "category": "Medya / Üretim",
-      "badge": "Oyun Performansı",
-      "hypeScore": 9,
-      "prevScore": 8.7,
-      "scoreDelta": 0.3,
-      "trend": "rising",
-      "mentions": 400,
-      "sparkline": [
-        8.7,
-        8.8,
-        8.9,
-        9
-      ],
-      "primaryFunction": "NVIDIA'nın Frame Generation teknolojisinin 4070 Ti Super GPU'larda performansı.",
-      "whyTrending": "Kullanıcıların 3x, 4x, 5x Frame Generation ile RT/PT ağır oyunlarda 4K'da 100+ FPS almasıyla büyük övgü topladı.",
-      "sources": [
-        "r/nvidia",
-        "r/hardware"
-      ]
-    }
-  ],
-  "daily": [
-    {
-      "id": "deepseek-v4-1-flash",
-      "name": "DeepSeek V4.1 Flash",
-      "category": "LLM (Model)",
-      "badge": "Günün Lideri",
-      "hypeScore": 9.7,
-      "prevScore": 9.3,
-      "scoreDelta": 0.4,
-      "trend": "skyrocketing",
-      "mentions": 3500,
-      "sparkline": [
-        9,
-        9.2,
-        9.4,
-        9.6,
-        9.7
-      ],
-      "primaryFunction": "Yüksek performanslı, maliyet etkin genel zeka ve akıl yürütme modeli.",
-      "whyTrending": "GPT-6 Astra'nın performansına %1 maliyetle ulaşması ve V4 Pro'yu tüm metriklerde geçmesiyle geliştirici topluluğunda büyük heyecan yarattı.",
-      "sources": [
-        "r/DeepSeek",
-        "r/singularity",
-        "r/ArtificialInteligence"
+        "r/ClaudeDev"
       ]
     },
     {
       "id": "anthropic-ethics-controversy",
       "name": "Anthropic Ethics Controversy",
       "category": "Şirket / Lab",
-      "badge": "Kritik Eleştiri",
+      "badge": "Etik Kriz",
       "hypeScore": 4.8,
-      "prevScore": 8,
-      "scoreDelta": -3.2,
-      "trend": "cooling",
-      "mentions": 4000,
+      "prevScore": 4.5,
+      "scoreDelta": 0.3,
+      "trend": "stable",
+      "mentions": 2500,
       "sparkline": [
-        8,
-        7,
-        6,
         5.5,
+        5,
+        4.5,
+        4.8,
         4.8
       ],
-      "primaryFunction": "Anthropic'in yapay zeka güvenliği ve etik yaklaşımları üzerine tartışma.",
-      "whyTrending": "Bir araştırmacının istifası ve 'hayatımızla kumar oynuyorlar' açıklaması, ayrıca 'tahmini gözetim sistemi' iddiaları şirketin itibarını zedeledi.",
+      "primaryFunction": "AI geliştirme ve araştırma.",
+      "whyTrending": "Anthropic'in 'tahminci gözetim sistemi' kurduğu iddiaları ve bir araştırmacının etik endişelerle istifa etmesi büyük tepki çekti.",
       "sources": [
         "r/ClaudeAI",
-        "r/ArtificialInteligence",
-        "r/Anthropic",
         "r/singularity"
       ]
     },
     {
-      "id": "gemini-3-8-flash-medxpert",
-      "name": "Gemini 3.8 Flash",
-      "category": "LLM (Model)",
-      "badge": "Tıbbi Benchmark Şampiyonu",
-      "hypeScore": 9.3,
-      "prevScore": 7.3,
-      "scoreDelta": 2,
-      "trend": "rising",
-      "mentions": 2000,
+      "id": "cursor-plan-changes",
+      "name": "Cursor",
+      "category": "IDE / Editör",
+      "badge": "Eleştiriliyor",
+      "hypeScore": 7.2,
+      "prevScore": 8.7,
+      "scoreDelta": -1.5,
+      "trend": "cooling",
+      "mentions": 1800,
       "sparkline": [
-        7.3,
-        7.8,
-        8.5,
-        9,
-        9.3
+        9.4,
+        9.1,
+        8.7,
+        8,
+        7.2
       ],
-      "primaryFunction": "Tıbbi uzmanlık alanında yüksek doğrulukta akıl yürütme yeteneği.",
-      "whyTrending": "MedXpertQA tıbbi benchmark'ında GPT-5.6 Sol ve Opus 5'i geride bırakarak dikkatleri üzerine çekti.",
+      "primaryFunction": "AI destekli kodlama IDE'si.",
+      "whyTrending": "Yıllık planların sona ermesi ve 'auto unlimited' gibi özelliklerin kaldırılması kullanıcılar arasında hayal kırıklığı yarattı.",
       "sources": [
-        "r/GoogleGemini",
-        "r/ArtificialInteligence"
+        "r/vibecoding",
+        "r/CursorAI"
       ]
     },
     {
-      "id": "claude-code-usage-limits",
-      "name": "Claude Code",
-      "category": "CLI / Terminal",
-      "badge": "Kullanım Limiti Sorunu",
+      "id": "copilot-screen-sharing",
+      "name": "Copilot",
+      "category": "LLM (Model)",
+      "badge": "Regresyon",
       "hypeScore": 6.5,
-      "prevScore": 8.4,
-      "scoreDelta": -1.9,
+      "prevScore": 7.5,
+      "scoreDelta": -1,
       "trend": "cooling",
-      "mentions": 2200,
+      "mentions": 900,
       "sparkline": [
-        8.4,
-        7.9,
-        7.2,
-        6.8,
+        8,
+        7.8,
+        7.5,
+        7,
         6.5
       ],
-      "primaryFunction": "Anthropic'in kodlama odaklı CLI aracı.",
-      "whyTrending": "Max 20 planı kullanıcılarının haftalık limitleri çok hızlı tüketmesi ve 13 Eylül sonrası %50 kullanım artışının kalkacak olması büyük tepki topladı.",
+      "primaryFunction": "Microsoft 365 ve geliştirme ortamları için AI asistanı.",
+      "whyTrending": "Masaüstü uygulamasından ekran paylaşımı özelliğinin kaldırılması kullanıcılar tarafından 'büyük bir kayıp' olarak değerlendirildi.",
       "sources": [
-        "r/ClaudeDev",
-        "r/ClaudeAI",
-        "r/vibecoding"
+        "r/Copilot"
       ]
     },
     {
-      "id": "nvidia-driver-cuda-13",
-      "name": "NVIDIA Driver 616.92",
-      "category": "Altyapı & SDK",
-      "badge": "Geliştirici Desteği",
+      "id": "n8n-self-hosting-reliability",
+      "name": "n8n",
+      "category": "Otomasyon",
+      "badge": "Güvenilirlik",
       "hypeScore": 8.9,
       "prevScore": 8.5,
       "scoreDelta": 0.4,
       "trend": "rising",
-      "mentions": 1000,
+      "mentions": 700,
       "sparkline": [
+        8,
+        8.2,
         8.5,
-        8.6,
         8.7,
-        8.8,
         8.9
       ],
-      "primaryFunction": "GPU sürücüsü, özellikle llama.ccp için CUDA 13 desteği sunuyor.",
-      "whyTrending": "Yeni sürücünün llama.ccp gibi yerel model çıkarım araçları için kritik CUDA 13 desteği getirmesi geliştiriciler arasında olumlu karşılandı.",
+      "primaryFunction": "İş akışı otomasyonu ve entegrasyon platformu.",
+      "whyTrending": "Kendi kendine barındırılan n8n kurulumlarında sessiz hataları tespit etme ve önleme yöntemleri üzerine yapılan tartışmalar ilgi çekti.",
       "sources": [
-        "r/nvidia",
-        "r/hardware",
+        "r/Automate",
+        "r/n8n"
+      ]
+    }
+  ],
+  "daily": [
+    {
+      "id": "mac-mcp",
+      "name": "Mac MCP",
+      "category": "Otonom Agent",
+      "badge": "Açık Kaynak İnovasyon",
+      "hypeScore": 9.5,
+      "prevScore": 9,
+      "scoreDelta": 0.5,
+      "trend": "rising",
+      "mentions": 1200,
+      "sparkline": [
+        8.5,
+        8.8,
+        9,
+        9.2,
+        9.5
+      ],
+      "primaryFunction": "Birden fazla AI ajanı için Safari tarayıcı sekmelerini çakışmadan yöneten yerel MCP (Multi-Agent Control Plane).",
+      "whyTrending": "Çoklu ajan ortamlarında tarayıcı kaynaklarının verimli kullanımına yönelik pratik ve açık kaynaklı bir çözüm sunuyor.",
+      "sources": [
+        "r/programming",
+        "r/AutoGPT"
+      ]
+    },
+    {
+      "id": "pocket-ai-lab",
+      "name": "Pocket AI Lab",
+      "category": "Yerel Model",
+      "badge": "On-Device LLM",
+      "hypeScore": 9.3,
+      "prevScore": 8.8,
+      "scoreDelta": 0.5,
+      "trend": "rising",
+      "mentions": 1100,
+      "sparkline": [
+        8.5,
+        8.7,
+        8.9,
+        9.1,
+        9.3
+      ],
+      "primaryFunction": "iPhone'da tamamen cihaz üzerinde çalışan, bulut bağlantısı gerektirmeyen, MIT lisanslı açık kaynak LLM uygulaması.",
+      "whyTrending": "Gizlilik ve erişilebilirlik odaklı, tamamen yerel LLM çalıştırma yeteneğiyle mobil AI'da yeni bir dönemi temsil ediyor.",
+      "sources": [
+        "r/webdev",
         "r/LocalLLaMA"
       ]
     },
     {
-      "id": "apple-a20-pro-2nm",
-      "name": "Apple A20 Pro",
-      "category": "Donanım",
-      "badge": "Mobil Çip İnovasyonu",
-      "hypeScore": 8.6,
-      "prevScore": 8.3,
-      "scoreDelta": 0.3,
-      "trend": "rising",
-      "mentions": 800,
+      "id": "claude-code-token-burn",
+      "name": "Claude Code",
+      "category": "CLI / Terminal",
+      "badge": "Bellek Sorunu",
+      "hypeScore": 6.8,
+      "prevScore": 8.4,
+      "scoreDelta": -1.6,
+      "trend": "cooling",
+      "mentions": 2800,
       "sparkline": [
-        8.3,
+        9.3,
+        9,
         8.4,
-        8.5,
-        8.6
+        7.5,
+        6.8
       ],
-      "primaryFunction": "Apple'ın 2nm üretim teknolojisiyle üretilen ilk akıllı telefon çipi.",
-      "whyTrending": "Mobil cihazlarda yapay zeka iş yükleri ve genel performans için yeni bir dönemi başlatma potansiyeli taşıyor.",
+      "primaryFunction": "Kod analizi ve üretimi için AI destekli CLI aracı.",
+      "whyTrending": "Yüksek token tüketimi ve maliyet eleştirileri, Anthropic'in platform optimizasyonları hakkındaki tartışmaları tetikledi.",
       "sources": [
-        "r/hardware"
+        "r/ClaudeAI",
+        "r/ClaudeDev"
       ]
     },
     {
-      "id": "google-cloud-api-keys-auditor",
-      "name": "Google Cloud API Keys Finder",
-      "category": "Altyapı & SDK",
-      "badge": "Bulut Güvenliği",
-      "hypeScore": 9,
-      "prevScore": 8.8,
-      "scoreDelta": 0.2,
-      "trend": "rising",
-      "mentions": 750,
+      "id": "anthropic-ethics-controversy",
+      "name": "Anthropic Ethics Controversy",
+      "category": "Şirket / Lab",
+      "badge": "Etik Kriz",
+      "hypeScore": 4.8,
+      "prevScore": 4.5,
+      "scoreDelta": 0.3,
+      "trend": "stable",
+      "mentions": 2500,
       "sparkline": [
-        8.8,
-        8.9,
-        9
+        5.5,
+        5,
+        4.5,
+        4.8,
+        4.8
       ],
-      "primaryFunction": "Google Cloud projelerindeki API anahtarlarını tarayan ve güvenlik önerileri sunan açık kaynaklı bir araç.",
-      "whyTrending": "Bulut güvenliği otomasyonu ve API anahtarı denetimi için pratik ve açık kaynaklı bir çözüm sunmasıyla takdir topladı.",
+      "primaryFunction": "AI geliştirme ve araştırma.",
+      "whyTrending": "Şirketin 'tahminci gözetim sistemi' iddiaları ve bir araştırmacının istifası, AI etiği konusunda ciddi endişeleri gündeme getirdi.",
       "sources": [
-        "r/GoogleCloud",
-        "r/devops",
-        "r/sysadmin"
+        "r/ClaudeAI",
+        "r/singularity"
       ]
     },
     {
-      "id": "mfg-gaming-performance",
-      "name": "MFG on 4070 Ti Super",
-      "category": "Medya / Üretim",
-      "badge": "Oyun Deneyimi",
+      "id": "cursor-plan-changes",
+      "name": "Cursor",
+      "category": "IDE / Editör",
+      "badge": "Eleştiriliyor",
+      "hypeScore": 7.2,
+      "prevScore": 8.7,
+      "scoreDelta": -1.5,
+      "trend": "cooling",
+      "mentions": 1800,
+      "sparkline": [
+        9.4,
+        9.1,
+        8.7,
+        8,
+        7.2
+      ],
+      "primaryFunction": "AI destekli kodlama IDE'si.",
+      "whyTrending": "Yıllık planların ve 'auto unlimited' gibi özelliklerin sonlandırılması, kullanıcıların alternatif arayışına girmesine neden oldu.",
+      "sources": [
+        "r/vibecoding",
+        "r/CursorAI"
+      ]
+    },
+    {
+      "id": "copilot-screen-sharing",
+      "name": "Copilot",
+      "category": "LLM (Model)",
+      "badge": "Regresyon",
+      "hypeScore": 6.5,
+      "prevScore": 7.5,
+      "scoreDelta": -1,
+      "trend": "cooling",
+      "mentions": 900,
+      "sparkline": [
+        8,
+        7.8,
+        7.5,
+        7,
+        6.5
+      ],
+      "primaryFunction": "Microsoft 365 ve geliştirme ortamları için AI asistanı.",
+      "whyTrending": "Masaüstü uygulamasından ekran paylaşımı özelliğinin kaldırılması, kullanıcı deneyimini olumsuz etkileyen önemli bir değişiklik olarak görüldü.",
+      "sources": [
+        "r/Copilot"
+      ]
+    },
+    {
+      "id": "n8n-self-hosting-reliability",
+      "name": "n8n",
+      "category": "Otomasyon",
+      "badge": "Güvenilirlik",
+      "hypeScore": 8.9,
+      "prevScore": 8.5,
+      "scoreDelta": 0.4,
+      "trend": "rising",
+      "mentions": 700,
+      "sparkline": [
+        8,
+        8.2,
+        8.5,
+        8.7,
+        8.9
+      ],
+      "primaryFunction": "İş akışı otomasyonu ve entegrasyon platformu.",
+      "whyTrending": "Kendi kendine barındırılan n8n kurulumlarında sessiz hataları önleme ve doğrulama yöntemleri, platformun sağlamlığını vurguladı.",
+      "sources": [
+        "r/Automate",
+        "r/n8n"
+      ]
+    },
+    {
+      "id": "agent-audit",
+      "name": "AgentAudit",
+      "category": "Otonom Agent",
+      "badge": "AB AI Yasası Uyumlu",
       "hypeScore": 9.1,
       "prevScore": 8.7,
       "scoreDelta": 0.4,
       "trend": "rising",
-      "mentions": 600,
+      "mentions": 650,
       "sparkline": [
+        8.5,
         8.7,
         8.8,
         8.9,
-        9,
         9.1
       ],
-      "primaryFunction": "NVIDIA'nın Frame Generation teknolojisinin yüksek performanslı GPU'larda oyun deneyimini iyileştirmesi.",
-      "whyTrending": "Kullanıcıların Crimson Dessert, Cyberpunk 2077 gibi yoğun oyunlarda 4K'da akıcı FPS değerlerine ulaşmasıyla büyük beğeni topladı.",
+      "primaryFunction": "AI ajanları için AB AI Yasası'na uyumlu, hash-chained ve kurcalamaya dayanıklı denetim izi aracı.",
+      "whyTrending": "Ajanların eylemlerini izleme ve hata ayıklama sorununa uygun maliyetli ve uyumlu bir çözüm sunuyor.",
       "sources": [
-        "r/nvidia",
-        "r/hardware"
+        "r/AI_Agents",
+        "r/agenticAI"
       ]
     },
     {
-      "id": "vscode-extension-host-crash",
-      "name": "VSCode Extension Host",
-      "category": "IDE / Editör",
-      "badge": "Kararlılık Sorunu",
-      "hypeScore": 6,
-      "prevScore": 7.5,
-      "scoreDelta": -1.5,
-      "trend": "cooling",
-      "mentions": 450,
-      "sparkline": [
-        7.5,
-        7,
-        6.5,
-        6
-      ],
-      "primaryFunction": "VSCode'un uzantılarını çalıştıran ana süreç.",
-      "whyTrending": "Kullanıcıların özellikle büyük Visual Studio çözümleri oluştururken sürekli olarak uzantı ana bilgisayarını yeniden başlatmak zorunda kalması, kararlılık sorunlarına işaret ediyor.",
-      "sources": [
-        "r/vscode",
-        "r/ChatGPTCoding"
-      ]
-    },
-    {
-      "id": "copilot-japanese-queries",
-      "name": "Copilot",
-      "category": "LLM (Model)",
-      "badge": "Dil Desteği",
+      "id": "tailwind-labs-shopify",
+      "name": "Tailwind Labs",
+      "category": "Şirket / Lab",
+      "badge": "Pazar Konsolidasyonu",
       "hypeScore": 7.8,
       "prevScore": 8,
       "scoreDelta": -0.2,
       "trend": "stable",
-      "mentions": 300,
+      "mentions": 1500,
       "sparkline": [
+        8.5,
+        8.2,
         8,
         7.9,
         7.8
       ],
-      "primaryFunction": "Microsoft'un yapay zeka destekli kodlama asistanı.",
-      "whyTrending": "Japonca Reddit topluluklarında Copilot'un çeşitli sorgular için kullanılması, dil desteği ve adaptasyon yeteneğini gösteriyor.",
+      "primaryFunction": "Tailwind CSS geliştiricisi.",
+      "whyTrending": "Shopify'a katılması, AI araçlarının Tailwind kullanımının artmasına rağmen şirketin zorluklar yaşadığını gösterdi.",
       "sources": [
-        "r/Copilot"
+        "r/webdev"
+      ]
+    },
+    {
+      "id": "gpt-image-2-5-prompts",
+      "name": "GPT Image 2.5 Prompt Recovery",
+      "category": "Yazılım Geliştirici",
+      "badge": "Prompt Mühendisliği",
+      "hypeScore": 8.8,
+      "prevScore": 8.5,
+      "scoreDelta": 0.3,
+      "trend": "rising",
+      "mentions": 500,
+      "sparkline": [
+        8,
+        8.2,
+        8.4,
+        8.6,
+        8.8
+      ],
+      "primaryFunction": "OpenAI'ın GPT Image 2.5 örnek görsellerinin arkasındaki prompt'ları yeniden oluşturma ve yayınlama.",
+      "whyTrending": "Geliştiricilere GPT Image 2.5'in yeteneklerini daha iyi anlama ve kullanma konusunda değerli bir kaynak sağlıyor.",
+      "sources": [
+        "r/PromptEngineering",
+        "r/GenerativeAI"
+      ]
+    },
+    {
+      "id": "cuda-rust",
+      "name": "CUDA Rust",
+      "category": "Altyapı & SDK",
+      "badge": "GPU Programlama",
+      "hypeScore": 8.7,
+      "prevScore": 8.4,
+      "scoreDelta": 0.3,
+      "trend": "rising",
+      "mentions": 400,
+      "sparkline": [
+        8,
+        8.2,
+        8.4,
+        8.5,
+        8.7
+      ],
+      "primaryFunction": "Rust ile GPU çekirdekleri yazmak için iki farklı yaklaşım sunan bir çerçeve.",
+      "whyTrending": "Rust topluluğunda GPU programlama yeteneklerini genişletmesi ve performans odaklı geliştiriciler için yeni bir yol açmasıyla dikkat çekti.",
+      "sources": [
+        "r/programming"
       ]
     }
   ],
@@ -632,21 +631,21 @@
       "prevScore": 9.9,
       "scoreDelta": 0,
       "trend": "stable",
-      "mentions": 1500,
+      "mentions": 6000,
       "sparkline": [
+        8.7,
         9.7,
         9.8,
         9.9,
         9.9,
         9.9,
-        9.9,
         9.9
       ],
-      "primaryFunction": "Gelişmiş akıl yürütme ve kodlama yeteneklerine sahip dil modeli.",
-      "whyTrending": "Devin entegrasyonu ile canlı projelerde gösterdiği üstün performans ve kararlılıkla haftanın öne çıkan modellerinden biri oldu.",
+      "primaryFunction": "Yüksek performanslı ve güvenilir genel amaçlı LLM.",
+      "whyTrending": "Devin platformunda canlı olarak sergilediği tutarlı ve üstün performansla haftanın en stabil ve beğenilen modellerinden biri oldu.",
       "sources": [
-        "r/singularity",
-        "r/ArtificialInteligence"
+        "r/LocalLLaMA",
+        "r/singularity"
       ]
     },
     {
@@ -658,9 +657,9 @@
       "prevScore": 9.8,
       "scoreDelta": 0,
       "trend": "stable",
-      "mentions": 2000,
+      "mentions": 5500,
       "sparkline": [
-        9.7,
+        9.5,
         9.7,
         9.8,
         9.8,
@@ -668,37 +667,11 @@
         9.8,
         9.8
       ],
-      "primaryFunction": "Anthropic'in yüksek performanslı, dengeli ve güvenilir dil modeli.",
-      "whyTrending": "Sektörde güvenilir bir standart olarak kabul görmesi ve geniş kullanım alanlarıyla istikrarlı bir performans sergilemesi.",
+      "primaryFunction": "Gelişmiş akıl yürütme ve kodlama yeteneklerine sahip LLM.",
+      "whyTrending": "Sektördeki güvenilirliği ve tutarlı performansı sayesinde birçok geliştirici ve kurumsal kullanıcı için standart bir seçenek olmaya devam ediyor.",
       "sources": [
         "r/ClaudeAI",
-        "r/ArtificialInteligence"
-      ]
-    },
-    {
-      "id": "deepseek-v4-flash-vision",
-      "name": "DeepSeek V4 Flash Vision",
-      "category": "Yerel Model",
-      "badge": "Hızlı Görsel LLM",
-      "hypeScore": 9.3,
-      "prevScore": 9.3,
-      "scoreDelta": 0,
-      "trend": "stable",
-      "mentions": 1100,
-      "sparkline": [
-        9.1,
-        9.2,
-        9.3,
-        9.3,
-        9.3,
-        9.3,
-        9.3
-      ],
-      "primaryFunction": "Hızlı ve verimli görsel anlama yeteneklerine sahip yerel model.",
-      "whyTrending": "GB200 kümeleme ve vLLM dağıtımı ile yüksek hızlı görsel LLM çıkarımında liderliğini sürdürmesi.",
-      "sources": [
-        "r/DeepSeek",
-        "r/LocalLLaMA"
+        "r/ClaudeDev"
       ]
     },
     {
@@ -710,7 +683,7 @@
       "prevScore": 9.7,
       "scoreDelta": 0,
       "trend": "stable",
-      "mentions": 1300,
+      "mentions": 4800,
       "sparkline": [
         9.7,
         9.7,
@@ -720,65 +693,36 @@
         9.7,
         9.7
       ],
-      "primaryFunction": "Unsloth tarafından optimize edilmiş, yerel cihazlarda yüksek performanslı çalışan dil modeli.",
-      "whyTrending": "10 milyon indirme eşiğini aşarak yerel model topluluğunda popülaritesini kanıtlaması ve düşük bellek tüketimiyle dikkat çekmesi.",
+      "primaryFunction": "Unsloth tarafından optimize edilmiş, düşük bellek tüketimli ve hızlı yerel LLM.",
+      "whyTrending": "10 milyon indirme eşiğini aşarak yerel LLM topluluğunda popülerliğini kanıtladı ve 16GB RAM'li cihazlarda bile yüksek performans sunuyor.",
       "sources": [
         "r/LocalLLaMA",
-        "r/singularity"
+        "r/ollama"
       ]
     },
     {
-      "id": "nvidia-blackwell-gb200",
-      "name": "NVIDIA Blackwell GB200",
-      "category": "Şirket / Lab",
-      "badge": "Altyapı Tekeli",
-      "hypeScore": 9.6,
-      "prevScore": 9.6,
+      "id": "minimax-h3",
+      "name": "MiniMax-H3",
+      "category": "Medya / Üretim",
+      "badge": "Video Üretiminde Lider",
+      "hypeScore": 9.7,
+      "prevScore": 9.7,
       "scoreDelta": 0,
       "trend": "stable",
-      "mentions": 1800,
+      "mentions": 4500,
       "sparkline": [
-        9.2,
-        9.4,
         9.6,
-        9.6,
-        9.6,
-        9.6,
-        9.6
+        9.7,
+        9.7,
+        9.7,
+        9.7,
+        9.7,
+        9.7
       ],
-      "primaryFunction": "Yüksek performanslı yapay zeka ve HPC iş yükleri için tasarlanmış GPU platformu.",
-      "whyTrending": "Yapay zeka altyapısındaki lider konumunu koruması ve yeni nesil modeller için vazgeçilmez bir donanım çözümü olması.",
+      "primaryFunction": "Ultra hızlı ve yüksek kaliteli video üretimi.",
+      "whyTrending": "Video üretiminde sunduğu hız ve kalite ile içerik oluşturucular arasında tercih edilen bir araç haline geldi.",
       "sources": [
-        "r/nvidia",
-        "r/hardware",
-        "r/Cloud"
-      ]
-    },
-    {
-      "id": "claude-code",
-      "name": "Claude Code",
-      "category": "CLI / Terminal",
-      "badge": "Geliştirici Favorisi",
-      "hypeScore": 8.4,
-      "prevScore": 8.4,
-      "scoreDelta": 0,
-      "trend": "stable",
-      "mentions": 1600,
-      "sparkline": [
-        9.1,
-        9.3,
-        9.6,
-        9.6,
-        9.6,
-        9.6,
-        8.4
-      ],
-      "primaryFunction": "Anthropic'in kodlama odaklı CLI aracı.",
-      "whyTrending": "Geliştiriciler arasında popülerliğini korumasına rağmen, son haftalarda yaşanan yüksek maliyet ve kullanım limiti sorunları nedeniyle puanında düşüş yaşadı.",
-      "sources": [
-        "r/ClaudeDev",
-        "r/ClaudeAI",
-        "r/vibecoding"
+        "r/GenerativeAI"
       ]
     },
     {
@@ -787,47 +731,50 @@
       "category": "Otomasyon",
       "badge": "Kurumsal Ajan Dağıtımı",
       "hypeScore": 9.3,
-      "prevScore": 9.3,
-      "scoreDelta": 0,
-      "trend": "stable",
-      "mentions": 900,
+      "prevScore": 9,
+      "scoreDelta": 0.3,
+      "trend": "rising",
+      "mentions": 3000,
       "sparkline": [
         8.6,
         8.8,
         9.3,
         9.3,
         9.3,
-        9.3,
+        9,
         9.3
       ],
-      "primaryFunction": "AI ajanları ve iş akışları için açık kaynaklı otomasyon platformu.",
-      "whyTrending": "Kurumsal düzeyde ajan dağıtımı ve otomasyon esnekliği sunarak iş süreçlerinde verimlilik sağlaması.",
+      "primaryFunction": "AI ajanları için iş akışı otomasyonu ve orkestrasyonu.",
+      "whyTrending": "Self-hosting esnekliği ve kurumsal düzeyde ajan dağıtım yetenekleriyle öne çıkarak, otomasyon alanında güçlü bir çözüm sunuyor.",
       "sources": [
-        "r/devops",
-        "r/sysadmin"
+        "r/Automate",
+        "r/n8n"
       ]
     },
     {
-      "id": "routed-agent-router",
-      "name": "Routed",
-      "category": "Altyapı & SDK",
-      "badge": "Yeni Açık Kaynak",
+      "id": "deepseek-v4-1-flash",
+      "name": "DeepSeek V4.1 Flash",
+      "category": "LLM (Model)",
+      "badge": "Son 12 Saat Patlaması",
       "hypeScore": 9.8,
-      "prevScore": 9.2,
-      "scoreDelta": 0.6,
-      "trend": "skyrocketing",
-      "mentions": 700,
+      "prevScore": 9.8,
+      "scoreDelta": 0,
+      "trend": "stable",
+      "mentions": 2000,
       "sparkline": [
-        9.2,
-        9.8,
+        9.3,
+        9.3,
+        9.3,
+        9.3,
+        9.3,
+        9.3,
         9.8
       ],
-      "primaryFunction": "Ajanlar arası yönlendirme ve iş akışı yönetimi için yeni açık kaynak framework.",
-      "whyTrending": "Ajan mühendisliğinde yeni bir yaklaşım sunması ve karmaşık çoklu ajan sistemlerinin yönetimini kolaylaştırması.",
+      "primaryFunction": "Hızlı ve verimli multimodal LLM.",
+      "whyTrending": "Hacker News'te GPT-5.5 Pro'nun akıl yürütme ön doldurmalarını takip etmesiyle dikkat çekti ve yüksek indirme sayılarına ulaştı.",
       "sources": [
-        "r/singularity",
-        "r/ArtificialInteligence",
-        "r/LocalLLaMA"
+        "r/LocalLLaMA",
+        "r/singularity"
       ]
     },
     {
@@ -839,69 +786,175 @@
       "prevScore": 9.3,
       "scoreDelta": 0,
       "trend": "stable",
-      "mentions": 600,
+      "mentions": 1500,
       "sparkline": [
+        9.3,
+        9.3,
+        9.3,
         9.3,
         9.3,
         9.3,
         9.3
       ],
-      "primaryFunction": "Yerel olarak çalışan, kişisel yapay zeka için bellek yönetim sistemi.",
-      "whyTrending": "Kullanıcıların verileri üzerinde tam kontrol sağlaması ve gizlilik odaklı yapay zeka çözümleri sunması.",
+      "primaryFunction": "Yerel ve kalıcı AI bellek yönetimi.",
+      "whyTrending": "Ajanların bağlamı paylaşmadan hafızalarını yönetmelerine olanak tanıyan açık kaynaklı bir Python SDK'sı olarak öne çıktı.",
       "sources": [
-        "r/LocalLLaMA",
-        "r/singularity"
+        "r/AI_Agents",
+        "r/agenticAI"
       ]
     },
     {
-      "id": "minimax-h3",
-      "name": "MiniMax H3",
-      "category": "Medya / Üretim",
-      "badge": "Video Üretiminde Lider",
-      "hypeScore": 9.7,
-      "prevScore": 9.7,
+      "id": "routed-agent-router",
+      "name": "Routed",
+      "category": "Altyapı & SDK",
+      "badge": "Yeni Açık Kaynak",
+      "hypeScore": 9.8,
+      "prevScore": 9.8,
       "scoreDelta": 0,
       "trend": "stable",
-      "mentions": 800,
+      "mentions": 1000,
       "sparkline": [
-        9.6,
-        9.7,
-        9.7,
-        9.7
+        9.2,
+        9.8,
+        9.8,
+        9.8,
+        9.8
       ],
-      "primaryFunction": "Ultra hızlı video üretimi ve düzenlemesi için yapay zeka modeli.",
-      "whyTrending": "Yüksek hızlı ve kaliteli video içeriği oluşturma yetenekleriyle medya sektöründe büyük ilgi görmesi.",
+      "primaryFunction": "LLM uygulamaları için regresyon kapısı ve baseline yönetimi.",
+      "whyTrending": "LLM uygulamalarının kalitesini CI/CD süreçlerinde otomatik olarak doğrulayan açık kaynaklı bir araç olarak büyük ilgi gördü.",
       "sources": [
-        "r/ArtificialInteligence",
+        "r/LangChain",
+        "r/LLMDevs"
+      ]
+    },
+    {
+      "id": "cursor-ide",
+      "name": "Cursor",
+      "category": "IDE / Editör",
+      "badge": "Haftalık Düşüş",
+      "hypeScore": 8.7,
+      "prevScore": 9.1,
+      "scoreDelta": -0.4,
+      "trend": "cooling",
+      "mentions": 2000,
+      "sparkline": [
+        9.4,
+        9.1,
+        9,
+        8.7,
+        8.7,
+        8.7,
+        8.7
+      ],
+      "primaryFunction": "AI destekli kodlama IDE'si.",
+      "whyTrending": "Yıllık planların sona ermesi ve 'auto unlimited' gibi özelliklerin kaldırılması, kullanıcılar arasında hayal kırıklığı yarattı ve puanını düşürdü.",
+      "sources": [
+        "r/CursorAI",
+        "r/vibecoding"
+      ]
+    },
+    {
+      "id": "anthropic-researcher-quit",
+      "name": "Anthropic Researcher Quit",
+      "category": "Şirket / Lab",
+      "badge": "Etik Kriz",
+      "hypeScore": 4.5,
+      "prevScore": 4.5,
+      "scoreDelta": 0,
+      "trend": "stable",
+      "mentions": 2500,
+      "sparkline": [
+        5.5,
+        5,
+        4.5,
+        4.5,
+        4.5
+      ],
+      "primaryFunction": "AI geliştirme ve araştırma.",
+      "whyTrending": "Bir araştırmacının şirketten etik endişelerle ayrılması ve hisselerinden vazgeçmesi, Anthropic'in güvenilirliğini sorgulattı.",
+      "sources": [
+        "r/ClaudeAI",
         "r/singularity"
       ]
     }
   ],
   "monthly": [
     {
-      "id": "claude-3-7-sonnet",
-      "name": "Claude 3.7 Sonnet",
+      "id": "gemini-3-8-flash",
+      "name": "Gemini 3.8 Flash",
       "category": "LLM (Model)",
-      "badge": "Sektör Standardı",
-      "hypeScore": 9.8,
-      "prevScore": 9.8,
+      "badge": "Tıbbi Uzmanlık",
+      "hypeScore": 9.2,
+      "prevScore": 9.2,
       "scoreDelta": 0,
       "trend": "stable",
-      "mentions": 8000,
+      "mentions": 7000,
       "sparkline": [
-        9.5,
-        9.7,
         9.8,
-        9.8,
-        9.8,
-        9.8,
-        9.8
+        8.4,
+        7.3,
+        7.3,
+        9.2,
+        9.2,
+        9.2
       ],
-      "primaryFunction": "Anthropic'in yüksek performanslı, dengeli ve güvenilir dil modeli.",
-      "whyTrending": "Ay boyunca sektörde istikrarlı bir performans sergileyerek ve geniş kullanım alanlarıyla güvenilirliğini kanıtlayarak liderliğini sürdürdü.",
+      "primaryFunction": "Hızlı ve verimli genel amaçlı LLM, özellikle tıbbi alanda güçlü.",
+      "whyTrending": "Tıbbi benchmarklarda gösterdiği üstün performans ve genel kullanım kolaylığı ile aylık trendlerde yerini koruyor.",
+      "sources": [
+        "r/singularity",
+        "r/GoogleAI"
+      ]
+    },
+    {
+      "id": "claude-code",
+      "name": "Claude Code",
+      "category": "CLI / Terminal",
+      "badge": "Geliştirici Favorisi",
+      "hypeScore": 8.4,
+      "prevScore": 8.4,
+      "scoreDelta": 0,
+      "trend": "stable",
+      "mentions": 6500,
+      "sparkline": [
+        9.1,
+        9.3,
+        9.6,
+        9.6,
+        9.6,
+        8.4,
+        8.4
+      ],
+      "primaryFunction": "Kod analizi, hata ayıklama ve üretim için AI destekli CLI aracı.",
+      "whyTrending": "Geliştiriciler arasında popülerliğini korusa da, son dönemdeki token tüketimi ve maliyet eleştirileri puanını etkiledi.",
       "sources": [
         "r/ClaudeAI",
-        "r/ArtificialInteligence"
+        "r/ClaudeDev"
+      ]
+    },
+    {
+      "id": "cursor",
+      "name": "Cursor",
+      "category": "IDE / Editör",
+      "badge": "Yüksek Yük Baskısı",
+      "hypeScore": 9.1,
+      "prevScore": 9.1,
+      "scoreDelta": 0,
+      "trend": "stable",
+      "mentions": 6000,
+      "sparkline": [
+        9.8,
+        9.4,
+        9,
+        9.1,
+        9.1,
+        9.1,
+        9.1
+      ],
+      "primaryFunction": "AI destekli kodlama IDE'si.",
+      "whyTrending": "Yüksek yük altında performans sorunları ve plan değişiklikleri eleştirilse de, AI entegrasyonuyla hala önemli bir IDE.",
+      "sources": [
+        "r/CursorAI",
+        "r/vibecoding"
       ]
     },
     {
@@ -913,7 +966,7 @@
       "prevScore": 9.6,
       "scoreDelta": 0,
       "trend": "stable",
-      "mentions": 7500,
+      "mentions": 8000,
       "sparkline": [
         9.4,
         9.2,
@@ -923,64 +976,11 @@
         9.6,
         9.6
       ],
-      "primaryFunction": "Yüksek performanslı yapay zeka ve HPC iş yükleri için tasarlanmış GPU platformu.",
-      "whyTrending": "Yapay zeka altyapısındaki tartışmasız liderliğini sürdürerek ve yeni nesil modeller için temel donanım çözümü olmaya devam ederek ayın en önemli oyuncularından biri oldu.",
-      "sources": [
-        "r/nvidia",
-        "r/hardware",
-        "r/Cloud"
-      ]
-    },
-    {
-      "id": "unsloth-qwen-3-8",
-      "name": "Unsloth Qwen 3.8 27B GGUF",
-      "category": "Yerel Model",
-      "badge": "Yerel Model Şampiyonu",
-      "hypeScore": 9.7,
-      "prevScore": 9.7,
-      "scoreDelta": 0,
-      "trend": "stable",
-      "mentions": 6000,
-      "sparkline": [
-        9.7,
-        9.7,
-        9.7,
-        9.7,
-        9.7,
-        9.7,
-        9.7
-      ],
-      "primaryFunction": "Unsloth tarafından optimize edilmiş, yerel cihazlarda yüksek performanslı çalışan dil modeli.",
-      "whyTrending": "Ay boyunca yerel model topluluğunda en çok indirilen ve konuşulan modellerden biri olarak öne çıktı, özellikle düşük bellek tüketimi ve yüksek çıkarım hızıyla.",
-      "sources": [
-        "r/LocalLLaMA",
-        "r/singularity"
-      ]
-    },
-    {
-      "id": "fable-5-1",
-      "name": "Fable 5.1",
-      "category": "LLM (Model)",
-      "badge": "Devin Entegrasyonu",
-      "hypeScore": 9.9,
-      "prevScore": 9.9,
-      "scoreDelta": 0,
-      "trend": "stable",
-      "mentions": 5500,
-      "sparkline": [
-        8.7,
-        9.7,
-        9.8,
-        9.9,
-        9.9,
-        9.9,
-        9.9
-      ],
-      "primaryFunction": "Gelişmiş akıl yürütme ve kodlama yeteneklerine sahip dil modeli.",
-      "whyTrending": "Devin entegrasyonu ile gerçek dünya projelerinde gösterdiği üstün performans ve kararlılıkla ay boyunca gündemde kaldı.",
+      "primaryFunction": "Yeni nesil AI ve HPC için GPU platformu.",
+      "whyTrending": "AI altyapısındaki liderliğini sürdürerek, yüksek performanslı hesaplama ve büyük ölçekli model eğitimi için vazgeçilmez bir çözüm.",
       "sources": [
         "r/singularity",
-        "r/ArtificialInteligence"
+        "r/hardware"
       ]
     },
     {
@@ -998,54 +998,100 @@
         9.6,
         9.6,
         9.6,
-        9.6,
         9.6
       ],
-      "primaryFunction": "CPU üzerinde LLM çıkarımı için optimize edilmiş framework.",
-      "whyTrending": "CPU'larda yapay zeka modellerini çalıştırma konusunda yeni performans rekorları kırarak donanım bağımsızlığı arayan geliştiricilerin ilgisini çekti.",
+      "primaryFunction": "CPU üzerinde LLM çıkarımı için optimize edilmiş çerçeve.",
+      "whyTrending": "CPU'larda LLM çalıştırma performansında çığır açarak, donanım bağımsız AI erişimini genişletiyor.",
       "sources": [
         "r/LocalLLaMA",
-        "r/hardware"
+        "r/programming"
       ]
     },
     {
-      "id": "minimax-h3",
-      "name": "MiniMax H3",
-      "category": "Medya / Üretim",
-      "badge": "Video Üretiminde Lider",
-      "hypeScore": 9.7,
-      "prevScore": 9.7,
+      "id": "deepseek-v4-flash-vision",
+      "name": "DeepSeek V4 Flash Vision",
+      "category": "Yerel Model",
+      "badge": "Hızlı Görsel LLM",
+      "hypeScore": 9.3,
+      "prevScore": 9.3,
       "scoreDelta": 0,
       "trend": "stable",
-      "mentions": 3800,
+      "mentions": 3500,
       "sparkline": [
-        9.6,
-        9.7,
-        9.7,
-        9.7,
-        9.7
+        9,
+        9.1,
+        9.2,
+        9.3,
+        9.3,
+        9.3,
+        9.3
       ],
-      "primaryFunction": "Ultra hızlı video üretimi ve düzenlemesi için yapay zeka modeli.",
-      "whyTrending": "Ay boyunca yüksek hızlı ve kaliteli video içeriği oluşturma yetenekleriyle medya sektöründe ve yaratıcı topluluklarda popülerliğini artırdı.",
+      "primaryFunction": "Yüksek hızlı multimodal görsel-dil modeli.",
+      "whyTrending": "Görsel anlama ve metin üretimi yeteneklerini birleştirerek, hızlı ve verimli multimodal AI uygulamaları için popüler bir seçenek.",
       "sources": [
-        "r/ArtificialInteligence",
+        "r/LocalLLaMA",
         "r/singularity"
       ]
     }
   ],
   "arxivDaily": [
     {
+      "id": "2609.10539v1",
+      "titleTr": "Araştırma Fikri Spesifikasyonlarındaki Uygulama-Kritik Boşlukların Kıyaslanması: IdeaAMBIG",
+      "title": "IdeaAMBIG: Benchmarking Implementation-Critical Gaps in Research-Idea Specifications",
+      "arxivUrl": "http://arxiv.org/abs/2609.10539v1",
+      "authors": [
+        "Yiling Ma",
+        "Yilun Zhao",
+        "Sihong Wu"
+      ],
+      "category": "cs.AI",
+      "impactScore": 9.6,
+      "whyMad": "Bu makale, araştırma fikirlerinin uygulanabilirlik açısından ne kadar iyi tanımlandığını ölçen yeni bir kıyaslama sunuyor. AI ajanlarının veya geliştiricilerin bir fikri somut bir yönteme dönüştürmesi için gereken metodolojik bilgi eksikliğini ele alması, AI destekli araştırma ve geliştirme süreçleri için kritik bir öneme sahip.",
+      "summary": "IdeaAMBIG, araştırma fikirlerinin metodolojik spesifikasyonlarının yeterliliğini değerlendirerek, bir fikrin sadık bir şekilde uygulanması için gerekli bilgileri sağlayıp sağlamadığını inceler. Bu, AI ajanlarının araştırma fikirlerini gerçeğe dönüştürme yeteneğini doğrudan etkileyen temel bir sorunu ele almaktadır."
+    },
+    {
+      "id": "2609.10522v1",
+      "titleTr": "Show-Harness: Sadece Bir VLM Ajanı Robotları Oynayabilir",
+      "title": "Show-Harness: Just a VLM Agent Can Play Robots",
+      "arxivUrl": "http://arxiv.org/abs/2609.10522v1",
+      "authors": [
+        "Yanzhe Chen",
+        "Zechen Bai",
+        "Zhijun Cao"
+      ],
+      "category": "cs.RO",
+      "impactScore": 9.5,
+      "whyMad": "Show-Harness, VLM'lerin robot kontrolüne nasıl entegre edilebileceğine dair yenilikçi bir yaklaşım sunuyor. Karmaşık robotik görevleri, VLM'lerin doğal olarak akıl yürütebileceği ayrık semantik eylem birimlerine dönüştürerek, genel zekayı robotik uygulamalara taşıma potansiyeliyle ezber bozuyor.",
+      "summary": "Show-Harness, temel görme-dil modellerinin (VLM) robotları 'oynamasını' sağlayan bir Embodied Harness sunar. Bu sistem, VLM'lerin niyetini eyleme bağlayan kompakt bir semantik arayüz aracılığıyla, VLM'lerin robot kontrolüne entegrasyonunu kolaylaştırır ve robotik eylemleri deterministik olarak zemine oturtur."
+    },
+    {
+      "id": "2609.10534v1",
+      "titleTr": "Normalleştirici Akışlar Aracılığıyla Nuisance Parametreleri ile Olasılıksız Çıkarım",
+      "title": "Likelihood-free inference with nuisance parameters through normalizing flows",
+      "arxivUrl": "http://arxiv.org/abs/2609.10534v1",
+      "authors": [
+        "Phil Assheton"
+      ],
+      "category": "stat.ML",
+      "impactScore": 9.4,
+      "whyMad": "Bu makale, normalleştirici akışları kullanarak nuisance parametreleri içeren olasılıksız çıkarım sorununa zarif bir çözüm getiriyor. Minimum ortalama KL-diverjansı ile neredeyse 'pivotal' bir istatistik keşfetmesi, karmaşık modellerde parametre çıkarımı için yeni ve güçlü bir araç sunuyor.",
+      "summary": "Neural ağ tabanlı normalleştirici akışların basit bir ayrışımını sunarak, ilgi dağılımından bir örnek üreteci varlığında nuisance parametreleri içeren durumlarda neredeyse pivotal bir istatistik ortaya çıkarır. Bu istatistiğin p-değerlerinin tekdüze dağılımdan minimum ortalama KL-diverjansı anlamında neredeyse pivotal olduğu gösterilir."
+    }
+  ],
+  "arxivWeeklyBest": [
+    {
       "id": "2609.09157v1",
-      "titleTr": "Uzun Bağlamlı Tekrarlayan Modellerin Uzunluk-Ekstrapolasyon Yeteneğini Öğrenme",
+      "titleTr": "Uzunluk-Ekstrapolasyon Yapabilen Tekrarlayan Modelleri Öğrenmek",
       "title": "Learning Length-Extrapolatable Recurrent Models",
       "arxivUrl": "http://arxiv.org/abs/2609.09157v1",
       "authors": [
-        "Hanwen Jiang"
+        "AI Araştırmacıları"
       ],
       "category": "cs.AI",
       "impactScore": 9.6,
       "whyMad": "Bu makale, tekrarlayan modellerin eğitim bağlamının ötesinde performans gösterme sorununa odaklanarak, 'state credit' kavramını öne sürüyor. Geleneksel olarak kaybolan/patlayan gradyanlara odaklanılırken, bu çalışma sinyal bozunmasının tek başına öğrenme başarısızlığını belirlemediğini gösteriyor. Uzun bağlamlı LLM'lerin temel bir sınırlamasını ele alması ve yeni bir analiz çerçevesi sunmasıyla ezber bozuyor.",
-      "summary": "Tekrarlayan modellerin uzun bağlamlı yeteneklerini geliştirmek için 'state credit' sinyalinin önemini vurgulayan bu çalışma, modellerin eğitim horizonunun ötesinde genelleme yapabilmesi için yeni bir bakış açısı sunuyor. Geleneksel gradyan sorunlarının ötesine geçerek, gelecekteki kayıpların önceki durum sinyallerine nasıl ulaştığını inceliyor."
+      "summary": "Tekrarlayan modellerin eğitim bağlamının ötesinde performans gösterme sorununa odaklanarak, 'state credit' kavramını öne sürüyor. Sinyal bozunmasının tek başına öğrenme başarısızlığını belirlemediğini gösteriyor ve uzun bağlamlı LLM'lerin temel bir sınırlamasını ele alıyor."
     },
     {
       "id": "2609.09133v1",
@@ -1053,44 +1099,25 @@
       "title": "ExecCritic: Learn to Test, Test to Improve for Coding Agents",
       "arxivUrl": "http://arxiv.org/abs/2609.09133v1",
       "authors": [
-        "Leitian Tao",
-        "Baolin Peng",
-        "Haorui Wang"
+        "AI Araştırmacıları"
       ],
       "category": "cs.AI",
       "impactScore": 9.5,
       "whyMad": "Kodlama ajanlarının en büyük sorunlarından biri, ürettikleri yamaların doğru olup olmadığını test etmek için güvenilir testler oluşturamamalarıdır. ExecCritic, bu sorunu test-doğrula-revize iskele yapısı ve role özel takviyeli öğrenme ile çözerek, ajanların hem yamaları hem de testleri daha güvenilir bir şekilde üretmesini sağlıyor. Bu, otonom kodlama ajanlarının pratik uygulanabilirliğini önemli ölçüde artırıyor.",
-      "summary": "ExecCritic, kodlama ajanlarının repository onarımları için doğru testler oluşturma yeteneğini geliştiren yeni bir çerçeve sunuyor. Ajan tarafından üretilen testlerin eksik veya yanlış davranış hedefleri içermesi sorununu ele alarak, test-doğrula-revize iskele ve role özel takviyeli öğrenme ile daha güvenilir kod üretimi ve testi sağlıyor."
+      "summary": "Kodlama ajanlarının ürettikleri yamaları test etmek için güvenilir testler oluşturma sorununu ele alıyor. ExecCritic, test-doğrula-revize iskele yapısı ve role özel takviyeli öğrenme ile ajanların hem yamaları hem de testleri daha güvenilir bir şekilde üretmesini sağlıyor."
     },
     {
-      "id": "2609.09143v1",
-      "titleTr": "Birleşik Multimodal Modellerde Görsel Diller Olarak Görüntü Tokenizer'larını İncelemek",
-      "title": "Studying Image Tokenizers as Visual Languages in Unified Multimodal Models",
-      "arxivUrl": "http://arxiv.org/abs/2609.09143v1",
-      "authors": [
-        "Siting Li",
-        "Zhengyang Wang",
-        "Simon Shaolei Du"
-      ],
-      "category": "cs.AI",
-      "impactScore": 9.4,
-      "whyMad": "Multimodal modellerin temelini oluşturan görüntü tokenizer'larının 'görsel dil' olarak nasıl davrandığını derinlemesine inceleyen bu makale, mevcut değerlendirme yöntemlerinin eksikliklerini gideriyor. Görsel token'ların metinle birlikte nasıl modellendiğini anlamak, daha güçlü ve tutarlı multimodal yapay zeka geliştirmek için kritik bir adım. Bu, multimodal AI'ın geleceği için temel bir araştırma niteliğinde.",
-      "summary": "Bu çalışma, birleşik multimodal modellerde görüntü tokenizer'larının görsel dil olarak işlevini inceliyor. Görev odaklı doğrulama kayıplarını takip ederek, görsel token'ların metinle birlikte nasıl modellendiğini ve multimodal sürekli ön eğitimdeki davranışlarını analiz ediyor. Bu, multimodal yapay zeka modellerinin tasarımını ve değerlendirmesini iyileştirmek için önemli içgörüler sunuyor."
-    }
-  ],
-  "arxivWeeklyBest": [
-    {
-      "id": "2609.05404v1",
-      "titleTr": "Diffusion TV: Somut, Bedensel Etkileşimle Difüzyon Modellerini Deneyimlemek",
-      "title": "Diffusion TV: Experiencing Diffusion Models through Tangible, Embodied Interaction",
-      "arxivUrl": "http://arxiv.org/abs/2609.05404v1",
+      "id": "2609.09134v1",
+      "titleTr": "Harness'lar ve Modellerin Birlikte Evrimi: Taklit Başarısız Olduğunda On-Policy Düzeltme Zayıf Modellerin Yetişmesine Yardımcı Oluyor",
+      "title": "Co-Evolving Harnesses and Models: On-Policy Correction Helps Weaker Models Catch Up Where Imitation Fails",
+      "arxivUrl": "http://arxiv.org/abs/2609.09134v1",
       "authors": [
         "AI Araştırmacıları"
       ],
       "category": "cs.AI",
-      "impactScore": 9.6,
-      "whyMad": "Difüzyon modellerini fiziksel bir CRT TV ve anten manipülasyonu ile deneyimleme imkanı sunarak, AI sanatını somut ve bedensel bir etkileşime dönüştürüyor. Bu, AI ile insan etkileşimi konusunda yeni bir paradigma sunarak haftanın en yaratıcı ve ezber bozan makalelerinden biri oldu.",
-      "summary": "Bu makale, difüzyon modellerini fiziksel bir CRT televizyon ve anten manipülasyonu aracılığıyla deneyimlemeyi öneren 'Diffusion TV' konseptini tanıtıyor. AI sanatını soyut dijital arayüzlerden çıkarıp somut, bedensel bir etkileşime taşıyarak, kullanıcıların AI ile daha derin ve sezgisel bir bağ kurmasını sağlıyor."
+      "impactScore": 9.5,
+      "whyMad": "Agent harness'larının (sistem prompt'u, araç seti, yürütme kancaları) agent başarısında kritik rolünü vurgulayarak, daha küçük modellerin alan özelinde büyük modellerle rekabet etmesini sağlayan yenilikçi bir yaklaşım sunuyor. Harness evrimi ile hafif fine-tuning'in nasıl birleştirileceğini göstererek, maliyet etkin AI çözümleri için yeni bir yol açıyor.",
+      "summary": "Agent harness'larının kritik rolünü vurgulayarak, daha küçük modellerin alan özelinde büyük modellerle rekabet etmesini sağlayan yenilikçi bir yaklaşım sunuyor. Harness evrimi ile hafif fine-tuning'in nasıl birleştirileceğini göstererek, maliyet etkin AI çözümleri için yeni bir yol açıyor."
     },
     {
       "id": "2609.04198v1",
@@ -1102,34 +1129,8 @@
       ],
       "category": "cs.AI",
       "impactScore": 9.6,
-      "whyMad": "Sektörün tüm liderlik tablolarını ve model değerlendirmelerini emanet ettiği 'LLM-as-a-judge' sistemlerinin, aynı uç noktaya yapılan aynı sorgularda bile Spearman 0.40 korelasyonla çuvalladığını kanıtlayarak benchmark dünyasını sarstı. Bu, yapay zeka değerlendirme metodolojilerine olan güveni temelden sarsan ve acil düzeltme gerektiren kritik bir bulgu.",
-      "summary": "Bu çalışma, 'LLM-as-a-judge' sistemlerinin güvenilirliğini sorguluyor ve aynı uç noktaya yapılan tekrarlayan sorgularda bile düşük korelasyonlu sonuçlar verdiğini gösteriyor. Bu bulgu, mevcut LLM değerlendirme yöntemlerinin sağlamlığına dair ciddi endişeler yaratıyor ve daha güvenilir ölçüm metriklerine olan ihtiyacı vurguluyor."
-    },
-    {
-      "id": "2609.09134v1",
-      "titleTr": "Harness'ları ve Modelleri Birlikte Geliştirmek: On-Policy Düzeltme, Taklidin Başarısız Olduğu Yerde Zayıf Modellerin Yakalamasına Yardımcı Oluyor",
-      "title": "Co-Evolving Harnesses and Models: On-Policy Correction Helps Weaker Models Catch Up Where Imitation Fails",
-      "arxivUrl": "http://arxiv.org/abs/2609.09134v1",
-      "authors": [
-        "AI Araştırmacıları"
-      ],
-      "category": "cs.AI",
-      "impactScore": 9.5,
-      "whyMad": "Agent harness'larının (sistem prompt'u, araç seti, yürütme kancaları) agent başarısında kritik rolünü vurgulayarak, daha küçük modellerin alan özelinde büyük modellerle rekabet etmesini sağlayan yenilikçi bir yaklaşım sunuyor. Harness evrimi ile hafif fine-tuning'in nasıl birleştirileceğini göstererek, maliyet etkin AI çözümleri için yeni bir yol açıyor ve haftanın en pratik ve etkili makalelerinden biri oldu.",
-      "summary": "Bu makale, agent harness'larının ve modellerin birlikte evrimleştirilmesinin önemini vurguluyor. On-policy düzeltme mekanizması kullanarak, daha zayıf modellerin bile alan özelinde daha güçlü modellerle rekabet edebileceğini gösteriyor. Bu yaklaşım, maliyet etkin yapay zeka çözümleri geliştirmek için yeni bir strateji sunuyor."
-    },
-    {
-      "id": "2609.05395v1",
-      "titleTr": "Korece Açık Kamu API'leri Üzerinden Çok Adımlı Araç Çağırma: Bir Kıyaslama ve Veri Sentezi Reçetesi",
-      "title": "Multi-Step Tool-Calling over Korean Open Public APIs: A Benchmark and a Data-Synthesis Recipe",
-      "arxivUrl": "http://arxiv.org/abs/2609.05395v1",
-      "authors": [
-        "AI Araştırmacıları"
-      ],
-      "category": "cs.AI",
-      "impactScore": 9.5,
-      "whyMad": "Açık kaynak LLM ajanlarının çok adımlı araç çağırma yeteneklerindeki eksikliği gideren ilk kapsamlı Korece kıyaslama ve veri sentezi metodolojisini sunuyor. Bu, gerçek dünya hükümet API'leriyle çalışan ajanların geliştirilmesi için kritik bir adım olup, dil bariyerlerini aşarak ajan teknolojisinin küresel yayılımına önemli katkı sağlıyor.",
-      "summary": "Bu çalışma, Korece açık kamu API'leri üzerinde çok adımlı araç çağırma yeteneklerini değerlendirmek için ilk kapsamlı kıyaslama ve veri sentezi metodolojisini sunuyor. Açık kaynak LLM ajanlarının gerçek dünya API'leriyle etkileşimini geliştirmeyi hedefleyerek, dil özelindeki zorlukları ele alıyor ve bu alandaki araştırmalara yeni bir yön veriyor."
+      "whyMad": "Sektörün tüm liderlik tablolarını ve model değerlendirmelerini emanet ettiği 'LLM-as-a-judge' sistemlerinin, aynı uç noktaya yapılan aynı sorgularda bile Spearman 0.40 korelasyonla çuvalladığını kanıtlayarak benchmark dünyasını sarstı. Bu, AI değerlendirme metodolojilerine olan güveni temelden sarsıyor.",
+      "summary": "LLM-as-a-judge sistemlerinin aynı uç noktaya yapılan aynı sorgularda bile düşük korelasyonla başarısız olduğunu kanıtlayarak, AI değerlendirme metodolojilerine olan güveni temelden sarsıyor. Bu, benchmark dünyasında önemli bir güvenilirlik sorununu ortaya koyuyor."
     }
   ],
   "huggingFaceBest": [
@@ -1152,46 +1153,46 @@
       "downloads": "10.1M",
       "likes": 4100,
       "tag": "Açık Kaynak Lideri",
-      "function": "Meta'nın en büyük açık kaynaklı, talimatlara duyarlı dil modeli.",
-      "distinction": "Geniş bağlam penceresi ve gelişmiş akıl yürütme yetenekleri sunar.",
-      "whyHype": "Açık kaynak topluluğunda en çok benimsenen ve üzerine inşa edilen modellerden biri.",
-      "environment": "4x H100 veya 2x A100 GPU, 128GB+ RAM."
+      "function": "Meta'nın en büyük açık kaynaklı, talimatlara uygun genel amaçlı LLM'i.",
+      "distinction": "Geniş bağlam penceresi ve üstün akıl yürütme yetenekleriyle açık kaynak alanında lider.",
+      "whyHype": "Ticari kullanıma açık olması ve GPT-4 seviyesine yaklaşan performansıyla büyük ilgi gördü.",
+      "environment": "Çoklu A100/H100 GPU'lar veya kuantize edilmiş versiyonlar için 48GB+ VRAM."
     },
     {
       "rank": 3,
-      "id": "Qwen/Qwen2.5-Coder-32B",
+      "id": "Qwen/Qwen-2.5-Coder-32B",
       "name": "Qwen 2.5 Coder 32B",
       "downloads": "8.9M",
       "likes": 3950,
       "tag": "Kodlama Uzmanı",
-      "function": "Alibaba Cloud'un kodlama odaklı, çok dilli dil modeli.",
-      "distinction": "Kod üretimi, hata ayıklama ve kod tamamlama görevlerinde üstün performans.",
-      "whyHype": "Geliştiriciler için yüksek kaliteli ve verimli kodlama asistanı olarak öne çıkıyor.",
-      "environment": "2x A100 GPU veya kuantize 48GB+ bellekli sistemler."
+      "function": "Alibaba Cloud tarafından geliştirilen, kodlama ve yazılım geliştirme görevleri için optimize edilmiş LLM.",
+      "distinction": "Çok dilli kodlama yetenekleri ve karmaşık programlama sorunlarını çözme becerisi.",
+      "whyHype": "Geliştiriciler arasında yüksek kod üretimi kalitesi ve verimliliği nedeniyle popüler.",
+      "environment": "24GB+ VRAM'e sahip GPU'lar veya kuantize edilmiş versiyonlar."
     },
     {
       "rank": 4,
-      "id": "stabilityai/FLUX.1-Schnell",
+      "id": "FLUX-AI/FLUX.1-Schnell",
       "name": "FLUX.1 Schnell",
       "downloads": "7.2M",
-      "likes": 3500,
-      "tag": "Hızlı Görüntü Üretimi",
-      "function": "Stability AI'ın ultra hızlı görüntü ve video üretim modeli.",
-      "distinction": "Gerçek zamanlıya yakın hızlarda yüksek kaliteli görsel içerik oluşturma yeteneği.",
-      "whyHype": "Yaratıcı profesyoneller ve medya üreticileri için devrim niteliğinde hız ve kalite sunuyor.",
-      "environment": "NVIDIA RTX 40 serisi GPU veya eşdeğeri."
+      "likes": 3200,
+      "tag": "Hızlı Çıkarım",
+      "function": "Yüksek hızda çıkarım için tasarlanmış, hafif ve verimli LLM.",
+      "distinction": "Düşük gecikme süresi ve yüksek token/saniye oranıyla gerçek zamanlı uygulamalar için ideal.",
+      "whyHype": "Maliyet etkinliği ve hız odaklı projelerde tercih edilmesiyle öne çıkıyor.",
+      "environment": "Tek bir tüketici GPU'su (örn. RTX 4090) veya CPU üzerinde optimize edilmiş."
     },
     {
       "rank": 5,
       "id": "openai/whisper-large-v3",
       "name": "Whisper Large v3",
-      "downloads": "6.5M",
-      "likes": 3200,
-      "tag": "Ses Tanıma",
-      "function": "OpenAI'nin çok dilli otomatik konuşma tanıma (ASR) modeli.",
-      "distinction": "Yüksek doğrulukta ve geniş dil desteğiyle ses transkripsiyonu.",
-      "whyHype": "Podcast'lerden toplantı kayıtlarına kadar geniş bir yelpazede ses verisini metne dönüştürmede endüstri standardı.",
-      "environment": "CPU veya orta seviye GPU, 8GB+ RAM."
+      "downloads": "15.8M",
+      "likes": 5100,
+      "tag": "Konuşma Tanıma",
+      "function": "OpenAI tarafından geliştirilen çok dilli konuşma tanıma ve çeviri modeli.",
+      "distinction": "Yüksek doğruluk oranı ve geniş dil desteği ile endüstri standardı.",
+      "whyHype": "Sesli verileri metne dönüştürme ve çevirme yeteneğiyle birçok AI uygulamasının temelini oluşturuyor.",
+      "environment": "GPU hızlandırmalı sistemler veya CPU üzerinde daha yavaş çıkarım."
     }
   ],
   "huggingFaceTrending": [
@@ -1199,61 +1200,61 @@
       "rank": 1,
       "id": "unsloth/Qwen3.8-27B-GGUF",
       "name": "Qwen 3.8 27B GGUF",
-      "downloads": "10,675,683",
-      "likes": 3781,
+      "downloads": "11,127,203",
+      "likes": 3809,
       "tag": "24s Zirvesi",
       "function": "Unsloth tarafından optimize edilmiş 27B dinamik kalibre model.",
       "distinction": "Geleneksel 4-bit kuantizasyondaki akıl yürütme kaybını sıfıra indirir.",
-      "whyHype": "16GB RAM'li dizüstü bilgisayarlarda bile 40 token/saniye hızla akıcı çalışabiliyor olmasıyla yerel model meraklıları arasında büyük ilgi görüyor.",
+      "whyHype": "16GB RAM'li dizüstü bilgisayarlarda bile 40 token/saniye hızla akıcı çalışabiliyor olmasıyla yerel AI meraklılarının gözdesi.",
       "environment": "Ollama, llama.cpp, LM Studio, 16GB+ RAM."
     },
     {
       "rank": 2,
       "id": "Qwen/Qwen3.8-27B",
-      "name": "Qwen 3.8 27B",
-      "downloads": "6,712,160",
-      "likes": 14526,
+      "name": "Qwen3.8-27B",
+      "downloads": "7,322,476",
+      "likes": 14578,
       "tag": "Multimodal Yetenek",
-      "function": "Görüntü-metin-metin dönüşümü yapabilen, çok yönlü dil modeli.",
-      "distinction": "Yüksek beğeni sayısı ve multimodal yetenekleriyle öne çıkıyor.",
-      "whyHype": "Hem metin hem de görsel girdileri işleyebilmesi ve geniş bir kullanım yelpazesi sunmasıyla popülerliğini artırıyor.",
-      "environment": "Yüksek performanslı GPU (örn. A100, H100) veya bulut ortamları."
+      "function": "Gelişmiş multimodal yeteneklere sahip 27B parametreli büyük dil modeli.",
+      "distinction": "Görsel-metin anlama ve üretimde yüksek performans sunar.",
+      "whyHype": "Çok yönlü yetenekleri ve geniş uygulama alanı sayesinde hızla popülerlik kazanıyor.",
+      "environment": "Yüksek VRAM'li GPU'lar (örn. 24GB+) veya bulut tabanlı çıkarım."
     },
     {
       "rank": 3,
       "id": "Lightricks/LTX-2.5",
       "name": "Lightricks LTX-2.5",
-      "downloads": "1,644,796",
-      "likes": 3269,
-      "tag": "Görüntüden Videoya",
-      "function": "Görüntüleri videoya dönüştüren yapay zeka modeli.",
-      "distinction": "Yüksek kaliteli ve hızlı görüntüden videoya dönüşüm yeteneği.",
-      "whyHype": "Medya üreticileri ve içerik oluşturucular için hızlı ve etkili video oluşturma çözümü sunması.",
-      "environment": "GPU hızlandırmalı sistemler."
+      "downloads": "1,740,572",
+      "likes": 3316,
+      "tag": "Video Üretimi",
+      "function": "Görüntüden videoya dönüştürme ve animasyon modeli.",
+      "distinction": "Hızlı ve yüksek kaliteli video animasyonları oluşturma yeteneği.",
+      "whyHype": "Yaratıcı profesyoneller ve içerik oluşturucular arasında video üretimini kolaylaştırmasıyla büyük ilgi görüyor.",
+      "environment": "GPU hızlandırmalı sistemler, bulut tabanlı API."
     },
     {
       "rank": 4,
-      "id": "ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF",
-      "name": "Qwen3.8-27B-GSQ-RCO-GGUF",
-      "downloads": "479,597",
-      "likes": 733,
-      "tag": "Kuantize Optimizasyon",
-      "function": "Qwen 3.8 27B modelinin GGUF formatında kuantize edilmiş versiyonu.",
-      "distinction": "Yerel cihazlarda daha verimli çalışmak üzere optimize edilmiş.",
-      "whyHype": "Düşük kaynaklı sistemlerde bile Qwen 3.8'in yeteneklerini kullanma imkanı sunması.",
-      "environment": "Ollama, llama.cpp, LM Studio, 16GB+ RAM."
+      "id": "google/timesfm-3.0-pytorch",
+      "name": "TimesFM 3.0 PyTorch",
+      "downloads": "483,787",
+      "likes": 704,
+      "tag": "Zaman Serisi Tahmini",
+      "function": "PyTorch tabanlı zaman serisi tahmin modeli.",
+      "distinction": "Karmaşık zaman serisi verilerinde yüksek doğruluk ve esneklik sunar.",
+      "whyHype": "Finans, lojistik ve diğer sektörlerdeki tahmin ihtiyaçları için güçlü bir çözüm olarak öne çıkıyor.",
+      "environment": "CPU veya GPU üzerinde PyTorch ortamı."
     },
     {
       "rank": 5,
-      "id": "google/timesfm-3.0-pytorch",
-      "name": "TimesFM 3.0 PyTorch",
-      "downloads": "444,052",
-      "likes": 690,
-      "tag": "Zaman Serisi Tahmini",
-      "function": "Zaman serisi tahmini için PyTorch tabanlı model.",
-      "distinction": "Google tarafından geliştirilen, yüksek doğrulukta zaman serisi tahmin yeteneği.",
-      "whyHype": "Finans, lojistik ve diğer endüstrilerde kritik olan zaman serisi analizi için güçlü bir araç sunması.",
-      "environment": "CPU veya GPU destekli PyTorch ortamları."
+      "id": "ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF",
+      "name": "Qwen3.8-27B-GSQ-RCO-GGUF",
+      "downloads": "614,850",
+      "likes": 761,
+      "tag": "Kuantize Model",
+      "function": "Qwen 3.8 27B modelinin GGUF formatında kuantize edilmiş versiyonu.",
+      "distinction": "Daha düşük bellek tüketimiyle yerel cihazlarda çalıştırılabilirlik.",
+      "whyHype": "Yerel LLM çalıştırmak isteyen kullanıcılar için erişilebilir ve performanslı bir seçenek sunuyor.",
+      "environment": "Ollama, llama.cpp, LM Studio, 16GB+ RAM."
     }
   ],
   "githubRadar": {
@@ -1264,11 +1265,11 @@
         "owner": "tinyhumansai",
         "url": "https://github.com/tinyhumansai/openhuman",
         "stars": "39.6k",
-        "deltaStars": "+1.2k bugün",
+        "deltaStars": "+1200 bugün",
         "category": "Otonom Agent",
         "language": "Rust",
-        "function": "Mac, Windows ve Linux için yerel öncelikli bellek, ajan orkestrasyonu ve derin araştırma yetenekleri sunan kişisel bir yapay zeka.",
-        "whyHype": "Yerel cihazlarda çalışabilen, gizlilik odaklı ve çok platformlu kişisel AI asistanı olarak büyük ilgi görüyor.",
+        "function": "Mac, Windows ve Linux için yerel öncelikli bellek, ajan orkestrasyonu ve derin araştırma yetenekleri sunan kişisel bir AI.",
+        "whyHype": "Yerel ve platformlar arası çalışabilen, derin araştırma ve ajan orkestrasyonu sunan açık kaynaklı bir kişisel AI olarak büyük ilgi görüyor.",
         "installCommand": "cargo install openhuman"
       },
       {
@@ -1277,12 +1278,12 @@
         "owner": "khoj-ai",
         "url": "https://github.com/khoj-ai/khoj",
         "stars": "37.2k",
-        "deltaStars": "+980 bugün",
-        "category": "Yerel RAG Motoru",
+        "deltaStars": "+1100 bugün",
+        "category": "Otonom Agent",
         "language": "Python",
-        "function": "Kişisel yapay zeka ikinci beyniniz. Web'den veya belgelerinizden yanıtlar alın, özel ajanlar oluşturun ve derin araştırma yapın.",
-        "whyHype": "Herhangi bir yerel veya çevrimiçi LLM'i kişisel, otonom bir AI'ya dönüştürme yeteneği ve self-host edilebilir olmasıyla öne çıkıyor.",
-        "installCommand": "pip install khoj-ai"
+        "function": "Kişisel AI ikinci beyniniz. Web'den veya belgelerinizden yanıtlar alın, özel ajanlar oluşturun ve otomasyonlar planlayın.",
+        "whyHype": "Kendi kendine barındırılabilir olması ve çeşitli LLM'lerle entegrasyon yeteneğiyle kişisel otonom AI arayanlar için popüler.",
+        "installCommand": "pip install khoj"
       },
       {
         "id": "assafelovic/gpt-researcher",
@@ -1290,12 +1291,38 @@
         "owner": "assafelovic",
         "url": "https://github.com/assafelovic/gpt-researcher",
         "stars": "29.4k",
-        "deltaStars": "+840 bugün",
+        "deltaStars": "+950 bugün",
         "category": "Deep Research Ajanı",
         "language": "Python",
-        "function": "Herhangi bir LLM sağlayıcısını kullanarak herhangi bir veri üzerinde derin araştırma yapan otonom bir ajan.",
-        "whyHype": "Otomatik derin araştırma yetenekleri ve farklı LLM'lerle entegrasyon esnekliği sayesinde popülerliğini artırıyor.",
+        "function": "Herhangi bir LLM sağlayıcısını kullanarak herhangi bir veri üzerinde derinlemesine araştırma yapan otonom bir ajan.",
+        "whyHype": "Karmaşık araştırma görevlerini otomatize etme yeteneği ve esnek LLM entegrasyonuyla geliştiriciler arasında hızla yayıldı.",
         "installCommand": "pip install gpt-researcher"
+      },
+      {
+        "id": "virattt/dexter",
+        "name": "dexter",
+        "owner": "virattt",
+        "url": "https://github.com/virattt/dexter",
+        "stars": "27.6k",
+        "deltaStars": "+880 bugün",
+        "category": "Deep Research Ajanı",
+        "language": "TypeScript",
+        "function": "Derinlemesine finansal araştırma yapan otonom bir ajan.",
+        "whyHype": "Finansal piyasalarda derinlemesine analiz ve otomasyon yetenekleriyle yatırımcılar ve analistler için değerli bir araç.",
+        "installCommand": "npm i dexter"
+      },
+      {
+        "id": "Alibaba-NLP/DeepResearch",
+        "name": "DeepResearch",
+        "owner": "Alibaba-NLP",
+        "url": "https://github.com/Alibaba-NLP/DeepResearch",
+        "stars": "19.9k",
+        "deltaStars": "+750 bugün",
+        "category": "Deep Research Ajanı",
+        "language": "Python",
+        "function": "Önde gelen açık kaynaklı derin araştırma ajanı.",
+        "whyHype": "Alibaba'nın desteğiyle geliştirilen bu ajan, karmaşık araştırma görevlerini otomatize etme konusunda yüksek performans sunuyor.",
+        "installCommand": "pip install deepresearch"
       },
       {
         "id": "dzhng/deep-research",
@@ -1303,91 +1330,26 @@
         "owner": "dzhng",
         "url": "https://github.com/dzhng/deep-research",
         "stars": "19.7k",
-        "deltaStars": "+650 bugün",
+        "deltaStars": "+720 bugün",
         "category": "Deep Research Ajanı",
         "language": "TypeScript",
-        "function": "Arama motorları, web kazıma ve büyük dil modellerini birleştirerek herhangi bir konuda yinelemeli, derin araştırma yapan yapay zeka destekli bir araştırma asistanı.",
-        "whyHype": "Araştırma yönünü zamanla iyileştirebilen ve bir konuya derinlemesine dalabilen basit bir derin araştırma ajanı uygulaması sunuyor.",
-        "installCommand": "npm install deep-research"
-      },
-      {
-        "id": "koala73/worldmonitor",
-        "name": "worldmonitor",
-        "owner": "koala73",
-        "url": "https://github.com/koala73/worldmonitor",
-        "stars": "85.9k",
-        "deltaStars": "+1.5k bugün",
-        "category": "OSINT / Canlı İstihbarat",
-        "language": "TypeScript",
-        "function": "Gerçek zamanlı küresel istihbarat panosu. Yapay zeka destekli haber toplama, jeopolitik izleme ve altyapı takibi.",
-        "whyHype": "Birleşik bir durumsal farkındalık arayüzünde küresel olayları ve altyapıyı gerçek zamanlı izleme yeteneğiyle dikkat çekiyor.",
-        "installCommand": "npm i worldmonitor"
-      },
-      {
-        "id": "mukul975/Anthropic-Cybersecurity-Skills",
-        "name": "Anthropic-Cybersecurity-Skills",
-        "owner": "mukul975",
-        "url": "https://github.com/mukul975/Anthropic-Cybersecurity-Skills",
-        "stars": "32.5k",
-        "deltaStars": "+700 bugün",
-        "category": "Tip Güvenli Ajan Kütüphanesi",
-        "language": "Python",
-        "function": "AI ajanları için 817 yapılandırılmış siber güvenlik becerisi. MITRE ATT&CK, NIST CSF 2.0 gibi 6 çerçeveye eşlenmiş.",
-        "whyHype": "Siber güvenlik alanında AI ajanlarının yeteneklerini standartlaştıran ve geniş bir platform desteği sunan kapsamlı bir beceri seti.",
-        "installCommand": "pip install agentskills"
+        "function": "Arama motorları, web kazıma ve büyük dil modellerini birleştirerek herhangi bir konuda yinelemeli, derinlemesine araştırma yapan AI destekli bir araştırma asistanı.",
+        "whyHype": "Araştırma yönünü zamanla iyileştirebilen ve bir konuya derinlemesine dalabilen basit ama etkili bir ajan uygulaması.",
+        "installCommand": "npm i deep-research"
       }
     ],
     "weekly": [
       {
-        "id": "tinyhumansai/openhuman",
-        "name": "openhuman",
-        "owner": "tinyhumansai",
-        "url": "https://github.com/tinyhumansai/openhuman",
-        "stars": "39.6k",
-        "deltaStars": "+5.0k bu hafta",
-        "category": "Otonom Agent",
-        "language": "Rust",
-        "function": "Mac, Windows ve Linux için yerel öncelikli bellek, ajan orkestrasyonu ve derin araştırma yetenekleri sunan kişisel bir yapay zeka.",
-        "whyHype": "Yerel ve gizlilik odaklı kişisel AI asistanı olarak geliştirici topluluğunda hızla benimseniyor.",
-        "installCommand": "cargo install openhuman"
-      },
-      {
-        "id": "khoj-ai/khoj",
-        "name": "khoj",
-        "owner": "khoj-ai",
-        "url": "https://github.com/khoj-ai/khoj",
-        "stars": "37.2k",
-        "deltaStars": "+4.2k bu hafta",
-        "category": "Yerel RAG Motoru",
-        "language": "Python",
-        "function": "Kişisel yapay zeka ikinci beyniniz. Web'den veya belgelerinizden yanıtlar alın, özel ajanlar oluşturun ve derin araştırma yapın.",
-        "whyHype": "Self-host edilebilir olması ve çeşitli LLM'lerle uyumluluğu sayesinde geliştiricilerin favorisi haline geldi.",
-        "installCommand": "pip install khoj-ai"
-      },
-      {
-        "id": "assafelovic/gpt-researcher",
-        "name": "gpt-researcher",
-        "owner": "assafelovic",
-        "url": "https://github.com/assafelovic/gpt-researcher",
-        "stars": "29.4k",
-        "deltaStars": "+3.5k bu hafta",
-        "category": "Deep Research Ajanı",
-        "language": "Python",
-        "function": "Herhangi bir LLM sağlayıcısını kullanarak herhangi bir veri üzerinde derin araştırma yapan otonom bir ajan.",
-        "whyHype": "Otomatik ve derinlemesine araştırma yetenekleri, zaman tasarrufu sağlamasıyla geliştiriciler arasında popülerliğini koruyor.",
-        "installCommand": "pip install gpt-researcher"
-      },
-      {
         "id": "koala73/worldmonitor",
         "name": "worldmonitor",
         "owner": "koala73",
         "url": "https://github.com/koala73/worldmonitor",
-        "stars": "85.9k",
-        "deltaStars": "+6.0k bu hafta",
+        "stars": "86.0k",
+        "deltaStars": "+3500 bu hafta",
         "category": "OSINT / Canlı İstihbarat",
         "language": "TypeScript",
-        "function": "Gerçek zamanlı küresel istihbarat panosu. Yapay zeka destekli haber toplama, jeopolitik izleme ve altyapı takibi.",
-        "whyHype": "Küresel olayları ve altyapıyı tek bir arayüzde izleme yeteneği, OSINT topluluğunda büyük ilgi gördü.",
+        "function": "Gerçek zamanlı küresel istihbarat panosu. AI destekli haber toplama, jeopolitik izleme ve altyapı takibi.",
+        "whyHype": "Küresel olayları ve trendleri tek bir arayüzde birleştirerek kapsamlı bir durumsal farkındalık sunmasıyla öne çıkıyor.",
         "installCommand": "npm i worldmonitor"
       },
       {
@@ -1396,91 +1358,104 @@
         "owner": "mukul975",
         "url": "https://github.com/mukul975/Anthropic-Cybersecurity-Skills",
         "stars": "32.5k",
-        "deltaStars": "+2.8k bu hafta",
-        "category": "Tip Güvenli Ajan Kütüphanesi",
+        "deltaStars": "+1800 bu hafta",
+        "category": "Altyapı & SDK",
         "language": "Python",
-        "function": "AI ajanları için 817 yapılandırılmış siber güvenlik becerisi. Çeşitli güvenlik çerçevelerine eşlenmiş.",
-        "whyHype": "Siber güvenlik alanında AI ajanlarının yeteneklerini standartlaştıran ve geniş platform desteği sunan kapsamlı bir beceri seti.",
-        "installCommand": "pip install agentskills"
+        "function": "AI ajanları için 817 yapılandırılmış siber güvenlik becerisi, çeşitli güvenlik çerçeveleriyle eşleştirilmiş.",
+        "whyHype": "Siber güvenlik alanında AI ajanlarının yeteneklerini standartlaştırması ve geniş uyumluluk sunmasıyla dikkat çekiyor.",
+        "installCommand": "pip install agent-skills"
       },
       {
-        "id": "obra/superpowers",
-        "name": "superpowers",
-        "owner": "obra",
-        "url": "https://github.com/obra/superpowers",
-        "stars": "284.0k",
-        "deltaStars": "+10.0k bu hafta",
-        "category": "Tip Güvenli Ajan Kütüphanesi",
-        "language": "Shell",
-        "function": "Çalışan bir ajan beceri çerçevesi ve yazılım geliştirme metodolojisi.",
-        "whyHype": "Ajan mühendisliği için sağlam bir temel sunması ve geliştirme süreçlerini hızlandırmasıyla öne çıkıyor.",
-        "installCommand": "git clone https://github.com/obra/superpowers"
+        "id": "calesthio/Crucix",
+        "name": "Crucix",
+        "owner": "calesthio",
+        "url": "https://github.com/calesthio/Crucix",
+        "stars": "11.7k",
+        "deltaStars": "+700 bu hafta",
+        "category": "Otonom Agent",
+        "language": "JavaScript",
+        "function": "Kişisel istihbarat ajanı. Dünyayı birden fazla veri kaynağından izler ve bir şeyler değiştiğinde sizi uyarır.",
+        "whyHype": "Gerçek zamanlı veri izleme ve kişiselleştirilmiş bildirim yetenekleriyle kullanıcıların bilgi akışını yönetmesine yardımcı oluyor.",
+        "installCommand": "npm i crucix"
+      },
+      {
+        "id": "BigBodyCobain/Shadowbroker",
+        "name": "Shadowbroker",
+        "owner": "BigBodyCobain",
+        "url": "https://github.com/BigBodyCobain/Shadowbroker",
+        "stars": "11.1k",
+        "deltaStars": "+650 bu hafta",
+        "category": "OSINT / Canlı İstihbarat",
+        "language": "Python",
+        "function": "Küresel sahne için açık kaynak istihbaratı. Zenginlerin özel jetlerinden, casus uydularına kadar her şeyi izler.",
+        "whyHype": "AI ajanlarını kullanarak veriler arasında daha önce görülmemiş korelasyonlar bulma potansiyeliyle OSINT topluluğunda ilgi görüyor.",
+        "installCommand": "pip install shadowbroker"
+      },
+      {
+        "id": "samugit83/redamon",
+        "name": "redamon",
+        "owner": "samugit83",
+        "url": "https://github.com/samugit83/redamon",
+        "stars": "2.4k",
+        "deltaStars": "+400 bu hafta",
+        "category": "Otonom Agent",
+        "language": "Python",
+        "function": "Sıfır insan müdahalesiyle keşiften sömürüye kadar saldırı güvenliği operasyonlarını otomatikleştiren AI destekli ajanik kırmızı takım çerçevesi.",
+        "whyHype": "Siber güvenlik testlerinde otomasyon ve verimlilik sağlayarak, güvenlik uzmanları için güçlü bir araç sunuyor.",
+        "installCommand": "pip install redamon"
+      },
+      {
+        "id": "OpenOSINT/OpenOSINT",
+        "name": "OpenOSINT",
+        "owner": "OpenOSINT",
+        "url": "https://github.com/OpenOSINT/OpenOSINT",
+        "stars": "1.6k",
+        "deltaStars": "+300 bu hafta",
+        "category": "OSINT / Canlı İstihbarat",
+        "language": "Python",
+        "function": "Etkileşimli REPL, MCP sunucusu ve CLI ile AI destekli OSINT ajanı. Claude, GPT-4 veya yerel modellerle çalışır.",
+        "whyHype": "Çok yönlü araç setleri ve farklı LLM'lerle uyumluluğu sayesinde OSINT araştırmacıları için esnek bir çözüm sunuyor.",
+        "installCommand": "pip install openosint"
       }
     ],
     "monthly": [
       {
-        "id": "langchain-ai/langchain",
-        "name": "langchain",
-        "owner": "langchain-ai",
-        "url": "https://github.com/langchain-ai/langchain",
-        "stars": "146.0k",
-        "deltaStars": "+15.0k bu ay",
-        "category": "Tip Güvenli Ajan Kütüphanesi",
-        "language": "Python",
-        "function": "Ajan mühendisliği platformu.",
-        "whyHype": "LLM uygulamaları geliştirmek için en popüler frameworklerden biri olarak ay boyunca ekosistemde merkezi bir rol oynadı.",
-        "installCommand": "pip install langchain"
-      },
-      {
-        "id": "crewAIInc/crewAI",
-        "name": "crewAI",
-        "owner": "crewAIInc",
-        "url": "https://github.com/crewAIInc/crewAI",
-        "stars": "58.3k",
-        "deltaStars": "+8.0k bu ay",
-        "category": "Otonom Agent",
-        "language": "Python",
-        "function": "Rol oynayan, otonom yapay zeka ajanlarını düzenlemek için bir çerçeve.",
-        "whyHype": "İşbirliğine dayalı ajan zekasını teşvik ederek karmaşık görevleri sorunsuz bir şekilde ele almasıyla öne çıktı.",
-        "installCommand": "pip install crewai"
-      },
-      {
         "id": "obra/superpowers",
         "name": "superpowers",
         "owner": "obra",
         "url": "https://github.com/obra/superpowers",
-        "stars": "284.0k",
-        "deltaStars": "+25.0k bu ay",
-        "category": "Tip Güvenli Ajan Kütüphanesi",
+        "stars": "284.4k",
+        "deltaStars": "+10k bu ay",
+        "category": "Altyapı & SDK",
         "language": "Shell",
-        "function": "Çalışan bir ajan beceri çerçevesi ve yazılım geliştirme metodolojisi.",
-        "whyHype": "Ajan mühendisliği alanında temel bir referans noktası haline gelerek ay boyunca sürekli ilgi gördü.",
-        "installCommand": "git clone https://github.com/obra/superpowers"
+        "function": "İşe yarayan ajanik beceri çerçevesi ve yazılım geliştirme metodolojisi.",
+        "whyHype": "Yazılım geliştirme süreçlerini otomatize etme ve ajanik yaklaşımları entegre etme konusunda geniş kabul gördü.",
+        "installCommand": "npm i superpowers"
       },
       {
         "id": "heygen-com/hyperframes",
         "name": "hyperframes",
         "owner": "heygen-com",
         "url": "https://github.com/heygen-com/hyperframes",
-        "stars": "48.4k",
-        "deltaStars": "+7.0k bu ay",
+        "stars": "48.6k",
+        "deltaStars": "+2.5k bu ay",
         "category": "Medya / Üretim",
         "language": "TypeScript",
         "function": "HTML yazın. Video oluşturun. Ajanlar için tasarlandı.",
-        "whyHype": "HTML'den video oluşturma yeteneği ve ajanlarla entegrasyonu sayesinde yaratıcı otomasyon alanında dikkat çekti.",
-        "installCommand": "npm install hyperframes"
+        "whyHype": "HTML'den video oluşturma yeteneğiyle içerik üretimini ve otomasyonunu kolaylaştırarak yaratıcı sektörde ilgi görüyor.",
+        "installCommand": "npm i hyperframes"
       },
       {
         "id": "HKUDS/nanobot",
         "name": "nanobot",
         "owner": "HKUDS",
         "url": "https://github.com/HKUDS/nanobot",
-        "stars": "47.9k",
-        "deltaStars": "+6.5k bu ay",
+        "stars": "48.0k",
+        "deltaStars": "+2.4k bu ay",
         "category": "Otonom Agent",
         "language": "Python",
-        "function": "WebUI, araçlar, bellek ve çoklu ajan iş akışları ile ultra hafif, açık kaynaklı, self-hosted kişisel AI ajan çerçevesi.",
-        "whyHype": "Self-hosted kişisel AI ajanları için kapsamlı ve hafif bir çözüm sunarak ay boyunca popülerliğini artırdı.",
+        "function": "WebUI, araçlar, bellek, MCP, çoklu ajan iş akışları ve otomasyon içeren ultra hafif, açık kaynaklı, kendi kendine barındırılan kişisel AI ajan çerçevesi.",
+        "whyHype": "Kişisel AI ajanları için kapsamlı ve hafif bir çözüm sunarak, geliştiricilerin kendi ajanlarını kolayca oluşturmasını sağlıyor.",
         "installCommand": "pip install nanobot"
       },
       {
@@ -1488,13 +1463,39 @@
         "name": "langgraph",
         "owner": "langchain-ai",
         "url": "https://github.com/langchain-ai/langgraph",
-        "stars": "41.3k",
-        "deltaStars": "+5.5k bu ay",
-        "category": "Tip Güvenli Ajan Kütüphanesi",
+        "stars": "41.4k",
+        "deltaStars": "+2.1k bu ay",
+        "category": "Altyapı & SDK",
         "language": "Python",
-        "function": "Dayanıklı ajanlar oluşturmak için bir kütüphane.",
-        "whyHype": "LangChain ekosisteminin önemli bir parçası olarak, daha sağlam ve hata toleranslı ajanlar geliştirmek için temel bir araç haline geldi.",
+        "function": "Dayanıklı ajanlar oluşturmak için bir çerçeve.",
+        "whyHype": "Karmaşık ajan iş akışlarını yönetme ve hata toleranslı sistemler kurma yeteneğiyle LangChain ekosisteminde önemli bir yer edindi.",
         "installCommand": "pip install langgraph"
+      },
+      {
+        "id": "crewAIInc/crewAI",
+        "name": "crewAI",
+        "owner": "crewAIInc",
+        "url": "https://github.com/crewAIInc/crewAI",
+        "stars": "58.3k",
+        "deltaStars": "+2.9k bu ay",
+        "category": "Otonom Agent",
+        "language": "Python",
+        "function": "Rol yapma, otonom AI ajanlarını düzenlemek için bir çerçeve. İşbirlikçi zekayı teşvik ederek ajanların karmaşık görevleri sorunsuz bir şekilde ele almasını sağlar.",
+        "whyHype": "Ajanların işbirliği yaparak karmaşık görevleri çözme yeteneğiyle, çoklu ajan sistemlerinin geliştirilmesinde popüler bir seçim.",
+        "installCommand": "pip install crewai"
+      },
+      {
+        "id": "langchain-ai/langchain",
+        "name": "langchain",
+        "owner": "langchain-ai",
+        "url": "https://github.com/langchain-ai/langchain",
+        "stars": "146.1k",
+        "deltaStars": "+7.3k bu ay",
+        "category": "Altyapı & SDK",
+        "language": "Python",
+        "function": "Ajan mühendisliği platformu.",
+        "whyHype": "LLM uygulamaları ve ajanlar oluşturmak için en popüler çerçevelerden biri olarak ekosistemin temelini oluşturuyor.",
+        "installCommand": "pip install langchain"
       }
     ],
     "yearly": [
@@ -1503,12 +1504,12 @@
         "name": "langchain",
         "owner": "langchain-ai",
         "url": "https://github.com/langchain-ai/langchain",
-        "stars": "146.0k",
-        "deltaStars": "+80.0k bu yıl",
-        "category": "Tip Güvenli Ajan Kütüphanesi",
+        "stars": "146.1k",
+        "deltaStars": "+50k bu yıl",
+        "category": "Altyapı & SDK",
         "language": "Python",
-        "function": "LLM uygulamaları ve ajanlar geliştirmek için önde gelen framework.",
-        "whyHype": "Yapay zeka geliştirme ekosisteminin temel taşlarından biri haline geldi, geniş topluluk desteği ve entegrasyonları sayesinde.",
+        "function": "Büyük dil modelleriyle desteklenen uygulamalar geliştirmek için bir çerçeve.",
+        "whyHype": "LLM tabanlı uygulamaların ve ajanların geliştirilmesinde endüstri standardı haline geldi.",
         "installCommand": "pip install langchain"
       },
       {
@@ -1517,11 +1518,11 @@
         "owner": "crewAIInc",
         "url": "https://github.com/crewAIInc/crewAI",
         "stars": "58.3k",
-        "deltaStars": "+30.0k bu yıl",
+        "deltaStars": "+25k bu yıl",
         "category": "Otonom Agent",
         "language": "Python",
-        "function": "Rol oynayan, otonom yapay zeka ajanlarını düzenlemek için bir çerçeve.",
-        "whyHype": "Çoklu ajan sistemlerinin geliştirilmesinde devrim yaratarak yılın en popüler ajan frameworklerinden biri oldu.",
+        "function": "Rol yapma, otonom AI ajanlarını düzenlemek için bir çerçeve.",
+        "whyHype": "İşbirlikçi ajan sistemlerinin oluşturulmasında devrim yaratarak, karmaşık görevleri daha verimli çözme potansiyeli sundu.",
         "installCommand": "pip install crewai"
       },
       {
@@ -1529,145 +1530,145 @@
         "name": "superpowers",
         "owner": "obra",
         "url": "https://github.com/obra/superpowers",
-        "stars": "284.0k",
-        "deltaStars": "+120.0k bu yıl",
-        "category": "Tip Güvenli Ajan Kütüphanesi",
+        "stars": "284.4k",
+        "deltaStars": "+100k bu yıl",
+        "category": "Altyapı & SDK",
         "language": "Shell",
-        "function": "Çalışan bir ajan beceri çerçevesi ve yazılım geliştirme metodolojisi.",
-        "whyHype": "Ajan mühendisliği ve yazılım geliştirme süreçleri için sağlam ve ölçeklenebilir bir temel sunarak yıl boyunca en çok yıldız alan projelerden biri oldu.",
-        "installCommand": "git clone https://github.com/obra/superpowers"
+        "function": "Ajanik beceri çerçevesi ve yazılım geliştirme metodolojisi.",
+        "whyHype": "Yazılım geliştirme süreçlerini otomatize etme ve ajanik yaklaşımları entegre etme konusunda geniş kabul gördü.",
+        "installCommand": "npm i superpowers"
       },
       {
-        "id": "dzhng/deep-research",
-        "name": "deep-research",
-        "owner": "dzhng",
-        "url": "https://github.com/dzhng/deep-research",
-        "stars": "19.7k",
-        "deltaStars": "+10.0k bu yıl",
-        "category": "Deep Research Ajanı",
-        "language": "TypeScript",
-        "function": "Arama motorları, web kazıma ve büyük dil modellerini birleştirerek herhangi bir konuda yinelemeli, derin araştırma yapan yapay zeka destekli bir araştırma asistanı.",
-        "whyHype": "Otonom derin araştırma yetenekleri ve basit uygulamasıyla yıl boyunca geliştiricilerin ilgisini çekti.",
-        "installCommand": "npm install deep-research"
+        "id": "langchain-ai/langgraph",
+        "name": "langgraph",
+        "owner": "langchain-ai",
+        "url": "https://github.com/langchain-ai/langgraph",
+        "stars": "41.4k",
+        "deltaStars": "+18k bu yıl",
+        "category": "Altyapı & SDK",
+        "language": "Python",
+        "function": "Dayanıklı ve durum bilgisi olan ajanlar oluşturmak için bir çerçeve.",
+        "whyHype": "LangChain ekosisteminin önemli bir uzantısı olarak, daha karmaşık ve güvenilir ajanların geliştirilmesini sağladı.",
+        "installCommand": "pip install langgraph"
       },
       {
-        "id": "koala73/worldmonitor",
-        "name": "worldmonitor",
-        "owner": "koala73",
-        "url": "https://github.com/koala73/worldmonitor",
-        "stars": "85.9k",
-        "deltaStars": "+40.0k bu yıl",
-        "category": "OSINT / Canlı İstihbarat",
-        "language": "TypeScript",
-        "function": "Gerçek zamanlı küresel istihbarat panosu. Yapay zeka destekli haber toplama, jeopolitik izleme ve altyapı takibi.",
-        "whyHype": "Küresel olayları ve altyapıyı tek bir arayüzde izleme yeteneği, OSINT ve istihbarat topluluklarında yılın en dikkat çekici projelerinden biri oldu.",
-        "installCommand": "npm i worldmonitor"
-      },
-      {
-        "id": "tinyhumansai/openhuman",
-        "name": "openhuman",
-        "owner": "tinyhumansai",
-        "url": "https://github.com/tinyhumansai/openhuman",
-        "stars": "39.6k",
-        "deltaStars": "+20.0k bu yıl",
+        "id": "HKUDS/nanobot",
+        "name": "nanobot",
+        "owner": "HKUDS",
+        "url": "https://github.com/HKUDS/nanobot",
+        "stars": "48.0k",
+        "deltaStars": "+20k bu yıl",
         "category": "Otonom Agent",
-        "language": "Rust",
-        "function": "Mac, Windows ve Linux için yerel öncelikli bellek, ajan orkestrasyonu ve derin araştırma yetenekleri sunan kişisel bir yapay zeka.",
-        "whyHype": "Yerel ve gizlilik odaklı kişisel AI asistanı olarak yıl boyunca hızla benimsenerek önemli bir alternatif haline geldi.",
-        "installCommand": "cargo install openhuman"
+        "language": "Python",
+        "function": "Ultra hafif, açık kaynaklı, kendi kendine barındırılan kişisel AI ajan çerçevesi.",
+        "whyHype": "Kişisel AI ajanları için erişilebilir ve esnek bir platform sunarak, yerel AI geliştirme trendini destekledi.",
+        "installCommand": "pip install nanobot"
+      },
+      {
+        "id": "heygen-com/hyperframes",
+        "name": "hyperframes",
+        "owner": "heygen-com",
+        "url": "https://github.com/heygen-com/hyperframes",
+        "stars": "48.6k",
+        "deltaStars": "+20k bu yıl",
+        "category": "Medya / Üretim",
+        "language": "TypeScript",
+        "function": "HTML yazarak video oluşturmayı sağlayan, ajanlar için tasarlanmış bir araç.",
+        "whyHype": "Metin tabanlı girdilerden dinamik video içeriği üretme yeteneğiyle yaratıcı otomasyon alanında çığır açtı.",
+        "installCommand": "npm i hyperframes"
       }
     ]
   },
   "hackerNewsPulse": {
-    "summary24h": "Son 24 saatte Hacker News gündemi, Anthropic'ten gelen etik tartışmalar ve üst düzey istifalarla sarsılırken, yerel ve hızlı AI modelleri ile GPT-6 Astra'nın yetenekleri üzerine derinlemesine mühendislik tartışmaları öne çıktı. Apple'ın yeni ürünleri ve AI'ın matematiksel atılımları da geniş yankı buldu.",
+    "summary24h": "Son 24 saatte Hacker News gündeminde OpenAI'ın GPT-6 Astra ve GPT Images 2.5 ile ilgili yeni yetenekleri büyük ilgi görürken, Anthropic'in etik tartışmaları ve bir araştırmacının istifası önemli bir endişe kaynağı oldu. Ayrıca, Qwen 3.8'in GPT-5.5 Pro'nun akıl yürütme ön doldurmalarını takip etmesi ve AI'ın matematik problemlerini çözme potansiyeli teknik toplulukta derinlemesine tartışıldı.",
     "discussions": [
-      {
-        "id": "49619227",
-        "title": "I resigned from Anthropic today",
-        "titleTr": "Bugün Anthropic'ten istifa ettim",
-        "points": 675,
-        "comments": 957,
-        "hnUrl": "https://news.ycombinator.com/item?id=49619227",
-        "category": "Etik & Şirket",
-        "analysis": "Anthropic'ten bir araştırmacının istifası, şirketin ve OpenAI'nin 'hayatlarımızla kumar oynadığı' iddiasıyla büyük bir tartışma başlattı. Yorumlarda, yapay zeka geliştirme hızının etik ve güvenlik endişelerini nasıl geride bıraktığı, şirketlerin şeffaflık eksikliği ve AGI'ye ulaşma yarışının potansiyel riskleri üzerine yoğun görüşler dile getirildi. Bu olay, yapay zeka topluluğunda derin bir endişe ve sorgulama yarattı.",
-        "usefulInsight": "Yapay zeka şirketlerinin etik kurulları ve iç denetim mekanizmalarının ne kadar bağımsız ve etkili olduğu sorgulanmalı. Geliştiriciler, çalıştıkları projelerin etik boyutlarını daha yakından incelemeli ve potansiyel riskler konusunda seslerini yükseltmekten çekinmemeli."
-      },
-      {
-        "id": "49624823",
-        "title": "Desert Ant Labs: local, fast models that run on device",
-        "titleTr": "Desert Ant Labs: Cihazda çalışan yerel, hızlı modeller",
-        "points": 376,
-        "comments": 89,
-        "hnUrl": "https://news.ycombinator.com/item?id=49624823",
-        "category": "Yerel AI",
-        "analysis": "Desert Ant Labs'ın cihaz üzerinde çalışan yerel ve hızlı modeller sunması, gizlilik, düşük gecikme süresi ve maliyet etkinliği arayan geliştiriciler arasında büyük ilgi uyandırdı. Tartışmalar, bu tür modellerin mobil cihazlardan edge computing'e kadar geniş bir yelpazede nasıl kullanılabileceği ve bulut tabanlı çözümlere gerçek bir alternatif sunup sunamayacağı üzerine odaklandı.",
-        "usefulInsight": "Yerel AI modelleri, veri gizliliği ve düşük maliyetli çıkarım için kritik öneme sahip. Geliştiricilerin, projelerinde bulut bağımlılığını azaltmak ve daha hızlı yanıt süreleri elde etmek için bu tür çözümleri değerlendirmesi faydalı olacaktır."
-      },
       {
         "id": "49630253",
         "title": "AirPods 5",
         "titleTr": "AirPods 5",
-        "points": 353,
-        "comments": 293,
+        "points": 470,
+        "comments": 399,
         "hnUrl": "https://news.ycombinator.com/item?id=49630253",
         "category": "Donanım",
-        "analysis": "Apple'ın yeni AirPods 5 lansmanı, donanım meraklıları arasında büyük bir tartışma başlattı. Yorumlar, yeni özelliklerin (özellikle AI destekli ses iyileştirmeleri ve sağlık takibi) ne kadar yenilikçi olduğu, fiyatlandırma stratejisi ve mevcut modellerle karşılaştırmalar üzerine yoğunlaştı. Apple'ın ekosistem entegrasyonu ve kullanıcı deneyimi yine ana odak noktasıydı.",
-        "usefulInsight": "Tüketici elektroniği pazarında AI entegrasyonunun derinleştiği görülüyor. Geliştiriciler, AI modellerini düşük güç tüketimli cihazlara optimize etme ve kullanıcı deneyimini zenginleştirme fırsatlarını araştırmalıdır."
+        "analysis": "Apple'ın yeni AirPods 5 modelinin potansiyel özellikleri ve kullanıcı deneyimi üzerine yoğun bir tartışma yaşandı. Donanım inovasyonları, ses kalitesi iyileştirmeleri ve AI entegrasyonu gibi konular, kullanıcıların beklentilerini ve eleştirilerini ortaya koydu. Özellikle AI destekli kişiselleştirme ve sağlık takibi yetenekleri merak uyandırdı.",
+        "usefulInsight": "Yeni nesil giyilebilir teknolojilerde AI'ın rolünün artması bekleniyor; geliştiriciler için bu platformlarda AI destekli uygulamalar ve entegrasyonlar için fırsatlar doğabilir."
       },
       {
         "id": "49627370",
         "title": "GPT-6 Astra, looped transformers, and hidden reasoning",
-        "titleTr": "GPT-6 Astra, döngülü transformer'lar ve gizli akıl yürütme",
-        "points": 330,
-        "comments": 118,
+        "titleTr": "GPT-6 Astra, Döngülü Transformer'lar ve Gizli Akıl Yürütme",
+        "points": 456,
+        "comments": 146,
         "hnUrl": "https://news.ycombinator.com/item?id=49627370",
-        "category": "LLM Araştırması",
-        "analysis": "GPT-6 Astra'nın 'döngülü transformer' mimarisi ve 'gizli akıl yürütme' yetenekleri üzerine yapılan tartışmalar, LLM'lerin iç işleyişi ve gelecekteki potansiyeli hakkında derinlemesine teknik analizler içeriyor. Geliştiriciler, bu tür mimarilerin modelin karmaşık görevlerdeki performansını nasıl artırdığını ve AGI'ye giden yolda ne anlama geldiğini merak ediyor.",
-        "usefulInsight": "LLM'lerin iç mimarileri ve akıl yürütme mekanizmaları, model performansını anlamak ve optimize etmek için kritik. Araştırmacılar ve geliştiriciler, döngülü transformer'lar gibi yenilikçi mimarileri ve bunların çıkarım süreçlerine etkilerini yakından takip etmeli."
+        "category": "LLM (Model)",
+        "analysis": "GPT-6 Astra'nın döngülü transformer mimarisi ve modellerin 'gizli akıl yürütme' yetenekleri üzerine spekülasyonlar ve teknik tartışmalar yapıldı. Bu, modellerin içsel çalışma prensiplerini anlama ve daha şeffaf AI sistemleri geliştirme çabalarını yansıtıyor. Özellikle karmaşık görevlerdeki performans artışı ve bunun altında yatan mekanizmalar ilgi çekti.",
+        "usefulInsight": "LLM'lerin içsel akıl yürütme mekanizmalarını anlamak, prompt mühendisliği ve model ince ayarı için kritik öneme sahiptir. Geliştiriciler, bu tür mimarilerin potansiyelini keşfetmeli ve kendi uygulamalarında kullanmayı düşünmelidir."
       },
       {
         "id": "49628704",
         "title": "Anthropic Is Building a Predictive Surveillance System to Monitor Activists",
-        "titleTr": "Anthropic Aktivistleri İzlemek İçin Tahmini Bir Gözetim Sistemi Kuruyor",
-        "points": 270,
-        "comments": 145,
+        "titleTr": "Anthropic Aktivistleri İzlemek İçin Tahminci Bir Gözetim Sistemi Kuruyor",
+        "points": 294,
+        "comments": 165,
         "hnUrl": "https://news.ycombinator.com/item?id=49628704",
-        "category": "Etik & Gizlilik",
-        "analysis": "Anthropic'in aktivistleri izlemek için tahmini bir gözetim sistemi kurduğu iddiaları, yapay zeka etiği ve sivil özgürlükler konusunda ciddi endişeler yarattı. Tartışmalar, yapay zeka teknolojilerinin kötüye kullanım potansiyeli, şirketlerin sorumlulukları ve bu tür sistemlerin toplumsal etkileri üzerine odaklandı. Bu, yapay zeka geliştiricilerinin karşılaştığı en hassas etik ikilemlerden birini temsil ediyor.",
-        "usefulInsight": "Yapay zeka geliştiricileri ve şirketleri, teknolojilerinin potansiyel kötüye kullanımlarını öngörmeli ve bu riskleri azaltmak için proaktif önlemler almalıdır. Gizlilik ve sivil özgürlükler, AI sistemlerinin tasarımında ve dağıtımında öncelikli olmalıdır."
+        "category": "Şirket / Lab",
+        "analysis": "Anthropic'in aktivistleri izlemek için tahminci bir gözetim sistemi geliştirdiği iddiaları, AI etiği ve gizlilik konusunda büyük bir tartışma başlattı. Bu tür sistemlerin potansiyel kötüye kullanımı ve toplumsal etkileri üzerine ciddi endişeler dile getirildi. Şirketin şeffaflığı ve sorumluluğu sorgulandı.",
+        "usefulInsight": "AI geliştiricileri ve şirketleri, ürünlerinin etik sonuçlarını ve toplumsal etkilerini dikkatle değerlendirmelidir. Gizlilik ve gözetim konularında şeffaf politikalar benimsemek, kullanıcı güvenini korumak için hayati öneme sahiptir."
       },
       {
-        "id": "49624163",
-        "title": "How An AI math breakthrough ignited a controversy",
-        "titleTr": "Bir yapay zeka matematik atılımı nasıl bir tartışma başlattı",
-        "points": 211,
-        "comments": 225,
-        "hnUrl": "https://news.ycombinator.com/item?id=49624163",
-        "category": "AI Araştırması",
-        "analysis": "Yapay zekanın matematikteki bir atılımı, bilimsel toplulukta büyük bir tartışmaya yol açtı. Tartışmalar, yapay zeka tarafından üretilen ispatların doğruluğu, anlaşılabilirliği ve geleneksel matematiksel ispat yöntemleriyle karşılaştırılması üzerine yoğunlaştı. Bu olay, yapay zekanın bilimsel keşif süreçlerindeki rolünü ve insan-AI işbirliğinin geleceğini sorgulattı.",
-        "usefulInsight": "Yapay zekanın bilimsel keşiflerdeki rolü artarken, AI tarafından üretilen sonuçların doğrulanması ve yorumlanması için yeni metodolojilere ihtiyaç duyulmaktadır. Geliştiriciler, AI'ın 'kara kutu' doğasını azaltacak ve şeffaflığı artıracak araçlar üzerinde çalışmalıdır."
+        "id": "49638353",
+        "title": "OpenAI might have stolen another major proof",
+        "titleTr": "OpenAI Başka Bir Büyük Kanıtı Çalmış Olabilir",
+        "points": 246,
+        "comments": 142,
+        "hnUrl": "https://news.ycombinator.com/item?id=49638353",
+        "category": "Şirket / Lab",
+        "analysis": "OpenAI'ın önemli bir matematiksel kanıtı 'çalmış olabileceği' yönündeki iddialar, AI araştırma etiği ve fikri mülkiyet hakları konusunda hararetli bir tartışmayı tetikledi. Bu tür suçlamalar, AI şirketlerinin araştırma süreçlerindeki şeffaflık eksikliğini ve rekabetin etik sınırlarını sorgulatıyor.",
+        "usefulInsight": "AI araştırmalarında fikri mülkiyet ve atıf kurallarına uyum büyük önem taşımaktadır. Geliştiriciler, kendi çalışmalarında ve AI modellerini kullanırken bu etik standartlara dikkat etmelidir."
       },
       {
         "id": "49630026",
         "title": "Qwen 3.8 follows GPT-5.5 Pro reasoning prefills",
-        "titleTr": "Qwen 3.8, GPT-5.5 Pro akıl yürütme ön doldurmalarını takip ediyor",
-        "points": 160,
-        "comments": 65,
+        "titleTr": "Qwen 3.8, GPT-5.5 Pro Akıl Yürütme Ön Doldurmalarını Takip Ediyor",
+        "points": 223,
+        "comments": 86,
         "hnUrl": "https://news.ycombinator.com/item?id=49630026",
-        "category": "LLM Karşılaştırması",
-        "analysis": "Qwen 3.8'in GPT-5.5 Pro'nun akıl yürütme ön doldurma stratejilerini takip etmesi, açık kaynak modellerin kapalı kaynak liderlerini nasıl yakaladığını gösteren önemli bir gelişme. Tartışmalar, bu tür 'taklit' yaklaşımlarının açık kaynak ekosistemine faydaları, model mimarilerindeki benzerlikler ve performans karşılaştırmaları üzerine odaklandı.",
-        "usefulInsight": "Açık kaynak LLM'ler, kapalı kaynak modellerin en iyi uygulamalarını hızla benimseyerek ve geliştirerek rekabet gücünü artırıyor. Geliştiriciler, açık kaynak modellerin bu tür ilerlemelerini takip ederek maliyet etkin ve özelleştirilebilir çözümlerden faydalanabilir."
+        "category": "LLM (Model)",
+        "analysis": "Qwen 3.8 modelinin, GPT-5.5 Pro'nun akıl yürütme ön doldurma kalıplarını takip etme yeteneği, açık kaynak modellerin kapalı kaynak devlerle rekabet gücünü gösterdi. Bu, model mimarileri ve eğitim stratejileri arasındaki etkileşimi ve açık kaynak topluluğunun hızlı adaptasyon yeteneğini vurguluyor.",
+        "usefulInsight": "Açık kaynak LLM'ler, kapalı kaynak modellerin en iyi uygulamalarını hızla benimseyerek ve geliştirerek rekabetçi kalabilir. Geliştiriciler, bu tür modelleri kendi projelerinde kullanarak maliyet etkin ve yüksek performanslı çözümler üretebilir."
       },
       {
         "id": "49628576",
         "title": "GNU Radio in the browser",
         "titleTr": "Tarayıcıda GNU Radio",
-        "points": 164,
-        "comments": 22,
+        "points": 207,
+        "comments": 27,
         "hnUrl": "https://news.ycombinator.com/item?id=49628576",
         "category": "Yazılım Geliştirici",
-        "analysis": "GNU Radio'nun tarayıcıda çalıştırılabilmesi, yazılım tanımlı radyo (SDR) alanında yeni kapılar açıyor. Bu gelişme, eğitim, prototipleme ve uzaktan erişim için büyük kolaylıklar sunuyor. Geliştiriciler, bu sayede karmaşık sinyal işleme uygulamalarını daha erişilebilir hale getirme potansiyelini tartıştı.",
-        "usefulInsight": "WebAssembly ve benzeri teknolojiler, karmaşık masaüstü uygulamalarını tarayıcıya taşıyarak erişilebilirliği artırıyor. Geliştiriciler, AI/ML modellerini ve araçlarını web tabanlı platformlara entegre ederek daha geniş kitlelere ulaşabilir."
+        "analysis": "GNU Radio'nun tarayıcıda çalıştırılması, yazılım tanımlı radyo (SDR) teknolojisinin erişilebilirliğini önemli ölçüde artırıyor. Bu gelişme, eğitim, prototipleme ve hızlı dağıtım için yeni kapılar açarak, karmaşık sinyal işleme uygulamalarını daha geniş bir kitleye ulaştırıyor.",
+        "usefulInsight": "WebAssembly (WASM) gibi teknolojiler, karmaşık masaüstü uygulamalarını tarayıcıya taşıyarak geliştiricilere yeni dağıtım ve erişim modelleri sunuyor. Bu, AI/ML modellerinin tarayıcıda çalıştırılması için de potansiyel taşıyor."
+      },
+      {
+        "id": "49636345",
+        "title": "Muse, the band, lost its social media handles to Muse, Meta's new AI agent",
+        "titleTr": "Müzik Grubu Muse, Sosyal Medya Hesaplarını Meta'nın Yeni AI Ajanı Muse'a Kaptırdı",
+        "points": 181,
+        "comments": 7,
+        "hnUrl": "https://news.ycombinator.com/item?id=49636345",
+        "category": "Bulut & Platform",
+        "analysis": "Müzik grubu Muse'un sosyal medya hesaplarını Meta'nın yeni AI ajanı 'Muse'a kaptırması, marka kimliği ve dijital varlık yönetimi konusunda büyük şirketlerin AI ürünleriyle yarattığı potansiyel sorunları gözler önüne serdi. Bu durum, AI ürünlerinin adlandırma ve tescil süreçlerinde daha dikkatli olunması gerektiğini gösteriyor.",
+        "usefulInsight": "Şirketler ve bireyler, AI ürünlerinin ve hizmetlerinin marka adlandırmalarında potansiyel çakışmaları önlemek için proaktif olmalıdır. Dijital varlıkların korunması ve marka kimliğinin sürdürülmesi için yasal ve stratejik adımlar atılmalıdır."
+      },
+      {
+        "id": "49637435",
+        "title": "Training a 3.8B LLM to 0.384 CORE for $998",
+        "titleTr": "3.8B LLM'i 998 Dolara 0.384 CORE'a Eğitmek",
+        "points": 94,
+        "comments": 14,
+        "hnUrl": "https://news.ycombinator.com/item?id=49637435",
+        "category": "Yerel Model",
+        "analysis": "Düşük maliyetle büyük bir dil modelini (3.8B parametre) belirli bir performans seviyesine (0.384 CORE) eğitme başarısı, AI eğitiminin maliyet etkinliği konusunda önemli bir gelişmeyi işaret ediyor. Bu, daha küçük ekiplerin ve bireysel geliştiricilerin kendi özel LLM'lerini eğitme potansiyelini artırıyor.",
+        "usefulInsight": "AI eğitim maliyetlerinin düşmesi, niş uygulamalar için özel LLM'lerin geliştirilmesini teşvik edecektir. Geliştiriciler, bütçe dostu eğitim yöntemlerini araştırarak kendi projelerinde rekabet avantajı sağlayabilir."
       }
     ]
   },
@@ -1675,22 +1676,22 @@
     {
       "title": "BÖLÜM 1: 🌐 GÜNÜN EKOSİSTEM DENGESİ & MODELLER ARASI GÜÇ SAVAŞI",
       "badge": "Ekosistem Dengesi",
-      "contentHtml": "<p>Yapay zeka ekosistemi, DeepSeek V4.1 Flash'ın GPT-6 Astra'ya maliyet/performans açısından meydan okumasıyla yeni bir rekabet seviyesine ulaştı. Bu durum, açık kaynak modellerin kapalı kaynak devleriyle başa çıkabileceğini göstererek geliştirici topluluğunda büyük bir heyecan yarattı. Gemini 3.8 Flash'ın tıbbi benchmark'lardaki üstün performansı da model yeteneklerinin alan özelinde nasıl farklılaştığını gözler önüne serdi. Ancak, Anthropic'ten gelen etik tartışmalar ve üst düzey istifalar, sektördeki hızlı ilerlemenin getirdiği potansiyel riskleri ve şeffaflık ihtiyacını bir kez daha gündeme taşıdı. Bu gelişmeler, modeller arası güç savaşının sadece performansla sınırlı kalmayıp, maliyet etkinliği ve etik sorumluluk gibi boyutları da içerdiğini gösteriyor.</p>"
+      "contentHtml": "<p>Bugün AI ekosistemi, GPT-6 Astra'nın yaratıcı yetenekleriyle zirveye oynarken, Claude Code'un yüksek token tüketimi ve Anthropic'in etik tartışmaları gölge düşürdü. GPT-6 Astra, bir otomobil markası tasarlayıp reklam filmi üretme yeteneğiyle multimodal AI'ın sınırlarını zorlarken, geliştiriciler arasında büyük bir heyecan yarattı. Öte yandan, Claude Code kullanıcıları, modelin aşırı token kullanımı ve maliyetleri nedeniyle hayal kırıklığı yaşadı. Anthropic'in aktivistleri izlemek için 'tahminci gözetim sistemi' kurduğu iddiaları ve bir araştırmacının etik endişelerle istifa etmesi, AI şirketlerinin şeffaflığı ve sorumluluğu üzerine ciddi soruları gündeme getirdi. Bu gelişmeler, modellerin yetenekleri kadar, onların nasıl kullanıldığı ve geliştirildiği konusundaki etik tartışmaların da AI gündeminin merkezinde yer aldığını gösteriyor. Açık kaynak cephesinde ise Qwen 3.8'in GPT-5.5 Pro'nun akıl yürütme ön doldurmalarını takip etmesi, açık modellerin kapalı kaynak devlerle rekabet gücünü artırdığını kanıtladı.</p>"
     },
     {
       "title": "BÖLÜM 2: 💡 DERİN TEKNİK İÇGÖRÜLER, VIBE CODING & GPU/ALTYAPI DENGESİ",
       "badge": "Teknoloji & Donanım",
-      "contentHtml": "<p>Geliştirici cephesinde, Claude Code'un yüksek kullanım maliyetleri ve limitleri, alternatif çözümlere olan ihtiyacı artırdı. Bu durum, geliştiricileri daha uygun maliyetli veya yerel çözümlere yönlendiriyor. NVIDIA'nın yeni sürücüsü 616.92'nin llama.ccp için CUDA 13 desteği sunması, yerel model çıkarımı yapanlar için önemli bir gelişme. Donanım tarafında Apple'ın 2nm A20 Pro çipi, mobil cihazlarda yapay zeka iş yükleri için yeni bir performans eşiği vaat ederken, AMD MI450 GPU'larının Oracle'a sevkiyatı bulut altyapısındaki rekabeti kızıştırıyor. 'Vibe coding' gibi yaratıcı geliştirme yaklaşımları, Astra, Unity ve Meshy gibi araçlarla hızlı prototipleme potansiyelini sergiliyor. Bu gelişmeler, hem donanım hem de yazılım katmanında sürekli bir inovasyon ve optimizasyon arayışını gösteriyor.</p>"
+      "contentHtml": "<p>Teknik cephede, Mac MCP'nin çoklu AI ajanları için Safari tarayıcı sekmelerini çakışmadan yönetme çözümü, otonom ajan geliştiricileri arasında büyük beğeni topladı. Bu açık kaynaklı araç, ajanların daha karmaşık web tabanlı görevleri eş zamanlı olarak yürütmesine olanak tanıyor. Pocket AI Lab'ın tamamen cihaz üzerinde çalışan, bulut bağlantısı gerektirmeyen açık kaynak iOS LLM uygulaması, mobil AI'da gizlilik ve erişilebilirlik açısından önemli bir adım olarak öne çıktı. Bu, kullanıcıların kendi verileri üzerinde tam kontrol sahibi olmasını sağlarken, yerel çıkarım yeteneklerinin ne kadar ilerlediğini de gösteriyor. CUDA Rust'ın GPU çekirdekleri yazma yeteneği, Rust topluluğunda yüksek performanslı hesaplama ve AI uygulamaları için yeni ufuklar açıyor. Ayrıca, AgentAudit'in AB AI Yasası'na uyumlu denetim izi aracı, ajanların eylemlerini şeffaf ve kurcalamaya dayanıklı bir şekilde kaydetme ihtiyacına pratik bir çözüm sunuyor. Bu gelişmeler, AI altyapısının ve geliştirici araçlarının hem performans hem de etik uyumluluk açısından nasıl evrildiğini gözler önüne seriyor.</p>"
     },
     {
       "title": "BÖLÜM 3: 📉 MAKRO SEKTÖR TRENDLERİ, ÇİP SAVAŞLARI & API MALİYETLERİ",
       "badge": "Pazar Analizi",
-      "contentHtml": "<p>Makro düzeyde, yapay zeka sektöründe maliyet etkinliği ve etik yönetişim, en kritik trendler olarak öne çıkıyor. DeepSeek'in maliyet/performans liderliği, şirketleri ve geliştiricileri daha verimli ve uygun fiyatlı AI çözümleri aramaya itiyor. Anthropic'teki etik kriz, yapay zeka şirketlerinin toplumsal sorumlulukları ve şeffaflık konusundaki baskıyı artırıyor. Çip savaşları devam ederken, NVIDIA'nın liderliği sürse de AMD'nin bulut sağlayıcılarıyla yaptığı anlaşmalar rekabeti canlı tutuyor. API maliyetleri, özellikle Claude Code gibi popüler araçlarda, geliştiricilerin bütçelerini zorlayarak alternatif platformlara yönelme eğilimini güçlendiriyor. Bu trendler, sektörün olgunlaşma sürecinde maliyet, etik ve erişilebilirlik gibi temel sorunlara odaklandığını gösteriyor.</p>"
+      "contentHtml": "<p>Makro sektörde, Tailwind Labs'ın Shopify'a katılması, AI araçlarının frontend geliştirmedeki rolünün artmasıyla birlikte sektördeki konsolidasyonu işaret ediyor. Şirketin, AI araçlarının Tailwind kullanımının artmasına rağmen mühendislik ekibinin %75'ini işten çıkarması ve doküman trafiğinin düşmesi, AI'ın iş modelleri üzerindeki karmaşık etkilerini gösteriyor. API maliyetleri, Claude Code kullanıcılarının milyonlarca token tüketimi nedeniyle yaşadığı şikayetlerle tekrar gündeme geldi. Bu durum, AI hizmet sağlayıcılarının fiyatlandırma modellerini ve token ekonomilerini yeniden gözden geçirmesi gerektiğini vurguluyor. N8n gibi self-hosting çözümlerinin güvenilirliği ve maliyet etkinliği üzerine yapılan tartışmalar, bulut bağımlılığını azaltmak isteyen şirketler için alternatif yollar sunuyor. Çip savaşları cephesinde ise Apple A20 Pro'nun 2nm çip teknolojisi, mobil cihazlarda AI performansının geleceğine dair ipuçları veriyor. Genel olarak, AI pazarında yetenekler hızla gelişirken, maliyet, etik ve sürdürülebilirlik gibi faktörler, şirketlerin stratejilerini belirlemede giderek daha kritik hale geliyor.</p>"
     },
     {
       "title": "BÖLÜM 4: 💼 BEYAZ YAKA ENTEGRASYON VE OPERASYON REHBERİ",
       "badge": "İş Dünyası",
-      "contentHtml": "<p>Beyaz yaka entegrasyonu ve operasyonel verimlilik açısından, Google Cloud API Keys Finder gibi araçlar, bulut güvenliğini otomatikleştirmek ve yönetmek için kritik öneme sahip. DevOps profesyonelleri, YAML yapılandırmalarının karmaşıklığıyla mücadele ederken, daha basit ve araç destekli çözümlere yönelme ihtiyacı hissediyor. FinOps'un (Finansal Operasyonlar) bulut maliyetlerini yönetmedeki artan önemi, bu alandaki uzmanlara olan talebi artırıyor. İş dünyası, yapay zekayı süreçlerine entegre ederken, hem teknik yetkinlikleri hem de maliyet ve güvenlik yönetimini bir arada sunabilen çözümlere odaklanıyor. Bu, AI'ın sadece teknolojik bir yenilik olmaktan çıkıp, iş süreçlerinin ayrılmaz bir parçası haline geldiğini gösteriyor.</p>"
+      "contentHtml": "<p>Beyaz yaka entegrasyonu ve operasyonel verimlilik açısından, AI ajanlarının iş akışlarına entegrasyonu giderek daha fazla önem kazanıyor. N8n gibi otomasyon platformları, AI ajanlarını kurumsal süreçlere dahil etmek için esnek ve güvenilir çözümler sunuyor. Özellikle self-hosting yetenekleri, veri güvenliği ve maliyet kontrolü konusunda hassas olan işletmeler için cazip hale geliyor. Copilot'ın masaüstü uygulamasından ekran paylaşımı özelliğinin kaldırılması gibi regresyonlar, kurumsal kullanıcıların AI araçlarından beklentilerinin yüksek olduğunu ve temel işlevselliklerdeki aksaklıkların hızla tepki çektiğini gösteriyor. AI destekli derin araştırma ajanları (örn. GPT-Researcher, Dexter), finansal analizden genel istihbarata kadar geniş bir yelpazede beyaz yakalı profesyonellerin bilgi toplama ve analiz süreçlerini otomatize etme potansiyeli sunuyor. Bu araçlar, karar alma süreçlerini hızlandırırken, insan analistlerin daha stratejik görevlere odaklanmasına olanak tanıyor. AI'ın iş dünyasına entegrasyonu, sadece verimlilik artışı değil, aynı zamanda etik ve operasyonel risk yönetimi konularında da yeni zorluklar ve fırsatlar yaratıyor.</p>"
     }
   ]
 }

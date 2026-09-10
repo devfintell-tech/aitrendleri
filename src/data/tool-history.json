@@ -282,10 +282,10 @@
         "hypeScore": 9.9,
         "sentiment": "stabil",
         "headline": "Devin'de Canlı",
-        "summary": "Devin entegrasyonu ile canlı projelerde gösterdiği üstün performans ve kararlılıkla haftanın öne çıkan modellerinden biri oldu.",
+        "summary": "Devin platformunda canlı olarak sergilediği tutarlı ve üstün performansla haftanın en stabil ve beğenilen modellerinden biri oldu.",
         "sources": [
-          "r/singularity",
-          "r/ArtificialInteligence"
+          "r/LocalLLaMA",
+          "r/singularity"
         ]
       }
     ]
@@ -497,10 +497,10 @@
         "hypeScore": 9.8,
         "sentiment": "stabil",
         "headline": "Sektör Standardı",
-        "summary": "Sektörde güvenilir bir standart olarak kabul görmesi ve geniş kullanım alanlarıyla istikrarlı bir performans sergilemesi.",
+        "summary": "Sektördeki güvenilirliği ve tutarlı performansı sayesinde birçok geliştirici ve kurumsal kullanıcı için standart bir seçenek olmaya devam ediyor.",
         "sources": [
           "r/ClaudeAI",
-          "r/ArtificialInteligence"
+          "r/ClaudeDev"
         ]
       }
     ]
@@ -909,10 +909,10 @@
         "hypeScore": 9.7,
         "sentiment": "stabil",
         "headline": "10M İndirme Eşiği",
-        "summary": "10 milyon indirme eşiğini aşarak yerel model topluluğunda popülaritesini kanıtlaması ve düşük bellek tüketimiyle dikkat çekmesi.",
+        "summary": "10 milyon indirme eşiğini aşarak yerel LLM topluluğunda popülerliğini kanıtladı ve 16GB RAM'li cihazlarda bile yüksek performans sunuyor.",
         "sources": [
           "r/LocalLLaMA",
-          "r/singularity"
+          "r/ollama"
         ]
       }
     ]
@@ -970,10 +970,9 @@
         "hypeScore": 9.7,
         "sentiment": "stabil",
         "headline": "Video Üretiminde Lider",
-        "summary": "Yüksek hızlı ve kaliteli video içeriği oluşturma yetenekleriyle medya sektöründe büyük ilgi görmesi.",
+        "summary": "Video üretiminde sunduğu hız ve kalite ile içerik oluşturucular arasında tercih edilen bir araç haline geldi.",
         "sources": [
-          "r/ArtificialInteligence",
-          "r/singularity"
+          "r/GenerativeAI"
         ]
       }
     ]
@@ -1372,10 +1371,10 @@
         "hypeScore": 9.3,
         "sentiment": "stabil",
         "headline": "Yerel Bellek",
-        "summary": "Kullanıcıların verileri üzerinde tam kontrol sağlaması ve gizlilik odaklı yapay zeka çözümleri sunması.",
+        "summary": "Ajanların bağlamı paylaşmadan hafızalarını yönetmelerine olanak tanıyan açık kaynaklı bir Python SDK'sı olarak öne çıktı.",
         "sources": [
-          "r/LocalLLaMA",
-          "r/singularity"
+          "r/AI_Agents",
+          "r/agenticAI"
         ]
       }
     ]
@@ -1496,13 +1495,12 @@
       {
         "date": "10 Eylül 2026",
         "hypeScore": 9.8,
-        "sentiment": "coşkulu",
+        "sentiment": "stabil",
         "headline": "Yeni Açık Kaynak",
-        "summary": "Ajan mühendisliğinde yeni bir yaklaşım sunması ve karmaşık çoklu ajan sistemlerinin yönetimini kolaylaştırması.",
+        "summary": "LLM uygulamalarının kalitesini CI/CD süreçlerinde otomatik olarak doğrulayan açık kaynaklı bir araç olarak büyük ilgi gördü.",
         "sources": [
-          "r/singularity",
-          "r/ArtificialInteligence",
-          "r/LocalLLaMA"
+          "r/LangChain",
+          "r/LLMDevs"
         ]
       }
     ]
@@ -1851,6 +1849,17 @@
           "r/vibecoding",
           "r/ChatGPTCoding"
         ]
+      },
+      {
+        "date": "10 Eylül 2026",
+        "hypeScore": 9.5,
+        "sentiment": "coşkulu",
+        "headline": "Açık Kaynak İnovasyon",
+        "summary": "Çoklu ajan kurulumlarında tarayıcı sahipliği sorununa getirdiği açık kaynak ve yerel çözüm geliştiriciler arasında hızla yayıldı.",
+        "sources": [
+          "r/programming",
+          "r/AutoGPT"
+        ]
       }
     ]
   },
@@ -2017,12 +2026,12 @@
       {
         "date": "10 Eylül 2026",
         "hypeScore": 9.3,
-        "sentiment": "stabil",
+        "sentiment": "coşkulu",
         "headline": "Kurumsal Ajan Dağıtımı",
-        "summary": "Kurumsal düzeyde ajan dağıtımı ve otomasyon esnekliği sunarak iş süreçlerinde verimlilik sağlaması.",
+        "summary": "Self-hosting esnekliği ve kurumsal düzeyde ajan dağıtım yetenekleriyle öne çıkarak, otomasyon alanında güçlü bir çözüm sunuyor.",
         "sources": [
-          "r/devops",
-          "r/sysadmin"
+          "r/Automate",
+          "r/n8n"
         ]
       }
     ]
@@ -2037,6 +2046,17 @@
         "sentiment": "eleştirel",
         "headline": "Haftalık Düşüş",
         "summary": "Yüksek yük baskısı ve bellek sızıntısı gibi sorunlar nedeniyle puanında düşüş yaşadı, ancak hala popülerliğini koruyor.",
+        "sources": [
+          "r/CursorAI",
+          "r/vibecoding"
+        ]
+      },
+      {
+        "date": "10 Eylül 2026",
+        "hypeScore": 8.7,
+        "sentiment": "eleştirel",
+        "headline": "Haftalık Düşüş",
+        "summary": "Yıllık planların sona ermesi ve 'auto unlimited' gibi özelliklerin kaldırılması, kullanıcılar arasında hayal kırıklığı yarattı ve puanını düşürdü.",
         "sources": [
           "r/CursorAI",
           "r/vibecoding"
@@ -2100,13 +2120,12 @@
       {
         "date": "10 Eylül 2026",
         "hypeScore": 9.8,
-        "sentiment": "coşkulu",
+        "sentiment": "stabil",
         "headline": "Son 12 Saat Patlaması",
-        "summary": "GPT-6 Astra'nın performansına %1 maliyetle ulaşması ve V4 Pro'yu tüm metriklerde geçmesiyle büyük ilgi gördü.",
+        "summary": "Hacker News'te GPT-5.5 Pro'nun akıl yürütme ön doldurmalarını takip etmesiyle dikkat çekti ve yüksek indirme sayılarına ulaştı.",
         "sources": [
-          "r/DeepSeek",
-          "r/singularity",
-          "r/ArtificialInteligence"
+          "r/LocalLLaMA",
+          "r/singularity"
         ]
       }
     ]
@@ -2118,13 +2137,11 @@
       {
         "date": "10 Eylül 2026",
         "hypeScore": 4.5,
-        "sentiment": "eleştirel",
+        "sentiment": "stabil",
         "headline": "Etik Kriz",
-        "summary": "Bir araştırmacının 'hayatımızla kumar oynuyorlar' diyerek istifa etmesi ve şirketin 'tahmini gözetim sistemi' iddiaları büyük tepki çekti.",
+        "summary": "Bir araştırmacının şirketten etik endişelerle ayrılması ve hisselerinden vazgeçmesi, Anthropic'in güvenilirliğini sorgulattı.",
         "sources": [
           "r/ClaudeAI",
-          "r/ArtificialInteligence",
-          "r/Anthropic",
           "r/singularity"
         ]
       }
@@ -2222,13 +2239,11 @@
       {
         "date": "10 Eylül 2026",
         "hypeScore": 4.8,
-        "sentiment": "eleştirel",
-        "headline": "Kritik Eleştiri",
-        "summary": "Bir araştırmacının istifası ve 'hayatımızla kumar oynuyorlar' açıklaması, ayrıca 'tahmini gözetim sistemi' iddiaları şirketin itibarını zedeledi.",
+        "sentiment": "coşkulu",
+        "headline": "Etik Kriz",
+        "summary": "Anthropic'in 'tahminci gözetim sistemi' kurduğu iddiaları ve bir araştırmacının etik endişelerle istifa etmesi büyük tepki çekti.",
         "sources": [
           "r/ClaudeAI",
-          "r/ArtificialInteligence",
-          "r/Anthropic",
           "r/singularity"
         ]
       }
@@ -2367,6 +2382,156 @@
         "summary": "Japonca Reddit topluluklarında Copilot'un çeşitli sorgular için kullanılması, dil desteği ve adaptasyon yeteneğini gösteriyor.",
         "sources": [
           "r/Copilot"
+        ]
+      }
+    ]
+  },
+  "pocket-ai-lab": {
+    "name": "Pocket AI Lab",
+    "category": "Yerel Model",
+    "history": [
+      {
+        "date": "10 Eylül 2026",
+        "hypeScore": 9.3,
+        "sentiment": "coşkulu",
+        "headline": "On-Device LLM",
+        "summary": "Gizlilik odaklı, ücretsiz ve tamamen yerel çalışabilen bir LLM uygulamasının iOS'a gelmesi büyük beğeni topladı.",
+        "sources": [
+          "r/webdev",
+          "r/LocalLLaMA"
+        ]
+      }
+    ]
+  },
+  "claude-code-token-burn": {
+    "name": "Claude Code",
+    "category": "CLI / Terminal",
+    "history": [
+      {
+        "date": "10 Eylül 2026",
+        "hypeScore": 6.8,
+        "sentiment": "eleştirel",
+        "headline": "Bellek Sorunu",
+        "summary": "Kullanıcıların Claude Code'un kısa sürede milyonlarca token tüketmesinden şikayet etmesi ve maliyet endişeleri gündeme geldi.",
+        "sources": [
+          "r/ClaudeAI",
+          "r/ClaudeDev"
+        ]
+      }
+    ]
+  },
+  "cursor-plan-changes": {
+    "name": "Cursor",
+    "category": "IDE / Editör",
+    "history": [
+      {
+        "date": "10 Eylül 2026",
+        "hypeScore": 7.2,
+        "sentiment": "eleştirel",
+        "headline": "Eleştiriliyor",
+        "summary": "Yıllık planların sona ermesi ve 'auto unlimited' gibi özelliklerin kaldırılması kullanıcılar arasında hayal kırıklığı yarattı.",
+        "sources": [
+          "r/vibecoding",
+          "r/CursorAI"
+        ]
+      }
+    ]
+  },
+  "copilot-screen-sharing": {
+    "name": "Copilot",
+    "category": "LLM (Model)",
+    "history": [
+      {
+        "date": "10 Eylül 2026",
+        "hypeScore": 6.5,
+        "sentiment": "eleştirel",
+        "headline": "Regresyon",
+        "summary": "Masaüstü uygulamasından ekran paylaşımı özelliğinin kaldırılması kullanıcılar tarafından 'büyük bir kayıp' olarak değerlendirildi.",
+        "sources": [
+          "r/Copilot"
+        ]
+      }
+    ]
+  },
+  "n8n-self-hosting-reliability": {
+    "name": "n8n",
+    "category": "Otomasyon",
+    "history": [
+      {
+        "date": "10 Eylül 2026",
+        "hypeScore": 8.9,
+        "sentiment": "coşkulu",
+        "headline": "Güvenilirlik",
+        "summary": "Kendi kendine barındırılan n8n kurulumlarında sessiz hataları tespit etme ve önleme yöntemleri üzerine yapılan tartışmalar ilgi çekti.",
+        "sources": [
+          "r/Automate",
+          "r/n8n"
+        ]
+      }
+    ]
+  },
+  "agent-audit": {
+    "name": "AgentAudit",
+    "category": "Otonom Agent",
+    "history": [
+      {
+        "date": "10 Eylül 2026",
+        "hypeScore": 9.1,
+        "sentiment": "coşkulu",
+        "headline": "AB AI Yasası Uyumlu",
+        "summary": "Ajanların eylemlerini izleme ve hata ayıklama sorununa uygun maliyetli ve uyumlu bir çözüm sunuyor.",
+        "sources": [
+          "r/AI_Agents",
+          "r/agenticAI"
+        ]
+      }
+    ]
+  },
+  "tailwind-labs-shopify": {
+    "name": "Tailwind Labs",
+    "category": "Şirket / Lab",
+    "history": [
+      {
+        "date": "10 Eylül 2026",
+        "hypeScore": 7.8,
+        "sentiment": "stabil",
+        "headline": "Pazar Konsolidasyonu",
+        "summary": "Shopify'a katılması, AI araçlarının Tailwind kullanımının artmasına rağmen şirketin zorluklar yaşadığını gösterdi.",
+        "sources": [
+          "r/webdev"
+        ]
+      }
+    ]
+  },
+  "gpt-image-2-5-prompts": {
+    "name": "GPT Image 2.5 Prompt Recovery",
+    "category": "Yazılım Geliştirici",
+    "history": [
+      {
+        "date": "10 Eylül 2026",
+        "hypeScore": 8.8,
+        "sentiment": "coşkulu",
+        "headline": "Prompt Mühendisliği",
+        "summary": "Geliştiricilere GPT Image 2.5'in yeteneklerini daha iyi anlama ve kullanma konusunda değerli bir kaynak sağlıyor.",
+        "sources": [
+          "r/PromptEngineering",
+          "r/GenerativeAI"
+        ]
+      }
+    ]
+  },
+  "cuda-rust": {
+    "name": "CUDA Rust",
+    "category": "Altyapı & SDK",
+    "history": [
+      {
+        "date": "10 Eylül 2026",
+        "hypeScore": 8.7,
+        "sentiment": "coşkulu",
+        "headline": "GPU Programlama",
+        "summary": "Rust topluluğunda GPU programlama yeteneklerini genişletmesi ve performans odaklı geliştiriciler için yeni bir yol açmasıyla dikkat çekti.",
+        "sources": [
+          "r/programming"
         ]
       }
     ]

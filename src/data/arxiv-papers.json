@@ -32,7 +32,10 @@
     "2609.09135v1",
     "2609.09157v1",
     "2609.09133v1",
-    "2609.09143v1"
+    "2609.09143v1",
+    "2609.10539v1",
+    "2609.10522v1",
+    "2609.10534v1"
   ],
   "dailyRecords": [
     {
@@ -40,47 +43,47 @@
       "isoDate": "2026-09-10",
       "papers": [
         {
-          "id": "2609.09157v1",
-          "titleTr": "Uzun Bağlamlı Tekrarlayan Modellerin Uzunluk-Ekstrapolasyon Yeteneğini Öğrenme",
-          "title": "Learning Length-Extrapolatable Recurrent Models",
-          "arxivUrl": "http://arxiv.org/abs/2609.09157v1",
+          "id": "2609.10539v1",
+          "titleTr": "Araştırma Fikri Spesifikasyonlarındaki Uygulama-Kritik Boşlukların Kıyaslanması: IdeaAMBIG",
+          "title": "IdeaAMBIG: Benchmarking Implementation-Critical Gaps in Research-Idea Specifications",
+          "arxivUrl": "http://arxiv.org/abs/2609.10539v1",
           "authors": [
-            "Hanwen Jiang"
+            "Yiling Ma",
+            "Yilun Zhao",
+            "Sihong Wu"
           ],
           "category": "cs.AI",
           "impactScore": 9.6,
-          "whyMad": "Bu makale, tekrarlayan modellerin eğitim bağlamının ötesinde performans gösterme sorununa odaklanarak, 'state credit' kavramını öne sürüyor. Geleneksel olarak kaybolan/patlayan gradyanlara odaklanılırken, bu çalışma sinyal bozunmasının tek başına öğrenme başarısızlığını belirlemediğini gösteriyor. Uzun bağlamlı LLM'lerin temel bir sınırlamasını ele alması ve yeni bir analiz çerçevesi sunmasıyla ezber bozuyor.",
-          "summary": "Tekrarlayan modellerin uzun bağlamlı yeteneklerini geliştirmek için 'state credit' sinyalinin önemini vurgulayan bu çalışma, modellerin eğitim horizonunun ötesinde genelleme yapabilmesi için yeni bir bakış açısı sunuyor. Geleneksel gradyan sorunlarının ötesine geçerek, gelecekteki kayıpların önceki durum sinyallerine nasıl ulaştığını inceliyor."
+          "whyMad": "Bu makale, araştırma fikirlerinin uygulanabilirlik açısından ne kadar iyi tanımlandığını ölçen yeni bir kıyaslama sunuyor. AI ajanlarının veya geliştiricilerin bir fikri somut bir yönteme dönüştürmesi için gereken metodolojik bilgi eksikliğini ele alması, AI destekli araştırma ve geliştirme süreçleri için kritik bir öneme sahip.",
+          "summary": "IdeaAMBIG, araştırma fikirlerinin metodolojik spesifikasyonlarının yeterliliğini değerlendirerek, bir fikrin sadık bir şekilde uygulanması için gerekli bilgileri sağlayıp sağlamadığını inceler. Bu, AI ajanlarının araştırma fikirlerini gerçeğe dönüştürme yeteneğini doğrudan etkileyen temel bir sorunu ele almaktadır."
         },
         {
-          "id": "2609.09133v1",
-          "titleTr": "ExecCritic: Kodlama Ajanları İçin Test Etmeyi Öğren, Geliştirmek İçin Test Et",
-          "title": "ExecCritic: Learn to Test, Test to Improve for Coding Agents",
-          "arxivUrl": "http://arxiv.org/abs/2609.09133v1",
+          "id": "2609.10522v1",
+          "titleTr": "Show-Harness: Sadece Bir VLM Ajanı Robotları Oynayabilir",
+          "title": "Show-Harness: Just a VLM Agent Can Play Robots",
+          "arxivUrl": "http://arxiv.org/abs/2609.10522v1",
           "authors": [
-            "Leitian Tao",
-            "Baolin Peng",
-            "Haorui Wang"
+            "Yanzhe Chen",
+            "Zechen Bai",
+            "Zhijun Cao"
           ],
-          "category": "cs.AI",
+          "category": "cs.RO",
           "impactScore": 9.5,
-          "whyMad": "Kodlama ajanlarının en büyük sorunlarından biri, ürettikleri yamaların doğru olup olmadığını test etmek için güvenilir testler oluşturamamalarıdır. ExecCritic, bu sorunu test-doğrula-revize iskele yapısı ve role özel takviyeli öğrenme ile çözerek, ajanların hem yamaları hem de testleri daha güvenilir bir şekilde üretmesini sağlıyor. Bu, otonom kodlama ajanlarının pratik uygulanabilirliğini önemli ölçüde artırıyor.",
-          "summary": "ExecCritic, kodlama ajanlarının repository onarımları için doğru testler oluşturma yeteneğini geliştiren yeni bir çerçeve sunuyor. Ajan tarafından üretilen testlerin eksik veya yanlış davranış hedefleri içermesi sorununu ele alarak, test-doğrula-revize iskele ve role özel takviyeli öğrenme ile daha güvenilir kod üretimi ve testi sağlıyor."
+          "whyMad": "Show-Harness, VLM'lerin robot kontrolüne nasıl entegre edilebileceğine dair yenilikçi bir yaklaşım sunuyor. Karmaşık robotik görevleri, VLM'lerin doğal olarak akıl yürütebileceği ayrık semantik eylem birimlerine dönüştürerek, genel zekayı robotik uygulamalara taşıma potansiyeliyle ezber bozuyor.",
+          "summary": "Show-Harness, temel görme-dil modellerinin (VLM) robotları 'oynamasını' sağlayan bir Embodied Harness sunar. Bu sistem, VLM'lerin niyetini eyleme bağlayan kompakt bir semantik arayüz aracılığıyla, VLM'lerin robot kontrolüne entegrasyonunu kolaylaştırır ve robotik eylemleri deterministik olarak zemine oturtur."
         },
         {
-          "id": "2609.09143v1",
-          "titleTr": "Birleşik Multimodal Modellerde Görsel Diller Olarak Görüntü Tokenizer'larını İncelemek",
-          "title": "Studying Image Tokenizers as Visual Languages in Unified Multimodal Models",
-          "arxivUrl": "http://arxiv.org/abs/2609.09143v1",
+          "id": "2609.10534v1",
+          "titleTr": "Normalleştirici Akışlar Aracılığıyla Nuisance Parametreleri ile Olasılıksız Çıkarım",
+          "title": "Likelihood-free inference with nuisance parameters through normalizing flows",
+          "arxivUrl": "http://arxiv.org/abs/2609.10534v1",
           "authors": [
-            "Siting Li",
-            "Zhengyang Wang",
-            "Simon Shaolei Du"
+            "Phil Assheton"
           ],
-          "category": "cs.AI",
+          "category": "stat.ML",
           "impactScore": 9.4,
-          "whyMad": "Multimodal modellerin temelini oluşturan görüntü tokenizer'larının 'görsel dil' olarak nasıl davrandığını derinlemesine inceleyen bu makale, mevcut değerlendirme yöntemlerinin eksikliklerini gideriyor. Görsel token'ların metinle birlikte nasıl modellendiğini anlamak, daha güçlü ve tutarlı multimodal yapay zeka geliştirmek için kritik bir adım. Bu, multimodal AI'ın geleceği için temel bir araştırma niteliğinde.",
-          "summary": "Bu çalışma, birleşik multimodal modellerde görüntü tokenizer'larının görsel dil olarak işlevini inceliyor. Görev odaklı doğrulama kayıplarını takip ederek, görsel token'ların metinle birlikte nasıl modellendiğini ve multimodal sürekli ön eğitimdeki davranışlarını analiz ediyor. Bu, multimodal yapay zeka modellerinin tasarımını ve değerlendirmesini iyileştirmek için önemli içgörüler sunuyor."
+          "whyMad": "Bu makale, normalleştirici akışları kullanarak nuisance parametreleri içeren olasılıksız çıkarım sorununa zarif bir çözüm getiriyor. Minimum ortalama KL-diverjansı ile neredeyse 'pivotal' bir istatistik keşfetmesi, karmaşık modellerde parametre çıkarımı için yeni ve güçlü bir araç sunuyor.",
+          "summary": "Neural ağ tabanlı normalleştirici akışların basit bir ayrışımını sunarak, ilgi dağılımından bir örnek üreteci varlığında nuisance parametreleri içeren durumlarda neredeyse pivotal bir istatistik ortaya çıkarır. Bu istatistiğin p-değerlerinin tekdüze dağılımdan minimum ortalama KL-diverjansı anlamında neredeyse pivotal olduğu gösterilir."
         }
       ]
     },
