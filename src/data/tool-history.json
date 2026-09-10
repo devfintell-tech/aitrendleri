@@ -48,6 +48,17 @@
           "r/ChatGPTCoding",
           "r/ClaudeAI"
         ]
+      },
+      {
+        "date": "10 Eylül 2026",
+        "hypeScore": 9.2,
+        "sentiment": "coşkulu",
+        "headline": "Tıbbi Uzmanlık",
+        "summary": "MedXpertQA benchmark'ında Opus 5 ve GPT-5.6 Sol'dan daha yüksek skor alarak tıbbi alandaki yetkinliğini kanıtladı.",
+        "sources": [
+          "r/GoogleGemini",
+          "r/ArtificialInteligence"
+        ]
       }
     ]
   },
@@ -181,6 +192,18 @@
           "r/ClaudeDev",
           "r/ClaudeAI"
         ]
+      },
+      {
+        "date": "10 Eylül 2026",
+        "hypeScore": 8.4,
+        "sentiment": "stabil",
+        "headline": "Geliştirici Favorisi",
+        "summary": "Geliştiriciler arasında popülerliğini korumasına rağmen, son haftalarda yaşanan yüksek maliyet ve kullanım limiti sorunları nedeniyle puanında düşüş yaşadı.",
+        "sources": [
+          "r/ClaudeDev",
+          "r/ClaudeAI",
+          "r/vibecoding"
+        ]
       }
     ]
   },
@@ -252,6 +275,17 @@
           "r/LocalLLaMA",
           "r/AI_Agents",
           "r/PromptEngineering"
+        ]
+      },
+      {
+        "date": "10 Eylül 2026",
+        "hypeScore": 9.9,
+        "sentiment": "stabil",
+        "headline": "Devin'de Canlı",
+        "summary": "Devin entegrasyonu ile canlı projelerde gösterdiği üstün performans ve kararlılıkla haftanın öne çıkan modellerinden biri oldu.",
+        "sources": [
+          "r/singularity",
+          "r/ArtificialInteligence"
         ]
       }
     ]
@@ -457,6 +491,17 @@
           "r/ClaudeAI",
           "r/LLMDevs"
         ]
+      },
+      {
+        "date": "10 Eylül 2026",
+        "hypeScore": 9.8,
+        "sentiment": "stabil",
+        "headline": "Sektör Standardı",
+        "summary": "Sektörde güvenilir bir standart olarak kabul görmesi ve geniş kullanım alanlarıyla istikrarlı bir performans sergilemesi.",
+        "sources": [
+          "r/ClaudeAI",
+          "r/ArtificialInteligence"
+        ]
       }
     ]
   },
@@ -539,6 +584,18 @@
           "r/singularity",
           "r/hardware",
           "r/LocalLLaMA"
+        ]
+      },
+      {
+        "date": "10 Eylül 2026",
+        "hypeScore": 9.6,
+        "sentiment": "stabil",
+        "headline": "Altyapı Tekeli",
+        "summary": "Yapay zeka altyapısındaki lider konumunu koruması ve yeni nesil modeller için vazgeçilmez bir donanım çözümü olması.",
+        "sources": [
+          "r/nvidia",
+          "r/hardware",
+          "r/Cloud"
         ]
       }
     ]
@@ -846,6 +903,17 @@
           "r/LocalLLaMA",
           "r/Ollama"
         ]
+      },
+      {
+        "date": "10 Eylül 2026",
+        "hypeScore": 9.7,
+        "sentiment": "stabil",
+        "headline": "10M İndirme Eşiği",
+        "summary": "10 milyon indirme eşiğini aşarak yerel model topluluğunda popülaritesini kanıtlaması ve düşük bellek tüketimiyle dikkat çekmesi.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/singularity"
+        ]
       }
     ]
   },
@@ -895,6 +963,17 @@
         "sources": [
           "r/generativeAI",
           "r/StableDiffusion"
+        ]
+      },
+      {
+        "date": "10 Eylül 2026",
+        "hypeScore": 9.7,
+        "sentiment": "stabil",
+        "headline": "Video Üretiminde Lider",
+        "summary": "Yüksek hızlı ve kaliteli video içeriği oluşturma yetenekleriyle medya sektöründe büyük ilgi görmesi.",
+        "sources": [
+          "r/ArtificialInteligence",
+          "r/singularity"
         ]
       }
     ]
@@ -1077,6 +1156,17 @@
         "sources": [
           "r/LocalLLaMA",
           "r/singularity"
+        ]
+      },
+      {
+        "date": "10 Eylül 2026",
+        "hypeScore": 9.3,
+        "sentiment": "stabil",
+        "headline": "Hızlı Görsel LLM",
+        "summary": "GB200 kümeleme ve vLLM dağıtımı ile yüksek hızlı görsel LLM çıkarımında liderliğini sürdürmesi.",
+        "sources": [
+          "r/DeepSeek",
+          "r/LocalLLaMA"
         ]
       }
     ]
@@ -1276,6 +1366,17 @@
           "r/agenticAI",
           "r/LocalLLaMA"
         ]
+      },
+      {
+        "date": "10 Eylül 2026",
+        "hypeScore": 9.3,
+        "sentiment": "stabil",
+        "headline": "Yerel Bellek",
+        "summary": "Kullanıcıların verileri üzerinde tam kontrol sağlaması ve gizlilik odaklı yapay zeka çözümleri sunması.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/singularity"
+        ]
       }
     ]
   },
@@ -1390,6 +1491,18 @@
         "sources": [
           "r/AI_Agents",
           "r/LangChain"
+        ]
+      },
+      {
+        "date": "10 Eylül 2026",
+        "hypeScore": 9.8,
+        "sentiment": "coşkulu",
+        "headline": "Yeni Açık Kaynak",
+        "summary": "Ajan mühendisliğinde yeni bir yaklaşım sunması ve karmaşık çoklu ajan sistemlerinin yönetimini kolaylaştırması.",
+        "sources": [
+          "r/singularity",
+          "r/ArtificialInteligence",
+          "r/LocalLLaMA"
         ]
       }
     ]
@@ -1900,6 +2013,17 @@
         "sources": [
           "r/n8n"
         ]
+      },
+      {
+        "date": "10 Eylül 2026",
+        "hypeScore": 9.3,
+        "sentiment": "stabil",
+        "headline": "Kurumsal Ajan Dağıtımı",
+        "summary": "Kurumsal düzeyde ajan dağıtımı ve otomasyon esnekliği sunarak iş süreçlerinde verimlilik sağlaması.",
+        "sources": [
+          "r/devops",
+          "r/sysadmin"
+        ]
       }
     ]
   },
@@ -1965,6 +2089,284 @@
         "summary": "Bir agent'ın (MoltFire) OpenClaw üzerinde çalışarak bir matematik rekoru kırması ve arXiv'de yayınlanması büyük ses getirdi.",
         "sources": [
           "r/vibecoding"
+        ]
+      }
+    ]
+  },
+  "deepseek-v4-1-flash": {
+    "name": "DeepSeek V4.1 Flash",
+    "category": "LLM (Model)",
+    "history": [
+      {
+        "date": "10 Eylül 2026",
+        "hypeScore": 9.8,
+        "sentiment": "coşkulu",
+        "headline": "Son 12 Saat Patlaması",
+        "summary": "GPT-6 Astra'nın performansına %1 maliyetle ulaşması ve V4 Pro'yu tüm metriklerde geçmesiyle büyük ilgi gördü.",
+        "sources": [
+          "r/DeepSeek",
+          "r/singularity",
+          "r/ArtificialInteligence"
+        ]
+      }
+    ]
+  },
+  "anthropic-researcher-quit": {
+    "name": "Anthropic Researcher Quit",
+    "category": "Şirket / Lab",
+    "history": [
+      {
+        "date": "10 Eylül 2026",
+        "hypeScore": 4.5,
+        "sentiment": "eleştirel",
+        "headline": "Etik Kriz",
+        "summary": "Bir araştırmacının 'hayatımızla kumar oynuyorlar' diyerek istifa etmesi ve şirketin 'tahmini gözetim sistemi' iddiaları büyük tepki çekti.",
+        "sources": [
+          "r/ClaudeAI",
+          "r/ArtificialInteligence",
+          "r/Anthropic",
+          "r/singularity"
+        ]
+      }
+    ]
+  },
+  "claude-code-cost": {
+    "name": "Claude Code",
+    "category": "CLI / Terminal",
+    "history": [
+      {
+        "date": "10 Eylül 2026",
+        "hypeScore": 6.8,
+        "sentiment": "eleştirel",
+        "headline": "Maliyet Eleştirisi",
+        "summary": "Kullanıcıların 'Max 20' planında haftalık limitleri 2.5 günde bitirmesi ve yüksek maliyetler nedeniyle yoğun eleştiri alması.",
+        "sources": [
+          "r/ClaudeDev",
+          "r/ClaudeAI",
+          "r/vibecoding"
+        ]
+      }
+    ]
+  },
+  "nvidia-driver-616-92": {
+    "name": "NVIDIA Driver 616.92",
+    "category": "Altyapı & SDK",
+    "history": [
+      {
+        "date": "10 Eylül 2026",
+        "hypeScore": 8.7,
+        "sentiment": "stabil",
+        "headline": "CUDA 13 Desteği",
+        "summary": "Yeni oyunlar için optimizasyonlar ve özellikle llama.ccp için CUDA 13 desteği sunmasıyla geliştiricilerin ilgisini çekti.",
+        "sources": [
+          "r/nvidia",
+          "r/hardware"
+        ]
+      }
+    ]
+  },
+  "apple-a20-pro": {
+    "name": "Apple A20 Pro",
+    "category": "Donanım",
+    "history": [
+      {
+        "date": "10 Eylül 2026",
+        "hypeScore": 8.5,
+        "sentiment": "stabil",
+        "headline": "2nm Çip",
+        "summary": "Mobil cihazlarda yapay zeka ve genel performans için yeni bir standart belirlemesi bekleniyor.",
+        "sources": [
+          "r/hardware"
+        ]
+      }
+    ]
+  },
+  "google-cloud-api-keys-finder": {
+    "name": "Google Cloud API Keys Finder",
+    "category": "Altyapı & SDK",
+    "history": [
+      {
+        "date": "10 Eylül 2026",
+        "hypeScore": 9.1,
+        "sentiment": "coşkulu",
+        "headline": "Güvenlik Aracı",
+        "summary": "API anahtarı güvenliğini otomatikleştirmesi ve öneriler sunmasıyla DevOps ve güvenlik uzmanlarının dikkatini çekti.",
+        "sources": [
+          "r/GoogleCloud",
+          "r/devops"
+        ]
+      }
+    ]
+  },
+  "mfg-4070-ti-super": {
+    "name": "MFG on 4070 Ti Super",
+    "category": "Medya / Üretim",
+    "history": [
+      {
+        "date": "10 Eylül 2026",
+        "hypeScore": 9,
+        "sentiment": "coşkulu",
+        "headline": "Oyun Performansı",
+        "summary": "Kullanıcıların 3x, 4x, 5x Frame Generation ile RT/PT ağır oyunlarda 4K'da 100+ FPS almasıyla büyük övgü topladı.",
+        "sources": [
+          "r/nvidia",
+          "r/hardware"
+        ]
+      }
+    ]
+  },
+  "anthropic-ethics-controversy": {
+    "name": "Anthropic Ethics Controversy",
+    "category": "Şirket / Lab",
+    "history": [
+      {
+        "date": "10 Eylül 2026",
+        "hypeScore": 4.8,
+        "sentiment": "eleştirel",
+        "headline": "Kritik Eleştiri",
+        "summary": "Bir araştırmacının istifası ve 'hayatımızla kumar oynuyorlar' açıklaması, ayrıca 'tahmini gözetim sistemi' iddiaları şirketin itibarını zedeledi.",
+        "sources": [
+          "r/ClaudeAI",
+          "r/ArtificialInteligence",
+          "r/Anthropic",
+          "r/singularity"
+        ]
+      }
+    ]
+  },
+  "gemini-3-8-flash-medxpert": {
+    "name": "Gemini 3.8 Flash",
+    "category": "LLM (Model)",
+    "history": [
+      {
+        "date": "10 Eylül 2026",
+        "hypeScore": 9.3,
+        "sentiment": "coşkulu",
+        "headline": "Tıbbi Benchmark Şampiyonu",
+        "summary": "MedXpertQA tıbbi benchmark'ında GPT-5.6 Sol ve Opus 5'i geride bırakarak dikkatleri üzerine çekti.",
+        "sources": [
+          "r/GoogleGemini",
+          "r/ArtificialInteligence"
+        ]
+      }
+    ]
+  },
+  "claude-code-usage-limits": {
+    "name": "Claude Code",
+    "category": "CLI / Terminal",
+    "history": [
+      {
+        "date": "10 Eylül 2026",
+        "hypeScore": 6.5,
+        "sentiment": "eleştirel",
+        "headline": "Kullanım Limiti Sorunu",
+        "summary": "Max 20 planı kullanıcılarının haftalık limitleri çok hızlı tüketmesi ve 13 Eylül sonrası %50 kullanım artışının kalkacak olması büyük tepki topladı.",
+        "sources": [
+          "r/ClaudeDev",
+          "r/ClaudeAI",
+          "r/vibecoding"
+        ]
+      }
+    ]
+  },
+  "nvidia-driver-cuda-13": {
+    "name": "NVIDIA Driver 616.92",
+    "category": "Altyapı & SDK",
+    "history": [
+      {
+        "date": "10 Eylül 2026",
+        "hypeScore": 8.9,
+        "sentiment": "coşkulu",
+        "headline": "Geliştirici Desteği",
+        "summary": "Yeni sürücünün llama.ccp gibi yerel model çıkarım araçları için kritik CUDA 13 desteği getirmesi geliştiriciler arasında olumlu karşılandı.",
+        "sources": [
+          "r/nvidia",
+          "r/hardware",
+          "r/LocalLLaMA"
+        ]
+      }
+    ]
+  },
+  "apple-a20-pro-2nm": {
+    "name": "Apple A20 Pro",
+    "category": "Donanım",
+    "history": [
+      {
+        "date": "10 Eylül 2026",
+        "hypeScore": 8.6,
+        "sentiment": "coşkulu",
+        "headline": "Mobil Çip İnovasyonu",
+        "summary": "Mobil cihazlarda yapay zeka iş yükleri ve genel performans için yeni bir dönemi başlatma potansiyeli taşıyor.",
+        "sources": [
+          "r/hardware"
+        ]
+      }
+    ]
+  },
+  "google-cloud-api-keys-auditor": {
+    "name": "Google Cloud API Keys Finder",
+    "category": "Altyapı & SDK",
+    "history": [
+      {
+        "date": "10 Eylül 2026",
+        "hypeScore": 9,
+        "sentiment": "stabil",
+        "headline": "Bulut Güvenliği",
+        "summary": "Bulut güvenliği otomasyonu ve API anahtarı denetimi için pratik ve açık kaynaklı bir çözüm sunmasıyla takdir topladı.",
+        "sources": [
+          "r/GoogleCloud",
+          "r/devops",
+          "r/sysadmin"
+        ]
+      }
+    ]
+  },
+  "mfg-gaming-performance": {
+    "name": "MFG on 4070 Ti Super",
+    "category": "Medya / Üretim",
+    "history": [
+      {
+        "date": "10 Eylül 2026",
+        "hypeScore": 9.1,
+        "sentiment": "coşkulu",
+        "headline": "Oyun Deneyimi",
+        "summary": "Kullanıcıların Crimson Dessert, Cyberpunk 2077 gibi yoğun oyunlarda 4K'da akıcı FPS değerlerine ulaşmasıyla büyük beğeni topladı.",
+        "sources": [
+          "r/nvidia",
+          "r/hardware"
+        ]
+      }
+    ]
+  },
+  "vscode-extension-host-crash": {
+    "name": "VSCode Extension Host",
+    "category": "IDE / Editör",
+    "history": [
+      {
+        "date": "10 Eylül 2026",
+        "hypeScore": 6,
+        "sentiment": "eleştirel",
+        "headline": "Kararlılık Sorunu",
+        "summary": "Kullanıcıların özellikle büyük Visual Studio çözümleri oluştururken sürekli olarak uzantı ana bilgisayarını yeniden başlatmak zorunda kalması, kararlılık sorunlarına işaret ediyor.",
+        "sources": [
+          "r/vscode",
+          "r/ChatGPTCoding"
+        ]
+      }
+    ]
+  },
+  "copilot-japanese-queries": {
+    "name": "Copilot",
+    "category": "LLM (Model)",
+    "history": [
+      {
+        "date": "10 Eylül 2026",
+        "hypeScore": 7.8,
+        "sentiment": "stabil",
+        "headline": "Dil Desteği",
+        "summary": "Japonca Reddit topluluklarında Copilot'un çeşitli sorgular için kullanılması, dil desteği ve adaptasyon yeteneğini gösteriyor.",
+        "sources": [
+          "r/Copilot"
         ]
       }
     ]

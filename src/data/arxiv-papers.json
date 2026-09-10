@@ -29,9 +29,61 @@
     "2609.09150v1",
     "2609.09134v1",
     "2609.09156v1",
-    "2609.09135v1"
+    "2609.09135v1",
+    "2609.09157v1",
+    "2609.09133v1",
+    "2609.09143v1"
   ],
   "dailyRecords": [
+    {
+      "date": "10 Eylül 2026",
+      "isoDate": "2026-09-10",
+      "papers": [
+        {
+          "id": "2609.09157v1",
+          "titleTr": "Uzun Bağlamlı Tekrarlayan Modellerin Uzunluk-Ekstrapolasyon Yeteneğini Öğrenme",
+          "title": "Learning Length-Extrapolatable Recurrent Models",
+          "arxivUrl": "http://arxiv.org/abs/2609.09157v1",
+          "authors": [
+            "Hanwen Jiang"
+          ],
+          "category": "cs.AI",
+          "impactScore": 9.6,
+          "whyMad": "Bu makale, tekrarlayan modellerin eğitim bağlamının ötesinde performans gösterme sorununa odaklanarak, 'state credit' kavramını öne sürüyor. Geleneksel olarak kaybolan/patlayan gradyanlara odaklanılırken, bu çalışma sinyal bozunmasının tek başına öğrenme başarısızlığını belirlemediğini gösteriyor. Uzun bağlamlı LLM'lerin temel bir sınırlamasını ele alması ve yeni bir analiz çerçevesi sunmasıyla ezber bozuyor.",
+          "summary": "Tekrarlayan modellerin uzun bağlamlı yeteneklerini geliştirmek için 'state credit' sinyalinin önemini vurgulayan bu çalışma, modellerin eğitim horizonunun ötesinde genelleme yapabilmesi için yeni bir bakış açısı sunuyor. Geleneksel gradyan sorunlarının ötesine geçerek, gelecekteki kayıpların önceki durum sinyallerine nasıl ulaştığını inceliyor."
+        },
+        {
+          "id": "2609.09133v1",
+          "titleTr": "ExecCritic: Kodlama Ajanları İçin Test Etmeyi Öğren, Geliştirmek İçin Test Et",
+          "title": "ExecCritic: Learn to Test, Test to Improve for Coding Agents",
+          "arxivUrl": "http://arxiv.org/abs/2609.09133v1",
+          "authors": [
+            "Leitian Tao",
+            "Baolin Peng",
+            "Haorui Wang"
+          ],
+          "category": "cs.AI",
+          "impactScore": 9.5,
+          "whyMad": "Kodlama ajanlarının en büyük sorunlarından biri, ürettikleri yamaların doğru olup olmadığını test etmek için güvenilir testler oluşturamamalarıdır. ExecCritic, bu sorunu test-doğrula-revize iskele yapısı ve role özel takviyeli öğrenme ile çözerek, ajanların hem yamaları hem de testleri daha güvenilir bir şekilde üretmesini sağlıyor. Bu, otonom kodlama ajanlarının pratik uygulanabilirliğini önemli ölçüde artırıyor.",
+          "summary": "ExecCritic, kodlama ajanlarının repository onarımları için doğru testler oluşturma yeteneğini geliştiren yeni bir çerçeve sunuyor. Ajan tarafından üretilen testlerin eksik veya yanlış davranış hedefleri içermesi sorununu ele alarak, test-doğrula-revize iskele ve role özel takviyeli öğrenme ile daha güvenilir kod üretimi ve testi sağlıyor."
+        },
+        {
+          "id": "2609.09143v1",
+          "titleTr": "Birleşik Multimodal Modellerde Görsel Diller Olarak Görüntü Tokenizer'larını İncelemek",
+          "title": "Studying Image Tokenizers as Visual Languages in Unified Multimodal Models",
+          "arxivUrl": "http://arxiv.org/abs/2609.09143v1",
+          "authors": [
+            "Siting Li",
+            "Zhengyang Wang",
+            "Simon Shaolei Du"
+          ],
+          "category": "cs.AI",
+          "impactScore": 9.4,
+          "whyMad": "Multimodal modellerin temelini oluşturan görüntü tokenizer'larının 'görsel dil' olarak nasıl davrandığını derinlemesine inceleyen bu makale, mevcut değerlendirme yöntemlerinin eksikliklerini gideriyor. Görsel token'ların metinle birlikte nasıl modellendiğini anlamak, daha güçlü ve tutarlı multimodal yapay zeka geliştirmek için kritik bir adım. Bu, multimodal AI'ın geleceği için temel bir araştırma niteliğinde.",
+          "summary": "Bu çalışma, birleşik multimodal modellerde görüntü tokenizer'larının görsel dil olarak işlevini inceliyor. Görev odaklı doğrulama kayıplarını takip ederek, görsel token'ların metinle birlikte nasıl modellendiğini ve multimodal sürekli ön eğitimdeki davranışlarını analiz ediyor. Bu, multimodal yapay zeka modellerinin tasarımını ve değerlendirmesini iyileştirmek için önemli içgörüler sunuyor."
+        }
+      ]
+    },
     {
       "date": "9 Eylül 2026",
       "isoDate": "2026-09-09",

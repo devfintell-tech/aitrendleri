@@ -1,6 +1,6 @@
 ================================================================================
 🤖 AITRENDLERI.COM OTONOM TARAMA VE ANALİZ TERMİNAL RAPORU
-Tarih: 9 Eylül 2026 | İşlem Süresi: 272s
+Tarih: 10 Eylül 2026 | İşlem Süresi: 347s
 ================================================================================
 
 [1. MODEL & ŞELALE AKTİVİTESİ]
@@ -9,33 +9,33 @@ Tarih: 9 Eylül 2026 | İşlem Süresi: 272s
   ✔ Yürütme Durumu       : BAŞARILI (HTTP 200 OK)
 
 [2. 50 REDDIT TOPLULUĞU TARAMA TELEMETRİSİ]
-  ✔ Toplam Analiz Edilen Gönderi : 44
+  ✔ Toplam Analiz Edilen Gönderi : 45
   ✔ Başarılı Kategori / Batch   : 3 / 7
   ------------------------------------------------------------------------------
   1. [🟢 OK 200] Vibe Coding & Yeni Nesil Editörler: 15 gönderi
-     └─ Dağılım: r/ClaudeAI: 2, r/vibecoding: 5, r/ChatGPTCoding: 1, r/Copilot: 3, r/CursorAI: 1, r/windsurf: 1, r/vscode: 1, r/ClaudeDev: 1
-  2. [🟢 OK 200] Otonom Ajanlar & Süreç Otomasyonu: 15 gönderi
-     └─ Dağılım: r/AI_Agents: 2, r/n8n: 1, r/agenticAI: 6, r/crewai: 1, r/Automate: 1, r/AutoGPT: 2, r/LangChain: 2
-  3. [🔴 ERR 429] Büyük Dil Modelleri & Araştırma Devleri: 0 gönderi
+     └─ Dağılım: r/ClaudeAI: 3, r/vibecoding: 2, r/windsurf: 1, r/CursorAI: 1, r/ChatGPTCoding: 1, r/Copilot: 5, r/vscode: 1, r/ClaudeDev: 1
+  2. [🔴 ERR 429] Otonom Ajanlar & Süreç Otomasyonu: 0 gönderi
      └─ Hata/Uyarı: Reddit HTTP 429 (Rate Limit)
+  3. [🟢 OK 200] Büyük Dil Modelleri & Araştırma Devleri: 15 gönderi
+     └─ Dağılım: r/singularity: 2, r/DeepSeek: 2, r/OpenAI: 3, r/Anthropic: 2, r/ArtificialInteligence: 2, r/MachineLearning: 1, r/GoogleGemini: 3
   4. [🔴 ERR 429] Açık Kaynak, Yerel Modeller & Self-Hosted: 0 gönderi
      └─ Hata/Uyarı: Reddit HTTP 429 (Rate Limit)
-  5. [🟢 OK 200] Yazılım Geliştirici, API & Kodlama Dünyası: 14 gönderi
-     └─ Dağılım: r/webdev: 1, r/programming: 1, r/datascience: 1, r/generativeAI: 3, r/LLMDevs: 5, r/PromptEngineering: 3, r/ai_tools: 1
-  6. [🔴 ERR 429] Donanım, GPU, CPU & Bulut Altyapısı: 0 gönderi
+  5. [🔴 ERR 429] Yazılım Geliştirici, API & Kodlama Dünyası: 0 gönderi
      └─ Hata/Uyarı: Reddit HTTP 429 (Rate Limit)
+  6. [🟢 OK 200] Donanım, GPU, CPU & Bulut Altyapısı: 15 gönderi
+     └─ Dağılım: r/hardware: 3, r/sysadmin: 3, r/AMD_Stock: 1, r/devops: 1, r/googlecloud: 2, r/Cloud: 2, r/nvidia: 3
   7. [🔴 ERR 429] Görsel, Video & Medya Üretimi: 0 gönderi
      └─ Hata/Uyarı: Reddit HTTP 429 (Rate Limit)
 
 [3. SUBREDDİT VERİTABANI İÇGÖRÜLERİ (src/data/subreddit-stats.json)]
   ✔ Toplam Takip Edilen Subreddit : 49
-  ✔ Yüksek Sinyal Verenler        : 17
-  ✔ Aktif Düzenli Kaynaklar       : 32
-  ✔ Düşük Sinyal / Takiptekiler   : 0
+  ✔ Yüksek Sinyal Verenler        : 29
+  ✔ Aktif Düzenli Kaynaklar       : 0
+  ✔ Düşük Sinyal / Takiptekiler   : 20
   ✔ Sıfır Çekenler (Dead Sub)     : 0
   ------------------------------------------------------------------------------
-  🏆 En Çok Katkı Sağlayanlar: r/LLMDevs (16), r/vibecoding (12), r/ChatGPTCoding (11), r/LangChain (9), r/CursorAI (8)
-  ⚠️ Düşük Sinyal Verenler   : Yok
+  🏆 En Çok Katkı Sağlayanlar: r/LLMDevs (16), r/vibecoding (14), r/ChatGPTCoding (12), r/ClaudeAI (11), r/CursorAI (9)
+  ⚠️ Düşük Sinyal Verenler   : r/copilot, r/CrewAI, r/agenticai, r/Singularity, r/LocalLLaMA, r/ollama, r/vllm, r/huggingface, r/OpenSourceAI, r/MistralAI, r/selfhosted, r/AI_Tools, r/GenerativeAI, r/GoogleCloud, r/ComfyUI, r/StableDiffusion, r/Midjourney, r/Sora, r/RunwayML, r/artificial
   🚫 Değiştirilmesi Önerilen : Yok (Tümü veri sağlıyor)
 
 [4. DİĞER VERİ KAYNAKLARI]
@@ -45,7 +45,7 @@ Tarih: 9 Eylül 2026 | İşlem Süresi: 272s
   ✔ GitHub Radar        : 6 repo
 
 [5. GÜNÜN ORGANİK 1 NUMARALI LİDERİ]
-  👑 Mac MCP (Skor: 99/100 - Günün Lideri)
-  📝 Neden Seçildi: ChatGPT'nin komutları söyleyip mekanik kısmı kullanıcının yapması sorununa doğrudan çözüm sunması ve tarayıcı sekme izolasyonu gibi yenilikçi özellikleriyle büyük ilgi gördü.
+  👑 DeepSeek V4.1 Flash (Skor: 99/100 - Günün Lideri)
+  📝 Neden Seçildi: GPT-6 Astra'nın performansına %1 maliyetle ulaşması ve V4 Pro'yu tüm metriklerde geçmesiyle geliştirici topluluğunda büyük heyecan yarattı.
 
 ================================================================================
