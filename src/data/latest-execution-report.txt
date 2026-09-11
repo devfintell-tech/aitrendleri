@@ -1,11 +1,11 @@
 ================================================================================
 🤖 AITRENDLERI.COM OTONOM TARAMA VE ANALİZ TERMİNAL RAPORU
-Tarih: 10 Eylül 2026 | İşlem Süresi: 354s
+Tarih: 11 Eylül 2026 | İşlem Süresi: 384s
 ================================================================================
 
 [1. MODEL & ŞELALE AKTİVİTESİ]
   ✔ Aktif Çalışan Model : gemini-2.5-flash
-  ✔ Seçilen API Anahtarı : GEMINI_API_KEY #2
+  ✔ Seçilen API Anahtarı : GEMINI_API_KEY #3
   ✔ Yürütme Durumu       : BAŞARILI (HTTP 200 OK)
 
 [2. 50 REDDIT TOPLULUĞU TARAMA TELEMETRİSİ]
@@ -13,29 +13,29 @@ Tarih: 10 Eylül 2026 | İşlem Süresi: 354s
   ✔ Başarılı Kategori / Batch   : 3 / 7
   ------------------------------------------------------------------------------
   1. [🟢 OK 200] Vibe Coding & Yeni Nesil Editörler: 15 gönderi
-     └─ Dağılım: r/vibecoding: 1, r/ClaudeAI: 7, r/windsurf: 1, r/vscode: 2, r/CursorAI: 1, r/Copilot: 2, r/ClaudeDev: 1
-  2. [🟢 OK 200] Otonom Ajanlar & Süreç Otomasyonu: 15 gönderi
-     └─ Dağılım: r/AI_Agents: 1, r/n8n: 1, r/LangChain: 5, r/agenticAI: 2, r/AutoGPT: 4, r/Automate: 2
+     └─ Dağılım: r/ClaudeAI: 2, r/vibecoding: 2, r/ChatGPTCoding: 1, r/vscode: 3, r/CursorAI: 2, r/windsurf: 1, r/Copilot: 3, r/ClaudeDev: 1
+  2. [🔴 ERR 429] Otonom Ajanlar & Süreç Otomasyonu: 0 gönderi
+     └─ Hata/Uyarı: Reddit HTTP 429 (Rate Limit)
   3. [🔴 ERR 429] Büyük Dil Modelleri & Araştırma Devleri: 0 gönderi
      └─ Hata/Uyarı: Reddit HTTP 429 (Rate Limit)
-  4. [🔴 ERR 429] Açık Kaynak, Yerel Modeller & Self-Hosted: 0 gönderi
+  4. [🟢 OK 200] Açık Kaynak, Yerel Modeller & Self-Hosted: 15 gönderi
+     └─ Dağılım: r/LocalLLaMA: 5, r/selfhosted: 1, r/MistralAI: 2, r/ollama: 1, r/huggingface: 1, r/OpenSourceAI: 3, r/Vllm: 2
+  5. [🔴 ERR 429] Yazılım Geliştirici, API & Kodlama Dünyası: 0 gönderi
      └─ Hata/Uyarı: Reddit HTTP 429 (Rate Limit)
-  5. [🟢 OK 200] Yazılım Geliştirici, API & Kodlama Dünyası: 15 gönderi
-     └─ Dağılım: r/webdev: 2, r/LLMDevs: 1, r/programming: 3, r/generativeAI: 5, r/PromptEngineering: 1, r/datascience: 1, r/ai_tools: 2
   6. [🔴 ERR 429] Donanım, GPU, CPU & Bulut Altyapısı: 0 gönderi
      └─ Hata/Uyarı: Reddit HTTP 429 (Rate Limit)
-  7. [🔴 ERR 429] Görsel, Video & Medya Üretimi: 0 gönderi
-     └─ Hata/Uyarı: Reddit HTTP 429 (Rate Limit)
+  7. [🟢 OK 200] Görsel, Video & Medya Üretimi: 15 gönderi
+     └─ Dağılım: r/StableDiffusion: 2, r/artificial: 3, r/midjourney: 3, r/comfyui: 4, r/runwayml: 2, r/SORA: 1
 
 [3. SUBREDDİT VERİTABANI İÇGÖRÜLERİ (src/data/subreddit-stats.json)]
   ✔ Toplam Takip Edilen Subreddit : 49
   ✔ Yüksek Sinyal Verenler        : 17
-  ✔ Aktif Düzenli Kaynaklar       : 12
-  ✔ Düşük Sinyal / Takiptekiler   : 20
+  ✔ Aktif Düzenli Kaynaklar       : 20
+  ✔ Düşük Sinyal / Takiptekiler   : 12
   ✔ Sıfır Çekenler (Dead Sub)     : 0
   ------------------------------------------------------------------------------
-  🏆 En Çok Katkı Sağlayanlar: r/ClaudeAI (18), r/LLMDevs (17), r/vibecoding (15), r/LangChain (14), r/ChatGPTCoding (12)
-  ⚠️ Düşük Sinyal Verenler   : r/copilot, r/CrewAI, r/agenticai, r/Singularity, r/LocalLLaMA, r/ollama, r/vllm, r/huggingface, r/OpenSourceAI, r/MistralAI, r/selfhosted, r/AI_Tools, r/GenerativeAI, r/GoogleCloud, r/ComfyUI, r/StableDiffusion, r/Midjourney, r/Sora, r/RunwayML, r/artificial
+  🏆 En Çok Katkı Sağlayanlar: r/ClaudeAI (20), r/vibecoding (17), r/LLMDevs (17), r/LangChain (14), r/ChatGPTCoding (13)
+  ⚠️ Düşük Sinyal Verenler   : r/copilot, r/CrewAI, r/agenticai, r/Singularity, r/vllm, r/AI_Tools, r/GenerativeAI, r/GoogleCloud, r/ComfyUI, r/Midjourney, r/Sora, r/RunwayML
   🚫 Değiştirilmesi Önerilen : Yok (Tümü veri sağlıyor)
 
 [4. DİĞER VERİ KAYNAKLARI]
@@ -45,7 +45,7 @@ Tarih: 10 Eylül 2026 | İşlem Süresi: 354s
   ✔ GitHub Radar        : 6 repo
 
 [5. GÜNÜN ORGANİK 1 NUMARALI LİDERİ]
-  👑 Mac MCP (Skor: 99/100 - Açık Kaynak İnovasyon)
-  📝 Neden Seçildi: Çoklu ajan ortamlarında tarayıcı kaynaklarının verimli kullanımına yönelik pratik ve açık kaynaklı bir çözüm sunuyor.
+  👑 DeepSeek V4.1 Flash (Skor: 99/100 - Yeni Model)
+  📝 Neden Seçildi: Yeni ve güçlü bir multimodal MoE modelinin piyasaya sürülmesi, özellikle yüksek bağlam penceresi ile yerel LLM topluluğunda büyük ilgi gördü.
 
 ================================================================================

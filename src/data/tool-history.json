@@ -59,6 +59,17 @@
           "r/GoogleGemini",
           "r/ArtificialInteligence"
         ]
+      },
+      {
+        "date": "11 Eylül 2026",
+        "hypeScore": 9.2,
+        "sentiment": "stabil",
+        "headline": "Tıbbi Uzmanlık",
+        "summary": "Tıbbi benchmarklarda gösterdiği üstün performans ve hızlı çıkarım yetenekleriyle dikkat çekti.",
+        "sources": [
+          "r/singularity",
+          "r/ChatGPTCoding"
+        ]
       }
     ]
   },
@@ -107,6 +118,17 @@
         "sources": [
           "r/CursorAI",
           "r/ChatGPTCoding"
+        ]
+      },
+      {
+        "date": "11 Eylül 2026",
+        "hypeScore": 4.8,
+        "sentiment": "eleştirel",
+        "headline": "Eleştiriliyor",
+        "summary": "Kullanıcı hesaplarının haksız yere kapatılması, 500 dolarlık ücret iadesi yapılmaması ve sürekli hatalar yapması nedeniyle toplulukta büyük tepki topladı.",
+        "sources": [
+          "r/CursorAI",
+          "r/vibecoding"
         ]
       }
     ]
@@ -204,6 +226,17 @@
           "r/ClaudeAI",
           "r/vibecoding"
         ]
+      },
+      {
+        "date": "11 Eylül 2026",
+        "hypeScore": 6.8,
+        "sentiment": "eleştirel",
+        "headline": "Kullanım Limiti Sorunu",
+        "summary": "Kullanıcıların Claude Code'un token tüketimi ve maliyeti hakkında endişelerini dile getirmesi, özellikle 'agentic workflow' eleştirileriyle birleşti.",
+        "sources": [
+          "r/ClaudeDev",
+          "r/ClaudeAI"
+        ]
       }
     ]
   },
@@ -283,6 +316,17 @@
         "sentiment": "stabil",
         "headline": "Devin'de Canlı",
         "summary": "Devin platformunda canlı olarak sergilediği tutarlı ve üstün performansla haftanın en stabil ve beğenilen modellerinden biri oldu.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/singularity"
+        ]
+      },
+      {
+        "date": "11 Eylül 2026",
+        "hypeScore": 9.9,
+        "sentiment": "stabil",
+        "headline": "Haftanın Lideri",
+        "summary": "Devin Cloud ve Desktop entegrasyonundaki canlı performansı ve tutarlı yüksek skorlarıyla haftanın en güvenilir modellerinden biri oldu.",
         "sources": [
           "r/LocalLLaMA",
           "r/singularity"
@@ -502,6 +546,17 @@
           "r/ClaudeAI",
           "r/ClaudeDev"
         ]
+      },
+      {
+        "date": "11 Eylül 2026",
+        "hypeScore": 9.8,
+        "sentiment": "stabil",
+        "headline": "Sektör Standardı",
+        "summary": "Tutarlı performansı ve geniş kullanım alanlarıyla sektörde güvenilir bir standart olmaya devam etti, kapasite rahatlaması olumlu karşılandı.",
+        "sources": [
+          "r/ClaudeAI",
+          "r/singularity"
+        ]
       }
     ]
   },
@@ -596,6 +651,17 @@
           "r/nvidia",
           "r/hardware",
           "r/Cloud"
+        ]
+      },
+      {
+        "date": "11 Eylül 2026",
+        "hypeScore": 9.6,
+        "sentiment": "stabil",
+        "headline": "Altyapı Tekeli",
+        "summary": "AI altyapısındaki liderliğini sürdürmesi ve GB200'ün performansı, sektördeki donanım beklentilerini şekillendirmeye devam ediyor.",
+        "sources": [
+          "r/singularity",
+          "r/LocalLLaMA"
         ]
       }
     ]
@@ -914,6 +980,17 @@
           "r/LocalLLaMA",
           "r/ollama"
         ]
+      },
+      {
+        "date": "11 Eylül 2026",
+        "hypeScore": 9.7,
+        "sentiment": "stabil",
+        "headline": "10M İndirme Eşiği",
+        "summary": "16GB RAM'li dizüstü bilgisayarlarda bile yüksek hızda çalışabilmesi ve 10 milyon indirme eşiğini aşmasıyla büyük ilgi gördü.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/ollama"
+        ]
       }
     ]
   },
@@ -973,6 +1050,17 @@
         "summary": "Video üretiminde sunduğu hız ve kalite ile içerik oluşturucular arasında tercih edilen bir araç haline geldi.",
         "sources": [
           "r/GenerativeAI"
+        ]
+      },
+      {
+        "date": "11 Eylül 2026",
+        "hypeScore": 9.7,
+        "sentiment": "stabil",
+        "headline": "Video Üretiminde Lider",
+        "summary": "ComfyUI entegrasyonları ve referans videodan video üretme yetenekleriyle yaratıcı toplulukta sürekli popülerliğini koruyor.",
+        "sources": [
+          "r/ComfyUI",
+          "r/StableDiffusion"
         ]
       }
     ]
@@ -1217,6 +1305,17 @@
           "r/LocalLLaMA",
           "r/selfhosted"
         ]
+      },
+      {
+        "date": "11 Eylül 2026",
+        "hypeScore": 9.7,
+        "sentiment": "stabil",
+        "headline": "Tek Komutla Kurulum",
+        "summary": "Kolay kurulumu ve yerel modellerle entegrasyonu sayesinde geliştiriciler için cazip bir çözüm sunuyor.",
+        "sources": [
+          "r/ollama",
+          "r/selfhosted"
+        ]
       }
     ]
   },
@@ -1376,6 +1475,17 @@
           "r/AI_Agents",
           "r/agenticAI"
         ]
+      },
+      {
+        "date": "11 Eylül 2026",
+        "hypeScore": 9.3,
+        "sentiment": "stabil",
+        "headline": "Yerel Bellek",
+        "summary": "Ajanların geçmiş etkileşimlerini ve öğrenmelerini yerel olarak saklama yeteneği, daha tutarlı ve akıllı ajanlar geliştirmek için kritik görüldü.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/OpenSourceAI"
+        ]
       }
     ]
   },
@@ -1501,6 +1611,17 @@
         "sources": [
           "r/LangChain",
           "r/LLMDevs"
+        ]
+      },
+      {
+        "date": "11 Eylül 2026",
+        "hypeScore": 9.8,
+        "sentiment": "stabil",
+        "headline": "Yeni Açık Kaynak",
+        "summary": "Agent mimarilerinde esneklik ve verimlilik sağlayan yenilikçi yaklaşımıyla geliştiriciler arasında hızla benimsendi.",
+        "sources": [
+          "r/OpenSourceAI",
+          "r/LocalLLaMA"
         ]
       }
     ]
@@ -1974,6 +2095,17 @@
         "sources": [
           "r/Copilot"
         ]
+      },
+      {
+        "date": "11 Eylül 2026",
+        "hypeScore": 6.2,
+        "sentiment": "eleştirel",
+        "headline": "Regresyon",
+        "summary": "Masaüstü uygulamasından ekran paylaşımı özelliğinin kaldırılması ve 'mavi' eski uygulamanın kaybolması gibi regresyonlar kullanıcıların tepkisini çekti.",
+        "sources": [
+          "r/Copilot",
+          "r/ChatGPTCoding"
+        ]
       }
     ]
   },
@@ -2033,6 +2165,17 @@
           "r/Automate",
           "r/n8n"
         ]
+      },
+      {
+        "date": "11 Eylül 2026",
+        "hypeScore": 9.3,
+        "sentiment": "coşkulu",
+        "headline": "Kurumsal Ajan Dağıtımı",
+        "summary": "Kurumsal düzeyde AI ajanlarının dağıtımını ve yönetimini kolaylaştırması, self-hosting esnekliği sunmasıyla öne çıktı.",
+        "sources": [
+          "r/selfhosted",
+          "r/OpenSourceAI"
+        ]
       }
     ]
   },
@@ -2060,6 +2203,17 @@
         "sources": [
           "r/CursorAI",
           "r/vibecoding"
+        ]
+      },
+      {
+        "date": "11 Eylül 2026",
+        "hypeScore": 8.7,
+        "sentiment": "eleştirel",
+        "headline": "Haftalık Düşüş",
+        "summary": "Hesap kapatma, bellek sızıntıları ve genel performans sorunları nedeniyle toplulukta eleştirilmeye devam etti.",
+        "sources": [
+          "r/CursorAI",
+          "r/vscode"
         ]
       }
     ]
@@ -2126,6 +2280,17 @@
         "sources": [
           "r/LocalLLaMA",
           "r/singularity"
+        ]
+      },
+      {
+        "date": "11 Eylül 2026",
+        "hypeScore": 9.5,
+        "sentiment": "coşkulu",
+        "headline": "Yeni Model",
+        "summary": "Yeni ve güçlü bir multimodal MoE modelinin piyasaya sürülmesi, özellikle yüksek bağlam penceresi ile yerel LLM topluluğunda büyük ilgi gördü.",
+        "sources": [
+          "r/ollama",
+          "r/LocalLLaMA"
         ]
       }
     ]
@@ -2532,6 +2697,159 @@
         "summary": "Rust topluluğunda GPU programlama yeteneklerini genişletmesi ve performans odaklı geliştiriciler için yeni bir yol açmasıyla dikkat çekti.",
         "sources": [
           "r/programming"
+        ]
+      }
+    ]
+  },
+  "locus": {
+    "name": "Locus",
+    "category": "Otonom Agent",
+    "history": [
+      {
+        "date": "11 Eylül 2026",
+        "hypeScore": 9.3,
+        "sentiment": "coşkulu",
+        "headline": "Mac İçin Yeni Agent",
+        "summary": "Yerel LLM'ler için Claude/Codex benzeri bir GUI sunması, ajan takımları ve kalıcı hedefler gibi yenilikçi özellikleriyle dikkat çekti.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/OpenSourceAI"
+        ]
+      }
+    ]
+  },
+  "folio-claude-remarkable": {
+    "name": "Folio",
+    "category": "Otomasyon",
+    "history": [
+      {
+        "date": "11 Eylül 2026",
+        "hypeScore": 9.1,
+        "sentiment": "coşkulu",
+        "headline": "Üretkenlik Aracı",
+        "summary": "Claude'un kişisel üretkenlik için reMarkable ile entegrasyonu, haber özetleri ve görev listeleri oluşturmadaki etkinliğiyle övgü topladı.",
+        "sources": [
+          "r/vibecoding",
+          "r/ClaudeAI"
+        ]
+      }
+    ]
+  },
+  "retrotape-comfyui": {
+    "name": "RetroTape",
+    "category": "Medya / Üretim",
+    "history": [
+      {
+        "date": "11 Eylül 2026",
+        "hypeScore": 9,
+        "sentiment": "coşkulu",
+        "headline": "Yeni ComfyUI Node",
+        "summary": "Görüntü ve videolara retro VHS/NTSC efektleri eklemedeki detaylı kontrolü ve canlı önizleme özelliğiyle yaratıcı toplulukta popüler oldu.",
+        "sources": [
+          "r/ComfyUI",
+          "r/StableDiffusion"
+        ]
+      }
+    ]
+  },
+  "stvena-live": {
+    "name": "Stvena Live",
+    "category": "IDE / Editör",
+    "history": [
+      {
+        "date": "11 Eylül 2026",
+        "hypeScore": 8.9,
+        "sentiment": "coşkulu",
+        "headline": "Yeni VS Code Uzantısı",
+        "summary": "Ajanların yaptığı değişiklikleri gerçek zamanlı olarak takip etme ve geliştirici iş akışını iyileştirme potansiyeliyle ilgi gördü.",
+        "sources": [
+          "r/vscode",
+          "r/vibecoding"
+        ]
+      }
+    ]
+  },
+  "mistral-library": {
+    "name": "Mistral Library",
+    "category": "LLM (Model)",
+    "history": [
+      {
+        "date": "11 Eylül 2026",
+        "hypeScore": 8.8,
+        "sentiment": "coşkulu",
+        "headline": "Bilimsel Araç",
+        "summary": "Kaynaklar hakkında doğru yanıtlar vermesi, OCR yetenekleri ve hızlı çalışmasıyla NotebookLM'ye gerçek bir alternatif olarak öne çıktı.",
+        "sources": [
+          "r/MistralAI",
+          "r/OpenSourceAI"
+        ]
+      }
+    ]
+  },
+  "sol-pi": {
+    "name": "Sol-Pi",
+    "category": "Otonom Agent",
+    "history": [
+      {
+        "date": "11 Eylül 2026",
+        "hypeScore": 8.7,
+        "sentiment": "coşkulu",
+        "headline": "Agent Verimliliği",
+        "summary": "Agentlerin daha az maliyetle daha verimli çalışmasını sağlayan dört yeniden kullanılabilir mekanizma sunmasıyla dikkat çekti.",
+        "sources": [
+          "r/OpenSourceAI",
+          "r/LocalLLaMA"
+        ]
+      }
+    ]
+  },
+  "hf-viewer": {
+    "name": "HF Viewer",
+    "category": "Altyapı & SDK",
+    "history": [
+      {
+        "date": "11 Eylül 2026",
+        "hypeScore": 8.6,
+        "sentiment": "coşkulu",
+        "headline": "Hugging Face Aracı",
+        "summary": "Modellerin iç yapısını kolayca anlamayı sağlayan görselleştirme yeteneği ve ek özellikler sunmasıyla geliştiriciler arasında popüler oldu.",
+        "sources": [
+          "r/huggingface",
+          "r/OpenSourceAI"
+        ]
+      }
+    ]
+  },
+  "vscode": {
+    "name": "VSCode",
+    "category": "IDE / Editör",
+    "history": [
+      {
+        "date": "11 Eylül 2026",
+        "hypeScore": 6.5,
+        "sentiment": "eleştirel",
+        "headline": "Performans Sorunu",
+        "summary": "Her güncellemede boyutunun artması ve bilgisayarları yavaşlatması nedeniyle kullanıcılar tarafından eleştirildi, hafif yapısını kaybettiği düşünülüyor.",
+        "sources": [
+          "r/vscode",
+          "r/vibecoding"
+        ]
+      }
+    ]
+  },
+  "runwayml": {
+    "name": "RunwayML",
+    "category": "Medya / Üretim",
+    "history": [
+      {
+        "date": "11 Eylül 2026",
+        "hypeScore": 5.5,
+        "sentiment": "eleştirel",
+        "headline": "Kredi Sorunu",
+        "summary": "Max aboneliğine yükselten kullanıcıların 'sınırsız' seçenekleri bulamaması ve MCP'nin sadece kredi modunda çalışması nedeniyle eleştirildi.",
+        "sources": [
+          "r/runwayml",
+          "r/artificial"
         ]
       }
     ]
