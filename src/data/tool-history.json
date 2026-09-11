@@ -122,10 +122,10 @@
       },
       {
         "date": "11 Eylül 2026",
-        "hypeScore": 4.8,
+        "hypeScore": 4.5,
         "sentiment": "eleştirel",
         "headline": "Eleştiriliyor",
-        "summary": "Kullanıcı hesaplarının haksız yere kapatılması, 500 dolarlık ücret iadesi yapılmaması ve sürekli hatalar yapması nedeniyle toplulukta büyük tepki topladı.",
+        "summary": "Kullanıcıların 500 dolarının çalındığı ve hesaplarının sebepsiz yere kapatıldığı iddiaları, Cursor'ın güvenilirliği ve müşteri desteği hakkında ciddi endişeler yarattı.",
         "sources": [
           "r/CursorAI",
           "r/vibecoding"
@@ -232,10 +232,10 @@
         "hypeScore": 6.8,
         "sentiment": "eleştirel",
         "headline": "Kullanım Limiti Sorunu",
-        "summary": "Kullanıcıların Claude Code'un token tüketimi ve maliyeti hakkında endişelerini dile getirmesi, özellikle 'agentic workflow' eleştirileriyle birleşti.",
+        "summary": "Kullanıcıların 'connection error' ve 'retrying' sorunları yaşaması, özellikle Pro aboneliği biten kullanıcılar için ücretsiz katmanda bile erişim sorunları yaşanması eleştirildi.",
         "sources": [
           "r/ClaudeDev",
-          "r/ClaudeAI"
+          "r/windsurf"
         ]
       }
     ]
@@ -323,13 +323,13 @@
       },
       {
         "date": "11 Eylül 2026",
-        "hypeScore": 9.9,
-        "sentiment": "stabil",
-        "headline": "Haftanın Lideri",
-        "summary": "Devin Cloud ve Desktop entegrasyonundaki canlı performansı ve tutarlı yüksek skorlarıyla haftanın en güvenilir modellerinden biri oldu.",
+        "hypeScore": 7.5,
+        "sentiment": "eleştirel",
+        "headline": "Yüksek Maliyet",
+        "summary": "Opus 5 ile benzer maliyet etkinliğine sahip olmasına rağmen, DeepSeek V4.1 Flash'ın çok daha düşük maliyetle benzer performans göstermesi nedeniyle maliyeti eleştirildi.",
         "sources": [
-          "r/LocalLLaMA",
-          "r/singularity"
+          "r/ClaudeAI",
+          "r/ChatGPTCoding"
         ]
       }
     ]
@@ -552,10 +552,11 @@
         "hypeScore": 9.8,
         "sentiment": "stabil",
         "headline": "Sektör Standardı",
-        "summary": "Tutarlı performansı ve geniş kullanım alanlarıyla sektörde güvenilir bir standart olmaya devam etti, kapasite rahatlaması olumlu karşılandı.",
+        "summary": "Tutarlı performansı ve geniş kullanım alanlarıyla sektörde bir standart olmaya devam ediyor, özellikle karmaşık görevlerde güvenilirliği takdir ediliyor.",
         "sources": [
-          "r/ClaudeAI",
-          "r/singularity"
+          "r/Anthropic",
+          "r/singularity",
+          "r/ClaudeAI"
         ]
       }
     ]
@@ -658,10 +659,11 @@
         "hypeScore": 9.6,
         "sentiment": "stabil",
         "headline": "Altyapı Tekeli",
-        "summary": "AI altyapısındaki liderliğini sürdürmesi ve GB200'ün performansı, sektördeki donanım beklentilerini şekillendirmeye devam ediyor.",
+        "summary": "AI altyapısındaki liderliğini pekiştirerek endüstri standardı olmaya devam etti, ancak pazar hakimiyeti tartışmaları da sürdü.",
         "sources": [
-          "r/singularity",
-          "r/LocalLLaMA"
+          "r/nvidia",
+          "r/hardware",
+          "r/Cloud"
         ]
       }
     ]
@@ -986,10 +988,10 @@
         "hypeScore": 9.7,
         "sentiment": "stabil",
         "headline": "10M İndirme Eşiği",
-        "summary": "16GB RAM'li dizüstü bilgisayarlarda bile yüksek hızda çalışabilmesi ve 10 milyon indirme eşiğini aşmasıyla büyük ilgi gördü.",
+        "summary": "10 milyon indirme eşiğini aşarak yerel AI topluluğunda ne kadar benimsendiğini gösterdi; düşük donanım gereksinimleriyle yüksek hız sunması övgü topladı.",
         "sources": [
           "r/LocalLLaMA",
-          "r/ollama"
+          "r/MachineLearning"
         ]
       }
     ]
@@ -1057,10 +1059,10 @@
         "hypeScore": 9.7,
         "sentiment": "stabil",
         "headline": "Video Üretiminde Lider",
-        "summary": "ComfyUI entegrasyonları ve referans videodan video üretme yetenekleriyle yaratıcı toplulukta sürekli popülerliğini koruyor.",
+        "summary": "Video üretiminde sağladığı hız ve kalite ile yaratıcı profesyoneller arasında popülerliğini korudu.",
         "sources": [
-          "r/ComfyUI",
-          "r/StableDiffusion"
+          "r/ArtificialInteligence",
+          "r/MachineLearning"
         ]
       }
     ]
@@ -1311,10 +1313,10 @@
         "hypeScore": 9.7,
         "sentiment": "stabil",
         "headline": "Tek Komutla Kurulum",
-        "summary": "Kolay kurulumu ve yerel modellerle entegrasyonu sayesinde geliştiriciler için cazip bir çözüm sunuyor.",
+        "summary": "Yerel AI deneyimini basitleştirmesi ve geliştiricilere hızlı bir başlangıç sunması nedeniyle büyük ilgi gördü.",
         "sources": [
-          "r/ollama",
-          "r/selfhosted"
+          "r/LocalLLaMA",
+          "r/devops"
         ]
       }
     ]
@@ -1481,10 +1483,11 @@
         "hypeScore": 9.3,
         "sentiment": "stabil",
         "headline": "Yerel Bellek",
-        "summary": "Ajanların geçmiş etkileşimlerini ve öğrenmelerini yerel olarak saklama yeteneği, daha tutarlı ve akıllı ajanlar geliştirmek için kritik görüldü.",
+        "summary": "Ajanların bağlamı koruma ve öğrenme yeteneklerini geliştirerek daha akıllı ve tutarlı davranışlar sergilemelerini sağladı.",
         "sources": [
+          "r/singularity",
           "r/LocalLLaMA",
-          "r/OpenSourceAI"
+          "r/ChatGPTCoding"
         ]
       }
     ]
@@ -1618,10 +1621,11 @@
         "hypeScore": 9.8,
         "sentiment": "stabil",
         "headline": "Yeni Açık Kaynak",
-        "summary": "Agent mimarilerinde esneklik ve verimlilik sağlayan yenilikçi yaklaşımıyla geliştiriciler arasında hızla benimsendi.",
+        "summary": "Agent mühendisliğinde verimliliği artıran ve maliyetleri düşüren yenilikçi yaklaşımıyla hızla popülerlik kazandı.",
         "sources": [
-          "r/OpenSourceAI",
-          "r/LocalLLaMA"
+          "r/LocalLLaMA",
+          "r/singularity",
+          "r/ChatGPTCoding"
         ]
       }
     ]
@@ -2100,8 +2104,8 @@
         "date": "11 Eylül 2026",
         "hypeScore": 6.2,
         "sentiment": "eleştirel",
-        "headline": "Regresyon",
-        "summary": "Masaüstü uygulamasından ekran paylaşımı özelliğinin kaldırılması ve 'mavi' eski uygulamanın kaybolması gibi regresyonlar kullanıcıların tepkisini çekti.",
+        "headline": "Yanıt Vermiyor",
+        "summary": "Kullanıcıların Copilot'un yanıt vermediği ve bağlantı sorunları yaşadığı şikayetleri, hizmetin güvenilirliği hakkında endişeler doğurdu.",
         "sources": [
           "r/Copilot",
           "r/ChatGPTCoding"
@@ -2171,10 +2175,11 @@
         "hypeScore": 9.3,
         "sentiment": "coşkulu",
         "headline": "Kurumsal Ajan Dağıtımı",
-        "summary": "Kurumsal düzeyde AI ajanlarının dağıtımını ve yönetimini kolaylaştırması, self-hosting esnekliği sunmasıyla öne çıktı.",
+        "summary": "Kurumsal düzeyde AI ajanlarının dağıtımını ve yönetimini kolaylaştırarak iş süreçlerinde verimlilik artışı sağladı.",
         "sources": [
-          "r/selfhosted",
-          "r/OpenSourceAI"
+          "r/devops",
+          "r/Cloud",
+          "r/ArtificialInteligence"
         ]
       }
     ]
@@ -2284,13 +2289,14 @@
       },
       {
         "date": "11 Eylül 2026",
-        "hypeScore": 9.5,
+        "hypeScore": 9.8,
         "sentiment": "coşkulu",
-        "headline": "Yeni Model",
-        "summary": "Yeni ve güçlü bir multimodal MoE modelinin piyasaya sürülmesi, özellikle yüksek bağlam penceresi ile yerel LLM topluluğunda büyük ilgi gördü.",
+        "headline": "Son 12 Saat Patlaması",
+        "summary": "Fable 5.1'i maliyetinin sadece %3'ü ile GPQA Diamond Clean'da geride bırakması ve yeni bir liderlik tablosunda öne çıkması büyük yankı uyandırdı.",
         "sources": [
-          "r/ollama",
-          "r/LocalLLaMA"
+          "r/DeepSeek",
+          "r/singularity",
+          "r/OpenAI"
         ]
       }
     ]
@@ -2708,12 +2714,12 @@
       {
         "date": "11 Eylül 2026",
         "hypeScore": 9.3,
-        "sentiment": "coşkulu",
+        "sentiment": "stabil",
         "headline": "Mac İçin Yeni Agent",
-        "summary": "Yerel LLM'ler için Claude/Codex benzeri bir GUI sunması, ajan takımları ve kalıcı hedefler gibi yenilikçi özellikleriyle dikkat çekti.",
+        "summary": "Mac ekosisteminde yerel ve güçlü bir ajan çözümü sunarak geliştiricilerin ilgisini çekti.",
         "sources": [
           "r/LocalLLaMA",
-          "r/OpenSourceAI"
+          "r/singularity"
         ]
       }
     ]
@@ -2829,7 +2835,7 @@
         "hypeScore": 6.5,
         "sentiment": "eleştirel",
         "headline": "Performans Sorunu",
-        "summary": "Her güncellemede boyutunun artması ve bilgisayarları yavaşlatması nedeniyle kullanıcılar tarafından eleştirildi, hafif yapısını kaybettiği düşünülüyor.",
+        "summary": "Sürekli güncellemeler, yavaş başlangıç süreleri ve yeni UI'ın MacOS ile uyumsuzluğu gibi sorunlar nedeniyle kullanıcılar alternatif arayışına girdi.",
         "sources": [
           "r/vscode",
           "r/vibecoding"
@@ -2850,6 +2856,210 @@
         "sources": [
           "r/runwayml",
           "r/artificial"
+        ]
+      }
+    ]
+  },
+  "swe2": {
+    "name": "SWE2",
+    "category": "Otonom Agent",
+    "history": [
+      {
+        "date": "11 Eylül 2026",
+        "hypeScore": 9.2,
+        "sentiment": "coşkulu",
+        "headline": "Geliştirici Favorisi",
+        "summary": "Pro abonelikte sınırsız kullanım vaadi ve önceki versiyonlara göre önemli ölçüde iyileştirilmiş stabilite ve performans ile olumlu ilk deneyimler paylaşıldı.",
+        "sources": [
+          "r/windsurf",
+          "r/ChatGPTCoding"
+        ]
+      }
+    ]
+  },
+  "claude-pulse": {
+    "name": "Claude Pulse",
+    "category": "Altyapı & SDK",
+    "history": [
+      {
+        "date": "11 Eylül 2026",
+        "hypeScore": 9,
+        "sentiment": "coşkulu",
+        "headline": "Yeni Araç",
+        "summary": "Claude'un uyarı vermeden kullanım limitine ulaşma sorununa çözüm sunması ve tamamen yerel çalışması nedeniyle geliştiricilerden büyük ilgi gördü.",
+        "sources": [
+          "r/ChatGPTCoding",
+          "r/ClaudeAI"
+        ]
+      }
+    ]
+  },
+  "gemini-pro": {
+    "name": "Gemini Pro",
+    "category": "LLM (Model)",
+    "history": [
+      {
+        "date": "11 Eylül 2026",
+        "hypeScore": 5.5,
+        "sentiment": "eleştirel",
+        "headline": "Regresyon",
+        "summary": "Son haftalarda bağlamı unutma ve önceki mesajları hatırlamama gibi ciddi regresyon sorunları nedeniyle kullanıcılar arasında hayal kırıklığı yarattı.",
+        "sources": [
+          "r/GoogleGemini",
+          "r/ArtificialInteligence"
+        ]
+      }
+    ]
+  },
+  "agentic-workflow": {
+    "name": "Agentic Workflow",
+    "category": "Otonom Agent",
+    "history": [
+      {
+        "date": "11 Eylül 2026",
+        "hypeScore": 6,
+        "sentiment": "eleştirel",
+        "headline": "Eleştiriliyor",
+        "summary": "Deneyimli geliştiriciler tarafından 'derinden yanlış' olduğu, ajanların gereksiz kod ekleyerek hatalara yol açtığı ve olgun kod tabanlarında verimsiz olduğu eleştirildi.",
+        "sources": [
+          "r/ChatGPTCoding",
+          "r/singularity"
+        ]
+      }
+    ]
+  },
+  "google-cloud-developer-plugin": {
+    "name": "Google Cloud Developer Plugin",
+    "category": "Altyapı & SDK",
+    "history": [
+      {
+        "date": "11 Eylül 2026",
+        "hypeScore": 8.8,
+        "sentiment": "coşkulu",
+        "headline": "Yeni Entegrasyon",
+        "summary": "Ajanların Google Cloud ile etkileşimini kolaylaştırarak geliştirici verimliliğini artırma potansiyeli nedeniyle dikkat çekti.",
+        "sources": [
+          "r/googlecloud",
+          "r/devops"
+        ]
+      }
+    ]
+  },
+  "nvidia-g-sync-pulsar": {
+    "name": "NVIDIA G-SYNC Pulsar",
+    "category": "Donanım",
+    "history": [
+      {
+        "date": "11 Eylül 2026",
+        "hypeScore": 8.7,
+        "sentiment": "coşkulu",
+        "headline": "Donanım İnovasyonu",
+        "summary": "Oyun deneyimini önemli ölçüde iyileştiren ve rekabetçi oyuncular için büyük bir avantaj sunan yeni bir teknoloji.",
+        "sources": [
+          "r/nvidia",
+          "r/hardware"
+        ]
+      }
+    ]
+  },
+  "google-cloud-billing-issue": {
+    "name": "Google Cloud Billing Issue",
+    "category": "Bulut & Platform",
+    "history": [
+      {
+        "date": "11 Eylül 2026",
+        "hypeScore": 4,
+        "sentiment": "coşkulu",
+        "headline": "Maliyet Şoku",
+        "summary": "Kullanıcıların eski, herkese açık API anahtarlarının geriye dönük olarak Gemini API yetenekleri kazanması ve 5 saat içinde 87K dolarlık fatura gelmesi, güvenlik ve uyarı sistemlerinin yetersizliğini gösterdi.",
+        "sources": [
+          "r/GoogleCloud",
+          "r/sysadmin"
+        ]
+      }
+    ]
+  },
+  "openai-account-deactivation": {
+    "name": "OpenAI Account Deactivation",
+    "category": "Şirket / Lab",
+    "history": [
+      {
+        "date": "11 Eylül 2026",
+        "hypeScore": 4.8,
+        "sentiment": "coşkulu",
+        "headline": "Sansür Eleştirisi",
+        "summary": "Tarım araştırması yapan bir biyoloji öğrencisinin hesabının, resmi belgeler sunulmasına rağmen askıya alınması, OpenAI'nin moderasyon politikalarının şeffaflığı ve adilliği konusunda tartışma yarattı.",
+        "sources": [
+          "r/OpenAI",
+          "r/singularity"
+        ]
+      }
+    ]
+  },
+  "aws-lambda-90-minute-timeout": {
+    "name": "AWS Lambda 90-Minute Timeout",
+    "category": "Bulut & Platform",
+    "history": [
+      {
+        "date": "11 Eylül 2026",
+        "hypeScore": 8.5,
+        "sentiment": "coşkulu",
+        "headline": "Altyapı Gelişimi",
+        "summary": "Daha uzun süreli arka plan işlemleri ve batch işleri için Lambda'nın kullanım alanını genişleterek sunucusuz mimarilerde esneklik sağladı.",
+        "sources": [
+          "r/Cloud",
+          "r/devops"
+        ]
+      }
+    ]
+  },
+  "rtx-5090-8-pin-mod": {
+    "name": "RTX 5090 8-Pin Mod",
+    "category": "Donanım",
+    "history": [
+      {
+        "date": "11 Eylül 2026",
+        "hypeScore": 8,
+        "sentiment": "coşkulu",
+        "headline": "Donanım Hack",
+        "summary": "NVIDIA'nın eriyen 16-pinli konektör sorunlarına alternatif bir çözüm sunması ve donanım meraklıları arasında ilgi uyandırması.",
+        "sources": [
+          "r/hardware",
+          "r/nvidia"
+        ]
+      }
+    ]
+  },
+  "cxmt-dram-investment": {
+    "name": "CXMT DRAM Investment",
+    "category": "Şirket / Lab",
+    "history": [
+      {
+        "date": "11 Eylül 2026",
+        "hypeScore": 7.8,
+        "sentiment": "coşkulu",
+        "headline": "Çip Savaşları",
+        "summary": "Çin'in yarı iletken bağımsızlığını artırma çabaları ve Samsung/SK Hynix gibi Koreli devlerle üretim kapasitesi farkını hızla kapatma potansiyeli nedeniyle jeopolitik önemi.",
+        "sources": [
+          "r/hardware",
+          "r/AMD_Stock"
+        ]
+      }
+    ]
+  },
+  "apple-watch-privacy": {
+    "name": "Apple Watch Privacy",
+    "category": "Donanım",
+    "history": [
+      {
+        "date": "11 Eylül 2026",
+        "hypeScore": 5,
+        "sentiment": "coşkulu",
+        "headline": "Gizlilik Endişesi",
+        "summary": "Yeni özelliğin gizlilik ve güvenlik üzerindeki potansiyel etkileri, özellikle hassas toplantılarda kayıt cihazı olarak algılanma riski nedeniyle tartışma yarattı.",
+        "sources": [
+          "r/hardware",
+          "r/sysadmin"
         ]
       }
     ]

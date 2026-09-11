@@ -38,7 +38,10 @@
     "2609.10534v1",
     "2609.10529v1",
     "2609.10525v1",
-    "2609.10505v1"
+    "2609.10505v1",
+    "2609.11923v1",
+    "2609.11918v1",
+    "2609.11917v1"
   ],
   "dailyRecords": [
     {
@@ -46,49 +49,47 @@
       "isoDate": "2026-09-11",
       "papers": [
         {
-          "id": "2609.10529v1",
-          "titleTr": "Boşluk-Entropi Varsayımının Pozitif Çözümü",
-          "title": "A positive resolution of the gap-entropy conjecture",
-          "arxivUrl": "http://arxiv.org/abs/2609.10529v1",
+          "id": "2609.11923v1",
+          "titleTr": "GPU-CFR: Oyunları Statik Veri Akışına ve CUDA Grafik Tekrarına Derleyerek 80 Kat Daha Hızlı Karşıolgusal Pişmanlık Minimizasyonu",
+          "title": "GPU-CFR: 80x Faster Counterfactual Regret Minimization by Compiling the Game to Static Dataflow and CUDA Graph Replay",
+          "arxivUrl": "http://arxiv.org/abs/2609.11923v1",
           "authors": [
-            "P. M. Aronow",
-            "Nathan Kallus",
-            "Patrick Lopatto"
+            "Boning Li",
+            "Longbo Huang"
           ],
           "category": "cs.AI",
           "impactScore": 9.7,
-          "whyMad": "Bu makale, bağımsız birim varyanslı Gauss kolları ile sabit güvenilirlikli en iyi kol tanımlaması için boşluk-entropi varsayımını kanıtlayarak, çok kollu haydut (multi-armed bandit) problemlerinde optimal örnek karmaşıklığına dair temel bir teorik sorunu çözüyor. Bu, adaptif deney tasarımında ve kaynak tahsisinde daha verimli algoritmaların geliştirilmesinin önünü açabilir.",
-          "summary": "Makale, en iyi kol tanımlama problemlerinde boşluk-entropi varsayımını kanıtlayarak, optimal kolu belirli bir güvenilirlikle bulmak için gereken örnek sayısının teorik alt sınırını belirliyor. Bu, özellikle keşif-sömürü dengesi gerektiren AI sistemleri için kritik bir teorik temel sunuyor."
+          "whyMad": "Bu makale, CPU'larda daha hızlı çalışan büyük sayısal iş yüklerinden biri olan Karşıolgusal Pişmanlık Minimizasyonu'nu (CFR) GPU'lara taşıyarak 80 kat hızlanma sağlıyor. Oyun ağacını statik veri akışına derleme ve CUDA Graph Replay kullanma yaklaşımı, AI ajanlarının karmaşık oyunlarda karar verme yeteneklerini devrim niteliğinde hızlandırabilir.",
+          "summary": "CFR'nin GPU'larda yavaş çalışmasının temel nedenlerini (çekirdek başlatma ve çerçeve dağıtım maliyetleri) ele alan bu çalışma, oyunları statik veri akışına derleyerek ve CUDA Graph Replay kullanarak bu darboğazları aşıyor. Bu sayede, milyarlarca durum içeren oyun ağaçlarında bile 80 kat hızlanma elde ediliyor ve AI'nın stratejik oyunlardaki uygulama potansiyeli artırılıyor."
         },
         {
-          "id": "2609.10525v1",
-          "titleTr": "Limit Durumunda Dil Üretimini Karakterize Etmek: Sonlu Tanıklıklar ve Ayrım-Genişliği Hiyerarşisi",
-          "title": "Characterizing Language Generation in the Limit: Finite Witnesses and a Separation-Width Hierarch",
-          "arxivUrl": "http://arxiv.org/abs/2609.10525v1",
+          "id": "2609.11918v1",
+          "titleTr": "Kovaryat ve Konsept Kaymalarının Genel Nicelendirilmesi",
+          "title": "General Quantification of Covariate and Concept Shifts",
+          "arxivUrl": "http://arxiv.org/abs/2609.11918v1",
           "authors": [
-            "Xiaoyu Li",
-            "Andi Han",
-            "Jiaojiao Jiang"
+            "Hongbo Chen",
+            "Li Charlie Xia"
           ],
-          "category": "cs.AI",
+          "category": "cs.LG",
           "impactScore": 9.6,
-          "whyMad": "Bu makale, dil üretiminin limit durumundaki davranışını karakterize ederek, AI modellerinin sonsuz dilleri nasıl öğrenebileceği ve üretebileceği konusunda derin teorik içgörüler sunuyor. 'Sonlu pozitif tanıklık' kavramı, modellerin genelleme yeteneklerini anlamak için yeni bir çerçeve sağlıyor.",
-          "summary": "Makale, limit durumunda dil üretimini, her hedefe sonlu bir pozitif tanıklık atanabildiği ve herhangi bir sonlu örnek tarafından etkinleştirilen hedeflerin sonsuz ortak bir kesişime sahip olduğu durumlarda mümkün olduğunu gösteriyor. Bu, LLM'lerin genelleme ve yeni veri üretme yeteneklerinin teorik sınırlarını anlamak için önemli bir adım."
+          "whyMad": "Dağıtım kayması altında genelleme, modern makine öğreniminde temel bir zorluk olmaya devam ediyor. Bu makale, mevcut konsept kayması tanımlarının kaynak ve hedef destekleri uyuşmadığında bozulduğunu göstererek, entropic optimal taşıma yoluyla yeni bir 'γ*-konsept kaymaları' kavramı öneriyor. Bu, teorik boşluğu kapatarak pratik uygulamalar için daha sağlam öğrenme sınırları sağlıyor.",
+          "summary": "Mevcut öğrenme sınırı teorilerinin sınırlı ve idealize edilmiş ayarlara bağlı kalması sorununu ele alan bu çalışma, konsept kaymasının yeni bir tanımını sunuyor. Entropic optimal taşıma kullanarak, dağıtım kayması altında genelleme yeteneğini daha doğru bir şekilde nicelendiren ve örneklerden tahmin edilebilir genel öğrenme sınırları türeten bir çerçeve geliştiriyor."
         },
         {
-          "id": "2609.10505v1",
-          "titleTr": "Kredi Temerrüt Tahmini için Kuantum Özellik Mühendisliği: IQP Devreleri Doğrusal Sınıflandırıcılara Ne Zaman ve Neden Yardımcı Olur?",
-          "title": "Quantum Feature Engineering for Credit Default Prediction: When and Why IQP Circuits Help Linear Classifiers",
-          "arxivUrl": "http://arxiv.org/abs/2609.10505v1",
+          "id": "2609.11917v1",
+          "titleTr": "Veri Kıtlığı ve Model Seyrekliği: Uzman Karışımları Tekrarlanan Verilere Daha Fazla Aşırı Uyar",
+          "title": "Data Scarcity and Model Sparsity: Mixtures-of-Experts Overfit More to Repeated Data",
+          "arxivUrl": "http://arxiv.org/abs/2609.11917v1",
           "authors": [
-            "Menachem Finkelstein",
-            "Diana Legziel Levy",
-            "Zohar Yakhini"
+            "Atindra Jha",
+            "Margaret Li",
+            "Jure Leskovec"
           ],
-          "category": "cs.AI",
+          "category": "cs.LG",
           "impactScore": 9.5,
-          "whyMad": "Bu çalışma, kredi temerrüt tahmini gibi kritik bir finansal problemde kuantum özellik mühendisliğinin (IQP devreleri kullanarak) klasik yöntemlere göre nasıl ve ne zaman üstünlük sağlayabileceğini gösteriyor. Modest F1 kazançlarının bile büyük finansal etkileri olduğu bir alanda, kuantum hesaplamanın pratik değerini ortaya koyması çığır açıcı.",
-          "summary": "Makale, kredi temerrüt tahmini için IQP devreleri kullanarak özellik mühendisliği yapmanın, hem ham klasik baseline'a hem de Kernel PCA gibi güçlü klasik alternatiflere göre sınıflandırıcı performansını nasıl artırdığını inceliyor. Bu, kuantum makine öğreniminin finansal uygulamalardaki potansiyelini somutlaştırıyor."
+          "whyMad": "İnsan tarafından yazılmış metin arzı tükendiği için dil modeli eğitim verilerini tekrarlamak standart bir uygulama haline geldi. Bu makale, Uzman Karışımları (MoE) gibi seyrek mimarilerin, yoğun Transformatörlere kıyasla tekrarlanan verilere daha fazla aşırı uyduğunu göstererek, veri tekrarının MoE modelleri üzerindeki etkilerini ilk kez derinlemesine inceliyor. Bu bulgu, gelecekteki büyük dil modeli eğitim stratejileri için kritik öneme sahip.",
+          "summary": "Çalışma, veri tekrar oranlarını tek ve çok alanlı veri karışımları ile MoE ayarları (uzman sayısı dahil) arasında değiştirerek, MoE modellerinin tekrarlanan verilere aşırı uyma eğilimini ortaya koyuyor. Bu, veri kıtlığı çağında MoE mimarilerini eğitirken veri tekrarı stratejilerinin yeniden değerlendirilmesi gerektiğini vurguluyor."
         }
       ]
     },
