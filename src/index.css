@@ -163,5 +163,11 @@
     row-gap: 0.5rem !important;
     height: 100% !important;
   }
+  .subgrid-card-glossary > *:first-child {
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+  }
 }
 

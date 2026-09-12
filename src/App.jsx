@@ -1155,8 +1155,8 @@ ${bulletsText}
                       key={item.id || `${cIdx}-${idx}`}
                       className="bg-white border border-[#e2e8f0] rounded p-3.5 hover:border-slate-400 transition flex flex-col justify-between subgrid-card-glossary shadow-2xs"
                     >
-                      {/* 1. Kavram Başlığı */}
-                      <div className="pb-1.5 border-b border-slate-100">
+                      {/* 1. Kavram Başlığı (h-full ile en uzun başlığa göre uzar, alt çizgi jilet gibi eşitlenir) */}
+                      <div className="pb-2 border-b border-slate-200 h-full flex flex-col justify-between">
                         <h4 className="font-mono font-bold text-xs sm:text-[13px] text-slate-900 tracking-tight leading-snug">
                           {item.term}
                         </h4>
@@ -1648,8 +1648,8 @@ ${bulletsText}
                           key={item.id || `${cIdx}-${idx}`}
                           className="bg-white border border-[#e2e8f0] rounded p-3.5 hover:border-slate-400 transition flex flex-col justify-between subgrid-card-glossary shadow-2xs"
                         >
-                          {/* 1. Kavram Başlığı */}
-                          <div className="pb-1.5 border-b border-slate-100">
+                          {/* 1. Kavram Başlığı (h-full ile en uzun başlığa göre uzar, alt çizgi jilet gibi eşitlenir) */}
+                          <div className="pb-2 border-b border-slate-200 h-full flex flex-col justify-between">
                             <h4 className="font-mono font-bold text-xs sm:text-[13px] text-slate-900 tracking-tight leading-snug">
                               {item.term}
                             </h4>
