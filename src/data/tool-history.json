@@ -237,6 +237,18 @@
           "r/ClaudeDev",
           "r/windsurf"
         ]
+      },
+      {
+        "date": "12 Eylül 2026",
+        "hypeScore": 6,
+        "sentiment": "eleştirel",
+        "headline": "Kullanım Limiti Sorunu",
+        "summary": "Mobil uygulama desteği eksikliği, 'role: user' gönderme hatası ve 'tüm kod tabanımı sildi' gibi eleştirilerle puan kaybetti.",
+        "sources": [
+          "r/ChatGPTCoding",
+          "r/ClaudeDev",
+          "r/ClaudeAI"
+        ]
       }
     ]
   },
@@ -558,6 +570,17 @@
           "r/singularity",
           "r/ClaudeAI"
         ]
+      },
+      {
+        "date": "12 Eylül 2026",
+        "hypeScore": 9.8,
+        "sentiment": "stabil",
+        "headline": "Sektör Standardı",
+        "summary": "Hafta boyunca istikrarlı yüksek performansını koruması ve geliştiriciler arasında güvenilir bir araç olarak öne çıkması.",
+        "sources": [
+          "r/ClaudeAI",
+          "r/ClaudeDev"
+        ]
       }
     ]
   },
@@ -664,6 +687,16 @@
           "r/nvidia",
           "r/hardware",
           "r/Cloud"
+        ]
+      },
+      {
+        "date": "12 Eylül 2026",
+        "hypeScore": 9.6,
+        "sentiment": "stabil",
+        "headline": "Altyapı Tekeli",
+        "summary": "AI altyapısındaki lider konumunu pekiştirmesi ve sektördeki etkisini sürdürmesi.",
+        "sources": [
+          "r/nvidia"
         ]
       }
     ]
@@ -993,6 +1026,16 @@
           "r/LocalLLaMA",
           "r/MachineLearning"
         ]
+      },
+      {
+        "date": "12 Eylül 2026",
+        "hypeScore": 9.7,
+        "sentiment": "stabil",
+        "headline": "10M İndirme Eşiği",
+        "summary": "10 milyon indirme eşiğini aşması ve 16GB RAM'li cihazlarda bile yüksek performans sunması.",
+        "sources": [
+          "r/LocalLLaMA"
+        ]
       }
     ]
   },
@@ -1148,6 +1191,16 @@
         "sources": [
           "Hugging Face",
           "r/LocalLLaMA"
+        ]
+      },
+      {
+        "date": "12 Eylül 2026",
+        "hypeScore": 8.9,
+        "sentiment": "stabil",
+        "headline": "Kodlama Performansı",
+        "summary": "Kimi K3 ile karşılaştırılarak büyük projeler, hata ayıklama ve refactoring için tavsiye edilmesi.",
+        "sources": [
+          "r/ChatGPTCoding"
         ]
       }
     ]
@@ -1489,6 +1542,16 @@
           "r/LocalLLaMA",
           "r/ChatGPTCoding"
         ]
+      },
+      {
+        "date": "12 Eylül 2026",
+        "hypeScore": 9.3,
+        "sentiment": "stabil",
+        "headline": "Yerel Bellek",
+        "summary": "Ajanların bağlamı koruması ve daha tutarlı yanıtlar üretmesi için kritik bir bileşen olarak öne çıkıyor.",
+        "sources": [
+          "r/singularity"
+        ]
       }
     ]
   },
@@ -1626,6 +1689,16 @@
           "r/LocalLLaMA",
           "r/singularity",
           "r/ChatGPTCoding"
+        ]
+      },
+      {
+        "date": "12 Eylül 2026",
+        "hypeScore": 9.8,
+        "sentiment": "stabil",
+        "headline": "Yeni Açık Kaynak",
+        "summary": "Ajan mühendisliği alanında yeni ve güçlü bir açık kaynak çözüm olarak hızla benimsenmesi.",
+        "sources": [
+          "r/LocalLLaMA"
         ]
       }
     ]
@@ -1908,6 +1981,16 @@
         "sources": [
           "r/vibecoding"
         ]
+      },
+      {
+        "date": "12 Eylül 2026",
+        "hypeScore": 9.3,
+        "sentiment": "coşkulu",
+        "headline": "Yeni Metodoloji",
+        "summary": "ADD'li geliştiricilerin AI ile 'şimşek gibi hareket ettiğini' ve 'bütün gün vibe code'ladığını' belirten paylaşımlarla popülerlik kazandı.",
+        "sources": [
+          "r/vibecoding"
+        ]
       }
     ]
   },
@@ -2083,6 +2166,16 @@
         "sources": [
           "r/windsurf"
         ]
+      },
+      {
+        "date": "12 Eylül 2026",
+        "hypeScore": 5.5,
+        "sentiment": "eleştirel",
+        "headline": "Maliyet Eleştirisi",
+        "summary": "20 dolarlık plandaki kullanım limitlerinin düşük bulunması ve yüksek token tüketimi eleştirileriyle gündemde.",
+        "sources": [
+          "r/windsurf"
+        ]
       }
     ]
   },
@@ -2180,6 +2273,16 @@
           "r/devops",
           "r/Cloud",
           "r/ArtificialInteligence"
+        ]
+      },
+      {
+        "date": "12 Eylül 2026",
+        "hypeScore": 9.3,
+        "sentiment": "stabil",
+        "headline": "Kurumsal Ajan Dağıtımı",
+        "summary": "Kurumsal düzeyde ajan dağıtımı ve otomasyon yetenekleriyle dikkat çekiyor.",
+        "sources": [
+          "r/devops"
         ]
       }
     ]
@@ -2297,6 +2400,16 @@
           "r/DeepSeek",
           "r/singularity",
           "r/OpenAI"
+        ]
+      },
+      {
+        "date": "12 Eylül 2026",
+        "hypeScore": 9.5,
+        "sentiment": "coşkulu",
+        "headline": "Görsel Modelleme",
+        "summary": "Blender script modellemede V4 Flash'a kıyasla 'muazzam ilerleme' kaydetmesi ve 'sevimli balina hizmetçi kız' imajıyla dikkat çekmesi.",
+        "sources": [
+          "r/DeepSeek"
         ]
       }
     ]
@@ -2721,6 +2834,16 @@
           "r/LocalLLaMA",
           "r/singularity"
         ]
+      },
+      {
+        "date": "12 Eylül 2026",
+        "hypeScore": 9.3,
+        "sentiment": "stabil",
+        "headline": "Mac İçin Yeni Agent",
+        "summary": "Mac ekosisteminde yerel ve verimli bir ajan çözümü sunmasıyla ilgi görüyor.",
+        "sources": [
+          "r/LocalLLaMA"
+        ]
       }
     ]
   },
@@ -2874,6 +2997,16 @@
           "r/windsurf",
           "r/ChatGPTCoding"
         ]
+      },
+      {
+        "date": "12 Eylül 2026",
+        "hypeScore": 9.2,
+        "sentiment": "stabil",
+        "headline": "Geliştirici Favorisi",
+        "summary": "Geliştiriciler arasında kodlama verimliliğini artıran güçlü bir araç olarak kabul görüyor.",
+        "sources": [
+          "r/ChatGPTCoding"
+        ]
       }
     ]
   },
@@ -2941,6 +3074,16 @@
         "sources": [
           "r/googlecloud",
           "r/devops"
+        ]
+      },
+      {
+        "date": "12 Eylül 2026",
+        "hypeScore": 8.8,
+        "sentiment": "coşkulu",
+        "headline": "Ajan Entegrasyonu",
+        "summary": "Kodlama ajanlarının Google Cloud Platform ile entegrasyonunu kolaylaştırması ve geliştirici verimliliğini artırması.",
+        "sources": [
+          "r/googlecloud"
         ]
       }
     ]
@@ -3060,6 +3203,154 @@
         "sources": [
           "r/hardware",
           "r/sysadmin"
+        ]
+      }
+    ]
+  },
+  "nvidia-rtx-5090": {
+    "name": "NVIDIA RTX 5090",
+    "category": "Donanım",
+    "history": [
+      {
+        "date": "12 Eylül 2026",
+        "hypeScore": 9,
+        "sentiment": "coşkulu",
+        "headline": "Donanım İnovasyonu",
+        "summary": "Modder'ların 16-pin yerine 8-pin konektörlerle çalıştırması ve fiyat artışlarına rağmen yüksek sevkiyat rakamları ile gündemde.",
+        "sources": [
+          "r/nvidia",
+          "r/hardware"
+        ]
+      }
+    ]
+  },
+  "lm-studio": {
+    "name": "LM Studio",
+    "category": "Altyapı & SDK",
+    "history": [
+      {
+        "date": "12 Eylül 2026",
+        "hypeScore": 6.5,
+        "sentiment": "eleştirel",
+        "headline": "API Hatası",
+        "summary": "Mistralai/devstral-small-2-2512 modelini çalıştırırken API'ye fazladan 'role: user' gönderme hatasıyla eleştiriliyor.",
+        "sources": [
+          "r/ChatGPTCoding"
+        ]
+      }
+    ]
+  },
+  "anthropic-researcher-concerns": {
+    "name": "Anthropic Researcher Concerns",
+    "category": "Şirket / Lab",
+    "history": [
+      {
+        "date": "12 Eylül 2026",
+        "hypeScore": 4.5,
+        "sentiment": "eleştirel",
+        "headline": "Etik Kriz",
+        "summary": "Anthropic araştırmacısının 'hayatta kalma şansımız için hisselerimi yakarım' ve 'korkuyoruz' açıklamalarıyla büyük yankı uyandırdı.",
+        "sources": [
+          "r/ArtificialInteligence",
+          "r/Anthropic"
+        ]
+      }
+    ]
+  },
+  "copilot-m365-student": {
+    "name": "Copilot M365 Student",
+    "category": "LLM (Model)",
+    "history": [
+      {
+        "date": "12 Eylül 2026",
+        "hypeScore": 7,
+        "sentiment": "eleştirel",
+        "headline": "Kullanım Kısıtlaması",
+        "summary": "Öğrenci sürümünün yerel kodlama için nasıl kullanılacağı konusundaki belirsizlikler ve kısıtlamalar tartışılıyor.",
+        "sources": [
+          "r/CursorAI",
+          "r/Copilot"
+        ]
+      }
+    ]
+  },
+  "rhi-dlss-tool": {
+    "name": "RHI",
+    "category": "Altyapı & SDK",
+    "history": [
+      {
+        "date": "12 Eylül 2026",
+        "hypeScore": 8.7,
+        "sentiment": "stabil",
+        "headline": "Oyun Optimizasyonu",
+        "summary": "DLSS 5 neural rendering ve RTX 30/40 serisi için MFG gibi özelliklerin tek tıkla kurulumunu sunmasıyla övgü topluyor.",
+        "sources": [
+          "r/nvidia"
+        ]
+      }
+    ]
+  },
+  "google-gemini-p-np": {
+    "name": "Google Gemini",
+    "category": "LLM (Model)",
+    "history": [
+      {
+        "date": "12 Eylül 2026",
+        "hypeScore": 9,
+        "sentiment": "coşkulu",
+        "headline": "Bilimsel İddia",
+        "summary": "P=NP problemini çözdüğü iddiaları ve Google Assistant yerine Gemini'ı zorlama tartışmalarıyla gündemde.",
+        "sources": [
+          "r/singularity",
+          "r/GoogleGemini"
+        ]
+      }
+    ]
+  },
+  "nvidia-gpu-shipments": {
+    "name": "NVIDIA GPU Shipments",
+    "category": "Donanım",
+    "history": [
+      {
+        "date": "12 Eylül 2026",
+        "hypeScore": 8.8,
+        "sentiment": "stabil",
+        "headline": "Pazar Lideri",
+        "summary": "Masaüstü eklenti kartı GPU sevkiyatlarının dört yılın en yüksek seviyesine ulaşması ve NVIDIA'nın %90 pazar payı.",
+        "sources": [
+          "r/hardware"
+        ]
+      }
+    ]
+  },
+  "ollama-self-hosted-ai-workspace": {
+    "name": "Ollama Tabanlı Self-Hosted AI Workspace",
+    "category": "Altyapı & SDK",
+    "history": [
+      {
+        "date": "12 Eylül 2026",
+        "hypeScore": 9.7,
+        "sentiment": "stabil",
+        "headline": "Tek Komutla Kurulum",
+        "summary": "Kolay kurulumu ve yerel AI geliştirme için sunduğu kapsamlı ortam ile popülerliğini koruyor.",
+        "sources": [
+          "r/LocalLLaMA"
+        ]
+      }
+    ]
+  },
+  "folio": {
+    "name": "Folio",
+    "category": "Otomasyon",
+    "history": [
+      {
+        "date": "12 Eylül 2026",
+        "hypeScore": 9.1,
+        "sentiment": "stabil",
+        "headline": "Üretkenlik Aracı",
+        "summary": "Claude ve Remarkable entegrasyonu ile üretkenliği artırması.",
+        "sources": [
+          "r/ChatGPTCoding"
         ]
       }
     ]

@@ -1,6 +1,6 @@
 ================================================================================
 🤖 AITRENDLERI.COM OTONOM TARAMA VE ANALİZ TERMİNAL RAPORU
-Tarih: 11 Eylül 2026 | İşlem Süresi: 393s
+Tarih: 12 Eylül 2026 | İşlem Süresi: 399s
 ================================================================================
 
 [1. MODEL & ŞELALE AKTİVİTESİ]
@@ -13,28 +13,28 @@ Tarih: 11 Eylül 2026 | İşlem Süresi: 393s
   ✔ Başarılı Kategori / Batch   : 3 / 7
   ------------------------------------------------------------------------------
   1. [🟢 OK 200] Vibe Coding & Yeni Nesil Editörler: 15 gönderi
-     └─ Dağılım: r/ClaudeAI: 2, r/vibecoding: 1, r/vscode: 3, r/ChatGPTCoding: 4, r/windsurf: 2, r/Copilot: 1, r/CursorAI: 1, r/ClaudeDev: 1
+     └─ Dağılım: r/ClaudeAI: 5, r/vibecoding: 2, r/ChatGPTCoding: 3, r/vscode: 1, r/windsurf: 1, r/Copilot: 1, r/CursorAI: 1, r/ClaudeDev: 1
   2. [🔴 ERR 429] Otonom Ajanlar & Süreç Otomasyonu: 0 gönderi
      └─ Hata/Uyarı: Reddit HTTP 429 (Rate Limit)
   3. [🟢 OK 200] Büyük Dil Modelleri & Araştırma Devleri: 15 gönderi
-     └─ Dağılım: r/singularity: 3, r/OpenAI: 2, r/ArtificialInteligence: 2, r/DeepSeek: 3, r/Anthropic: 2, r/MachineLearning: 2, r/GoogleGemini: 1
+     └─ Dağılım: r/singularity: 3, r/ArtificialInteligence: 2, r/OpenAI: 3, r/MachineLearning: 1, r/DeepSeek: 2, r/Anthropic: 3, r/GoogleGemini: 1
   4. [🔴 ERR 429] Açık Kaynak, Yerel Modeller & Self-Hosted: 0 gönderi
      └─ Hata/Uyarı: Reddit HTTP 429 (Rate Limit)
   5. [🔴 ERR 429] Yazılım Geliştirici, API & Kodlama Dünyası: 0 gönderi
      └─ Hata/Uyarı: Reddit HTTP 429 (Rate Limit)
   6. [🟢 OK 200] Donanım, GPU, CPU & Bulut Altyapısı: 15 gönderi
-     └─ Dağılım: r/hardware: 3, r/AMD_Stock: 1, r/sysadmin: 2, r/nvidia: 1, r/googlecloud: 2, r/Cloud: 4, r/devops: 2
+     └─ Dağılım: r/devops: 1, r/sysadmin: 2, r/nvidia: 3, r/hardware: 2, r/AMD_Stock: 2, r/Cloud: 2, r/googlecloud: 3
   7. [🔴 ERR 429] Görsel, Video & Medya Üretimi: 0 gönderi
      └─ Hata/Uyarı: Reddit HTTP 429 (Rate Limit)
 
 [3. SUBREDDİT VERİTABANI İÇGÖRÜLERİ (src/data/subreddit-stats.json)]
   ✔ Toplam Takip Edilen Subreddit : 49
-  ✔ Yüksek Sinyal Verenler        : 17
-  ✔ Aktif Düzenli Kaynaklar       : 20
+  ✔ Yüksek Sinyal Verenler        : 29
+  ✔ Aktif Düzenli Kaynaklar       : 8
   ✔ Düşük Sinyal / Takiptekiler   : 12
   ✔ Sıfır Çekenler (Dead Sub)     : 0
   ------------------------------------------------------------------------------
-  🏆 En Çok Katkı Sağlayanlar: r/ClaudeAI (22), r/vibecoding (18), r/ChatGPTCoding (17), r/LLMDevs (17), r/vscode (16)
+  🏆 En Çok Katkı Sağlayanlar: r/ClaudeAI (27), r/vibecoding (20), r/ChatGPTCoding (20), r/vscode (17), r/LLMDevs (17)
   ⚠️ Düşük Sinyal Verenler   : r/copilot, r/CrewAI, r/agenticai, r/Singularity, r/vllm, r/AI_Tools, r/GenerativeAI, r/GoogleCloud, r/ComfyUI, r/Midjourney, r/Sora, r/RunwayML
   🚫 Değiştirilmesi Önerilen : Yok (Tümü veri sağlıyor)
 
@@ -45,7 +45,7 @@ Tarih: 11 Eylül 2026 | İşlem Süresi: 393s
   ✔ GitHub Radar        : 6 repo
 
 [5. GÜNÜN ORGANİK 1 NUMARALI LİDERİ]
-  👑 DeepSeek V4.1 Flash (Skor: 99/100 - Günün Lideri)
-  📝 Neden Seçildi: Fable 5.1'i maliyetinin sadece %3'ü ile GPQA Diamond Clean'da geride bırakması ve yeni bir liderlik tablosunda öne çıkması büyük yankı uyandırdı.
+  👑 DeepSeek V4.1 Flash (Skor: 99/100 - Görsel Modelleme)
+  📝 Neden Seçildi: Blender script modellemede V4 Flash'a kıyasla 'muazzam ilerleme' kaydetmesi ve 'sevimli balina hizmetçi kız' imajıyla dikkat çekmesi.
 
 ================================================================================

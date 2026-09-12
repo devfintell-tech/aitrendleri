@@ -41,9 +41,61 @@
     "2609.10505v1",
     "2609.11923v1",
     "2609.11918v1",
-    "2609.11917v1"
+    "2609.11917v1",
+    "2609.11916v1",
+    "2609.11915v1",
+    "2609.11911v1"
   ],
   "dailyRecords": [
+    {
+      "date": "12 Eylül 2026",
+      "isoDate": "2026-09-12",
+      "papers": [
+        {
+          "id": "2609.11916v1",
+          "titleTr": "Uç Noktada Dağıtılabilir Görsel-Dil Modelleri Türleri Tanımlayabilir mi?",
+          "title": "Can Edge-Deployable Vision-Language Models Identify Species?",
+          "arxivUrl": "http://arxiv.org/abs/2609.11916v1",
+          "authors": [
+            "William Zhou",
+            "Mayukha Siripuram",
+            "Xiao Yan"
+          ],
+          "category": "cs.AI",
+          "impactScore": 9.6,
+          "whyMad": "Bu makale, küçük, yerel olarak dağıtılabilir VLM'lerin (2-8B parametre aralığı) tür tanımlama yeteneklerini test ederek, pratik saha uygulamaları için büyük modeller yerine daha erişilebilir çözümlerin potansiyelini ortaya koyuyor. Bu, AI'nın gerçek dünya, kısıtlı kaynaklı ortamlarda nasıl kullanılabileceğine dair ezber bozan bir bakış açısı sunuyor.",
+          "summary": "Makale, kamera tuzakları gibi uç donanımlarda çalışan küçük görsel-dil modellerinin (VLM) tür tanımlama yeteneklerini değerlendiriyor. Qwen3-VL ve Gemma3 gibi modelleri BioCLIP ile karşılaştırarak, bu modellerin taksonomik bilgi taşıyıp taşımadığını inceliyor ve dağıtım açısından ilgili 2-8B parametre aralığındaki modellerin pratik önemini vurguluyor."
+        },
+        {
+          "id": "2609.11915v1",
+          "titleTr": "Üretken Pazarlama Karması Modellemesi: GEO ve GEM'i İş Etkisine Bağlayan Nedensel Çıkarım Çerçevesi",
+          "title": "Generative Marketing Mix Modeling: A Causal Inference Framework Linking GEO and GEM to Business Impact",
+          "arxivUrl": "http://arxiv.org/abs/2609.11915v1",
+          "authors": [
+            "Masahiro Kato",
+            "Daiki Honma",
+            "Taka Kato"
+          ],
+          "category": "cs.AI",
+          "impactScore": 9.5,
+          "whyMad": "Üretken yapay zekanın pazarlama üzerindeki etkisini ölçmek için yeni bir nedensel çıkarım çerçevesi sunması, firmaların AI destekli pazarlama stratejilerini optimize etmeleri için kritik bir araç sağlıyor. 'Generative Engine Optimization (GEO)' ve 'Generative Engine Marketing (GEM)' kavramlarını iş etkisiyle ilişkilendirmesi, pazarlama dünyasında devrim niteliğinde bir yaklaşım.",
+          "summary": "Makale, üretken yapay zekanın firmaların müşterilere ulaşma biçimlerini değiştirmesiyle ortaya çıkan yeni bir pazarlama karması modellemesi (GMMM) geliştiriyor. GMMM, Üretken Motor Optimizasyonu (GEO) ve Üretken Motor Pazarlaması (GEM) gibi yeni pazarlama kanallarının nedensel etkilerini tahmin etmek için tasarlanmıştır. Bu çerçeve, üretilen yanıtları, soru sayılarını, kullanım paylarını ve farkındalık olasılıklarını birleştirerek AI destekli pazarlama stratejilerinin etkinliğini ölçmeyi amaçlar."
+        },
+        {
+          "id": "2609.11911v1",
+          "titleTr": "Yapay Kimlik: Ajanik Yapay Zekada Sürücü ve Kalıcı Hizalama",
+          "title": "Artificial Id: Drive and Persistent Alignment in Agentic AI",
+          "arxivUrl": "http://arxiv.org/abs/2609.11911v1",
+          "authors": [
+            "Yakov Pyotr Shkolnikov"
+          ],
+          "category": "cs.AI",
+          "impactScore": 9.4,
+          "whyMad": "Ajanik AI'nın sınırlı görevlerden sürekli çalışan sistemlere geçişinde ortaya çıkan kontrol sorununa 'yapay kimlik' kavramıyla yenilikçi bir çözüm sunuyor. Bu, ajanların davranışlarını harici müdahale olmadan adaptif bir iç sürücüyle belirlemesini sağlayarak, daha otonom ve hizalı AI sistemleri geliştirmenin kapısını aralıyor.",
+          "summary": "Makale, ajanik yapay zekanın görevler arası adaptasyon ve sürekli çalışma yeteneği kazanmasıyla ortaya çıkan kontrol sorununu ele alıyor. Mevcut sistemlerin dışarıdan belirlenen hedeflerle çalıştığını belirterek, davranışın devam edip etmeyeceğini, durup durmayacağını veya değişip değişmeyeceğini belirleyen adaptif bir 'yapay kimlik' (internal drive) öneriyor. Bu, ajanların daha otonom ve kendi kendini yöneten sistemler haline gelmesi için yeni bir paradigma sunuyor."
+        }
+      ]
+    },
     {
       "date": "11 Eylül 2026",
       "isoDate": "2026-09-11",
