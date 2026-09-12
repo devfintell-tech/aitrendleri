@@ -444,6 +444,17 @@ async function callGemini(model, apiKey, prompt) {
     });
   }
 
+  // Google geçici sunucu yoğunluğunda (HTTP 503) 4 saniye bekleyip 1 kez daha dener
+  if (!res.ok && res.status === 503) {
+    console.log("⏳ Google 503 (Sunucu yoğunluğu) verdi. 4 saniye beklenip tekrar deneniyor...");
+    await new Promise(r => setTimeout(r, 4000));
+    res = await fetch(apiUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+  }
+
   if (!res.ok) {
     throw new Error(`HTTP ${res.status}: ${await res.text()}`);
   }
@@ -454,14 +465,21 @@ async function callGemini(model, apiKey, prompt) {
 }
 
 /**
- * EN YÜKSEK ÖNCELİK: gemini-3.8-flash İLK SIRADA ÇALIŞIR!
+ * ŞELALE SİSTEMİ: En yüksekten adım adım en aşağıya, en iyiden hafife doğru akar.
  */
 async function generateWithWaterfall(prompt) {
   const MODELS = [
-    "gemini-3.8-flash", // 🥇 1. ÖNCELİK: Hızlı, yüksek bağlamlı ve taze model
-    "gemini-3.7-flash", // 🥈 2. ÖNCELİK: Gelişmiş akıl yürütmeli flaş model
-    "gemini-2.5-flash", // 🥉 3. ÖNCELİK: Hafif ve ultra hızlı yedek model
-    "gemini-2.5-pro"    // 🏅 4. ÖNCELİK: Derin muhakeme ve analitik yedek model
+    "gemini-3.8-flash",         // 🥇 1. ÖNCELİK: En güncel amiral gemisi flaş model
+    "gemini-3.7-flash",         // 🥈 2. ÖNCELİK: Gelişmiş akıl yürütmeli flaş model
+    "gemini-3.6-flash",         // 🥉 3. ÖNCELİK: 3.6 sürümü flaş model
+    "gemini-3.5-flash",         // 4. 3.5 sürümü flaş model
+    "gemini-3.5-flash-lite",    // 5. 3.5 sürümü hafif flaş model
+    "gemini-3.1-flash-lite",    // 6. 3.1 sürümü hafif flaş model
+    "gemini-3-flash-preview",   // 7. 3.0 önizleme flaş model
+    "gemini-flash-latest",      // 8. En son kararlı flaş model
+    "gemini-flash-lite-latest", // 9. En son hafif flaş model
+    "gemini-2.5-flash",         // 10. 2.5 nesli flaş model
+    "gemini-2.5-flash-lite"     // 11. 2.5 nesli hafif flaş model
   ];
 
   for (const model of MODELS) {
