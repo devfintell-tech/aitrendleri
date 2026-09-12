@@ -81,3 +81,21 @@ Bu belge, bu projenin tüm tasarım, veri mimarisi ve geliştirme standartların
 1. **Dondurulmuş Zaman Kapsülleri (Snapshots):**
    - Her günün analizi `src/data/archive/YYYY-MM-DD.json` dosyasına kaydedilir ve mühürlenir.
    - Kullanıcı geçmiş bir tarihi seçtiğinde harici hiçbir bot, LLM veya scraping çalıştırılamaz; veri doğrudan statik JSON'dan 1 milisaniyede okunur.
+
+---
+
+## 📖 7. Günün Sözlüğü (AI, Yazılım & Donanım Kavramları) Standartları
+
+1. **Yalnızca ve Yalnızca Sitede Bizzat Geçen Kavramlar Şartı:**
+   - Sözlükteki kavramlar kesinlikle o günkü sitede (ArXiv makaleleri, GitHub repoları, Hugging Face modelleri, Hacker News tartışmaları, Sabah Özeti ve Danışman Raporu) bizzat geçen terim, mimari ve jargonlardan seçilmelidir.
+   - Sitede bahsi geçmeyen, genel Reddit veya internet gündeminde kalmış hiçbir kavram sözlüğe ALINAMAZ.
+   - Her kavram kartında `appearsIn` (Sitede Nerede Geçti?) alanı zorunludur ve sitedeki ilgili kartı doğrudan işaret etmelidir (Örn: *«🤗 Hugging Face: DeepSeek V3 kartında»*, *«🐙 GitHub: worldmonitor & Crucix repolarında»*).
+
+2. **Zorunlu Veri Formatı (Tam 6 Kavram):**
+   - Her kavram için `id`, `term`, `appearsIn`, `category`, `definition` (Sade Anlamı), `whyItMatters` (Günün Önemi & Site Bağlantısı) ve `tags` alanları eksiksiz olmalıdır.
+
+3. **Subgrid Hizalaması & Sıfır Kaydırma Çubuğu:**
+   - `.subgrid-row-glossary` ve `.subgrid-card-glossary` CSS Subgrid mimarisi ile yönetilir.
+   - Kartların hiçbirinde dikey veya yatay kaydırma çubuğu KULLANILAMAZ.
+   - Tanım (`definition`) ve Günün Önemi (`whyItMatters`) kutuları o satırdaki en uzun kutuya göre doğal uzar ve taban çizgileri daima aynı hizada biter.
+

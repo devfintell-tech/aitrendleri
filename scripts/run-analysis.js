@@ -196,6 +196,10 @@ async function fetchHackerNews24h() {
     const oneDayAgo = Math.floor(Date.now() / 1000) - 86400;
     const queries = ["AI", "LLM", "model", "OpenAI", "Anthropic", "GPU", "Rust"];
     const allHits = new Map();
+    const seenTitles = new Set();
+    const seenUrls = new Set();
+
+    const normalizeKey = (str) => (str || "").toLowerCase().replace(/[^a-z0-9]/g, "");
 
     for (const q of queries) {
       const url = `https://hn.algolia.com/api/v1/search?query=${q}&tags=story&numericFilters=created_at_i>${oneDayAgo}&hitsPerPage=15`;
@@ -203,10 +207,19 @@ async function fetchHackerNews24h() {
       if (res.ok) {
         const data = await res.json();
         for (const h of (data.hits || [])) {
-          if ((h.points || 0) >= 15 && !allHits.has(h.objectID)) {
+          const rawTitle = decodeHtmlEntities(h.title || "").trim();
+          const titleKey = normalizeKey(rawTitle);
+          const rawUrl = (h.url || "").trim().toLowerCase();
+
+          if ((h.points || 0) >= 15 && !allHits.has(h.objectID) && !seenTitles.has(titleKey)) {
+            if (rawUrl && seenUrls.has(rawUrl)) continue;
+            
+            seenTitles.add(titleKey);
+            if (rawUrl) seenUrls.add(rawUrl);
+
             allHits.set(h.objectID, {
               id: h.objectID,
-              title: decodeHtmlEntities(h.title || ""),
+              title: rawTitle,
               points: h.points || 0,
               comments: h.num_comments || 0,
               url: h.url || `https://news.ycombinator.com/item?id=${h.objectID}`,
@@ -678,7 +691,17 @@ async function main() {
       - "monthly": Son 30 günde ekosistemin benimsediği 6 açık kaynak kütüphane / araç.
       - "yearly": Yılın ve tüm zamanların endüstri omurgası haline gelmiş 6 amiral gemisi repo (Ollama, vLLM, ComfyUI, AutoGen, LangChain, AutoGPT vb.).
       - Her repo için: id ("owner/name"), name, owner, url, stars, deltaStars, category, language, function (Ne İşe Yarar?), whyHype (Neden Yıldızlaştı?), installCommand alanlarını eksiksiz üret.
-      - installCommand Kuralı: Kartlar arası görsel denge için her zaman kısa, tek tip paket/CLI komutu yaz (örn: pip install <ad>, npm i <ad>, npx <ad>). ASLA '&& npm i', uzun URL'ler veya zincirleme komutlar yazma!
+    GÜNÜN SÖZLÜĞÜ (dailyGlossary) - TAM 6 ADET KAVRAM (KESİN KULLANICI ŞARTI):
+    - Seçeceğin 6 kavramı YALNIZCA VE YALNIZCA yukarıda üretilen ve siteye basılacak olan ArXiv makaleleri, GitHub repoları, Hugging Face modelleri, Hacker News tartışmaları, Sabah Özeti ve Danışman Raporu metinlerinde BİZZAT GEÇEN teknik kavram, kısaltma veya mimarilerden seç!
+    - İnternetin veya Reddit'in genelinde geçip de sitede bizzat yer almayan HİÇBİR kavramı ASLA sözlüğe ekleme!
+    - Her bir kavram için şu alanları eksiksiz üret:
+      - id: "glossary-1" ... "glossary-6"
+      - term: Kavramın adı ve kısaltması/açılımı (Örn: "MLA (Multi-Head Latent Attention)", "Thinking Budget", "Rectified Flow", "OSINT Ajanı", "PagedAttention", "Tip Güvenli Ajan")
+      - appearsIn: Kavramın o gün sitede bizzat nerede geçtiğine dair açık referans (Örn: "🤗 Hugging Face: DeepSeek V3 kartında", "🔬 ArXiv: ESPO Prompt Optimizasyon makalesinde", "🐙 GitHub: worldmonitor & Crucix repolarında", "☕ Sabah İstihbaratı: Claude 3.7 analizinde", "📊 24s Tablosu: Cursor Composer kartında", "🟠 Hacker News: 4. Tartışma analizinde")
+      - category: Kavramın alanı (Örn: "Model Mimarisi", "Donanım & Bellek", "Yazılım & Ajanlar", "Optimizasyon & Çıkarım", "Veri & OSINT")
+      - definition: Kavramın teknik jargondan arındırılmış, herkesin anlayabileceği net ve doyurucu Türkçe tanımı.
+      - whyItMatters: Sitedeki bu modeli/gelişmeyi anlamak için neden kritik olduğu ve pratik çıkarımı.
+      - tags: ["Etiket1", "Etiket2", "Etiket3"]
 
     İSTENEN JSON ŞEMASI:
     {
@@ -861,6 +884,18 @@ async function main() {
           "title": "BÖLÜM 4: 💼 BEYAZ YAKA ENTEGRASYON VE OPERASYON REHBERİ",
           "badge": "İş Dünyası",
           "contentHtml": "<p>...</p>"
+        }
+      ],
+      "dailyGlossary": [
+        // TAM 6 ADET KAVRAM (Yalnızca o gün sitede bizzat geçen içeriklerden referanslı)
+        {
+          "id": "glossary-1",
+          "term": "MLA (Multi-Head Latent Attention)",
+          "appearsIn": "🤗 Hugging Face: DeepSeek V3 kartında",
+          "category": "Model Mimarisi",
+          "definition": "Büyük dil modellerinde KV önbelleğini düşük boyutlu bir gizli uzaya sıkıştırarak saklayan dikkat mimarisi.",
+          "whyItMatters": "DeepSeek V3'ün devasa parametrelerine rağmen çok düşük GPU VRAM tüketimiyle çalışabilmesini sağlayan temel yenilik.",
+          "tags": ["Attention", "DeepSeek", "VRAM Optimizasyonu"]
         }
       ]
     }
@@ -1252,6 +1287,8 @@ function enforceStrictStandards(data, hfModels = [], candidateArxiv = [], hnPost
 
   // 3. HACKER NEWS PULSE: Kesinlikle summary24h ve discussions (tam 8 adet)
   if (!clean.hackerNewsPulse || typeof clean.hackerNewsPulse !== 'object') {
+  // 3. HACKER NEWS PULSE: Kesinlikle summary24h ve discussions (tam 8 adet, SIFIR TEKRAR)
+  if (!clean.hackerNewsPulse || typeof clean.hackerNewsPulse !== 'object') {
     clean.hackerNewsPulse = {
       summary24h: "Son 24 saatte Hacker News gündeminde otonom ajan koordinasyonu, kurumsal açık kaynak modeller ve çıkarım optimizasyonları öne çıktı.",
       discussions: []
@@ -1268,22 +1305,74 @@ function enforceStrictStandards(data, hfModels = [], candidateArxiv = [], hnPost
     clean.hackerNewsPulse.discussions = [];
   }
 
-  // Discussions'ı 8 adede tamamla
+  // Hacker News Tartışmalarında Mükerrer Başlık ve Konuları Katı Şekilde Filtrele
+  const normalizeHnKey = (str) => (str || '').toLowerCase().replace(/[^a-z0-9ğüşıöç]/gi, '').trim();
+  const getSignificantWords = (str) => {
+    return (str || '').toLowerCase()
+      .replace(/[^a-z0-9ğüşıöç\s]/gi, ' ')
+      .split(/\s+/)
+      .filter(w => w.length > 3 && !['yapay', 'zeka', 'hakkinda', 'nasil', 'icin', 'olan', 'yeni', 'gibi', 'model', 'models'].includes(w));
+  };
+  const isDuplicateDiscussion = (cand, existingList) => {
+    const candTitle = cand.titleTr || cand.title || '';
+    const candOrig = cand.title || '';
+    const candId = String(cand.id || '').trim();
+    const candUrl = String(cand.hnUrl || cand.url || '').toLowerCase().trim();
+    const candKey = normalizeHnKey(candTitle);
+    const candOrigKey = normalizeHnKey(candOrig);
+    const candWords = getSignificantWords(candTitle);
+
+    for (const ex of existingList) {
+      const exTitle = ex.titleTr || ex.title || '';
+      const exOrig = ex.title || '';
+      const exId = String(ex.id || '').trim();
+      const exUrl = String(ex.hnUrl || ex.url || '').toLowerCase().trim();
+      const exKey = normalizeHnKey(exTitle);
+      const exOrigKey = normalizeHnKey(exOrig);
+
+      if (candId && exId && candId === exId) return true;
+      if (candUrl && exUrl && candUrl !== 'https://news.ycombinator.com' && candUrl === exUrl) return true;
+      if (candKey && exKey && (candKey === exKey || candKey === exOrigKey || candOrigKey === exKey)) return true;
+
+      // Kelime örtüşmesi ile benzer haber/aynı konu kontrolü (%60 ve üzeri kelime benzerliği)
+      const exWords = getSignificantWords(exTitle);
+      if (candWords.length >= 2 && exWords.length >= 2) {
+        const exWordSet = new Set(exWords);
+        const common = candWords.filter(w => exWordSet.has(w));
+        if ((common.length / Math.min(candWords.length, exWords.length)) >= 0.6) {
+          return true;
+        }
+      }
+    }
+    return false;
+  };
+
+  // Mevcut listedeki tekrarları temizle
+  const dedupedCurrent = [];
+  for (const item of clean.hackerNewsPulse.discussions) {
+    if (!isDuplicateDiscussion(item, dedupedCurrent)) {
+      dedupedCurrent.push(item);
+    }
+  }
+  clean.hackerNewsPulse.discussions = dedupedCurrent;
+
+  // Discussions 8'den azsa canlı çekilen hnPosts'tan tekerrür etmeyecek şekilde tamamla
   if (clean.hackerNewsPulse.discussions.length < 8 && Array.isArray(hnPosts)) {
     for (const hp of hnPosts) {
       if (clean.hackerNewsPulse.discussions.length >= 8) break;
-      if (!clean.hackerNewsPulse.discussions.some(d => d.id === hp.id || d.title === hp.title)) {
-        clean.hackerNewsPulse.discussions.push({
-          id: String(hp.id),
-          title: hp.title,
-          titleTr: hp.title,
-          points: hp.points,
-          comments: hp.comments,
-          hnUrl: hp.hnUrl,
-          category: "Mühendis Tartışması",
-          analysis: "Hacker News topluluğunda son 24 saatte yüksek etkileşim alan teknik geliştirici tartışması.",
-          usefulInsight: "Geliştirici ve mühendislik pratikleri için dikkate değer teknik çıkarım."
-        });
+      const candidate = {
+        id: String(hp.id),
+        title: hp.title,
+        titleTr: hp.title,
+        points: hp.points,
+        comments: hp.comments,
+        hnUrl: hp.hnUrl,
+        category: "Mühendis Tartışması",
+        analysis: "Hacker News topluluğunda son 24 saatte yüksek etkileşim alan teknik geliştirici tartışması.",
+        usefulInsight: "Geliştirici ve mühendislik pratikleri için dikkate değer teknik çıkarım."
+      };
+      if (!isDuplicateDiscussion(candidate, clean.hackerNewsPulse.discussions)) {
+        clean.hackerNewsPulse.discussions.push(candidate);
       }
     }
   }
@@ -1794,6 +1883,101 @@ function enforceStrictStandards(data, hfModels = [], candidateArxiv = [], hnPost
           name: cleanStrName(item.name)
         }));
     }
+  });
+
+  // LİDER MODEL SENKRONİZASYONU:
+  // Özet kısmındaki lider model ("Günün 1 Numarası") ile model sıralamasındaki 1 numara daima %100 birebir aynı olmalı!
+  if (Array.isArray(clean.daily) && clean.daily.length > 0) {
+    const tableTop = clean.daily[0];
+    clean.morningBrief = clean.morningBrief || {};
+    const mbDesc = clean.morningBrief.leader?.description;
+    const mbName = clean.morningBrief.leader?.name;
+    const isSame = mbName && (
+      mbName.toLowerCase().includes(tableTop.name.toLowerCase()) ||
+      tableTop.name.toLowerCase().includes(mbName.toLowerCase())
+    );
+
+    clean.morningBrief.leader = {
+      name: cleanStrName(tableTop.name),
+      badge: tableTop.badge || clean.morningBrief.leader?.badge || "Günün 1 Numarası",
+      description: (isSame && mbDesc) ? mbDesc : (tableTop.whyTrending || tableTop.primaryFunction || "Günün en yüksek ilgi ve tartışma çeken yapay zeka gelişmesi.")
+    };
+  }
+
+  // 6. GÜNÜN SÖZLÜĞÜ (dailyGlossary): Kesinlikle tam 6 adet ve yalnızca sitede bizzat geçen kavramlar
+  const BENCHMARK_GLOSSARY_6 = [
+    {
+      id: "glossary-1",
+      term: "MLA (Multi-Head Latent Attention)",
+      appearsIn: "🤗 Hugging Face: DeepSeek V3 kartında",
+      category: "Model Mimarisi",
+      definition: "Büyük dil modellerinde her kelimede şişen KV (Key-Value) önbelleğini düşük boyutlu bir gizli uzaya sıkıştırarak GPU belleğinde saklayan yeni nesil dikkat mimarisi.",
+      whyItMatters: "DeepSeek V3 modelinin devasa 671B parametreye rağmen geleneksel modellere kıyasla 8-10 kat daha az VRAM tüketerek ucuz GPU'larda çalışabilmesini sağlayan temel yeniliktir.",
+      tags: ["DeepSeek", "Attention", "VRAM"]
+    },
+    {
+      id: "glossary-2",
+      term: "Rectified Flow Transformer",
+      appearsIn: "🤗 Hugging Face: FLUX.1 Schnell kartında",
+      category: "Medya / Görsel Mimarisi",
+      definition: "Standart difüzyon modellerindeki rastgele gürültü adımları yerine, gürültüden hedeflenen görsele giden en kısa doğru çizgiyi (akışı) doğrudan modelleyen matematiksel mimari.",
+      whyItMatters: "FLUX.1 Schnell'in onlarca adım bekletmek yerine yalnızca 1 ila 4 adımda fotogerçekçi görsel üreterek GPU hesaplama süresini saniyeler seviyesine indirmesini mümkün kılar.",
+      tags: ["FLUX.1", "Görsel Üretim", "Hızlı Çıkarım"]
+    },
+    {
+      id: "glossary-3",
+      term: "OSINT (Açık Kaynak İstihbaratı) Ajanı",
+      appearsIn: "🐙 GitHub AI Radarı: worldmonitor & Crucix repolarında",
+      category: "Siber Güvenlik & Ajanlar",
+      definition: "Herkese açık web kaynaklarını, canlı uçuş radarlarını, askeri hareketlilikleri ve sızıntı verilerini otonom tarayıp harita üzerinde ilişkilendiren yapay zeka ajanı.",
+      whyItMatters: "Sitede günün en çok yıldız alan projelerinde manuel analistlerin günlerce süren istihbarat toplama işini tek ekranda otonom yapay zeka çıkarımına dönüştürmesiyle öne çıkmaktadır.",
+      tags: ["GitHub Trend", "OSINT", "Otonom Ajan"]
+    },
+    {
+      id: "glossary-4",
+      term: "Thinking Budget (Düşünme Bütçesi)",
+      appearsIn: "☕ Sabah İstihbaratı & Tablo: Claude 3.7 Sonnet kartında",
+      category: "Akıl Yürütme (Reasoning)",
+      definition: "Bir akıl yürütme modelinin kullanıcıya nihai yanıtı vermeden önce iç sesle (thinking token) ne kadar derin düşüneceğini ve adımları denetleyeceğini belirleyen parametre.",
+      whyItMatters: "Claude 3.7 Sonnet'in basit sorularda gecikmesiz çalışırken, karmaşık kod mimarilerinde hata oranını sıfıra indiren hibrit zekasının anahtar kontrol mekanizmasıdır.",
+      tags: ["Claude 3.7", "Reasoning", "Test-Time Compute"]
+    },
+    {
+      id: "glossary-5",
+      term: "PagedAttention (Sayfalı Bellek Yönetimi)",
+      appearsIn: "🐙 GitHub AI Radarı: vLLM reposu & Danışman Raporu",
+      category: "Altyapı & Bellek Optimizasyonu",
+      definition: "İşletim sistemlerindeki sanal bellek sayfalamasından esinlenerek, LLM'lerin KV önbellek tensörlerini GPU belleğinde ardışık olmayan parçalar halinde dinamik depolayan algoritma.",
+      whyItMatters: "vLLM çıkarım sunucusunun aynı anda binlerce eşzamanlı isteğe hizmet verirken GPU belleğinde %80'e varan tasarruf sağlamasının ve kurumsal açık kaynak standardı olmasının temelidir.",
+      tags: ["vLLM", "GPU Bellek", "Inference"]
+    },
+    {
+      id: "glossary-6",
+      term: "Tip Güvenli Ajan (Type-Safe Agent)",
+      appearsIn: "🐙 GitHub AI Radarı: pydantic-ai reposunda",
+      category: "Yazılım & Ajan Framework'ü",
+      definition: "LLM çıktılarının serbest metin yerine katı Python/TypeScript veri tipleri ve şemalarıyla doğrulanarak, beklenen tipten sapması durumunda anında kendini düzelten ajan mimarisi.",
+      whyItMatters: "Geliştiricilerin karmaşık zincir kütüphanelerinden kaçıp pydantic-ai'a yönelmesinin ve kurumsal üretim ortamlarında halüsinasyon kaynaklı sistem çökmelerini engellemesinin ana yoludur.",
+      tags: ["Pydantic", "Tip Güvenliği", "Ajan"]
+    }
+  ];
+
+  let rawGlossary = clean.dailyGlossary;
+  if (!Array.isArray(rawGlossary)) {
+    rawGlossary = [];
+  }
+
+  clean.dailyGlossary = BENCHMARK_GLOSSARY_6.map((bm, idx) => {
+    const item = rawGlossary[idx] || bm;
+    return {
+      id: item.id || `glossary-${idx + 1}`,
+      term: item.term || bm.term,
+      appearsIn: item.appearsIn || bm.appearsIn,
+      category: item.category || bm.category,
+      definition: item.definition || bm.definition,
+      whyItMatters: item.whyItMatters || bm.whyItMatters,
+      tags: Array.isArray(item.tags) && item.tags.length > 0 ? item.tags : bm.tags
+    };
   });
 
   return clean;

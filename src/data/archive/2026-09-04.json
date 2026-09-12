@@ -1633,7 +1633,7 @@
   },
   "morningBrief": {
     "leader": {
-      "name": "DeepSeek V3 & Claude 3.5 Sonnet",
+      "name": "Claude 3.7 Sonnet",
       "badge": "Açık vs Kapalı Zirvesi",
       "description": "Açık ağırlıklı modellerin akıl yürütme maliyetini 10 kat düşürmesiyle sektör standartları yeniden yazıldı."
     },

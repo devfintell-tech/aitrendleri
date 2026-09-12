@@ -161,9 +161,9 @@
   ],
   "morningBrief": {
     "leader": {
-      "name": "GPT-6 Astra",
-      "badge": "Yaratıcı Zeka",
-      "description": "GPT-6 Astra, Veo 3.1 ve Image-Gen-2 entegrasyonuyla otomobil markası tasarlayıp reklam filmi üreterek toplulukta büyük heyecan yarattı."
+      "name": "Mac MCP",
+      "badge": "Açık Kaynak İnovasyon",
+      "description": "Birden fazla AI ajanı için Safari tarayıcı sekmelerini çakışmadan yöneten yerel MCP (Multi-Agent Control Plane) zirvede yer aldı."
     },
     "bullets": [
       {

@@ -23,7 +23,8 @@ import {
   Terminal,
   Coffee,
   Copy,
-  Check
+  Check,
+  BookMarked
 } from 'lucide-react';
 
 // Arşivlenen geçmiş günlük raporları dinamik olarak içeri aktar
@@ -560,43 +561,75 @@ export default function App() {
       });
     }
 
-    // 4. Hacker News Pulse (Daima summary24h ve 8 doyurucu tartışma)
+    // 4. Hacker News Pulse (Daima summary24h ve 8 doyurucu, SIFIR TEKRARLI tartışma)
     let hnPulse = raw.hackerNewsPulse;
+    let discList = [];
     if (Array.isArray(hnPulse)) {
-      hnPulse = {
-        summary24h: "Son 24 saatte Hacker News gündeminde öne çıkan geliştirici ve mühendislik tartışmaları.",
-        discussions: hnPulse.map((item, idx) => ({
-          id: item.url || item.title || `hn-${idx}`,
-          title: item.title || "Geliştirici Tartışması",
-          titleTr: item.titleTr || item.title || "Geliştirici Tartışması",
-          points: item.points || 150,
-          comments: item.comments || 80,
-          hnUrl: item.url || item.hnUrl || "https://news.ycombinator.com",
-          category: item.category || "Mühendis Tartışması",
-          analysis: item.analysis || item.takeaway || "Teknik ekosistemde dikkat çeken konu.",
-          usefulInsight: item.usefulInsight || item.takeaway || "Geliştiriciler için doğrudan işe yarar pratik çıkarım."
-        }))
-      };
+      discList = hnPulse;
     } else if (hnPulse && typeof hnPulse === 'object') {
-      let discList = hnPulse.discussions;
-      if (!Array.isArray(discList)) {
-        discList = Object.values(hnPulse).filter(v => v && typeof v === 'object' && v.title);
-      }
-      hnPulse = {
-        summary24h: hnPulse.summary24h || "Son 24 saatte Hacker News gündeminde öne çıkan geliştirici tartışmaları.",
-        discussions: (discList || []).map((item, idx) => ({
-          id: item.id || item.hnUrl || `hn-${idx}`,
-          title: item.title || "Geliştirici Tartışması",
-          titleTr: item.titleTr || item.title || "Geliştirici Tartışması",
+      discList = Array.isArray(hnPulse.discussions)
+        ? hnPulse.discussions
+        : Object.values(hnPulse).filter(v => v && typeof v === 'object' && v.title);
+    }
+
+    const normalizeHnKey = (str) => (str || '').toLowerCase().replace(/[^a-z0-9ğüşıöç]/gi, '').trim();
+    const getSignificantWords = (str) => {
+      return (str || '').toLowerCase()
+        .replace(/[^a-z0-9ğüşıöç\s]/gi, ' ')
+        .split(/\s+/)
+        .filter(w => w.length > 3 && !['yapay', 'zeka', 'hakkinda', 'nasil', 'icin', 'olan', 'yeni', 'gibi', 'model', 'models'].includes(w));
+    };
+
+    const dedupedHnList = [];
+    for (const item of (discList || [])) {
+      if (!item) continue;
+      const titleTr = item.titleTr || item.title || 'Geliştirici Tartışması';
+      const title = item.title || titleTr;
+      const id = String(item.id || item.hnUrl || `hn-${dedupedHnList.length + 1}`);
+      const url = (item.hnUrl || item.url || 'https://news.ycombinator.com').toLowerCase().trim();
+      const kTr = normalizeHnKey(titleTr);
+      const kOrig = normalizeHnKey(title);
+      const words = getSignificantWords(titleTr);
+
+      const isDup = dedupedHnList.some(ex => {
+        if (ex.id && ex.id === id) return true;
+        if (url !== 'https://news.ycombinator.com' && ex.hnUrl?.toLowerCase() === url) return true;
+        const exTr = normalizeHnKey(ex.titleTr || ex.title);
+        const exOrig = normalizeHnKey(ex.title);
+        if (kTr === exTr || kTr === exOrig || kOrig === exTr) return true;
+
+        const exWords = getSignificantWords(ex.titleTr || ex.title);
+        if (words.length >= 2 && exWords.length >= 2) {
+          const exWordSet = new Set(exWords);
+          const common = words.filter(w => exWordSet.has(w));
+          if ((common.length / Math.min(words.length, exWords.length)) >= 0.6) {
+            return true;
+          }
+        }
+        return false;
+      });
+
+      if (!isDup) {
+        dedupedHnList.push({
+          id,
+          title,
+          titleTr,
           points: item.points || 150,
           comments: item.comments || 80,
           hnUrl: item.hnUrl || item.url || "https://news.ycombinator.com",
           category: item.category || "Mühendis Tartışması",
           analysis: item.analysis || item.takeaway || "Teknik ekosistemde dikkat çeken konu.",
           usefulInsight: item.usefulInsight || item.takeaway || "Geliştiriciler için doğrudan işe yarar pratik çıkarım."
-        }))
-      };
+        });
+      }
     }
+
+    hnPulse = {
+      summary24h: (hnPulse && typeof hnPulse === 'object' && hnPulse.summary24h)
+        ? hnPulse.summary24h
+        : "Son 24 saatte Hacker News gündeminde öne çıkan geliştirici ve mühendislik tartışmaları.",
+      discussions: dedupedHnList
+    };
 
     // ArXiv Makaleleri İçin Keskin Türkçe Başlık Standardı
     const knownArxivTrTitles = {
@@ -663,6 +696,26 @@ export default function App() {
       };
     }
 
+    // 5. Günün Sözlüğü (dailyGlossary - Sitede bizzat geçen kavramlar)
+    const fallbackGlossary = LATEST_CONSULTANT_REPORT.dailyGlossary || [];
+    let glossaryList = raw.dailyGlossary;
+    if (!Array.isArray(glossaryList) || glossaryList.length === 0) {
+      glossaryList = fallbackGlossary;
+    }
+
+    const normalizedGlossary = glossaryList.slice(0, 6).map((item, idx) => {
+      const fb = fallbackGlossary[idx] || fallbackGlossary[0];
+      return {
+        id: item.id || fb.id || `glossary-${idx + 1}`,
+        term: item.term || fb.term,
+        appearsIn: item.appearsIn || fb.appearsIn,
+        category: item.category || fb.category,
+        definition: item.definition || fb.definition,
+        whyItMatters: item.whyItMatters || fb.whyItMatters,
+        tags: Array.isArray(item.tags) && item.tags.length > 0 ? item.tags : (fb.tags || ["AI Kavramı"])
+      };
+    });
+
     return {
       date: raw.date,
       executiveSummary: raw.executiveSummary || LATEST_CONSULTANT_REPORT.executiveSummary,
@@ -673,7 +726,8 @@ export default function App() {
       huggingFaceBest: hfBest,
       huggingFaceTrending: hfTrending,
       githubRadar: normalizedGh,
-      hackerNewsPulse: hnPulse
+      hackerNewsPulse: hnPulse,
+      dailyGlossary: normalizedGlossary
     };
   }, [activeReportData]);
 
@@ -696,8 +750,7 @@ export default function App() {
       /will-win/i,
       /shame/i,
       /loss/i,
-      /uncontrolled/i,
-      /astra/i
+      /uncontrolled/i
     ];
 
     const list = {
@@ -736,6 +789,27 @@ export default function App() {
     return result;
   }, [rawTools, selectedCategory, searchQuery]);
 
+  // Lider Model Senkronizasyonu:
+  // Özet kısmındaki ("Günün 1 Numarası") kutusu daima tablodaki 1. sıradaki araç ile %100 birebir aynı olmalı
+  const activeLeader = useMemo(() => {
+    const tableLeader = filteredTools[0] || rawTools[0] || (report.daily && report.daily[0]);
+    const mbLeader = report.morningBrief?.leader;
+    if (!tableLeader) return mbLeader;
+
+    const isSame = mbLeader?.name && (
+      mbLeader.name.toLowerCase().includes(tableLeader.name.toLowerCase()) ||
+      tableLeader.name.toLowerCase().includes(mbLeader.name.toLowerCase())
+    );
+
+    return {
+      name: tableLeader.name,
+      badge: tableLeader.badge || mbLeader?.badge || "Topluluk Zirvesi",
+      description: (isSame && mbLeader?.description)
+        ? mbLeader.description
+        : (tableLeader.whyTrending || tableLeader.primaryFunction || "Günün en yüksek topluluk ilgisi ve puanına sahip lider modeli.")
+    };
+  }, [filteredTools, rawTools, report.daily, report.morningBrief]);
+
   // Average Hype calculation for status bar
   const avgHypeScore = useMemo(() => {
     if (!filteredTools.length) return '0.0';
@@ -761,6 +835,15 @@ export default function App() {
     }
     return chunks;
   }, [report.hackerNewsPulse]);
+
+  const glossaryChunks = useMemo(() => {
+    const list = report.dailyGlossary || [];
+    const chunks = [];
+    for (let i = 0; i < list.length; i += 3) {
+      chunks.push(list.slice(i, i + 3));
+    }
+    return chunks;
+  }, [report.dailyGlossary]);
 
   // Excel Category Badge Styles (Clean Excel Cell Style)
   const getCategoryBadgeClass = (category) => {
@@ -853,22 +936,21 @@ ${bulletsText}
           </div>
         </div>
 
-        {/* 2. ZAMAN SEÇİCİ SEKMELER (Simetrik ve Birbirine Eşit Boyutta Butonlar) */}
+        {/* 2. ZAMAN SEÇİCİ SEKMELER (Simetrik ve Birbirine Eşit Boyutta 6 Buton) */}
         <div className="max-w-7xl mx-auto px-2 sm:px-4 border-t border-[#0e6b37] pt-2 pb-1.5">
-          <div className="grid grid-cols-2 sm:grid-cols-5 gap-1.5 w-full">
+          <div className="grid grid-cols-3 sm:grid-cols-6 gap-1.5 w-full">
             {[
               { id: 'daily', label: '📊 24 Saatlik' },
               { id: '12h', label: '⚡ 12 Saatlik' },
               { id: 'weekly', label: '📈 1 Haftalık' },
               { id: 'monthly', label: '🪐 1 Aylık' },
-              { id: 'report', label: '📋 Danışman Raporu' }
-            ].map((tab, idx) => (
+              { id: 'report', label: '📋 Danışman Raporu' },
+              { id: 'glossary', label: '📖 Günün Sözlüğü' }
+            ].map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setTimeframe(tab.id)}
                 className={`h-9 flex items-center justify-center transition font-mono text-[11px] sm:text-xs font-bold rounded shadow-xs text-center ${
-                  idx === 4 ? 'col-span-2 sm:col-span-1' : ''
-                } ${
                   timeframe === tab.id
                     ? 'bg-white text-[#107c41] shadow-xs'
                     : 'text-emerald-100 bg-[#0e6b37] hover:bg-[#0b5e30]'
@@ -886,7 +968,7 @@ ${bulletsText}
         <div className="max-w-7xl mx-auto flex items-center gap-2 text-xs font-mono">
           {/* Ad Kutusu (Hücre Koordinatı) */}
           <div className="w-14 sm:w-16 bg-[#f9fafb] border border-[#d1d5db] px-2 py-1 text-center font-bold text-slate-700 select-none">
-            {expandedId ? `B${filteredTools.findIndex(t => t.id === expandedId) + 2}` : 'A1'}
+            {expandedId ? `B${filteredTools.findIndex(t => t.id === expandedId) + 2}` : timeframe === 'glossary' ? 'G1' : timeframe === 'report' ? 'R1' : 'A1'}
           </div>
 
           {/* fx İkonu */}
@@ -896,9 +978,15 @@ ${bulletsText}
 
           {/* Formül Satırı */}
           <div className="flex-1 flex items-center bg-white border border-[#d1d5db] px-3 py-1 text-slate-700 truncate">
-            <span className="text-[#107c41] font-bold mr-1.5">=HYPE.DEĞERLENDİR(</span>
+            <span className="text-[#107c41] font-bold mr-1.5">
+              {timeframe === 'glossary' ? '=GÜNÜN_SÖZLÜĞÜ(' : '=HYPE.DEĞERLENDİR('}
+            </span>
             <span className="text-blue-600 font-semibold truncate">
-              {selectedTool ? `"${selectedTool.name}", KATEGORİ="${selectedTool.category}", SKOR=${selectedTool.hypeScore}/10` : '"TÜM_MODELLER"'}
+              {timeframe === 'glossary' 
+                ? '"SİTEDE_GEÇEN_6_TEMEL_KAVRAM"' 
+                : selectedTool 
+                  ? `"${selectedTool.name}", KATEGORİ="${selectedTool.category}", SKOR=${selectedTool.hypeScore}/10` 
+                  : '"TÜM_MODELLER"'}
             </span>
             <span className="text-[#107c41] font-bold">)</span>
           </div>
@@ -942,7 +1030,21 @@ ${bulletsText}
                 </div>
               </div>
 
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 flex-wrap">
+                <button
+                  type="button"
+                  onClick={() => setTimeframe(timeframe === 'glossary' ? 'daily' : 'glossary')}
+                  className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded font-mono text-[11px] font-bold transition shadow-2xs cursor-pointer border ${
+                    timeframe === 'glossary'
+                      ? 'bg-blue-600 text-white border-blue-700'
+                      : 'bg-blue-50 hover:bg-blue-100 text-blue-800 border-blue-200'
+                  }`}
+                  title="Günün Sözlüğü: O gün sitede geçen 6 kilit teknik kavram"
+                >
+                  <BookMarked className={`w-3.5 h-3.5 ${timeframe === 'glossary' ? 'text-white' : 'text-blue-600'}`} />
+                  <span>📖 Günün Sözlüğü (6 Terim)</span>
+                </button>
+
                 <button
                   type="button"
                   onClick={handleCopyBrief}
@@ -975,27 +1077,27 @@ ${bulletsText}
 
             {isBriefExpanded && (
               <div className="space-y-3 pt-0.5">
-                {/* 🏆 1. Günün Lider Kırılması (Zirve Rozeti) */}
-                {report.morningBrief.leader && (
+                {/* 🏆 1. Günün Lider Kırılması (Zirve Rozeti - Tablodaki 1 Numara ile Daima %100 Senkronize) */}
+                {activeLeader && (
                   <div className="bg-amber-50/70 border border-amber-300/80 rounded p-2.5 sm:p-3 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5">
                     <div className="flex items-start sm:items-center gap-2.5 min-w-0">
                       <span className="shrink-0 text-sm sm:text-base">🏆</span>
                       <div className="min-w-0">
                         <div className="flex items-center gap-2 flex-wrap">
                           <span className="text-[11px] font-mono font-bold text-amber-950 uppercase tracking-tight">
-                            Günün 1 Numarası:
+                            {timeframe === 'weekly' ? 'Haftanın 1 Numarası:' : timeframe === 'monthly' ? 'Ayın 1 Numarası:' : 'Günün 1 Numarası:'}
                           </span>
                           <span className="font-mono text-xs sm:text-sm font-black text-amber-900 bg-amber-100/90 px-2 py-0.5 rounded border border-amber-300">
-                            {report.morningBrief.leader.name}
+                            {activeLeader.name}
                           </span>
-                          {report.morningBrief.leader.badge && (
+                          {activeLeader.badge && (
                             <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-white/90 text-amber-800 border border-amber-200 font-bold">
-                              {report.morningBrief.leader.badge}
+                              {activeLeader.badge}
                             </span>
                           )}
                         </div>
                         <p className="text-xs text-amber-900 mt-1 leading-relaxed">
-                          {report.morningBrief.leader.description}
+                          {activeLeader.description}
                         </p>
                       </div>
                     </div>
@@ -1026,29 +1128,132 @@ ${bulletsText}
           </section>
         )}
 
+        {/* 📖 GÜNÜN SÖZLÜĞÜ (Doğrudan Odak / Sekme Görünümü) */}
+        {timeframe === 'glossary' && report.dailyGlossary && report.dailyGlossary.length > 0 && (
+          <section id="gunun-sozlugu-odak" className="bg-white border border-[#cbd5e1] rounded-sm p-4 sm:p-6 shadow-xs space-y-4">
+            <div className="border-b border-[#e2e8f0] pb-3 flex items-center justify-between flex-wrap gap-2">
+              <div className="flex items-center gap-2">
+                <span className="w-6 h-6 bg-blue-600 text-white font-black text-xs flex items-center justify-center rounded-xs font-mono shadow-2xs">
+                  <BookMarked className="w-3.5 h-3.5" />
+                </span>
+                <div>
+                  <h2 className="font-bold text-sm sm:text-base text-slate-900 font-mono uppercase tracking-wide flex items-center gap-2">
+                    <span>Günün Sözlüğü: Sitede Geçen Kilit AI, Yazılım &amp; Donanım Kavramları</span>
+                    <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200 font-bold">
+                      {report.date}
+                    </span>
+                  </h2>
+                  <p className="text-[11px] sm:text-xs text-slate-600 mt-0.5">
+                    O gün sitedeki ArXiv makalelerinde, GitHub repolarında, Hugging Face modellerinde ve teknik tartışmalarda bizzat geçen 6 temel kavram.
+                  </p>
+                </div>
+              </div>
+              <span className="text-[10px] font-mono text-blue-800 bg-blue-50 px-2.5 py-1 rounded border border-blue-200 font-bold">
+                📍 Yalnızca Sitede Geçenler • 6 Temel Terim
+              </span>
+            </div>
+
+            {/* Sözlük Kartları Izgarası (CSS Subgrid) */}
+            <div className="space-y-4 pt-1">
+              {glossaryChunks.map((chunk, cIdx) => (
+                <div 
+                  key={cIdx} 
+                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-4 md:gap-y-3 subgrid-row-glossary"
+                >
+                  {chunk.map((item, idx) => {
+                    const globalIdx = cIdx * 3 + idx + 1;
+                    return (
+                      <div
+                        key={item.id || globalIdx}
+                        className="bg-white border border-[#cbd5e1] rounded-sm p-3.5 sm:p-4 shadow-xs hover:border-blue-600 transition flex flex-col justify-between gap-2.5 subgrid-card-glossary"
+                      >
+                        {/* 1. Üst Rozet & Sitede Nerede Geçti? Rozeti */}
+                        <div className="flex flex-col gap-1.5">
+                          <div className="flex items-center justify-between">
+                            <span className="font-mono text-[10px] font-bold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded border border-indigo-200">
+                              #{globalIdx} • {item.category}
+                            </span>
+                            <span className="text-[10px] font-mono text-slate-400 font-medium">Günün Sözlüğü</span>
+                          </div>
+                          <div 
+                            className="flex items-center gap-1.5 text-[11px] font-mono text-blue-900 bg-blue-50/90 px-2 py-1 rounded border border-blue-200/80" 
+                            title={`Sitede Geçtiği Yer: ${item.appearsIn}`}
+                          >
+                            <span className="shrink-0 font-bold text-blue-700">📍 Sitede:</span>
+                            <span className="truncate font-semibold">{item.appearsIn}</span>
+                          </div>
+                        </div>
+
+                        {/* 2. Kavram / Terim Başlığı */}
+                        <div className="flex items-start justify-between gap-2">
+                          <h4 className="font-bold text-xs sm:text-[13px] text-slate-900 font-mono tracking-tight leading-snug">
+                            {item.term}
+                          </h4>
+                        </div>
+
+                        {/* 3. Sade & Net Tanım Kutusu */}
+                        <div className="bg-[#f8fafc] border border-slate-200 rounded p-3 text-xs text-slate-700 leading-relaxed h-full flex flex-col justify-start">
+                          <span className="font-mono font-bold text-slate-800 text-[10px] uppercase block mb-1 tracking-tight flex items-center gap-1">
+                            <span>📖</span>
+                            <span>NEDİR? (SADE ANLAMI)</span>
+                          </span>
+                          <p className="text-slate-700 leading-relaxed">{item.definition}</p>
+                        </div>
+
+                        {/* 4. Günün Bağlantısı / Neden Bilmelisiniz? Kutusu */}
+                        <div className="bg-[#eff6ff] border-l-3 border-l-blue-600 border border-blue-200 rounded-r p-3 text-xs text-slate-900 leading-relaxed h-full flex flex-col justify-start">
+                          <span className="font-mono font-bold text-blue-950 text-[10px] uppercase block mb-1 tracking-tight flex items-center gap-1">
+                            <span>💡</span>
+                            <span>BUGÜNKÜ SİTE BAĞLANTISI &amp; ÖNEMİ:</span>
+                          </span>
+                          <p className="font-normal text-slate-800 leading-relaxed">{item.whyItMatters}</p>
+                        </div>
+
+                        {/* 5. Alt Bar: Etiketler */}
+                        <div className="pt-2 border-t border-[#f1f5f9] flex items-center justify-between text-[10px] font-mono">
+                          <div className="flex items-center gap-1 flex-wrap">
+                            {(item.tags || []).map((tag, tIdx) => (
+                              <span key={tIdx} className="bg-slate-100 text-slate-600 px-1.5 py-0.2 rounded border border-slate-200">
+                                #{tag}
+                              </span>
+                            ))}
+                          </div>
+                          <span className="text-slate-400 font-sans text-[10px] whitespace-nowrap">Doğrudan Siteden</span>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
         {/* Kategori Filtre Çubuğu (Sağa kaydırma yok, flex-wrap ile ekrana tam oturur) */}
-        <div className="bg-white border border-[#d1d5db] p-2 rounded-sm shadow-xs flex flex-wrap items-center gap-1 sm:gap-1.5">
-          <div className="flex items-center gap-1 text-[11px] font-mono text-slate-500 font-bold px-1 sm:px-2 whitespace-nowrap">
-            <Filter className="w-3 h-3 text-[#107c41]" />
-            <span>KATEGORİ:</span>
+        {timeframe !== 'report' && timeframe !== 'glossary' && (
+          <div className="bg-white border border-[#d1d5db] p-2 rounded-sm shadow-xs flex flex-wrap items-center gap-1 sm:gap-1.5">
+            <div className="flex items-center gap-1 text-[11px] font-mono text-slate-500 font-bold px-1 sm:px-2 whitespace-nowrap">
+              <Filter className="w-3 h-3 text-[#107c41]" />
+              <span>KATEGORİ:</span>
+            </div>
+            {CATEGORY_DEFINITIONS.map((cat) => (
+              <button
+                key={cat.id}
+                onClick={() => setSelectedCategory(cat.id)}
+                className={`px-2 py-0.5 sm:px-2.5 sm:py-1 text-[11px] sm:text-xs font-medium whitespace-nowrap transition border rounded-xs ${
+                  selectedCategory === cat.id
+                    ? 'bg-[#107c41] text-white border-[#107c41] font-bold shadow-xs'
+                    : 'bg-[#f9fafb] text-slate-700 hover:bg-slate-100 border-[#e5e7eb]'
+                }`}
+              >
+                {cat.label}
+              </button>
+            ))}
           </div>
-          {CATEGORY_DEFINITIONS.map((cat) => (
-            <button
-              key={cat.id}
-              onClick={() => setSelectedCategory(cat.id)}
-              className={`px-2 py-0.5 sm:px-2.5 sm:py-1 text-[11px] sm:text-xs font-medium whitespace-nowrap transition border rounded-xs ${
-                selectedCategory === cat.id
-                  ? 'bg-[#107c41] text-white border-[#107c41] font-bold shadow-xs'
-                  : 'bg-[#f9fafb] text-slate-700 hover:bg-slate-100 border-[#e5e7eb]'
-              }`}
-            >
-              {cat.label}
-            </button>
-          ))}
-        </div>
+        )}
 
         {/* 5. MASAÜSTÜ EXCEL IZGARA TABLOSU (hidden md:block) */}
-        {timeframe !== 'report' && (
+        {timeframe !== 'report' && timeframe !== 'glossary' && (
           <div className="hidden md:block bg-white border border-[#d1d5db] shadow-xs overflow-hidden">
             <table className="w-full table-fixed text-left border-collapse font-sans text-xs">
               
@@ -1284,7 +1489,7 @@ ${bulletsText}
         )}
 
         {/* 5b. MOBİL KOMPAKT TABLO SIRALAMASI (block md:hidden - Sağa Kaydırma Yok, Başlığa Dokununca Açılır) */}
-        {timeframe !== 'report' && (
+        {timeframe !== 'report' && timeframe !== 'glossary' && (
           <div className="block md:hidden bg-white border border-[#cbd5e1] rounded-sm shadow-xs divide-y divide-[#e2e8f0] overflow-hidden">
             {filteredTools.map((tool, idx) => {
               const isPositive = tool.scoreDelta > 0;
@@ -1471,7 +1676,108 @@ ${bulletsText}
               ))}
             </div>
 
-            {/* 5. 🔬 ARXİV BİLİMSEL YAPAY ZEKA MAKALE RADARI */}
+            {/* 5. 📖 GÜNÜN SÖZLÜĞÜ: SİTEDE GEÇEN KİLİT AI, YAZILIM & DONANIM KAVRAMLARI */}
+            {report.dailyGlossary && report.dailyGlossary.length > 0 && (
+              <div id="gunun-sozlugu" className="pt-3 border-t border-[#e2e8f0] space-y-3">
+                <div className="flex items-center justify-between flex-wrap gap-2">
+                  <div className="flex items-center gap-2">
+                    <span className="w-5 h-5 bg-blue-600 text-white font-black text-xs flex items-center justify-center rounded-xs font-mono shadow-2xs">
+                      <BookMarked className="w-3.5 h-3.5" />
+                    </span>
+                    <div>
+                      <h3 className="text-xs sm:text-sm font-bold text-slate-900 font-mono uppercase tracking-wide flex items-center gap-2">
+                        <span>5. Günün Sözlüğü: Sitede Geçen Kilit AI, Yazılım &amp; Donanım Kavramları</span>
+                        <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-blue-50 text-blue-700 border border-blue-200 font-bold">
+                          6 Temel Kavram
+                        </span>
+                      </h3>
+                      <p className="text-[11px] text-slate-500 hidden sm:block">
+                        Bugün sitedeki kartlarda, makalelerde ve tartışmalarda bizzat geçen; bilinmesi gereken teknik kavramların sadeleştirilmiş rehberi.
+                      </p>
+                    </div>
+                  </div>
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-800 border border-blue-200 font-bold">
+                    📍 Yalnızca Sitede Geçenler
+                  </span>
+                </div>
+
+                {/* Sözlük Kartları (CSS Subgrid ile satır içi kutular tam eşitlenir, sıfır iç kaydırma çubuğu) */}
+                <div className="space-y-4">
+                  {glossaryChunks.map((chunk, cIdx) => (
+                    <div 
+                      key={cIdx} 
+                      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-4 md:gap-y-3 subgrid-row-glossary"
+                    >
+                      {chunk.map((item, idx) => {
+                        const globalIdx = cIdx * 3 + idx + 1;
+                        return (
+                          <div
+                            key={item.id || globalIdx}
+                            className="bg-white border border-[#cbd5e1] rounded-sm p-3.5 sm:p-4 shadow-xs hover:border-blue-600 transition flex flex-col justify-between gap-2.5 subgrid-card-glossary"
+                          >
+                            {/* 1. Üst Kategori & Sitede Nerede Geçti? Rozeti */}
+                            <div className="flex flex-col gap-1.5">
+                              <div className="flex items-center justify-between">
+                                <span className="font-mono text-[10px] font-bold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded border border-indigo-200">
+                                  #{globalIdx} • {item.category}
+                                </span>
+                                <span className="text-[10px] font-mono text-slate-400 font-medium">Günün Sözlüğü</span>
+                              </div>
+                              <div 
+                                className="flex items-center gap-1.5 text-[11px] font-mono text-blue-900 bg-blue-50/90 px-2 py-1 rounded border border-blue-200/80" 
+                                title={`Sitede Geçtiği Yer: ${item.appearsIn}`}
+                              >
+                                <span className="shrink-0 font-bold text-blue-700">📍 Sitede:</span>
+                                <span className="truncate font-semibold">{item.appearsIn}</span>
+                              </div>
+                            </div>
+
+                            {/* 2. Kavram / Terim Başlığı */}
+                            <div className="flex items-start justify-between gap-2">
+                              <h4 className="font-bold text-xs sm:text-[13px] text-slate-900 font-mono tracking-tight leading-snug">
+                                {item.term}
+                              </h4>
+                            </div>
+
+                            {/* 3. Sade & Net Tanım Kutusu (Subgrid ile satırdaki en uzun kutuya göre doğal uzar) */}
+                            <div className="bg-[#f8fafc] border border-slate-200 rounded p-3 text-xs text-slate-700 leading-relaxed h-full flex flex-col justify-start">
+                              <span className="font-mono font-bold text-slate-800 text-[10px] uppercase block mb-1 tracking-tight flex items-center gap-1">
+                                <span>📖</span>
+                                <span>NEDİR? (SADE ANLAMI)</span>
+                              </span>
+                              <p className="text-slate-700 leading-relaxed">{item.definition}</p>
+                            </div>
+
+                            {/* 4. Günün Bağlantısı / Neden Bilmelisiniz? Kutusu (Subgrid ile eşitlenir) */}
+                            <div className="bg-[#eff6ff] border-l-3 border-l-blue-600 border border-blue-200 rounded-r p-3 text-xs text-slate-900 leading-relaxed h-full flex flex-col justify-start">
+                              <span className="font-mono font-bold text-blue-950 text-[10px] uppercase block mb-1 tracking-tight flex items-center gap-1">
+                                <span>💡</span>
+                                <span>BUGÜNKÜ SİTE BAĞLANTISI &amp; ÖNEMİ:</span>
+                              </span>
+                              <p className="font-normal text-slate-800 leading-relaxed">{item.whyItMatters}</p>
+                            </div>
+
+                            {/* 5. Alt Bar: Etiketler */}
+                            <div className="pt-2 border-t border-[#f1f5f9] flex items-center justify-between text-[10px] font-mono">
+                              <div className="flex items-center gap-1 flex-wrap">
+                                {(item.tags || []).map((tag, tIdx) => (
+                                  <span key={tIdx} className="bg-slate-100 text-slate-600 px-1.5 py-0.2 rounded border border-slate-200">
+                                    #{tag}
+                                  </span>
+                                ))}
+                              </div>
+                              <span className="text-slate-400 font-sans text-[10px] whitespace-nowrap">Doğrudan Siteden</span>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* 6. 🔬 ARXİV BİLİMSEL YAPAY ZEKA MAKALE RADARI */}
             {((timeframe === 'weekly' && report.arxivWeeklyBest?.length > 0) || report.arxivDaily?.length > 0) && (
               <div className="pt-2 border-t border-[#e2e8f0] space-y-3">
                 <div className="flex items-center justify-between">
@@ -1479,8 +1785,8 @@ ${bulletsText}
                     <BookOpen className="w-4 h-4 text-[#107c41]" />
                     <h3 className="text-xs sm:text-sm font-bold text-slate-900 font-mono uppercase">
                       {timeframe === 'weekly' 
-                        ? '🔬 ArXiv: Haftanın En Çarpıcı Yapay Zeka Makaleleri (7 Günlük Seçki)' 
-                        : '🔬 ArXiv: Günün En Çarpıcı 3 Yapay Zeka Makalesi'}
+                        ? '6. 🔬 ArXiv: Haftanın En Çarpıcı Yapay Zeka Makaleleri (7 Günlük Seçki)' 
+                        : '6. 🔬 ArXiv: Günün En Çarpıcı 3 Yapay Zeka Makalesi'}
                     </h3>
                   </div>
                   <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-indigo-50 text-indigo-800 border border-indigo-200 font-bold">
