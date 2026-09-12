@@ -845,6 +845,15 @@ export default function App() {
     return chunks;
   }, [report.dailyGlossary]);
 
+  const sectionPairs = useMemo(() => {
+    const secs = report.sections || [];
+    const pairs = [];
+    for (let i = 0; i < secs.length; i += 2) {
+      pairs.push(secs.slice(i, i + 2));
+    }
+    return pairs;
+  }, [report.sections]);
+
   // Excel Category Badge Styles (Clean Excel Cell Style)
   const getCategoryBadgeClass = (category) => {
     switch (category) {
@@ -1601,22 +1610,28 @@ ${bulletsText}
               <p>{report.executiveSummary}</p>
             </div>
 
-            {/* 4 Bölümlü Analizler */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
-              {report.sections.map((sec, idx) => (
-                <div key={idx} className="p-4 rounded bg-[#fafafa] border border-[#d1d5db] space-y-2 shadow-2xs">
-                  <div className="flex items-center justify-between border-b border-[#e2e8f0] pb-2">
-                    <h3 className="text-xs sm:text-sm font-bold text-slate-900">
-                      {sec.title}
-                    </h3>
-                    <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#e8f5e9] text-[#107c41] border border-emerald-200 font-bold">
-                      {sec.badge}
-                    </span>
-                  </div>
-                  <div
-                    className="text-xs text-slate-700 leading-relaxed"
-                    dangerouslySetInnerHTML={{ __html: sec.contentHtml }}
-                  />
+            {/* 4 Bölümlü Analizler (Subgrid ile başlık çizgileri eşitlenir) */}
+            <div className="space-y-4 pt-2">
+              {sectionPairs.map((pair, pIdx) => (
+                <div key={pIdx} className="grid grid-cols-1 md:grid-cols-2 gap-4 subgrid-row-sections">
+                  {pair.map((sec, idx) => (
+                    <div key={idx} className="p-4 rounded bg-[#fafafa] border border-[#d1d5db] shadow-2xs subgrid-card-sections flex flex-col justify-between">
+                      <div className="border-b border-[#e2e8f0] pb-2.5 h-full flex flex-col justify-between">
+                        <div className="flex items-start justify-between gap-2">
+                          <h3 className="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                            {sec.title}
+                          </h3>
+                          <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#e8f5e9] text-[#107c41] border border-emerald-200 font-bold shrink-0">
+                            {sec.badge}
+                          </span>
+                        </div>
+                      </div>
+                      <div
+                        className="text-xs text-slate-700 leading-relaxed font-normal pt-1"
+                        dangerouslySetInnerHTML={{ __html: sec.contentHtml }}
+                      />
+                    </div>
+                  ))}
                 </div>
               ))}
             </div>

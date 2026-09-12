@@ -19,6 +19,12 @@ Bu belge, bu projenin tüm tasarım, veri mimarisi ve geliştirme standartların
    - CSS Subgrid mimarisi sayesinde, o satırdaki diğer kutular da en uzun kutunun bittiği seviyeye kadar otomatik olarak uzar (`h-full`).
    - Daha kısa metin içeren kutularda metin ile kutu tabanı arasında doğal bir boşluk kalabilir ("Yazı ve kutu arasında boşluk kalabilir sorun değil"), ancak kutuların alt çizgisi ve takip eden elemanların başlangıç çizgisi daima jilet gibi aynı hizada kalır.
 
+4. **Başlık Ayrım Çizgilerinin Eşitlenmesi (Header Bottom Border Alignment):**
+   - Kartların başlıklarının altında yer alan ince ayrım çizgileri (`border-b`), aynı satırdaki kartlar arasında daima milimetrik olarak aynı yatay hizada olmalıdır.
+   - Bir kartın başlığı 2 veya daha fazla satıra uzayıp aşağı kaysa bile, yanındaki tek satırlık başlığa sahip kartların başlık kapsayıcıları `h-full flex flex-col justify-between` ile otomatik olarak en uzun başlığın seviyesine kadar aşağı uzar.
+   - Alt ayrım çizgisi daima o satırdaki en uzun (aşağıda olan) başlığın bittiği seviyeye kilitlenir; yan kartlardaki çizgiler asla yukarıda kalamaz.
+   - Bu kural hem Danışman Raporu 4 Bölüm kartlarında (`.subgrid-row-sections`), hem Günün Sözlüğü'nde (`.subgrid-row-glossary`), hem de sitedeki tüm grid kartlarında tavizsiz uygulanır.
+
 ---
 
 ## 🔬 2. ArXiv Akademik Radar Standartları
