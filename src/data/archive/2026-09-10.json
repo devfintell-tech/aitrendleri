@@ -1693,5 +1693,61 @@
       "badge": "İş Dünyası",
       "contentHtml": "<p>Beyaz yaka entegrasyonu ve operasyonel verimlilik açısından, AI ajanlarının iş akışlarına entegrasyonu giderek daha fazla önem kazanıyor. N8n gibi otomasyon platformları, AI ajanlarını kurumsal süreçlere dahil etmek için esnek ve güvenilir çözümler sunuyor. Özellikle self-hosting yetenekleri, veri güvenliği ve maliyet kontrolü konusunda hassas olan işletmeler için cazip hale geliyor. Copilot'ın masaüstü uygulamasından ekran paylaşımı özelliğinin kaldırılması gibi regresyonlar, kurumsal kullanıcıların AI araçlarından beklentilerinin yüksek olduğunu ve temel işlevselliklerdeki aksaklıkların hızla tepki çektiğini gösteriyor. AI destekli derin araştırma ajanları (örn. GPT-Researcher, Dexter), finansal analizden genel istihbarata kadar geniş bir yelpazede beyaz yakalı profesyonellerin bilgi toplama ve analiz süreçlerini otomatize etme potansiyeli sunuyor. Bu araçlar, karar alma süreçlerini hızlandırırken, insan analistlerin daha stratejik görevlere odaklanmasına olanak tanıyor. AI'ın iş dünyasına entegrasyonu, sadece verimlilik artışı değil, aynı zamanda etik ve operasyonel risk yönetimi konularında da yeni zorluklar ve fırsatlar yaratıyor.</p>"
     }
+  ],
+  "dailyGlossary": [
+    {
+      "id": "g10-1",
+      "term": "Looped Transformer (Döngülü Transformer)",
+      "category": "Model Mimarisi",
+      "definition": "Standart transformer mimarisinde bilginin katmanlar arasında tek yönlü aktığı yerine, belirli katmanların çıktısının tekrar aynı bloğa beslenerek çok turlu iç akıl yürütme yaptığı deneysel mimari. GPT-6 Astra'nın 'gizli akıl yürütme' yeteneklerinin temel mekanizması olduğu değerlendirilmektedir."
+    },
+    {
+      "id": "g10-2",
+      "term": "WebAssembly (WASM)",
+      "category": "Web Teknolojileri",
+      "definition": "Yüksek seviyeli dillerde (C++, Rust, Go) yazılan uygulamaların tarayıcı içinde neredeyse yerel (native) hızda çalıştırılmasını sağlayan ikili derleme hedefi ve çalışma zamanı. GNU Radio gibi karmaşık masaüstü uygulamalarını kurulum gerektirmeden tarayıcıya taşır ve AI/ML modellerinin istemci tarafında çalıştırılması için yeni kapılar açar."
+    },
+    {
+      "id": "g10-3",
+      "term": "Reasoning Prefill (Akıl Yürütme Ön Doldurma)",
+      "category": "Prompt Mühendisliği",
+      "definition": "Modele nihai yanıttan önce aşama aşama düşünme sürecini (chain-of-thought) açıkça göstermek amacıyla prompt içine yerleştirilen hazır 'düşünce başlatıcı' metin bloğu. Qwen 3.8'in GPT-5.5 Pro'nun bu tekniğini benimsemesi, açık kaynak modellerin kapalı model en iyi uygulamalarını hızla kopyalayabildiğini göstermiştir."
+    },
+    {
+      "id": "g10-4",
+      "term": "On-Device AI (Cihaz Üstü Yapay Zeka)",
+      "category": "Mobil & Kenar Hesaplama",
+      "definition": "Büyük dil modellerini bulut sunucularına veri göndermeden doğrudan kullanıcının cihazında (iPhone, laptop vb.) çalıştıran mimari. Pocket AI Lab'ın iOS uygulaması bu yaklaşımı somutlaştırırken, çevrimdışı kullanım, gizlilik ve sıfır API maliyeti gibi kritik avantajlar sunar."
+    },
+    {
+      "id": "g10-5",
+      "term": "Multimodal AI",
+      "category": "Model Yetenekleri",
+      "definition": "Yalnızca metin yerine aynı anda görsel, ses, video ve diğer veri tiplerini anlayıp üretebilen yapay zeka modeli. GPT-6 Astra'nın tek promptla otomobil markası tasarlayıp reklam filmi üretmesi, multimodal yeteneklerin ticari uygulamalardaki sınırlarını genişlettiğinin somut kanıtıdır."
+    },
+    {
+      "id": "g10-6",
+      "term": "Tailwind CSS",
+      "category": "Frontend Geliştirme",
+      "definition": "HTML içinde önceden tanımlanmış kısa sınıf adlarını (utility class) birleştirerek CSS yazmadan doğrudan stil uygulamayı sağlayan utility-first CSS çerçevesi. Tailwind Labs'ın Shopify'a katılması ve ekibinin AI araçlarıyla küçülmesi, geliştirici araçları şirketlerindeki AI kaynaklı konsolidasyonu somutlaştırmaktadır."
+    },
+    {
+      "id": "g10-7",
+      "term": "Predictive Surveillance (Öngörücü Gözetim)",
+      "category": "AI Etiği & Gizlilik",
+      "definition": "Kişilerin gelecekteki davranışlarını tahmin etmek amacıyla geçmiş faaliyet verilerini, sosyal ağ bağlantılarını ve konum bilgilerini analiz eden yapay zeka destekli sistematik izleme. Aktivistlerin, gazetecilerin veya muhalif grupların profillenmesinde kullanıldığı iddiaları nedeniyle ciddi insan hakları endişeleri doğurmaktadır."
+    },
+    {
+      "id": "g10-8",
+      "term": "CORE (Coding Reasoning) Metriği",
+      "category": "Benchmark & Değerlendirme",
+      "definition": "Büyük dil modellerinin kodlama ve akıl yürütme görevlerindeki birleşik başarımını ölçen değerlendirme ölçütü. 3.8 milyar parametrelik bir modelin bin doların altında eğitim maliyetiyle 0.384 CORE skoru elde etmesi, küçük ama özelleştirilmiş modellerin rekabetçiliğini kanıtlamaktadır."
+    },
+    {
+      "id": "g10-9",
+      "term": "N8n Self-Hosted Otomasyon",
+      "category": "Otomasyon & Kurumsal AI",
+      "definition": "Bulut tabanlı n8n yerine şirketin kendi altyapısında barındırılan, veri dışarı çıkmadan AI ajanlarını tetikleyen, API çağrılarını düzenleyen ve koşullu iş akışlarını yöneten açık kaynaklı otomasyon kurulumu. Finansal ve sağlık gibi düzenlenmiş sektörlerde veri uyumluluk gereksinimlerini karşılamak için özellikle tercih edilir."
+    }
   ]
 }

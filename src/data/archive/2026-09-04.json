@@ -1659,5 +1659,61 @@
         "text": "Apple Silicon üzerinde birleşik bellek ile 70B modellerin kuantize çalıştırılması bireysel mühendisler için standart oldu."
       }
     ]
-  }
+  },
+  "dailyGlossary": [
+    {
+      "id": "g04-1",
+      "term": "eLLM (CPU Inference Framework)",
+      "category": "Altyapı & Çıkarım",
+      "definition": "Büyük dil modellerini GPU yerine standart sunucu DDR belleği üzerinde çalıştıran, uzun bağlamlı çıkarımda (long-context inference) önbellek ve tek geçişli ön-doldurma (prefill) algoritmalarıyla GPU'ları geride bırakan CPU tabanlı çıkarım motoru. Özellikle düşük eşzamanlılıklı kurumsal araçlarda GPU kiralama maliyetini %80'e varan oranda düşürür."
+    },
+    {
+      "id": "g04-2",
+      "term": "LLM-as-a-Judge",
+      "category": "Değerlendirme & Otomasyon",
+      "definition": "Bir yapay zekanın diğer bir yapay zekanın çıktısını değerlendirmek için hakem olarak kullanıldığı yöntem. CI/CD pipeline'larında test ve kalite kontrol amacıyla kullanılır; ancak kendi verisiyle eğitilmiş kapalı API'lerin hakem olarak kullanılması önyargı ve tutarsızlık riskini beraberinde getirir."
+    },
+    {
+      "id": "g04-3",
+      "term": "KV Önbellek (Key-Value Cache)",
+      "category": "Model Mimarisi",
+      "definition": "Transformer modellerinin her dikkat katmanında hesaplanan anahtar (Key) ve değer (Value) matrislerini bellekte saklayan önbellek mekanizması. Uzun konuşmalarda aynı hesaplamaların tekrar yapılmasını engeller; ancak bağlam büyüdükçe GPU VRAM tüketimi hızla artar."
+    },
+    {
+      "id": "g04-4",
+      "term": "MCP (Model Context Protocol)",
+      "category": "Ajan & Araç Entegrasyonu",
+      "definition": "Yapay zeka modellerinin dış araçlara, veritabanlarına ve servislere standart bir protokol üzerinden bağlanmasını sağlayan açık iletişim çerçevesi. Bir ajan hangi araca bağlanacağını, hangi parametrelerle çağıracağını bu protokol üzerinden bildirir; böylece farklı modeller aynı araçlarla birlikte çalışabilir."
+    },
+    {
+      "id": "g04-5",
+      "term": "RAG (Retrieval-Augmented Generation)",
+      "category": "Bilgi Erişimi",
+      "definition": "Modelin yalnızca eğitim verisine değil, sorgu anında dinamik olarak bir belge tabanından getirilen ilgili parçalara (chunk) da bakarak yanıt ürettiği mimari. Kurumsal ortamlarda güncel ve gizli belgelere dayalı doğru yanıtlar üretmek için kullanılır; ancak vektör arama sonuçlarının model bağlamına enjekte edilmesi güvenlik riskleri doğurabilir."
+    },
+    {
+      "id": "g04-6",
+      "term": "vLLM",
+      "category": "Altyapı & Çıkarım",
+      "definition": "PagedAttention algoritmasını kullanan, yüksek verimli ve açık kaynaklı büyük dil modeli çıkarım sunucusu. Aynı GPU kümesinde binlerce eşzamanlı isteğe hizmet verirken bellek israfını minimize eder ve Hugging Face modellerini üretim ortamında kolayca sunmak için endüstri standardı haline gelmiştir."
+    },
+    {
+      "id": "g04-7",
+      "term": "Bağlam Budama (Context Pruning)",
+      "category": "Bellek Yönetimi",
+      "definition": "Ajan döngülerinde birikimin önüne geçmek için her araç çağrısı sonrasında bağlam penceresinden gereksiz bilgileri çıkaran, yalnızca yapısal özeti tutan filtreleme tekniği. Hafıza sızıntısı (memory leak) ve bağlam taşması gibi sorunları önlemenin temel yoludur."
+    },
+    {
+      "id": "g04-8",
+      "term": "Deterministik Doğrulama",
+      "category": "Test & Güvenilirlik",
+      "definition": "LLM çıktılarını olasılıksal tahmin yerine önceden tanımlanmış kurallar, JSON şema kontrolleri ve tip denetimleriyle sınayan yaklaşım. Aynı girdi her seferinde aynı sonucu verdiği için CI/CD ortamlarında güvenilir test otomasyonunun temelidir."
+    },
+    {
+      "id": "g04-9",
+      "term": "Kuantizasyon (INT4 / INT8)",
+      "category": "Model Optimizasyonu",
+      "definition": "Model ağırlıklarını 32 bitlik ondalıklı sayılar yerine 4 veya 8 bitlik tam sayılarla temsil eden sıkıştırma tekniği. VRAM tüketimini dramatik şekilde azaltarak büyük modellerin (Qwen gibi) tüketici donanımında çalıştırılabilmesini sağlar; küçük bir doğruluk kaybı karşılığında hız ve erişilebilirlik kazanılır."
+    }
+  ]
 }

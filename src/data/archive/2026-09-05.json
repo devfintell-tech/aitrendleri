@@ -1805,5 +1805,61 @@
         "text": "Qwen 3.8 27B ve yeni CPU çıkarım motorları, GPU darboğazı yaşayan ekiplere veri merkezlerine bağımsız güçlü bir yerel çalışma imkanı sundu."
       }
     ]
-  }
+  },
+  "dailyGlossary": [
+    {
+      "id": "g05-1",
+      "term": "GPT-6 Astra",
+      "category": "Model",
+      "definition": "OpenAI'ın 3 Eylül 2026'da duyurduğu, 'Critical' siber güvenlik seviyesiyle sınıflandırılan ilk nesil ötesi otonom bilgisayar operatörü. Tek promptla karmaşık çok adımlı görevleri tamamlayabilen, ekranı görebilen ve uygulamaları yönetebilen multimodal ajan modeli."
+    },
+    {
+      "id": "g05-2",
+      "term": "PagedAttention v3",
+      "category": "Altyapı & Bellek Optimizasyonu",
+      "definition": "İşletim sistemlerinin sanal bellek sayfalamasından esinlenerek, LLM'lerin KV önbellek tensörlerini GPU belleğinde ardışık olmayan dinamik parçalar halinde saklayan ve yöneten algoritmanın üçüncü sürümü. vLLM'nin temel mimarisi olan bu yapı, aynı GPU kümesinde eşzamanlı bağlam kapasitesini 2 kata kadar artırır."
+    },
+    {
+      "id": "g05-3",
+      "term": "Fable 5.1",
+      "category": "Model",
+      "definition": "Devin platformu üzerinde üretim ortamında canlıya alınan kodlama odaklı ajan modeli. GPT-6 Astra ve Claude serisiyle doğrudan rekabet eden bu model, maliyet avantajlarıyla öne çıkar ve geliştirici iş akışlarını otomatikleştirmek için tasarlanmıştır."
+    },
+    {
+      "id": "g05-4",
+      "term": "EDA (Elektronik Tasarım Otomasyonu)",
+      "category": "Donanım & Tasarım",
+      "definition": "Mikro işlemci, devre kartı ve VLSI çiplerinin tasarım, simülasyon ve doğrulama süreçlerini otomatikleştiren yazılım araçları seti. Yapay zekanın bu araçlara entegrasyonu, tekrarlayan devre düzeni görevlerini hızlandırmakta ve tasarım hatalarını erkenden tespit etmektedir."
+    },
+    {
+      "id": "g05-5",
+      "term": "Biçimsel Doğrulama (Formal Verification)",
+      "category": "Yazılım & Matematik",
+      "definition": "Bir programın, algoritmanın veya matematiksel teoreminin doğruluğunu sezgisel testler yerine matematiksel ispat yöntemleriyle kesin olarak kanıtlayan disiplin. Lean 4 gibi ispat yardımcıları, bu süreci bilgisayar destekli hale getirerek Fermat'ın Son Teoremi gibi karmaşık ispatları makine doğrulanabilir kılmaktadır."
+    },
+    {
+      "id": "g05-6",
+      "term": "Self-Hosting (Kendi Sunucunda Barındırma)",
+      "category": "Altyapı & Bağımsızlık",
+      "definition": "LLM veya diğer yapay zeka modellerini bulut API'lerine bağımlı kalmadan kendi donanımınızda veya özel sunucunuzda çalıştırma yaklaşımı. Veri gizliliği, API maliyet kontrolü ve ağ gecikmesi gibi endişeleri ortadan kaldırır; ancak başlangıç donanım yatırımı ve bakım sorumluluğu şirketin üstündedir."
+    },
+    {
+      "id": "g05-7",
+      "term": "MiniMax H3",
+      "category": "Model & Video Üretimi",
+      "definition": "Hibrit mimariyle tasarlanmış, hem metin hem video içerik üretiminde kullanılan model. LoRA fine-tuning desteğiyle farklı stilistik iş akışlarına adapte edilebilir ve medya üretim süreçlerinde sürekli yenilikler sunar."
+    },
+    {
+      "id": "g05-8",
+      "term": "OpenRouter",
+      "category": "API & Araç Entegrasyonu",
+      "definition": "Farklı yapay zeka sağlayıcılarının (OpenAI, Anthropic, Mistral vb.) modellerine tek bir standart API üzerinden erişmeyi sağlayan birleşik ağ geçidi. Geliştiricilerin modeller arasında hızlıca geçiş yapabilmesini ve maliyet/performans karşılaştırması yapabilmesini kolaylaştırır."
+    },
+    {
+      "id": "g05-9",
+      "term": "n8n",
+      "category": "Otomasyon & Ajan Orkestrasyon",
+      "definition": "Yapay zeka ajanlarını ve iş süreçlerini görsel akış diyagramlarıyla birbirine bağlayan açık kaynaklı otomasyon platformu. Self-hosting desteğiyle kurumsal veri güvenliğini korurken, 'sessiz hata' önleme ve MCP standardı entegrasyonuyla güvenilir AI ajanı dağıtımı için tercih edilir."
+    }
+  ]
 }

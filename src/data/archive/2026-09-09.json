@@ -1812,5 +1812,61 @@
       "badge": "İş Dünyası",
       "contentHtml": "<p>Beyaz yaka entegrasyonu ve operasyonel verimlilik, AI agent'larının iş süreçlerine dahil edilmesiyle yeni boyutlar kazanıyor. Meta'nın kişisel AI agent'ı Muse'un tanıtımı, şirketlerin çalışan verimliliğini artırmak için kişiselleştirilmiş AI asistanlarına yatırım yaptığını gösteriyor. Ancak, bu tür agent'ların veri toplama ve gizlilik politikaları, benimsenmeleri açısından belirleyici olacak. AI'nın matematik problemlerini çözme yeteneği gibi bilimsel alanlardaki ilerlemeler, araştırma ve geliştirme süreçlerinde AI'nın rolünü yeniden tanımlıyor. Truffle gibi araçlar, ChatGPT çıktılarını doğrudan iPhone notlarına entegre ederek, bilgi yönetimini ve iş akışlarını kolaylaştırıyor. Bu, AI'nın günlük iş süreçlerine daha sorunsuz bir şekilde entegre edilmesinin yollarını açıyor. Ancak, AI'nın adaptif keşif yoluyla sosyal önyargılar geliştirebildiği bulgusu, beyaz yaka uygulamalarında AI etiği ve denetiminin ne kadar önemli olduğunu bir kez daha vurguluyor.</p>"
     }
+  ],
+  "dailyGlossary": [
+    {
+      "id": "g09-1",
+      "term": "Mac MCP",
+      "category": "Ajan & Sistem Entegrasyonu",
+      "definition": "macOS ortamında çalışan, yapay zeka ajanlarının Spotlight, Finder, Safari sekmeleri ve sistem uygulamalarıyla doğrudan etkileşime geçmesini sağlayan yerel MCP (Model Context Protocol) sunucusu. Birden fazla eş zamanlı ajan sekmesini çakışmadan yönetme yeteneğiyle otonom geliştirici iş akışlarında dikkat çekmektedir."
+    },
+    {
+      "id": "g09-2",
+      "term": "Vibecoding (Agent Modu)",
+      "category": "Geliştirici Metodolojisi",
+      "definition": "AI ajanına yüksek düzey bir hedef tanımlayıp ardından ajanın kendi başına alt görevleri planlayıp, araçları çağırıp, kodu yazıp hata ayıkladığı, geliştiricinin en az müdahaleyle süreci gözlemlediği ajan odaklı yazılım geliştirme biçimi. OpenClaw gibi ajanların matematik rekorları kırdığı bu yöntem, hata ayıklama ve güvenilirlik konularında yeni standartlar belirlemektedir."
+    },
+    {
+      "id": "g09-3",
+      "term": "Belay",
+      "category": "Geliştirici Araçları",
+      "definition": "Claude Code gibi popüler AI ajanlarının kısa bellekleri nedeniyle aynı hataları tekrar tekrar yapmasını önlemek için tasarlanmış ajan güvenlik katmanı ve bellek yönetim aracı. Uzun oturumlar boyunca ajanın önceki başarısızlıklarını hatırlamasını sağlayarak tekrarlayan hataları engeller."
+    },
+    {
+      "id": "g09-4",
+      "term": "LLM Attention Visualization",
+      "category": "Model İçgörüsü & Yorumlanabilirlik",
+      "definition": "Büyük dil modellerinde her dikkat başlığının (attention head) giriş tokenlarının hangi kısımlarına ne ağırlıkla odaklandığını renk haritaları ve akış diyagramlarıyla görselleştiren analiz araçları. Model geliştiricilerinin halüsinasyon kaynaklarını, önyargıları ve bağlam kavrayışını teşhis etmesini sağlar."
+    },
+    {
+      "id": "g09-5",
+      "term": "Sosyal Önyargı Üretimi (Novel Social Bias)",
+      "category": "AI Güvenliği & Etik",
+      "definition": "Büyük dil modellerinin yalnızca eğitim verisindeki mevcut önyargıları yansıtmakla kalmayıp, adaptif keşif (reinforcement learning ve fine-tuning) sürecinde daha önce veri setinde bulunmayan yeni sosyal önyargılar ürettiği araştırma bulgusuna dayanan kavram. Modellerin sürekli izlenmesi gerektiren bu dinamiği, statik kırmızı takım (red teaming) yöntemlerinin yetersizliğini ortaya koyar."
+    },
+    {
+      "id": "g09-6",
+      "term": "AI Yorgunluğu (AI Fatigue)",
+      "category": "Toplumsal Etki",
+      "definition": "Yapay zeka özelliklerinin her ürüne zorunlu eklenmesi nedeniyle kullanıcıların AI entegrasyonundan bunalmış, şüpheci ve yorulmuş hale gelmesi olgusu. LibreOffice'in 'AI özelliği yok' sloganıyla indirme rekoru kırması, bu eğilimin somut pazar yansımasıdır."
+    },
+    {
+      "id": "g09-7",
+      "term": "Muse (Meta Kişisel AI Ajanı)",
+      "category": "Ajan & Kişisel Asistan",
+      "definition": "Meta'nın bireysel kullanıcılar için geliştirdiği, günlük görev yönetimi, takvim, e-posta ve içerik üretimi gibi kişisel iş akışlarını otomatikleştiren yapay zeka asistanı. Kişiselleştirilmiş AI ajanları pazarındaki rekabetin yoğunlaştığını ve veri gizliliği politikalarının kullanıcı benimsemesinde belirleyici olacağını göstermektedir."
+    },
+    {
+      "id": "g09-8",
+      "term": "Açık Matematik Problemi Madenciliği",
+      "category": "AI & Bilim",
+      "definition": "Yapay zeka sistemlerinin henüz çözülmemiş matematiksel problemler üzerinde yoğun hesaplama yürüterek insan araştırmacıların yıllarca üzerinde çalışacağı problem uzaylarını 'tüketmesi' ve böylece gelecekteki araştırma fırsatlarını daraltması endişesini tanımlayan kavram. Tao gibi matematikçilerin dikkat çektiği bu olgu, insan-AI araştırma iş birliğinin yeniden tanımlanmasını gerektirmektedir."
+    },
+    {
+      "id": "g09-9",
+      "term": "Windsurf IDE",
+      "category": "Geliştirici Araçları",
+      "definition": "Cursor'a alternatif olarak konumlanan, yapay zeka destekli kod tamamlama ve ajan görevleri için tasarlanmış entegre geliştirme ortamı. Kritik hatalar ve güvenilirlik sorunları nedeniyle erken benimseyiciler arasında önemli tartışmalara yol açmış; topluluk kritik yazılım araçlarında güvenilirliğin işlevsellikten önce geldiğini vurgulamaktadır."
+    }
   ]
 }

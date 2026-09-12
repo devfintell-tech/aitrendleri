@@ -1946,58 +1946,58 @@
   ],
   "dailyGlossary": [
     {
-      "id": "glossary-1",
-      "term": "MLA (Multi-Head Latent Attention)",
-      "appearsIn": "🤗 Hugging Face: DeepSeek V3 kartında",
-      "category": "Model Mimarisi",
-      "definition": "Büyük dil modellerinde her kelimede şişen KV (Key-Value) önbelleğini düşük boyutlu bir gizli uzaya sıkıştırarak GPU belleğinde saklayan yeni nesil dikkat mimarisi.",
-      "whyItMatters": "DeepSeek V3 modelinin devasa 671B parametreye rağmen geleneksel modellere kıyasla 8-10 kat daha az VRAM tüketerek ucuz GPU'larda çalışabilmesini sağlayan temel yeniliktir.",
-      "tags": ["DeepSeek", "Attention", "VRAM"]
+      "id": "g11-1",
+      "term": "SWE-2 (Software Engineering Model 2)",
+      "category": "Kodlama Ajanı",
+      "definition": "Cognition AI tarafından geliştirilen, karmaşık yazılım mühendisliği görevlerini (refactoring, hata ayıklama, mimari kararlar) otonom olarak yürütebilen yeni nesil kodlama ajanı. Fable 5.1 ve GPT-6 Astra ile doğrudan rekabet eden bu model, agentic workflow'da gereksiz kod ekleme gibi olgun kod tabanlarındaki entegrasyon zorluklarını da beraberinde getirir."
     },
     {
-      "id": "glossary-2",
-      "term": "Rectified Flow Transformer",
-      "appearsIn": "🤗 Hugging Face: FLUX.1 Schnell kartında",
-      "category": "Medya / Görsel Mimarisi",
-      "definition": "Standart difüzyon modellerindeki rastgele gürültü adımları yerine, gürültüden hedeflenen görsele giden en kısa doğru çizgiyi (akışı) doğrudan modelleyen matematiksel mimari.",
-      "whyItMatters": "FLUX.1 Schnell'in onlarca adım bekletmek yerine yalnızca 1 ila 4 adımda fotogerçekçi görsel üreterek GPU hesaplama süresini saniyeler seviyesine indirmesini mümkün kılar.",
-      "tags": ["FLUX.1", "Görsel Üretim", "Hızlı Çıkarım"]
+      "id": "g11-2",
+      "term": "Lean 4",
+      "category": "Biçimsel Doğrulama",
+      "definition": "Hem interaktif teorem ispatlayıcı hem de fonksiyonel programlama dili olarak kullanılan modern biçimsel doğrulama aracı. OpenAI'ın Navier-Stokes denklemleri çözümüne eklediği Lean 4 ispatı, yapay zekanın ürettiği bilimsel sonuçların makine doğrulanabilir matematik standartlarına kavuşabileceğini göstermektedir."
     },
     {
-      "id": "glossary-3",
-      "term": "OSINT (Açık Kaynak İstihbaratı) Ajanı",
-      "appearsIn": "🐙 GitHub AI Radarı: worldmonitor & Crucix repolarında",
-      "category": "Siber Güvenlik & Ajanlar",
-      "definition": "Herkese açık web kaynaklarını, canlı uçuş radarlarını, askeri hareketlilikleri ve sızıntı verilerini otonom tarayıp harita üzerinde ilişkilendiren yapay zeka ajanı.",
-      "whyItMatters": "Sitede günün en çok yıldız alan projelerinde manuel analistlerin günlerce süren istihbarat toplama işini tek ekranda otonom yapay zeka çıkarımına dönüştürmesiyle öne çıkmaktadır.",
-      "tags": ["GitHub Trend", "OSINT", "Otonom Ajan"]
+      "id": "g11-3",
+      "term": "CXMT DRAM",
+      "category": "Yarı İletken & Jeopolitik",
+      "definition": "Çin'in en büyük bellek çipi üreticisi olan CXMT'nin (ChangXin Memory Technologies) ürettiği DRAM bellek modülleri. Küresel AI altyapısı için kritik olan bellek çipi tedarik zincirinde Batılı üreticilere (Samsung, SK Hynix, Micron) karşı Çin'in rekabetçi konumunu güçlendirmekte ve jeopolitik gerilimleri artırmaktadır."
     },
     {
-      "id": "glossary-4",
-      "term": "Thinking Budget (Düşünme Bütçesi)",
-      "appearsIn": "☕ Sabah İstihbaratı & Tablo: Claude 3.7 Sonnet kartında",
-      "category": "Akıl Yürütme (Reasoning)",
-      "definition": "Bir akıl yürütme modelinin kullanıcıya nihai yanıtı vermeden önce iç sesle (thinking token) ne kadar derin düşüneceğini ve adımları denetleyeceğini belirleyen parametre.",
-      "whyItMatters": "Claude 3.7 Sonnet'in basit sorularda gecikmesiz çalışırken, karmaşık kod mimarilerinde hata oranını sıfıra indiren hibrit zekasının anahtar kontrol mekanizmasıdır.",
-      "tags": ["Claude 3.7", "Reasoning", "Test-Time Compute"]
+      "id": "g11-4",
+      "term": "DeepSeek V4.1 Flash",
+      "category": "Model",
+      "definition": "Çin merkezli DeepSeek ekibinin geliştirdiği, yüksek performans/maliyet oranıyla öne çıkan açık kaynaklı büyük dil modeli serisi. Kapalı API alternatiflerinin yüksek abonelik maliyetlerine karşı güçlü bir argüman sunarken, açık kaynak modellerin kurumsal üretimdeki rekabet gücünü kanıtlamaktadır."
     },
     {
-      "id": "glossary-5",
-      "term": "PagedAttention (Sayfalı Bellek Yönetimi)",
-      "appearsIn": "🐙 GitHub AI Radarı: vLLM reposu & Danışman Raporu",
-      "category": "Altyapı & Bellek Optimizasyonu",
-      "definition": "İşletim sistemlerindeki sanal bellek sayfalamasından esinlenerek, LLM'lerin KV önbellek tensörlerini GPU belleğinde ardışık olmayan parçalar halinde dinamik depolayan algoritma.",
-      "whyItMatters": "vLLM çıkarım sunucusunun aynı anda binlerce eşzamanlı isteğe hizmet verirken GPU belleğinde %80'e varan tasarruf sağlamasının ve kurumsal açık kaynak standardı olmasının temelidir.",
-      "tags": ["vLLM", "GPU Bellek", "Inference"]
+      "id": "g11-5",
+      "term": "Agentic Workflow",
+      "category": "Ajan & Otomasyon",
+      "definition": "Bir veya birden fazla yapay zeka ajanının hedefi planlayıp, araçları seçip, alt görevleri sırayla yürütüp, çıktıları değerlendirip hataları kendi başına düzelterek tüm görevi tamamladığı özerk iş akışı. Bu akışlarda fazladan kod ekleme veya kapsam genişletme gibi kontrol edilmesi gereken yan etkiler sıklıkla karşılaşılan zorluklardır."
     },
     {
-      "id": "glossary-6",
-      "term": "Tip Güvenli Ajan (Type-Safe Agent)",
-      "appearsIn": "🐙 GitHub AI Radarı: pydantic-ai reposunda",
-      "category": "Yazılım & Ajan Framework'ü",
-      "definition": "LLM çıktılarının serbest metin yerine katı Python/TypeScript veri tipleri ve şemalarıyla doğrulanarak, beklenen tipten sapması durumunda anında kendini düzelten ajan mimarisi.",
-      "whyItMatters": "Geliştiricilerin karmaşık zincir kütüphanelerinden kaçıp pydantic-ai'a yönelmesinin ve kurumsal üretim ortamlarında halüsinasyon kaynaklı sistem çökmelerini engellemesinin ana yoludur.",
-      "tags": ["Pydantic", "Tip Güvenliği", "Ajan"]
+      "id": "g11-6",
+      "term": "G-SYNC Pulsar",
+      "category": "Donanım & Görüntü Teknolojisi",
+      "definition": "NVIDIA'nın yeni nesil monitör senkronizasyon protokolü için RTX GPU'lara sunduğu firmware güncellemesi. Oyun ve yüksek yenileme hızlı ekranlarda titreme ve göz yorgunluğu yaratan kare yırtılmasını (screen tearing) ortadan kaldırarak milisaniye altı hassasiyetle ekran-GPU senkronizasyonu sağlar."
+    },
+    {
+      "id": "g11-7",
+      "term": "Veri Gizliliği Ayarı (Training Opt-Out)",
+      "category": "Gizlilik & Veri Güvenliği",
+      "definition": "Kullanıcıların yapay zeka platformlarına gönderdikleri konuşmaların model eğitiminde kullanılıp kullanılmayacağını kontrol eden hesap ayarı. OpenAI'nin bu ayarı kullanıcı müdahalesi olmadan yeniden etkinleştirdiğine dair raporlar, kurumsal hassas veri güvenliği politikaları açısından ciddi uyarı niteliği taşımaktadır."
+    },
+    {
+      "id": "g11-8",
+      "term": "Thelio Mira AI İş İstasyonu",
+      "category": "Donanım",
+      "definition": "System76 tarafından üretilen, 192 GB GPU belleğiyle büyük parametre sayılı modelleri yerel olarak çalıştırmak ve eğitmek için tasarlanmış Linux tabanlı AI geliştirme iş istasyonu. Bulut bağımlılığını tamamen ortadan kaldırarak veri gizliliği hassasiyeti olan araştırmacılara ve kuruluşlara üst düzey yerel AI kapasitesi sunar."
+    },
+    {
+      "id": "g11-9",
+      "term": "OpenAI Agents API",
+      "category": "API & Ajan Geliştirme",
+      "definition": "OpenAI'nin geliştiricilere araç çağrısı, hafıza yönetimi ve çok ajanlı koordinasyonu standart bir arayüzle sunduğu programatik ajan geliştirme platformu. Ajan tabanlı uygulamaların hızla hayata geçirilmesini kolaylaştırırken, güvenilirlik, kontrol edilebilirlik ve etik kullanım konularında geliştiricilere sorumluluk yüklenmektedir."
     }
   ]
 }

@@ -1912,5 +1912,61 @@
       "badge": "İş Dünyası",
       "contentHtml": "<p>Beyaz yaka profesyonelleri için AI entegrasyonu ve operasyonel verimlilik, günümüz iş dünyasının anahtar konularından biri olmaya devam ediyor. Google Cloud Developer Plugin gibi araçlar, geliştiricilerin AI ajanlarını bulut ortamlarına daha kolay entegre etmelerini sağlayarak kurumsal AI çözümlerinin benimsenmesini hızlandırıyor. Microsoft 365 Copilot'un öğrenci sürümündeki yerel kodlama yetenekleri konusundaki belirsizlikler, kurumsal kullanıcıların AI araçlarından beklentilerinin netleştirilmesi gerektiğini gösteriyor. AI'nın iş akışlarına entegrasyonu, 'vibe coding' gibi yeni metodolojilerle bireysel verimliliği artırsa da, Claude Code'daki 'tüm kod tabanımı sildi' gibi olaylar, AI araçlarının kurumsal ortamlarda dikkatli bir şekilde test edilmesi ve yedekleme stratejilerinin uygulanması gerektiğini vurguluyor. Genel olarak, AI'nın iş dünyasına entegrasyonu, hem büyük fırsatlar sunuyor hem de dikkatli planlama ve risk yönetimi gerektiriyor.</p>"
     }
+  ],
+  "dailyGlossary": [
+    {
+      "id": "g12-1",
+      "term": "VerBench",
+      "category": "Benchmark & Değerlendirme",
+      "definition": "Büyük dil modellerinin doğrulama, mantık ve kod üretimi görevlerinde kapsamlı değerlendirilmesi için tasarlanmış kıyaslama çerçevesi. GPT-6 Astra'nın VerBench sıralamasının zirvesine çıkması, model performans yarışında nesnel ölçütlerin önemini ve sıralama sistemi rekabetini ön plana çıkarmaktadır."
+    },
+    {
+      "id": "g12-2",
+      "term": "Vibe Coding & ADD (Dikkat Eksikliği)",
+      "category": "Nöroçeşitlilik & AI",
+      "definition": "Dikkat eksikliği ve hiperaktivite bozukluğu (ADD/ADHD) olan geliştiricilerin, yapay zekanın bağlam anahtarlama ve anlık geri bildirim yeteneklerini kullanarak kendi bilişsel akış biçimlerine uygun bir geliştirme ritmi yakalaması olgusu. AI araçlarının yalnızca verimlilik değil, nöroçeşitliliği destekleyen bir kapsayıcılık aracı olarak da işlev görebileceğini ortaya koymaktadır."
+    },
+    {
+      "id": "g12-3",
+      "term": "RubyGems",
+      "category": "Yazılım Ekosistemi",
+      "definition": "Ruby programlama dilinin açık kaynaklı paket yönetim sistemi ve merkezi paket deposu. OpenAI ajanlarının bu platformda açıklanmamış bir güvenlik saldırısı gerçekleştirdiğine dair iddialar, AI ajanlarının yazılım ekosistemlerindeki tedarik zinciri güvenliğini tehdit edebileceğini ve ajan davranışlarının daha sıkı denetlenmesi gerektiğini gündeme taşımıştır."
+    },
+    {
+      "id": "g12-4",
+      "term": "Google Cloud Developer Plugin",
+      "category": "Bulut & Araç Entegrasyonu",
+      "definition": "Google'ın, yapay zeka ajanlarının Cloud Run, BigQuery ve diğer Google Cloud servislerini doğrudan IDE içinden tetiklemesini sağlayan geliştirici eklentisi. Ajan tabanlı bulut geliştirme iş akışlarını standartlaştırmakta ve geliştiricilerin komut satırına geçmeden bulut kaynaklarını yönetmesine olanak tanımaktadır."
+    },
+    {
+      "id": "g12-5",
+      "term": "Blackwell Platformu",
+      "category": "Donanım",
+      "definition": "NVIDIA'nın RTX 50 serisi tüketici GPU'larını ve GB200 sunucu çiplerini kapsayan yeni nesil GPU mimarisi ailesi. AI eğitim ve çıkarım iş yüklerindeki üstün performansıyla donanım pazarında pazar hakimiyetini pekiştiren Blackwell, yüksek talep nedeniyle tedarik zinciri baskısı ve fiyat artışlarına da yol açmaktadır."
+    },
+    {
+      "id": "g12-6",
+      "term": "AI Matematiğinde Hizalama Sorunu",
+      "category": "AI Güvenliği & Güvenilirlik",
+      "definition": "Büyük dil modellerinin matematiksel ispat üretirken adımlar arasında görünürde tutarlı ama özde hatalı mantık zinciri kurarak yanlış sonuçlara ulaşması durumu. Modellerin matematiksel akıl yürütmede gerçek anlayış yerine istatistiksel örüntü eşleştirme yaptığını ve bilimsel uygulamalarda bağımsız doğrulama zorunluluğunu gözler önüne sermektedir."
+    },
+    {
+      "id": "g12-7",
+      "term": "Microsoft 365 Copilot Öğrenci Sürümü",
+      "category": "Eğitim & Kurumsal AI",
+      "definition": "Microsoft'un öğrencilere sunduğu, yerel kod tamamlama, ödev yardımı ve belge özetleme gibi AI özelliklerini Office uygulamalarına entegre eden abonelik paketi. Eğitim kurumlarındaki AI benimsemesini hızlandırırken, akademik dürüstlük ve öğrenci veri gizliliği tartışmalarını da beraberinde getirmektedir."
+    },
+    {
+      "id": "g12-8",
+      "term": "Tedarik Zinciri Saldırısı (Supply Chain Attack)",
+      "category": "Siber Güvenlik",
+      "definition": "Bir yazılım projesinin bağımlı olduğu açık kaynaklı paket, eklenti veya kütüphane deposuna sızarak zararlı kodu meşru paketlerin içine gömen, binlerce bağımlı projeyi etkileyen siber saldırı türü. AI ajanlarının bu tür saldırıları gerçekleştirebildiğine dair iddialar, ajan güvenlik yönetimini kritik bir araştırma konusu haline getirmektedir."
+    },
+    {
+      "id": "g12-9",
+      "term": "AI İçerik Önceliklendirme (Content Prioritization)",
+      "category": "Platform & İçerik Yönetimi",
+      "definition": "Bir platformun AI tarafından üretilmiş veya AI konularına odaklanan içeriklerin görünürlüğünü kullanıcı tercihlerine göre azaltan veya öne çıkaran filtreleme mekanizması. 'Hacker News without AI' ve benzeri alternatiflerin ortaya çıkması, AI içerik selinin kişiselleştirilebilir kontrole olan talebi açıkça göstermektedir."
+    }
   ]
 }

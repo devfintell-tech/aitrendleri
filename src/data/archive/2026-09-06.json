@@ -1924,5 +1924,61 @@
       "badge": "İş Dünyası",
       "contentHtml": "<p>Beyaz yaka profesyonelleri için yapay zeka entegrasyonu, hem fırsatlar hem de zorluklar sunuyor. Copilot'ın engelli bireylerin günlük yaşam görevlerinde sağladığı destek gibi kişisel kullanım senaryoları, AI'ın kapsayıcılık potansiyelini gösteriyor. Ancak, LLM'lerin 'bilişsel virüs' olarak algılanması ve AI tarafından üretilen metinlerdeki 'aldatma' mekanizmaları üzerine yapılan araştırmalar, AI araçlarının sorumlu ve etik kullanımı konusunda dikkatli olunması gerektiğini ortaya koyuyor. Kurumsal düzeyde, n8n Backup Manager gibi otomasyon araçları, operasyonel dayanıklılığı artırırken, Code Complexity Router gibi ajan becerileri, GPT-6 Astra gibi güçlü modellerin görev yönetimini optimize etmeye yardımcı oluyor. Bu gelişmeler, beyaz yaka iş akışlarının AI ile nasıl daha verimli ve güvenli hale getirilebileceği konusunda rehberlik ediyor.</p>"
     }
+  ],
+  "dailyGlossary": [
+    {
+      "id": "g06-1",
+      "term": "Bilişsel Virüs (Cognitive Virus)",
+      "category": "AI Felsefesi & Etik",
+      "definition": "LLM'lerin yalnızca bilgi üretmekle kalmayıp, kullanıcının düşünme biçimini, karar alma kalıplarını ve entelektüel çerçevesini zamanla derinden dönüştürebileceğini savunan kavram. Aracın, onu kullanan zihin üzerinde görünmez bir etkiyle 'yeniden programlama' yapabileceği uyarısını içerir."
+    },
+    {
+      "id": "g06-2",
+      "term": "dyn Trait (Rust Dinamik Dispatch)",
+      "category": "Yazılım Mimarisi",
+      "definition": "Rust programlama dilinde farklı türdeki nesnelerin aynı arayüz (trait) üzerinden polimorfik şekilde çağrılmasını sağlayan mekanizma. Çalışma zamanında hangi fonksiyonun çağrılacağını sanal tablo (vtable) aracılığıyla belirler; derleme zamanı statik dispatch'e kıyasla esneklik sağlar ama küçük bir performans maliyeti getirir."
+    },
+    {
+      "id": "g06-3",
+      "term": "KV Offload",
+      "category": "Altyapı & Depolama",
+      "definition": "Büyük dil modellerinin çıkarım sürecinde GPU'nun VRAM kapasitesini aşan KV önbellek verilerini daha ucuz ve geniş kapasiteli depolama katmanlarına (CPU belleği veya NVMe SSD) taşıma tekniği. MLPerf benchmark'larını aşan depolama çözümleriyle bu offload işlemi performans kaybı olmadan gerçekleştirilebilir."
+    },
+    {
+      "id": "g06-4",
+      "term": "Agent Memory (Ajan Belleği)",
+      "category": "Ajan & Bellek Mimarisi",
+      "definition": "Yapay zeka ajanının oturumlar arasında bilgileri kalıcı olarak saklayabildiği bellek katmanı. Git tabanlı yaklaşımlarda ajan 'hafızası' sürüm kontrollü bir depo üzerinde tutulur; böylece geçmiş kararlar izlenebilir, geri alınabilir ve takım üyeleriyle paylaşılabilir hale gelir."
+    },
+    {
+      "id": "g06-5",
+      "term": "RAM Sızıntısı (Memory Leak)",
+      "category": "Yazılım Güvenilirliği",
+      "definition": "Bir uygulamanın kullanımı sona ermiş bellek bloklarını işletim sistemine geri vermemesi sonucu zaman içinde artan bellek tüketimiyle giderek yavaşladığı veya çöktüğü hata durumu. IDE'ler ve büyük masaüstü uygulamalarında uzun çalışma süreleri boyunca sık görülür."
+    },
+    {
+      "id": "g06-6",
+      "term": "NVIDIA Blackwell / GB200",
+      "category": "Donanım",
+      "definition": "NVIDIA'nın AI çalışma yükü için tasarladığı yeni nesil GPU mimarisi ve amiral gemisi çipi. NVL4 yapılandırmasıyla büyük dil modeli fabrikalarını (LLM factory) çalıştırmak için optimize edilmiştir; hem AI eğitiminde hem de büyük ölçekli çıkarımda pazar standardını belirlemektedir."
+    },
+    {
+      "id": "g06-7",
+      "term": "Routed (Yerel Ajan Yönlendirici)",
+      "category": "Ajan & Orkestrasyon",
+      "definition": "Sıfır token maliyeti ve düşük gecikme (latency) sağlayan, birden fazla yapay zeka ajanını hangi isteğin hangi ajana yönlendirileceğini akıllıca yöneten yerel çalışan açık kaynaklı yönlendirici projesi. Hibrit ajan mimarilerinde farklı yeteneklere sahip modellerin verimli koordinasyonu için kullanılır."
+    },
+    {
+      "id": "g06-8",
+      "term": "Lume IDE",
+      "category": "Geliştirici Araçları",
+      "definition": "Cursor ve VS Code gibi AI destekli geliştirme ortamlarının alternatifi olarak öne çıkan, hafif ve düşük bellek tüketimiyle çalışan kod editörü. AI entegrasyon sorunları yaşayan geliştiricilerin arayışlarının ürünü olan bu araç, minimalist tasarımıyla dikkat çekmektedir."
+    },
+    {
+      "id": "g06-9",
+      "term": "MLPerf",
+      "category": "Benchmark & Performans",
+      "definition": "Makine öğrenmesi iş yüklerini (eğitim ve çıkarım) standardize edilmiş koşullarda karşılaştırmak için kullanılan endüstri kıyaslama çerçevesi. GPU, CPU, depolama ve ağ altyapısı sağlayıcıları, AI donanım rekabetinde MLPerf sıralamalarını temel performans kanıtı olarak sunar."
+    }
   ]
 }
