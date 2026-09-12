@@ -1130,99 +1130,52 @@ ${bulletsText}
 
         {/* 📖 GÜNÜN SÖZLÜĞÜ (Doğrudan Odak / Sekme Görünümü) */}
         {timeframe === 'glossary' && report.dailyGlossary && report.dailyGlossary.length > 0 && (
-          <section id="gunun-sozlugu-odak" className="bg-white border border-[#cbd5e1] rounded-sm p-4 sm:p-6 shadow-xs space-y-4">
-            <div className="border-b border-[#e2e8f0] pb-3 flex items-center justify-between flex-wrap gap-2">
+          <section id="gunun-sozlugu-odak" className="bg-white border border-[#cbd5e1] rounded-sm p-4 sm:p-5 shadow-xs space-y-3">
+            <div className="flex items-center justify-between pb-2 border-b border-[#e2e8f0]">
               <div className="flex items-center gap-2">
-                <span className="w-6 h-6 bg-blue-600 text-white font-black text-xs flex items-center justify-center rounded-xs font-mono shadow-2xs">
-                  <BookMarked className="w-3.5 h-3.5" />
+                <BookMarked className="w-4 h-4 text-slate-600" />
+                <h2 className="font-bold text-xs sm:text-sm text-slate-900 font-mono uppercase tracking-wide">
+                  Günün Sözlüğü
+                </h2>
+                <span className="text-[11px] font-mono text-slate-400">
+                  • Sitede Geçen 6 Temel Kavram ({report.date})
                 </span>
-                <div>
-                  <h2 className="font-bold text-sm sm:text-base text-slate-900 font-mono uppercase tracking-wide flex items-center gap-2">
-                    <span>Günün Sözlüğü: Sitede Geçen Kilit AI, Yazılım &amp; Donanım Kavramları</span>
-                    <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200 font-bold">
-                      {report.date}
-                    </span>
-                  </h2>
-                  <p className="text-[11px] sm:text-xs text-slate-600 mt-0.5">
-                    O gün sitedeki ArXiv makalelerinde, GitHub repolarında, Hugging Face modellerinde ve teknik tartışmalarda bizzat geçen 6 temel kavram.
-                  </p>
-                </div>
               </div>
-              <span className="text-[10px] font-mono text-blue-800 bg-blue-50 px-2.5 py-1 rounded border border-blue-200 font-bold">
-                📍 Yalnızca Sitede Geçenler • 6 Temel Terim
-              </span>
             </div>
 
-            {/* Sözlük Kartları Izgarası (CSS Subgrid) */}
-            <div className="space-y-4 pt-1">
+            {/* Sade Sözlük Kartları (CSS Subgrid ile hizalı, sıfır karmaşa) */}
+            <div className="space-y-3">
               {glossaryChunks.map((chunk, cIdx) => (
                 <div 
                   key={cIdx} 
-                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-4 md:gap-y-3 subgrid-row-glossary"
+                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-3.5 gap-y-3 subgrid-row-glossary"
                 >
-                  {chunk.map((item, idx) => {
-                    const globalIdx = cIdx * 3 + idx + 1;
-                    return (
-                      <div
-                        key={item.id || globalIdx}
-                        className="bg-white border border-[#cbd5e1] rounded-sm p-3.5 sm:p-4 shadow-xs hover:border-blue-600 transition flex flex-col justify-between gap-2.5 subgrid-card-glossary"
-                      >
-                        {/* 1. Üst Rozet & Sitede Nerede Geçti? Rozeti */}
-                        <div className="flex flex-col gap-1.5">
-                          <div className="flex items-center justify-between">
-                            <span className="font-mono text-[10px] font-bold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded border border-indigo-200">
-                              #{globalIdx} • {item.category}
-                            </span>
-                            <span className="text-[10px] font-mono text-slate-400 font-medium">Günün Sözlüğü</span>
-                          </div>
-                          <div 
-                            className="flex items-center gap-1.5 text-[11px] font-mono text-blue-900 bg-blue-50/90 px-2 py-1 rounded border border-blue-200/80" 
-                            title={`Sitede Geçtiği Yer: ${item.appearsIn}`}
+                  {chunk.map((item, idx) => (
+                    <div
+                      key={item.id || `${cIdx}-${idx}`}
+                      className="bg-white border border-[#e2e8f0] rounded p-3 hover:border-slate-400 transition flex flex-col justify-between subgrid-card-glossary shadow-2xs"
+                    >
+                      {/* 1. Kavram & Sitede Nerede Geçtiği */}
+                      <div className="flex items-baseline justify-between gap-2 pb-1.5 border-b border-slate-100">
+                        <h4 className="font-mono font-bold text-xs sm:text-[13px] text-slate-900 tracking-tight leading-snug">
+                          {item.term}
+                        </h4>
+                        {item.appearsIn && (
+                          <span 
+                            className="text-[10px] font-mono text-slate-400 shrink-0 truncate max-w-[130px]" 
+                            title={item.appearsIn}
                           >
-                            <span className="shrink-0 font-bold text-blue-700">📍 Sitede:</span>
-                            <span className="truncate font-semibold">{item.appearsIn}</span>
-                          </div>
-                        </div>
-
-                        {/* 2. Kavram / Terim Başlığı */}
-                        <div className="flex items-start justify-between gap-2">
-                          <h4 className="font-bold text-xs sm:text-[13px] text-slate-900 font-mono tracking-tight leading-snug">
-                            {item.term}
-                          </h4>
-                        </div>
-
-                        {/* 3. Sade & Net Tanım Kutusu */}
-                        <div className="bg-[#f8fafc] border border-slate-200 rounded p-3 text-xs text-slate-700 leading-relaxed h-full flex flex-col justify-start">
-                          <span className="font-mono font-bold text-slate-800 text-[10px] uppercase block mb-1 tracking-tight flex items-center gap-1">
-                            <span>📖</span>
-                            <span>NEDİR? (SADE ANLAMI)</span>
+                            {item.appearsIn.replace(/^(🤗|🐙|☕)\s*/, '').replace(/(\s*kartında|\s*repolarında|\s*reposunda)/, '')}
                           </span>
-                          <p className="text-slate-700 leading-relaxed">{item.definition}</p>
-                        </div>
-
-                        {/* 4. Günün Bağlantısı / Neden Bilmelisiniz? Kutusu */}
-                        <div className="bg-[#eff6ff] border-l-3 border-l-blue-600 border border-blue-200 rounded-r p-3 text-xs text-slate-900 leading-relaxed h-full flex flex-col justify-start">
-                          <span className="font-mono font-bold text-blue-950 text-[10px] uppercase block mb-1 tracking-tight flex items-center gap-1">
-                            <span>💡</span>
-                            <span>BUGÜNKÜ SİTE BAĞLANTISI &amp; ÖNEMİ:</span>
-                          </span>
-                          <p className="font-normal text-slate-800 leading-relaxed">{item.whyItMatters}</p>
-                        </div>
-
-                        {/* 5. Alt Bar: Etiketler */}
-                        <div className="pt-2 border-t border-[#f1f5f9] flex items-center justify-between text-[10px] font-mono">
-                          <div className="flex items-center gap-1 flex-wrap">
-                            {(item.tags || []).map((tag, tIdx) => (
-                              <span key={tIdx} className="bg-slate-100 text-slate-600 px-1.5 py-0.2 rounded border border-slate-200">
-                                #{tag}
-                              </span>
-                            ))}
-                          </div>
-                          <span className="text-slate-400 font-sans text-[10px] whitespace-nowrap">Doğrudan Siteden</span>
-                        </div>
+                        )}
                       </div>
-                    );
-                  })}
+
+                      {/* 2. Sade Anlamı */}
+                      <p className="text-xs text-slate-600 leading-relaxed font-normal">
+                        {item.definition}
+                      </p>
+                    </div>
+                  ))}
                 </div>
               ))}
             </div>
@@ -1676,101 +1629,54 @@ ${bulletsText}
               ))}
             </div>
 
-            {/* 5. 📖 GÜNÜN SÖZLÜĞÜ: SİTEDE GEÇEN KİLİT AI, YAZILIM & DONANIM KAVRAMLARI */}
+            {/* 5. 📖 GÜNÜN SÖZLÜĞÜ: SADE KAVRAM & ANLAMI */}
             {report.dailyGlossary && report.dailyGlossary.length > 0 && (
-              <div id="gunun-sozlugu" className="pt-3 border-t border-[#e2e8f0] space-y-3">
-                <div className="flex items-center justify-between flex-wrap gap-2">
+              <div id="gunun-sozlugu" className="pt-3 border-t border-[#e2e8f0] space-y-2.5">
+                <div className="flex items-center justify-between pb-1">
                   <div className="flex items-center gap-2">
-                    <span className="w-5 h-5 bg-blue-600 text-white font-black text-xs flex items-center justify-center rounded-xs font-mono shadow-2xs">
-                      <BookMarked className="w-3.5 h-3.5" />
+                    <BookMarked className="w-4 h-4 text-slate-600" />
+                    <h3 className="text-xs sm:text-sm font-bold text-slate-900 font-mono uppercase tracking-wide">
+                      5. Günün Sözlüğü
+                    </h3>
+                    <span className="text-[11px] font-mono text-slate-400">
+                      • Sitede Geçen 6 Temel Kavram
                     </span>
-                    <div>
-                      <h3 className="text-xs sm:text-sm font-bold text-slate-900 font-mono uppercase tracking-wide flex items-center gap-2">
-                        <span>5. Günün Sözlüğü: Sitede Geçen Kilit AI, Yazılım &amp; Donanım Kavramları</span>
-                        <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-blue-50 text-blue-700 border border-blue-200 font-bold">
-                          6 Temel Kavram
-                        </span>
-                      </h3>
-                      <p className="text-[11px] text-slate-500 hidden sm:block">
-                        Bugün sitedeki kartlarda, makalelerde ve tartışmalarda bizzat geçen; bilinmesi gereken teknik kavramların sadeleştirilmiş rehberi.
-                      </p>
-                    </div>
                   </div>
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-800 border border-blue-200 font-bold">
-                    📍 Yalnızca Sitede Geçenler
-                  </span>
                 </div>
 
-                {/* Sözlük Kartları (CSS Subgrid ile satır içi kutular tam eşitlenir, sıfır iç kaydırma çubuğu) */}
-                <div className="space-y-4">
+                {/* Sade Sözlük Kartları (CSS Subgrid ile hizalı, sıfır karmaşa) */}
+                <div className="space-y-3">
                   {glossaryChunks.map((chunk, cIdx) => (
                     <div 
                       key={cIdx} 
-                      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-4 md:gap-y-3 subgrid-row-glossary"
+                      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-3.5 gap-y-3 subgrid-row-glossary"
                     >
-                      {chunk.map((item, idx) => {
-                        const globalIdx = cIdx * 3 + idx + 1;
-                        return (
-                          <div
-                            key={item.id || globalIdx}
-                            className="bg-white border border-[#cbd5e1] rounded-sm p-3.5 sm:p-4 shadow-xs hover:border-blue-600 transition flex flex-col justify-between gap-2.5 subgrid-card-glossary"
-                          >
-                            {/* 1. Üst Kategori & Sitede Nerede Geçti? Rozeti */}
-                            <div className="flex flex-col gap-1.5">
-                              <div className="flex items-center justify-between">
-                                <span className="font-mono text-[10px] font-bold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded border border-indigo-200">
-                                  #{globalIdx} • {item.category}
-                                </span>
-                                <span className="text-[10px] font-mono text-slate-400 font-medium">Günün Sözlüğü</span>
-                              </div>
-                              <div 
-                                className="flex items-center gap-1.5 text-[11px] font-mono text-blue-900 bg-blue-50/90 px-2 py-1 rounded border border-blue-200/80" 
-                                title={`Sitede Geçtiği Yer: ${item.appearsIn}`}
+                      {chunk.map((item, idx) => (
+                        <div
+                          key={item.id || `${cIdx}-${idx}`}
+                          className="bg-white border border-[#e2e8f0] rounded p-3 hover:border-slate-400 transition flex flex-col justify-between subgrid-card-glossary shadow-2xs"
+                        >
+                          {/* 1. Kavram & Sitede Nerede Geçtiği */}
+                          <div className="flex items-baseline justify-between gap-2 pb-1.5 border-b border-slate-100">
+                            <h4 className="font-mono font-bold text-xs sm:text-[13px] text-slate-900 tracking-tight leading-snug">
+                              {item.term}
+                            </h4>
+                            {item.appearsIn && (
+                              <span 
+                                className="text-[10px] font-mono text-slate-400 shrink-0 truncate max-w-[130px]" 
+                                title={item.appearsIn}
                               >
-                                <span className="shrink-0 font-bold text-blue-700">📍 Sitede:</span>
-                                <span className="truncate font-semibold">{item.appearsIn}</span>
-                              </div>
-                            </div>
-
-                            {/* 2. Kavram / Terim Başlığı */}
-                            <div className="flex items-start justify-between gap-2">
-                              <h4 className="font-bold text-xs sm:text-[13px] text-slate-900 font-mono tracking-tight leading-snug">
-                                {item.term}
-                              </h4>
-                            </div>
-
-                            {/* 3. Sade & Net Tanım Kutusu (Subgrid ile satırdaki en uzun kutuya göre doğal uzar) */}
-                            <div className="bg-[#f8fafc] border border-slate-200 rounded p-3 text-xs text-slate-700 leading-relaxed h-full flex flex-col justify-start">
-                              <span className="font-mono font-bold text-slate-800 text-[10px] uppercase block mb-1 tracking-tight flex items-center gap-1">
-                                <span>📖</span>
-                                <span>NEDİR? (SADE ANLAMI)</span>
+                                {item.appearsIn.replace(/^(🤗|🐙|☕)\s*/, '').replace(/(\s*kartında|\s*repolarında|\s*reposunda)/, '')}
                               </span>
-                              <p className="text-slate-700 leading-relaxed">{item.definition}</p>
-                            </div>
-
-                            {/* 4. Günün Bağlantısı / Neden Bilmelisiniz? Kutusu (Subgrid ile eşitlenir) */}
-                            <div className="bg-[#eff6ff] border-l-3 border-l-blue-600 border border-blue-200 rounded-r p-3 text-xs text-slate-900 leading-relaxed h-full flex flex-col justify-start">
-                              <span className="font-mono font-bold text-blue-950 text-[10px] uppercase block mb-1 tracking-tight flex items-center gap-1">
-                                <span>💡</span>
-                                <span>BUGÜNKÜ SİTE BAĞLANTISI &amp; ÖNEMİ:</span>
-                              </span>
-                              <p className="font-normal text-slate-800 leading-relaxed">{item.whyItMatters}</p>
-                            </div>
-
-                            {/* 5. Alt Bar: Etiketler */}
-                            <div className="pt-2 border-t border-[#f1f5f9] flex items-center justify-between text-[10px] font-mono">
-                              <div className="flex items-center gap-1 flex-wrap">
-                                {(item.tags || []).map((tag, tIdx) => (
-                                  <span key={tIdx} className="bg-slate-100 text-slate-600 px-1.5 py-0.2 rounded border border-slate-200">
-                                    #{tag}
-                                  </span>
-                                ))}
-                              </div>
-                              <span className="text-slate-400 font-sans text-[10px] whitespace-nowrap">Doğrudan Siteden</span>
-                            </div>
+                            )}
                           </div>
-                        );
-                      })}
+
+                          {/* 2. Sade Anlamı */}
+                          <p className="text-xs text-slate-600 leading-relaxed font-normal">
+                            {item.definition}
+                          </p>
+                        </div>
+                      ))}
                     </div>
                   ))}
                 </div>

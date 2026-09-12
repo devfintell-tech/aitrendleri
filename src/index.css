@@ -147,29 +147,21 @@
     justify-content: flex-start !important;
   }
 
-  /* 📖 Günün Sözlüğü (AI & Teknoloji Kavramları) - Subgrid Düzeni */
+  /* 📖 Günün Sözlüğü (Sade Kavram & Anlamı) - Subgrid Düzeni */
   .subgrid-row-glossary {
     display: grid !important;
     grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-    grid-template-rows: auto auto 1fr 1fr auto !important;
+    grid-template-rows: auto 1fr !important;
     row-gap: 0.75rem !important;
-    column-gap: 1rem !important;
+    column-gap: 0.875rem !important;
     align-items: stretch !important;
   }
   .subgrid-card-glossary {
-    grid-row: span 5 !important;
+    grid-row: span 2 !important;
     display: grid !important;
     grid-template-rows: subgrid !important;
-    row-gap: 0.75rem !important;
+    row-gap: 0.5rem !important;
     height: 100% !important;
-  }
-  .subgrid-card-glossary > *:nth-child(3),
-  .subgrid-card-glossary > *:nth-child(4) {
-    height: 100% !important;
-    min-height: 100% !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: flex-start !important;
   }
 }
 
