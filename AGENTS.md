@@ -88,14 +88,16 @@ Bu belge, bu projenin tüm tasarım, veri mimarisi ve geliştirme standartların
 
 1. **Yalnızca ve Yalnızca Sitede Bizzat Geçen Kavramlar Şartı:**
    - Sözlükteki kavramlar kesinlikle o günkü sitede (ArXiv makaleleri, GitHub repoları, Hugging Face modelleri, Hacker News tartışmaları, Sabah Özeti ve Danışman Raporu) bizzat geçen terim, mimari ve jargonlardan seçilmelidir.
-   - Sitede bahsi geçmeyen, genel Reddit veya internet gündeminde kalmış hiçbir kavram sözlüğe ALINAMAZ.
-   - Her kavram kartında `appearsIn` (Sitede Nerede Geçti?) alanı zorunludur ve sitedeki ilgili kartı doğrudan işaret etmelidir (Örn: *«🤗 Hugging Face: DeepSeek V3 kartında»*, *«🐙 GitHub: worldmonitor & Crucix repolarında»*).
+   - Sitede bahsi geçmeyen, genel internet veya Reddit gündeminde kalmış hiçbir kavram sözlüğe ALINAMAZ.
 
-2. **Zorunlu Veri Formatı (Tam 6 Kavram):**
-   - Her kavram için `id`, `term`, `appearsIn`, `category`, `definition` (Sade Anlamı), `whyItMatters` (Günün Önemi & Site Bağlantısı) ve `tags` alanları eksiksiz olmalıdır.
+2. **Zorunlu Veri Formatı (Tam 9 Kavram & Yalın Anlatım):**
+   - Her gün tam 9 kilit teknik kavram yer alır (3'lü ızgarada 3x3 kusursuz simetri).
+   - Her kavram için `id`, `term`, `category`, `definition` (Geniş, doyurucu ve herkesin anlayabileceği akıcı Türkçe açıklama) alanları eksiksiz olmalıdır.
+   - Arayüzde görsel kalabalık ve gürültü oluşturmaması için kart üzerinde kaynak referansları veya etiket cümbüşü yer almaz; yalnızca **Kavram** ve **Anlamı** gösterilir.
 
 3. **Subgrid Hizalaması & Sıfır Kaydırma Çubuğu:**
-   - `.subgrid-row-glossary` ve `.subgrid-card-glossary` CSS Subgrid mimarisi ile yönetilir.
+   - `.subgrid-row-glossary` ve `.subgrid-card-glossary` CSS Subgrid mimarisi (`grid-template-rows: auto 1fr`) ile yönetilir.
    - Kartların hiçbirinde dikey veya yatay kaydırma çubuğu KULLANILAMAZ.
-   - Tanım (`definition`) ve Günün Önemi (`whyItMatters`) kutuları o satırdaki en uzun kutuya göre doğal uzar ve taban çizgileri daima aynı hizada biter.
+   - 3'lü sütun satırlarındaki tüm kavram başlıkları ve tanım paragrafları milimetrik olarak aynı çizgide başlar ve eşitlenerek biter.
+
 

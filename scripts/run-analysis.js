@@ -691,17 +691,15 @@ async function main() {
       - "monthly": Son 30 günde ekosistemin benimsediği 6 açık kaynak kütüphane / araç.
       - "yearly": Yılın ve tüm zamanların endüstri omurgası haline gelmiş 6 amiral gemisi repo (Ollama, vLLM, ComfyUI, AutoGen, LangChain, AutoGPT vb.).
       - Her repo için: id ("owner/name"), name, owner, url, stars, deltaStars, category, language, function (Ne İşe Yarar?), whyHype (Neden Yıldızlaştı?), installCommand alanlarını eksiksiz üret.
-    GÜNÜN SÖZLÜĞÜ (dailyGlossary) - TAM 6 ADET KAVRAM (KESİN KULLANICI ŞARTI):
-    - Seçeceğin 6 kavramı YALNIZCA VE YALNIZCA yukarıda üretilen ve siteye basılacak olan ArXiv makaleleri, GitHub repoları, Hugging Face modelleri, Hacker News tartışmaları, Sabah Özeti ve Danışman Raporu metinlerinde BİZZAT GEÇEN teknik kavram, kısaltma veya mimarilerden seç!
+    GÜNÜN SÖZLÜĞÜ (dailyGlossary) - TAM 9 ADET KAVRAM (KESİN KULLANICI ŞARTI):
+    - Seçeceğin 9 kavramı YALNIZCA VE YALNIZCA yukarıda üretilen ve siteye basılacak olan ArXiv makaleleri, GitHub repoları, Hugging Face modelleri, Hacker News tartışmaları, Sabah Özeti ve Danışman Raporu metinlerinde BİZZAT GEÇEN teknik kavram, kısaltma veya mimarilerden seç!
     - İnternetin veya Reddit'in genelinde geçip de sitede bizzat yer almayan HİÇBİR kavramı ASLA sözlüğe ekleme!
     - Her bir kavram için şu alanları eksiksiz üret:
-      - id: "glossary-1" ... "glossary-6"
-      - term: Kavramın adı ve kısaltması/açılımı (Örn: "MLA (Multi-Head Latent Attention)", "Thinking Budget", "Rectified Flow", "OSINT Ajanı", "PagedAttention", "Tip Güvenli Ajan")
-      - appearsIn: Kavramın o gün sitede bizzat nerede geçtiğine dair açık referans (Örn: "🤗 Hugging Face: DeepSeek V3 kartında", "🔬 ArXiv: ESPO Prompt Optimizasyon makalesinde", "🐙 GitHub: worldmonitor & Crucix repolarında", "☕ Sabah İstihbaratı: Claude 3.7 analizinde", "📊 24s Tablosu: Cursor Composer kartında", "🟠 Hacker News: 4. Tartışma analizinde")
-      - category: Kavramın alanı (Örn: "Model Mimarisi", "Donanım & Bellek", "Yazılım & Ajanlar", "Optimizasyon & Çıkarım", "Veri & OSINT")
-      - definition: Kavramın teknik jargondan arındırılmış, herkesin anlayabileceği net ve doyurucu Türkçe tanımı.
-      - whyItMatters: Sitedeki bu modeli/gelişmeyi anlamak için neden kritik olduğu ve pratik çıkarımı.
-      - tags: ["Etiket1", "Etiket2", "Etiket3"]
+      - id: "glossary-1" ... "glossary-9"
+      - term: Kavramın adı ve kısaltması/açılımı (Örn: "MLA (Multi-Head Latent Attention)", "Thinking Budget", "Rectified Flow", "OSINT Ajanı", "PagedAttention", "Tip Güvenli Ajan", "CPU-Only Inference", "LoRA", "MCP")
+      - category: Kavramın alanı (Örn: "Model Mimarisi", "Görsel Mimarisi", "Otonom Ajan", "Akıl Yürütme", "Bellek Optimizasyonu", "Yazılım Mimarisi", "Altyapı & Donanım", "Model İnce Ayarı", "Ajan Protokolü")
+      - definition: Kavramın teknik jargondan arındırılmış, herkesin kolayca anlayabileceği geniş, akıcı, doyurucu ve anlaşılır Türkçe açıklaması.
+      - appearsIn: Kavramın sitede geçtiği yer (arka plan doğrulaması için).
 
     İSTENEN JSON ŞEMASI:
     {
@@ -1904,61 +1902,61 @@ function enforceStrictStandards(data, hfModels = [], candidateArxiv = [], hnPost
     };
   }
 
-  // 6. GÜNÜN SÖZLÜĞÜ (dailyGlossary): Kesinlikle tam 6 adet ve yalnızca sitede bizzat geçen kavramlar
-  const BENCHMARK_GLOSSARY_6 = [
+  // 6. GÜNÜN SÖZLÜĞÜ (dailyGlossary): Kesinlikle tam 9 adet ve yalnızca sitede bizzat geçen kavramlar
+  const BENCHMARK_GLOSSARY_9 = [
     {
       id: "glossary-1",
       term: "MLA (Multi-Head Latent Attention)",
-      appearsIn: "🤗 Hugging Face: DeepSeek V3 kartında",
       category: "Model Mimarisi",
-      definition: "Büyük dil modellerinde her kelimede şişen KV (Key-Value) önbelleğini düşük boyutlu bir gizli uzaya sıkıştırarak GPU belleğinde saklayan yeni nesil dikkat mimarisi.",
-      whyItMatters: "DeepSeek V3 modelinin devasa 671B parametreye rağmen geleneksel modellere kıyasla 8-10 kat daha az VRAM tüketerek ucuz GPU'larda çalışabilmesini sağlayan temel yeniliktir.",
-      tags: ["DeepSeek", "Attention", "VRAM"]
+      definition: "Büyük dil modellerinin geçmiş konuşmaları hatırlamak için GPU belleğinde (VRAM) tuttuğu devasa veri yükünü, matematiksel olarak çok daha küçük bir gizli alana sıkıştırarak saklama tekniğidir. Bu sayede yüz milyarlarca parametreli dev modeller bile bellek darboğazına girmeden standart ve çok daha ekonomik ekran kartlarında yüksek hızla çalışabilir."
     },
     {
       id: "glossary-2",
       term: "Rectified Flow Transformer",
-      appearsIn: "🤗 Hugging Face: FLUX.1 Schnell kartında",
-      category: "Medya / Görsel Mimarisi",
-      definition: "Standart difüzyon modellerindeki rastgele gürültü adımları yerine, gürültüden hedeflenen görsele giden en kısa doğru çizgiyi (akışı) doğrudan modelleyen matematiksel mimari.",
-      whyItMatters: "FLUX.1 Schnell'in onlarca adım bekletmek yerine yalnızca 1 ila 4 adımda fotogerçekçi görsel üreterek GPU hesaplama süresini saniyeler seviyesine indirmesini mümkün kılar.",
-      tags: ["FLUX.1", "Görsel Üretim", "Hızlı Çıkarım"]
+      category: "Görsel Mimarisi",
+      definition: "Görsel üretiminde standart difüzyon modellerindeki onlarca adımlık karmaşık gürültü temizleme süreci yerine, rastgele piksellerden hedeflenen görsele giden en kestirme doğru çizgiyi (akışı) doğrudan hesaplayan yeni nesil mimaridir. Görsel üretim sürelerini dakikalardan 1-2 saniye seviyesine indirerek neredeyse anlık ve yüksek kaliteli görsel oluşturmayı sağlar."
     },
     {
       id: "glossary-3",
       term: "OSINT (Açık Kaynak İstihbaratı) Ajanı",
-      appearsIn: "🐙 GitHub AI Radarı: worldmonitor & Crucix repolarında",
-      category: "Siber Güvenlik & Ajanlar",
-      definition: "Herkese açık web kaynaklarını, canlı uçuş radarlarını, askeri hareketlilikleri ve sızıntı verilerini otonom tarayıp harita üzerinde ilişkilendiren yapay zeka ajanı.",
-      whyItMatters: "Sitede günün en çok yıldız alan projelerinde manuel analistlerin günlerce süren istihbarat toplama işini tek ekranda otonom yapay zeka çıkarımına dönüştürmesiyle öne çıkmaktadır.",
-      tags: ["GitHub Trend", "OSINT", "Otonom Ajan"]
+      category: "Otonom Ajan",
+      definition: "İnternetteki herkese açık web sayfalarını, uydu görüntülerini, canlı hava ve deniz radarlarını, sosyal ağları ve sızıntı verilerini otomatik tarayarak kritik bağlantıları bir insan analistten yüzlerce kat daha hızlı ortaya çıkaran otonom yapay zeka yazılımıdır. Günlerce sürebilecek karmaşık araştırma ve istihbarat toplama işlerini saniyeler içinde tek ekranda özetler."
     },
     {
       id: "glossary-4",
       term: "Thinking Budget (Düşünme Bütçesi)",
-      appearsIn: "☕ Sabah İstihbaratı & Tablo: Claude 3.7 Sonnet kartında",
-      category: "Akıl Yürütme (Reasoning)",
-      definition: "Bir akıl yürütme modelinin kullanıcıya nihai yanıtı vermeden önce iç sesle (thinking token) ne kadar derin düşüneceğini ve adımları denetleyeceğini belirleyen parametre.",
-      whyItMatters: "Claude 3.7 Sonnet'in basit sorularda gecikmesiz çalışırken, karmaşık kod mimarilerinde hata oranını sıfıra indiren hibrit zekasının anahtar kontrol mekanizmasıdır.",
-      tags: ["Claude 3.7", "Reasoning", "Test-Time Compute"]
+      category: "Akıl Yürütme",
+      definition: "Bir yapay zeka modelinin kullanıcıya nihai yanıtı vermeden önce arka planda iç sesle (thinking token) ne kadar süre ve derinlikte akıl yürüteceğini, alternatif senaryoları test edip adımlarını denetleyeceğini belirleyen parametredir. Basit sorularda anında cevap verirken, karmaşık yazılım ve mantık problemlerinde modelin derin düşünüp sıfır hatayla çözüme ulaşmasını sağlar."
     },
     {
       id: "glossary-5",
       term: "PagedAttention (Sayfalı Bellek Yönetimi)",
-      appearsIn: "🐙 GitHub AI Radarı: vLLM reposu & Danışman Raporu",
-      category: "Altyapı & Bellek Optimizasyonu",
-      definition: "İşletim sistemlerindeki sanal bellek sayfalamasından esinlenerek, LLM'lerin KV önbellek tensörlerini GPU belleğinde ardışık olmayan parçalar halinde dinamik depolayan algoritma.",
-      whyItMatters: "vLLM çıkarım sunucusunun aynı anda binlerce eşzamanlı isteğe hizmet verirken GPU belleğinde %80'e varan tasarruf sağlamasının ve kurumsal açık kaynak standardı olmasının temelidir.",
-      tags: ["vLLM", "GPU Bellek", "Inference"]
+      category: "Bellek Optimizasyonu",
+      definition: "İşletim sistemlerinin bilgisayar RAM'ini sayfalara bölerek yönetme mantığını yapay zeka çıkarım sunucularına uyarlayan algoritmadır. Çok sayıda kullanıcının aynı anda modele soru sorduğu durumlarda GPU belleğindeki boşlukları ve parçalanmaları ortadan kaldırarak bellek israfını %80 oranında azaltır ve aynı sunucunun katbekat fazla kullanıcıya hizmet vermesini sağlar."
     },
     {
       id: "glossary-6",
       term: "Tip Güvenli Ajan (Type-Safe Agent)",
-      appearsIn: "🐙 GitHub AI Radarı: pydantic-ai reposunda",
-      category: "Yazılım & Ajan Framework'ü",
-      definition: "LLM çıktılarının serbest metin yerine katı Python/TypeScript veri tipleri ve şemalarıyla doğrulanarak, beklenen tipten sapması durumunda anında kendini düzelten ajan mimarisi.",
-      whyItMatters: "Geliştiricilerin karmaşık zincir kütüphanelerinden kaçıp pydantic-ai'a yönelmesinin ve kurumsal üretim ortamlarında halüsinasyon kaynaklı sistem çökmelerini engellemesinin ana yoludur.",
-      tags: ["Pydantic", "Tip Güvenliği", "Ajan"]
+      category: "Yazılım Mimarisi",
+      definition: "Yapay zeka modellerinin ürettiği serbest metin çıktılarını; yazılım sistemlerinin doğrudan işleyebileceği katı veri şemalarına (tiplere) zorlayan ve hata durumunda anında kendini düzelten ajan mimarisidir. Modelin beklenmeyen formatta veri üretmesini engelleyerek kurumsal veritabanları ve API'lerle çalışan otonom sistemlerde çökmelerin önüne geçer."
+    },
+    {
+      id: "glossary-7",
+      term: "CPU-Only Inference (İşlemciyle Çıkarım)",
+      category: "Altyapı & Donanım",
+      definition: "Büyük dil modellerini çalıştırmak için zorunlu kabul edilen pahalı ve temini zor grafik işlemcileri (GPU) yerine, bilgisayarın ana işlemcisi (CPU) ve standart sistem belleğini (RAM) kullanarak modelleri verimli şekilde çalıştırma yöntemidir. Geliştirilen yeni mimari optimizasyonlar sayesinde yüksek bütçeli sunucu yatırımlarına gerek kalmadan yerel modellerin çalıştırılmasını mümkün kılar."
+    },
+    {
+      id: "glossary-8",
+      term: "LoRA (Low-Rank Adaptation - Düşük Dereceli Uyarlama)",
+      category: "Model İnce Ayarı",
+      definition: "Devasa bir yapay zeka modelini sıfırdan eğitmek ya da tüm parametrelerini baştan sona değiştirmek yerine; modele sadece çok küçük ek matematiksel katmanlar ekleyerek onu yeni bir uzmanlık alanına, belirli bir çizim stiline veya şirket kod tabanına uyarlama yöntemidir. Eğitim süresini ve donanım maliyetini yüzlerce kat düşürerek kişiselleştirmeyi son derece kolaylaştırır."
+    },
+    {
+      id: "glossary-9",
+      term: "MCP (Model Context Protocol - Model Bağlam Protokolü)",
+      category: "Ajan Protokolü",
+      definition: "Yapay zeka modellerinin bilgisayardaki yerel dosyalara, geliştirme ortamlarına (IDE), tarayıcı sekmelerine ve veritabanlarına standart ve güvenli bir arayüzle bağlanmasını sağlayan açık protokoldür. Modellerin sadece soru cevaplayan birer sohbet botu olmaktan çıkıp, tıpkı bir yazılım mühendisi gibi gerçek uygulamaları doğrudan yöneten aktif operatörlere dönüşmesini sağlar."
     }
   ];
 
@@ -1967,16 +1965,13 @@ function enforceStrictStandards(data, hfModels = [], candidateArxiv = [], hnPost
     rawGlossary = [];
   }
 
-  clean.dailyGlossary = BENCHMARK_GLOSSARY_6.map((bm, idx) => {
+  clean.dailyGlossary = BENCHMARK_GLOSSARY_9.map((bm, idx) => {
     const item = rawGlossary[idx] || bm;
     return {
       id: item.id || `glossary-${idx + 1}`,
       term: item.term || bm.term,
-      appearsIn: item.appearsIn || bm.appearsIn,
       category: item.category || bm.category,
-      definition: item.definition || bm.definition,
-      whyItMatters: item.whyItMatters || bm.whyItMatters,
-      tags: Array.isArray(item.tags) && item.tags.length > 0 ? item.tags : bm.tags
+      definition: item.definition || bm.definition
     };
   });
 

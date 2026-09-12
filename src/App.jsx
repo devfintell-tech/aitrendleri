@@ -703,7 +703,7 @@ export default function App() {
       glossaryList = fallbackGlossary;
     }
 
-    const normalizedGlossary = glossaryList.slice(0, 6).map((item, idx) => {
+    const normalizedGlossary = glossaryList.slice(0, 9).map((item, idx) => {
       const fb = fallbackGlossary[idx] || fallbackGlossary[0];
       return {
         id: item.id || fb.id || `glossary-${idx + 1}`,
@@ -983,7 +983,7 @@ ${bulletsText}
             </span>
             <span className="text-blue-600 font-semibold truncate">
               {timeframe === 'glossary' 
-                ? '"SİTEDE_GEÇEN_6_TEMEL_KAVRAM"' 
+                ? '"SİTEDE_GEÇEN_9_TEMEL_KAVRAM"' 
                 : selectedTool 
                   ? `"${selectedTool.name}", KATEGORİ="${selectedTool.category}", SKOR=${selectedTool.hypeScore}/10` 
                   : '"TÜM_MODELLER"'}
@@ -1039,10 +1039,10 @@ ${bulletsText}
                       ? 'bg-blue-600 text-white border-blue-700'
                       : 'bg-blue-50 hover:bg-blue-100 text-blue-800 border-blue-200'
                   }`}
-                  title="Günün Sözlüğü: O gün sitede geçen 6 kilit teknik kavram"
+                  title="Günün Sözlüğü: O gün sitede geçen 9 kilit teknik kavram"
                 >
                   <BookMarked className={`w-3.5 h-3.5 ${timeframe === 'glossary' ? 'text-white' : 'text-blue-600'}`} />
-                  <span>📖 Günün Sözlüğü (6 Terim)</span>
+                  <span>📖 Günün Sözlüğü (9 Terim)</span>
                 </button>
 
                 <button
@@ -1138,7 +1138,7 @@ ${bulletsText}
                   Günün Sözlüğü
                 </h2>
                 <span className="text-[11px] font-mono text-slate-400">
-                  • Sitede Geçen 6 Temel Kavram ({report.date})
+                  • Sitede Geçen 9 Temel Kavram ({report.date})
                 </span>
               </div>
             </div>
@@ -1153,25 +1153,17 @@ ${bulletsText}
                   {chunk.map((item, idx) => (
                     <div
                       key={item.id || `${cIdx}-${idx}`}
-                      className="bg-white border border-[#e2e8f0] rounded p-3 hover:border-slate-400 transition flex flex-col justify-between subgrid-card-glossary shadow-2xs"
+                      className="bg-white border border-[#e2e8f0] rounded p-3.5 hover:border-slate-400 transition flex flex-col justify-between subgrid-card-glossary shadow-2xs"
                     >
-                      {/* 1. Kavram & Sitede Nerede Geçtiği */}
-                      <div className="flex items-baseline justify-between gap-2 pb-1.5 border-b border-slate-100">
+                      {/* 1. Kavram Başlığı */}
+                      <div className="pb-1.5 border-b border-slate-100">
                         <h4 className="font-mono font-bold text-xs sm:text-[13px] text-slate-900 tracking-tight leading-snug">
                           {item.term}
                         </h4>
-                        {item.appearsIn && (
-                          <span 
-                            className="text-[10px] font-mono text-slate-400 shrink-0 truncate max-w-[130px]" 
-                            title={item.appearsIn}
-                          >
-                            {item.appearsIn.replace(/^(🤗|🐙|☕)\s*/, '').replace(/(\s*kartında|\s*repolarında|\s*reposunda)/, '')}
-                          </span>
-                        )}
                       </div>
 
-                      {/* 2. Sade Anlamı */}
-                      <p className="text-xs text-slate-600 leading-relaxed font-normal">
+                      {/* 2. Sade ve Anlaşılır Anlamı */}
+                      <p className="text-xs sm:text-[12.5px] text-slate-600 leading-relaxed font-normal">
                         {item.definition}
                       </p>
                     </div>
@@ -1639,7 +1631,7 @@ ${bulletsText}
                       5. Günün Sözlüğü
                     </h3>
                     <span className="text-[11px] font-mono text-slate-400">
-                      • Sitede Geçen 6 Temel Kavram
+                      • Sitede Geçen 9 Temel Kavram
                     </span>
                   </div>
                 </div>
@@ -1654,25 +1646,17 @@ ${bulletsText}
                       {chunk.map((item, idx) => (
                         <div
                           key={item.id || `${cIdx}-${idx}`}
-                          className="bg-white border border-[#e2e8f0] rounded p-3 hover:border-slate-400 transition flex flex-col justify-between subgrid-card-glossary shadow-2xs"
+                          className="bg-white border border-[#e2e8f0] rounded p-3.5 hover:border-slate-400 transition flex flex-col justify-between subgrid-card-glossary shadow-2xs"
                         >
-                          {/* 1. Kavram & Sitede Nerede Geçtiği */}
-                          <div className="flex items-baseline justify-between gap-2 pb-1.5 border-b border-slate-100">
+                          {/* 1. Kavram Başlığı */}
+                          <div className="pb-1.5 border-b border-slate-100">
                             <h4 className="font-mono font-bold text-xs sm:text-[13px] text-slate-900 tracking-tight leading-snug">
                               {item.term}
                             </h4>
-                            {item.appearsIn && (
-                              <span 
-                                className="text-[10px] font-mono text-slate-400 shrink-0 truncate max-w-[130px]" 
-                                title={item.appearsIn}
-                              >
-                                {item.appearsIn.replace(/^(🤗|🐙|☕)\s*/, '').replace(/(\s*kartında|\s*repolarında|\s*reposunda)/, '')}
-                              </span>
-                            )}
                           </div>
 
-                          {/* 2. Sade Anlamı */}
-                          <p className="text-xs text-slate-600 leading-relaxed font-normal">
+                          {/* 2. Sade ve Anlaşılır Anlamı */}
+                          <p className="text-xs sm:text-[12.5px] text-slate-600 leading-relaxed font-normal">
                             {item.definition}
                           </p>
                         </div>
