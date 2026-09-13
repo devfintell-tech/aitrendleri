@@ -443,7 +443,8 @@ async function callGemini(model, apiKey, prompt) {
   let res = await fetch(apiUrl, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload)
+    body: JSON.stringify(payload),
+    signal: AbortSignal.timeout(45000)
   });
 
   // Eğer model sürümü googleSearch ile responseMimeType: application/json kombinasyonunu desteklemezse tools'suz tekrar dener
@@ -453,7 +454,8 @@ async function callGemini(model, apiKey, prompt) {
     res = await fetch(apiUrl, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload)
+      body: JSON.stringify(payload),
+      signal: AbortSignal.timeout(45000)
     });
   }
 
@@ -464,7 +466,8 @@ async function callGemini(model, apiKey, prompt) {
     res = await fetch(apiUrl, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload)
+      body: JSON.stringify(payload),
+      signal: AbortSignal.timeout(45000)
     });
   }
 
