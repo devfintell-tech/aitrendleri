@@ -1283,8 +1283,6 @@ function enforceStrictStandards(data, hfModels = [], candidateArxiv = [], hnPost
     environment: m.environment || 'vLLM, Ollama, llama.cpp, 16GB+ RAM.'
   }));
 
-  // 3. HACKER NEWS PULSE: Kesinlikle summary24h ve discussions (tam 8 adet)
-  if (!clean.hackerNewsPulse || typeof clean.hackerNewsPulse !== 'object') {
   // 3. HACKER NEWS PULSE: Kesinlikle summary24h ve discussions (tam 8 adet, SIFIR TEKRAR)
   if (!clean.hackerNewsPulse || typeof clean.hackerNewsPulse !== 'object') {
     clean.hackerNewsPulse = {
