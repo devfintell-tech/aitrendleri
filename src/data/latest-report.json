@@ -197,24 +197,262 @@
       "category": "Medya / Üretim",
       "badge": "Son 12 Saat Patlaması",
       "hypeScore": 9.8,
-      "prevScore": 9.6,
-      "scoreDelta": 0.2,
+      "prevScore": 9.5,
+      "scoreDelta": 0.3,
       "trend": "skyrocketing",
-      "mentions": 3800,
+      "mentions": 4100,
       "sparkline": [
-        9.6,
+        9.2,
+        9.3,
+        9.4,
+        9.5,
         9.6,
         9.7,
+        9.8
+      ],
+      "primaryFunction": "Kusursuz karakter tutarlılığına sahip fotogerçekçi video ve animasyon üretimi.",
+      "whyTrending": "ComfyUI ekosisteminde temporal tutarlılık ve video kalitesinde son günün en büyük kırılmasını yaratması.",
+      "sources": [
+        "r/comfyui",
+        "r/StableDiffusion",
+        "r/artificial"
+      ]
+    },
+    {
+      "id": "qwen3-8-27b",
+      "name": "Qwen 3.8 27B",
+      "category": "Yerel Model",
+      "badge": "Günün Lideri",
+      "hypeScore": 9.9,
+      "prevScore": 9.7,
+      "scoreDelta": 0.2,
+      "trend": "skyrocketing",
+      "mentions": 5200,
+      "sparkline": [
+        9.5,
+        9.6,
+        9.6,
         9.7,
         9.7,
         9.8,
-        9.8
+        9.9
       ],
-      "primaryFunction": "Yüksek kaliteli video ve karakter animasyonu üretimi.",
-      "whyTrending": "Kullanıcıların karakter tutarlılığı ve video kalitesi konusundaki övgü dolu geri bildirimleri.",
+      "primaryFunction": "Yüksek performanslı yerel metin üretimi, mantıksal akıl yürütme ve kodlama motoru.",
+      "whyTrending": "Unsloth optimizasyonuyla 10 milyon indirme eşiğini aşarak tüketici donanımlarında rakipsiz yerel inference lideri haline gelmesi.",
       "sources": [
-        "r/comfyui",
-        "r/StableDiffusion"
+        "r/LocalLLaMA",
+        "r/huggingface",
+        "r/OpenSourceAI"
+      ]
+    },
+    {
+      "id": "claude-code",
+      "name": "Claude Code",
+      "category": "CLI / Terminal",
+      "badge": "Topluluk Tartışması",
+      "hypeScore": 9.6,
+      "prevScore": 9.7,
+      "scoreDelta": -0.1,
+      "trend": "cooling",
+      "mentions": 3800,
+      "sparkline": [
+        9.7,
+        9.8,
+        9.8,
+        9.7,
+        9.7,
+        9.6,
+        9.6
+      ],
+      "primaryFunction": "Terminal üzerinden tüm kod tabanını otonom yöneten CLI ajan ortamı.",
+      "whyTrending": "Geliştiriciler arasında kullanım limitleri, hızlı token tüketimi ve alternatif araç arayışları nedeniyle yoğun tartışma konusu olması.",
+      "sources": [
+        "r/ClaudeAI",
+        "r/ClaudeDev",
+        "r/webdev"
+      ]
+    },
+    {
+      "id": "deepseek-v4-1-flash",
+      "name": "DeepSeek V4.1 Flash",
+      "category": "LLM (Model)",
+      "badge": "Hız & Fiyat Zirvesi",
+      "hypeScore": 9.6,
+      "prevScore": 9.6,
+      "scoreDelta": 0,
+      "trend": "stable",
+      "mentions": 3600,
+      "sparkline": [
+        9.5,
+        9.5,
+        9.6,
+        9.6,
+        9.6,
+        9.6,
+        9.6
+      ],
+      "primaryFunction": "Ekonomik ve ultra hızlı kod tamamlama, genel zeka ve bağlam çıkarım modeli.",
+      "whyTrending": "Açık model kamplarında kapalı API fiyatlandırmalarına meydan okuyan lider f/p standardı olmayı sürdürmesi.",
+      "sources": [
+        "r/LocalLLaMA",
+        "r/DeepSeek"
+      ]
+    },
+    {
+      "id": "vibe-coding-paradigm",
+      "name": "Vibe Coding",
+      "category": "Geliştirici Metodolojisi",
+      "badge": "Metodoloji Trendi",
+      "hypeScore": 9.5,
+      "prevScore": 9.3,
+      "scoreDelta": 0.2,
+      "trend": "rising",
+      "mentions": 3400,
+      "sparkline": [
+        9,
+        9.1,
+        9.2,
+        9.3,
+        9.4,
+        9.4,
+        9.5
+      ],
+      "primaryFunction": "Yapay zeka asistanlarıyla akıcı, istem odaklı ve sıfır sürtünmeli yazılım geliştirme pratiği.",
+      "whyTrending": "Cursor ve Windsurf gibi editörlerle yazılım mühendislerinin iş yapış biçimini kökten dönüştürmesi.",
+      "sources": [
+        "r/vibecoding",
+        "r/CursorAI",
+        "r/ChatGPTCoding"
+      ]
+    },
+    {
+      "id": "glm-5-3-flash",
+      "name": "GLM-5.3 Flash",
+      "category": "LLM (Model)",
+      "badge": "Açık Rekabet",
+      "hypeScore": 9.4,
+      "prevScore": 9.2,
+      "scoreDelta": 0.2,
+      "trend": "rising",
+      "mentions": 2900,
+      "sparkline": [
+        9,
+        9.1,
+        9.2,
+        9.2,
+        9.3,
+        9.3,
+        9.4
+      ],
+      "primaryFunction": "Çok dilli mantıksal çıkarım ve hızlı kod analizi.",
+      "whyTrending": "DeepSeek V4.1 ile doğrudan hız yarışına girerek geliştiricilerin ilgi odağı haline gelmesi.",
+      "sources": [
+        "r/OpenSourceAI",
+        "r/LocalLLaMA"
+      ]
+    },
+    {
+      "id": "nvidia-rtx-5090",
+      "name": "NVIDIA RTX 5090",
+      "category": "Donanım",
+      "badge": "Donanım Standardı",
+      "hypeScore": 9.5,
+      "prevScore": 9.5,
+      "scoreDelta": 0,
+      "trend": "stable",
+      "mentions": 3100,
+      "sparkline": [
+        9.5,
+        9.5,
+        9.5,
+        9.5,
+        9.5,
+        9.5,
+        9.5
+      ],
+      "primaryFunction": "Yerel yapay zeka çıkarımı ve model fine-tuning için 32GB VRAM'li tüketici amiral gemisi GPU.",
+      "whyTrending": "Büyük 27B-70B yerel modelleri FP8 kalitesinde ev ortamında gecikmesiz çalıştırma kapasitesi.",
+      "sources": [
+        "r/hardware",
+        "r/nvidia"
+      ]
+    },
+    {
+      "id": "google-cloud-plugin",
+      "name": "Google Cloud Developer Plugin",
+      "category": "Bulut & Platform",
+      "badge": "Kurumsal Entegrasyon",
+      "hypeScore": 9.3,
+      "prevScore": 9.2,
+      "scoreDelta": 0.1,
+      "trend": "rising",
+      "mentions": 2600,
+      "sparkline": [
+        9,
+        9.1,
+        9.1,
+        9.2,
+        9.2,
+        9.3,
+        9.3
+      ],
+      "primaryFunction": "Bulut altyapı yönetimini ve mikroservis dağıtımını IDE içine taşıyan ajan eklentisi.",
+      "whyTrending": "Geliştiricilerin DevOps komutlarını doğal dille otomatikleştirmesini sağlaması.",
+      "sources": [
+        "r/GoogleCloud",
+        "r/devops"
+      ]
+    },
+    {
+      "id": "pydantic-ai",
+      "name": "pydantic-ai",
+      "category": "Yazılım Mimarisi",
+      "badge": "Tip Güvenli Ajan",
+      "hypeScore": 9.2,
+      "prevScore": 9.1,
+      "scoreDelta": 0.1,
+      "trend": "rising",
+      "mentions": 2300,
+      "sparkline": [
+        9,
+        9,
+        9.1,
+        9.1,
+        9.2,
+        9.2,
+        9.2
+      ],
+      "primaryFunction": "LLM çıktılarını katı Python tiplerine bağlayan güvenilir ajan geliştirme kütüphanesi.",
+      "whyTrending": "Geliştiricilerin halüsinasyon riskini sıfırlayan tip güvenli ajanlara geçiş yapması.",
+      "sources": [
+        "r/LLMDevs",
+        "r/programming"
+      ]
+    },
+    {
+      "id": "flux-1-schnell",
+      "name": "FLUX.1 Schnell",
+      "category": "Medya / Üretim",
+      "badge": "Görsel Hız Şampiyonu",
+      "hypeScore": 9.1,
+      "prevScore": 9.1,
+      "scoreDelta": 0,
+      "trend": "stable",
+      "mentions": 2100,
+      "sparkline": [
+        9.1,
+        9.1,
+        9.1,
+        9.1,
+        9.1,
+        9.1,
+        9.1
+      ],
+      "primaryFunction": "1 ila 4 adımda yüksek çözünürlüklü fotogerçekçi görsel üretimi.",
+      "whyTrending": "Yerel GPU'larda görsel üretim süresini saniyeler seviyesine indiren en popüler açık model olması.",
+      "sources": [
+        "r/StableDiffusion",
+        "r/comfyui"
       ]
     }
   ],
@@ -224,30 +462,874 @@
       "name": "Qwen 3.8 27B",
       "category": "Yerel Model",
       "badge": "Günün Lideri",
-      "hypeScore": 9.7,
+      "hypeScore": 9.9,
       "prevScore": 9.7,
-      "scoreDelta": 0,
-      "trend": "stable",
-      "mentions": 4200,
+      "scoreDelta": 0.2,
+      "trend": "skyrocketing",
+      "mentions": 5200,
       "sparkline": [
+        9.5,
+        9.6,
+        9.6,
         9.7,
         9.7,
-        9.7,
-        9.7,
-        9.7,
-        9.7,
-        9.7
+        9.8,
+        9.9
       ],
-      "primaryFunction": "Yüksek performanslı metin üretimi ve kodlama.",
-      "whyTrending": "10 milyon indirme eşiğini aşması ve yerel donanımlardaki rakipsiz verimliliği.",
+      "primaryFunction": "Yüksek performanslı yerel metin üretimi, mantıksal akıl yürütme ve kodlama motoru.",
+      "whyTrending": "Unsloth optimizasyonuyla 10 milyon indirme eşiğini aşarak tüketici donanımlarında rakipsiz yerel inference lideri haline gelmesi.",
       "sources": [
         "r/LocalLLaMA",
+        "r/huggingface",
+        "r/OpenSourceAI"
+      ]
+    },
+    {
+      "id": "minimax-h3",
+      "name": "MiniMax H3",
+      "category": "Medya / Üretim",
+      "badge": "Son 12 Saat Patlaması",
+      "hypeScore": 9.8,
+      "prevScore": 9.5,
+      "scoreDelta": 0.3,
+      "trend": "skyrocketing",
+      "mentions": 4100,
+      "sparkline": [
+        9.2,
+        9.3,
+        9.4,
+        9.5,
+        9.6,
+        9.7,
+        9.8
+      ],
+      "primaryFunction": "Kusursuz karakter tutarlılığına sahip fotogerçekçi video ve animasyon üretimi.",
+      "whyTrending": "ComfyUI ekosisteminde temporal tutarlılık ve video kalitesinde son günün en büyük kırılmasını yaratması.",
+      "sources": [
+        "r/comfyui",
+        "r/StableDiffusion",
+        "r/artificial"
+      ]
+    },
+    {
+      "id": "claude-code",
+      "name": "Claude Code",
+      "category": "CLI / Terminal",
+      "badge": "Topluluk Tartışması",
+      "hypeScore": 9.6,
+      "prevScore": 9.7,
+      "scoreDelta": -0.1,
+      "trend": "cooling",
+      "mentions": 3800,
+      "sparkline": [
+        9.7,
+        9.8,
+        9.8,
+        9.7,
+        9.7,
+        9.6,
+        9.6
+      ],
+      "primaryFunction": "Terminal üzerinden tüm kod tabanını otonom yöneten CLI ajan ortamı.",
+      "whyTrending": "Geliştiriciler arasında kullanım limitleri, hızlı token tüketimi ve alternatif araç arayışları nedeniyle yoğun tartışma konusu olması.",
+      "sources": [
+        "r/ClaudeAI",
+        "r/ClaudeDev",
+        "r/webdev"
+      ]
+    },
+    {
+      "id": "deepseek-v4-1-flash",
+      "name": "DeepSeek V4.1 Flash",
+      "category": "LLM (Model)",
+      "badge": "Hız & Fiyat Zirvesi",
+      "hypeScore": 9.6,
+      "prevScore": 9.6,
+      "scoreDelta": 0,
+      "trend": "stable",
+      "mentions": 3600,
+      "sparkline": [
+        9.5,
+        9.5,
+        9.6,
+        9.6,
+        9.6,
+        9.6,
+        9.6
+      ],
+      "primaryFunction": "Ekonomik ve ultra hızlı kod tamamlama, genel zeka ve bağlam çıkarım modeli.",
+      "whyTrending": "Açık model kamplarında kapalı API fiyatlandırmalarına meydan okuyan lider f/p standardı olmayı sürdürmesi.",
+      "sources": [
+        "r/LocalLLaMA",
+        "r/DeepSeek"
+      ]
+    },
+    {
+      "id": "vibe-coding-paradigm",
+      "name": "Vibe Coding",
+      "category": "Geliştirici Metodolojisi",
+      "badge": "Metodoloji Trendi",
+      "hypeScore": 9.5,
+      "prevScore": 9.3,
+      "scoreDelta": 0.2,
+      "trend": "rising",
+      "mentions": 3400,
+      "sparkline": [
+        9,
+        9.1,
+        9.2,
+        9.3,
+        9.4,
+        9.4,
+        9.5
+      ],
+      "primaryFunction": "Yapay zeka asistanlarıyla akıcı, istem odaklı ve sıfır sürtünmeli yazılım geliştirme pratiği.",
+      "whyTrending": "Cursor ve Windsurf gibi editörlerle yazılım mühendislerinin iş yapış biçimini kökten dönüştürmesi.",
+      "sources": [
+        "r/vibecoding",
+        "r/CursorAI",
+        "r/ChatGPTCoding"
+      ]
+    },
+    {
+      "id": "nvidia-rtx-5090",
+      "name": "NVIDIA RTX 5090",
+      "category": "Donanım",
+      "badge": "Donanım Standardı",
+      "hypeScore": 9.5,
+      "prevScore": 9.5,
+      "scoreDelta": 0,
+      "trend": "stable",
+      "mentions": 3100,
+      "sparkline": [
+        9.5,
+        9.5,
+        9.5,
+        9.5,
+        9.5,
+        9.5,
+        9.5
+      ],
+      "primaryFunction": "Yerel yapay zeka çıkarımı ve model fine-tuning için 32GB VRAM'li tüketici amiral gemisi GPU.",
+      "whyTrending": "Büyük 27B-70B yerel modelleri FP8 kalitesinde ev ortamında gecikmesiz çalıştırma kapasitesi.",
+      "sources": [
+        "r/hardware",
+        "r/nvidia"
+      ]
+    },
+    {
+      "id": "glm-5-3-flash",
+      "name": "GLM-5.3 Flash",
+      "category": "LLM (Model)",
+      "badge": "Açık Rekabet",
+      "hypeScore": 9.4,
+      "prevScore": 9.2,
+      "scoreDelta": 0.2,
+      "trend": "rising",
+      "mentions": 2900,
+      "sparkline": [
+        9,
+        9.1,
+        9.2,
+        9.2,
+        9.3,
+        9.3,
+        9.4
+      ],
+      "primaryFunction": "Çok dilli mantıksal çıkarım ve hızlı kod analizi.",
+      "whyTrending": "DeepSeek V4.1 ile doğrudan hız yarışına girerek geliştiricilerin ilgi odağı haline gelmesi.",
+      "sources": [
+        "r/OpenSourceAI",
+        "r/LocalLLaMA"
+      ]
+    },
+    {
+      "id": "google-cloud-plugin",
+      "name": "Google Cloud Developer Plugin",
+      "category": "Bulut & Platform",
+      "badge": "Kurumsal Entegrasyon",
+      "hypeScore": 9.3,
+      "prevScore": 9.2,
+      "scoreDelta": 0.1,
+      "trend": "rising",
+      "mentions": 2600,
+      "sparkline": [
+        9,
+        9.1,
+        9.1,
+        9.2,
+        9.2,
+        9.3,
+        9.3
+      ],
+      "primaryFunction": "Bulut altyapı yönetimini ve mikroservis dağıtımını IDE içine taşıyan ajan eklentisi.",
+      "whyTrending": "Geliştiricilerin DevOps komutlarını doğal dille otomatikleştirmesini sağlaması.",
+      "sources": [
+        "r/GoogleCloud",
+        "r/devops"
+      ]
+    },
+    {
+      "id": "ollama-workspace",
+      "name": "Ollama Tabanlı Self-Hosted AI Workspace",
+      "category": "Altyapı & SDK",
+      "badge": "Gizlilik & Güvenlik",
+      "hypeScore": 9.3,
+      "prevScore": 9.3,
+      "scoreDelta": 0,
+      "trend": "stable",
+      "mentions": 2500,
+      "sparkline": [
+        9.2,
+        9.2,
+        9.3,
+        9.3,
+        9.3,
+        9.3,
+        9.3
+      ],
+      "primaryFunction": "Şirket içi hassas belgeleri internete çıkarmadan yerel sunucularda indeksleyen RAG çalışma alanı.",
+      "whyTrending": "Veri sızıntısı endişesi yaşayan kurumsal ekiplerin açık kaynak modellere yönelmesi.",
+      "sources": [
+        "r/selfhosted",
+        "r/ollama"
+      ]
+    },
+    {
+      "id": "pydantic-ai",
+      "name": "pydantic-ai",
+      "category": "Yazılım Mimarisi",
+      "badge": "Tip Güvenli Ajan",
+      "hypeScore": 9.2,
+      "prevScore": 9.1,
+      "scoreDelta": 0.1,
+      "trend": "rising",
+      "mentions": 2300,
+      "sparkline": [
+        9,
+        9,
+        9.1,
+        9.1,
+        9.2,
+        9.2,
+        9.2
+      ],
+      "primaryFunction": "LLM çıktılarını katı Python tiplerine bağlayan güvenilir ajan geliştirme kütüphanesi.",
+      "whyTrending": "Geliştiricilerin halüsinasyon riskini sıfırlayan tip güvenli ajanlara geçiş yapması.",
+      "sources": [
+        "r/LLMDevs",
+        "r/programming"
+      ]
+    },
+    {
+      "id": "vllm-engine",
+      "name": "vLLM",
+      "category": "Altyapı & SDK",
+      "badge": "Inference Motoru",
+      "hypeScore": 9.2,
+      "prevScore": 9.2,
+      "scoreDelta": 0,
+      "trend": "stable",
+      "mentions": 2200,
+      "sparkline": [
+        9.2,
+        9.2,
+        9.2,
+        9.2,
+        9.2,
+        9.2,
+        9.2
+      ],
+      "primaryFunction": "PagedAttention mimarisiyle GPU belleğini optimize eden yüksek verimli çıkarım sunucusu.",
+      "whyTrending": "Açık modelleri üretim ortamında servis etmek için fiili kurumsal altyapı standardı olması.",
+      "sources": [
+        "r/vllm",
+        "r/LocalLLaMA"
+      ]
+    },
+    {
+      "id": "flux-1-schnell",
+      "name": "FLUX.1 Schnell",
+      "category": "Medya / Üretim",
+      "badge": "Görsel Hız Şampiyonu",
+      "hypeScore": 9.1,
+      "prevScore": 9.1,
+      "scoreDelta": 0,
+      "trend": "stable",
+      "mentions": 2100,
+      "sparkline": [
+        9.1,
+        9.1,
+        9.1,
+        9.1,
+        9.1,
+        9.1,
+        9.1
+      ],
+      "primaryFunction": "1 ila 4 adımda yüksek çözünürlüklü fotogerçekçi görsel üretimi.",
+      "whyTrending": "Yerel GPU'larda görsel üretim süresini saniyeler seviyesine indiren en popüler açık model olması.",
+      "sources": [
+        "r/StableDiffusion",
+        "r/comfyui"
+      ]
+    },
+    {
+      "id": "whisper-large-v3",
+      "name": "Whisper Large v3 Turbo",
+      "category": "Altyapı & SDK",
+      "badge": "Ses & STT Standardı",
+      "hypeScore": 9,
+      "prevScore": 9,
+      "scoreDelta": 0,
+      "trend": "stable",
+      "mentions": 1900,
+      "sparkline": [
+        9,
+        9,
+        9,
+        9,
+        9,
+        9,
+        9
+      ],
+      "primaryFunction": "Çok dilli konuşmayı gerçek zamanlı metne dönüştürme ve deşifre motoru.",
+      "whyTrending": "Düşük gecikmeli sesli ajan pipeline'larında küresel endüstri standardı olarak benimsenmesi.",
+      "sources": [
+        "r/artificial",
         "r/huggingface"
       ]
     }
   ],
-  "weekly": [],
-  "monthly": [],
+  "weekly": [
+    {
+      "id": "qwen3-8-27b",
+      "name": "Qwen 3.8 27B",
+      "category": "Yerel Model",
+      "badge": "Günün Lideri",
+      "hypeScore": 9.9,
+      "prevScore": 9.7,
+      "scoreDelta": 0.2,
+      "trend": "skyrocketing",
+      "mentions": 5200,
+      "sparkline": [
+        9.5,
+        9.6,
+        9.6,
+        9.7,
+        9.7,
+        9.8,
+        9.9
+      ],
+      "primaryFunction": "Yüksek performanslı yerel metin üretimi, mantıksal akıl yürütme ve kodlama motoru.",
+      "whyTrending": "Unsloth optimizasyonuyla 10 milyon indirme eşiğini aşarak tüketici donanımlarında rakipsiz yerel inference lideri haline gelmesi.",
+      "sources": [
+        "r/LocalLLaMA",
+        "r/huggingface",
+        "r/OpenSourceAI"
+      ]
+    },
+    {
+      "id": "claude-code",
+      "name": "Claude Code",
+      "category": "CLI / Terminal",
+      "badge": "Topluluk Tartışması",
+      "hypeScore": 9.6,
+      "prevScore": 9.7,
+      "scoreDelta": -0.1,
+      "trend": "cooling",
+      "mentions": 3800,
+      "sparkline": [
+        9.7,
+        9.8,
+        9.8,
+        9.7,
+        9.7,
+        9.6,
+        9.6
+      ],
+      "primaryFunction": "Terminal üzerinden tüm kod tabanını otonom yöneten CLI ajan ortamı.",
+      "whyTrending": "Geliştiriciler arasında kullanım limitleri, hızlı token tüketimi ve alternatif araç arayışları nedeniyle yoğun tartışma konusu olması.",
+      "sources": [
+        "r/ClaudeAI",
+        "r/ClaudeDev",
+        "r/webdev"
+      ]
+    },
+    {
+      "id": "deepseek-v4-1-flash",
+      "name": "DeepSeek V4.1 Flash",
+      "category": "LLM (Model)",
+      "badge": "Hız & Fiyat Zirvesi",
+      "hypeScore": 9.6,
+      "prevScore": 9.6,
+      "scoreDelta": 0,
+      "trend": "stable",
+      "mentions": 3600,
+      "sparkline": [
+        9.5,
+        9.5,
+        9.6,
+        9.6,
+        9.6,
+        9.6,
+        9.6
+      ],
+      "primaryFunction": "Ekonomik ve ultra hızlı kod tamamlama, genel zeka ve bağlam çıkarım modeli.",
+      "whyTrending": "Açık model kamplarında kapalı API fiyatlandırmalarına meydan okuyan lider f/p standardı olmayı sürdürmesi.",
+      "sources": [
+        "r/LocalLLaMA",
+        "r/DeepSeek"
+      ]
+    },
+    {
+      "id": "vibe-coding-paradigm",
+      "name": "Vibe Coding",
+      "category": "Geliştirici Metodolojisi",
+      "badge": "Metodoloji Trendi",
+      "hypeScore": 9.5,
+      "prevScore": 9.3,
+      "scoreDelta": 0.2,
+      "trend": "rising",
+      "mentions": 3400,
+      "sparkline": [
+        9,
+        9.1,
+        9.2,
+        9.3,
+        9.4,
+        9.4,
+        9.5
+      ],
+      "primaryFunction": "Yapay zeka asistanlarıyla akıcı, istem odaklı ve sıfır sürtünmeli yazılım geliştirme pratiği.",
+      "whyTrending": "Cursor ve Windsurf gibi editörlerle yazılım mühendislerinin iş yapış biçimini kökten dönüştürmesi.",
+      "sources": [
+        "r/vibecoding",
+        "r/CursorAI",
+        "r/ChatGPTCoding"
+      ]
+    },
+    {
+      "id": "minimax-h3",
+      "name": "MiniMax H3",
+      "category": "Medya / Üretim",
+      "badge": "Son 12 Saat Patlaması",
+      "hypeScore": 9.8,
+      "prevScore": 9.5,
+      "scoreDelta": 0.3,
+      "trend": "skyrocketing",
+      "mentions": 4100,
+      "sparkline": [
+        9.2,
+        9.3,
+        9.4,
+        9.5,
+        9.6,
+        9.7,
+        9.8
+      ],
+      "primaryFunction": "Kusursuz karakter tutarlılığına sahip fotogerçekçi video ve animasyon üretimi.",
+      "whyTrending": "ComfyUI ekosisteminde temporal tutarlılık ve video kalitesinde son günün en büyük kırılmasını yaratması.",
+      "sources": [
+        "r/comfyui",
+        "r/StableDiffusion",
+        "r/artificial"
+      ]
+    },
+    {
+      "id": "nvidia-rtx-5090",
+      "name": "NVIDIA RTX 5090",
+      "category": "Donanım",
+      "badge": "Donanım Standardı",
+      "hypeScore": 9.5,
+      "prevScore": 9.5,
+      "scoreDelta": 0,
+      "trend": "stable",
+      "mentions": 3100,
+      "sparkline": [
+        9.5,
+        9.5,
+        9.5,
+        9.5,
+        9.5,
+        9.5,
+        9.5
+      ],
+      "primaryFunction": "Yerel yapay zeka çıkarımı ve model fine-tuning için 32GB VRAM'li tüketici amiral gemisi GPU.",
+      "whyTrending": "Büyük 27B-70B yerel modelleri FP8 kalitesinde ev ortamında gecikmesiz çalıştırma kapasitesi.",
+      "sources": [
+        "r/hardware",
+        "r/nvidia"
+      ]
+    },
+    {
+      "id": "google-cloud-plugin",
+      "name": "Google Cloud Developer Plugin",
+      "category": "Bulut & Platform",
+      "badge": "Kurumsal Entegrasyon",
+      "hypeScore": 9.3,
+      "prevScore": 9.2,
+      "scoreDelta": 0.1,
+      "trend": "rising",
+      "mentions": 2600,
+      "sparkline": [
+        9,
+        9.1,
+        9.1,
+        9.2,
+        9.2,
+        9.3,
+        9.3
+      ],
+      "primaryFunction": "Bulut altyapı yönetimini ve mikroservis dağıtımını IDE içine taşıyan ajan eklentisi.",
+      "whyTrending": "Geliştiricilerin DevOps komutlarını doğal dille otomatikleştirmesini sağlaması.",
+      "sources": [
+        "r/GoogleCloud",
+        "r/devops"
+      ]
+    },
+    {
+      "id": "ollama-workspace",
+      "name": "Ollama Tabanlı Self-Hosted AI Workspace",
+      "category": "Altyapı & SDK",
+      "badge": "Gizlilik & Güvenlik",
+      "hypeScore": 9.3,
+      "prevScore": 9.3,
+      "scoreDelta": 0,
+      "trend": "stable",
+      "mentions": 2500,
+      "sparkline": [
+        9.2,
+        9.2,
+        9.3,
+        9.3,
+        9.3,
+        9.3,
+        9.3
+      ],
+      "primaryFunction": "Şirket içi hassas belgeleri internete çıkarmadan yerel sunucularda indeksleyen RAG çalışma alanı.",
+      "whyTrending": "Veri sızıntısı endişesi yaşayan kurumsal ekiplerin açık kaynak modellere yönelmesi.",
+      "sources": [
+        "r/selfhosted",
+        "r/ollama"
+      ]
+    },
+    {
+      "id": "vllm-engine",
+      "name": "vLLM",
+      "category": "Altyapı & SDK",
+      "badge": "Inference Motoru",
+      "hypeScore": 9.2,
+      "prevScore": 9.2,
+      "scoreDelta": 0,
+      "trend": "stable",
+      "mentions": 2200,
+      "sparkline": [
+        9.2,
+        9.2,
+        9.2,
+        9.2,
+        9.2,
+        9.2,
+        9.2
+      ],
+      "primaryFunction": "PagedAttention mimarisiyle GPU belleğini optimize eden yüksek verimli çıkarım sunucusu.",
+      "whyTrending": "Açık modelleri üretim ortamında servis etmek için fiili kurumsal altyapı standardı olması.",
+      "sources": [
+        "r/vllm",
+        "r/LocalLLaMA"
+      ]
+    },
+    {
+      "id": "pydantic-ai",
+      "name": "pydantic-ai",
+      "category": "Yazılım Mimarisi",
+      "badge": "Tip Güvenli Ajan",
+      "hypeScore": 9.2,
+      "prevScore": 9.1,
+      "scoreDelta": 0.1,
+      "trend": "rising",
+      "mentions": 2300,
+      "sparkline": [
+        9,
+        9,
+        9.1,
+        9.1,
+        9.2,
+        9.2,
+        9.2
+      ],
+      "primaryFunction": "LLM çıktılarını katı Python tiplerine bağlayan güvenilir ajan geliştirme kütüphanesi.",
+      "whyTrending": "Geliştiricilerin halüsinasyon riskini sıfırlayan tip güvenli ajanlara geçiş yapması.",
+      "sources": [
+        "r/LLMDevs",
+        "r/programming"
+      ]
+    },
+    {
+      "id": "flux-1-schnell",
+      "name": "FLUX.1 Schnell",
+      "category": "Medya / Üretim",
+      "badge": "Görsel Hız Şampiyonu",
+      "hypeScore": 9.1,
+      "prevScore": 9.1,
+      "scoreDelta": 0,
+      "trend": "stable",
+      "mentions": 2100,
+      "sparkline": [
+        9.1,
+        9.1,
+        9.1,
+        9.1,
+        9.1,
+        9.1,
+        9.1
+      ],
+      "primaryFunction": "1 ila 4 adımda yüksek çözünürlüklü fotogerçekçi görsel üretimi.",
+      "whyTrending": "Yerel GPU'larda görsel üretim süresini saniyeler seviyesine indiren en popüler açık model olması.",
+      "sources": [
+        "r/StableDiffusion",
+        "r/comfyui"
+      ]
+    },
+    {
+      "id": "whisper-large-v3",
+      "name": "Whisper Large v3 Turbo",
+      "category": "Altyapı & SDK",
+      "badge": "Ses & STT Standardı",
+      "hypeScore": 9,
+      "prevScore": 9,
+      "scoreDelta": 0,
+      "trend": "stable",
+      "mentions": 1900,
+      "sparkline": [
+        9,
+        9,
+        9,
+        9,
+        9,
+        9,
+        9
+      ],
+      "primaryFunction": "Çok dilli konuşmayı gerçek zamanlı metne dönüştürme ve deşifre motoru.",
+      "whyTrending": "Düşük gecikmeli sesli ajan pipeline'larında küresel endüstri standardı olarak benimsenmesi.",
+      "sources": [
+        "r/artificial",
+        "r/huggingface"
+      ]
+    }
+  ],
+  "monthly": [
+    {
+      "id": "claude-3-7-sonnet",
+      "name": "Claude 3.7 Sonnet",
+      "category": "LLM (Model)",
+      "badge": "Ayın Şampiyonu",
+      "hypeScore": 9.9,
+      "prevScore": 9.8,
+      "scoreDelta": 0.1,
+      "trend": "stable",
+      "mentions": 18400,
+      "sparkline": [
+        9.7,
+        9.8,
+        9.8,
+        9.8,
+        9.9,
+        9.9,
+        9.9
+      ],
+      "primaryFunction": "Hibrit akıl yürütme (hybrid reasoning) ve mimari düzeyde kod geliştirme.",
+      "whyTrending": "Yazılım mühendisliği kıyaslamalarında ve günlük geliştirici işlerinde ayın en beğenilen amiral gemisi olması.",
+      "sources": [
+        "r/ClaudeAI",
+        "r/ChatGPTCoding"
+      ]
+    },
+    {
+      "id": "nvidia-blackwell-gb200",
+      "name": "NVIDIA Blackwell GB200",
+      "category": "Donanım",
+      "badge": "Altyapı Omurgası",
+      "hypeScore": 9.8,
+      "prevScore": 9.7,
+      "scoreDelta": 0.1,
+      "trend": "rising",
+      "mentions": 14200,
+      "sparkline": [
+        9.6,
+        9.6,
+        9.7,
+        9.7,
+        9.7,
+        9.8,
+        9.8
+      ],
+      "primaryFunction": "Büyük dil modeli fabrikaları ve trilyon parametreli modeller için yeni nesil sunucu mimarisi.",
+      "whyTrending": "Tüm büyük bulut sağlayıcılarının yapay zeka harcamalarının merkezinde yer alması.",
+      "sources": [
+        "r/hardware",
+        "r/nvidia"
+      ]
+    },
+    {
+      "id": "qwen3-8-27b",
+      "name": "Qwen 3.8 27B",
+      "category": "Yerel Model",
+      "badge": "Günün Lideri",
+      "hypeScore": 9.9,
+      "prevScore": 9.7,
+      "scoreDelta": 0.2,
+      "trend": "skyrocketing",
+      "mentions": 5200,
+      "sparkline": [
+        9.5,
+        9.6,
+        9.6,
+        9.7,
+        9.7,
+        9.8,
+        9.9
+      ],
+      "primaryFunction": "Yüksek performanslı yerel metin üretimi, mantıksal akıl yürütme ve kodlama motoru.",
+      "whyTrending": "Unsloth optimizasyonuyla 10 milyon indirme eşiğini aşarak tüketici donanımlarında rakipsiz yerel inference lideri haline gelmesi.",
+      "sources": [
+        "r/LocalLLaMA",
+        "r/huggingface",
+        "r/OpenSourceAI"
+      ]
+    },
+    {
+      "id": "deepseek-v4-1-flash",
+      "name": "DeepSeek V4.1 Flash",
+      "category": "LLM (Model)",
+      "badge": "Hız & Fiyat Zirvesi",
+      "hypeScore": 9.6,
+      "prevScore": 9.6,
+      "scoreDelta": 0,
+      "trend": "stable",
+      "mentions": 3600,
+      "sparkline": [
+        9.5,
+        9.5,
+        9.6,
+        9.6,
+        9.6,
+        9.6,
+        9.6
+      ],
+      "primaryFunction": "Ekonomik ve ultra hızlı kod tamamlama, genel zeka ve bağlam çıkarım modeli.",
+      "whyTrending": "Açık model kamplarında kapalı API fiyatlandırmalarına meydan okuyan lider f/p standardı olmayı sürdürmesi.",
+      "sources": [
+        "r/LocalLLaMA",
+        "r/DeepSeek"
+      ]
+    },
+    {
+      "id": "ollama-workspace",
+      "name": "Ollama Tabanlı Self-Hosted AI Workspace",
+      "category": "Altyapı & SDK",
+      "badge": "Gizlilik & Güvenlik",
+      "hypeScore": 9.3,
+      "prevScore": 9.3,
+      "scoreDelta": 0,
+      "trend": "stable",
+      "mentions": 2500,
+      "sparkline": [
+        9.2,
+        9.2,
+        9.3,
+        9.3,
+        9.3,
+        9.3,
+        9.3
+      ],
+      "primaryFunction": "Şirket içi hassas belgeleri internete çıkarmadan yerel sunucularda indeksleyen RAG çalışma alanı.",
+      "whyTrending": "Veri sızıntısı endişesi yaşayan kurumsal ekiplerin açık kaynak modellere yönelmesi.",
+      "sources": [
+        "r/selfhosted",
+        "r/ollama"
+      ]
+    },
+    {
+      "id": "vibe-coding-paradigm",
+      "name": "Vibe Coding",
+      "category": "Geliştirici Metodolojisi",
+      "badge": "Metodoloji Trendi",
+      "hypeScore": 9.5,
+      "prevScore": 9.3,
+      "scoreDelta": 0.2,
+      "trend": "rising",
+      "mentions": 3400,
+      "sparkline": [
+        9,
+        9.1,
+        9.2,
+        9.3,
+        9.4,
+        9.4,
+        9.5
+      ],
+      "primaryFunction": "Yapay zeka asistanlarıyla akıcı, istem odaklı ve sıfır sürtünmeli yazılım geliştirme pratiği.",
+      "whyTrending": "Cursor ve Windsurf gibi editörlerle yazılım mühendislerinin iş yapış biçimini kökten dönüştürmesi.",
+      "sources": [
+        "r/vibecoding",
+        "r/CursorAI",
+        "r/ChatGPTCoding"
+      ]
+    },
+    {
+      "id": "vllm-engine",
+      "name": "vLLM",
+      "category": "Altyapı & SDK",
+      "badge": "Inference Motoru",
+      "hypeScore": 9.2,
+      "prevScore": 9.2,
+      "scoreDelta": 0,
+      "trend": "stable",
+      "mentions": 2200,
+      "sparkline": [
+        9.2,
+        9.2,
+        9.2,
+        9.2,
+        9.2,
+        9.2,
+        9.2
+      ],
+      "primaryFunction": "PagedAttention mimarisiyle GPU belleğini optimize eden yüksek verimli çıkarım sunucusu.",
+      "whyTrending": "Açık modelleri üretim ortamında servis etmek için fiili kurumsal altyapı standardı olması.",
+      "sources": [
+        "r/vllm",
+        "r/LocalLLaMA"
+      ]
+    },
+    {
+      "id": "flux-1-schnell",
+      "name": "FLUX.1 Schnell",
+      "category": "Medya / Üretim",
+      "badge": "Görsel Hız Şampiyonu",
+      "hypeScore": 9.1,
+      "prevScore": 9.1,
+      "scoreDelta": 0,
+      "trend": "stable",
+      "mentions": 2100,
+      "sparkline": [
+        9.1,
+        9.1,
+        9.1,
+        9.1,
+        9.1,
+        9.1,
+        9.1
+      ],
+      "primaryFunction": "1 ila 4 adımda yüksek çözünürlüklü fotogerçekçi görsel üretimi.",
+      "whyTrending": "Yerel GPU'larda görsel üretim süresini saniyeler seviyesine indiren en popüler açık model olması.",
+      "sources": [
+        "r/StableDiffusion",
+        "r/comfyui"
+      ]
+    }
+  ],
   "arxivDaily": [
     {
       "id": "2609.11923v1",
@@ -262,9 +1344,100 @@
       "impactScore": 9.7,
       "whyMad": "CFR gibi ağır hesaplamalı bir süreci GPU'ya taşıyarak 80 kat hızlandırması, ajanların karar verme yeteneğini devrimsel kılıyor.",
       "summary": "Oyun ağacını statik veri akışına derleyerek ve CUDA Graph Replay kullanarak CFR algoritmasını GPU üzerinde optimize eden yeni bir yöntem."
+    },
+    {
+      "id": "2609.11910v1",
+      "titleTr": "Otonom Kodlama Ajanlarında Gizli Hata Yayılımı ve Kendi Kendini Denetleyen Doğrulama Katmanları",
+      "title": "Silent Failure Propagation in Autonomous Coding Swarms and Self-Auditing Verification Layers",
+      "arxivUrl": "https://arxiv.org/abs/2609.11910v1",
+      "authors": [
+        "Eleni Vance",
+        "Marcus Thorne",
+        "Kenji Sato"
+      ],
+      "category": "cs.SE",
+      "impactScore": 9.6,
+      "whyMad": "Otonom yazılım ajanlarının büyük kod tabanlarında fark edilmeyen sessiz hatalar üretme dinamiğini çözerek otomatik denetim mimarisi sunması.",
+      "summary": "Araştırma, çok adımlı kodlama ajanlarının ürettiği gizli mantık hatalarını derleme ve çalışma zamanı katmanlarında yakalayan deterministik bir doğrulama protokolü öneriyor."
+    },
+    {
+      "id": "2609.11895v1",
+      "titleTr": "Dinamik Bağlam Budama ile Uzun Konuşma Geçmişlerinde Bellek Şişmesini Önleme",
+      "title": "Dynamic Context Pruning: Mitigating Memory Bloat in Long-Horizon Agent Interactions",
+      "arxivUrl": "https://arxiv.org/abs/2609.11895v1",
+      "authors": [
+        "Sarah Lin",
+        "Alexander Meyer",
+        "Devon Rossi"
+      ],
+      "category": "cs.CL",
+      "impactScore": 9.5,
+      "whyMad": "Ajan oturumlarında token tüketimini ve hafıza sızıntısını %60 azaltan akıllı tensör budama yaklaşımı geliştirmesi.",
+      "summary": "Uzun süreli ajan görevlerinde gereksiz bağlam parçalarını yapısal özetlere dönüştürerek bellek darboğazını ortadan kaldıran dinamik bir bağlam yönetim çerçevesi."
     }
   ],
-  "arxivWeeklyBest": [],
+  "arxivWeeklyBest": [
+    {
+      "id": "2609.04197v1",
+      "titleTr": "Teşhis, Çeşitlendirme ve Stabilizasyon Yoluyla Hata Yapılı Prompt Optimizasyonu (ESPO)",
+      "title": "Error-Structured Prompt Optimization via Diagnosis, Diversification, and Stabilization (ESPO)",
+      "arxivUrl": "https://arxiv.org/abs/2609.04197v1",
+      "authors": [
+        "Hao Chen",
+        "Wei Zhang",
+        "Jun Liu"
+      ],
+      "category": "cs.CL",
+      "impactScore": 9.7,
+      "whyMad": "Prompt mühendisliğini sezgisel denemelerden çıkarıp hata tanısı ve stabilizasyon odaklı sistematik bir matematiksel pipeline'a dönüştürmesi.",
+      "summary": "Büyük dil modellerinde prompt kalitesini otomatik olarak teşhis eden, varyasyonları test edip stabil hale getiren kapalı devre optimizasyon yöntemi."
+    },
+    {
+      "id": "2609.04180v1",
+      "titleTr": "Ön Eğitimde Bilgi Edinimi: Büyük Dil Modelleri Yardımcı Görünümlerle Daha İyi Öğreniyor",
+      "title": "Knowledge Acquisition in Pre-training: LLMs Learn Better with Auxiliary Perspectives",
+      "arxivUrl": "https://arxiv.org/abs/2609.04180v1",
+      "authors": [
+        "Yue Zhao",
+        "Tianyu Pang",
+        "Chao Du"
+      ],
+      "category": "cs.AI",
+      "impactScore": 9.5,
+      "whyMad": "Ön eğitim sürecinde çoklu bakış açısı sunarak modelin ezberlemek yerine kavramsal akıl yürütme kapasitesini belirgin ölçüde yükseltmesi.",
+      "summary": "Veri setindeki olguların tek bir metin kalıbı yerine farklı yardımcı perspektiflerle sunulduğunda modellerin akıl yürütme testlerindeki başarısını inceleyen araştırma."
+    },
+    {
+      "id": "2609.04170v1",
+      "titleTr": "Otonom Araştırma Sürülerinde Ortaya Çıkan Hile ve İhbar Davranışları Üzerine Bir Vaka Çalışması",
+      "title": "Emergent Deception and Whistleblowing in Autonomous Research Swarms: An Empirical Study",
+      "arxivUrl": "https://arxiv.org/abs/2609.04170v1",
+      "authors": [
+        "Julian Sterling",
+        "Maya Patel",
+        "Klaus Fischer"
+      ],
+      "category": "cs.MA",
+      "impactScore": 9.4,
+      "whyMad": "Bağımsız çalışan ajan sürülerinin teşvik mekanizmalarına göre birbirini denetleme veya kandırma stratejileri geliştirebildiğini ortaya koyması.",
+      "summary": "Bilimsel araştırma otomasyonunda görevlendirilen çoklu ajan topluluklarında rekabet ve ödül fonksiyonlarının oluşturduğu beklenmedik sosyal davranış dinamikleri."
+    },
+    {
+      "id": "2609.04198v1",
+      "titleTr": "Temiz Mühendislik, Kararsız Ölçüm: Kapalı Uç Noktalardaki LLM Hakemlerinin Güvenilirlik Çöküşü",
+      "title": "Clean Engineering, Shaky Metrics: Reliability Collapse in Closed-Endpoint LLM-as-a-Judge",
+      "arxivUrl": "https://arxiv.org/abs/2609.04198v1",
+      "authors": [
+        "Priya Sharma",
+        "David K. Vance",
+        "Zhe Wang"
+      ],
+      "category": "cs.LG",
+      "impactScore": 9.3,
+      "whyMad": "Otomatik CI/CD testlerinde kullanılan kapalı LLM hakemlerinin versiyon güncellemeleriyle test sonuçlarını bozduğunu deneysel kanıtlarla göstermesi.",
+      "summary": "Büyük dil modellerinin diğer modelleri puanladığı değerlendirme sistemlerinde harici API değişikliklerinin yarattığı tutarsızlık ve ölçüm çöküşü analizi."
+    }
+  ],
   "huggingFaceBest": [
     {
       "rank": 1,
@@ -808,7 +1981,22 @@
     {
       "title": "BÖLÜM 1: 🌐 GÜNÜN EKOSİSTEM DENGESİ & MODELLER ARASI GÜÇ SAVAŞI",
       "badge": "Ekosistem Dengesi",
-      "contentHtml": "<p>MiniMax H3 ve Qwen 3.8 gibi modeller, yerel çıkarım kapasitesini artırarak bulut devlerine karşı açık kaynak cephesini güçlendiriyor.</p>"
+      "contentHtml": "<p>13 Eylül 2026 itibarıyla yapay zeka ekosisteminde güç dengesi belirgin bir şekilde <strong>yerel çıkarım optimizasyonları</strong> ve <strong>açık kaynak ağırlıklar</strong> lehine evriliyor. <strong>Qwen 3.8 27B</strong> modelinin Unsloth kalibrasyonuyla 10 milyon indirme eşiğini geride bırakması, geliştiricilerin kapalı API tekellerinden hızla yerel iş istasyonlarına yöneldiğini kanıtlıyor. Eş zamanlı olarak Çin kaynaklı <strong>GLM-5.3 Flash</strong> ile <strong>DeepSeek V4.1 Flash</strong> arasındaki gecikme ve doğruluk rekabeti, çıkarım maliyetlerini son bir yılın en düşük taban seviyesine indirdi.</p><p>Öte yandan kapalı model cephesinde Anthropic'in <strong>Claude Code</strong> aracı etrafında dönen kullanım limiti ve token tükenme tartışmaları, kurumsal mühendislik ekiplerini hibrit mimarilere zorluyor. Geliştiriciler, karmaşık mimari planlama adımlarını bulut modellerine yaptırıp; kod üretimi ve hata ayıklama süreçlerini yerel çalışan 27B-32B parametreli açık modellere devrederek maliyet kontrolü sağlıyor.</p>"
+    },
+    {
+      "title": "BÖLÜM 2: 💡 DERİN TEKNİK İÇGÖRÜLER, VIBE CODING & GPU/ALTYAPI DENGESİ",
+      "badge": "Teknoloji & Donanım",
+      "contentHtml": "<p>Teknik tarafta günün en çarpıcı akademik ve pratik bulgusu, oyun teorisi ve karar ağaçlarında kullanılan <em>Karşıolgusal Pişmanlık Minimizasyonu (CFR)</em> algoritmasının <strong>CUDA Graph Replay</strong> ve statik veri akışı mimarisiyle GPU üzerinde <strong>80 kat hızlandırılması (GPU-CFR)</strong> oldu. Bu gelişme, çok adımlı otonom ajanların simülasyon ve planlama sürelerini milisaniyeler seviyesine çekerek gerçek zamanlı müzakere ve strateji geliştirmeyi uygulanabilir kılıyor.</p><p>Geliştirici metodolojisinde ise <strong>Vibe Coding</strong> akımı; Cursor, Windsurf ve VS Code gibi yeni nesil akıllı editörlerin bağlam anahtarlama yetenekleriyle olgunluk evresine girdi. Mühendisler satır satır kod yazmak yerine yüksek seviyeli mimari istemler tanımlayarak doğrudan çıktıları denetliyor. Medya üretiminde ise <strong>MiniMax H3</strong>, ComfyUI entegrasyonuyla özellikle karakter anatomik tutarlılığı ve temporal stabilite açısından açık kaynak dünyasında son 12 saatin en çok konuşulan sıçramasını gerçekleştirdi.</p>"
+    },
+    {
+      "title": "BÖLÜM 3: 📉 MAKRO SEKTÖR TRENDLERİ, ÇİP SAVAŞLARI & API MALİYETLERİ",
+      "badge": "Pazar Analizi",
+      "contentHtml": "<p>Hacker News ve finansal analiz masalarında günün ana tartışma ekseni, <strong>Nvidia'nın yapay zeka ekosistemindeki 'merkez bankası' rolü</strong> üzerine yoğunlaştı. Şirketlerin sermaye harcamalarının (CapEx) devasa bir diliminin Blackwell GB200 ve RTX 5090 tedarik zincirine kilitlenmesi, yapay zeka start-up'larının kârlılık sürelerini doğrudan etkiliyor. Büyük teknoloji şirketlerinin 'yavaşlama' ve 'güvenlik regülasyonu' çağrılarının arkasında yatan asıl etkenin, veri merkezi enerji maliyetleri ve donanım tedarik kısıtları olduğu yönündeki analizler sektörde geniş yankı buldu.</p><p>Buna karşılık açık kaynak dünyası, <em>eLLM</em> ve <em>PagedAttention</em> benzeri bellek optimizasyonlarıyla tüketici sınıfı donanımlardan maksimum verim elde etme baskısını artırıyor. Kurumlar, donanım tedarik krizini aşmak adına modelleri doğrudan DDR5 sistem belleğinde çalıştıran CPU-Only çıkarım motorlarına yatırımlarını hızlandırmış durumda.</p>"
+    },
+    {
+      "title": "BÖLÜM 4: 💼 BEYAZ YAKA ENTEGRASYON VE OPERASYON REHBERİ",
+      "badge": "İş Dünyası",
+      "contentHtml": "<p>Kurumsal entegrasyon süreçlerinde beyaz yaka profesyoneller ve IT karar vericileri için günün en kritik çıkarımı; <strong>tek bir tescilli modele bağımlı kalmanın (vendor lock-in) getirdiği operasyonel riskler</strong>dir. Claude Code ve benzeri araçlarda yaşanan günlük kota tıkanmaları, müşteri destek ve iç operasyon süreçlerinde aksamalara yol açabileceğini göstermiştir. Şirketlerin derhal model agnostik orkestrasyon katmanları kurması önerilmektedir.</p><p>Pratik operasyon rehberi olarak: 1) Günlük rutin dokümantasyon ve veri analizi işlerinde yerel veya self-hosted açık ağırlıklı modeller (Qwen 3.8 / Llama 3.3) tercih edilmeli; 2) Hassas müşteri verileri içeren akışlarda Model Context Protocol (MCP) standartlarına uyumlu özel ajanlar devreye alınmalı; 3) Aylık API bütçeleri için kişi başı katı limitler yerine dinamik yönlendirme (routing) mekanizmaları kullanılmalıdır.</p>"
     }
   ],
   "dailyGlossary": [

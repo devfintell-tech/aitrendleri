@@ -492,9 +492,16 @@ async function generateWithWaterfall(prompt) {
 
       try {
         const result = await callGemini(model, apiKey, prompt);
-        if (result && result.daily && result.daily.length > 0) {
-          console.log(`🎯 MÜKEMMEL BAŞARI! Model [${model}] (Anahtar #${i + 1}) ile veri işlendi.`);
+        const isRichResponse = (
+          result &&
+          Array.isArray(result.daily) && result.daily.length >= 6 &&
+          Array.isArray(result.sections) && result.sections.length >= 3
+        );
+        if (isRichResponse) {
+          console.log(`🎯 MÜKEMMEL BAŞARI! Model [${model}] (Anahtar #${i + 1}) ile eksiksiz veri işlendi.`);
           return { data: result, modelUsed: model, keyIndex: i + 1 };
+        } else if (result && result.daily && result.daily.length > 0) {
+          console.warn(`⚠️ [${model}] (Anahtar #${i + 1}) eksik/kısmi şema üretti (daily: ${result.daily?.length}, sections: ${result.sections?.length || 0}). Sıradaki deneniyor...`);
         }
       } catch (err) {
         console.warn(`⚠️ [${model}] (Anahtar #${i + 1}) başarısız: ${err.message.substring(0, 100)}... Sıradaki deneniyor.`);
@@ -1889,7 +1896,51 @@ function enforceStrictStandards(data, hfModels = [], candidateArxiv = [], hnPost
     };
   }
 
-  // 6. GÜNÜN SÖZLÜĞÜ (dailyGlossary): Kesinlikle tam 9 adet ve yalnızca sitede bizzat geçen kavramlar
+  // 6. DANIŞMAN RAPORU (sections): Kesinlikle eksiksiz 4 bölüm
+  const DEFAULT_4_SECTIONS = [
+    {
+      title: "BÖLÜM 1: 🌐 GÜNÜN EKOSİSTEM DENGESİ & MODELLER ARASI GÜÇ SAVAŞI",
+      badge: "Ekosistem Dengesi",
+      contentHtml: "<p>Yapay zeka ekosisteminde yerel çıkarım optimizasyonları ve açık ağırlıklı modellerin yükselişi ivme kazanıyor. Açık modellerin sunduğu maliyet avantajı, geliştiricileri kapalı API bağımlılıklarından yerel iş akışlarına yönlendiriyor.</p>"
+    },
+    {
+      title: "BÖLÜM 2: 💡 DERİN TEKNİK İÇGÖRÜLER, VIBE CODING & GPU/ALTYAPI DENGESİ",
+      badge: "Teknoloji & Donanım",
+      contentHtml: "<p>Akademik araştırmalar ve mühendislik pratikleri, çıkarım algoritmalarının GPU üzerinde derlenerek hızlandırılmasına ve otonom ajanların karar mekanizmalarının gerçek zamanlı optimize edilmesine odaklanıyor.</p>"
+    },
+    {
+      title: "BÖLÜM 3: 📉 MAKRO SEKTÖR TRENDLERİ, ÇİP SAVAŞLARI & API MALİYETLERİ",
+      badge: "Pazar Analizi",
+      contentHtml: "<p>Donanım tedarik zinciri ve sunucu mimarisi harcamaları, yapay zeka girişimlerinin operasyonel modellerini yeniden şekillendirirken; açık kaynak topluluğu bellek optimizasyonlarıyla tüketici donanımından maksimum verim elde etmeyi hedefliyor.</p>"
+    },
+    {
+      title: "BÖLÜM 4: 💼 BEYAZ YAKA ENTEGRASYON VE OPERASYON REHBERİ",
+      badge: "İş Dünyası",
+      contentHtml: "<p>Kurumsal entegrasyon süreçlerinde tek bir sağlayıcıya bağımlı kalmanın getirdiği operasyonel riskler belirginleşirken, kurumların model agnostik ve güvenli ajan protokollerine geçişi hız kazanıyor.</p>"
+    }
+  ];
+
+  if (!Array.isArray(clean.sections) || clean.sections.length === 0) {
+    clean.sections = DEFAULT_4_SECTIONS;
+  } else {
+    while (clean.sections.length < 4) {
+      const idx = clean.sections.length;
+      clean.sections.push(DEFAULT_4_SECTIONS[idx]);
+    }
+  }
+
+  // Zaman dilimleri boşsa güvenli doldur
+  if (!Array.isArray(clean.weekly) || clean.weekly.length === 0) {
+    clean.weekly = Array.isArray(clean.daily) ? clean.daily.slice(0, 10) : [];
+  }
+  if (!Array.isArray(clean.monthly) || clean.monthly.length === 0) {
+    clean.monthly = Array.isArray(clean.weekly) ? clean.weekly.slice(0, 8) : [];
+  }
+  if (!Array.isArray(clean.twelveHours) || clean.twelveHours.length === 0) {
+    clean.twelveHours = Array.isArray(clean.daily) ? clean.daily.slice(0, 8) : [];
+  }
+
+  // 7. GÜNÜN SÖZLÜĞÜ (dailyGlossary): Kesinlikle tam 9 adet ve yalnızca sitede bizzat geçen kavramlar
   const BENCHMARK_GLOSSARY_9 = [
     {
       id: "glossary-1",
