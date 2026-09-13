@@ -48,6 +48,26 @@
   ],
   "dailyRecords": [
     {
+      "date": "13 Eylül 2026",
+      "isoDate": "2026-09-13",
+      "papers": [
+        {
+          "id": "2609.11923v1",
+          "titleTr": "Oyun Ağaçlarını Statik Veri Akışına Derleyerek 80 Kat Hızlanan Karşıolgusal Pişmanlık Minimizasyonu",
+          "title": "GPU-CFR: 80x Faster Counterfactual Regret Minimization by Compiling the Game to Static Dataflow and CUDA Graph Replay",
+          "arxivUrl": "http://arxiv.org/abs/2609.11923v1",
+          "authors": [
+            "Daniel Henrik Nevermann",
+            "Claudius Gros"
+          ],
+          "category": "cs.AI",
+          "impactScore": 9.7,
+          "whyMad": "CFR gibi ağır hesaplamalı bir süreci GPU'ya taşıyarak 80 kat hızlandırması, ajanların karar verme yeteneğini devrimsel kılıyor.",
+          "summary": "Oyun ağacını statik veri akışına derleyerek ve CUDA Graph Replay kullanarak CFR algoritmasını GPU üzerinde optimize eden yeni bir yöntem."
+        }
+      ]
+    },
+    {
       "date": "12 Eylül 2026",
       "isoDate": "2026-09-12",
       "papers": [

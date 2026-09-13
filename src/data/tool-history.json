@@ -1107,6 +1107,17 @@
           "r/ArtificialInteligence",
           "r/MachineLearning"
         ]
+      },
+      {
+        "date": "13 Eylül 2026",
+        "hypeScore": 9.8,
+        "sentiment": "coşkulu",
+        "headline": "Son 12 Saat Patlaması",
+        "summary": "Kullanıcıların karakter tutarlılığı ve video kalitesi konusundaki övgü dolu geri bildirimleri.",
+        "sources": [
+          "r/comfyui",
+          "r/StableDiffusion"
+        ]
       }
     ]
   },
@@ -1218,6 +1229,17 @@
         "sources": [
           "r/LocalLLaMA",
           "r/ollama"
+        ]
+      },
+      {
+        "date": "13 Eylül 2026",
+        "hypeScore": 9.7,
+        "sentiment": "stabil",
+        "headline": "Günün Lideri",
+        "summary": "10 milyon indirme eşiğini aşması ve yerel donanımlardaki rakipsiz verimliliği.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/huggingface"
         ]
       }
     ]
