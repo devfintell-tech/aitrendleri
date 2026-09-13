@@ -26,8 +26,9 @@ if (fs.existsSync(envPath)) {
   }
 }
 
-// 5 Farklı Gemini API Anahtar Havuzu (Yedekli ve Rotasyonlu - Sadece ortam değişkenlerinden okunur)
+// 6 Farklı Gemini API Anahtar Havuzu (Yedekli ve Rotasyonlu - Sadece ortam değişkenlerinden okunur)
 const GEMINI_API_KEYS = [
+  process.env.GEMINI_API_KEY_6,
   process.env.GEMINI_API_KEY_5,
   process.env.GEMINI_API_KEY,
   process.env.GEMINI_API_KEY_2,
@@ -595,8 +596,10 @@ async function main() {
 
     🚨 EN KRİTİK KURAL 3: SIRALAMADAKİ TÜM ÖĞELER SOMUT BİR 'ÜRÜN / MODEL / YAZILIM / ARAÇ' OLMAK ZORUNDADIR:
     - Bir şirketin, topluluğun veya yazılımcının somut bir ürünü olmalıdır (LLM, Yerel Model, VLM, CLI Aracı, IDE / Editör, Otonom Ajan, Framework vb.).
-    - KESİNLİKLE genel kavramlar, felsefi akımlar, Reddit tartışma başlıkları veya soyut fikirler sıralamaya GİREMEZ.
-    - Yalnızca çalışan, gerçek yazılım ürünlerini listele.
+    - KESİNLİKLE "Vibe Coding", "AI Workspace", "Self-Hosted Setup" gibi genel kavramlar, metodolojiler, felsefi akımlar, Reddit tartışma başlıkları veya soyut fikirler sıralamaya GİREMEZ!
+    - Örneğin "Vibe Coding" bir ürün DEĞİLDİR; onun yerine Cursor, Windsurf, Claude Code, GitHub Copilot veya Cline gibi somut araçları yazmalısın.
+    - Örneğin "AI Workspace" veya "Self-Hosted AI" bir ürün DEĞİLDİR; onun yerine Ollama, Open WebUI, LM Studio, vLLM, Jan gibi somut araçları yazmalısın.
+    - Yalnızca çalışan, doğrudan indirilebilen veya erişilebilen gerçek yazılım/model ürünlerini listele.
 
     🚨 EN KRİTİK KURAL 4: 'name' ALANINDA ASLA PARANTEZ KULLANILAMAZ:
     - 'name' alanı YALNIZCA ve SADECE ürünün saf marka/yazılım adıdır.
@@ -688,14 +691,14 @@ async function main() {
       - "yearly": Yılın ve tüm zamanların endüstri omurgası haline gelmiş 6 amiral gemisi repo (Ollama, vLLM, ComfyUI, AutoGen, LangChain, AutoGPT vb.).
       - Her repo için: id ("owner/name"), name, owner, url, stars, deltaStars, category, language, function (Ne İşe Yarar?), whyHype (Neden Yıldızlaştı?), installCommand alanlarını eksiksiz üret.
     GÜNÜN SÖZLÜĞÜ (dailyGlossary) - TAM 9 ADET KAVRAM (KESİN KULLANICI ŞARTI):
-    - Seçeceğin 9 kavramı YALNIZCA VE YALNIZCA yukarıda üretilen ve siteye basılacak olan ArXiv makaleleri, GitHub repoları, Hugging Face modelleri, Hacker News tartışmaları, Sabah Özeti ve Danışman Raporu metinlerinde BİZZAT GEÇEN teknik kavram, kısaltma veya mimarilerden seç!
-    - İnternetin veya Reddit'in genelinde geçip de sitede bizzat yer almayan HİÇBİR kavramı ASLA sözlüğe ekleme!
+    - Seçeceğin 9 kavramı YALNIZCA VE YALNIZCA yukarıda üretilen ve siteye basılacak olan ArXiv makaleleri, GitHub repoları, Hugging Face modelleri, Hacker News tartışmaları, Sabah Özeti ve Danışman Raporu metinlerinde BİZZAT GEÇEN teknik kavram, mimari, kısaltma veya donanım terimlerinden seç!
+    - Kesinlikle o günkü içerikte bizzat GEÇMEYEN kavramları sözlüğe ekleme!
     - Her bir kavram için şu alanları eksiksiz üret:
       - id: "glossary-1" ... "glossary-9"
-      - term: Kavramın adı ve kısaltması/açılımı (Örn: "MLA (Multi-Head Latent Attention)", "Thinking Budget", "Rectified Flow", "OSINT Ajanı", "PagedAttention", "Tip Güvenli Ajan", "CPU-Only Inference", "LoRA", "MCP")
-      - category: Kavramın alanı (Örn: "Model Mimarisi", "Görsel Mimarisi", "Otonom Ajan", "Akıl Yürütme", "Bellek Optimizasyonu", "Yazılım Mimarisi", "Altyapı & Donanım", "Model İnce Ayarı", "Ajan Protokolü")
+      - term: Kavramın adı ve kısaltması/açılımı (Sitede o gün geçen terimler olmalı; örn. makalelerdeki algoritmalar, GitHub araç mimarileri, modellerin yenilikleri)
+      - category: Kavramın alanı (Örn: "Model Optimizasyonu", "Medya & Video", "Otonom Ajan", "Donanım Hızlandırma", "Sistem Mimarisi", "Oyun Teorisi" vb.)
       - definition: Kavramın teknik jargondan arındırılmış, herkesin kolayca anlayabileceği geniş, akıcı, doyurucu ve anlaşılır Türkçe açıklaması.
-      - appearsIn: Kavramın sitede geçtiği yer (arka plan doğrulaması için).
+      - appearsIn: Kavramın sitede geçtiği yer (arka plan doğrulaması için; örn: "ArXiv GPU-CFR", "MiniMax H3", "GitHub DeepResearch").
 
     İSTENEN JSON ŞEMASI:
     {
@@ -1781,13 +1784,17 @@ function enforceStrictStandards(data, hfModels = [], candidateArxiv = [], hnPost
   };
 
   const badConceptPatterns = [
+    /vibe\s*coding/i,
     /vibecoding/i,
+    /workspace/i,
+    /self-hosted\s*ai/i,
+    /metodoloji/i,
+    /felsefe/i,
     /maliyet/i,
     /utanç/i,
     /mandate/i,
     /güven sistemi/i,
     /anket/i,
-    /felsefe/i,
     /tartışma/i,
     /kariyer/i,
     /will-win/i,
@@ -1857,14 +1864,43 @@ function enforceStrictStandards(data, hfModels = [], candidateArxiv = [], hnPost
           icon: "⚡",
           text: "Tüketici donanımlarında yüksek verimle çalışan optimize modeller GPU darboğazını hafifletiyor."
         }
-      ];
-    }
+      ]
+    };
   }
 
-  // Model ve araç isimlerindeki yapay parantezleri temizle, soyut kavramları listeden çıkar
+  // Model ve araç isimlerindeki soyut kavramları somut ürünlere dönüştür, kalanları filtrele
   ['twelveHours', 'daily', 'weekly', 'monthly'].forEach(key => {
     if (Array.isArray(clean[key])) {
       clean[key] = clean[key]
+        .map(item => {
+          const n = item.name || '';
+          const id = item.id || '';
+          if (/vibe\s*coding/i.test(n) || /vibe-coding/i.test(id)) {
+            return {
+              ...item,
+              id: "cursor",
+              name: "Cursor",
+              category: "AI Kodlama Editörü",
+              badge: "Vibe Coding Öncüsü",
+              primaryFunction: "Yapay zeka asistanlarıyla akıcı, istem odaklı ve kod tabanı çapında otonom geliştirme editörü.",
+              whyTrending: "Geliştiricilerin vibe coding akımıyla geleneksel IDE'ler yerine doğrudan Cursor'ın çoklu dosya ve ajan yeteneklerini benimsemesi.",
+              sources: ["r/CursorAI", "r/vibecoding", "r/ChatGPTCoding"]
+            };
+          }
+          if (/workspace/i.test(n) || /ollama-tabanl/i.test(id)) {
+            return {
+              ...item,
+              id: "ollama",
+              name: "Ollama",
+              category: "Yerel Çıkarım",
+              badge: "Self-Hosted Lideri",
+              primaryFunction: "Yerel açık modelleri tek komutla indiren, çalıştıran ve REST API sunan hafif çıkarım motoru.",
+              whyTrending: "Tüketici donanımlarında Qwen 3.8 ve DeepSeek modellerini kurumsal gizlilikle çalıştırma talebinin patlaması.",
+              sources: ["r/ollama", "r/LocalLLaMA", "r/selfhosted"]
+            };
+          }
+          return item;
+        })
         .filter(item => {
           const n = item.name || '';
           const id = item.id || '';
@@ -1944,57 +1980,57 @@ function enforceStrictStandards(data, hfModels = [], candidateArxiv = [], hnPost
   const BENCHMARK_GLOSSARY_9 = [
     {
       id: "glossary-1",
-      term: "MLA (Multi-Head Latent Attention)",
-      category: "Model Mimarisi",
-      definition: "Büyük dil modellerinin geçmiş konuşmaları hatırlamak için GPU belleğinde (VRAM) tuttuğu devasa veri yükünü, matematiksel olarak çok daha küçük bir gizli alana sıkıştırarak saklama tekniğidir. Bu sayede yüz milyarlarca parametreli dev modeller bile bellek darboğazına girmeden standart ve çok daha ekonomik ekran kartlarında yüksek hızla çalışabilir."
+      term: "GPU-CFR (Karşıolgusal Pişmanlık Minimizasyonu)",
+      category: "Oyun Teorisi & Algoritma",
+      definition: "Kusurlu bilgi oyunlarında ve stratejik karar ağaçlarında en optimal hamleyi hesaplamak için kullanılan CFR algoritmasının, CUDA Graph ve statik bellek optimizasyonlarıyla doğrudan GPU çekirdeklerinde çalıştırılmasıdır. CPU'ya kıyasla 80 kata kadar hızlanma sağlayarak yapay zeka ajanlarının çok adımlı planlama ve müzakerelerini gerçek zamanlı hale getirir."
     },
     {
       id: "glossary-2",
-      term: "Rectified Flow Transformer",
-      category: "Görsel Mimarisi",
-      definition: "Görsel üretiminde standart difüzyon modellerindeki onlarca adımlık karmaşık gürültü temizleme süreci yerine, rastgele piksellerden hedeflenen görsele giden en kestirme doğru çizgiyi (akışı) doğrudan hesaplayan yeni nesil mimaridir. Görsel üretim sürelerini dakikalardan 1-2 saniye seviyesine indirerek neredeyse anlık ve yüksek kaliteli görsel oluşturmayı sağlar."
+      term: "Temporal Consistency (Zamansal Tutarlılık)",
+      category: "Medya & Video Üretimi",
+      definition: "Yapay zeka modellerinin ürettiği videolarda ve animasyonlarda, art arda gelen kareler boyunca karakterlerin yüz, giysi, ışıklandırma ve fiziksel anatomik detaylarının titremeden ve bozulmadan korunması prensibidir. MiniMax H3 gibi yeni nesil video modelleri ComfyUI ortamında bu tutarlılığı sağlayarak sinematik kalitede görsel süreklilik sunar."
     },
     {
       id: "glossary-3",
-      term: "OSINT (Açık Kaynak İstihbaratı) Ajanı",
-      category: "Otonom Ajan",
-      definition: "İnternetteki herkese açık web sayfalarını, uydu görüntülerini, canlı hava ve deniz radarlarını, sosyal ağları ve sızıntı verilerini otomatik tarayarak kritik bağlantıları bir insan analistten yüzlerce kat daha hızlı ortaya çıkaran otonom yapay zeka yazılımıdır. Günlerce sürebilecek karmaşık araştırma ve istihbarat toplama işlerini saniyeler içinde tek ekranda özetler."
+      term: "Deep Research Agent (Derin Araştırma Ajanı)",
+      category: "Otonom Ajan Mimarisi",
+      definition: "Kullanıcının karmaşık bir araştırma sorusu karşısında, internet üzerindeki onlarca farklı kaynağı, makaleyi ve veritabanını otonom olarak gezinen, kaynakları doğrulayan ve elde ettiği bulguları sentezleyerek kapsamlı analitik raporlar oluşturan çok adımlı yapay zeka ajan sistemidir."
     },
     {
       id: "glossary-4",
-      term: "Thinking Budget (Düşünme Bütçesi)",
-      category: "Akıl Yürütme",
-      definition: "Bir yapay zeka modelinin kullanıcıya nihai yanıtı vermeden önce arka planda iç sesle (thinking token) ne kadar süre ve derinlikte akıl yürüteceğini, alternatif senaryoları test edip adımlarını denetleyeceğini belirleyen parametredir. Basit sorularda anında cevap verirken, karmaşık yazılım ve mantık problemlerinde modelin derin düşünüp sıfır hatayla çözüme ulaşmasını sağlar."
+      term: "GGUF Kuantizasyonu & Kalibrasyonu",
+      category: "Model Optimizasyonu",
+      definition: "Büyük dil modellerinin 16-bit hassasiyetteki devasa ağırlıklarını, matematiksel kayıpları en aza indiren özel kalibrasyon yöntemleriyle 4-bit veya 8-bit tamsayılara sıkıştırarak GGML/GGUF formatında saklama tekniğidir. Tüketici ekran kartlarının ve işlemcilerin kısıtlı belleğinde (VRAM/RAM) dev modellerin sıfır takılmayla çalıştırılmasını mümkün kılar."
     },
     {
       id: "glossary-5",
-      term: "PagedAttention (Sayfalı Bellek Yönetimi)",
-      category: "Bellek Optimizasyonu",
-      definition: "İşletim sistemlerinin bilgisayar RAM'ini sayfalara bölerek yönetme mantığını yapay zeka çıkarım sunucularına uyarlayan algoritmadır. Çok sayıda kullanıcının aynı anda modele soru sorduğu durumlarda GPU belleğindeki boşlukları ve parçalanmaları ortadan kaldırarak bellek israfını %80 oranında azaltır ve aynı sunucunun katbekat fazla kullanıcıya hizmet vermesini sağlar."
+      term: "CLI Otonom Ajan (Terminal Ajanı)",
+      category: "Geliştirici Araçları",
+      definition: "Grafiksel kullanıcı arayüzü yerine doğrudan komut satırında (terminal) çalışan; kod tabanını okuyan, dosyaları düzenleyen, derleme hatalarını tespit edip düzelten ve Git komutlarını yöneten yapay zeka aracıdır. Claude Code gibi sistemler geliştiricilerin tüm geliştirme döngüsünü terminalden yönetmesini sağlar."
     },
     {
       id: "glossary-6",
-      term: "Tip Güvenli Ajan (Type-Safe Agent)",
-      category: "Yazılım Mimarisi",
-      definition: "Yapay zeka modellerinin ürettiği serbest metin çıktılarını; yazılım sistemlerinin doğrudan işleyebileceği katı veri şemalarına (tiplere) zorlayan ve hata durumunda anında kendini düzelten ajan mimarisidir. Modelin beklenmeyen formatta veri üretmesini engelleyerek kurumsal veritabanları ve API'lerle çalışan otonom sistemlerde çökmelerin önüne geçer."
+      term: "CUDA Graph Replay",
+      category: "Donanım & GPU Hızlandırma",
+      definition: "GPU üzerinde art arda yürütülecek yüzlerce küçük hesaplama çekirdeğini tek tek CPU'dan fırlatmak yerine, tüm işlem grafını önceden hafızaya kaydedip GPU'da tek bir komutla döngüsel olarak yeniden yürütme yöntemidir. İşlemci-ekran kartı arasındaki iletişim gecikmesini sıfırlayarak yapay zeka simülasyonlarında devasa hız artışı sağlar."
     },
     {
       id: "glossary-7",
-      term: "CPU-Only Inference (İşlemciyle Çıkarım)",
-      category: "Altyapı & Donanım",
-      definition: "Büyük dil modellerini çalıştırmak için zorunlu kabul edilen pahalı ve temini zor grafik işlemcileri (GPU) yerine, bilgisayarın ana işlemcisi (CPU) ve standart sistem belleğini (RAM) kullanarak modelleri verimli şekilde çalıştırma yöntemidir. Geliştirilen yeni mimari optimizasyonlar sayesinde yüksek bütçeli sunucu yatırımlarına gerek kalmadan yerel modellerin çalıştırılmasını mümkün kılar."
+      term: "Silent Failure Propagation (Sessiz Hata Yayılımı)",
+      category: "Yazılım Mühendisliği & AI",
+      definition: "Otonom yapay zeka ajanlarının veya kod üretim modellerinin ara adımlarda ürettiği küçük bir mantık ya da tip hatasının derleme aşamasında fark edilmeyip, sonraki adımlara aktarılarak yazılım sisteminin derinliklerinde sessizce büyümesi ve beklenmedik çökmelere yol açması durumudur."
     },
     {
       id: "glossary-8",
-      term: "LoRA (Low-Rank Adaptation - Düşük Dereceli Uyarlama)",
-      category: "Model İnce Ayarı",
-      definition: "Devasa bir yapay zeka modelini sıfırdan eğitmek ya da tüm parametrelerini baştan sona değiştirmek yerine; modele sadece çok küçük ek matematiksel katmanlar ekleyerek onu yeni bir uzmanlık alanına, belirli bir çizim stiline veya şirket kod tabanına uyarlama yöntemidir. Eğitim süresini ve donanım maliyetini yüzlerce kat düşürerek kişiselleştirmeyi son derece kolaylaştırır."
+      term: "CapEx & Veri Merkezi Darboğazı",
+      category: "Altyapı & Ekonomi",
+      definition: "Yapay zeka modellerini eğitmek ve büyük kitlelere çıkarım hizmeti sunmak için gereken yüksek maliyetli grafik işlemci (GPU), soğutma ve enerji altyapısına yapılan sermaye harcamalarıdır. Artan elektrik ve donanım maliyetleri, yapay zeka şirketlerinin kâr marjlarını baskılayarak daha verimli ve optimize mimarilere yönelmesini zorunlu kılar."
     },
     {
       id: "glossary-9",
-      term: "MCP (Model Context Protocol - Model Bağlam Protokolü)",
-      category: "Ajan Protokolü",
-      definition: "Yapay zeka modellerinin bilgisayardaki yerel dosyalara, geliştirme ortamlarına (IDE), tarayıcı sekmelerine ve veritabanlarına standart ve güvenli bir arayüzle bağlanmasını sağlayan açık protokoldür. Modellerin sadece soru cevaplayan birer sohbet botu olmaktan çıkıp, tıpkı bir yazılım mühendisi gibi gerçek uygulamaları doğrudan yöneten aktif operatörlere dönüşmesini sağlar."
+      term: "Model Agnostik Yönlendirme (Dynamic Routing)",
+      category: "Sistem Mimarisi",
+      definition: "Gelen kullanıcı isteklerini ve görevleri zorluk seviyelerine göre analiz ederek; basit sorguları küçük, ucuz ve ultra hızlı modellere (Flash), karmaşık mantık ve mimari problemleri ise derin düşünen dev modellere dinamik olarak yönlendiren orkestrasyon katmanıdır. API maliyetlerini %80'e kadar düşürürken sistem yanıt hızını maksimize eder."
     }
   ];
 
