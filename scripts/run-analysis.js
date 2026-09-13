@@ -444,7 +444,7 @@ async function callGemini(model, apiKey, prompt) {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
-    signal: AbortSignal.timeout(60000)
+    signal: AbortSignal.timeout(35000)
   });
 
   // Google geçici sunucu yoğunluğunda (HTTP 503) 4 saniye bekleyip 1 kez daha dener
@@ -455,7 +455,7 @@ async function callGemini(model, apiKey, prompt) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
-      signal: AbortSignal.timeout(60000)
+      signal: AbortSignal.timeout(35000)
     });
   }
 
@@ -473,15 +473,15 @@ async function callGemini(model, apiKey, prompt) {
  */
 async function generateWithWaterfall(prompt) {
   const MODELS = [
-    "gemini-3.8-flash",         // 🥇 1. ÖNCELİK: En güncel amiral gemisi flaş model
-    "gemini-3.7-flash",         // 🥈 2. ÖNCELİK: Gelişmiş akıl yürütmeli flaş model
-    "gemini-3.6-flash",         // 🥉 3. ÖNCELİK: 3.6 sürümü flaş model
-    "gemini-3.5-flash",         // 4. 3.5 sürümü flaş model
-    "gemini-3.5-flash-lite",    // 5. 3.5 sürümü hafif flaş model
-    "gemini-3.1-flash-lite",    // 6. 3.1 sürümü hafif flaş model
-    "gemini-3-flash-preview",   // 7. 3.0 önizleme flaş model
-    "gemini-flash-latest",      // 8. En son kararlı flaş model
-    "gemini-flash-lite-latest"  // 9. En son hafif flaş model
+    "gemini-flash-latest",      // 🥇 1. ÖNCELİK: Google üretim yük dengeleyicili kararlı flaş model
+    "gemini-flash-lite-latest", // 🥈 2. ÖNCELİK: Google üretim yük dengeleyicili hafif flaş model
+    "gemini-3.8-flash",         // 🥉 3. ÖNCELİK: Doğrudan 3.8 flaş model
+    "gemini-3.7-flash",         // 4. Doğrudan 3.7 flaş model
+    "gemini-3.6-flash",         // 5. Doğrudan 3.6 flaş model
+    "gemini-3.5-flash",         // 6. Doğrudan 3.5 flaş model
+    "gemini-3.5-flash-lite",    // 7. Doğrudan 3.5 hafif model
+    "gemini-3.1-flash-lite",    // 8. Doğrudan 3.1 hafif model
+    "gemini-3-flash-preview"    // 9. 3.0 önizleme flaş model
   ];
 
   for (const model of MODELS) {
