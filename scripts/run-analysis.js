@@ -495,7 +495,11 @@ async function generateWithWaterfall(prompt) {
     "gemini-flash-latest",      // 8. En son kararlı flaş model
     "gemini-flash-lite-latest", // 9. En son hafif flaş model
     "gemini-2.5-flash",         // 10. 2.5 nesli flaş model
-    "gemini-2.5-flash-lite"     // 11. 2.5 nesli hafif flaş model
+    "gemini-2.5-flash-lite",    // 11. 2.5 nesli hafif flaş model
+    "gemini-2.0-flash",         // 12. 2.0 nesli kararlı flaş model
+    "gemini-2.0-flash-lite",    // 13. 2.0 nesli hafif flaş model
+    "gemini-1.5-flash",         // 14. 1.5 nesli geniş kotalı flaş model
+    "gemini-1.5-flash-8b"       // 15. 1.5 nesli ultra hafif flaş model
   ];
 
   for (const model of MODELS) {
