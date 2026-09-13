@@ -28,11 +28,11 @@ if (fs.existsSync(envPath)) {
 
 // 5 Farklı Gemini API Anahtar Havuzu (Yedekli ve Rotasyonlu - Sadece ortam değişkenlerinden okunur)
 const GEMINI_API_KEYS = [
+  process.env.GEMINI_API_KEY_5,
   process.env.GEMINI_API_KEY,
   process.env.GEMINI_API_KEY_2,
   process.env.GEMINI_API_KEY_3,
-  process.env.GEMINI_API_KEY_4,
-  process.env.GEMINI_API_KEY_5
+  process.env.GEMINI_API_KEY_4
 ].filter(Boolean);
 
 const parser = new XMLParser({
@@ -434,7 +434,6 @@ async function callGemini(model, apiKey, prompt) {
   
   const payload = {
     contents: [{ parts: [{ text: prompt }] }],
-    tools: [{ googleSearch: {} }],
     generationConfig: {
       temperature: 0.2,
       responseMimeType: "application/json"
@@ -445,20 +444,8 @@ async function callGemini(model, apiKey, prompt) {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
-    signal: AbortSignal.timeout(45000)
+    signal: AbortSignal.timeout(60000)
   });
-
-  // Eğer model sürümü googleSearch ile responseMimeType: application/json kombinasyonunu desteklemezse tools'suz tekrar dener
-  if (!res.ok && res.status === 400) {
-    console.log("ℹ️ Google Search aracı yalın JSON moduna devrediliyor...");
-    delete payload.tools;
-    res = await fetch(apiUrl, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-      signal: AbortSignal.timeout(45000)
-    });
-  }
 
   // Google geçici sunucu yoğunluğunda (HTTP 503) 4 saniye bekleyip 1 kez daha dener
   if (!res.ok && res.status === 503) {
@@ -468,7 +455,7 @@ async function callGemini(model, apiKey, prompt) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
-      signal: AbortSignal.timeout(45000)
+      signal: AbortSignal.timeout(60000)
     });
   }
 
