@@ -26,12 +26,13 @@ if (fs.existsSync(envPath)) {
   }
 }
 
-// 4 Farklı Gemini API Anahtar Havuzu (Yedekli ve Rotasyonlu - Sadece ortam değişkenlerinden okunur)
+// 5 Farklı Gemini API Anahtar Havuzu (Yedekli ve Rotasyonlu - Sadece ortam değişkenlerinden okunur)
 const GEMINI_API_KEYS = [
   process.env.GEMINI_API_KEY,
   process.env.GEMINI_API_KEY_2,
   process.env.GEMINI_API_KEY_3,
-  process.env.GEMINI_API_KEY_4
+  process.env.GEMINI_API_KEY_4,
+  process.env.GEMINI_API_KEY_5
 ].filter(Boolean);
 
 const parser = new XMLParser({
@@ -493,13 +494,7 @@ async function generateWithWaterfall(prompt) {
     "gemini-3.1-flash-lite",    // 6. 3.1 sürümü hafif flaş model
     "gemini-3-flash-preview",   // 7. 3.0 önizleme flaş model
     "gemini-flash-latest",      // 8. En son kararlı flaş model
-    "gemini-flash-lite-latest", // 9. En son hafif flaş model
-    "gemini-2.5-flash",         // 10. 2.5 nesli flaş model
-    "gemini-2.5-flash-lite",    // 11. 2.5 nesli hafif flaş model
-    "gemini-2.0-flash",         // 12. 2.0 nesli kararlı flaş model
-    "gemini-2.0-flash-lite",    // 13. 2.0 nesli hafif flaş model
-    "gemini-1.5-flash",         // 14. 1.5 nesli geniş kotalı flaş model
-    "gemini-1.5-flash-8b"       // 15. 1.5 nesli ultra hafif flaş model
+    "gemini-flash-lite-latest"  // 9. En son hafif flaş model
   ];
 
   for (const model of MODELS) {
