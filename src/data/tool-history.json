@@ -130,6 +130,17 @@
           "r/CursorAI",
           "r/vibecoding"
         ]
+      },
+      {
+        "date": "14 Eylül 2026",
+        "hypeScore": 4.5,
+        "sentiment": "eleştirel",
+        "headline": "Eleştiriliyor",
+        "summary": "Beklenmedik on-demand ücretlendirme ve destek hattındaki AI döngüsü nedeniyle kullanıcı tepkisi çekiyor.",
+        "sources": [
+          "r/CursorAI",
+          "r/vscode"
+        ]
       }
     ]
   },
@@ -246,6 +257,17 @@
         "summary": "Mobil uygulama desteği eksikliği, 'role: user' gönderme hatası ve 'tüm kod tabanımı sildi' gibi eleştirilerle puan kaybetti.",
         "sources": [
           "r/ChatGPTCoding",
+          "r/ClaudeDev",
+          "r/ClaudeAI"
+        ]
+      },
+      {
+        "date": "14 Eylül 2026",
+        "hypeScore": 6,
+        "sentiment": "eleştirel",
+        "headline": "Kullanım Limiti Sorunu",
+        "summary": "Kullanım limitleri ve token tüketim hızı geliştiricileri hayal kırıklığına uğratıyor.",
+        "sources": [
           "r/ClaudeDev",
           "r/ClaudeAI"
         ]
@@ -581,6 +603,17 @@
           "r/ClaudeAI",
           "r/ClaudeDev"
         ]
+      },
+      {
+        "date": "14 Eylül 2026",
+        "hypeScore": 9.8,
+        "sentiment": "stabil",
+        "headline": "Sektör Standardı",
+        "summary": "Hala geliştiricilerin en çok güvendiği akıl yürütme motoru.",
+        "sources": [
+          "r/ClaudeAI",
+          "r/ChatGPTCoding"
+        ]
       }
     ]
   },
@@ -696,6 +729,17 @@
         "headline": "Altyapı Tekeli",
         "summary": "AI altyapısındaki lider konumunu pekiştirmesi ve sektördeki etkisini sürdürmesi.",
         "sources": [
+          "r/nvidia"
+        ]
+      },
+      {
+        "date": "14 Eylül 2026",
+        "hypeScore": 9.6,
+        "sentiment": "stabil",
+        "headline": "Altyapı Tekeli",
+        "summary": "Veri merkezi kapasite artışları ve AI firmalarının donanım talebi.",
+        "sources": [
+          "r/hardware",
           "r/nvidia"
         ]
       }
@@ -1036,6 +1080,16 @@
         "sources": [
           "r/LocalLLaMA"
         ]
+      },
+      {
+        "date": "14 Eylül 2026",
+        "hypeScore": 9.7,
+        "sentiment": "stabil",
+        "headline": "10M İndirme",
+        "summary": "10 milyon indirme eşiğini aşarak yerel model dağıtımında standart haline geldi.",
+        "sources": [
+          "r/LocalLLaMA"
+        ]
       }
     ]
   },
@@ -1117,6 +1171,17 @@
         "sources": [
           "r/comfyui",
           "r/StableDiffusion"
+        ]
+      },
+      {
+        "date": "14 Eylül 2026",
+        "hypeScore": 9.8,
+        "sentiment": "coşkulu",
+        "headline": "Son 12 Saat Patlaması",
+        "summary": "Video üretimindeki hızı ve kalite dengesiyle son 12 saatte Reddit'te en çok paylaşılan model oldu.",
+        "sources": [
+          "r/singularity",
+          "r/ArtificialInteligence"
         ]
       }
     ]
@@ -1240,6 +1305,17 @@
         "sources": [
           "r/LocalLLaMA",
           "r/huggingface"
+        ]
+      },
+      {
+        "date": "14 Eylül 2026",
+        "hypeScore": 9.7,
+        "sentiment": "stabil",
+        "headline": "Günün Lideri",
+        "summary": "Wikipedia ve genel bilgi testlerindeki başarısı ile açık kaynak dünyasının en güvenilir modeli.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/ArtificialInteligence"
         ]
       }
     ]
@@ -2198,6 +2274,16 @@
         "sources": [
           "r/windsurf"
         ]
+      },
+      {
+        "date": "14 Eylül 2026",
+        "hypeScore": 5.5,
+        "sentiment": "coşkulu",
+        "headline": "Kritik Hata",
+        "summary": "Devin entegrasyonu sonrası yaşanan performans sorunları ve maliyet eleştirileri.",
+        "sources": [
+          "r/windsurf"
+        ]
       }
     ]
   },
@@ -2305,6 +2391,17 @@
         "summary": "Kurumsal düzeyde ajan dağıtımı ve otomasyon yetenekleriyle dikkat çekiyor.",
         "sources": [
           "r/devops"
+        ]
+      },
+      {
+        "date": "14 Eylül 2026",
+        "hypeScore": 9.3,
+        "sentiment": "stabil",
+        "headline": "Kurumsal Favori",
+        "summary": "Kurumsal ajan dağıtımlarında sağladığı esneklik ve güvenilirlik ile öne çıkıyor.",
+        "sources": [
+          "r/devops",
+          "r/sysadmin"
         ]
       }
     ]
@@ -2432,6 +2529,17 @@
         "summary": "Blender script modellemede V4 Flash'a kıyasla 'muazzam ilerleme' kaydetmesi ve 'sevimli balina hizmetçi kız' imajıyla dikkat çekmesi.",
         "sources": [
           "r/DeepSeek"
+        ]
+      },
+      {
+        "date": "14 Eylül 2026",
+        "hypeScore": 9.5,
+        "sentiment": "eleştirel",
+        "headline": "Maliyet Şampiyonu",
+        "summary": "Frontier modellerin maliyetine karşı sunduğu $0.15/M token fiyatı ile geliştiricilerin odağında.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/MachineLearning"
         ]
       }
     ]
@@ -2866,6 +2974,13 @@
         "sources": [
           "r/LocalLLaMA"
         ]
+      },
+      {
+        "date": "14 Eylül 2026",
+        "hypeScore": 9.3,
+        "sentiment": "stabil",
+        "headline": "Locus Gelişmesi",
+        "sources": []
       }
     ]
   },
@@ -3029,6 +3144,13 @@
         "sources": [
           "r/ChatGPTCoding"
         ]
+      },
+      {
+        "date": "14 Eylül 2026",
+        "hypeScore": 9.2,
+        "sentiment": "stabil",
+        "headline": "SWE2 Gelişmesi",
+        "sources": []
       }
     ]
   },

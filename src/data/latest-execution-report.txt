@@ -1,11 +1,11 @@
 ================================================================================
 🤖 AITRENDLERI.COM OTONOM TARAMA VE ANALİZ TERMİNAL RAPORU
-Tarih: 13 Eylül 2026 | İşlem Süresi: 1176s
+Tarih: 14 Eylül 2026 | İşlem Süresi: 1379s
 ================================================================================
 
 [1. MODEL & ŞELALE AKTİVİTESİ]
   ✔ Aktif Çalışan Model : gemini-3.1-flash-lite
-  ✔ Seçilen API Anahtarı : GEMINI_API_KEY #1
+  ✔ Seçilen API Anahtarı : GEMINI_API_KEY #2
   ✔ Yürütme Durumu       : BAŞARILI (HTTP 200 OK)
 
 [2. 50 REDDIT TOPLULUĞU TARAMA TELEMETRİSİ]
@@ -13,39 +13,39 @@ Tarih: 13 Eylül 2026 | İşlem Süresi: 1176s
   ✔ Başarılı Kategori / Batch   : 3 / 7
   ------------------------------------------------------------------------------
   1. [🟢 OK 200] Vibe Coding & Yeni Nesil Editörler: 15 gönderi
-     └─ Dağılım: r/ClaudeAI: 4, r/vibecoding: 2, r/ChatGPTCoding: 1, r/vscode: 3, r/CursorAI: 2, r/windsurf: 1, r/Copilot: 1, r/ClaudeDev: 1
+     └─ Dağılım: r/ClaudeAI: 1, r/vibecoding: 1, r/ChatGPTCoding: 4, r/windsurf: 2, r/Copilot: 3, r/CursorAI: 1, r/vscode: 2, r/ClaudeDev: 1
   2. [🔴 ERR 429] Otonom Ajanlar & Süreç Otomasyonu: 0 gönderi
      └─ Hata/Uyarı: Reddit HTTP 429 (Rate Limit)
-  3. [🔴 ERR 429] Büyük Dil Modelleri & Araştırma Devleri: 0 gönderi
+  3. [🟢 OK 200] Büyük Dil Modelleri & Araştırma Devleri: 15 gönderi
+     └─ Dağılım: r/singularity: 1, r/OpenAI: 2, r/Anthropic: 3, r/ArtificialInteligence: 1, r/MachineLearning: 2, r/DeepSeek: 2, r/GoogleGemini: 4
+  4. [🔴 ERR 429] Açık Kaynak, Yerel Modeller & Self-Hosted: 0 gönderi
      └─ Hata/Uyarı: Reddit HTTP 429 (Rate Limit)
-  4. [🟢 OK 200] Açık Kaynak, Yerel Modeller & Self-Hosted: 15 gönderi
-     └─ Dağılım: r/LocalLLaMA: 2, r/selfhosted: 1, r/MistralAI: 2, r/huggingface: 1, r/ollama: 3, r/Vllm: 2, r/OpenSourceAI: 4
   5. [🔴 ERR 429] Yazılım Geliştirici, API & Kodlama Dünyası: 0 gönderi
      └─ Hata/Uyarı: Reddit HTTP 429 (Rate Limit)
-  6. [🔴 ERR 429] Donanım, GPU, CPU & Bulut Altyapısı: 0 gönderi
+  6. [🟢 OK 200] Donanım, GPU, CPU & Bulut Altyapısı: 15 gönderi
+     └─ Dağılım: r/hardware: 1, r/sysadmin: 2, r/nvidia: 2, r/AMD_Stock: 1, r/devops: 4, r/Cloud: 2, r/googlecloud: 3
+  7. [🔴 ERR 429] Görsel, Video & Medya Üretimi: 0 gönderi
      └─ Hata/Uyarı: Reddit HTTP 429 (Rate Limit)
-  7. [🟢 OK 200] Görsel, Video & Medya Üretimi: 15 gönderi
-     └─ Dağılım: r/midjourney: 1, r/StableDiffusion: 3, r/comfyui: 2, r/artificial: 7, r/runwayml: 1, r/SORA: 1
 
 [3. SUBREDDİT VERİTABANI İÇGÖRÜLERİ (src/data/subreddit-stats.json)]
   ✔ Toplam Takip Edilen Subreddit : 49
-  ✔ Yüksek Sinyal Verenler        : 7
-  ✔ Aktif Düzenli Kaynaklar       : 30
+  ✔ Yüksek Sinyal Verenler        : 19
+  ✔ Aktif Düzenli Kaynaklar       : 18
   ✔ Düşük Sinyal / Takiptekiler   : 12
   ✔ Sıfır Çekenler (Dead Sub)     : 0
   ------------------------------------------------------------------------------
-  🏆 En Çok Katkı Sağlayanlar: r/ClaudeAI (31), r/vibecoding (22), r/ChatGPTCoding (21), r/vscode (20), r/LLMDevs (17)
+  🏆 En Çok Katkı Sağlayanlar: r/ClaudeAI (32), r/ChatGPTCoding (25), r/vibecoding (23), r/vscode (22), r/CursorAI (17)
   ⚠️ Düşük Sinyal Verenler   : r/copilot, r/CrewAI, r/agenticai, r/Singularity, r/vllm, r/AI_Tools, r/GenerativeAI, r/GoogleCloud, r/ComfyUI, r/Midjourney, r/Sora, r/RunwayML
   🚫 Değiştirilmesi Önerilen : Yok (Tümü veri sağlıyor)
 
 [4. DİĞER VERİ KAYNAKLARI]
-  ✔ ArXiv Makaleleri    : 1 taze makale (Türkçe özetli)
+  ✔ ArXiv Makaleleri    : 3 taze makale (Türkçe özetli)
   ✔ Hugging Face Modeller: 5 trend model
   ✔ Hacker News         : 8 derin tartışma
   ✔ GitHub Radar        : 6 repo
 
 [5. GÜNÜN ORGANİK 1 NUMARALI LİDERİ]
-  👑 Qwen 3.8 27B (Skor: 99/100 - Günün Lideri)
-  📝 Neden Seçildi: 10 milyon indirme eşiğini aşması ve yerel donanımlardaki rakipsiz verimliliği.
+  👑 Qwen3.8-27B (Skor: 99/100 - Günün Lideri)
+  📝 Neden Seçildi: Wikipedia ve genel bilgi testlerindeki başarısı ile açık kaynak dünyasının en güvenilir modeli.
 
 ================================================================================

@@ -48,6 +48,51 @@
   ],
   "dailyRecords": [
     {
+      "date": "14 Eylül 2026",
+      "isoDate": "2026-09-14",
+      "papers": [
+        {
+          "id": "2609.11923v1",
+          "titleTr": "GPU-CFR: Oyunları Statik Veri Akışına Derleyerek 80 Kat Daha Hızlı Karşıolgusal Pişmanlık Minimizasyonu",
+          "title": "GPU-CFR: 80x Faster Counterfactual Regret Minimization by Compiling the Game to Static Dataflow and CUDA Graph Replay",
+          "arxivUrl": "https://arxiv.org/abs/2609.11923",
+          "authors": [
+            "Araştırma Ekibi"
+          ],
+          "category": "cs.AI",
+          "impactScore": 9.7,
+          "whyMad": "CFR gibi ağır hesaplamalı bir süreci GPU'ya taşıyarak 80 kat hızlandırması, ajanların karar verme yeteneğini devrimsel kılıyor.",
+          "summary": "Oyun ağacını statik veri akışına derleme ve CUDA Graph Replay kullanma yaklaşımı, AI ajanlarının karmaşık oyunlarda karar verme yeteneklerini devrim niteliğinde hızlandırabilir."
+        },
+        {
+          "id": "2609.11916v1",
+          "titleTr": "Kenar Cihazlarda Dağıtılabilir Görsel-Dil Modelleri Türleri Tanımlayabilir mi?",
+          "title": "Can Edge-Deployable Vision-Language Models Identify Species?",
+          "arxivUrl": "https://arxiv.org/abs/2609.11916",
+          "authors": [
+            "Araştırma Ekibi"
+          ],
+          "category": "cs.CV",
+          "impactScore": 9.6,
+          "whyMad": "Küçük, yerel olarak dağıtılabilir VLM'lerin pratik saha uygulamaları için büyük modeller yerine daha erişilebilir çözümler sunduğunu kanıtlıyor.",
+          "summary": "2-8B parametre aralığındaki modellerin tür tanımlama yeteneklerini test ederek, kısıtlı kaynaklı ortamlarda AI kullanımına dair ezber bozuyor."
+        },
+        {
+          "id": "2609.11915v1",
+          "titleTr": "Üretken Pazarlama Karması Modellemesi: İş Etkisiyle GEO ve GEM'i Bağlayan Nedensel Çıkarım Çerçevesi",
+          "title": "Generative Marketing Mix Modeling: A Causal Inference Framework Linking GEO and GEM to Business Impact",
+          "arxivUrl": "https://arxiv.org/abs/2609.11915",
+          "authors": [
+            "Araştırma Ekibi"
+          ],
+          "category": "cs.LG",
+          "impactScore": 9.5,
+          "whyMad": "Üretken yapay zekanın pazarlama üzerindeki etkisini ölçmek için yeni bir nedensel çıkarım çerçevesi sunması, firmaların stratejilerini optimize etmeleri için kritik.",
+          "summary": "Generative Engine Optimization (GEO) ve Generative Engine Marketing (GEM) kavramlarını iş etkisiyle ilişkilendirerek pazarlama dünyasında devrim niteliğinde bir yaklaşım sunuyor."
+        }
+      ]
+    },
+    {
       "date": "13 Eylül 2026",
       "isoDate": "2026-09-13",
       "papers": [
