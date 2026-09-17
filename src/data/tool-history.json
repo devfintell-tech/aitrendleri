@@ -271,6 +271,17 @@
           "r/ClaudeDev",
           "r/ClaudeAI"
         ]
+      },
+      {
+        "date": "17 Eylül 2026",
+        "hypeScore": 6,
+        "sentiment": "eleştirel",
+        "headline": "Eleştiriliyor",
+        "summary": "Kullanım limitleri ve yüksek token maliyetleri nedeniyle topluluk tepkisi.",
+        "sources": [
+          "r/ClaudeDev",
+          "r/vibecoding"
+        ]
       }
     ]
   },
@@ -435,6 +446,17 @@
         "sources": [
           "r/AI_Agents",
           "r/Automate"
+        ]
+      },
+      {
+        "date": "17 Eylül 2026",
+        "hypeScore": 9.3,
+        "sentiment": "stabil",
+        "headline": "Kurumsal Favori",
+        "summary": "Karmaşık ajan süreçlerini görselleştirmedeki başarısı.",
+        "sources": [
+          "r/n8n",
+          "r/AI_Agents"
         ]
       }
     ]
@@ -613,6 +635,17 @@
         "sources": [
           "r/ClaudeAI",
           "r/ChatGPTCoding"
+        ]
+      },
+      {
+        "date": "17 Eylül 2026",
+        "hypeScore": 9.8,
+        "sentiment": "stabil",
+        "headline": "Sektör Standardı",
+        "summary": "Geliştiricilerin en güvendiği model olmaya devam etmesi.",
+        "sources": [
+          "r/ClaudeAI",
+          "r/ClaudeDev"
         ]
       }
     ]
@@ -1251,6 +1284,17 @@
           "r/LocalLLaMA",
           "r/StableDiffusion"
         ]
+      },
+      {
+        "date": "17 Eylül 2026",
+        "hypeScore": 9.6,
+        "sentiment": "stabil",
+        "headline": "Altyapı Tekeli",
+        "summary": "Pazar hakimiyeti ve donanım standartlarını belirlemesi.",
+        "sources": [
+          "r/singularity",
+          "r/programming"
+        ]
       }
     ]
   },
@@ -1316,6 +1360,17 @@
         "sources": [
           "r/LocalLLaMA",
           "r/ArtificialInteligence"
+        ]
+      },
+      {
+        "date": "17 Eylül 2026",
+        "hypeScore": 9.8,
+        "sentiment": "coşkulu",
+        "headline": "Son 12 Saat Patlaması",
+        "summary": "Toplulukta 10 milyon indirme eşiğini aşması ve yerel donanımlarda rakipsiz verimlilik sunması.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/singularity"
         ]
       }
     ]
@@ -2284,6 +2339,17 @@
         "sources": [
           "r/windsurf"
         ]
+      },
+      {
+        "date": "17 Eylül 2026",
+        "hypeScore": 5.5,
+        "sentiment": "coşkulu",
+        "headline": "Kritik Hata",
+        "summary": "Maliyet eleştirilerine rağmen yeni güncellemelerle toparlanma çabası.",
+        "sources": [
+          "r/vibecoding",
+          "r/vscode"
+        ]
       }
     ]
   },
@@ -2540,6 +2606,17 @@
         "sources": [
           "r/LocalLLaMA",
           "r/MachineLearning"
+        ]
+      },
+      {
+        "date": "17 Eylül 2026",
+        "hypeScore": 9.5,
+        "sentiment": "eleştirel",
+        "headline": "Maliyet Şampiyonu",
+        "summary": "Hacker News'te en iyi hacking modeli olarak övülmesi.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/generativeAI"
         ]
       }
     ]
@@ -2981,6 +3058,16 @@
         "sentiment": "stabil",
         "headline": "Locus Gelişmesi",
         "sources": []
+      },
+      {
+        "date": "17 Eylül 2026",
+        "hypeScore": 9.3,
+        "sentiment": "stabil",
+        "headline": "Yükselen",
+        "summary": "Açık kaynak inovasyonu ile yerel ajan pazarında büyümesi.",
+        "sources": [
+          "r/AI_Agents"
+        ]
       }
     ]
   },
@@ -3495,6 +3582,39 @@
         "summary": "Claude ve Remarkable entegrasyonu ile üretkenliği artırması.",
         "sources": [
           "r/ChatGPTCoding"
+        ]
+      }
+    ]
+  },
+  "omarion-sec-cli": {
+    "name": "Omarion SEC CLI",
+    "category": "Otonom Agent",
+    "history": [
+      {
+        "date": "17 Eylül 2026",
+        "hypeScore": 9.2,
+        "sentiment": "stabil",
+        "headline": "Yeni Nesil",
+        "summary": "Kendi kendini iyileştiren döngü mimarisi ile dikkat çekmesi.",
+        "sources": [
+          "r/AI_Agents",
+          "r/AutoGPT"
+        ]
+      }
+    ]
+  },
+  "rag-eval": {
+    "name": "rag-eval",
+    "category": "Altyapı & SDK",
+    "history": [
+      {
+        "date": "17 Eylül 2026",
+        "hypeScore": 9.1,
+        "sentiment": "stabil",
+        "headline": "Açık Kaynak",
+        "summary": "Sıfır bağımlılık ve yerel çalışma yeteneği.",
+        "sources": [
+          "r/LangChain"
         ]
       }
     ]

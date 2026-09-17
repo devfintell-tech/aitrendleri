@@ -44,9 +44,63 @@
     "2609.11917v1",
     "2609.11916v1",
     "2609.11915v1",
-    "2609.11911v1"
+    "2609.11911v1",
+    "2609.17527v1",
+    "2609.17523v1",
+    "2609.17521v1"
   ],
   "dailyRecords": [
+    {
+      "date": "17 Eylül 2026",
+      "isoDate": "2026-09-17",
+      "papers": [
+        {
+          "id": "2609.17527v1",
+          "titleTr": "Ajanik Toplumlar İçin Sosyal Bir Donanım İhtiyacı",
+          "title": "Agentic Societies Need a Social Harness",
+          "arxivUrl": "http://arxiv.org/abs/2609.17527v1",
+          "authors": [
+            "Tapan Chugh",
+            "Vidushi Singh",
+            "Krish Jain"
+          ],
+          "category": "cs.AI",
+          "impactScore": 9.7,
+          "whyMad": "Ajanların sadece görev odaklı değil, sosyal uyum odaklı çalışması gerektiğini kanıtlıyor.",
+          "summary": "Ajanik toplumların koordinasyon sorunlarını çözmek için yeni bir sosyal çerçeve öneriyor."
+        },
+        {
+          "id": "2609.17523v1",
+          "titleTr": "Bilimsel Ajanlar İçin Özyinelemeli Öz-İyileştirme",
+          "title": "ScienceBuddy: Recursive-in-Recursive Self-Improvement for Interactive Scientific Agents",
+          "arxivUrl": "http://arxiv.org/abs/2609.17523v1",
+          "authors": [
+            "Shuhan Xue",
+            "Jianyuan Zhong",
+            "Ziyuan Nan"
+          ],
+          "category": "cs.AI",
+          "impactScore": 9.6,
+          "whyMad": "Ajanların kendi performanslarını bilimsel verilerle sürekli geliştirmesini sağlıyor.",
+          "summary": "Bilimsel araştırma süreçlerini otomatize eden ve kendini geliştiren bir çalışma alanı sunuyor."
+        },
+        {
+          "id": "2609.17521v1",
+          "titleTr": "Fizik Temelli Video Üretimi İçin PhysStream",
+          "title": "PhysStream: Streaming Physics-Grounded Video Generation with Structured Scene Memory and Fine-Grained Motion Control",
+          "arxivUrl": "http://arxiv.org/abs/2609.17521v1",
+          "authors": [
+            "Chuhao Chen",
+            "Peter Wonka",
+            "Chaoyang Wang"
+          ],
+          "category": "cs.CV",
+          "impactScore": 9.5,
+          "whyMad": "Video üretiminde fiziksel kuralları zorunlu kılarak gerçekçiliği artırıyor.",
+          "summary": "Yapılandırılmış sahne belleği ile fiziksel dinamiklere uygun video sentezi."
+        }
+      ]
+    },
     {
       "date": "14 Eylül 2026",
       "isoDate": "2026-09-14",
