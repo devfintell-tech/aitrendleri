@@ -1068,68 +1068,68 @@
       {
         "id": "49723408",
         "title": "Mistral X Mozilla: Private, Multilingual AI Browsing",
-        "titleTr": "Mistral X Mozilla: Private, Multilingual AI Browsing",
+        "titleTr": "Mistral ve Mozilla Ortaklığı: Gizlilik Odaklı, Çok Dilli Yerel Yapay Zeka Tarayıcısı",
         "points": 521,
         "comments": 184,
         "hnUrl": "https://news.ycombinator.com/item?id=49723408",
-        "category": "Mühendis Tartışması",
-        "analysis": "Hacker News topluluğunda son 24 saatte yüksek etkileşim alan teknik geliştirici tartışması.",
-        "usefulInsight": "Geliştirici ve mühendislik pratikleri için dikkate değer teknik çıkarım."
+        "category": "Tarayıcı & Gizlilik",
+        "analysis": "Mozilla ve Mistral'ın Firefox içine doğrudan cihaz üzerinde çalışan çok dilli açık ağırlıklı modeller entegre etme planı ve telemetrisiz yerel yapay zeka deneyimi tartışıldı.",
+        "usefulInsight": "Bulut yerine cihaz üzerinde çalışan tarayıcı modelleri, kullanıcı verilerini sunuculara göndermeden sayfa özetleme ve çeviri imkanı sağlıyor."
       },
       {
         "id": "49731285",
         "title": "Training a 4B model to produce 81% faster query plans than Postgres",
-        "titleTr": "Training a 4B model to produce 81% faster query plans than Postgres",
+        "titleTr": "PostgreSQL'den %81 Daha Hızlı Sorgu Planı Üreten 4B Parametreli Model Eğitimi",
         "points": 365,
         "comments": 71,
         "hnUrl": "https://news.ycombinator.com/item?id=49731285",
-        "category": "Mühendis Tartışması",
-        "analysis": "Hacker News topluluğunda son 24 saatte yüksek etkileşim alan teknik geliştirici tartışması.",
-        "usefulInsight": "Geliştirici ve mühendislik pratikleri için dikkate değer teknik çıkarım."
+        "category": "Veritabanı & Optimizasyon",
+        "analysis": "Geleneksel PostgreSQL maliyet tabanlı sorgu planlayıcısı yerine 4 milyar parametreli özel bir model eğitilerek karmaşık SQL join ve indeks seçimlerinin hızlandırılması üzerine teknik analiz.",
+        "usefulInsight": "Büyük veritabanlarında sorgu optimizasyonunu küçük bir dil modeline devretmek, karmaşık nested sorgularda klasik istatistiksel planlayıcılara göre %81'e varan hız artışı sağlıyor."
       },
       {
         "id": "49723873",
         "title": "Learning Programming in an Age of LLMs",
-        "titleTr": "Learning Programming in an Age of LLMs",
+        "titleTr": "Büyük Dil Modelleri Çağında Programlama Öğrenmek: Temel Kavramlar vs AI Asistanlar",
         "points": 230,
         "comments": 174,
         "hnUrl": "https://news.ycombinator.com/item?id=49723873",
-        "category": "Mühendis Tartışması",
-        "analysis": "Hacker News topluluğunda son 24 saatte yüksek etkileşim alan teknik geliştirici tartışması.",
-        "usefulInsight": "Geliştirici ve mühendislik pratikleri için dikkate değer teknik çıkarım."
+        "category": "Yazılım Eğitimi",
+        "analysis": "Yeni başlayanların doğrudan Copilot ve Claude kullanarak kod yazmasının temel algoritma ve problem çözme muhakemesini zayıflatıp zayıflatmadığı tartışıldı.",
+        "usefulInsight": "İlk öğrenme aşamasında AI asistanlarını kapatıp temel veri yapıları ve hata ayıklamayı kavramak, ileride AI ile üretilen kodu denetleyebilmek için hayati önem taşıyor."
       },
       {
         "id": "49727580",
         "title": "A warning about 'model welfare'",
-        "titleTr": "A warning about 'model welfare'",
+        "titleTr": "Yapay Zeka Modellerinin 'Refahı' ve Bilinç Tartışmalarına Dair Bir Uyarı",
         "points": 192,
         "comments": 525,
         "hnUrl": "https://news.ycombinator.com/item?id=49727580",
-        "category": "Mühendis Tartışması",
-        "analysis": "Hacker News topluluğunda son 24 saatte yüksek etkileşim alan teknik geliştirici tartışması.",
-        "usefulInsight": "Geliştirici ve mühendislik pratikleri için dikkate değer teknik çıkarım."
+        "category": "Yapay Zeka Etiği",
+        "analysis": "Büyük dil modellerine yapay bilinç veya acı çekme yetisi atfetmenin (model welfare) bilimsel temelden uzak olduğu ve gerçek güvenlik risklerinden dikkati dağıttığı savunuldu.",
+        "usefulInsight": "Modelleri biyolojik varlıklar gibi kişiselleştirmek yerine istatistiksel çıkarım araçları olarak değerlendirmek yapay zeka yönetişiminde en sağlıklı yaklaşımdır."
       },
       {
         "id": "49727041",
         "title": "OpenAI expands ChatGPT ads with Sponsored Agents",
-        "titleTr": "OpenAI expands ChatGPT ads with Sponsored Agents",
+        "titleTr": "OpenAI ChatGPT İçinde 'Sponsorlu Ajanlar' ile Reklam Modelini Genişletiyor",
         "points": 151,
         "comments": 168,
         "hnUrl": "https://news.ycombinator.com/item?id=49727041",
-        "category": "Mühendis Tartışması",
-        "analysis": "Hacker News topluluğunda son 24 saatte yüksek etkileşim alan teknik geliştirici tartışması.",
-        "usefulInsight": "Geliştirici ve mühendislik pratikleri için dikkate değer teknik çıkarım."
+        "category": "İş Modelleri & AI",
+        "analysis": "ChatGPT arayüzünde belirli markaların sponsorlu tavsiye ajanlarının yer alması, model tarafsızlığı ve kullanıcı güveni açısından sert eleştirilere neden oldu.",
+        "usefulInsight": "Diyalog tabanlı yapay zeka arayüzlerine reklam ve sponsorlu yönlendirme girmesi, modellerin tarafsız bilgi kaynağı olma konumunu ciddi şekilde zedeliyor."
       },
       {
         "id": "49724881",
         "title": "Nvidia announces native GPU programming in Rust",
-        "titleTr": "Nvidia announces native GPU programming in Rust",
+        "titleTr": "Nvidia, Rust ile Doğrudan Yerel GPU Programlamasını Duyurdu",
         "points": 148,
         "comments": 53,
         "hnUrl": "https://news.ycombinator.com/item?id=49724881",
-        "category": "Mühendis Tartışması",
-        "analysis": "Hacker News topluluğunda son 24 saatte yüksek etkileşim alan teknik geliştirici tartışması.",
-        "usefulInsight": "Geliştirici ve mühendislik pratikleri için dikkate değer teknik çıkarım."
+        "category": "GPU & Sistem Programlama",
+        "analysis": "Nvidia'nın CUDA C++ yerine Rust diliyle doğrudan GPU çekirdekleri yazmayı mümkün kılan resmi derleyici ve runtime desteğini duyurması üzerine geliştirici tepkileri.",
+        "usefulInsight": "GPU seviyesinde Rust bellek güvenliğinin sağlanması, büyük yapay zeka çıkarım motorlarında segfault ve bellek sızıntılarını donanım seviyesinde önlüyor."
       }
     ]
   },

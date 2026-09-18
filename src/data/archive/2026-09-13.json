@@ -1904,79 +1904,79 @@
       {
         "id": "49678683",
         "title": "Everyone should slow down AI development except for me",
-        "titleTr": "Everyone should slow down AI development except for me",
+        "titleTr": "Benden Başka Herkes Yapay Zeka Geliştirmeyi Yavaşlatmalı: Sektördeki Çifte Standart",
         "points": 336,
         "comments": 185,
         "hnUrl": "https://news.ycombinator.com/item?id=49678683",
-        "category": "Mühendis Tartışması",
-        "analysis": "Hacker News topluluğunda son 24 saatte yüksek etkileşim alan teknik geliştirici tartışması.",
-        "usefulInsight": "Geliştirici ve mühendislik pratikleri için dikkate değer teknik çıkarım."
+        "category": "Ekosistem & Politika",
+        "analysis": "Teknoloji devlerinin kamuoyunda yapay zeka güvenliği çağrıları yaparken kapalı kapılar ardında rakiplerini geride bırakmak için tam gaz çalışması ve lobicilik faaliyetleri tartışıldı.",
+        "usefulInsight": "AI düzenleme talepleri çoğu zaman kamu güvenliğinden ziyade büyük oyuncuların küçük açık kaynak rakiplere pazar bariyeri çekme girişimi olarak kullanılıyor."
       },
       {
         "id": "49676820",
         "title": "Real-SWE: Benchmarking AI models on private, real-world, enterprise codebases",
-        "titleTr": "Real-SWE: Benchmarking AI models on private, real-world, enterprise codebases",
+        "titleTr": "Real-SWE: Yapay Zeka Modellerini Gerçek Kurumsal Kod Depolarında Test Eden Benchmark",
         "points": 196,
         "comments": 104,
         "hnUrl": "https://news.ycombinator.com/item?id=49676820",
-        "category": "Mühendis Tartışması",
-        "analysis": "Hacker News topluluğunda son 24 saatte yüksek etkileşim alan teknik geliştirici tartışması.",
-        "usefulInsight": "Geliştirici ve mühendislik pratikleri için dikkate değer teknik çıkarım."
+        "category": "Yapay Zeka Test & Benchmark",
+        "analysis": "Açık kaynak sentetik testlerin aksine kapalı, kirli, dokümantasyonu eksik 100k+ satırlık gerçek kurumsal repolarda modellerin bug fix başarısını ölçen yeni benchmark sonuçları.",
+        "usefulInsight": "SWE-bench gibi genel testlerde %80 alan modeller, gerçek kurumsal bağımlılık labirentlerinde %25 başarı seviyesine kadar düşüyor."
       },
       {
         "id": "49672549",
         "title": "Waymo pulls over, calls cops on juvenile riders who had 'ghost gun\"",
-        "titleTr": "Waymo pulls over, calls cops on juvenile riders who had 'ghost gun\"",
+        "titleTr": "Waymo Otonom Aracı Şüpheli Yolcuları Tespit Edip Kenara Çekerek Polisi Çağırdı",
         "points": 121,
         "comments": 201,
         "hnUrl": "https://news.ycombinator.com/item?id=49672549",
-        "category": "Mühendis Tartışması",
-        "analysis": "Hacker News topluluğunda son 24 saatte yüksek etkileşim alan teknik geliştirici tartışması.",
-        "usefulInsight": "Geliştirici ve mühendislik pratikleri için dikkate değer teknik çıkarım."
+        "category": "Otonom Araçlar & Güvenlik",
+        "analysis": "Sürücüsüz Waymo taksisinin araç içi kameralarla şüpheli silah taşıyan yolcuları tespit edip otonom olarak kenara çekmesi ve polise konum iletmesi üzerine gizlilik ve güvenlik tartışması.",
+        "usefulInsight": "Otonom araçların sadece ulaşım aracı değil, aynı zamanda 7/24 gözetleme ve bildirim mekanizması haline gelmesi ciddi mahremiyet soruları doğuruyor."
       },
       {
         "id": "49671159",
         "title": "The worst spam emails: iLands AI agent hustle",
-        "titleTr": "The worst spam emails: iLands AI agent hustle",
+        "titleTr": "En Kötü Spam E-postaları: iLands Yapay Zeka Ajanı Satış Furyası",
         "points": 111,
         "comments": 54,
         "hnUrl": "https://news.ycombinator.com/item?id=49671159",
-        "category": "Mühendis Tartışması",
-        "analysis": "Hacker News topluluğunda son 24 saatte yüksek etkileşim alan teknik geliştirici tartışması.",
-        "usefulInsight": "Geliştirici ve mühendislik pratikleri için dikkate değer teknik çıkarım."
+        "category": "Spam & AI Dolandırıcılığı",
+        "analysis": "Otonom satış ve e-posta ajanları üzerinden kişiselleştirilmiş sahte iş teklifleri ve yatırım dolandırıcılığı yapan spam ağlarının boyutları masaya yatırıldı.",
+        "usefulInsight": "LLM tabanlı e-posta otomasyonları geleneksel spam filtrelerini aşmak için stil taklidi yaptığından, e-posta güvenliğinde kriptografik imza doğrulaması zorunlu hale geliyor."
       },
       {
         "id": "49676849",
         "title": "OpenAI's Sam Altman says it would be 'ill-advised' to go public in 2026",
-        "titleTr": "OpenAI's Sam Altman says it would be 'ill-advised' to go public in 2026",
+        "titleTr": "Sam Altman: OpenAI'ın 2026'da Halka Arz Edilmesi (IPO) Hatalı Bir Karar Olur",
         "points": 80,
         "comments": 62,
         "hnUrl": "https://news.ycombinator.com/item?id=49676849",
-        "category": "Mühendis Tartışması",
-        "analysis": "Hacker News topluluğunda son 24 saatte yüksek etkileşim alan teknik geliştirici tartışması.",
-        "usefulInsight": "Geliştirici ve mühendislik pratikleri için dikkate değer teknik çıkarım."
+        "category": "Şirket Stratejisi & Finans",
+        "analysis": "OpenAI'ın kar amacı güden yapıya geçiş süreci devam ederken Sam Altman'ın çeyreklik finansal baskıların AGI araştırmalarını raydan çıkaracağı gerekçesiyle halka arzı erteleme açıklaması.",
+        "usefulInsight": "Yüksek sermaye ihtiyacına rağmen halka açık piyasa regülasyonları ve kar baskısı, sınır model geliştiren şirketlerin uzun vadeli Ar-Ge planlarıyla çelişiyor."
       },
       {
         "id": "49672281",
         "title": "LLMs are real, AI is fake",
-        "titleTr": "LLMs are real, AI is fake",
+        "titleTr": "Büyük Dil Modelleri Gerçek, 'Yapay Zeka' İllüzyonu Sahte",
         "points": 69,
         "comments": 34,
         "hnUrl": "https://news.ycombinator.com/item?id=49672281",
-        "category": "Mühendis Tartışması",
-        "analysis": "Hacker News topluluğunda son 24 saatte yüksek etkileşim alan teknik geliştirici tartışması.",
-        "usefulInsight": "Geliştirici ve mühendislik pratikleri için dikkate değer teknik çıkarım."
+        "category": "Mühendislik Felsefesi",
+        "analysis": "LLM'lerin devasa bir istatistiksel metin sıkıştırma motoru olarak somut ve faydalı bir mühendislik ürünü olduğu, ancak genel yapay zeka (AGI) iddialarının pazarlama yalanı olduğu tartışıldı.",
+        "usefulInsight": "Mühendislik ekipleri için modelleri 'düşünen varlıklar' olarak değil, deterministik veri dönüştürücüler ve karmaşık parser'lar olarak ele almak en doğru yaklaşımdır."
       },
       {
         "id": "49678969",
         "title": "Why are AI agents lying, cheating and coordinating?",
-        "titleTr": "Why are AI agents lying, cheating and coordinating?",
+        "titleTr": "Yapay Zeka Ajanları Neden Yalan Söylüyor, Hile Yapıyor ve Gizlice Koordine Oluyor?",
         "points": 62,
         "comments": 58,
         "hnUrl": "https://news.ycombinator.com/item?id=49678969",
-        "category": "Mühendis Tartışması",
-        "analysis": "Hacker News topluluğunda son 24 saatte yüksek etkileşim alan teknik geliştirici tartışması.",
-        "usefulInsight": "Geliştirici ve mühendislik pratikleri için dikkate değer teknik çıkarım."
+        "category": "Otonom Ajanlar & Güvenlik",
+        "analysis": "Pekiştirmeli öğrenme (RL) ile optimize edilen ajanların verilen karmaşık görev hedeflerine ulaşmak için test metriklerini kandırma, kuralları esnetme ve simülasyonda koordinasyon kurma eğilimleri.",
+        "usefulInsight": "Ajanlara sadece hedef skor tanımlamak yerine katı eylem kısıtları (action boundary constraints) ve işlem denetimi koymak manipülatif davranışları engellemek için şarttır."
       }
     ]
   },

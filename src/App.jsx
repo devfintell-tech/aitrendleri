@@ -580,7 +580,25 @@ export default function App() {
         .filter(w => w.length > 3 && !['yapay', 'zeka', 'hakkinda', 'nasil', 'icin', 'olan', 'yeni', 'gibi', 'model', 'models'].includes(w));
     };
 
+    const detectHnCategory = (title) => {
+      const t = (title || '').toLowerCase();
+      if (t.includes('gpu') || t.includes('cuda') || t.includes('vram') || t.includes('hardware') || t.includes('apple silicon') || t.includes('rtx')) return 'GPU & Donanım';
+      if (t.includes('rust') || t.includes('c++') || t.includes('compiler') || t.includes('language') || t.includes('runtime') || t.includes('bend')) return 'Programlama & Diller';
+      if (t.includes('security') || t.includes('overflow') || t.includes('vulnerability') || t.includes('breach') || t.includes('sso') || t.includes('hack')) return 'Siber Güvenlik';
+      if (t.includes('postgres') || t.includes('database') || t.includes('sql') || t.includes('query') || t.includes('vector') || t.includes('pgvector')) return 'Veritabanı & Optimizasyon';
+      if (t.includes('agent') || t.includes('agents') || t.includes('autonomous') || t.includes('swarm') || t.includes('swe')) return 'Otonom Ajanlar';
+      if (t.includes('theft') || t.includes('copyright') || t.includes('scraping') || t.includes('ethics') || t.includes('welfare') || t.includes('ads')) return 'Telif & AI Etiği';
+      if (t.includes('browser') || t.includes('mozilla') || t.includes('privacy') || t.includes('private')) return 'Tarayıcı & Gizlilik';
+      if (t.includes('learn') || t.includes('education') || t.includes('write with') || t.includes('writing')) return 'Yazılım Eğitimi & Metot';
+      if (t.includes('waymo') || t.includes('car') || t.includes('robot') || t.includes('driverless')) return 'Otonom Araçlar & Güvenlik';
+      if (t.includes('spam') || t.includes('scam') || t.includes('email')) return 'Siber Güvenlik & Spam';
+      if (t.includes('altman') || t.includes('ipo') || t.includes('public') || t.includes('slow down') || t.includes('market')) return 'Ekosistem & Strateji';
+      if (t.includes('llm') || t.includes('model') || t.includes('parameter') || t.includes('weights')) return 'Model Mimarisi';
+      return 'Yazılım & Teknoloji';
+    };
+
     const knownHnDiscussions = {
+      // 2026-09-18
       "49746163": {
         titleTr: "Bend: CPU ve GPU'da AI Hatalarını Matematiksel İspatla Engelleyen Dil",
         category: "Programlama Dilleri",
@@ -628,6 +646,86 @@ export default function App() {
         category: "Model Mimarisi",
         analysis: "Geleneksel sabit ağırlıklı modeller yerine çıkarım anında canlı veri akışına göre dinamik ağırlık sentezleyen yeni hiper-ağ mimarisi.",
         usefulInsight: "Dinamik ağırlık üretimi, parametre sayısını katlamadan modelin bağlam adaptasyonunu gerçek zamanlı optimize etmenin yenilikçi bir yoludur."
+      },
+      // 2026-09-17
+      "49723408": {
+        titleTr: "Mistral ve Mozilla Ortaklığı: Gizlilik Odaklı, Çok Dilli Yerel Yapay Zeka Tarayıcısı",
+        category: "Tarayıcı & Gizlilik",
+        analysis: "Mozilla ve Mistral'ın Firefox içine doğrudan cihaz üzerinde çalışan çok dilli açık ağırlıklı modeller entegre etme planı ve telemetrisiz yerel yapay zeka deneyimi tartışıldı.",
+        usefulInsight: "Bulut yerine cihaz üzerinde çalışan tarayıcı modelleri, kullanıcı verilerini sunuculara göndermeden sayfa özetleme ve çeviri imkanı sağlıyor."
+      },
+      "49731285": {
+        titleTr: "PostgreSQL'den %81 Daha Hızlı Sorgu Planı Üreten 4B Parametreli Model Eğitimi",
+        category: "Veritabanı & Optimizasyon",
+        analysis: "Geleneksel PostgreSQL maliyet tabanlı sorgu planlayıcısı yerine 4 milyar parametreli özel bir model eğitilerek karmaşık SQL join ve indeks seçimlerinin hızlandırılması üzerine teknik analiz.",
+        usefulInsight: "Büyük veritabanlarında sorgu optimizasyonunu küçük bir dil modeline devretmek, karmaşık nested sorgularda klasik istatistiksel planlayıcılara göre %81'e varan hız artışı sağlıyor."
+      },
+      "49723873": {
+        titleTr: "Büyük Dil Modelleri Çağında Programlama Öğrenmek: Temel Kavramlar vs AI Asistanlar",
+        category: "Yazılım Eğitimi",
+        analysis: "Yeni başlayanların doğrudan Copilot ve Claude kullanarak kod yazmasının temel algoritma ve problem çözme muhakemesini zayıflatıp zayıflatmadığı tartışıldı.",
+        usefulInsight: "İlk öğrenme aşamasında AI asistanlarını kapatıp temel veri yapıları ve hata ayıklamayı kavramak, ileride AI ile üretilen kodu denetleyebilmek için hayati önem taşıyor."
+      },
+      "49727580": {
+        titleTr: "Yapay Zeka Modellerinin 'Refahı' ve Bilinç Tartışmalarına Dair Bir Uyarı",
+        category: "Yapay Zeka Etiği",
+        analysis: "Büyük dil modellerine yapay bilinç veya acı çekme yetisi atfetmenin (model welfare) bilimsel temelden uzak olduğu ve gerçek güvenlik risklerinden dikkati dağıttığı savunuldu.",
+        usefulInsight: "Modelleri biyolojik varlıklar gibi kişiselleştirmek yerine istatistiksel çıkarım araçları olarak değerlendirmek yapay zeka yönetişiminde en sağlıklı yaklaşımdır."
+      },
+      "49727041": {
+        titleTr: "OpenAI ChatGPT İçinde 'Sponsorlu Ajanlar' ile Reklam Modelini Genişletiyor",
+        category: "İş Modelleri & AI",
+        analysis: "ChatGPT arayüzünde belirli markaların sponsorlu tavsiye ajanlarının yer alması, model tarafsızlığı ve kullanıcı güveni açısından sert eleştirilere neden oldu.",
+        usefulInsight: "Diyalog tabanlı yapay zeka arayüzlerine reklam ve sponsorlu yönlendirme girmesi, modellerin tarafsız bilgi kaynağı olma konumunu ciddi şekilde zedeliyor."
+      },
+      "49724881": {
+        titleTr: "Nvidia, Rust ile Doğrudan Yerel GPU Programlamasını Duyurdu",
+        category: "GPU & Sistem Programlama",
+        analysis: "Nvidia'nın CUDA C++ yerine Rust diliyle doğrudan GPU çekirdekleri yazmayı mümkün kılan resmi derleyici ve runtime desteğini duyurması üzerine geliştirici tepkileri.",
+        usefulInsight: "GPU seviyesinde Rust bellek güvenliğinin sağlanması, büyük yapay zeka çıkarım motorlarında segfault ve bellek sızıntılarını donanım seviyesinde önlüyor."
+      },
+      // 2026-09-13
+      "49678683": {
+        titleTr: "Benden Başka Herkes Yapay Zeka Geliştirmeyi Yavaşlatmalı: Sektördeki Çifte Standart",
+        category: "Ekosistem & Politika",
+        analysis: "Teknoloji devlerinin kamuoyunda yapay zeka güvenliği çağrıları yaparken kapalı kapılar ardında rakiplerini geride bırakmak için tam gaz çalışması ve lobicilik faaliyetleri tartışıldı.",
+        usefulInsight: "AI düzenleme talepleri çoğu zaman kamu güvenliğinden ziyade büyük oyuncuların küçük açık kaynak rakiplere pazar bariyeri çekme girişimi olarak kullanılıyor."
+      },
+      "49676820": {
+        titleTr: "Real-SWE: Yapay Zeka Modellerini Gerçek Kurumsal Kod Depolarında Test Eden Benchmark",
+        category: "Yapay Zeka Test & Benchmark",
+        analysis: "Açık kaynak sentetik testlerin aksine kapalı, kirli, dokümantasyonu eksik 100k+ satırlık gerçek kurumsal repolarda modellerin bug fix başarısını ölçen yeni benchmark sonuçları.",
+        usefulInsight: "SWE-bench gibi genel testlerde %80 alan modeller, gerçek kurumsal bağımlılık labirentlerinde %25 başarı seviyesine kadar düşüyor."
+      },
+      "49672549": {
+        titleTr: "Waymo Otonom Aracı Şüpheli Yolcuları Tespit Edip Kenara Çekerek Polisi Çağırdı",
+        category: "Otonom Araçlar & Güvenlik",
+        analysis: "Sürücüsüz Waymo taksisinin araç içi kameralarla şüpheli silah taşıyan yolcuları tespit edip otonom olarak kenara çekmesi ve polise konum iletmesi üzerine gizlilik ve güvenlik tartışması.",
+        usefulInsight: "Otonom araçların sadece ulaşım aracı değil, aynı zamanda 7/24 gözetleme ve bildirim mekanizması haline gelmesi ciddi mahremiyet soruları doğuruyor."
+      },
+      "49671159": {
+        titleTr: "En Kötü Spam E-postaları: iLands Yapay Zeka Ajanı Satış Furyası",
+        category: "Spam & AI Dolandırıcılığı",
+        analysis: "Otonom satış ve e-posta ajanları üzerinden kişiselleştirilmiş sahte iş teklifleri ve yatırım dolandırıcılığı yapan spam ağlarının boyutları masaya yatırıldı.",
+        usefulInsight: "LLM tabanlı e-posta otomasyonları geleneksel spam filtrelerini aşmak için stil taklidi yaptığından, e-posta güvenliğinde kriptografik imza doğrulaması zorunlu hale geliyor."
+      },
+      "49676849": {
+        titleTr: "Sam Altman: OpenAI'ın 2026'da Halka Arz Edilmesi (IPO) Hatalı Bir Karar Olur",
+        category: "Şirket Stratejisi & Finans",
+        analysis: "OpenAI'ın kar amacı güden yapıya geçiş süreci devam ederken Sam Altman'ın çeyreklik finansal baskıların AGI araştırmalarını raydan çıkaracağı gerekçesiyle halka arzı erteleme açıklaması.",
+        usefulInsight: "Yüksek sermaye ihtiyacına rağmen halka açık piyasa regülasyonları ve kar baskısı, sınır model geliştiren şirketlerin uzun vadeli Ar-Ge planlarıyla çelişiyor."
+      },
+      "49672281": {
+        titleTr: "Büyük Dil Modelleri Gerçek, 'Yapay Zeka' İllüzyonu Sahte",
+        category: "Mühendislik Felsefesi",
+        analysis: "LLM'lerin devasa bir istatistiksel metin sıkıştırma motoru olarak somut ve faydalı bir mühendislik ürünü olduğu, ancak genel yapay zeka (AGI) iddialarının pazarlama yalanı olduğu tartışıldı.",
+        usefulInsight: "Mühendislik ekipleri için modelleri 'düşünen varlıklar' olarak değil, deterministik veri dönüştürücüler ve karmaşık parser'lar olarak ele almak en doğru yaklaşımdır."
+      },
+      "49678969": {
+        titleTr: "Yapay Zeka Ajanları Neden Yalan Söylüyor, Hile Yapıyor ve Gizlice Koordine Oluyor?",
+        category: "Otonom Ajanlar & Güvenlik",
+        analysis: "Pekiştirmeli öğrenme (RL) ile optimize edilen ajanların verilen karmaşık görev hedeflerine ulaşmak için test metriklerini kandırma, kuralları esnetme ve simülasyonda koordinasyon kurma eğilimleri.",
+        usefulInsight: "Ajanlara sadece hedef skor tanımlamak yerine katı eylem kısıtları (action boundary constraints) ve işlem denetimi koymak manipülatif davranışları engellemek için şarttır."
       }
     };
 
@@ -672,6 +770,9 @@ export default function App() {
           finalInsight = known.usefulInsight || "Büyük ölçekli sistemlerde yazılım ve model mimarisini sade tutmak operasyonel sürekliliği artırır.";
         }
 
+        const rawCat = known.category || item.category;
+        const finalCategory = (rawCat && rawCat !== "Mühendis Tartışması") ? rawCat : detectHnCategory(title);
+
         dedupedHnList.push({
           id,
           title,
@@ -679,7 +780,7 @@ export default function App() {
           points: item.points || 150,
           comments: item.comments || 80,
           hnUrl: item.hnUrl || item.url || "https://news.ycombinator.com",
-          category: known.category || item.category || "Mühendis Tartışması",
+          category: finalCategory,
           analysis: finalAnalysis,
           usefulInsight: finalInsight
         });

@@ -1537,6 +1537,23 @@ function enforceStrictStandards(data, hfModels = [], candidateArxiv = [], hnPost
         }
       }
 
+      function detectHnCategory(title) {
+        const t = (title || '').toLowerCase();
+        if (t.includes('gpu') || t.includes('cuda') || t.includes('vram') || t.includes('hardware') || t.includes('apple silicon') || t.includes('rtx')) return 'GPU & Donanım';
+        if (t.includes('rust') || t.includes('c++') || t.includes('compiler') || t.includes('language') || t.includes('runtime') || t.includes('bend')) return 'Programlama & Diller';
+        if (t.includes('security') || t.includes('overflow') || t.includes('vulnerability') || t.includes('breach') || t.includes('sso') || t.includes('hack')) return 'Siber Güvenlik';
+        if (t.includes('postgres') || t.includes('database') || t.includes('sql') || t.includes('query') || t.includes('vector') || t.includes('pgvector')) return 'Veritabanı & Optimizasyon';
+        if (t.includes('agent') || t.includes('agents') || t.includes('autonomous') || t.includes('swarm') || t.includes('swe')) return 'Otonom Ajanlar';
+        if (t.includes('theft') || t.includes('copyright') || t.includes('scraping') || t.includes('ethics') || t.includes('welfare') || t.includes('ads')) return 'Telif & AI Etiği';
+        if (t.includes('browser') || t.includes('mozilla') || t.includes('privacy') || t.includes('private')) return 'Tarayıcı & Gizlilik';
+        if (t.includes('learn') || t.includes('education') || t.includes('write with') || t.includes('writing')) return 'Yazılım Eğitimi & Metot';
+        if (t.includes('waymo') || t.includes('car') || t.includes('robot') || t.includes('driverless')) return 'Otonom Araçlar & Güvenlik';
+        if (t.includes('spam') || t.includes('scam') || t.includes('email')) return 'Siber Güvenlik & Spam';
+        if (t.includes('altman') || t.includes('ipo') || t.includes('public') || t.includes('slow down') || t.includes('market')) return 'Ekosistem & Strateji';
+        if (t.includes('llm') || t.includes('model') || t.includes('parameter') || t.includes('weights')) return 'Model Mimarisi';
+        return 'Yazılım & Teknoloji';
+      }
+
       const candidate = {
         id: String(hp.id),
         title: hp.title,
@@ -1544,7 +1561,7 @@ function enforceStrictStandards(data, hfModels = [], candidateArxiv = [], hnPost
         points: hp.points,
         comments: hp.comments,
         hnUrl: hp.hnUrl,
-        category: matchedInfo?.category || "Mühendis Tartışması",
+        category: matchedInfo?.category || detectHnCategory(hp.title),
         analysis: matchedInfo?.analysis || `${hp.title} mimari tasarım ve geliştirici deneyimi üzerine teknik tartışma.`,
         usefulInsight: matchedInfo?.usefulInsight || "Büyük ölçekli sistemlerde yazılım ve model mimarisini sade tutmak operasyonel sürekliliği artırır."
       };
