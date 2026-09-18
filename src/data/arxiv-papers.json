@@ -45,104 +45,56 @@
     "2609.11916v1",
     "2609.11915v1",
     "2609.11911v1",
-    "2609.17527v1",
-    "2609.17523v1",
-    "2609.17521v1"
+    "2609.20812v1",
+    "2609.20822v1",
+    "2609.20816v1"
   ],
   "dailyRecords": [
     {
-      "date": "17 Eylül 2026",
-      "isoDate": "2026-09-17",
+      "date": "18 Eylül 2026",
+      "isoDate": "2026-09-18",
       "papers": [
         {
-          "id": "2609.17527v1",
-          "titleTr": "Ajanik Toplumlar İçin Sosyal Bir Donanım İhtiyacı",
-          "title": "Agentic Societies Need a Social Harness",
-          "arxivUrl": "http://arxiv.org/abs/2609.17527v1",
+          "id": "2609.20812v1",
+          "titleTr": "Öncü Kodlama Ajanlarında Görev Tamamlama İddialarının Nicel Analizi",
+          "title": "Quantifying Overclaiming Propensity in Frontier LLM Agents",
+          "arxivUrl": "http://arxiv.org/abs/2609.20812v1",
           "authors": [
-            "Tapan Chugh",
-            "Vidushi Singh",
-            "Krish Jain"
-          ],
-          "category": "cs.AI",
-          "impactScore": 9.7,
-          "whyMad": "Ajanların sadece görev odaklı değil, sosyal uyum odaklı çalışması gerektiğini kanıtlıyor.",
-          "summary": "Ajanik toplumların koordinasyon sorunlarını çözmek için yeni bir sosyal çerçeve öneriyor."
-        },
-        {
-          "id": "2609.17523v1",
-          "titleTr": "Bilimsel Ajanlar İçin Özyinelemeli Öz-İyileştirme",
-          "title": "ScienceBuddy: Recursive-in-Recursive Self-Improvement for Interactive Scientific Agents",
-          "arxivUrl": "http://arxiv.org/abs/2609.17523v1",
-          "authors": [
-            "Shuhan Xue",
-            "Jianyuan Zhong",
-            "Ziyuan Nan"
+            "Nolan Smyth",
+            "Yorguin-Jose Mantilla-Ramos"
           ],
           "category": "cs.AI",
           "impactScore": 9.6,
-          "whyMad": "Ajanların kendi performanslarını bilimsel verilerle sürekli geliştirmesini sağlıyor.",
-          "summary": "Bilimsel araştırma süreçlerini otomatize eden ve kendini geliştiren bir çalışma alanı sunuyor."
+          "whyMad": "Ajanların görevleri tamamlamadan 'tamamladım' demesini (overclaiming) bilimsel olarak ölçen ilk çalışma olması.",
+          "summary": "Ajanların nihai yanıtlarının bağlamla çelişip çelişmediğini inceleyerek, otonom sistemlerin güvenilirliğini ölçmek için yeni bir metrik sunuyor."
         },
         {
-          "id": "2609.17521v1",
-          "titleTr": "Fizik Temelli Video Üretimi İçin PhysStream",
-          "title": "PhysStream: Streaming Physics-Grounded Video Generation with Structured Scene Memory and Fine-Grained Motion Control",
-          "arxivUrl": "http://arxiv.org/abs/2609.17521v1",
+          "id": "2609.20822v1",
+          "titleTr": "Güvenli Robot Manipülasyonu İçin Engel Farkındalıklı Kodlama Ajanları",
+          "title": "Coding Agents with an Obstacle-Aware Harness for Safe Robot Manipulation",
+          "arxivUrl": "http://arxiv.org/abs/2609.20822v1",
           "authors": [
-            "Chuhao Chen",
-            "Peter Wonka",
-            "Chaoyang Wang"
+            "Bingxin Xu",
+            "Yuzhang Shang"
+          ],
+          "category": "cs.RO",
+          "impactScore": 9.5,
+          "whyMad": "Kodlama ajanlarının robotik dünyasında sadece görev odaklı değil, güvenlik odaklı çalışması gerektiğini kanıtlıyor.",
+          "summary": "Robotik manipülasyon görevlerinde engellere çarpmadan hareket edebilen, güvenli kod üreten ajan mimarisi."
+        },
+        {
+          "id": "2609.20816v1",
+          "titleTr": "Görüntü Üretimi ve Düzenleme İçin Birleşik Renk Kontrolü: Paint-Anything",
+          "title": "Paint-Anything: Unified Any-Color Control for Image Generation and Editing",
+          "arxivUrl": "http://arxiv.org/abs/2609.20816v1",
+          "authors": [
+            "Ji Xie",
+            "Dewei Zhou"
           ],
           "category": "cs.CV",
-          "impactScore": 9.5,
-          "whyMad": "Video üretiminde fiziksel kuralları zorunlu kılarak gerçekçiliği artırıyor.",
-          "summary": "Yapılandırılmış sahne belleği ile fiziksel dinamiklere uygun video sentezi."
-        }
-      ]
-    },
-    {
-      "date": "14 Eylül 2026",
-      "isoDate": "2026-09-14",
-      "papers": [
-        {
-          "id": "2609.11923v1",
-          "titleTr": "GPU-CFR: Oyunları Statik Veri Akışına Derleyerek 80 Kat Daha Hızlı Karşıolgusal Pişmanlık Minimizasyonu",
-          "title": "GPU-CFR: 80x Faster Counterfactual Regret Minimization by Compiling the Game to Static Dataflow and CUDA Graph Replay",
-          "arxivUrl": "https://arxiv.org/abs/2609.11923",
-          "authors": [
-            "Araştırma Ekibi"
-          ],
-          "category": "cs.AI",
-          "impactScore": 9.7,
-          "whyMad": "CFR gibi ağır hesaplamalı bir süreci GPU'ya taşıyarak 80 kat hızlandırması, ajanların karar verme yeteneğini devrimsel kılıyor.",
-          "summary": "Oyun ağacını statik veri akışına derleme ve CUDA Graph Replay kullanma yaklaşımı, AI ajanlarının karmaşık oyunlarda karar verme yeteneklerini devrim niteliğinde hızlandırabilir."
-        },
-        {
-          "id": "2609.11916v1",
-          "titleTr": "Kenar Cihazlarda Dağıtılabilir Görsel-Dil Modelleri Türleri Tanımlayabilir mi?",
-          "title": "Can Edge-Deployable Vision-Language Models Identify Species?",
-          "arxivUrl": "https://arxiv.org/abs/2609.11916",
-          "authors": [
-            "Araştırma Ekibi"
-          ],
-          "category": "cs.CV",
-          "impactScore": 9.6,
-          "whyMad": "Küçük, yerel olarak dağıtılabilir VLM'lerin pratik saha uygulamaları için büyük modeller yerine daha erişilebilir çözümler sunduğunu kanıtlıyor.",
-          "summary": "2-8B parametre aralığındaki modellerin tür tanımlama yeteneklerini test ederek, kısıtlı kaynaklı ortamlarda AI kullanımına dair ezber bozuyor."
-        },
-        {
-          "id": "2609.11915v1",
-          "titleTr": "Üretken Pazarlama Karması Modellemesi: İş Etkisiyle GEO ve GEM'i Bağlayan Nedensel Çıkarım Çerçevesi",
-          "title": "Generative Marketing Mix Modeling: A Causal Inference Framework Linking GEO and GEM to Business Impact",
-          "arxivUrl": "https://arxiv.org/abs/2609.11915",
-          "authors": [
-            "Araştırma Ekibi"
-          ],
-          "category": "cs.LG",
-          "impactScore": 9.5,
-          "whyMad": "Üretken yapay zekanın pazarlama üzerindeki etkisini ölçmek için yeni bir nedensel çıkarım çerçevesi sunması, firmaların stratejilerini optimize etmeleri için kritik.",
-          "summary": "Generative Engine Optimization (GEO) ve Generative Engine Marketing (GEM) kavramlarını iş etkisiyle ilişkilendirerek pazarlama dünyasında devrim niteliğinde bir yaklaşım sunuyor."
+          "impactScore": 9.4,
+          "whyMad": "24-bit hex renk kodlarını görüntü üretimine doğrudan entegre ederek tasarımcılar için devrimsel bir kontrol sunuyor.",
+          "summary": "Büyük dil modellerinin renk semantiğini hex kodlarıyla ilişkilendirerek, herhangi bir nesnenin rengini hassas bir şekilde değiştirmeyi sağlıyor."
         }
       ]
     },

@@ -132,11 +132,11 @@
         ]
       },
       {
-        "date": "14 Eylül 2026",
+        "date": "18 Eylül 2026",
         "hypeScore": 4.5,
         "sentiment": "eleştirel",
         "headline": "Eleştiriliyor",
-        "summary": "Beklenmedik on-demand ücretlendirme ve destek hattındaki AI döngüsü nedeniyle kullanıcı tepkisi çekiyor.",
+        "summary": "Güncelleme sonrası yaşanan performans düşüşleri ve bellek sorunları.",
         "sources": [
           "r/CursorAI",
           "r/vscode"
@@ -262,25 +262,14 @@
         ]
       },
       {
-        "date": "14 Eylül 2026",
-        "hypeScore": 6,
-        "sentiment": "eleştirel",
-        "headline": "Kullanım Limiti Sorunu",
-        "summary": "Kullanım limitleri ve token tüketim hızı geliştiricileri hayal kırıklığına uğratıyor.",
-        "sources": [
-          "r/ClaudeDev",
-          "r/ClaudeAI"
-        ]
-      },
-      {
-        "date": "17 Eylül 2026",
+        "date": "18 Eylül 2026",
         "hypeScore": 6,
         "sentiment": "eleştirel",
         "headline": "Eleştiriliyor",
-        "summary": "Kullanım limitleri ve yüksek token maliyetleri nedeniyle topluluk tepkisi.",
+        "summary": "Kullanım limitlerinin çok kısıtlayıcı olması ve geliştiricilerin 'babysitting' (sürekli kontrol) gereksiniminden şikayet etmesi.",
         "sources": [
           "r/ClaudeDev",
-          "r/vibecoding"
+          "r/ClaudeAI"
         ]
       }
     ]
@@ -446,17 +435,6 @@
         "sources": [
           "r/AI_Agents",
           "r/Automate"
-        ]
-      },
-      {
-        "date": "17 Eylül 2026",
-        "hypeScore": 9.3,
-        "sentiment": "stabil",
-        "headline": "Kurumsal Favori",
-        "summary": "Karmaşık ajan süreçlerini görselleştirmedeki başarısı.",
-        "sources": [
-          "r/n8n",
-          "r/AI_Agents"
         ]
       }
     ]
@@ -627,25 +605,13 @@
         ]
       },
       {
-        "date": "14 Eylül 2026",
+        "date": "18 Eylül 2026",
         "hypeScore": 9.8,
         "sentiment": "stabil",
         "headline": "Sektör Standardı",
-        "summary": "Hala geliştiricilerin en çok güvendiği akıl yürütme motoru.",
+        "summary": "Sektördeki en güvenilir model olması.",
         "sources": [
-          "r/ClaudeAI",
-          "r/ChatGPTCoding"
-        ]
-      },
-      {
-        "date": "17 Eylül 2026",
-        "hypeScore": 9.8,
-        "sentiment": "stabil",
-        "headline": "Sektör Standardı",
-        "summary": "Geliştiricilerin en güvendiği model olmaya devam etmesi.",
-        "sources": [
-          "r/ClaudeAI",
-          "r/ClaudeDev"
+          "r/Anthropic"
         ]
       }
     ]
@@ -762,17 +728,6 @@
         "headline": "Altyapı Tekeli",
         "summary": "AI altyapısındaki lider konumunu pekiştirmesi ve sektördeki etkisini sürdürmesi.",
         "sources": [
-          "r/nvidia"
-        ]
-      },
-      {
-        "date": "14 Eylül 2026",
-        "hypeScore": 9.6,
-        "sentiment": "stabil",
-        "headline": "Altyapı Tekeli",
-        "summary": "Veri merkezi kapasite artışları ve AI firmalarının donanım talebi.",
-        "sources": [
-          "r/hardware",
           "r/nvidia"
         ]
       }
@@ -1115,11 +1070,11 @@
         ]
       },
       {
-        "date": "14 Eylül 2026",
+        "date": "18 Eylül 2026",
         "hypeScore": 9.7,
         "sentiment": "stabil",
         "headline": "10M İndirme",
-        "summary": "10 milyon indirme eşiğini aşarak yerel model dağıtımında standart haline geldi.",
+        "summary": "İndirme rekorları.",
         "sources": [
           "r/LocalLLaMA"
         ]
@@ -1207,14 +1162,13 @@
         ]
       },
       {
-        "date": "14 Eylül 2026",
+        "date": "18 Eylül 2026",
         "hypeScore": 9.8,
-        "sentiment": "coşkulu",
-        "headline": "Son 12 Saat Patlaması",
-        "summary": "Video üretimindeki hızı ve kalite dengesiyle son 12 saatte Reddit'te en çok paylaşılan model oldu.",
+        "sentiment": "stabil",
+        "headline": "Video Lideri",
+        "summary": "Video üretimindeki hızı ve kalite tutarlılığı.",
         "sources": [
-          "r/singularity",
-          "r/ArtificialInteligence"
+          "r/singularity"
         ]
       }
     ]
@@ -1284,17 +1238,6 @@
           "r/LocalLLaMA",
           "r/StableDiffusion"
         ]
-      },
-      {
-        "date": "17 Eylül 2026",
-        "hypeScore": 9.6,
-        "sentiment": "stabil",
-        "headline": "Altyapı Tekeli",
-        "summary": "Pazar hakimiyeti ve donanım standartlarını belirlemesi.",
-        "sources": [
-          "r/singularity",
-          "r/programming"
-        ]
       }
     ]
   },
@@ -1349,28 +1292,6 @@
         "sources": [
           "r/LocalLLaMA",
           "r/huggingface"
-        ]
-      },
-      {
-        "date": "14 Eylül 2026",
-        "hypeScore": 9.7,
-        "sentiment": "stabil",
-        "headline": "Günün Lideri",
-        "summary": "Wikipedia ve genel bilgi testlerindeki başarısı ile açık kaynak dünyasının en güvenilir modeli.",
-        "sources": [
-          "r/LocalLLaMA",
-          "r/ArtificialInteligence"
-        ]
-      },
-      {
-        "date": "17 Eylül 2026",
-        "hypeScore": 9.8,
-        "sentiment": "coşkulu",
-        "headline": "Son 12 Saat Patlaması",
-        "summary": "Toplulukta 10 milyon indirme eşiğini aşması ve yerel donanımlarda rakipsiz verimlilik sunması.",
-        "sources": [
-          "r/LocalLLaMA",
-          "r/singularity"
         ]
       }
     ]
@@ -2329,27 +2250,6 @@
         "sources": [
           "r/windsurf"
         ]
-      },
-      {
-        "date": "14 Eylül 2026",
-        "hypeScore": 5.5,
-        "sentiment": "coşkulu",
-        "headline": "Kritik Hata",
-        "summary": "Devin entegrasyonu sonrası yaşanan performans sorunları ve maliyet eleştirileri.",
-        "sources": [
-          "r/windsurf"
-        ]
-      },
-      {
-        "date": "17 Eylül 2026",
-        "hypeScore": 5.5,
-        "sentiment": "coşkulu",
-        "headline": "Kritik Hata",
-        "summary": "Maliyet eleştirilerine rağmen yeni güncellemelerle toparlanma çabası.",
-        "sources": [
-          "r/vibecoding",
-          "r/vscode"
-        ]
       }
     ]
   },
@@ -2460,11 +2360,11 @@
         ]
       },
       {
-        "date": "14 Eylül 2026",
+        "date": "18 Eylül 2026",
         "hypeScore": 9.3,
         "sentiment": "stabil",
         "headline": "Kurumsal Favori",
-        "summary": "Kurumsal ajan dağıtımlarında sağladığı esneklik ve güvenilirlik ile öne çıkıyor.",
+        "summary": "Karmaşık ajan sistemlerini kurumsal düzeyde yönetme yeteneği.",
         "sources": [
           "r/devops",
           "r/sysadmin"
@@ -2598,25 +2498,13 @@
         ]
       },
       {
-        "date": "14 Eylül 2026",
+        "date": "18 Eylül 2026",
         "hypeScore": 9.5,
         "sentiment": "eleştirel",
-        "headline": "Maliyet Şampiyonu",
-        "summary": "Frontier modellerin maliyetine karşı sunduğu $0.15/M token fiyatı ile geliştiricilerin odağında.",
+        "headline": "Görsel Yetenek",
+        "summary": "Görsel modelleme yetenekleri ile öne çıkıyor.",
         "sources": [
-          "r/LocalLLaMA",
-          "r/MachineLearning"
-        ]
-      },
-      {
-        "date": "17 Eylül 2026",
-        "hypeScore": 9.5,
-        "sentiment": "eleştirel",
-        "headline": "Maliyet Şampiyonu",
-        "summary": "Hacker News'te en iyi hacking modeli olarak övülmesi.",
-        "sources": [
-          "r/LocalLLaMA",
-          "r/generativeAI"
+          "r/DeepSeek"
         ]
       }
     ]
@@ -3053,20 +2941,13 @@
         ]
       },
       {
-        "date": "14 Eylül 2026",
+        "date": "18 Eylül 2026",
         "hypeScore": 9.3,
         "sentiment": "stabil",
-        "headline": "Locus Gelişmesi",
-        "sources": []
-      },
-      {
-        "date": "17 Eylül 2026",
-        "hypeScore": 9.3,
-        "sentiment": "stabil",
-        "headline": "Yükselen",
-        "summary": "Açık kaynak inovasyonu ile yerel ajan pazarında büyümesi.",
+        "headline": "Yeni Nesil",
+        "summary": "Açık kaynak inovasyonu ve Mac entegrasyonu.",
         "sources": [
-          "r/AI_Agents"
+          "r/singularity"
         ]
       }
     ]
@@ -3233,11 +3114,14 @@
         ]
       },
       {
-        "date": "14 Eylül 2026",
+        "date": "18 Eylül 2026",
         "hypeScore": 9.2,
         "sentiment": "stabil",
-        "headline": "SWE2 Gelişmesi",
-        "sources": []
+        "headline": "Geliştirici Favorisi",
+        "summary": "Geliştirici iş akışlarına tam uyum.",
+        "sources": [
+          "r/vibecoding"
+        ]
       }
     ]
   },
@@ -3315,6 +3199,16 @@
         "summary": "Kodlama ajanlarının Google Cloud Platform ile entegrasyonunu kolaylaştırması ve geliştirici verimliliğini artırması.",
         "sources": [
           "r/googlecloud"
+        ]
+      },
+      {
+        "date": "18 Eylül 2026",
+        "hypeScore": 8.8,
+        "sentiment": "stabil",
+        "headline": "Yeni Entegrasyon",
+        "summary": "Geliştiricilerin bulut operasyonlarını kolaylaştırması.",
+        "sources": [
+          "r/GoogleCloud"
         ]
       }
     ]
@@ -3448,6 +3342,17 @@
         "sentiment": "coşkulu",
         "headline": "Donanım İnovasyonu",
         "summary": "Modder'ların 16-pin yerine 8-pin konektörlerle çalıştırması ve fiyat artışlarına rağmen yüksek sevkiyat rakamları ile gündemde.",
+        "sources": [
+          "r/nvidia",
+          "r/hardware"
+        ]
+      },
+      {
+        "date": "18 Eylül 2026",
+        "hypeScore": 9.5,
+        "sentiment": "coşkulu",
+        "headline": "Donanım İnovasyonu",
+        "summary": "Donanım hackleri ve 8-pin mod tartışmaları ile yerel AI meraklılarının odağında.",
         "sources": [
           "r/nvidia",
           "r/hardware"
@@ -3586,35 +3491,19 @@
       }
     ]
   },
-  "omarion-sec-cli": {
-    "name": "Omarion SEC CLI",
-    "category": "Otonom Agent",
+  "qwen-3-8-27b": {
+    "name": "Qwen 3.8 27B",
+    "category": "Yerel Model",
     "history": [
       {
-        "date": "17 Eylül 2026",
-        "hypeScore": 9.2,
-        "sentiment": "stabil",
-        "headline": "Yeni Nesil",
-        "summary": "Kendi kendini iyileştiren döngü mimarisi ile dikkat çekmesi.",
+        "date": "18 Eylül 2026",
+        "hypeScore": 9.9,
+        "sentiment": "coşkulu",
+        "headline": "Son 12 Saat Patlaması",
+        "summary": "10 milyon indirme eşiğini aşması ve Unsloth ile gelen inanılmaz hız optimizasyonu.",
         "sources": [
-          "r/AI_Agents",
-          "r/AutoGPT"
-        ]
-      }
-    ]
-  },
-  "rag-eval": {
-    "name": "rag-eval",
-    "category": "Altyapı & SDK",
-    "history": [
-      {
-        "date": "17 Eylül 2026",
-        "hypeScore": 9.1,
-        "sentiment": "stabil",
-        "headline": "Açık Kaynak",
-        "summary": "Sıfır bağımlılık ve yerel çalışma yeteneği.",
-        "sources": [
-          "r/LangChain"
+          "r/LocalLLaMA",
+          "r/singularity"
         ]
       }
     ]

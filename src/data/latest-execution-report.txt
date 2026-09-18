@@ -1,40 +1,40 @@
 ================================================================================
 🤖 AITRENDLERI.COM OTONOM TARAMA VE ANALİZ TERMİNAL RAPORU
-Tarih: 17 Eylül 2026 | İşlem Süresi: 985s
+Tarih: 18 Eylül 2026 | İşlem Süresi: 1140s
 ================================================================================
 
 [1. MODEL & ŞELALE AKTİVİTESİ]
   ✔ Aktif Çalışan Model : gemini-3.1-flash-lite
-  ✔ Seçilen API Anahtarı : GEMINI_API_KEY #2
+  ✔ Seçilen API Anahtarı : GEMINI_API_KEY #5
   ✔ Yürütme Durumu       : BAŞARILI (HTTP 200 OK)
 
 [2. 50 REDDIT TOPLULUĞU TARAMA TELEMETRİSİ]
   ✔ Toplam Analiz Edilen Gönderi : 44
   ✔ Başarılı Kategori / Batch   : 3 / 7
   ------------------------------------------------------------------------------
-  1. [🟢 OK 200] Vibe Coding & Yeni Nesil Editörler: 14 gönderi
-     └─ Dağılım: r/ClaudeAI: 6, r/vibecoding: 3, r/vscode: 1, r/ChatGPTCoding: 2, r/Copilot: 1, r/windsurf: 1, r/ClaudeDev: 1
-  2. [🟢 OK 200] Otonom Ajanlar & Süreç Otomasyonu: 15 gönderi
-     └─ Dağılım: r/AI_Agents: 2, r/n8n: 1, r/agenticAI: 1, r/LangChain: 5, r/crewai: 1, r/AutoGPT: 4, r/Automate: 1
-  3. [🔴 ERR 429] Büyük Dil Modelleri & Araştırma Devleri: 0 gönderi
+  1. [🟢 OK 200] Vibe Coding & Yeni Nesil Editörler: 15 gönderi
+     └─ Dağılım: r/ClaudeAI: 2, r/vibecoding: 1, r/windsurf: 1, r/vscode: 2, r/Copilot: 2, r/CursorAI: 3, r/ClaudeDev: 1, r/ChatGPTCoding: 3
+  2. [🔴 ERR 429] Otonom Ajanlar & Süreç Otomasyonu: 0 gönderi
      └─ Hata/Uyarı: Reddit HTTP 429 (Rate Limit)
+  3. [🟢 OK 200] Büyük Dil Modelleri & Araştırma Devleri: 14 gönderi
+     └─ Dağılım: r/ArtificialInteligence: 1, r/singularity: 4, r/OpenAI: 1, r/DeepSeek: 3, r/Anthropic: 2, r/MachineLearning: 2, r/GoogleGemini: 2
   4. [🔴 ERR 429] Açık Kaynak, Yerel Modeller & Self-Hosted: 0 gönderi
      └─ Hata/Uyarı: Reddit HTTP 429 (Rate Limit)
-  5. [🟢 OK 200] Yazılım Geliştirici, API & Kodlama Dünyası: 15 gönderi
-     └─ Dağılım: r/webdev: 1, r/PromptEngineering: 1, r/programming: 2, r/datascience: 1, r/generativeAI: 4, r/LLMDevs: 5, r/ai_tools: 1
-  6. [🔴 ERR 429] Donanım, GPU, CPU & Bulut Altyapısı: 0 gönderi
+  5. [🔴 ERR 429] Yazılım Geliştirici, API & Kodlama Dünyası: 0 gönderi
      └─ Hata/Uyarı: Reddit HTTP 429 (Rate Limit)
+  6. [🟢 OK 200] Donanım, GPU, CPU & Bulut Altyapısı: 15 gönderi
+     └─ Dağılım: r/sysadmin: 1, r/hardware: 2, r/nvidia: 2, r/AMD_Stock: 4, r/googlecloud: 1, r/Cloud: 1, r/devops: 4
   7. [🔴 ERR 429] Görsel, Video & Medya Üretimi: 0 gönderi
      └─ Hata/Uyarı: Reddit HTTP 429 (Rate Limit)
 
 [3. SUBREDDİT VERİTABANI İÇGÖRÜLERİ (src/data/subreddit-stats.json)]
   ✔ Toplam Takip Edilen Subreddit : 49
-  ✔ Yüksek Sinyal Verenler        : 7
-  ✔ Aktif Düzenli Kaynaklar       : 30
+  ✔ Yüksek Sinyal Verenler        : 19
+  ✔ Aktif Düzenli Kaynaklar       : 18
   ✔ Düşük Sinyal / Takiptekiler   : 12
   ✔ Sıfır Çekenler (Dead Sub)     : 0
   ------------------------------------------------------------------------------
-  🏆 En Çok Katkı Sağlayanlar: r/ClaudeAI (38), r/ChatGPTCoding (27), r/vibecoding (26), r/vscode (23), r/LLMDevs (22)
+  🏆 En Çok Katkı Sağlayanlar: r/ClaudeAI (33), r/ChatGPTCoding (24), r/vibecoding (23), r/vscode (22), r/CursorAI (19)
   ⚠️ Düşük Sinyal Verenler   : r/copilot, r/CrewAI, r/agenticai, r/Singularity, r/vllm, r/AI_Tools, r/GenerativeAI, r/GoogleCloud, r/ComfyUI, r/Midjourney, r/Sora, r/RunwayML
   🚫 Değiştirilmesi Önerilen : Yok (Tümü veri sağlıyor)
 
@@ -46,6 +46,6 @@ Tarih: 17 Eylül 2026 | İşlem Süresi: 985s
 
 [5. GÜNÜN ORGANİK 1 NUMARALI LİDERİ]
   👑 Qwen 3.8 27B (Skor: 99/100 - Günün Lideri)
-  📝 Neden Seçildi: Yerel donanımlarda rakipsiz verimlilik sunması.
+  📝 Neden Seçildi: Açık kaynak dünyasında performans/maliyet dengesini yeniden tanımladı.
 
 ================================================================================

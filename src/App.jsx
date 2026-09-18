@@ -493,7 +493,7 @@ export default function App() {
   const report = useMemo(() => {
     const raw = activeReportData || latestReportData || LATEST_CONSULTANT_REPORT;
 
-    // 1. Hugging Face Best (Sol 5 - Daima tam 5 model)
+    // 1. Hugging Face Best (Sol 5 - En Çok Beğenilen & İndirilen Modeller)
     let hfBest = raw.huggingFaceBest;
     if (!Array.isArray(hfBest) || hfBest.length === 0) {
       hfBest = DEFAULT_HF_BEST;
@@ -501,7 +501,7 @@ export default function App() {
       hfBest = hfBest.slice(0, 5).map((m, idx) => ({
         rank: m.rank || idx + 1,
         id: m.id,
-        name: m.name || m.id,
+        name: m.name || (m.id?.includes('/') ? m.id.split('/')[1] : m.id) || DEFAULT_HF_BEST[idx]?.name || 'Açık Model',
         downloads: m.downloads ? String(m.downloads) : (DEFAULT_HF_BEST[idx]?.downloads || '1.0M'),
         likes: typeof m.likes === 'number' ? m.likes : (DEFAULT_HF_BEST[idx]?.likes || 1000),
         tag: m.tag || DEFAULT_HF_BEST[idx]?.tag || 'Açık Standart',
@@ -1784,7 +1784,7 @@ ${bulletsText}
                     <div className="bg-[#f8fafc] border-b border-[#cbd5e1] px-3 py-2 flex items-center justify-between">
                       <span className="text-xs font-bold font-mono text-slate-800 flex items-center gap-1.5">
                         <span>🏆</span>
-                        <span>Mevcut En İyiler (Endüstri Standartları)</span>
+                        <span>En Çok Beğenilen &amp; İndirilenler</span>
                       </span>
                       <span className="text-[10px] font-mono text-slate-500">Top 5 Model</span>
                     </div>

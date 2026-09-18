@@ -2,8 +2,8 @@ name: Günlük Reddit AI Trend Taraması & Canlı Dağıtım
 
 on:
   schedule:
-    # Her gün gece 03:00 TSİ (00:00 UTC) ve öğleden sonra 15:00 TSİ (12:00 UTC) çalışır
-    - cron: '0 0,12 * * *'
+    # Her gün gece 03:00 TSİ (00:00 UTC) çalışır (15:00 kaldırıldı / boşuna çalışmaması için)
+    - cron: '0 0 * * *'
   workflow_dispatch: # GitHub üzerinden tek tıkla manuel tetikleme
 
 jobs:
@@ -28,8 +28,9 @@ jobs:
       - name: Bağımlılıkları Yükle
         run: npm ci || npm install
 
-      - name: 50 Reddit Sub Taraması & Gemini 3.8 Şelale Analizi
+      - name: 50 Reddit Sub Taraması & DeepSeek / Gemini Şelale Analizi
         env:
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}
           GEMINI_API_KEY_3: ${{ secrets.GEMINI_API_KEY_3 }}

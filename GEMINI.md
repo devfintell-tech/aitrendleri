@@ -75,10 +75,10 @@ Bu belge, bu projenin tüm tasarım, veri mimarisi ve geliştirme standartların
 
 ## 🤗 5. Hugging Face Liderlik Tablosu
 
-1. **Sol Sütun (5 Amiral Gemisi Model):**
-   - DeepSeek V3, Llama 3.3 70B, Qwen 2.5 Coder 32B, FLUX.1 Schnell, Whisper Large v3 gibi sektör standartları.
+1. **Sol Sütun (5 En Çok Beğenilen & İndirilen Model):**
+   - Hugging Face API'sinden (`sort=likes` ve `sort=downloads`) günlük olarak dinamik çekilen, açık kaynak ekosisteminde en çok beğenilen ve indirilen 5 açık model. Kod seviyesinde sabit/hardcoded amiral model dayatması yapılamaz; güncel API verileri esastır.
 2. **Sağ Sütun (5 Trend Model):**
-   - Son 24 saatte Hugging Face'te en çok indirme ve beğeni ivmesi yakalayan modeller.
+   - Son 24 saatte Hugging Face'te en çok indirme ve beğeni ivmesi yakalayan (`sort=trendingScore`) modeller.
 
 ---
 
@@ -106,4 +106,19 @@ Bu belge, bu projenin tüm tasarım, veri mimarisi ve geliştirme standartların
    - Kartların hiçbirinde dikey veya yatay kaydırma çubuğu KULLANILAMAZ.
    - 3'lü sütun satırlarındaki tüm kavram başlıkları ve tanım paragrafları milimetrik olarak aynı çizgide başlar ve eşitlenerek biter.
 
+---
 
+## 🤖 8. AI Ürün Sıralaması, Organik Duygu Analizi & Sıfır Yapay Yönlendirme İlkesi
+
+1. **Sıfır Yapay Yönlendirme (No Concept Hijacking / No Artificial Mapping):**
+   - Kod ve analiz süreçlerinde bir kavram veya akım (örneğin "Vibe Coding", "Workspace", "Self-Hosted") görüldüğünde asla yapay olarak başka bir ürüne (Cursor, Ollama vb.) zorla bağlanamaz / map edilemez.
+   - Cursor yalnızca gerçekten Cursor tartışılıyorsa listeye girebilir; her ürün yalnızca kendi konuşulma sıklığına ve popülaritesine göre bağımsızca sıralamaya dahil olur.
+
+2. **Tüm Sıcak Başlıkların Taranması & Somut Yapay Zeka Ürünü Şartı:**
+   - Son 24 saatte Reddit'te tartışılan tüm sıcak başlıklar, tartışmalar ve içerikler eksiksiz taranır.
+   - Sıralamaya girebilecek tek şart **somut bir yapay zeka ürünü** olmasıdır (Büyük dil modeli, açık kaynak yerel model, otonom ajan, AI CLI / terminal aracı, AI editör / IDE, framework, GPU veya AI donanımı).
+   - "Maliyet", "felsefe", "anket", "iş piyasası" gibi soyut meta tartışma başlıkları ürün olmadıkları için doğrudan sıralamaya alınamaz; ancak bu tartışmaların içinde geçen somut AI araçları tespit edilerek değerlendirilir.
+
+3. **Şeffaf Nedenler & Duygu Analizi (`whyTrending`):**
+   - Sıralamadaki her ürünün kartına tıklandığında neden hypelandığı veya neden eleştirildiği (`whyTrending`, `primaryFunction`, `badge`) topluluğun gerçek yorumlarına dayanarak net şekilde gösterilmelidir.
+   - Topluluk bir ürünü övüyorsa yüksek puan (`hypeScore`, `+` delta), eleştiriyorsa (sansür, hata, bellek sorunu, pahalılık) düşük puan (`-` delta) verilir.

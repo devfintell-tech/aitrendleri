@@ -26,7 +26,10 @@ if (fs.existsSync(envPath)) {
   }
 }
 
-// 6 Farklı Gemini API Anahtar Havuzu (Yedekli ve Rotasyonlu - Sadece ortam değişkenlerinden okunur)
+// 🥇 1. BAŞ API: DeepSeek v4.1 Flash API Anahtarı (Öncelikli Baş Motor)
+const DEEPSEEK_API_KEY = process.env.DEEPSEEK_API_KEY;
+
+// 🥈 2. YEDEK API: 6 Farklı Gemini API Anahtar Havuzu (Yedekli ve Rotasyonlu)
 const GEMINI_API_KEYS = [
   process.env.GEMINI_API_KEY_6,
   process.env.GEMINI_API_KEY_5,
@@ -161,16 +164,16 @@ async function fetchBatchPosts(batch) {
 }
 
 /**
- * 2. HUGGING FACE API (%100 Ücretsiz Açık Uç Nokta)
- * Açık kaynak & yerel modellerin gerçek indirme ve beğeni sayıları.
+ * 2. HUGGING FACE API (%100 Ücretsiz Açık Uç Noktalar)
+ * Açık kaynak & yerel modellerin gerçek indirme, beğeni ve trend sayıları.
  */
 async function fetchHuggingFaceTrending() {
   console.log("🤗 Hugging Face API'den trending yerel modeller çekiliyor...");
   try {
-    const url = "https://huggingface.co/api/models?sort=trendingScore&direction=-1&limit=12&full=false";
+    const url = "https://huggingface.co/api/models?sort=trendingScore&direction=-1&limit=15&full=false";
     const res = await fetch(url, { headers: { "Accept": "application/json" } });
     if (!res.ok) {
-      console.warn(`⚠️ Hugging Face HTTP ${res.status}`);
+      console.warn(`⚠️ Hugging Face Trending HTTP ${res.status}`);
       return [];
     }
     const list = await res.json();
@@ -182,7 +185,30 @@ async function fetchHuggingFaceTrending() {
       author: m.author || (m.id.includes("/") ? m.id.split("/")[0] : "community")
     }));
   } catch (err) {
-    console.warn("⚠️ Hugging Face modelleri çekilemedi:", err.message);
+    console.warn("⚠️ Hugging Face trending modelleri çekilemedi:", err.message);
+    return [];
+  }
+}
+
+async function fetchHuggingFaceTopModels() {
+  console.log("⭐ Hugging Face API'den en çok beğenilen ve indirilen modeller çekiliyor...");
+  try {
+    const url = "https://huggingface.co/api/models?sort=likes&direction=-1&limit=15&full=false";
+    const res = await fetch(url, { headers: { "Accept": "application/json" } });
+    if (!res.ok) {
+      console.warn(`⚠️ Hugging Face Top Models HTTP ${res.status}`);
+      return [];
+    }
+    const list = await res.json();
+    return (list || []).map(m => ({
+      id: m.id,
+      likes: m.likes || 0,
+      downloads: m.downloads || 0,
+      pipeline_tag: m.pipeline_tag || "text-generation",
+      author: m.author || (m.id.includes("/") ? m.id.split("/")[0] : "community")
+    }));
+  } catch (err) {
+    console.warn("⚠️ Hugging Face en çok beğenilen modeller çekilemedi:", err.message);
     return [];
   }
 }
@@ -427,6 +453,57 @@ function loadToolHistorySummary() {
 }
 
 /**
+ * Belirtilen model ve API anahtarı ile DeepSeek çağrısı yapar.
+ * OpenAI uyumlu uç nokta üzerinden çalışır.
+ */
+async function callDeepSeek(model, apiKey, prompt) {
+  const apiUrl = "https://api.deepseek.com/chat/completions";
+  const payload = {
+    model: model,
+    messages: [
+      {
+        role: "system",
+        content: "Sen kıdemli bir Yapay Zeka, GPU/Donanım, Bulut Platformları ve Yazılım Ekosistemi Baş Danışmanısın. Yanıtında KESİNLİKLE YALNIZCA geçerli bir JSON çıktısı üret. Başka hiçbir açıklama veya markdown metin ekleme."
+      },
+      {
+        role: "user",
+        content: prompt
+      }
+    ],
+    temperature: 0.2,
+    max_tokens: 16384,
+    response_format: { type: "json_object" }
+  };
+
+  const res = await fetch(apiUrl, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${apiKey}`
+    },
+    body: JSON.stringify(payload),
+    signal: AbortSignal.timeout(120000)
+  });
+
+  if (!res.ok) {
+    throw new Error(`DeepSeek HTTP ${res.status}: ${await res.text()}`);
+  }
+
+  const json = await res.json();
+  if (json.usage) {
+    console.log(`📊 DeepSeek Token: Prompt: ${json.usage.prompt_tokens}, Çıktı: ${json.usage.completion_tokens} (Düşünce: ${json.usage.completion_tokens_details?.reasoning_tokens || 0})`);
+  }
+  const rawText = json.choices?.[0]?.message?.content || "";
+  const cleaned = rawText
+    .replace(/^```(?:json)?\s*/i, "")
+    .replace(/\s*```$/i, "")
+    .trim();
+  const parsed = JSON.parse(cleaned);
+  console.log(`📋 DeepSeek Çıktısı: Daily ${parsed.daily?.length || 0} ürün, Sections: ${parsed.sections?.length || 0}`);
+  return parsed;
+}
+
+/**
  * Belirtilen model ve API anahtarı ile Gemini çağrısı yapar.
  * Google Search Grounding destekli çalışır.
  */
@@ -471,38 +548,67 @@ async function callGemini(model, apiKey, prompt) {
 
 /**
  * ŞELALE SİSTEMİ: En yüksekten adım adım en aşağıya, en iyiden hafife doğru akar.
+ * 🥇 BAŞ API: DeepSeek v4.1 Flash
+ * 🥈 YEDEK API: Google Gemini 6'lı Rotasyonlu Anahtar Havuzu
  */
 async function generateWithWaterfall(prompt) {
-  const MODELS = [
-    "gemini-flash-latest",      // 🥇 1. ÖNCELİK: Google üretim yük dengeleyicili kararlı flaş model
-    "gemini-flash-lite-latest", // 🥈 2. ÖNCELİK: Google üretim yük dengeleyicili hafif flaş model
-    "gemini-3.8-flash",         // 🥉 3. ÖNCELİK: Doğrudan 3.8 flaş model
-    "gemini-3.7-flash",         // 4. Doğrudan 3.7 flaş model
-    "gemini-3.6-flash",         // 5. Doğrudan 3.6 flaş model
-    "gemini-3.5-flash",         // 6. Doğrudan 3.5 flaş model
-    "gemini-3.5-flash-lite",    // 7. Doğrudan 3.5 hafif model
-    "gemini-3.1-flash-lite",    // 8. Doğrudan 3.1 hafif model
-    "gemini-3-flash-preview"    // 9. 3.0 önizleme flaş model
+  // 🥇 1. BAŞ API: DeepSeek v4.1 Flash & Pro (1. ve 2. Öncelikli Baş Motor)
+  if (DEEPSEEK_API_KEY) {
+    const DEEPSEEK_MODELS = [
+      "deepseek-flash",    // 🥇 1. ÖNCELİK (BAŞ API): DeepSeek v4.1 Flash
+      "deepseek-v4-pro"    // 🥈 2. ÖNCELİK: DeepSeek v4 Pro
+    ];
+
+    for (const model of DEEPSEEK_MODELS) {
+      console.log(`🚀 [BAŞ API] Deneniyor: Model [${model}] (DeepSeek v4.1)...`);
+      try {
+        const result = await callDeepSeek(model, DEEPSEEK_API_KEY, prompt);
+        const isRichResponse = (
+          result &&
+          Array.isArray(result.daily) && result.daily.length >= 6
+        );
+        if (isRichResponse) {
+          console.log(`🎯 MÜKEMMEL BAŞARI! Baş API [${model}] ile ${result.daily.length} ürün başarıyla işlendi.`);
+          return { data: result, modelUsed: `DeepSeek v4.1 (${model})`, keyIndex: 1 };
+        } else if (result && result.daily && result.daily.length > 0) {
+          console.warn(`⚠️ [${model}] eksik/kısmi şema üretti (daily: ${result.daily?.length}). Sıradaki deneniyor...`);
+        }
+      } catch (err) {
+        console.warn(`⚠️ [${model}] başarısız: ${err.message.substring(0, 120)}... Sıradaki deneniyor.`);
+      }
+    }
+  }
+
+  // 🥈 2. YEDEK API: Google Gemini Şelalesi (3. Öncelik ve sonrası)
+  const GEMINI_MODELS = [
+    "gemini-flash-latest",      // Google üretim yük dengeleyicili kararlı flaş model
+    "gemini-flash-lite-latest", // Google üretim yük dengeleyicili hafif flaş model
+    "gemini-3.8-flash",         // Doğrudan 3.8 flaş model
+    "gemini-3.7-flash",         // Doğrudan 3.7 flaş model
+    "gemini-3.6-flash",         // Doğrudan 3.6 flaş model
+    "gemini-3.5-flash",         // Doğrudan 3.5 flaş model
+    "gemini-3.5-flash-lite",    // Doğrudan 3.5 hafif model
+    "gemini-3.1-flash-lite",    // Doğrudan 3.1 hafif model
+    "gemini-3-flash-preview"    // 3.0 önizleme flaş model
   ];
 
-  for (const model of MODELS) {
+  for (const model of GEMINI_MODELS) {
     for (let i = 0; i < GEMINI_API_KEYS.length; i++) {
       const apiKey = GEMINI_API_KEYS[i];
       const keySnippet = apiKey.substring(0, 8) + "..." + apiKey.slice(-4);
-      console.log(`🔄 Deneniyor: Model [${model}] | API Anahtarı #${i + 1} (${keySnippet})...`);
+      console.log(`🔄 [Yedek API] Deneniyor: Model [${model}] | API Anahtarı #${i + 1} (${keySnippet})...`);
 
       try {
         const result = await callGemini(model, apiKey, prompt);
         const isRichResponse = (
           result &&
-          Array.isArray(result.daily) && result.daily.length >= 6 &&
-          Array.isArray(result.sections) && result.sections.length >= 3
+          Array.isArray(result.daily) && result.daily.length >= 6
         );
         if (isRichResponse) {
-          console.log(`🎯 MÜKEMMEL BAŞARI! Model [${model}] (Anahtar #${i + 1}) ile eksiksiz veri işlendi.`);
+          console.log(`🎯 MÜKEMMEL BAŞARI! Model [${model}] (Anahtar #${i + 1}) ile ${result.daily.length} ürün işlendi.`);
           return { data: result, modelUsed: model, keyIndex: i + 1 };
         } else if (result && result.daily && result.daily.length > 0) {
-          console.warn(`⚠️ [${model}] (Anahtar #${i + 1}) eksik/kısmi şema üretti (daily: ${result.daily?.length}, sections: ${result.sections?.length || 0}). Sıradaki deneniyor...`);
+          console.warn(`⚠️ [${model}] (Anahtar #${i + 1}) eksik şema üretti (daily: ${result.daily?.length}). Sıradaki deneniyor...`);
         }
       } catch (err) {
         console.warn(`⚠️ [${model}] (Anahtar #${i + 1}) başarısız: ${err.message.substring(0, 100)}... Sıradaki deneniyor.`);
@@ -517,6 +623,21 @@ async function generateWithWaterfall(prompt) {
  * Ana işlem akışı
  */
 async function main() {
+  // Eğer son 4 saat içinde bugünün raporu zaten başarıyla oluşturulmuşsa boşuna çalışma
+  const latestReportPath = path.join(__dirname, "../src/data/latest-report.json");
+  if (fs.existsSync(latestReportPath) && !process.env.FORCE_RUN) {
+    try {
+      const existing = JSON.parse(fs.readFileSync(latestReportPath, "utf-8"));
+      const todayIso = new Date().toISOString().split("T")[0];
+      const fileMtime = fs.statSync(latestReportPath).mtimeMs;
+      const hoursSinceModified = (Date.now() - fileMtime) / (1000 * 60 * 60);
+      if (existing.isoDate === todayIso && hoursSinceModified < 4) {
+        console.log(`✅ Bugünün (${todayIso}) raporu zaten taze (${hoursSinceModified.toFixed(1)} saat önce başarıyla oluşturuldu). 15:00 taraması boşuna çalıştırılmıyor, sistem güncel.`);
+        return;
+      }
+    } catch (e) {}
+  }
+
   console.log("🚀 Canlı Yapay Zeka İstihbarat Radarı (Reddit + Google Search Teyidi + HF + ArXiv) Başlatılıyor...");
   const startTime = Date.now();
 
@@ -541,10 +662,17 @@ async function main() {
   }
 
   // 2. HUGGING FACE YEREL MODEL VE TREND VERİLERİNİ TOPLA
-  const hfModels = await fetchHuggingFaceTrending();
-  let hfSummary = "";
+  const [hfModels, hfTopModels] = await Promise.all([
+    fetchHuggingFaceTrending(),
+    fetchHuggingFaceTopModels()
+  ]);
+  let hfTrendingSummary = "";
   if (hfModels.length > 0) {
-    hfSummary = hfModels.map(m => `- Model: ${m.id} | İndirme: ${m.downloads.toLocaleString()} | Beğeni: ${m.likes} | Tür: ${m.pipeline_tag}`).join("\n");
+    hfTrendingSummary = hfModels.map(m => `- Model: ${m.id} | İndirme: ${m.downloads.toLocaleString()} | Beğeni: ${m.likes} | Tür: ${m.pipeline_tag}`).join("\n");
+  }
+  let hfTopSummary = "";
+  if (hfTopModels.length > 0) {
+    hfTopSummary = hfTopModels.map(m => `- Model: ${m.id} | İndirme: ${m.downloads.toLocaleString()} | Beğeni: ${m.likes} | Tür: ${m.pipeline_tag}`).join("\n");
   }
 
   // 3. ARXİV BİLİMSEL MAKALE HAVUZU
@@ -577,7 +705,7 @@ async function main() {
   }
 
   const historySummary = loadToolHistorySummary();
-  console.log(`📊 Toplam ${totalPosts} Reddit gönderisi, ${hfModels.length} Hugging Face modeli, ${hnPosts.length} Hacker News tartışması, ${candidateArxiv.length} taze ArXiv adayı ve ${githubCandidates.length} GitHub repo adayı toplandı.`);
+  console.log(`📊 Toplam ${totalPosts} Reddit gönderisi, ${hfModels.length} Hugging Face trend modeli, ${hfTopModels.length} Hugging Face amiral modeli, ${hnPosts.length} Hacker News tartışması, ${candidateArxiv.length} taze ArXiv adayı ve ${githubCandidates.length} GitHub repo adayı toplandı.`);
 
   const prompt = `
     Sen kıdemli bir "Yapay Zeka, GPU/Donanım, Bulut Platformları ve Yazılım Ekosistemi Baş Danışmanısın".
@@ -585,7 +713,7 @@ async function main() {
     ════════════════════════════════════════════════════════════════════
     🚨 EN KRİTİK KURAL 1: %100 DOĞAL, MANİPÜLASYONSUZ VE ORGANİK SIRALAMA:
     - Kesinlikle hiçbir modeli, şirketi veya aracı önceden şart koşma veya yapay olarak 1 numaraya zorlama!
-    - Reddit topluluklarında, ArXiv'de ve teknoloji gündeminde o gün EN ÇOK KONUŞULAN, EN YÜKSEK HYPE VE İVMEYE SAHİP GERÇEK MODEL/ARAÇ HANGİSİYSE DOĞAL OLARAK ONU 1 NUMARAYA (#1) YERLEŞTİR.
+    - Reddit topluluklarında, ArXiv'de ve teknoloji gündeminde o gün EN ÇOK KONUŞULAN, EN YÜKSEK HYPE VE İVMEYE SAHİP GERÇEK MODEL/ARAÇ/DONANIM HANGİSİYSE DOĞAL OLARAK ONU 1 NUMARAYA (#1) YERLEŞTİR.
     - Reddit'te konuşulan taze ve sıcak kırılmaları eski modellerin önüne al, ancak her şey tamamen toplanan veriye dayansın.
 
     🚨 EN KRİTİK KURAL 2: EN YUKARIDAKİ SIRALAMA TABLOLARI %100 REDDİT ODAKLIDIR:
@@ -594,12 +722,12 @@ async function main() {
     - Hugging Face, GitHub ve Hacker News verileri yalnızca kendi alt bölümleri içindir; üst sıralamayı asla değiştiremez veya manipüle edemez.
     - Tüm araçların 'sources' alanları İSTİSNASIZ Reddit toplulukları (örn. ["r/LocalLLaMA", "r/singularity", "r/vibecoding"]) olmalıdır.
 
-    🚨 EN KRİTİK KURAL 3: SIRALAMADAKİ TÜM ÖĞELER SOMUT BİR 'ÜRÜN / MODEL / YAZILIM / ARAÇ' OLMAK ZORUNDADIR:
-    - Bir şirketin, topluluğun veya yazılımcının somut bir ürünü olmalıdır (LLM, Yerel Model, VLM, CLI Aracı, IDE / Editör, Otonom Ajan, Framework vb.).
-    - KESİNLİKLE "Vibe Coding", "AI Workspace", "Self-Hosted Setup" gibi genel kavramlar, metodolojiler, felsefi akımlar, Reddit tartışma başlıkları veya soyut fikirler sıralamaya GİREMEZ!
-    - Örneğin "Vibe Coding" bir ürün DEĞİLDİR; onun yerine Cursor, Windsurf, Claude Code, GitHub Copilot veya Cline gibi somut araçları yazmalısın.
-    - Örneğin "AI Workspace" veya "Self-Hosted AI" bir ürün DEĞİLDİR; onun yerine Ollama, Open WebUI, LM Studio, vLLM, Jan gibi somut araçları yazmalısın.
-    - Yalnızca çalışan, doğrudan indirilebilen veya erişilebilen gerçek yazılım/model ürünlerini listele.
+    🚨 EN KRİTİK KURAL 3: SIRALAMADAKİ TÜM ÖĞELER SOMUT BİR 'YAPAY ZEKA ÜRÜNÜ / MODEL / AJAN / ARAÇ / DONANIM' OLMAK ZORUNDADIR:
+    - Toplanan tüm Reddit başlıklarını, sıcak tartışmaları ve içerikleri tara.
+    - Tartışılan konuların içinden somut bir Yapay Zeka Ürünü olanları belirle (Büyük Dil Modeli, Açık Kaynak Yerel Model, Otonom Ajan, AI CLI / Terminal Aracı, AI Editör / IDE, Altyapı / Framework, AI GPU / Donanım).
+    - KESİNLİKLE soyut kavramları veya genel forum tartışma başlıklarını (örn. "maliyet", "anket", "iş piyasası", "felsefe", "kariyer tavsiyesi") ürünmüş gibi sıralamaya ekleme!
+    - DİKKAT (SIFIR YAPAY EŞLEME): Soyut bir kavram veya tartışma gördüğünde bunu zorla başka bir ürüne (örn. 'Vibe Coding' görünce zorla Cursor'a) ASLA BAĞLAMA! Yalnızca o tartışmada gerçekten hangi somut yapay zeka ürünü (Cursor, Windsurf, Claude Code, Copilot, Cline, Ollama, DeepSeek, vLLM, RTX 5090 vb.) konuşuluyorsa ve öne çıkıyorsa onu kendi saf adıyla listele. Hiçbir zorlama veya yönlendirme olmasın.
+    - Sıralamaya giren her şeyin son 24 saatte bizzat konuşulan gerçek bir yapay zeka ürünü olması tek şarttır.
 
     🚨 EN KRİTİK KURAL 4: 'name' ALANINDA ASLA PARANTEZ KULLANILAMAZ:
     - 'name' alanı YALNIZCA ve SADECE ürünün saf marka/yazılım adıdır.
@@ -607,17 +735,19 @@ async function main() {
 
     🚨 EN KRİTİK KURAL 5: PUANLAMA VE DUYGU ANALİZİ (TOPLULUK NASIL KONUŞUYOR?):
     - Sıralamaya giren ürünlerin hepsi zaten konuşulmaktadır; ancak bizim için önemli olan TOPLULUĞUN ONLARA KAÇ PUAN VERDİĞİDİR.
-    - Bir ürün çok konuşuluyor diye otomatik olarak 9-10 puan verilemez. Nasıl konuşulduğu esastır:
+    - Bir ürün çok konuşuluyor diye otomatik olarak 9-10 puan verilemez. Nasıl konuşulduğu ve beğenilip beğenilmediği esastır:
       * EĞER TOPLULUK BİR MODEL VEYA ÜRÜN HAKKINDA OLUMSUZ/ELEŞTİREL KONUŞUYORSA (örn: reklam enjeksiyonu, bellek sızıntısı, güncelleme sonrası bozulma, sansür, fahiş fiyat, hayal kırıklığı):
         -> KESİNLİKLE DÜŞÜK PUAN VER (4.5 - 6.8 arası).
         -> scoreDelta'yı EKSİ yaz (-0.5, -1.2, -1.8 gibi).
         -> trend: "cooling" yap.
         -> badge: "Reklam Tepkisi", "Eleştiriliyor", "Bellek Sorunu", "Regresyon" gibi rozetler koy.
+        -> whyTrending alanına topluluğun NEDEN eleştirdiğini ve neyden şikayet ettiğini detaylıca yaz!
       * EĞER TOPLULUK ARACI ÖVÜYOR VE TAVSİYE EDİYORSA:
         -> YÜKSEK PUAN VER (8.5 - 9.8 arası).
         -> scoreDelta'yı ARTI yaz (+0.4, +0.8 gibi).
         -> trend: "rising" veya "skyrocketing" yap.
-    - Tüm ürünlere tekdüze 9-10 puan vermek yasaktır; eleştirilen araçların puanları ve deltaları sert biçimde düşmelidir.
+        -> whyTrending alanına topluluğun NEDEN hypelandığını ve hangi özelliğini beğendiğini detaylıca yaz!
+    - Kullanıcı bir karta tıkladığında ürünün neden hypelandığını, neden beğenilip beğenilmediğini detaylıca görebilmelidir.
     ════════════════════════════════════════════════════════════════════
 
     Aşağıda derlenen son 24 saatin istihbaratı yer almaktadır:
@@ -627,8 +757,12 @@ async function main() {
     ${allDiscussions}
 
     ════════════════════════════════════════════════════════════════════
-    2. 🤗 HUGGING FACE GERÇEK İNDİRME VERİLERİ (YALNIZCA ALT BÖLÜM İÇİNDİR - SIRALAMAYI ETKİLEMEZ!):
-    ${hfSummary || "Veri çekilemedi."}
+    2. 🤗 HUGGING FACE GÜNCEL VERİLERİ (YALNIZCA ALT BÖLÜM İÇİNDİR - SIRALAMAYI ETKİLEMEZ!):
+    [EN ÇOK BEĞENİLEN VE İNDİRİLEN MODELLER - SOL SÜTUN]:
+    ${hfTopSummary || "Veri çekilemedi."}
+
+    [SON 24 SAATİN TREND MODELLERİ - SAĞ SÜTUN]:
+    ${hfTrendingSummary || "Veri çekilemedi."}
 
     ════════════════════════════════════════════════════════════════════
     3. 🔬 ARXİV BİLİMSEL YAPAY ZEKA VE MAKİNE ÖĞRENİMİ MAKALE HAVUZU:
@@ -658,7 +792,7 @@ async function main() {
 
     2. "daily" (24 Saatlik Sekme):
        - Bugünün genel günlüğünü temsil eder (en az 10-14 adet).
-       - Zirvede günün en büyük modelleri yer almalıdır.
+       - Zirvede günün en popüler yapay zeka ürünleri yer almalıdır.
 
     3. "weekly" (1 Haftalık Sekme):
        - Kalıcı hafızadaki son 7 günlük kayıtları ve gerçek performansı harmanla.
@@ -668,7 +802,7 @@ async function main() {
 
     KATEGORİLENDİRME KURALLARI:
     Her araca veya modele MUTLAKA şu kategorilerden tam olarak birini ver:
-    - "LLM (Model)", "Yerel Model", "IDE / Editör", "CLI / Terminal", "Otonom Agent", "Otomasyon", "Altyapı & SDK", "Bulut & Platform", "Medya / Üretim", "Şirket / Lab".
+    - "LLM (Model)", "Yerel Model", "IDE / Editör", "CLI / Terminal", "Otonom Agent", "Otomasyon", "Altyapı & SDK", "Bulut & Platform", "Medya / Üretim", "Donanım / Çip", "Şirket / Lab".
 
     ARXİV MAKALE KURALLARI:
     - "arxivDaily" listesi için: "ADAY YENİ MAKALE HAVUZU"ndan en çarpıcı, en yenilikçi ve en mantıklı 3 makaleyi seç.
@@ -676,11 +810,11 @@ async function main() {
     - TÜRKÇE BAŞLIK ZORUNLULUĞU: "arxivDaily" ve "arxivWeeklyBest" listelerindeki HER makale için MUTLAKA "titleTr" alanını üret. Bu alan makalenin anlaşılır, akıcı, net ve profesyonel TÜRKÇE başlığı olmalıdır (Örn: "Teşhis, Çeşitlendirme ve Stabilizasyon Yoluyla Hata Yapılı Prompt Optimizasyonu (ESPO)"). "title" alanında ise orijinal İngilizce başlık yer alsın.
 
     HUGGING FACE LİDERLİK TABLOSU (TAM OLARAK İKİ AYRI LİSTE - HER BİRİ 5 MODEL):
-    1. "huggingFaceBest": Mevcut En İyiler (Endüstri Standartları) - TAM OLARAK 5 ADET AÇIK AĞIRLIKLI AMİRAL GEMİSİ MODEL:
-       - DeepSeek V3, Llama 3.3 70B, Qwen 2.5 Coder 32B, FLUX.1 Schnell, Whisper Large v3 (veya günün en güçlü açık benchmark modelleri).
+    1. "huggingFaceBest": Güncel En Çok Beğenilen & İndirilen Açık Modeller (Sol Sütun) - TAM OLARAK 5 ADET AÇIK MODEL:
+       - Yukarıda iletilen Hugging Face "En Çok Beğenilen ve İndirilen Modeller" listesinden en popüler 5 açık modeli seç. Sabit isim şartı yoktur, API'den gelen güncel verilere dayanmalıdır.
        - Her model için: rank (1-5), id, name, downloads, likes, tag, function (Ne İşe Yarar?), distinction (Diğerlerinden Farkı & Ayrışan Yönü?), whyHype (Neden Hypelandı?), environment (Çalışma Ortamı & Donanım Gereksinimi) alanlarını eksiksiz üret.
-    2. "huggingFaceTrending": Bugün Yükselişe Geçenler (24s Trending) - TAM OLARAK 5 ADET MODEL:
-       - Yukarıda iletilen Hugging Face trend verisinden en çok ivme yakalayan 5 açık modeli seç.
+    2. "huggingFaceTrending": Bugün Yükselişe Geçenler (24s Trending - Sağ Sütun) - TAM OLARAK 5 ADET MODEL:
+       - Yukarıda iletilen Hugging Face "Son 24 Saatin Trend Modelleri" listesinden en çok ivme yakalayan 5 açık modeli seç.
        - Her model için: rank (1-5), id, name, downloads, likes, tag, function, distinction, whyHype, environment alanlarını eksiksiz üret.
 
     GİTHUB AI YÜKSELEN YILDIZLAR RADARI (TAM OLARAK 4 ZAMAN DİLİMİ - HER BİRİ 6 REPO):
@@ -901,7 +1035,7 @@ async function main() {
   const { data: rawResultJson, modelUsed: activeModelUsed, keyIndex: activeKeyIndex } = await generateWithWaterfall(prompt);
 
   // KESKİN STANDARTLAR DENETÇİSİ (Verilerin yerli yerine oturmasını ve hiçbir zaman eksik kalmamasını garanti eder)
-  const resultJson = enforceStrictStandards(rawResultJson, hfModels, candidateArxiv, hnPosts, githubCandidates);
+  const resultJson = enforceStrictStandards(rawResultJson, hfModels, candidateArxiv, hnPosts, githubCandidates, hfTopModels);
 
   const duration = Math.round((Date.now() - startTime) / 1000);
   const dateStr = new Date().toLocaleDateString("tr-TR", {
@@ -1152,13 +1286,46 @@ function updateSubredditStats(batchTelemetry, isoDate) {
  * Keskin Standartlar Denetçisi:
  * Her analiz çıktısının sitenin değişmez kurallarına ve eksiksiz veri şemasına uymasını zorunlu kılar.
  */
-function enforceStrictStandards(data, hfModels = [], candidateArxiv = [], hnPosts = [], githubCandidates = []) {
+function enforceStrictStandards(data, hfModels = [], candidateArxiv = [], hnPosts = [], githubCandidates = [], hfTopModels = []) {
   const clean = { ...data };
 
-  // 1. Standart 5 Endüstri Amiral Gemisi Açık Model (Mevcut En İyiler)
-  const BENCHMARK_BEST_5 = [
+  const formatDl = (dl) => {
+    if (typeof dl === 'string') return dl;
+    if (typeof dl === 'number') {
+      if (dl >= 1000000) return (dl / 1000000).toFixed(2) + 'M';
+      if (dl >= 1000) return (dl / 1000).toFixed(0) + 'K';
+      return String(dl);
+    }
+    return '1.0M';
+  };
+
+  // 1. HUGGING FACE BEST: Canlı API'den çekilen en çok beğenilen ve indirilen modeller (Sol Sütun)
+  const rawBest = clean.huggingFaceBest || [];
+  let bestList = Array.isArray(rawBest) ? rawBest : [];
+
+  // Eğer model listesi 5'ten azsa canlı çekilen hfTopModels'den dinamik tamamla
+  if (bestList.length < 5 && Array.isArray(hfTopModels) && hfTopModels.length > 0) {
+    for (const hf of hfTopModels) {
+      if (bestList.length >= 5) break;
+      if (!bestList.some(b => b.id === hf.id)) {
+        bestList.push({
+          id: hf.id,
+          name: hf.id.includes('/') ? hf.id.split('/')[1] : hf.id,
+          downloads: formatDl(hf.downloads),
+          likes: hf.likes || 0,
+          tag: hf.pipeline_tag || 'Genel Zeka',
+          function: 'Açık kaynak ekosisteminde küresel ölçekte en çok tercih edilen ve indirilen model.',
+          distinction: 'Geliştiriciler ve araştırmacılar tarafından kanıtlanmış yüksek başarı ve geniş topluluk desteği.',
+          whyHype: 'Açık model ekosisteminde en yüksek beğeni ve benimsenme oranına sahip standart mimari.',
+          environment: 'vLLM, Ollama, Hugging Face Transformers, PyTorch.'
+        });
+      }
+    }
+  }
+
+  // Çevrimdışı/Acil durum güvenlik yedeği (Yalnızca API ve model çıktısı tamamen boşsa devreye girer)
+  const FALLBACK_BEST_5 = [
     {
-      rank: 1,
       id: "deepseek-ai/DeepSeek-V3",
       name: "DeepSeek V3",
       downloads: "12.4M",
@@ -1167,46 +1334,42 @@ function enforceStrictStandards(data, hfModels = [], candidateArxiv = [], hnPost
       function: "671B parametreli (37B aktif) Mixture-of-Experts (MoE) mimarili genel zeka, kodlama ve ileri düzey akıl yürütme modeli.",
       distinction: "Multi-head Latent Attention (MLA) ve DeepSeekMoE mimarisi sayesinde GPT-4o kalitesini 10 kat daha düşük çıkarım maliyetiyle sunar.",
       whyHype: "Kapalı API tekellerine karşı açık ağırlıklı modellerin AGI düzeyinde rekabet edebileceğini ispatlayarak açık kaynak ekosisteminin amiral gemisi oldu.",
-      environment: "Şirket içi GPU kümeleri (8x H100/A100), vLLM, SGLang veya kuantize GGUF ile 64GB+ bellekli iş istasyonları (Apple Mac Studio)."
+      environment: "Şirket içi GPU kümeleri (8x H100/A100), vLLM, SGLang veya kuantize GGUF ile 64GB+ bellekli iş istasyonları."
     },
     {
-      rank: 2,
       id: "meta-llama/Llama-3.3-70B-Instruct",
       name: "Llama 3.3 70B",
       downloads: "8.90M",
       likes: 2150,
       tag: "Kurumsal",
       function: "70 milyar parametreli kurumsal sınıf genel amaçlı dil, stratejik analiz ve talimat takip modeli.",
-      distinction: "Llama 3.1 405B modelinin damıtılmasıyla üretilmiştir; 405B seviyesindeki mantık gücünü çok daha hafif 70B boyutunda sunarak donanım bariyerini yıkar.",
-      whyHype: "Fortune 500 ve girişimlerin veri güvenliği nedeniyle şirket içi sunucularında en çok lisansladığı ve fine-tune ettiği kurumsal endüstri standardıdır.",
+      distinction: "Llama 3.1 405B modelinin damıtılmasıyla üretilmiştir; 405B seviyesindeki mantık gücünü çok daha hafif 70B boyutunda sunar.",
+      whyHype: "Fortune 500 ve girişimlerin veri güvenliği nedeniyle şirket içi sunucularında en çok lisansladığı kurumsal endüstri standardıdır.",
       environment: "Çift RTX 3090/4090 (48GB VRAM) 4-bit, vLLM, Ollama, LM Studio, TGI veya kurumsal bulut sunucuları."
     },
     {
-      rank: 3,
       id: "Qwen/Qwen2.5-Coder-32B-Instruct",
       name: "Qwen 2.5 Coder 32B",
       downloads: "6.20M",
       likes: 1840,
       tag: "Kodlama",
       function: "32 milyar parametreli uzman yazılım geliştirme, mimari kod üretimi, hata ayıklama ve test üretim modeli.",
-      distinction: "32B boyutunda olmasına rağmen 70B'lik kod modellerini ve Claude 3.5 Sonnet'in önceki sürümlerini EvalPlus ve HumanEval testlerinde geride bırakır.",
-      whyHype: "Cursor, Continue.dev ve Cline gibi yerel IDE eklentilerinde tek bir tüketici GPU'sunda (24GB VRAM) gecikmesiz çalışan en güçlü yerel kodlama motorudur.",
+      distinction: "32B boyutunda olmasına rağmen 70B'lik kod modellerini ve kapalı API'leri kodlama testlerinde geride bırakır.",
+      whyHype: "Cursor, Continue.dev ve Cline gibi yerel IDE eklentilerinde tek bir tüketici GPU'sunda gecikmesiz çalışan en güçlü yerel kodlama motorudur.",
       environment: "Tek tüketici GPU'su (RTX 3090 / 4090 - 24GB VRAM), Apple Silicon (32GB+ Mac), Ollama, vLLM, Continue, Aider."
     },
     {
-      rank: 4,
       id: "black-forest-labs/FLUX.1-schnell",
       name: "FLUX.1 Schnell",
       downloads: "4.80M",
       likes: 1290,
       tag: "Görsel",
       function: "12 milyar parametreli rectified flow transformer tabanlı fotogerçekçi metinden görsel üretme modeli.",
-      distinction: "Yalnızca 1 ila 4 adımda (inference steps) Midjourney v6 kalitesinde, kusursuz tipografi ve hatasız el anatomisi ile görsel üretir.",
-      whyHype: "Ücretli ve kapalı görsel servislerini baypas ederek yerel grafik işleme sürelerini saniyeler seviyesine indirdi.",
-      environment: "ComfyUI, Stable Diffusion WebUI (Forge), 12GB+ VRAM (FP8 veya NF4 kuantizasyon ile 8GB VRAM'de çalışabilir)."
+      distinction: "Yalnızca 1 ila 4 adımda (inference steps) Midjourney v6 kalitesinde kusursuz tipografi ve görsel üretir.",
+      whyHype: "Ücretli görsel servislerini baypas ederek yerel grafik işleme sürelerini saniyeler seviyesine indirdi.",
+      environment: "ComfyUI, Stable Diffusion WebUI (Forge), 12GB+ VRAM."
     },
     {
-      rank: 5,
       id: "openai/whisper-large-v3-turbo",
       name: "Whisper Large v3",
       downloads: "3.95M",
@@ -1214,35 +1377,31 @@ function enforceStrictStandards(data, hfModels = [], candidateArxiv = [], hnPost
       tag: "Ses / STT",
       function: "Çok dilli konuşmadan metne dönüştürme (Speech-to-Text), sesli çeviri ve toplantı deşifre modeli.",
       distinction: "Önceki Whisper Large v3'ün kod çözücü katmanları 32'den 4'e düşürülerek doğruluk kaybı olmadan 8 kat daha hızlı çıkarım sağlar.",
-      whyHype: "Gerçek zamanlı sesli asistanlarda ve deşifre pipeline'larında sıfır halüsinasyon ve ultra düşük gecikmeyle küresel standart haline geldi.",
-      environment: "CPU üzerinde bile yüksek hızlı (faster-whisper / whisper.cpp), 4GB+ GPU VRAM, PyTorch, Hugging Face Transformers."
+      whyHype: "Gerçek zamanlı sesli asistanlarda sıfır halüsinasyon ve ultra düşük gecikmeyle küresel standart haline geldi.",
+      environment: "CPU üzerinde bile yüksek hızlı (faster-whisper / whisper.cpp), 4GB+ GPU VRAM, PyTorch."
     }
   ];
 
-  // 1. HUGGING FACE BEST: Kesinlikle ve daima 5 amiral gemisi model
-  if (!Array.isArray(clean.huggingFaceBest) || clean.huggingFaceBest.length === 0) {
-    clean.huggingFaceBest = BENCHMARK_BEST_5;
-  } else {
-    // Eksik alanları tamamla ve tam 5 adede sabitle
-    clean.huggingFaceBest = clean.huggingFaceBest.slice(0, 5).map((m, idx) => {
-      const fallback = BENCHMARK_BEST_5[idx] || BENCHMARK_BEST_5[0];
-      return {
-        rank: idx + 1,
-        id: m.id || fallback.id,
-        name: m.name || m.id || fallback.name,
-        downloads: m.downloads ? String(m.downloads) : fallback.downloads,
-        likes: typeof m.likes === 'number' ? m.likes : fallback.likes,
-        tag: m.tag || fallback.tag,
-        function: m.function || fallback.function,
-        distinction: m.distinction || fallback.distinction,
-        whyHype: m.whyHype || fallback.whyHype,
-        environment: m.environment || fallback.environment
-      };
-    });
-    while (clean.huggingFaceBest.length < 5) {
-      const idx = clean.huggingFaceBest.length;
-      clean.huggingFaceBest.push({ ...BENCHMARK_BEST_5[idx], rank: idx + 1 });
-    }
+  clean.huggingFaceBest = bestList.slice(0, 5).map((m, idx) => {
+    const fallback = FALLBACK_BEST_5[idx] || FALLBACK_BEST_5[0];
+    const modelName = m.name || (m.id && m.id.includes('/') ? m.id.split('/')[1] : (m.id || fallback.name));
+    return {
+      rank: idx + 1,
+      id: m.id || fallback.id,
+      name: modelName,
+      downloads: formatDl(m.downloads || fallback.downloads),
+      likes: typeof m.likes === 'number' ? m.likes : fallback.likes,
+      tag: m.tag || fallback.tag,
+      function: m.function || fallback.function,
+      distinction: m.distinction || fallback.distinction,
+      whyHype: m.whyHype || fallback.whyHype,
+      environment: m.environment || fallback.environment
+    };
+  });
+
+  while (clean.huggingFaceBest.length < 5) {
+    const idx = clean.huggingFaceBest.length;
+    clean.huggingFaceBest.push({ ...FALLBACK_BEST_5[idx], rank: idx + 1 });
   }
 
   // 2. HUGGING FACE TRENDING: Kesinlikle ve daima 5 model
@@ -1783,27 +1942,6 @@ function enforceStrictStandards(data, hfModels = [], candidateArxiv = [], hnPost
     return val.replace(/\s*\([^)]*\)/g, "").trim();
   };
 
-  const badConceptPatterns = [
-    /vibe\s*coding/i,
-    /vibecoding/i,
-    /workspace/i,
-    /self-hosted\s*ai/i,
-    /metodoloji/i,
-    /felsefe/i,
-    /maliyet/i,
-    /utanç/i,
-    /mandate/i,
-    /güven sistemi/i,
-    /anket/i,
-    /tartışma/i,
-    /kariyer/i,
-    /will-win/i,
-    /shame/i,
-    /loss/i,
-    /uncontrolled/i,
-    /astra/i
-  ];
-
   if (!clean.morningBrief || typeof clean.morningBrief !== 'object') {
     clean.morningBrief = {
       leader: {
@@ -1868,47 +2006,14 @@ function enforceStrictStandards(data, hfModels = [], candidateArxiv = [], hnPost
     };
   }
 
-  // Model ve araç isimlerindeki soyut kavramları somut ürünlere dönüştür, kalanları filtrele
+  // Sıralamadaki tüm AI ürünlerinin isimlerini temizle ve geçerli olanları koru (sıfır yapay zorlama / sıfır yönlendirme)
   ['twelveHours', 'daily', 'weekly', 'monthly'].forEach(key => {
     if (Array.isArray(clean[key])) {
       clean[key] = clean[key]
-        .map(item => {
-          const n = item.name || '';
-          const id = item.id || '';
-          if (/vibe\s*coding/i.test(n) || /vibe-coding/i.test(id)) {
-            return {
-              ...item,
-              id: "cursor",
-              name: "Cursor",
-              category: "AI Kodlama Editörü",
-              badge: "Vibe Coding Öncüsü",
-              primaryFunction: "Yapay zeka asistanlarıyla akıcı, istem odaklı ve kod tabanı çapında otonom geliştirme editörü.",
-              whyTrending: "Geliştiricilerin vibe coding akımıyla geleneksel IDE'ler yerine doğrudan Cursor'ın çoklu dosya ve ajan yeteneklerini benimsemesi.",
-              sources: ["r/CursorAI", "r/vibecoding", "r/ChatGPTCoding"]
-            };
-          }
-          if (/workspace/i.test(n) || /ollama-tabanl/i.test(id)) {
-            return {
-              ...item,
-              id: "ollama",
-              name: "Ollama",
-              category: "Yerel Çıkarım",
-              badge: "Self-Hosted Lideri",
-              primaryFunction: "Yerel açık modelleri tek komutla indiren, çalıştıran ve REST API sunan hafif çıkarım motoru.",
-              whyTrending: "Tüketici donanımlarında Qwen 3.8 ve DeepSeek modellerini kurumsal gizlilikle çalıştırma talebinin patlaması.",
-              sources: ["r/ollama", "r/LocalLLaMA", "r/selfhosted"]
-            };
-          }
-          return item;
-        })
-        .filter(item => {
-          const n = item.name || '';
-          const id = item.id || '';
-          return !badConceptPatterns.some(p => p.test(n) || p.test(id));
-        })
+        .filter(item => item && (item.name || item.id))
         .map(item => ({
           ...item,
-          name: cleanStrName(item.name)
+          name: cleanStrName(item.name || item.id)
         }));
     }
   });
