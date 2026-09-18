@@ -133,13 +133,13 @@
       },
       {
         "date": "18 Eylül 2026",
-        "hypeScore": 4.5,
-        "sentiment": "eleştirel",
-        "headline": "Eleştiriliyor",
-        "summary": "Güncelleme sonrası yaşanan performans düşüşleri ve bellek sorunları.",
+        "hypeScore": 7.6,
+        "sentiment": "coşkulu",
+        "headline": "Vibe Coding Favorisi",
+        "summary": "Hürmüz Boğazı mayın tarama oyununu sıfırdan kodlaması toplulukta olumlu yankılandı.",
         "sources": [
           "r/CursorAI",
-          "r/vscode"
+          "r/ChatGPTCoding"
         ]
       }
     ]
@@ -263,13 +263,14 @@
       },
       {
         "date": "18 Eylül 2026",
-        "hypeScore": 6,
+        "hypeScore": 5.8,
         "sentiment": "eleştirel",
-        "headline": "Eleştiriliyor",
-        "summary": "Kullanım limitlerinin çok kısıtlayıcı olması ve geliştiricilerin 'babysitting' (sürekli kontrol) gereksiniminden şikayet etmesi.",
+        "headline": "Kullanım Limiti Sorunu",
+        "summary": "13 Eylül sonrası kullanım limitleri kullanılamaz hale geldi; topluluk abonelik iptaliyle tepki veriyor.",
         "sources": [
           "r/ClaudeDev",
-          "r/ClaudeAI"
+          "r/Anthropic",
+          "r/CursorAI"
         ]
       }
     ]
@@ -609,9 +610,10 @@
         "hypeScore": 9.8,
         "sentiment": "stabil",
         "headline": "Sektör Standardı",
-        "summary": "Sektördeki en güvenilir model olması.",
+        "summary": "Hafta boyunca stabil yüksek puanını korudu.",
         "sources": [
-          "r/Anthropic"
+          "r/Anthropic",
+          "r/ClaudeAI"
         ]
       }
     ]
@@ -728,6 +730,17 @@
         "headline": "Altyapı Tekeli",
         "summary": "AI altyapısındaki lider konumunu pekiştirmesi ve sektördeki etkisini sürdürmesi.",
         "sources": [
+          "r/nvidia"
+        ]
+      },
+      {
+        "date": "18 Eylül 2026",
+        "hypeScore": 9.6,
+        "sentiment": "stabil",
+        "headline": "Altyapı Tekeli",
+        "summary": "Kümeleme ve dağıtımda standart olmayı sürdürüyor.",
+        "sources": [
+          "r/hardware",
           "r/nvidia"
         ]
       }
@@ -1074,7 +1087,7 @@
         "hypeScore": 9.7,
         "sentiment": "stabil",
         "headline": "10M İndirme",
-        "summary": "İndirme rekorları.",
+        "summary": "İndirme eşiğini aşarak istikrarını korudu.",
         "sources": [
           "r/LocalLLaMA"
         ]
@@ -1166,8 +1179,9 @@
         "hypeScore": 9.8,
         "sentiment": "stabil",
         "headline": "Video Lideri",
-        "summary": "Video üretimindeki hızı ve kalite tutarlılığı.",
+        "summary": "Hafta boyunca medya üretiminde lider kaldı.",
         "sources": [
+          "r/LocalLLaMA",
           "r/singularity"
         ]
       }
@@ -2277,6 +2291,17 @@
           "r/Copilot",
           "r/ChatGPTCoding"
         ]
+      },
+      {
+        "date": "18 Eylül 2026",
+        "hypeScore": 5.5,
+        "sentiment": "eleştirel",
+        "headline": "Regresyon",
+        "summary": "Son güncellemeyle çalışmayı durdurması, ücretsiz hesap limitleri ve kaybolan sohbetler sert eleştirildi.",
+        "sources": [
+          "r/Copilot",
+          "r/sysadmin"
+        ]
       }
     ]
   },
@@ -2364,10 +2389,10 @@
         "hypeScore": 9.3,
         "sentiment": "stabil",
         "headline": "Kurumsal Favori",
-        "summary": "Karmaşık ajan sistemlerini kurumsal düzeyde yönetme yeteneği.",
+        "summary": "Kurumsal dağıtımda istikrarlı beğeni aldı.",
         "sources": [
           "r/devops",
-          "r/sysadmin"
+          "r/automation"
         ]
       }
     ]
@@ -2502,8 +2527,9 @@
         "hypeScore": 9.5,
         "sentiment": "eleştirel",
         "headline": "Görsel Yetenek",
-        "summary": "Görsel modelleme yetenekleri ile öne çıkıyor.",
+        "summary": "Görsel yetenekleriyle beğenilse de hafif geriledi.",
         "sources": [
+          "r/LocalLLaMA",
           "r/DeepSeek"
         ]
       }
@@ -3068,6 +3094,16 @@
           "r/vscode",
           "r/vibecoding"
         ]
+      },
+      {
+        "date": "18 Eylül 2026",
+        "hypeScore": 6.5,
+        "sentiment": "stabil",
+        "headline": "Kararlılık Sorunu",
+        "summary": "Devcontainer ve performans sorunları tartışılıyor.",
+        "sources": [
+          "r/vscode"
+        ]
       }
     ]
   },
@@ -3349,13 +3385,13 @@
       },
       {
         "date": "18 Eylül 2026",
-        "hypeScore": 9.5,
+        "hypeScore": 9.3,
         "sentiment": "coşkulu",
         "headline": "Donanım İnovasyonu",
-        "summary": "Donanım hackleri ve 8-pin mod tartışmaları ile yerel AI meraklılarının odağında.",
+        "summary": "Harici 5090'ın Mac'te CUDA ile 2x hızda çalıştırılması heyecan yarattı.",
         "sources": [
           "r/nvidia",
-          "r/hardware"
+          "r/LocalLLaMA"
         ]
       }
     ]
@@ -3498,12 +3534,182 @@
       {
         "date": "18 Eylül 2026",
         "hypeScore": 9.9,
-        "sentiment": "coşkulu",
-        "headline": "Son 12 Saat Patlaması",
-        "summary": "10 milyon indirme eşiğini aşması ve Unsloth ile gelen inanılmaz hız optimizasyonu.",
+        "sentiment": "stabil",
+        "headline": "Haftanın Lideri",
+        "summary": "Milyonlarca indirme ve istikrarlı topluluk beğenisi.",
         "sources": [
           "r/LocalLLaMA",
           "r/singularity"
+        ]
+      }
+    ]
+  },
+  "jev": {
+    "name": "Jev",
+    "category": "LLM (Model)",
+    "history": [
+      {
+        "date": "18 Eylül 2026",
+        "hypeScore": 9.4,
+        "sentiment": "coşkulu",
+        "headline": "Son 12 Saat Patlaması",
+        "summary": "Subway Surfers'ı canlı oynayabilmesi toplulukta 'oyun değiştirici' olarak selamlandı.",
+        "sources": [
+          "r/singularity",
+          "r/OpenAI"
+        ]
+      }
+    ]
+  },
+  "gpt-6-astra": {
+    "name": "GPT-6 Astra",
+    "category": "LLM (Model)",
+    "history": [
+      {
+        "date": "18 Eylül 2026",
+        "hypeScore": 9.1,
+        "sentiment": "coşkulu",
+        "headline": "Günün Lideri",
+        "summary": "Yeni 'Law' varyantı ve Factorio: Space Age başarısı hype'ı artırdı, ancak kredi tüketimi konusunda endişeler var.",
+        "sources": [
+          "r/singularity",
+          "r/OpenAI",
+          "r/ChatGPTCoding"
+        ]
+      }
+    ]
+  },
+  "macuda": {
+    "name": "MacCUDA",
+    "category": "Altyapı & SDK",
+    "history": [
+      {
+        "date": "18 Eylül 2026",
+        "hypeScore": 9,
+        "sentiment": "coşkulu",
+        "headline": "Açık Kaynak Sıçraması",
+        "summary": "SDXL'i Windows'tan neredeyse 2x hızlı çalıştırması toplulukta büyük ilgi gördü.",
+        "sources": [
+          "r/nvidia",
+          "r/LocalLLaMA"
+        ]
+      }
+    ]
+  },
+  "glm-5-2": {
+    "name": "GLM-5.2",
+    "category": "Yerel Model",
+    "history": [
+      {
+        "date": "18 Eylül 2026",
+        "hypeScore": 8.8,
+        "sentiment": "coşkulu",
+        "headline": "Topluluk Favorisi",
+        "summary": "Devin Pro'daki ücretsiz erişimin kaldırılması toplulukta 'geri getirin' çağrılarına yol açtı.",
+        "sources": [
+          "r/CursorAI",
+          "r/LocalLLaMA"
+        ]
+      }
+    ]
+  },
+  "gemini-enterprise": {
+    "name": "Gemini Enterprise",
+    "category": "Bulut & Platform",
+    "history": [
+      {
+        "date": "18 Eylül 2026",
+        "hypeScore": 8.2,
+        "sentiment": "coşkulu",
+        "headline": "Kurumsal Geçiş",
+        "summary": "Kurumların Copilot'tan Gemini Enterprise'a geçmesi yeni bir benimseme dalgası başlattı.",
+        "sources": [
+          "r/GoogleGemini",
+          "r/Cloud"
+        ]
+      }
+    ]
+  },
+  "sol": {
+    "name": "Sol 5.6",
+    "category": "LLM (Model)",
+    "history": [
+      {
+        "date": "18 Eylül 2026",
+        "hypeScore": 5.9,
+        "sentiment": "eleştirel",
+        "headline": "Eleştiriliyor",
+        "summary": "Kullanıcılar halüsinasyon, yanlış çıktı ve imla hatalarından şikayet ediyor.",
+        "sources": [
+          "r/OpenAI",
+          "r/Anthropic"
+        ]
+      }
+    ]
+  },
+  "codex": {
+    "name": "Codex",
+    "category": "CLI / Terminal",
+    "history": [
+      {
+        "date": "18 Eylül 2026",
+        "hypeScore": 8,
+        "sentiment": "stabil",
+        "headline": "Tercih Savaşı",
+        "summary": "Cursor ve Claude ile kıyaslamalarda sık öneriliyor.",
+        "sources": [
+          "r/CursorAI",
+          "r/ChatGPTCoding"
+        ]
+      }
+    ]
+  },
+  "claude-sonnet": {
+    "name": "Claude Sonnet",
+    "category": "LLM (Model)",
+    "history": [
+      {
+        "date": "18 Eylül 2026",
+        "hypeScore": 8.4,
+        "sentiment": "eleştirel",
+        "headline": "Sektör Standardı",
+        "summary": "Model övülse de abonelik limit krizleri gölge düşürüyor.",
+        "sources": [
+          "r/Anthropic",
+          "r/ClaudeAI"
+        ]
+      }
+    ]
+  },
+  "devin": {
+    "name": "Devin",
+    "category": "Otonom Agent",
+    "history": [
+      {
+        "date": "18 Eylül 2026",
+        "hypeScore": 6,
+        "sentiment": "eleştirel",
+        "headline": "Maliyet Eleştirisi",
+        "summary": "Ücretsiz GLM-5.2 erişiminin kesilmesi valori düşürdü.",
+        "sources": [
+          "r/CursorAI",
+          "r/ChatGPTCoding"
+        ]
+      }
+    ]
+  },
+  "routed": {
+    "name": "Routed",
+    "category": "Altyapı & SDK",
+    "history": [
+      {
+        "date": "18 Eylül 2026",
+        "hypeScore": 9.8,
+        "sentiment": "stabil",
+        "headline": "Yeni Açık Kaynak",
+        "summary": "Hafta boyunca açık kaynakta yüksek beğeni topladı.",
+        "sources": [
+          "r/LocalLLaMA"
         ]
       }
     ]

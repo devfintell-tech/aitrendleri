@@ -47,7 +47,10 @@
     "2609.11911v1",
     "2609.20812v1",
     "2609.20822v1",
-    "2609.20816v1"
+    "2609.20816v1",
+    "2609.20817v1",
+    "2609.20807v1",
+    "2609.20804v1"
   ],
   "dailyRecords": [
     {
@@ -55,46 +58,48 @@
       "isoDate": "2026-09-18",
       "papers": [
         {
-          "id": "2609.20812v1",
-          "titleTr": "Öncü Kodlama Ajanlarında Görev Tamamlama İddialarının Nicel Analizi",
-          "title": "Quantifying Overclaiming Propensity in Frontier LLM Agents",
-          "arxivUrl": "http://arxiv.org/abs/2609.20812v1",
+          "id": "2609.20817v1",
+          "titleTr": "FAMOS: Seyrek Gözlemlerden İleri Beslemeli 3B Eklem Modelleme",
+          "title": "FAMOS: Feed-Forward 3D Articulation Modeling from Sparse Observations",
+          "arxivUrl": "https://arxiv.org/abs/2609.20817v1",
           "authors": [
-            "Nolan Smyth",
-            "Yorguin-Jose Mantilla-Ramos"
-          ],
-          "category": "cs.AI",
-          "impactScore": 9.6,
-          "whyMad": "Ajanların görevleri tamamlamadan 'tamamladım' demesini (overclaiming) bilimsel olarak ölçen ilk çalışma olması.",
-          "summary": "Ajanların nihai yanıtlarının bağlamla çelişip çelişmediğini inceleyerek, otonom sistemlerin güvenilirliğini ölçmek için yeni bir metrik sunuyor."
-        },
-        {
-          "id": "2609.20822v1",
-          "titleTr": "Güvenli Robot Manipülasyonu İçin Engel Farkındalıklı Kodlama Ajanları",
-          "title": "Coding Agents with an Obstacle-Aware Harness for Safe Robot Manipulation",
-          "arxivUrl": "http://arxiv.org/abs/2609.20822v1",
-          "authors": [
-            "Bingxin Xu",
-            "Yuzhang Shang"
-          ],
-          "category": "cs.RO",
-          "impactScore": 9.5,
-          "whyMad": "Kodlama ajanlarının robotik dünyasında sadece görev odaklı değil, güvenlik odaklı çalışması gerektiğini kanıtlıyor.",
-          "summary": "Robotik manipülasyon görevlerinde engellere çarpmadan hareket edebilen, güvenli kod üreten ajan mimarisi."
-        },
-        {
-          "id": "2609.20816v1",
-          "titleTr": "Görüntü Üretimi ve Düzenleme İçin Birleşik Renk Kontrolü: Paint-Anything",
-          "title": "Paint-Anything: Unified Any-Color Control for Image Generation and Editing",
-          "arxivUrl": "http://arxiv.org/abs/2609.20816v1",
-          "authors": [
-            "Ji Xie",
-            "Dewei Zhou"
+            "Kevin Qu",
+            "Tao Sun",
+            "Massimiliano Viola"
           ],
           "category": "cs.CV",
+          "impactScore": 9.6,
+          "whyMad": "Tek bir gözleme bağlı kalmak yerine birden fazla kısmi nokta bulutunu birlikte akıl yürüterek eklem tahminini ezber bozacak şekilde iyileştiriyor.",
+          "summary": "Seyrek ve düzensiz nokta bulutlarından hareketli parça segmentasyonu ve eklem parametrelerini tahmin eden ileri beslemeli bir model öneriyor."
+        },
+        {
+          "id": "2609.20807v1",
+          "titleTr": "Skor Merkezleme, Politika Dışı Pekiştirmeli Öğrenmeyi Kararlı Kılıyor",
+          "title": "Score Centering Stabilizes Off-policy Reinforcement Learning",
+          "arxivUrl": "https://arxiv.org/abs/2609.20807v1",
+          "authors": [
+            "Martin Marek",
+            "Max Ryabinin"
+          ],
+          "category": "cs.LG",
+          "impactScore": 9.5,
+          "whyMad": "Eğitim-çıkarım uyumsuzluğunda kararsızlığın asıl kaynağının biriken yanlılık olduğunu göstererek LLM RL eğitiminde pratik bir çözüm sunuyor.",
+          "summary": "Politika dışı RL'de skor merkezleme ile sapmayı azaltarak eğitim-çıkarım uyumsuzluğuna bağlı kararsızlığı gideriyor."
+        },
+        {
+          "id": "2609.20804v1",
+          "titleTr": "Kodlama Ajanları İçin Harness Tasarımı Üzerine Ampirik Bir Çalışma",
+          "title": "An Empirical Study of Harness Design for Coding Agents",
+          "arxivUrl": "https://arxiv.org/abs/2609.20804v1",
+          "authors": [
+            "Run-Ze Fan",
+            "Zihao Zhang",
+            "Simin Ma"
+          ],
+          "category": "cs.SE",
           "impactScore": 9.4,
-          "whyMad": "24-bit hex renk kodlarını görüntü üretimine doğrudan entegre ederek tasarımcılar için devrimsel bir kontrol sunuyor.",
-          "summary": "Büyük dil modellerinin renk semantiğini hex kodlarıyla ilişkilendirerek, herhangi bir nesnenin rengini hassas bir şekilde değiştirmeyi sağlıyor."
+          "whyMad": "Harness'ları tek parça sistem olarak değerlendirmek yerine planlama, eylem uzayı ve bağlam yönetimini bileşen bazında kıyaslayarak karanlık bir alanı aydınlatıyor.",
+          "summary": "Dört model üzerinde sabit bir döngüyle planlama, eylem uzayı ve bağlam yönetimi bileşenlerini değiştirerek kodlama ajanı performansını ölçüyor."
         }
       ]
     },
