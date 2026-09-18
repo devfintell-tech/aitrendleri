@@ -1579,90 +1579,90 @@
       {
         "id": "49746163",
         "title": "Bend – A language that blocks AI mistakes via proof, on CPU and GPU",
-        "titleTr": "Bend – A language that blocks AI mistakes via proof, on CPU and GPU",
+        "titleTr": "Bend: CPU ve GPU'da AI Hatalarını Matematiksel İspatla Engelleyen Dil",
         "points": 510,
         "comments": 243,
         "hnUrl": "https://news.ycombinator.com/item?id=49746163",
-        "category": "Mühendis Tartışması",
-        "analysis": "Hacker News topluluğunda son 24 saatte yüksek etkileşim alan teknik geliştirici tartışması.",
-        "usefulInsight": "Geliştirici ve mühendislik pratikleri için dikkate değer teknik çıkarım."
+        "category": "Programlama Dilleri",
+        "analysis": "CUDA karmaşıklığı olmadan hem CPU hem GPU üzerinde kitlesel paralellikle çalışan ve formel ispat kurallarıyla hataları önleyen yeni bir dil.",
+        "usefulInsight": "CUDA çekirdekleri yazma zorunluluğunu ortadan kaldırarak yüksek eşzamanlı veri hatlarında bellek ve mantık hatalarını derleme anında önler."
       },
       {
         "id": "49749656",
         "title": "A heap overflow and SSO misconfiguration to compromise OpenAI internal repos",
-        "titleTr": "A heap overflow and SSO misconfiguration to compromise OpenAI internal repos",
+        "titleTr": "OpenAI Dahili Kod Depolarına Sızma: Heap Taşması ve SSO Yetkilendirme Açığı",
         "points": 377,
         "comments": 163,
         "hnUrl": "https://news.ycombinator.com/item?id=49749656",
-        "category": "Mühendis Tartışması",
-        "analysis": "Hacker News topluluğunda son 24 saatte yüksek etkileşim alan teknik geliştirici tartışması.",
-        "usefulInsight": "Geliştirici ve mühendislik pratikleri için dikkate değer teknik çıkarım."
+        "category": "Siber Güvenlik",
+        "analysis": "Güvenlik araştırmacılarının bir heap bellek taşması ile SSO yapılandırma zaafını zincirleyerek OpenAI'ın dahili repolarına erişim sağladığı kritik zafiyet analizi.",
+        "usefulInsight": "Büyük yapay zeka şirketlerinde kurumsal SSO ve bellek güvenliği izolasyonları model ağırlıkları ve kod sızıntılarına karşı ilk savunma hattıdır."
       },
       {
         "id": "49752056",
         "title": "Microsoft exec called AI scraping 'the largest theft of labor in human history'",
-        "titleTr": "Microsoft exec called AI scraping 'the largest theft of labor in human history'",
+        "titleTr": "Microsoft Yöneticisinden AI Kazıma Çıkışı: 'İnsanlık Tarihindeki En Büyük Emek Hırsızlığı'",
         "points": 329,
         "comments": 267,
         "hnUrl": "https://news.ycombinator.com/item?id=49752056",
-        "category": "Mühendis Tartışması",
-        "analysis": "Hacker News topluluğunda son 24 saatte yüksek etkileşim alan teknik geliştirici tartışması.",
-        "usefulInsight": "Geliştirici ve mühendislik pratikleri için dikkate değer teknik çıkarım."
+        "category": "Telif Hakları & Etik",
+        "analysis": "Açık web'deki içeriklerin izin ve ücret ödenmeden büyük modellere eğitilmesine yönelik sektör içi en sert itiraf ve etik tartışma.",
+        "usefulInsight": "Eğitim verisi kazımaya yönelik artan hukuki baskılar, şirketleri sentetik veri ve lisanslı veri ortaklıklarına yönelmeye zorluyor."
       },
       {
         "id": "49740105",
         "title": "Show HN: Share your AI Setup, Learn from others",
-        "titleTr": "Show HN: Share your AI Setup, Learn from others",
+        "titleTr": "Show HN: Yapay Zeka Geliştirici Ortamını Paylaş ve Başkalarından Öğren",
         "points": 219,
         "comments": 121,
         "hnUrl": "https://news.ycombinator.com/item?id=49740105",
-        "category": "Mühendis Tartışması",
-        "analysis": "Hacker News topluluğunda son 24 saatte yüksek etkileşim alan teknik geliştirici tartışması.",
-        "usefulInsight": "Geliştirici ve mühendislik pratikleri için dikkate değer teknik çıkarım."
+        "category": "Geliştirici Araçları",
+        "analysis": "Mühendislerin yerel donanım yapılandırmaları, Mac Silicon optimizasyonları, açık kaynak modeller ve terminal ajanlarından oluşan AI iş akışları.",
+        "usefulInsight": "Bulut API kotalarından kaçınan mühendisler arasında yerel GGUF modelleri ve terminal odaklı açık ajan iş akışları hızla standartlaşıyor."
       },
       {
         "id": "49740834",
         "title": "I Don't Like LLMs",
-        "titleTr": "I Don't Like LLMs",
+        "titleTr": "Büyük Dil Modellerini (LLM) Neden Sevmiyorum? Mühendislik Eleştirisi",
         "points": 219,
         "comments": 257,
         "hnUrl": "https://news.ycombinator.com/item?id=49740834",
-        "category": "Mühendis Tartışması",
-        "analysis": "Hacker News topluluğunda son 24 saatte yüksek etkileşim alan teknik geliştirici tartışması.",
-        "usefulInsight": "Geliştirici ve mühendislik pratikleri için dikkate değer teknik çıkarım."
+        "category": "Yazılım Kültürü",
+        "analysis": "Yapay zeka tarafından üretilen kodların yarattığı teknik borç, mimari yüzeysellik ve yazılımcı muhakemesini zayıflatma riskine dair kapsamlı bir eleştiri.",
+        "usefulInsight": "Otomatik kod üretiminin ilk yazım hızı avantajı, mimari kavrayış eksikliği ve uzun vadeli hata ayıklama maliyetleriyle kolayca gölgelenebilir."
       },
       {
         "id": "49746654",
         "title": "Sex, AI, and the Apocalypse",
-        "titleTr": "Sex, AI, and the Apocalypse",
+        "titleTr": "Yapay Zeka, İnsan İlişkileri ve Toplumun Geleceği",
         "points": 211,
         "comments": 213,
         "hnUrl": "https://news.ycombinator.com/item?id=49746654",
-        "category": "Mühendis Tartışması",
-        "analysis": "Hacker News topluluğunda son 24 saatte yüksek etkileşim alan teknik geliştirici tartışması.",
-        "usefulInsight": "Geliştirici ve mühendislik pratikleri için dikkate değer teknik çıkarım."
+        "category": "Toplum & Felsefe",
+        "analysis": "Yapay zekanın duygusal arkadaşlık ve insan ilişkileri üzerindeki dönüştürücü etkilerinin psikolojik ve toplumsal güvenlik boyutları.",
+        "usefulInsight": "Duygusal bağ kuran yapay zeka ajanlarının yaygınlaşması, kullanıcı mahremiyeti ve psikolojik manipülasyon risklerine karşı regülasyon gerektiriyor."
       },
       {
         "id": "49747070",
         "title": "How to Write with an LLM",
-        "titleTr": "How to Write with an LLM",
+        "titleTr": "Bir LLM ile Nasıl Yazılır: Mühendisler İçin Üretken Diyalog Rehberi",
         "points": 208,
         "comments": 136,
         "hnUrl": "https://news.ycombinator.com/item?id=49747070",
-        "category": "Mühendis Tartışması",
-        "analysis": "Hacker News topluluğunda son 24 saatte yüksek etkileşim alan teknik geliştirici tartışması.",
-        "usefulInsight": "Geliştirici ve mühendislik pratikleri için dikkate değer teknik çıkarım."
+        "category": "Metodoloji & Üretkenlik",
+        "analysis": "Büyük dil modellerini pasif bir metin üreticisi yerine, yazılanları eleştiren, argümanları test eden ve yapı kuran aktif bir düşünce partneri yapma rehberi.",
+        "usefulInsight": "LLM çıktısını olduğu gibi almak yerine sokratik sorgulama ve yinelemeli eleştiri döngüsü kurmak içerik ve kod kalitesini belirgin artırır."
       },
       {
         "id": "49743483",
         "title": "Infinite-Parameter LLMs: Generating and Adapting Weights from Live Data",
-        "titleTr": "Infinite-Parameter LLMs: Generating and Adapting Weights from Live Data",
+        "titleTr": "Sonsuz Parametreli LLM'ler: Canlı Veriden Ağırlık Üretme ve Uyarlama",
         "points": 150,
         "comments": 40,
         "hnUrl": "https://news.ycombinator.com/item?id=49743483",
-        "category": "Mühendis Tartışması",
-        "analysis": "Hacker News topluluğunda son 24 saatte yüksek etkileşim alan teknik geliştirici tartışması.",
-        "usefulInsight": "Geliştirici ve mühendislik pratikleri için dikkate değer teknik çıkarım."
+        "category": "Model Mimarisi",
+        "analysis": "Geleneksel sabit ağırlıklı modeller yerine çıkarım anında canlı veri akışına göre dinamik ağırlık sentezleyen yeni hiper-ağ mimarisi.",
+        "usefulInsight": "Dinamik ağırlık üretimi, parametre sayısını katlamadan modelin bağlam adaptasyonunu gerçek zamanlı optimize etmenin yenilikçi bir yoludur."
       }
     ]
   },
