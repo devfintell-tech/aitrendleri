@@ -26,10 +26,7 @@ if (fs.existsSync(envPath)) {
   }
 }
 
-// 🥇 1. BAŞ API: DeepSeek v4.1 Flash API Anahtarı (Öncelikli Baş Motor)
-const DEEPSEEK_API_KEY = process.env.DEEPSEEK_API_KEY;
-
-// 🥈 2. YEDEK API: 6 Farklı Gemini API Anahtar Havuzu (Yedekli ve Rotasyonlu)
+// 🥇 1. BAŞ API: Gemini 3.8 Flash (6 Farklı Gemini API Anahtar Havuzu)
 const GEMINI_API_KEYS = [
   process.env.GEMINI_API_KEY_6,
   process.env.GEMINI_API_KEY_5,
@@ -38,6 +35,9 @@ const GEMINI_API_KEYS = [
   process.env.GEMINI_API_KEY_3,
   process.env.GEMINI_API_KEY_4
 ].filter(Boolean);
+
+// 🥈 2. ÖNCELİK: DeepSeek v4.1 Flash & Pro API Anahtarı
+const DEEPSEEK_API_KEY = process.env.DEEPSEEK_API_KEY;
 
 const parser = new XMLParser({
   ignoreAttributes: false,
@@ -547,20 +547,45 @@ async function callGemini(model, apiKey, prompt) {
 }
 
 /**
- * ŞELALE SİSTEMİ: En yüksekten adım adım en aşağıya, en iyiden hafife doğru akar.
- * 🥇 BAŞ API: DeepSeek v4.1 Flash
- * 🥈 YEDEK API: Google Gemini 6'lı Rotasyonlu Anahtar Havuzu
+ * ŞELALE SİSTEMİ:
+ * 🥇 1. ÖNCELİK: Google Gemini 3.8 Flash (6'lı Rotasyonlu Anahtar Havuzu)
+ * 🥈 2. ÖNCELİK: DeepSeek v4.1 Flash & Pro
+ * 🥉 3. ÖNCELİK: Google Gemini 3.7 ve aşağı şelale havuzu
  */
 async function generateWithWaterfall(prompt) {
-  // 🥇 1. BAŞ API: DeepSeek v4.1 Flash & Pro (1. ve 2. Öncelikli Baş Motor)
+  // 🥇 1. ÖNCELİK: Gemini 3.8 Flash (6'lı Rotasyonlu Anahtar Havuzu)
+  const PRIMARY_GEMINI_MODEL = "gemini-3.8-flash";
+  for (let i = 0; i < GEMINI_API_KEYS.length; i++) {
+    const apiKey = GEMINI_API_KEYS[i];
+    const keySnippet = apiKey.substring(0, 8) + "..." + apiKey.slice(-4);
+    console.log(`🚀 [1. ÖNCELİK - Baş Motor] Deneniyor: Model [${PRIMARY_GEMINI_MODEL}] | API Anahtarı #${i + 1} (${keySnippet})...`);
+
+    try {
+      const result = await callGemini(PRIMARY_GEMINI_MODEL, apiKey, prompt);
+      const isRichResponse = (
+        result &&
+        Array.isArray(result.daily) && result.daily.length >= 6
+      );
+      if (isRichResponse) {
+        console.log(`🎯 MÜKEMMEL BAŞARI! Model [${PRIMARY_GEMINI_MODEL}] (Anahtar #${i + 1}) ile ${result.daily.length} ürün işlendi.`);
+        return { data: result, modelUsed: PRIMARY_GEMINI_MODEL, keyIndex: i + 1 };
+      } else if (result && result.daily && result.daily.length > 0) {
+        console.warn(`⚠️ [${PRIMARY_GEMINI_MODEL}] (Anahtar #${i + 1}) eksik şema üretti (daily: ${result.daily?.length}). Sıradaki deneniyor...`);
+      }
+    } catch (err) {
+      console.warn(`⚠️ [${PRIMARY_GEMINI_MODEL}] (Anahtar #${i + 1}) başarısız: ${err.message.substring(0, 100)}... Sıradaki deneniyor.`);
+    }
+  }
+
+  // 🥈 2. ÖNCELİK: DeepSeek v4.1 Flash & Pro
   if (DEEPSEEK_API_KEY) {
     const DEEPSEEK_MODELS = [
-      "deepseek-flash",    // 🥇 1. ÖNCELİK (BAŞ API): DeepSeek v4.1 Flash
-      "deepseek-v4-pro"    // 🥈 2. ÖNCELİK: DeepSeek v4 Pro
+      "deepseek-flash",    // DeepSeek v4.1 Flash
+      "deepseek-v4-pro"    // DeepSeek v4 Pro
     ];
 
     for (const model of DEEPSEEK_MODELS) {
-      console.log(`🚀 [BAŞ API] Deneniyor: Model [${model}] (DeepSeek v4.1)...`);
+      console.log(`🚀 [2. ÖNCELİK - DeepSeek] Deneniyor: Model [${model}]...`);
       try {
         const result = await callDeepSeek(model, DEEPSEEK_API_KEY, prompt);
         const isRichResponse = (
@@ -568,7 +593,7 @@ async function generateWithWaterfall(prompt) {
           Array.isArray(result.daily) && result.daily.length >= 6
         );
         if (isRichResponse) {
-          console.log(`🎯 MÜKEMMEL BAŞARI! Baş API [${model}] ile ${result.daily.length} ürün başarıyla işlendi.`);
+          console.log(`🎯 MÜKEMMEL BAŞARI! DeepSeek [${model}] ile ${result.daily.length} ürün başarıyla işlendi.`);
           return { data: result, modelUsed: `DeepSeek v4.1 (${model})`, keyIndex: 1 };
         } else if (result && result.daily && result.daily.length > 0) {
           console.warn(`⚠️ [${model}] eksik/kısmi şema üretti (daily: ${result.daily?.length}). Sıradaki deneniyor...`);
@@ -579,24 +604,23 @@ async function generateWithWaterfall(prompt) {
     }
   }
 
-  // 🥈 2. YEDEK API: Google Gemini Şelalesi (3. Öncelik ve sonrası)
-  const GEMINI_MODELS = [
-    "gemini-flash-latest",      // Google üretim yük dengeleyicili kararlı flaş model
-    "gemini-flash-lite-latest", // Google üretim yük dengeleyicili hafif flaş model
-    "gemini-3.8-flash",         // Doğrudan 3.8 flaş model
+  // 🥉 3. ÖNCELİK: Google Gemini 3.7 ve aşağı şelale havuzu
+  const FALLBACK_GEMINI_MODELS = [
     "gemini-3.7-flash",         // Doğrudan 3.7 flaş model
     "gemini-3.6-flash",         // Doğrudan 3.6 flaş model
     "gemini-3.5-flash",         // Doğrudan 3.5 flaş model
     "gemini-3.5-flash-lite",    // Doğrudan 3.5 hafif model
     "gemini-3.1-flash-lite",    // Doğrudan 3.1 hafif model
+    "gemini-flash-latest",      // Google üretim yük dengeleyicili kararlı flaş model
+    "gemini-flash-lite-latest", // Google üretim yük dengeleyicili hafif flaş model
     "gemini-3-flash-preview"    // 3.0 önizleme flaş model
   ];
 
-  for (const model of GEMINI_MODELS) {
+  for (const model of FALLBACK_GEMINI_MODELS) {
     for (let i = 0; i < GEMINI_API_KEYS.length; i++) {
       const apiKey = GEMINI_API_KEYS[i];
       const keySnippet = apiKey.substring(0, 8) + "..." + apiKey.slice(-4);
-      console.log(`🔄 [Yedek API] Deneniyor: Model [${model}] | API Anahtarı #${i + 1} (${keySnippet})...`);
+      console.log(`🔄 [3. ÖNCELİK - Şelale] Deneniyor: Model [${model}] | API Anahtarı #${i + 1} (${keySnippet})...`);
 
       try {
         const result = await callGemini(model, apiKey, prompt);

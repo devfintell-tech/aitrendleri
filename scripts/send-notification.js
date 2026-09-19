@@ -78,7 +78,7 @@ Tarih: ${dateStr} | İşlem Süresi: ${duration}s
 
 [1. MODEL & ŞELALE AKTİVİTESİ]
   ✔ Aktif Çalışan Model : ${activeModel}
-  ✔ Seçilen API Anahtarı : GEMINI_API_KEY ${keyIndex}
+  ✔ Seçilen API Anahtarı : ${activeModel && activeModel.includes("DeepSeek") ? "DEEPSEEK_API_KEY" : `GEMINI_API_KEY #${keyIndex}`}
   ✔ Yürütme Durumu       : BAŞARILI (HTTP 200 OK)
 
 [2. 50 REDDIT TOPLULUĞU TARAMA TELEMETRİSİ]
