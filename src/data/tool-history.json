@@ -141,6 +141,17 @@
           "r/CursorAI",
           "r/ChatGPTCoding"
         ]
+      },
+      {
+        "date": "19 Eylül 2026",
+        "hypeScore": 7.6,
+        "sentiment": "eleştirel",
+        "headline": "Vibe Coding Favorisi",
+        "summary": "Yüksek yük altındaki performans dalgalanmalarına rağmen yaratıcı projelerde hâlâ sıkça tercih ediliyor.",
+        "sources": [
+          "r/CursorAI",
+          "r/vibecoding"
+        ]
       }
     ]
   },
@@ -271,6 +282,17 @@
           "r/ClaudeDev",
           "r/Anthropic",
           "r/CursorAI"
+        ]
+      },
+      {
+        "date": "19 Eylül 2026",
+        "hypeScore": 5.8,
+        "sentiment": "eleştirel",
+        "headline": "Eleştiriliyor",
+        "summary": "Katı aylık harcama limitleri ve erken süreli zaman aşımları nedeniyle geliştiricilerden yoğun şikayet alıyor.",
+        "sources": [
+          "r/ClaudeAI",
+          "r/ClaudeDev"
         ]
       }
     ]
@@ -615,6 +637,17 @@
           "r/Anthropic",
           "r/ClaudeAI"
         ]
+      },
+      {
+        "date": "19 Eylül 2026",
+        "hypeScore": 9.8,
+        "sentiment": "stabil",
+        "headline": "Sektör Standardı",
+        "summary": "Geliştiriciler tarafından hâlâ en güvenilir kodlama ve analiz modeli olarak kabul görüyor.",
+        "sources": [
+          "r/ClaudeAI",
+          "r/vibecoding"
+        ]
       }
     ]
   },
@@ -742,6 +775,17 @@
         "sources": [
           "r/hardware",
           "r/nvidia"
+        ]
+      },
+      {
+        "date": "19 Eylül 2026",
+        "hypeScore": 9.6,
+        "sentiment": "stabil",
+        "headline": "Altyapı Tekeli",
+        "summary": "Yüksek bilgi işlem gücüyle endüstri standardı olmaya devam ediyor.",
+        "sources": [
+          "r/nvidia",
+          "r/hardware"
         ]
       }
     ]
@@ -1091,6 +1135,16 @@
         "sources": [
           "r/LocalLLaMA"
         ]
+      },
+      {
+        "date": "19 Eylül 2026",
+        "hypeScore": 9.7,
+        "sentiment": "stabil",
+        "headline": "10M İndirme Eşiği",
+        "summary": "Donanım dostu yapısı sayesinde yerel makinelerde kusursuz çalışması övülüyor.",
+        "sources": [
+          "r/LocalLLaMA"
+        ]
       }
     ]
   },
@@ -1183,6 +1237,17 @@
         "sources": [
           "r/LocalLLaMA",
           "r/singularity"
+        ]
+      },
+      {
+        "date": "19 Eylül 2026",
+        "hypeScore": 9.8,
+        "sentiment": "stabil",
+        "headline": "Yüksek İvme",
+        "summary": "Çoklu modal üretim yetenekleriyle yerel LLM kullanıcıları arasında hızla yayılıyor.",
+        "sources": [
+          "r/MachineLearning",
+          "r/LocalLLaMA"
         ]
       }
     ]
@@ -1306,6 +1371,17 @@
         "sources": [
           "r/LocalLLaMA",
           "r/huggingface"
+        ]
+      },
+      {
+        "date": "19 Eylül 2026",
+        "hypeScore": 9.9,
+        "sentiment": "coşkulu",
+        "headline": "Son 12 Saat Patlaması",
+        "summary": "Hugging Face ve Reddit üzerinde rekor indirme sayılarına ulaşarak topluluktan tam not aldı.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/singularity"
         ]
       }
     ]
@@ -2302,6 +2378,17 @@
           "r/Copilot",
           "r/sysadmin"
         ]
+      },
+      {
+        "date": "19 Eylül 2026",
+        "hypeScore": 5.5,
+        "sentiment": "eleştirel",
+        "headline": "Regresyon",
+        "summary": "Ücretsiz hesaplara getirilen katı sınırlar ve performans düşüklüğü kullanıcı tepkisini çekiyor.",
+        "sources": [
+          "r/Copilot",
+          "r/vscode"
+        ]
       }
     ]
   },
@@ -2393,6 +2480,17 @@
         "sources": [
           "r/devops",
           "r/automation"
+        ]
+      },
+      {
+        "date": "19 Eylül 2026",
+        "hypeScore": 9.3,
+        "sentiment": "stabil",
+        "headline": "Kurumsal Favori",
+        "summary": "Şirket içi süreçlerin otonomlaştırılmasında sorunsuz çalışmasıyla öne çıkıyor.",
+        "sources": [
+          "r/sysadmin",
+          "r/devops"
         ]
       }
     ]
@@ -2531,6 +2629,17 @@
         "sources": [
           "r/LocalLLaMA",
           "r/DeepSeek"
+        ]
+      },
+      {
+        "date": "19 Eylül 2026",
+        "hypeScore": 9.5,
+        "sentiment": "eleştirel",
+        "headline": "Görsel Yetenek",
+        "summary": "Web arayüzündeki bazı yaratıcı yazım kısıtlamaları nedeniyle kullanıcılar tarafından eleştiriliyor.",
+        "sources": [
+          "r/DeepSeek",
+          "r/ArtificialInteligence"
         ]
       }
     ]
@@ -2975,6 +3084,16 @@
         "sources": [
           "r/singularity"
         ]
+      },
+      {
+        "date": "19 Eylül 2026",
+        "hypeScore": 9.3,
+        "sentiment": "stabil",
+        "headline": "Yeni Nesil",
+        "summary": "Yerel masaüstü entegrasyonu ve iş akışı otomasyonundaki başarısı övülüyor.",
+        "sources": [
+          "r/singularity"
+        ]
       }
     ]
   },
@@ -3157,6 +3276,17 @@
         "summary": "Geliştirici iş akışlarına tam uyum.",
         "sources": [
           "r/vibecoding"
+        ]
+      },
+      {
+        "date": "19 Eylül 2026",
+        "hypeScore": 9.2,
+        "sentiment": "stabil",
+        "headline": "Geliştirici Favorisi",
+        "summary": "Karmaşık kod tabanlarında PR oluşturma ve test etme süreçlerindeki doğruluğu takdir ediliyor.",
+        "sources": [
+          "r/ClaudeDev",
+          "r/CursorAI"
         ]
       }
     ]
@@ -3541,6 +3671,17 @@
           "r/LocalLLaMA",
           "r/singularity"
         ]
+      },
+      {
+        "date": "19 Eylül 2026",
+        "hypeScore": 9.9,
+        "sentiment": "stabil",
+        "headline": "Haftanın Lideri",
+        "summary": "Hafta boyunca tüm açık kaynak platformlarında en çok indirilen model oldu.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/singularity"
+        ]
       }
     ]
   },
@@ -3575,6 +3716,17 @@
           "r/singularity",
           "r/OpenAI",
           "r/ChatGPTCoding"
+        ]
+      },
+      {
+        "date": "19 Eylül 2026",
+        "hypeScore": 9.1,
+        "sentiment": "stabil",
+        "headline": "Günün Lideri",
+        "summary": "Mobil cihazlarda karmaşık oyunları yerel olarak çalıştırma potansiyeliyle heyecan yaratıyor.",
+        "sources": [
+          "r/OpenAI",
+          "r/singularity"
         ]
       }
     ]
@@ -3710,6 +3862,17 @@
         "summary": "Hafta boyunca açık kaynakta yüksek beğeni topladı.",
         "sources": [
           "r/LocalLLaMA"
+        ]
+      },
+      {
+        "date": "19 Eylül 2026",
+        "hypeScore": 9.8,
+        "sentiment": "stabil",
+        "headline": "Yeni Açık Kaynak",
+        "summary": "Farklı LLM sağlayıcıları arasında dinamik yönlendirme yapabilmesi büyük ilgi görüyor.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/sysadmin"
         ]
       }
     ]

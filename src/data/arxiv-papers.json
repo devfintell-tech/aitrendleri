@@ -50,9 +50,62 @@
     "2609.20816v1",
     "2609.20817v1",
     "2609.20807v1",
-    "2609.20804v1"
+    "2609.20804v1",
+    "2609.20821v1",
+    "2609.20800v1",
+    "2609.20784v1"
   ],
   "dailyRecords": [
+    {
+      "date": "19 Eylül 2026",
+      "isoDate": "2026-09-19",
+      "papers": [
+        {
+          "id": "2609.20821v1",
+          "titleTr": "Gömme Modelleri İlginç Yöntemlerle Fiziksel Ölçümleri Modelliyor",
+          "title": "Embedding Models Measure in Peculiar Ways",
+          "arxivUrl": "http://arxiv.org/abs/2609.20821v1",
+          "authors": [
+            "Juri Opitz",
+            "Andrianos Michail"
+          ],
+          "category": "cs.CL",
+          "impactScore": 9.6,
+          "whyMad": "Gömme uzaylarının fiziksel büyüklükleri ve ölçümleri ne kadar yansıttığını inceleyerek ezber bozan kalıplar ortaya koyuyor.",
+          "summary": "Anlamsal benzerlik tanımlayan gömme uzaylarının fiziksel kütle ve mesafe ölçümleriyle ne ölçüde örtüştüğünü analiz eder."
+        },
+        {
+          "id": "2609.20800v1",
+          "titleTr": "JEPA-Her Şey: Farklı Dünyalarda Tahmin Modelleri Öğrenmek",
+          "title": "JEPA-Anything: Learning Predictive Models across Different Worlds",
+          "arxivUrl": "http://arxiv.org/abs/2609.20800v1",
+          "authors": [
+            "Taoyong Cui",
+            "Zhongyao Wang",
+            "Xinyue Xu"
+          ],
+          "category": "cs.AI",
+          "impactScore": 9.7,
+          "whyMad": "Ortogonal öngörücü faktörizasyon kullanarak farklı dünyalarda evrensel dünya modellemesi için ortak bir ilke sunuyor.",
+          "summary": "Ortogonal öngörücü faktörizasyona dayanan ve ortak gömme öngörücü mimarilerini genişleten etki alanından bağımsız bir çerçeve önerir."
+        },
+        {
+          "id": "2609.20784v1",
+          "titleTr": "Ajanik Güçlendirmeli Öğrenme İçin Kendi Kendine Emekli Olan Politika İçi Damıtma",
+          "title": "RetireOPD: Self-Retiring On-Policy Distillation for Agentic Reinforcement Learning",
+          "arxivUrl": "http://arxiv.org/abs/2609.20784v1",
+          "authors": [
+            "Yan Yu",
+            "Zhengxi Lu",
+            "Yizhou Liu"
+          ],
+          "category": "cs.LG",
+          "impactScore": 9.5,
+          "whyMad": "Çok turlu ajanlarda öğretmen denetiminin aşamaya bağlı olduğunu göstererek verimli öğrenme için dinamik bir çözüm sunuyor.",
+          "summary": "Ajanic görevlerde ayrıcalıklı bilgilerin zamanla değişen faydasını ele alarak politika içi damıtma sürecini optimize eder."
+        }
+      ]
+    },
     {
       "date": "18 Eylül 2026",
       "isoDate": "2026-09-18",
