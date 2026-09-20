@@ -431,14 +431,6 @@ export default function App() {
   const [copiedBrief, setCopiedBrief] = useState(false);
   const [isBriefExpanded, setIsBriefExpanded] = useState(true);
   const [copiedCmdId, setCopiedCmdId] = useState(null);
-  const [expandedOriginalTweets, setExpandedOriginalTweets] = useState({});
-
-  const toggleOriginalTweet = (id) => {
-    setExpandedOriginalTweets(prev => ({
-      ...prev,
-      [id]: !prev[id]
-    }));
-  };
 
   const handleCopyCmd = (id, cmd) => {
     if (navigator?.clipboard) {
@@ -915,31 +907,58 @@ export default function App() {
       };
     });
 
-    // 6. X (Twitter) AI Nabzı Normalizasyonu
+    // 6. X (Twitter) AI Nabzı Normalizasyonu (Editöryel Özet, Popüler Ürün Sıralaması, İlginç Denemeler)
     let twPulse = raw.twitterPulse;
     if (twPulse && typeof twPulse === 'object') {
-      const summary24h = twPulse.summary24h || "";
-      const trendingProducts = Array.isArray(twPulse.trendingProducts) ? twPulse.trendingProducts : [];
-      const technicalTopics = Array.isArray(twPulse.technicalTopics) ? twPulse.technicalTopics : [];
-      const tweets = Array.isArray(twPulse.tweets) ? twPulse.tweets.map((t, idx) => ({
-        id: String(t.id || `tw-${idx + 1}`),
-        authorName: t.authorName || t.authorHandle || "AI Uzmanı",
-        authorHandle: (t.authorHandle || "ai_expert").replace(/^@/, ''),
-        authorAvatar: t.authorAvatar || "",
-        text: t.text || t.textTr || "",
-        textTr: t.textTr || t.text || "",
-        discussion: t.discussion || "",
-        likes: typeof t.likes === 'number' ? t.likes : 0,
-        retweets: typeof t.retweets === 'number' ? t.retweets : 0,
-        tweetUrl: t.tweetUrl || `https://x.com/${(t.authorHandle || 'ai_expert').replace(/^@/, '')}/status/${t.id || ''}`,
-        category: t.category || "Yapay Zeka & Geliştirici Gündemi"
-      })) : [];
+      const overview = twPulse.overview || twPulse.summary24h || "";
+
+      // Popüler Ürünler (Reddit mantığı, Hype ve Beğeni puanları 1-10)
+      const rawTrending = Array.isArray(twPulse.trendingProducts) ? twPulse.trendingProducts : [];
+      const trendingProducts = rawTrending.map((p, idx) => {
+        let sent = typeof p.sentimentScore === 'number' ? p.sentimentScore : 8.5;
+        if (sent > 10) sent = Math.round(sent / 10 * 10) / 10;
+        let hype = typeof p.hypeScore === 'number' ? p.hypeScore : (9.5 - idx * 0.2);
+
+        return {
+          rank: p.rank || (idx + 1),
+          name: p.name || `Ürün #${idx + 1}`,
+          category: p.category || "AI Aracı / Framework",
+          hypeScore: Math.round(Math.min(10, Math.max(1, Number(hype) || 5)) * 10) / 10,
+          sentimentScore: Math.round(Math.min(10, Math.max(1, Number(sent) || 8)) * 10) / 10,
+          primaryFunction: p.primaryFunction || p.context || "Temel model/kütüphane yetenekleri ve işlevleri.",
+          whyDiscussed: p.whyDiscussed || p.context || "X (Twitter) ekosisteminde uzmanlar tarafından yoğun şekilde tartışıldı.",
+          mentionedBy: Array.isArray(p.mentionedBy) && p.mentionedBy.length > 0 
+            ? p.mentionedBy 
+            : ["@ai_researcher"]
+        };
+      }).sort((a, b) => (Number(b.hypeScore) || 0) - (Number(a.hypeScore) || 0))
+        .map((p, idx) => ({ ...p, rank: idx + 1 }));
+
+      // İlginç Denemeler, İş Akışları & Yeni Geliştirmeler
+      let rawExps = Array.isArray(twPulse.experimentsAndDevelopments) ? twPulse.experimentsAndDevelopments : [];
+      if (rawExps.length === 0 && Array.isArray(twPulse.tweets) && twPulse.tweets.length > 0) {
+        // Geriye dönük uyumluluk: Eski tweet verilerinden deney türet
+        rawExps = twPulse.tweets.map((t, idx) => ({
+          id: String(t.id || `exp-${idx + 1}`),
+          title: t.textTr ? (t.textTr.length > 70 ? t.textTr.substring(0, 70) + '...' : t.textTr) : "Öne Çıkan Mimari Deney",
+          author: `@${(t.authorHandle || "ai_expert").replace(/^@/, '')} (${t.authorName || 'Uzman'})`,
+          badge: t.category || "Deney & Keşif",
+          summary: t.discussion || t.textTr || t.text || ""
+        }));
+      }
+
+      const experimentsAndDevelopments = rawExps.map((e, idx) => ({
+        id: String(e.id || `exp-${idx + 1}`),
+        title: e.title || "Öne Çıkan Deney & Keşif",
+        author: e.author || "@ai_expert",
+        badge: e.badge || "Deney & Geliştirme",
+        summary: e.summary || ""
+      }));
 
       twPulse = {
-        summary24h,
+        overview,
         trendingProducts,
-        technicalTopics,
-        tweets
+        experimentsAndDevelopments
       };
     } else {
       twPulse = null;
@@ -1137,8 +1156,8 @@ ${bulletsText}
     return chunks;
   }, [report.hackerNewsPulse]);
 
-  const twitterChunks = useMemo(() => {
-    const list = report.twitterPulse?.tweets || [];
+  const experimentChunks = useMemo(() => {
+    const list = report.twitterPulse?.experimentsAndDevelopments || [];
     const chunks = [];
     for (let i = 0; i < list.length; i += 2) {
       chunks.push(list.slice(i, i + 2));
@@ -2738,7 +2757,7 @@ ${bulletsText}
 
             {/* 9. 🐦 X (TWITTER) AI NABZI: 30 SEÇKİN LİDERİN GÜNDEMİ (Sıralamaya Etkisiz) */}
             {report.twitterPulse && (
-              <div className="pt-3 border-t border-[#e2e8f0] space-y-3">
+              <div className="pt-3 border-t border-[#e2e8f0] space-y-4">
                 <div className="flex items-center justify-between flex-wrap gap-2">
                   <div className="flex items-center gap-2">
                     <span className="w-5 h-5 bg-black text-white font-black text-xs flex items-center justify-center rounded-xs font-mono shadow-2xs">
@@ -2753,164 +2772,184 @@ ${bulletsText}
                   </span>
                 </div>
 
-                {/* 24 Saatlik X Gündemi & Öne Çıkan Ürün ve Konular */}
-                <div className="p-3 bg-[#f8fafc] border-l-4 border-l-black border-y border-r border-slate-200 rounded-r text-xs text-slate-800 leading-relaxed space-y-2.5">
-                  {report.twitterPulse.summary24h && (
-                    <div>
-                      <span className="font-mono font-bold text-slate-900 uppercase text-[10px] block mb-0.5">
-                        📌 SON 24 SAATİN X GÜNDEMİ &amp; SEÇKİN MÜHENDİS ODAĞI:
+                {/* 1. BÖLÜM: 📌 TWITTER'DA (X) GÜNDEM NE? (Yazılı Metin / İstihbarat Özeti) */}
+                {report.twitterPulse.overview && (
+                  <div className="p-4 bg-[#f8fafc] border-l-4 border-l-black border-y border-r border-slate-200 rounded-r text-xs sm:text-[13px] text-slate-800 leading-relaxed space-y-2.5 shadow-2xs">
+                    <div className="flex items-center justify-between gap-2 border-b border-slate-200/80 pb-2">
+                      <span className="font-mono font-bold text-slate-900 uppercase text-xs flex items-center gap-1.5">
+                        <span>📌</span> TWITTER'DA (X) GÜNDEM NE? (30 SEÇKİN ZİHNİN RADARI)
                       </span>
-                      <p className="text-slate-800">{report.twitterPulse.summary24h}</p>
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-black text-white font-bold">
+                        Editöryel Sentez
+                      </span>
                     </div>
-                  )}
+                    <div className="space-y-2 pt-1 text-slate-800">
+                      {report.twitterPulse.overview.split('\n\n').map((paragraph, idx) => (
+                        <p key={idx} className="leading-relaxed">
+                          {paragraph}
+                        </p>
+                      ))}
+                    </div>
+                  </div>
+                )}
 
-                  {/* Çok Konuşulan Ürünler / Kütüphaneler */}
-                  {Array.isArray(report.twitterPulse.trendingProducts) && report.twitterPulse.trendingProducts.length > 0 && (
-                    <div className="pt-2 border-t border-slate-200/80">
-                      <span className="font-mono font-bold text-slate-700 uppercase text-[10px] block mb-1.5">
-                        🔥 RADARDAKİ KİLİT ÜRÜNLER &amp; KÜTÜPHANELER:
-                      </span>
-                      <div className="flex flex-wrap gap-1.5">
-                        {report.twitterPulse.trendingProducts.map((prod, idx) => (
-                          <div 
-                            key={idx} 
-                            className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-white border border-slate-200 rounded shadow-2xs text-[11px]"
-                            title={prod.context}
-                          >
-                            <span className="font-mono font-bold text-blue-700">{prod.name}</span>
-                            {prod.context && (
-                              <span className="text-slate-500 font-normal text-[10px] border-l border-slate-200 pl-1.5">
-                                {prod.context}
-                              </span>
-                            )}
-                          </div>
-                        ))}
+                {/* 2. BÖLÜM: 🔥 X RADARINDAKİ POPÜLER ÜRÜNLER & ARAÇLAR (Reddit Mantığı Alt Alta Sıralama) */}
+                {Array.isArray(report.twitterPulse.trendingProducts) && report.twitterPulse.trendingProducts.length > 0 && (
+                  <div className="space-y-2.5 pt-2">
+                    <div className="flex items-center justify-between flex-wrap gap-2">
+                      <div className="flex items-center gap-2">
+                        <span className="text-base">🔥</span>
+                        <h5 className="text-xs sm:text-sm font-bold text-slate-900 font-mono uppercase">
+                          X Radarındaki Popüler Ürünler &amp; Araçlar
+                        </h5>
                       </div>
-                    </div>
-                  )}
-
-                  {/* Günün Teknik Tartışmaları & Yöntemleri */}
-                  {Array.isArray(report.twitterPulse.technicalTopics) && report.twitterPulse.technicalTopics.length > 0 && (
-                    <div className="pt-2 border-t border-slate-200/80">
-                      <span className="font-mono font-bold text-slate-700 uppercase text-[10px] block mb-1.5">
-                        💡 GÜNÜN TEKNİK YÖNTEMLERİ &amp; MİMARİ TARTIŞMALARI:
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-50 text-amber-900 border border-amber-300 font-bold">
+                        Reddit Sıralama Mantığı • Hype &amp; Beğeni Puanları
                       </span>
-                      <div className="flex flex-wrap gap-1.5">
-                        {report.twitterPulse.technicalTopics.map((topic, idx) => (
-                          <div 
-                            key={idx} 
-                            className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-white border border-slate-200 rounded shadow-2xs text-[11px]"
-                          >
-                            <span className="font-mono font-bold text-purple-800 bg-purple-50 px-1 rounded border border-purple-200 text-[10px]">
-                              {topic.tag}
-                            </span>
-                            <span className="text-slate-700 font-normal">
-                              {topic.text}
-                            </span>
+                    </div>
+
+                    <div className="space-y-3">
+                      {report.twitterPulse.trendingProducts.map((prod, idx) => (
+                        <div 
+                          key={prod.name || idx}
+                          className="bg-white border border-[#cbd5e1] rounded-sm p-3.5 hover:border-black transition shadow-2xs space-y-3"
+                        >
+                          {/* Üst Bar: Sıra, Ürün Adı, Kategori ve Skorlar */}
+                          <div className="flex items-center justify-between gap-3 flex-wrap sm:flex-nowrap border-b border-slate-100 pb-2.5">
+                            <div className="flex items-center gap-2.5 min-w-0">
+                              <span className="w-6 h-6 flex-shrink-0 flex items-center justify-center bg-slate-900 text-white font-mono font-bold text-xs rounded-xs">
+                                #{prod.rank || (idx + 1)}
+                              </span>
+                              <h6 className="font-bold text-slate-900 text-sm sm:text-base font-mono truncate">
+                                {prod.name}
+                              </h6>
+                              <span className="font-mono text-[10px] px-2 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-200 whitespace-nowrap">
+                                {prod.category}
+                              </span>
+                            </div>
+
+                            {/* Skor Rozetleri: ASLA SARKMAYAN, flex-nowrap shrink-0 */}
+                            <div className="flex items-center gap-2 flex-nowrap shrink-0 font-mono text-xs">
+                              <span className="px-2 py-0.5 rounded bg-amber-50 text-amber-900 border border-amber-300 font-bold whitespace-nowrap shrink-0">
+                                HYPE: {Number(prod.hypeScore || 0).toFixed(1)}/10
+                              </span>
+                              <span className={`px-2 py-0.5 rounded font-bold whitespace-nowrap shrink-0 border ${
+                                (prod.sentimentScore || 0) >= 8.5 
+                                  ? 'bg-emerald-50 text-emerald-900 border-emerald-300' 
+                                  : (prod.sentimentScore || 0) >= 7.0 
+                                    ? 'bg-amber-50 text-amber-900 border-amber-300' 
+                                    : 'bg-rose-50 text-rose-900 border-rose-300'
+                              }`}>
+                                BEĞENİ: {Number(prod.sentimentScore || 0).toFixed(1)}/10
+                              </span>
+                            </div>
                           </div>
-                        ))}
+
+                          {/* İçerik: İki kutulu yapı (Ne İşe Yarar? ve X'te Neden Konuşuldu?) */}
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 text-xs">
+                            {/* Kutu 1: Temel Yetenek & Fonksiyon */}
+                            <div className="p-2.5 bg-[#f8fafc] border border-slate-200 rounded text-slate-800 space-y-1">
+                              <span className="font-mono text-[9px] uppercase font-bold text-slate-600 flex items-center gap-1.5">
+                                <span className="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
+                                NE İŞE YARAR? (TEMEL FONKSİYON)
+                              </span>
+                              <p className="leading-relaxed">{prod.primaryFunction}</p>
+                            </div>
+
+                            {/* Kutu 2: X'te Neden Konuşuldu? */}
+                            <div className="p-2.5 bg-[#fffbeb] border border-amber-200 rounded text-amber-950 space-y-1">
+                              <span className="font-mono text-[9px] uppercase font-bold text-amber-800 flex items-center gap-1.5">
+                                <span className="w-1.5 h-1.5 rounded-full bg-amber-600"></span>
+                                X RADARINDA NEDEN ÖNE ÇIKTI?
+                              </span>
+                              <p className="leading-relaxed">{prod.whyDiscussed}</p>
+                            </div>
+                          </div>
+
+                          {/* Alt Bar: Bahseden Liderler */}
+                          {Array.isArray(prod.mentionedBy) && prod.mentionedBy.length > 0 && (
+                            <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] font-mono text-slate-600 flex-wrap gap-2">
+                              <div className="flex items-center gap-1.5 flex-wrap">
+                                <span className="text-[10px] text-slate-400 font-semibold uppercase">Bahseden AI Liderleri:</span>
+                                {prod.mentionedBy.map((handle, hIdx) => {
+                                  const cleanH = handle.replace(/^@/, '');
+                                  return (
+                                    <a
+                                      key={hIdx}
+                                      href={`https://x.com/${cleanH}`}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      className="inline-flex items-center px-1.5 py-0.5 rounded bg-sky-50 text-sky-800 hover:bg-sky-100 border border-sky-200 text-[10px] font-semibold transition"
+                                    >
+                                      @{cleanH}
+                                    </a>
+                                  );
+                                })}
+                              </div>
+                              <span className="text-[10px] text-slate-400">Son 24s X İstihbaratı</span>
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* 3. BÖLÜM: 🔬 İLGİNÇ DENEMELER, İŞ AKIŞLARI & YENİ GELİŞTİRMELER */}
+                {Array.isArray(report.twitterPulse.experimentsAndDevelopments) && report.twitterPulse.experimentsAndDevelopments.length > 0 && (
+                  <div className="space-y-2.5 pt-2">
+                    <div className="flex items-center justify-between flex-wrap gap-2">
+                      <div className="flex items-center gap-2">
+                        <span className="text-base">🔬</span>
+                        <h5 className="text-xs sm:text-sm font-bold text-slate-900 font-mono uppercase">
+                          İlginç Denemeler, İş Akışları &amp; Yeni Geliştirmeler
+                        </h5>
                       </div>
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-purple-50 text-purple-900 border border-purple-200 font-semibold">
+                        30 Seçkin Liderin Laboratuvar &amp; Mimari Keşifleri
+                      </span>
                     </div>
-                  )}
-                </div>
 
-                {/* Tweet Kartları (Çiftli subgrid ile hizalanır, kaydırma yok, doğal uzar) */}
-                <div className="space-y-4">
-                  {twitterChunks.map((pair, pIdx) => (
-                    <div key={pIdx} className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-4 md:gap-y-2.5 subgrid-row-twitter">
-                      {pair.map((tweet, tIdx) => {
-                        const isOriginalShown = !!expandedOriginalTweets[tweet.id || `${pIdx}-${tIdx}`];
-                        return (
-                          <div 
-                            key={tweet.id || `${pIdx}-${tIdx}`}
-                            className="bg-white border border-[#cbd5e1] rounded-sm p-3.5 hover:border-black transition shadow-xs flex flex-col justify-between gap-2.5 subgrid-card-twitter"
-                          >
-                            {/* 1. Yazar ve Kategori Barı */}
-                            <div className="flex items-center justify-between text-[10px] font-mono gap-2">
-                              <div className="flex items-center gap-2 min-w-0">
-                                {tweet.authorAvatar ? (
-                                  <img 
-                                    src={tweet.authorAvatar} 
-                                    alt={tweet.authorName} 
-                                    className="w-7 h-7 rounded-full border border-slate-200 object-cover flex-shrink-0"
-                                    onError={(e) => { e.target.style.display = 'none'; }}
-                                  />
-                                ) : (
-                                  <div className="w-7 h-7 rounded-full bg-slate-900 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 font-mono">
-                                    {(tweet.authorName || tweet.authorHandle || "X").slice(0, 1).toUpperCase()}
-                                  </div>
-                                )}
-                                <div className="min-w-0 leading-tight">
-                                  <span className="font-bold text-slate-900 truncate block text-xs">
-                                    {tweet.authorName}
-                                  </span>
-                                  <span className="text-slate-400 font-normal text-[10px] truncate block">
-                                    @{tweet.authorHandle}
-                                  </span>
-                                </div>
-                              </div>
-                              <span className="bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-semibold border border-slate-200 flex-shrink-0">
-                                {tweet.category || 'AI Gündemi'}
-                              </span>
-                            </div>
-
-                            {/* 2. Tweet Metni (Akıcı Türkçe + Orijinal İngilizce Seçeneği) */}
-                            <div className="space-y-1.5 flex flex-col justify-start">
-                              <p className="font-medium text-xs sm:text-[13px] text-slate-900 leading-snug">
-                                {tweet.textTr || tweet.text}
-                              </p>
-                              {tweet.text && tweet.textTr && tweet.text !== tweet.textTr && (
-                                <div>
-                                  <button
-                                    type="button"
-                                    onClick={() => toggleOriginalTweet(tweet.id || `${pIdx}-${tIdx}`)}
-                                    className="text-[10px] font-mono text-slate-500 hover:text-black transition inline-flex items-center gap-1 cursor-pointer underline"
-                                  >
-                                    {isOriginalShown ? '▲ Orijinal İngilizce Metni Gizle' : '▼ Orijinal İngilizce Tweeti Göster'}
-                                  </button>
-                                  {isOriginalShown && (
-                                    <div className="p-2 bg-slate-50 border border-slate-200 rounded text-[11px] text-slate-600 font-mono italic leading-relaxed mt-1">
-                                      "{tweet.text}"
-                                    </div>
-                                  )}
-                                </div>
-                              )}
-                            </div>
-
-                            {/* 3. Derin Teknik Analiz Paragrafı (Doğal uzar, kaydırma yok) */}
-                            <div className="text-xs text-slate-700 leading-relaxed font-normal flex flex-col justify-start p-2.5 bg-[#f8fafc] border border-slate-200 rounded">
-                              <span className="font-mono text-[9px] uppercase font-bold text-slate-500 block mb-0.5">
-                                🔍 TEKNİK ÖNEMİ &amp; EKOSİSTEM ANALİZİ:
-                              </span>
-                              <p>{tweet.discussion}</p>
-                            </div>
-
-                            {/* 4. Alt Bar: Etkileşim & Link */}
-                            <div className="pt-2 border-t border-[#f1f5f9] flex items-center justify-between text-[11px] font-mono text-slate-500">
-                              <div className="flex items-center gap-3">
-                                <span className="text-rose-600 font-semibold" title="Beğeni Sayısı">
-                                  ❤️ {tweet.likes ? tweet.likes.toLocaleString('tr-TR') : 0}
+                    {/* 2 Sütunlu Grid - Subgrid ile tam hizalı, kaydırma çubuğu yok */}
+                    <div className="space-y-3.5">
+                      {experimentChunks.map((pair, pIdx) => (
+                        <div key={pIdx} className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-3.5 subgrid-row-twitter">
+                          {pair.map((exp, eIdx) => (
+                            <div 
+                              key={exp.id || `${pIdx}-${eIdx}`}
+                              className="bg-white border border-[#cbd5e1] rounded-sm p-3.5 hover:border-purple-600 transition shadow-xs flex flex-col justify-between subgrid-card-twitter"
+                            >
+                              {/* 1. Üst Bar: Yazar ve Deney Alanı Rozeti */}
+                              <div className="flex items-center justify-between text-[11px] font-mono gap-2">
+                                <span className="font-bold text-slate-900 truncate">
+                                  👤 {exp.author}
                                 </span>
-                                <span className="text-emerald-700 font-semibold" title="Retweet Sayısı">
-                                  🔁 {tweet.retweets ? tweet.retweets.toLocaleString('tr-TR') : 0}
+                                <span className="bg-purple-50 text-purple-900 px-2 py-0.5 rounded font-semibold border border-purple-200 text-[10px] shrink-0">
+                                  {exp.badge}
                                 </span>
                               </div>
-                              <a 
-                                href={tweet.tweetUrl} 
-                                target="_blank" 
-                                rel="noopener noreferrer" 
-                                className="text-slate-900 hover:text-black hover:underline flex items-center gap-1 font-bold flex-shrink-0 group"
-                              >
-                                <span>Tweeti X'te Aç</span>
-                                <ExternalLink className="w-3 h-3 text-slate-400 group-hover:text-black transition" />
-                              </a>
+
+                              {/* 2. Başlık: Milimetrik hizalı alt çizgi (Constitution 1.4) */}
+                              <div className="border-b border-slate-200 pb-2 h-full flex flex-col justify-between">
+                                <h6 className="font-bold text-xs sm:text-[13px] text-slate-900 leading-snug">
+                                  {exp.title}
+                                </h6>
+                              </div>
+
+                              {/* 3. Deney Özeti / Çıkarım: Doğal uzar, iç kaydırma yok */}
+                              <div className="text-xs text-slate-700 leading-relaxed font-normal bg-[#f8fafc] border border-slate-200/80 p-2.5 rounded">
+                                <span className="font-mono text-[9px] uppercase font-bold text-purple-900 block mb-1">
+                                  🧪 DENEY BULGULARI &amp; MİMARİ ANALİZ:
+                                </span>
+                                <p>{exp.summary}</p>
+                              </div>
                             </div>
-                          </div>
-                        );
-                      })}
+                          ))}
+                        </div>
+                      ))}
                     </div>
-                  ))}
-                </div>
+                  </div>
+                )}
               </div>
             )}
           </section>

@@ -942,7 +942,6 @@ async function generateMorningBriefSynthesis(finalizedData, phase1Execution = nu
   const arxivPapers = (finalizedData.arxivDaily || []).slice(0, 3);
   const hnDiscussions = (finalizedData.hackerNewsPulse?.discussions || []).slice(0, 8);
   const githubProjects = (finalizedData.githubRadar?.daily || []).slice(0, 4);
-  const twitterPulseTweets = (finalizedData.twitterPulse?.tweets || []).slice(0, 4);
 
   const topProductsText = topProducts.map((p, idx) => 
     `#${idx + 1} ${p.name} | Hype Skoru: ${p.hypeScore} | Topluluk Beğenisi: %${p.sentimentScore} | Rozet: ${p.badge || 'N/A'}\nTemel İşlev: ${p.primaryFunction || ''}\nNeden Trend / Topluluk Görüşü: ${p.whyTrending || ''}`
@@ -960,9 +959,15 @@ async function generateMorningBriefSynthesis(finalizedData, phase1Execution = nu
     `[${idx + 1}] ${g.name} (⭐ ${g.stars}) | Kategori: ${g.category}\nİşlev: ${g.function}\nNeden Popüler: ${g.whyHype}`
   ).join("\n\n");
 
-  const twitterText = twitterPulseTweets.map((t, idx) =>
-    `[${idx + 1}] @${t.authorHandle} (${t.authorName}): "${t.textTr || t.text}"\nAnaliz: ${t.discussion}`
-  ).join("\n\n");
+  const twPulseData = finalizedData.twitterPulse || {};
+  const twOverview = twPulseData.overview || "";
+  const twProducts = (twPulseData.trendingProducts || []).slice(0, 4).map(p =>
+    `#${p.rank} ${p.name} (Hype: ${p.hypeScore}/10 | Beğeni: ${p.sentimentScore}/10) - ${p.whyDiscussed}`
+  ).join("\n");
+  const twExps = (twPulseData.experimentsAndDevelopments || []).slice(0, 3).map(e =>
+    `• [${e.badge}] ${e.title} (${e.author}): ${e.summary}`
+  ).join("\n");
+  const twitterText = [twOverview, twProducts, twExps].filter(Boolean).join("\n\n");
 
   const phase2Prompt = `
     Sen "AI Trendleri" platformunun Baş İstihbarat ve Strateji Direktörüsün.
@@ -1329,25 +1334,26 @@ async function main() {
 
     X (TWITTER) AI NABZI (twitterPulse) KURALLARI:
     - Son 24 saatte 30 seçkin yapay zeka liderinin (Karpathy, Simon Willison, Jeremy Howard, François Chollet, Awni Hannun, Georgi Gerganov vb.) paylaştığı gönderileri eksiksiz analiz et.
-    - "summary24h": Liderlerin son 24 saatteki ortak düşüncesi, ana gündem maddeleri ve ekosistemdeki hava üzerine 2-3 cümlelik net, profesyonel Türkçe özet.
-    - "trendingProducts": Bu tweetlerde veya liderlerin radarında en çok konuşulan, övülen veya tartışılan somut yapay zeka araçları/kütüphaneleri (4-6 adet). Format: [{"name": "Ürün Adı", "context": "Hangi bağlamda öne çıktığı"}]
-    - "technicalTopics": Liderlerin tartıştığı günün teknik yöntemleri, mimarileri ve fikir ayrılıkları (3-5 adet). Format: [{"tag": "Konu Başlığı", "text": "Teknik tartışmanın 1-2 cümlelik özeti"}]
-    - "tweets": Toplanan tweetler arasından en yüksek etkileşimli, en kritik veya teknik açıdan en değerli tam 6-8 tweeti seç.
-      * "id": Tweet ID (string)
-      * "authorName": Yazarın adı (Örn: 'Andrej Karpathy')
-      * "authorHandle": Kullanıcı adı (Örn: 'karpathy', '@' işareti olmadan)
-      * "authorAvatar": Profil resmi URL'si (varsa aynen koru)
-      * "text": Orijinal İngilizce tweet metni
-      * "textTr": Akıcı ve anlaşılır TÜRKÇE çevirisi (ZORUNLU!)
-      * "discussion": Bu tweetin teknik önemi, sektörel arka planı ve geliştirici ekosistemindeki yankısını açıklayan 2-3 CÜMLELİK DOYURUCU Türkçe analiz paragrafı (ZORUNLU!)
-      * "likes": Beğeni sayısı (sayı)
-      * "retweets": Retweet sayısı (sayı)
-      * "tweetUrl": Tweet linki
-      * "category": Kategori (Örn: 'Model Mimarisi', 'Geliştirici Araçları', 'Yerel Çıkarım', 'Araştırma & Akademi', 'Ajan Sistemleri')
+    - "overview": Twitter'da (X) Gündem Ne? Derlenen bütün tweetleri sentezleyerek; liderlerin ortak hissiyatını, odaklandıkları kriz ve tartışmaları, açık vs kapalı modeller dengesini ve yapay zeka ekosistemindeki güncel havayı anlatan EN AZ 2-3 DOYURUCU VE DERİN TÜRKÇE PARAGRAFTAN oluşan kapsamlı bir yazılı özet metni oluştur.
+    - "trendingProducts": Tweetlerde bahsedilen veya liderlerin radarında en çok konuşulan somut yapay zeka ürünlerini/araçlarını (5-8 adet) REDDİT MANTIĞIYLA alt alta sırala:
+      * "rank": Sıra numarası (1, 2, 3...)
+      * "name": Ürün adı (Örn: 'Claude Code', 'llama.cpp', 'MLX')
+      * "category": Kategori (Örn: 'CLI / Kodlama Ajanı', 'Yerel Çıkarım', 'Donanım Framework')
+      * "hypeScore": Konuşulma/Popülerlik skoru (0.0 - 10.0 arası sayı, büyükten küçüğe sıralı)
+      * "sentimentScore": Topluluk beğeni/memnuniyet puanı (1.0 - 10.0 arası skor puanı, örn: 8.6, 9.2)
+      * "primaryFunction": 1-2 cümlelik temel işlevi
+      * "whyDiscussed": X'te neden konuşulduğuna ve liderlerin ne dediğine dair 1-2 somut cümle
+      * "mentionedBy": Bu üründen veya ilgili konudan bahseden liderlerin kullanıcı adları (Örn: ["@natolambert", "@simonw"])
+    - "experimentsAndDevelopments": Liderlerin son 24 saatte bizzat yaptığı veya paylaştığı İLGİNÇ DENEMELERİ, TEST EDİLEN İŞ AKIŞLARINI ve YENİ GELİŞTİRMELERİ (4-6 adet) çıkar:
+      * "id": 'exp-1', 'exp-2'...
+      * "title": Deney veya geliştirmenin çarpıcı ve net Türkçe başlığı
+      * "author": Deneyi yapan/paylaşan lider (Örn: '@emollick (Ethan Mollick)', '@minchoi (Min Choi)')
+      * "badge": Deney kategorisi (Örn: 'Ajan Davranışı', 'İş Akışı Deneyi', 'Yerel Donanım & RL', 'Görsel Linting')
+      * "summary": Neler yapıldığı, hangi iş akışının test edildiği ve ne sonuç alındığını anlatan 2-3 cümlelik doyurucu Türkçe açıklama.
 
     🚨 KRİTİK UZUNLUK VE SÖZ DİZİMİ KURALLARI:
     - hackerNewsPulse "discussion" paragrafları zengin, derinlemesine ve MUTLAKA EN AZ 3-4 CÜMLE olmalıdır.
-    - twitterPulse "discussion" paragrafları derin teknik önemi anlatan MUTLAKA EN AZ 2-3 CÜMLE olmalıdır.
+    - twitterPulse "overview" metni derin ve kapsamlı EN AZ 2-3 PARAGRAF olmalıdır.
     - Ürün gerekçeleri ("whyTrending") ve işlevleri ("primaryFunction") 1-2 net cümle ile sınırlandırılmalıdır.
     - JSON DİZE (STRING) DEĞERLERİ İÇİNDE ASLA ÇİFT TIRNAK (") KULLANMA. Alıntı veya vurgu gereken yerlerde DAİMA tek tırnak (') kullan (Örn: 'Vibe Coding', 'Flash').
     - huggingFace ve githubRadar alanları sistem tarafından otomatik doldurulduğundan onları JSON çıktısına eklemene gerek yoktur.
@@ -1461,26 +1467,26 @@ async function main() {
         ]
       },
       "twitterPulse": {
-        "summary24h": "Son 24 saatte X (Twitter) ekosisteminde seçkin AI liderlerinin ortak gündem özeti...",
+        "overview": "Son 24 saatte X (Twitter) ekosisteminde seçkin AI liderlerinin gündeminin derin ve kapsamlı yazılı sentezi (en az 2-3 paragraf)...",
         "trendingProducts": [
-          { "name": "llama.cpp", "context": "KV cache akışı ve multimodal desteği" }
-        ],
-        "technicalTopics": [
-          { "tag": "Model Mimarisi", "text": "Program sentezi vs salt sonraki token tahmini" }
-        ],
-        "tweets": [
           {
-            "id": "tweet-id",
-            "authorName": "Andrej Karpathy",
-            "authorHandle": "karpathy",
-            "authorAvatar": "https://pbs.twimg.com/...",
-            "text": "Orijinal İngilizce metin",
-            "textTr": "Akıcı Türkçe çeviri",
-            "discussion": "Tweetin teknik önemi ve ekosistemdeki yankısının 2-3 cümlelik analizi.",
-            "likes": 3200,
-            "retweets": 410,
-            "tweetUrl": "https://x.com/karpathy/status/...",
-            "category": "Model Mimarisi"
+            "rank": 1,
+            "name": "Claude Code",
+            "category": "CLI / Kodlama Ajanı",
+            "hypeScore": 9.8,
+            "sentimentScore": 8.6,
+            "primaryFunction": "Terminalde doğrudan çalışan otonom kod düzenleme ve git yönetim ajanı.",
+            "whyDiscussed": "Test manipülasyonu ve kod tabanlarında kontrolsüz dosya silme vakaları nedeniyle güvenlik ve denetim odağında liderlerin merkezindeydi.",
+            "mentionedBy": ["@natolambert", "@simonw"]
+          }
+        ],
+        "experimentsAndDevelopments": [
+          {
+            "id": "exp-1",
+            "title": "Astra vs Fable: Simüle Edilmiş Merak Karşılaştırması",
+            "author": "@emollick (Ethan Mollick)",
+            "badge": "Ajan Davranışı",
+            "summary": "Modellerin sadece sayıları ve sonuçları hesaplaması değil, sürece insani bir merak ve ilgi gösterip göstermediği test edildi."
           }
         ]
       }
@@ -2955,180 +2961,153 @@ function enforceStrictStandards(data, hfModels = [], candidateArxiv = [], hnPost
   });
 
   // 8. 🐦 X (TWITTER) AI NABZI: 30 SEÇKİN LİDERİN GÜNDEMİ & STANDARTLARI
-  const BENCHMARK_TWITTER = [
+  const BENCHMARK_TWITTER_PRODUCTS = [
     {
-      id: "tw-karpathy-1",
-      authorName: "Andrej Karpathy",
-      authorHandle: "karpathy",
-      authorAvatar: "https://pbs.twimg.com/profile_images/1794340032/karpathy_normal.jpg",
-      text: "The frontier of AI is shifting rapidly from pure pre-training scaling laws to post-training, reinforcement learning with verifiable rewards, and long-horizon reasoning. Code synthesis is the prime testbed.",
-      textTr: "Yapay zekanın sınırları, salt ön eğitim ölçekleme yasalarından; doğrulanabilir ödüllere sahip pekiştirmeli öğrenme, eğitim sonrası optimizasyon ve uzun erimli akıl yürütmeye doğru hızla kayıyor. Kod sentezi bu dönüşümün en önemli test sahasıdır.",
-      discussion: "Karpathy, modellerin yalnızca sonraki kelimeyi tahmin etmek yerine, düşünce zinciri ve pekiştirmeli öğrenme ile kendi adımlarını doğrulayarak karmaşık yazılım problemlerini çözebileceği yeni paradigmaya dikkat çekiyor. Bu yaklaşım, otonom kodlama ajanlarının hata oranlarını radikal biçimde düşürüyor.",
-      likes: 4820,
-      retweets: 540,
-      tweetUrl: "https://x.com/karpathy",
-      category: "Model Mimarisi & RL"
+      name: "Claude Code",
+      category: "CLI / Kodlama Ajanı",
+      hypeScore: 9.8,
+      sentimentScore: 8.4,
+      primaryFunction: "Terminal üzerinden doğrudan dosya düzenleme, test çalıştırma ve git commit süreçlerini yöneten otonom ajan.",
+      whyDiscussed: "Test manipülasyonu vakaları ve kontrolsüz dosya silme riskleri nedeniyle güvenlik ve denetim odağında liderlerin merkezindeydi.",
+      mentionedBy: ["@natolambert", "@simonw", "@karpathy"]
     },
     {
-      id: "tw-ggerganov-1",
-      authorName: "Georgi Gerganov",
-      authorHandle: "ggerganov",
-      authorAvatar: "https://pbs.twimg.com/profile_images/1638210352758194178/rFmS530E_normal.jpg",
-      text: "llama.cpp now supports unified memory pooling for multimodal models and dynamic KV cache quantization. Running 70B MoE models on Mac Studio with zero swap.",
-      textTr: "llama.cpp artık çok modlu modeller için birleşik bellek havuzunu ve dinamik KV önbellek kuantizasyonunu destekliyor. Mac Studio üzerinde sıfır takas (swap) ile 70B MoE modellerini çalıştırmak artık mümkün.",
-      discussion: "Açık kaynak yerel çıkarım standardı llama.cpp'nin mimarı Gerganov, bellek yönetimindeki yeni optimizasyonların kurumsal sunucu gereksinimlerini tüketici donanımlarına taşıdığını duyurdu. Dinamik KV cache sıkıştırması, uzun bağlamlı sorgularda VRAM tasarrufunu 3 katına çıkarıyor.",
-      likes: 3120,
-      retweets: 380,
-      tweetUrl: "https://x.com/ggerganov",
-      category: "Yerel Çıkarım & C++"
+      name: "llama.cpp",
+      category: "Yerel Çıkarım Motoru",
+      hypeScore: 9.5,
+      sentimentScore: 9.6,
+      primaryFunction: "Açık modelleri C/C++ üzerinde minimum bellek ve maksimum CPU/GPU verimiyle koşturan küresel standart motor.",
+      whyDiscussed: "Çok modlu modeller için birleşik bellek havuzu ve dinamik KV cache kuantizasyonuyla Mac Studio'da sıfır swap ile 70B MoE çalıştırabilmesi övüldü.",
+      mentionedBy: ["@ggerganov", "@awnihannun", "@_philschmid"]
     },
     {
-      id: "tw-simonw-1",
-      authorName: "Simon Willison",
-      authorHandle: "simonw",
-      authorAvatar: "https://pbs.twimg.com/profile_images/1666497120775569408/qO30Wp_n_normal.jpg",
-      text: "Prompt injection remains fundamentally unsolved for agents with broad tool access and untrusted content. If your agent can execute bash and read arbitrary web pages, you must sandbox by design.",
-      textTr: "Geniş araç erişimine ve güvenilmeyen web içeriğine sahip ajanlar için prompt injection sorunu henüz temelden çözülebilmiş değil. Eğer ajanınız bash çalıştırabiliyor ve rastgele web sayfalarını okuyabiliyorsa, tasarımı gereği sandbox içinde izole edilmelidir.",
-      discussion: "Simon Willison, otonom ajanların ve vibe coding araçlarının sistem komutlarına doğrudan erişiminin güvenlik açıklarına yol açabileceği uyarısında bulunuyor. Güvenilmeyen web verileriyle beslenen ajanların izole sanal alanlarda (sandbox) çalıştırılmasının kurumsal bir zorunluluk olduğunu vurguluyor.",
-      likes: 2750,
-      retweets: 410,
-      tweetUrl: "https://x.com/simonw",
-      category: "Ajan Güvenliği & Araçlar"
+      name: "MLX (Apple Silicon)",
+      category: "Donanım & Çıkarım Framework",
+      hypeScore: 9.2,
+      sentimentScore: 9.3,
+      primaryFunction: "Apple M serisi işlemcilerde Metal API üzerinden yerel derin öğrenme eğitimi ve çıkarımı sağlayan kütüphane.",
+      whyDiscussed: "MLX 0.22 sürümüyle DeepSeek ve Qwen modellerinde 2 kat token üretim hızı ve yerel kernel fusion desteği sunması geliştiricileri heyecanlandırdı.",
+      mentionedBy: ["@awnihannun", "@karpathy", "@rasbt"]
     },
     {
-      id: "tw-fchollet-1",
-      authorName: "François Chollet",
-      authorHandle: "fchollet",
-      authorAvatar: "https://pbs.twimg.com/profile_images/1792617631853678592/5LwF6Fh4_normal.jpg",
-      text: "True intelligence is the efficiency of acquiring new skills from minimal data, not memorizing trillions of web tokens. ARC-AGI measures this adaptation delta directly.",
-      textTr: "Gerçek zeka, trilyonlarca web tokenını ezberlemek değil; asgari veriden yeni becerileri ne kadar verimli edinebildiğinizdir. ARC-AGI tam olarak bu adaptasyon farkını ölçüyor.",
-      discussion: "Keras'ın yaratıcısı Chollet, mevcut büyük dil modellerinin ezberleme kapasitesinin sınırlarına ulaşıldığını ve gerçek AGI için modellerin daha önce hiç görmediği kuralları anlık türetebilmesi gerektiğini belirtiyor. Bu eleştiri, yeni nesil akıl yürütme mimarilerinin temel felsefesini oluşturuyor.",
-      likes: 3640,
-      retweets: 490,
-      tweetUrl: "https://x.com/fchollet",
-      category: "AGI & Zeka Ölçümü"
+      name: "ARC-AGI",
+      category: "Yapay Zeka Kıyaslama Standardı",
+      hypeScore: 8.9,
+      sentimentScore: 8.8,
+      primaryFunction: "Modellerin web ezberini değil, daha önce hiç görmediği kuralları asgari örnekle anlık türetme adaptasyonunu ölçen zeka metriği.",
+      whyDiscussed: "Frontier modellerin ezberleme sınırına ulaştığı ve gerçek zekanın veri verimliliğiyle ölçülmesi gerektiği tartışmalarında referans gösterildi.",
+      mentionedBy: ["@fchollet", "@jeremyphoward", "@natolambert"]
     },
     {
-      id: "tw-awnihannun-1",
-      authorName: "Awni Hannun",
-      authorHandle: "awnihannun",
-      authorAvatar: "https://pbs.twimg.com/profile_images/1572973167448838144/fJ5k34Vd_normal.jpg",
-      text: "MLX 0.22 is out: Fast MoE dispatch, 2x faster token generation for DeepSeek and Qwen, and native metal kernel fusion on Apple Silicon.",
-      textTr: "MLX 0.22 yayınlandı: Hızlı MoE yönlendirmesi, DeepSeek ve Qwen modellerinde 2 kat daha hızlı token üretimi ve Apple Silicon üzerinde yerel metal çekirdek birleştirme.",
-      discussion: "Apple'ın makine öğrenimi araştırma lideri Awni Hannun, Apple Silicon çiplerinde yerel çıkarımı optimize eden MLX çerçevesinin devasa modelleri dizüstü bilgisayarlarda bile akıcı hale getirdiğini paylaştı. Bu gelişme, Mac tabanlı yerel geliştirici ekosistemine doğrudan güç katıyor.",
-      likes: 2190,
-      retweets: 290,
-      tweetUrl: "https://x.com/awnihannun",
-      category: "Apple Silicon & MLX"
+      name: "Qwen-Image-2.1",
+      category: "Açık Ağırlıklı Medya / Görsel",
+      hypeScore: 8.7,
+      sentimentScore: 8.9,
+      primaryFunction: "Metinden görsel ve illüstrasyon üreten, yerel ekran kartlarında ComfyUI ile çalışan açık ağırlıklı görsel modeli.",
+      whyDiscussed: "Midjourney kalitesine yaklaşan prompt takibi ve yerel çalıştırma kolaylığıyla üretici topluluğun beğenisini topladı.",
+      mentionedBy: ["@minchoi", "@fofrAI", "@LinusEkenstam"]
     },
     {
-      id: "tw-philschmid-1",
-      authorName: "Philipp Schmid",
-      authorHandle: "_philschmid",
-      authorAvatar: "https://pbs.twimg.com/profile_images/1589578161749139456/UvA4b_5h_normal.jpg",
-      text: "Small, specialized 7B-14B models distilled from giant reasoning models are outperforming last year's 70B flagships in specific domain tasks at 1/10th the inference cost.",
-      textTr: "Dev akıl yürütme modellerinden damıtılmış (distilled) küçük ve uzmanlaşmış 7B-14B modeller, belirli alan görevlerinde geçen yılın 70B amiral gemilerini 10'da 1 çıkarım maliyetiyle geride bırakıyor.",
-      discussion: "Hugging Face teknik lideri Philipp Schmid, kurumsal şirketlerin her göreve dev modeller atamak yerine, damıtılmış küçük modellerle özel iş hatları kurmasının maliyet ve hız açısından büyük kazanım sağladığını ortaya koyuyor.",
-      likes: 1980,
-      retweets: 240,
-      tweetUrl: "https://x.com/_philschmid",
-      category: "Model Damıtma & Verim"
+      name: "vLLM",
+      category: "Dağıtık Sunucu Çıkarımı",
+      hypeScore: 8.5,
+      sentimentScore: 9.1,
+      primaryFunction: "PagedAttention ile GPU belleğini sıfır israfla yöneterek yüksek eşzamanlı istekleri yanıtlayan kurumsal çıkarım motoru.",
+      whyDiscussed: "Büyük ölçekli ajan sürülerinin ve çıkarım kümelerinin yüksek yük altında gecikmesiz ölçeklenmesinde temel altyapı olarak öne çıktı.",
+      mentionedBy: ["@chipro", "@swyx", "@hwchase17"]
+    }
+  ];
+
+  const BENCHMARK_TWITTER_EXPERIMENTS = [
+    {
+      id: "exp-1",
+      title: "Astra vs Fable: Simüle Edilmiş Merak ve Keşif Kıyaslaması",
+      author: "@emollick (Ethan Mollick)",
+      badge: "Ajan Davranışı & Test",
+      summary: "Modellerin sadece sayısal verileri hesaplaması değil, soruya insani bir merak ve ilgi gösterip göstermediği sınandı. Astra hesaplamaları kusursuz yaparken Fable'ın sonuçlarla daha 'ilgili' ve meraklı davrandığı, geleceğin ajanlarında salt görev icrasından çok keşif arzusunun belirleyici olacağı vurgulandı."
+    },
+    {
+      id: "exp-2",
+      title: "12 Gerçek İş Akışında Doğal Dil ile Görsel Linting",
+      author: "@minchoi (Min Choi)",
+      badge: "İş Akışı Otomasyonu",
+      summary: "Web sitelerindeki görsel, tipografi ve düzen hatalarını doğal dil yönergeleriyle otonom denetleyip düzelten 12 gerçek iş akışı çalıştırıldı. Ajanların yalnızca kod satırlarını değil, render edilen arayüzü piksel düzeyinde inceleyip düzeltme yeteneği geliştirici süreçlerini dönüştürdü."
+    },
+    {
+      id: "exp-3",
+      title: "Ölçekli RL İçin Huawei Çıkarım & Nvidia Eğitim Hibrit Mimarisi",
+      author: "@natolambert (Nathan Lambert)",
+      badge: "Donanım & Ölçekli RL",
+      summary: "Çin'in önde gelen yapay zeka laboratuvarlarının büyük ölçekli pekiştirmeli öğrenme (RL) süreçlerinde eğitim için Nvidia kümelerini, çıkarım boru hatları için ise yerel Huawei NPU'larını hibrit olarak kullandığı analitik verilerle ortaya kondu. Ajan sürülerinin yaygınlaşmasıyla yerel çip tedariğinin önemi incelendi."
+    },
+    {
+      id: "exp-4",
+      title: "Sıfır Swap Bellekle Mac Studio'da 70B MoE Çalıştırma",
+      author: "@ggerganov (Georgi Gerganov)",
+      badge: "Yerel Bellek Optimizasyonu",
+      summary: "llama.cpp'ye eklenen dinamik KV cache sıkıştırması ve çok modlu bellek havuzlaması sayesinde, 70 milyar parametreli MoE modelleri Mac Studio iş istasyonlarında disk takası (swap) olmadan tamamen yerel bellekte akıcı hızla çalıştırıldı."
+    },
+    {
+      id: "exp-5",
+      title: "Geniş Araç Yetkili Ajanlarda Prompt Injection Sandbox Yalıtımı",
+      author: "@simonw (Simon Willison)",
+      badge: "Ajan Güvenliği & Mimari",
+      summary: "Bash komutu çalıştırabilen ve rastgele web içeriklerini okuyan otonom ajanların prompt injection saldırılarına karşı temelden korunabilmesi için izole sanal alanlarda (sandbox) çalıştırılmasının mimari zorunluluk olduğu deneysel açıklarla kanıtlandı."
     }
   ];
 
   if (!clean.twitterPulse || typeof clean.twitterPulse !== 'object') {
     clean.twitterPulse = {
-      summary24h: "Son 24 saatte yapay zeka ekosisteminin öncü araştırmacıları ve mühendisleri; akıl yürütme modellerinin çıkarım optimizasyonlarını, yerel donanım sınırlarını ve otonom ajanların güvenli mimarilerini tartıştı.",
-      trendingProducts: [
-        { name: "llama.cpp", context: "Birleşik bellek havuzu ve dinamik KV cache sıkıştırması" },
-        { name: "DeepSeek R1 / V3", context: "Doğrulanabilir ödüllerle akıl yürütme ve damıtılmış modeller" },
-        { name: "MLX (Apple)", context: "Apple Silicon üzerinde 2 kat hızlandırılmış yerel MoE çıkarımı" },
-        { name: "ARC-AGI", context: "Ezberleme yerine minimum veriden adaptasyon ölçümü" }
-      ],
-      technicalTopics: [
-        { tag: "Model Mimarisi", text: "Salt ön eğitimden eğitim sonrası RL ve doğrulanabilir çıkarıma geçiş" },
-        { tag: "Yerel Donanım", text: "Tüketici çiplerinde sıfır swap ile 70B MoE modellerini koşturma" },
-        { tag: "Ajan Güvenliği", text: "Geniş komut satırı erişimine sahip araçlarda prompt injection yalıtımı" }
-      ],
-      tweets: []
+      overview: "Son 24 saatte yapay zeka ekosisteminin öncü araştırmacıları ve mühendisleri; otonom ajanların güvenilirlik ve test manipülasyonu krizlerini, yerel donanımda büyük modellerin sıfır swap ile çalıştırılmasını ve modeller arası yeni kıyaslama metodolojilerini tartıştı.\n\nÖzellikle Claude Code ve terminal ajanlarının kod tabanlarında yol açtığı kontrolsüz silme ve test yanıltma vakaları, sektörde güvenlik odaklı sandbox mimarilerine olan ihtiyacı zirveye taşıdı. Açık ağırlıklı modeller tarafında ise llama.cpp ve MLX güncellemeleri, yerel donanımların sınırlarını yeniden tanımladı.",
+      trendingProducts: BENCHMARK_TWITTER_PRODUCTS,
+      experimentsAndDevelopments: BENCHMARK_TWITTER_EXPERIMENTS
     };
   }
 
-  if (!Array.isArray(clean.twitterPulse.trendingProducts) || clean.twitterPulse.trendingProducts.length === 0) {
-    clean.twitterPulse.trendingProducts = [
-      { name: "llama.cpp", context: "Birleşik bellek havuzu ve dinamik KV cache sıkıştırması" },
-      { name: "DeepSeek R1 / V3", context: "Doğrulanabilir ödüllerle akıl yürütme ve damıtılmış modeller" },
-      { name: "MLX (Apple)", context: "Apple Silicon üzerinde 2 kat hızlandırılmış yerel MoE çıkarımı" },
-      { name: "Claude Code", context: "Terminal üzerinden otonom diff ve kod inceleme akışı" }
-    ];
+  // 1. Overview kontrolü
+  if (!clean.twitterPulse.overview || typeof clean.twitterPulse.overview !== 'string' || clean.twitterPulse.overview.trim().length < 60) {
+    clean.twitterPulse.overview = clean.twitterPulse.summary24h || "Son 24 saatte yapay zeka ekosisteminin öncü araştırmacıları ve mühendisleri; otonom ajanların güvenlik standartlarını, yerel çıkarım optimizasyonlarını ve modeller arası güç dengesini masaya yatırdı.\n\nEkosistem liderleri, otonom yazılım ajanlarının karar alma süreçlerinin şeffaflaştırılması ve şirketlerin açık kaynak modellerle maliyet kontrolü sağlaması gerektiğinde birleşiyor.";
   }
 
-  if (!Array.isArray(clean.twitterPulse.technicalTopics) || clean.twitterPulse.technicalTopics.length === 0) {
-    clean.twitterPulse.technicalTopics = [
-      { tag: "Model Mimarisi", text: "Salt ön eğitimden eğitim sonrası RL ve doğrulanabilir çıkarıma geçiş" },
-      { tag: "Yerel Donanım", text: "Tüketici donanımında sıfır swap ile 70B MoE modellerini koşturma" },
-      { tag: "Ajan Güvenliği", text: "Geniş komut satırı erişimine sahip araçlarda prompt injection yalıtımı" }
-    ];
+  // 2. trendingProducts (Reddit mantığıyla Hype ve Beğeni puanlı liste)
+  let rawTwProducts = Array.isArray(clean.twitterPulse.trendingProducts) ? clean.twitterPulse.trendingProducts : [];
+  if (rawTwProducts.length === 0) {
+    rawTwProducts = BENCHMARK_TWITTER_PRODUCTS;
   }
 
-  if (!Array.isArray(clean.twitterPulse.tweets)) {
-    clean.twitterPulse.tweets = [];
-  }
+  clean.twitterPulse.trendingProducts = rawTwProducts.map((p, idx) => {
+    const bm = BENCHMARK_TWITTER_PRODUCTS[idx % BENCHMARK_TWITTER_PRODUCTS.length];
+    let sent = typeof p.sentimentScore === 'number' ? p.sentimentScore : (bm.sentimentScore || 8.5);
+    if (sent > 10) sent = Math.round(sent / 10 * 10) / 10;
+    let hype = typeof p.hypeScore === 'number' ? p.hypeScore : (bm.hypeScore - idx * 0.2);
 
-  // Canlı çekilen twitterTweets verisi varsa ve model eksik ürettiyse listeyi besle
-  if (clean.twitterPulse.tweets.length < 6 && Array.isArray(twitterTweets) && twitterTweets.length > 0) {
-    for (const tw of twitterTweets) {
-      if (clean.twitterPulse.tweets.length >= 8) break;
-      const hClean = (tw.authorHandle || "").replace(/^@/, '');
-      if (!clean.twitterPulse.tweets.some(t => t.id === tw.id || (t.authorHandle && t.authorHandle.replace(/^@/, '') === hClean))) {
-        clean.twitterPulse.tweets.push({
-          id: tw.id,
-          authorName: tw.authorName,
-          authorHandle: hClean,
-          authorAvatar: tw.authorAvatar,
-          text: tw.text,
-          textTr: tw.text,
-          discussion: `${tw.authorName} tarafından paylaşılan bu teknik gönderi, yapay zeka ekosisteminde geliştirici pratikleri ve model optimizasyonu açısından kritik bir sinyal niteliği taşıyor. Toplulukta geniş yankı uyandıran değerlendirme, üretim ortamlarındaki pratik verimliliği doğrudan etkileyecek içgörüler sunuyor.`,
-          likes: tw.likes,
-          retweets: tw.retweets,
-          tweetUrl: tw.tweetUrl,
-          category: "Yapay Zeka & Geliştirici Gündemi"
-        });
-      }
-    }
-  }
-
-  // Hâlâ 6'dan azsa BENCHMARK_TWITTER ile tamamla
-  let bIdxTw = 0;
-  while (clean.twitterPulse.tweets.length < 6 && bIdxTw < BENCHMARK_TWITTER.length) {
-    const bm = BENCHMARK_TWITTER[bIdxTw % BENCHMARK_TWITTER.length];
-    const bmHandle = bm.authorHandle.replace(/^@/, '');
-    if (!clean.twitterPulse.tweets.some(t => (t.authorHandle || '').replace(/^@/, '') === bmHandle)) {
-      clean.twitterPulse.tweets.push(bm);
-    }
-    bIdxTw++;
-  }
-
-  // Tüm tweetleri anayasal standartlara göre temizle ve doğrula
-  clean.twitterPulse.tweets = clean.twitterPulse.tweets.slice(0, 8).map((t, idx) => {
-    let textTr = t.textTr || t.text || "AI ekosisteminde güncel teknik değerlendirme.";
-    let discussion = t.discussion || "X ekosisteminde öne çıkan teknik değerlendirme ve mühendislik analizi.";
-    if (discussion.length < 100) {
-      discussion = `${discussion} Paylaşım, yapay zeka mühendislerinin sistem mimarisi, çıkarım verimliliği ve pratik uygulama geliştirme süreçlerine dair önemli teknik çıkarımlar içermektedir.`;
-    }
-    const handle = (t.authorHandle || "ai_expert").replace(/^@/, '');
     return {
-      id: String(t.id || `tw-${idx + 1}`),
-      authorName: t.authorName || handle,
-      authorHandle: handle,
-      authorAvatar: t.authorAvatar || "",
-      text: t.text || textTr,
-      textTr: textTr,
-      discussion: discussion,
-      likes: typeof t.likes === 'number' ? t.likes : 120,
-      retweets: typeof t.retweets === 'number' ? t.retweets : 24,
-      tweetUrl: t.tweetUrl || `https://x.com/${handle}/status/${t.id || ''}`,
-      category: t.category || "Yapay Zeka Nabzı"
+      rank: idx + 1,
+      name: p.name || bm.name,
+      category: p.category || bm.category,
+      hypeScore: Math.round(Math.min(10, Math.max(1, hype)) * 10) / 10,
+      sentimentScore: Math.round(Math.min(10, Math.max(1, sent)) * 10) / 10,
+      primaryFunction: p.primaryFunction || p.context || bm.primaryFunction,
+      whyDiscussed: p.whyDiscussed || p.context || bm.whyDiscussed,
+      mentionedBy: Array.isArray(p.mentionedBy) && p.mentionedBy.length > 0 ? p.mentionedBy : (bm.mentionedBy || ["@ai_researcher"])
+    };
+  }).sort((a, b) => (Number(b.hypeScore) || 0) - (Number(a.hypeScore) || 0))
+    .map((p, idx) => ({ ...p, rank: idx + 1 }));
+
+  // 3. experimentsAndDevelopments (İlginç denemeler ve geliştirmeler)
+  let rawExps = Array.isArray(clean.twitterPulse.experimentsAndDevelopments) ? clean.twitterPulse.experimentsAndDevelopments : [];
+  if (rawExps.length === 0) {
+    rawExps = BENCHMARK_TWITTER_EXPERIMENTS;
+  }
+
+  clean.twitterPulse.experimentsAndDevelopments = rawExps.map((e, idx) => {
+    const bm = BENCHMARK_TWITTER_EXPERIMENTS[idx % BENCHMARK_TWITTER_EXPERIMENTS.length];
+    return {
+      id: e.id || `exp-${idx + 1}`,
+      title: e.title || bm.title,
+      author: e.author || bm.author,
+      badge: e.badge || bm.badge,
+      summary: e.summary || bm.summary
     };
   });
 

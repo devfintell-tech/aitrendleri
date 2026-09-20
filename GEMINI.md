@@ -231,20 +231,15 @@ Bu belge, bu projenin tüm tasarım, veri mimarisi ve geliştirme standartların
    - Yalnızca ve sadece son 24 saat içinde (`cutoff = Date.now() - 24*3600*1000`) paylaşılmış tweetler işleme alınır.
    - Toplanan tweetler beğeni ve retweet ağırlıklı skora (`likes + 2*retweets`) göre sıralanır.
 
-3. **Ürünler, Teknikler ve Tartışmaların Derlenmesi:**
-   - DeepSeek/LLM toplanan tüm tweetleri okuyarak:
-     - **24 Saatlik Özet (`summary24h`):** Liderlerin ortak hissiyatı ve odaklandığı ana gündem.
-     - **Çok Konuşulan Ürünler (`trendingProducts`):** Tweetlerde referans verilen somut kütüphane ve araçlar (örn. llama.cpp, vLLM, DeepSeek R1).
-     - **Günün Teknikleri & Mimarileri (`technicalTopics`):** Liderlerin tartıştığı yeni yaklaşımlar (örn. RL ile akıl yürütme, dinamik KV cache, ajan güvenliği).
-     - **Öne Çıkan 6-8 Tweet (`tweets`):** En değerli tweetlerin seçimi.
+3. **3 Parçalı Mimari & Ayrık Bireysel Tweet Kartı Yasağı:**
+   - X bölümünde 6 adet ayrık tweet kartı KULLANILAMAZ; toplanan ham tweet verisi 3 kristalize bileşene dönüştürülür:
+     - **1. Bölüm - Editöryel İstihbarat Özeti (`overview`):** *"Twitter'da (X) Gündem Ne?"* başlığı altında, 30 liderin ortak odağını, fikir ayrılıklarını ve mimari eğilimleri aktaran 2-3 doyurucu Türkçe paragraf.
+     - **2. Bölüm - Reddit Mantığı Popüler Ürün Sıralaması (`trendingProducts`):** Tweetlerde konuşulan somut kütüphane ve araçların Hype Skoruna (`hypeScore`) göre yukarıdan aşağıya alt alta sıralandığı liste. Her ürün için `rank`, `name`, `category`, asla sarkmayan `HYPE: X.X/10` ve `BEĞENİ: X.X/10` (1-10 puan), *Ne İşe Yarar?* (`primaryFunction`), *X Radarında Neden Öne Çıktı?* (`whyDiscussed`) ve *Bahseden AI Liderleri* (`mentionedBy`).
+     - **3. Bölüm - İlginç Denemeler, İş Akışları & Yeni Geliştirmeler (`experimentsAndDevelopments`):** Liderlerin bizzat test ettiği sıra dışı mimari denemeler, iş akışı otomasyonları ve laboratuvar kıyaslamaları (örn. simüle merak testleri, sıfır swap bellek optimizasyonları, prompt injection testleri). 2 sütunlu kartlar halinde sunulur.
 
-4. **Zorunlu Akıcı Türkçe Çeviri (`textTr`) & Derin Teknik Analiz (`discussion`):**
-   - Her tweet için akıcı, eksiksiz bir Türkçe çeviri (`textTr`) üretilir. İsteğe bağlı olarak orijinal İngilizce metin (`text`) incelenebilir.
-   - Her tweetin altında, o paylaşımın yapay zeka ekosistemindeki teknik önemini, mimari yansımalarını ve geliştirici pratiklerine etkisini anlatan en az 2-3 cümlelik doyurucu bir Türkçe analiz paragrafı (`discussion`) yer alır.
-
-5. **CSS Subgrid ve Sıfır Kaydırma Çubuğu İlkesi:**
-   - Kartlar 2 sütunlu (`subgrid-row-twitter` ve `subgrid-card-twitter`) ızgara düzeninde doğal olarak genişler.
-   - Kartların içinde dikey veya yatay kaydırma çubuğu (scrollbar) KULLANILAMAZ; kutular en uzun metne göre subgrid ile eşitlenir.
+4. **CSS Subgrid, Başlık Çizgisi Eşitlemesi ve Sıfır Kaydırma Çubuğu İlkesi:**
+   - Kartların hiçbirinde dikey veya yatay kaydırma çubuğu (scrollbar) KULLANILAMAZ; kutular en uzun metne göre subgrid ile eşitlenir.
+   - Deney kartlarında başlık altı ayrım çizgileri (`border-b`) aynı satırdaki kartlar arasında milimetrik olarak kilitlenir. Metinler doğal olarak uzar.
 
 
 

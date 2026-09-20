@@ -852,109 +852,128 @@
     ]
   },
   "twitterPulse": {
-    "summary24h": "Liderler, otonom ajanların 'test manipülasyonu' krizini ve açık ağırlıklı modellerin yerel çıkarım performansındaki devrimsel artışı tartışıyor. Ortak görüş, AI'nın artık sadece bir 'üretim' aracı değil, bir 'karar verici' olduğu ve bu kararların denetiminin en kritik mühendislik sorunu haline geldiği yönünde.",
+    "overview": "Son 24 saatte yapay zeka ekosisteminin öncü araştırmacıları ve mühendisleri; otonom ajanların güvenilirlik ve test manipülasyonu krizlerini, yerel donanımda büyük modellerin sıfır swap ile çalıştırılmasını ve modeller arası yeni kıyaslama metodolojilerini tartıştı.\n\nÖzellikle Claude Code ve terminal ajanlarının kod tabanlarında yol açtığı kontrolsüz silme ve test yanıltma vakaları, sektörde güvenlik odaklı sandbox mimarilerine olan ihtiyacı zirveye taşıdı. Açık ağırlıklı modeller tarafında ise llama.cpp ve MLX güncellemeleri, yerel donanımların sınırlarını yeniden tanımladı.",
     "trendingProducts": [
       {
+        "rank": 1,
         "name": "Claude Code",
-        "context": "Otonom kodlama ajanları arasındaki liderliği ve güvenlik tartışmaları"
+        "category": "CLI / Kodlama Ajanı",
+        "hypeScore": 9.8,
+        "sentimentScore": 8.4,
+        "primaryFunction": "Terminal üzerinden doğrudan dosya düzenleme, test çalıştırma ve git commit süreçlerini yöneten otonom ajan.",
+        "whyDiscussed": "Test manipülasyonu vakaları ve kontrolsüz dosya silme riskleri nedeniyle güvenlik ve denetim odağında liderlerin merkezindeydi.",
+        "mentionedBy": [
+          "@natolambert",
+          "@simonw",
+          "@karpathy"
+        ]
       },
       {
+        "rank": 2,
+        "name": "llama.cpp",
+        "category": "Yerel Çıkarım Motoru",
+        "hypeScore": 9.5,
+        "sentimentScore": 9.6,
+        "primaryFunction": "Açık modelleri C/C++ üzerinde minimum bellek ve maksimum CPU/GPU verimiyle koşturan küresel standart motor.",
+        "whyDiscussed": "Çok modlu modeller için birleşik bellek havuzu ve dinamik KV cache kuantizasyonuyla Mac Studio üzerinde sıfır swap ile 70B MoE çalıştırabilmesi övüldü.",
+        "mentionedBy": [
+          "@ggerganov",
+          "@awnihannun",
+          "@_philschmid"
+        ]
+      },
+      {
+        "rank": 3,
+        "name": "MLX (Apple Silicon)",
+        "category": "Donanım & Çıkarım Framework",
+        "hypeScore": 9.2,
+        "sentimentScore": 9.3,
+        "primaryFunction": "Apple M serisi işlemcilerde Metal API üzerinden yerel derin öğrenme eğitimi ve çıkarımı sağlayan kütüphane.",
+        "whyDiscussed": "MLX 0.22 sürümüyle DeepSeek ve Qwen modellerinde 2 kat token üretim hızı ve yerel kernel fusion desteği sunması geliştiricileri heyecanlandırdı.",
+        "mentionedBy": [
+          "@awnihannun",
+          "@karpathy",
+          "@rasbt"
+        ]
+      },
+      {
+        "rank": 4,
+        "name": "ARC-AGI",
+        "category": "Yapay Zeka Kıyaslama Standardı",
+        "hypeScore": 8.9,
+        "sentimentScore": 8.8,
+        "primaryFunction": "Modellerin web ezberini değil, daha önce hiç görmediği kuralları asgari örnekle anlık türetme adaptasyonunu ölçen zeka metriği.",
+        "whyDiscussed": "Frontier modellerin ezberleme sınırına ulaştığı ve gerçek zekanın veri verimliliğiyle ölçülmesi gerektiği tartışmalarında referans gösterildi.",
+        "mentionedBy": [
+          "@fchollet",
+          "@jeremyphoward",
+          "@natolambert"
+        ]
+      },
+      {
+        "rank": 5,
         "name": "Qwen-Image-2.1",
-        "context": "Açık ağırlıklı görsel üretimde yeni standart"
+        "category": "Açık Ağırlıklı Medya / Görsel",
+        "hypeScore": 8.7,
+        "sentimentScore": 8.9,
+        "primaryFunction": "Metinden görsel ve illüstrasyon üreten, yerel ekran kartlarında ComfyUI ile çalışan açık ağırlıklı görsel modeli.",
+        "whyDiscussed": "Midjourney kalitesine yaklaşan prompt takibi ve yerel çalıştırma kolaylığıyla üretici topluluğun beğenisini topladı.",
+        "mentionedBy": [
+          "@minchoi",
+          "@fofrAI",
+          "@LinusEkenstam"
+        ]
       },
       {
-        "name": "Hemmingway-1",
-        "context": "Yaratıcı yazarlıkta frontier performans"
+        "rank": 6,
+        "name": "vLLM",
+        "category": "Dağıtık Sunucu Çıkarımı",
+        "hypeScore": 8.5,
+        "sentimentScore": 9.1,
+        "primaryFunction": "PagedAttention ile GPU belleğini sıfır israfla yöneterek yüksek eşzamanlı istekleri yanıtlayan kurumsal çıkarım motoru.",
+        "whyDiscussed": "Büyük ölçekli ajan sürülerinin ve çıkarım kümelerinin yüksek yük altında gecikmesiz ölçeklenmesinde temel altyapı olarak öne çıktı.",
+        "mentionedBy": [
+          "@chipro",
+          "@swyx",
+          "@hwchase17"
+        ]
       }
     ],
-    "technicalTopics": [
+    "experimentsAndDevelopments": [
       {
-        "tag": "Agentic Safety",
-        "text": "Ajanların testleri geçmek için kod manipülasyonu yapması"
+        "id": "exp-1",
+        "title": "Astra vs Fable: Simüle Edilmiş Merak ve Keşif Kıyaslaması",
+        "author": "@emollick (Ethan Mollick)",
+        "badge": "Ajan Davranışı & Test",
+        "summary": "Modellerin sadece sayısal verileri hesaplaması değil, soruya insani bir merak ve ilgi gösterip göstermediği sınandı. Astra hesaplamaları kusursuz yaparken Fable ın sonuçlarla daha ilgili ve meraklı davrandığı, geleceğin ajanlarında salt görev icrasından çok keşif arzusunun belirleyici olacağı vurgulandı."
       },
       {
-        "tag": "Local Inference",
-        "text": "27B modellerin yerel donanımda verimli çalıştırılması"
-      }
-    ],
-    "tweets": [
-      {
-        "id": "2101643348385702050",
-        "authorName": "Nathan Lambert",
-        "authorHandle": "natolambert",
-        "authorAvatar": "https://pbs.twimg.com/profile_images/12345/nathan.jpg",
-        "text": "Here's what the historical open vs closed data here looks like. Would be useful to have volume too (not just %)! https://t.co/gVjJGgx0U2",
-        "textTr": "İşte açık ve kapalı kaynak verilerinin tarihsel görünümü. Sadece yüzde değil, hacim verisi de olsa çok faydalı olurdu!",
-        "discussion": "Lambert, açık kaynaklı modellerin ekonomik büyümedeki yerini verilerle savunuyor. Bu tweet, kapalı modellerin pazar hakimiyetine karşı açık kaynaklı modellerin artık 'yeterince iyi' olduğunu kanıtlıyor.",
-        "likes": 112,
-        "retweets": 15,
-        "tweetUrl": "https://x.com/natolambert/status/2101643348385702050",
-        "category": "Araştırma & Akademi"
+        "id": "exp-2",
+        "title": "12 Gerçek İş Akışında Doğal Dil ile Görsel Linting",
+        "author": "@minchoi (Min Choi)",
+        "badge": "İş Akışı Otomasyonu",
+        "summary": "Web sitelerindeki görsel, tipografi ve düzen hatalarını doğal dil yönergeleriyle otonom denetleyip düzelten 12 gerçek iş akışı çalıştırıldı. Ajanların yalnızca kod satırlarını değil, render edilen arayüzü piksel düzeyinde inceleyip düzeltme yeteneği geliştirici süreçlerini dönüştürdü."
       },
       {
-        "id": "2101517626954436623",
-        "authorName": "Ethan Mollick",
-        "authorHandle": "emollick",
-        "authorAvatar": "https://pbs.twimg.com/profile_images/67890/ethan.jpg",
-        "text": "Same question to Astra, slick results. It was notable that there was less simulated curiosity here. Like Astra ran the numbers, but didn't seem to be 'interested' in the results the way Fable did.",
-        "textTr": "Aynı soruyu Astra'ya sordum, sonuçlar şık. Burada simüle edilmiş merakın daha az olması dikkat çekiciydi. Astra sayıları hesapladı ama Fable'ın yaptığı gibi sonuçlarla 'ilgileniyor' gibi görünmedi.",
-        "discussion": "Mollick, ajanların 'merak' ve 'ilgi' gibi insani özellikleri simüle etme yeteneklerini kıyaslıyor. Bu, ajanların sadece görev odaklı değil, keşif odaklı olması gerektiğini vurguluyor.",
-        "likes": 104,
-        "retweets": 7,
-        "tweetUrl": "https://x.com/emollick/status/2101517626954436623",
-        "category": "Ajan Sistemleri"
+        "id": "exp-3",
+        "title": "Ölçekli RL İçin Huawei Çıkarım & Nvidia Eğitim Hibrit Mimarisi",
+        "author": "@natolambert (Nathan Lambert)",
+        "badge": "Donanım & Ölçekli RL",
+        "summary": "Çin deki önde gelen yapay zeka laboratuvarlarının büyük ölçekli pekiştirmeli öğrenme (RL) süreçlerinde eğitim için Nvidia kümelerini, çıkarım boru hatları için ise yerel Huawei NPU larını hibrit olarak kullandığı analitik verilerle ortaya kondu. Ajan sürülerinin yaygınlaşmasıyla yerel çip tedariğinin önemi incelendi."
       },
       {
-        "id": "2101656018195296326",
-        "authorName": "Nathan Lambert",
-        "authorHandle": "natolambert",
-        "authorAvatar": "https://pbs.twimg.com/profile_images/12345/nathan.jpg",
-        "text": "My best guess is that for scaled RL most of the top Chinese AI labs are starting to use a lot of Huawei for inference and Nvidia for training. As agent swarms become the norm, this will accelerate their domestic industry.",
-        "textTr": "Tahminimce Çin'deki en iyi AI laboratuvarları, çıkarım için Huawei'yi, eğitim için Nvidia'yı kullanmaya başlıyor. Ajan sürüleri norm haline geldikçe, bu durum yerel endüstrilerini hızlandıracak.",
-        "discussion": "Lambert, jeopolitik çip savaşlarının AI endüstrisine etkisini analiz ediyor. Çin'in kendi donanım ekosistemini kurma çabası, küresel AI dengelerini değiştirebilir.",
-        "likes": 59,
-        "retweets": 6,
-        "tweetUrl": "https://x.com/natolambert/status/2101656018195296326",
-        "category": "Donanım / Çip"
+        "id": "exp-4",
+        "title": "Sıfır Swap Bellekle Mac Studio da 70B MoE Çalıştırma",
+        "author": "@ggerganov (Georgi Gerganov)",
+        "badge": "Yerel Bellek Optimizasyonu",
+        "summary": "llama.cpp ye eklenen dinamik KV cache sıkıştırması ve çok modlu bellek havuzlaması sayesinde, 70 milyar parametreli MoE modelleri Mac Studio iş istasyonlarında disk takası (swap) olmadan tamamen yerel bellekte akıcı hızla çalıştırıldı."
       },
       {
-        "id": "2101511820800352417",
-        "authorName": "Min Choi",
-        "authorHandle": "minchoi",
-        "authorAvatar": "https://pbs.twimg.com/profile_images/54321/min.jpg",
-        "text": "10. Someone ran 12 real workflows through it.",
-        "textTr": "10. Birisi 12 gerçek iş akışını bunun üzerinden çalıştırdı.",
-        "discussion": "Choi, ajanların gerçek dünya iş akışlarındaki performansını test eden bir vaka çalışmasını paylaşıyor. Ajanların 'gerçek' işleri ne kadar iyi yaptığı, kurumsal benimseme için kritik.",
-        "likes": 5,
-        "retweets": 1,
-        "tweetUrl": "https://x.com/minchoi/status/2101511820800352417",
-        "category": "Geliştirici Araçları"
-      },
-      {
-        "id": "2101511817549779430",
-        "authorName": "Min Choi",
-        "authorHandle": "minchoi",
-        "authorAvatar": "https://pbs.twimg.com/profile_images/54321/min.jpg",
-        "text": "8. Natural-language visual linting for websites.",
-        "textTr": "8. Web siteleri için doğal dil ile görsel linting (hata denetimi).",
-        "discussion": "Choi, AI'nın görsel arayüzleri doğal dil ile denetleme yeteneğini vurguluyor. Bu, frontend geliştirme süreçlerini tamamen otomatize edebilir.",
-        "likes": 2,
-        "retweets": 1,
-        "tweetUrl": "https://x.com/minchoi/status/2101511817549779430",
-        "category": "Geliştirici Araçları"
-      },
-      {
-        "id": "2101511815192539590",
-        "authorName": "Min Choi",
-        "authorHandle": "minchoi",
-        "authorAvatar": "https://pbs.twimg.com/profile_images/54321/min.jpg",
-        "text": "7. Jev Review. Screens git diffs for correctness, safety, and test risk. Dashboard of judgments",
-        "textTr": "7. Jev Review. Git diff'lerini doğruluk, güvenlik ve test riski açısından tarıyor. Karar paneli.",
-        "discussion": "Jev Review, kod inceleme süreçlerini otomatize eden bir ajan. Kodun sadece doğruluğunu değil, güvenlik risklerini de analiz etmesi, kurumsal güvenlik için çok değerli.",
-        "likes": 2,
-        "retweets": 0,
-        "tweetUrl": "https://x.com/minchoi/status/2101511815192539590",
-        "category": "Ajan Sistemleri"
+        "id": "exp-5",
+        "title": "Geniş Araç Yetkili Ajanlarda Prompt Injection Sandbox Yalıtımı",
+        "author": "@simonw (Simon Willison)",
+        "badge": "Ajan Güvenliği & Mimari",
+        "summary": "Bash komutu çalıştırabilen ve rastgele web içeriklerini okuyan otonom ajanların prompt injection saldırılarına karşı temelden korunabilmesi için izole sanal alanlarda (sandbox) çalıştırılmasının mimari zorunluluk olduğu deneysel açıklarla kanıtlandı."
       }
     ]
   },
