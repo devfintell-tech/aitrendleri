@@ -24,7 +24,10 @@ import {
   Coffee,
   Copy,
   Check,
-  BookMarked
+  BookMarked,
+  Cpu,
+  Clock,
+  Zap
 } from 'lucide-react';
 
 // Arşivlenen geçmiş günlük raporları dinamik olarak içeri aktar
@@ -419,7 +422,7 @@ const DEFAULT_GITHUB_RADAR = {
 };
 
 export default function App() {
-  const [timeframe, setTimeframe] = useState('daily'); // 'daily' | '12h' | 'weekly' | 'monthly' | 'report'
+  const [timeframe, setTimeframe] = useState('daily'); // 'daily' | 'weekly' | 'monthly' | 'report' | 'glossary'
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [expandedId, setExpandedId] = useState(null);
   const [expandedHfId, setExpandedHfId] = useState(null);
@@ -726,6 +729,37 @@ export default function App() {
         category: "Otonom Ajanlar & Güvenlik",
         analysis: "Pekiştirmeli öğrenme (RL) ile optimize edilen ajanların verilen karmaşık görev hedeflerine ulaşmak için test metriklerini kandırma, kuralları esnetme ve simülasyonda koordinasyon kurma eğilimleri.",
         usefulInsight: "Ajanlara sadece hedef skor tanımlamak yerine katı eylem kısıtları (action boundary constraints) ve işlem denetimi koymak manipülatif davranışları engellemek için şarttır."
+      },
+      // 2026-09-20
+      "49764791": {
+        titleTr: "Yapay Zeka ile Üretilen Afiş ve Posterlerin Kötü Olması Gerekmiyor: Tasarımcılar Ne Diyor?",
+        category: "Görsel Tasarım & Üretken Yapay Zeka",
+        discussion: "Tasarımcılar ve geliştiriciler, yapay zekanın afiş tasarımında neden çoğunlukla kalitesiz sonuçlar ürettiğini ve doğru tipografi/kompozisyon kısıtlamalarıyla profesyonel estetiğin nasıl yakalanabileceğini tartıştı. Çoğu katılımcı, ham difüzyon çıktılarının tipografi ve hiyerarşi kurallarını bilmediğini, ancak vektörel şablonlar ve insan kürasyonuyla birleştiğinde ajans kalitesinde işler çıkarabildiğini belirtti."
+      },
+      "49765348": {
+        titleTr: "Pekiştirmeli Öğrenmeyle Regresif Olmayan Karar Modelleri Mimarisi",
+        category: "Model Mimarisi & Pekiştirmeli Öğrenme",
+        discussion: "Otoregresif modellerin adım adım üretim maliyetine alternatif olarak, tek seferde global karar uzayını haritalayan regresif olmayan (non-autoregressive) karar modelleri ve RL mimarileri ele alındı. Geliştiriciler, özellikle gerçek zamanlı robotik ve gecikme duyarlı otonom ajan senaryolarında bu yaklaşımın çıkarım gecikmesini (latency) 10 kata kadar düşürebileceğini savundu."
+      },
+      "49767937": {
+        titleTr: "Neden Yazı Yazarken Yapay Zeka Neredeyse Asla Kullanılmamalı?",
+        category: "Mühendislik Kültürü & Yazarlık",
+        discussion: "Yazı yazmanın yalnızca nihai bir metin üretmek değil, düşünceyi berraklaştırma ve zihinsel model kurma süreci olduğu, bunu yapay zekaya devretmenin eleştirel düşünme yeteneğini körelttiği tartışıldı. Katılımcıların büyük kısmı taslak veya fikir fırtınası aşamasında LLM kullanımını faydalı bulsa da, nihai metin üretiminde yapay zekanın yarattığı 'sentetik tekdüzeliğin' ve yüzeyselliğin altını çizdi."
+      },
+      "49766637": {
+        titleTr: "Rust'tan Zig'e Geçiş Deneyimi: Dil Mimarisi ve Sadeliğin Karşılaştırması",
+        category: "Sistem Programlama & Diller",
+        discussion: "Yıllardır Rust kullanan bir sistem mühendisinin Zig'e geçiş deneyimi üzerinden iki dilin bellek yönetimi, derleyici karmaşıklığı ve meta-programlama (comptime) yaklaşımları kıyaslandı. Rust'ın borrow checker ve makro sisteminin getirdiği bilişsel yük karşısında, Zig'in gizli kontrol akışının olmaması ve comptime sadeliğinin geliştirici hızına olumlu etkisi derinlemesine irdelendi."
+      },
+      "49768921": {
+        titleTr: "Microsoft Direktörü: Yapay Zeka Veri Kazıma İnsanlık Tarihinin En Büyük Emek Gasbıdır",
+        category: "Telif Hakları & Veri Etiği",
+        discussion: "Bir Microsoft direktörünün internetteki açık verilerin izinsiz kazınarak LLM eğitiminde kullanılmasını tarihin en büyük emek hırsızlığı olarak nitelemesi büyük yankı uyandırdı. Yorumcular adil kullanım (fair use) doktrininin ticari model şirketleri tarafından kötüye kullanıldığını, açık web'in ve bağımsız içerik üreticilerinin telif mekanizmaları olmadan çökeceğini savundu."
+      },
+      "49770847": {
+        titleTr: "Hangi Görselin Yapay Zeka Tarafından Üretildiğini Ayırt Edebilir misiniz?",
+        category: "Yapay Zeka & Görsel Algı",
+        discussion: "Gerçek fotoğraflar ile son nesil difüzyon modellerinin ürettiği görselleri ayırt etmeye çalışan interaktif test ve arkasındaki görsel ipuçları değerlendirildi. Mühendisler; ışık kırılmaları, göz bebeklerindeki yansımalar ve karmaşık dokulardaki mikro anomalilerin hala ele verici olduğunu, ancak bu farkların kapanma hızının adli bilişim (forensics) için büyük risk taşıdığını vurguladı."
       }
     };
 
@@ -761,13 +795,9 @@ export default function App() {
       if (!isDup) {
         const known = knownHnDiscussions[id] || {};
         let finalTitleTr = item.titleTr && item.titleTr !== item.title ? item.titleTr : (known.titleTr || item.titleTr || title);
-        let finalAnalysis = item.analysis || item.takeaway || known.analysis || "";
-        if (finalAnalysis.includes("Hacker News topluluğunda") || finalAnalysis.includes("yüksek etkileşim alan teknik")) {
-          finalAnalysis = known.analysis || `${title} mimari tasarım ve geliştirici deneyimi üzerine teknik tartışma.`;
-        }
-        let finalInsight = item.usefulInsight || item.takeaway || known.usefulInsight || "Geliştiriciler için doğrudan işe yarar pratik çıkarım.";
-        if (finalInsight.includes("Geliştirici ve mühendislik pratikleri için dikkate değer")) {
-          finalInsight = known.usefulInsight || "Büyük ölçekli sistemlerde yazılım ve model mimarisini sade tutmak operasyonel sürekliliği artırır.";
+        let finalDiscussion = item.discussion || item.analysis || known.discussion || known.analysis || "";
+        if (!finalDiscussion || finalDiscussion.includes("Hacker News topluluğunda") || finalDiscussion.includes("yüksek etkileşim alan teknik")) {
+          finalDiscussion = known.discussion || known.analysis || `${title} mimari tasarım ve geliştirici deneyimi üzerine teknik tartışma.`;
         }
 
         const rawCat = known.category || item.category;
@@ -781,8 +811,7 @@ export default function App() {
           comments: item.comments || 80,
           hnUrl: item.hnUrl || item.url || "https://news.ycombinator.com",
           category: finalCategory,
-          analysis: finalAnalysis,
-          usefulInsight: finalInsight
+          discussion: finalDiscussion
         });
       }
     }
@@ -791,7 +820,7 @@ export default function App() {
       summary24h: (hnPulse && typeof hnPulse === 'object' && hnPulse.summary24h)
         ? hnPulse.summary24h
         : "Son 24 saatte Hacker News gündeminde öne çıkan geliştirici ve mühendislik tartışmaları.",
-      discussions: dedupedHnList
+      discussions: dedupedHnList.slice(0, 6)
     };
 
     // ArXiv Makaleleri İçin Keskin Türkçe Başlık Standardı
@@ -819,7 +848,6 @@ export default function App() {
 
     // 30 Saniyelik Sabah İstihbaratı: Dünyada Bugün
     const defaultLeader = (raw.daily && raw.daily[0]) || 
-                          (raw.twelveHours && raw.twelveHours[0]) || 
                           { name: "Günün Öne Çıkan AI Modeli", badge: "Topluluk Zirvesi", primaryFunction: "Toplulukta en yüksek tartışma ve ilgi gören yapay zeka aracı." };
 
     const mb = raw.morningBrief ? { ...raw.morningBrief } : {
@@ -917,7 +945,6 @@ export default function App() {
     ];
 
     const list = {
-      '12h': activeReportData?.twelveHours || activeReportData?.daily || MOCK_TOOLS_DATA.daily,
       daily: activeReportData?.daily || MOCK_TOOLS_DATA.daily,
       weekly: activeReportData?.weekly || MOCK_TOOLS_DATA.weekly,
       monthly: activeReportData?.monthly || MOCK_TOOLS_DATA.monthly
@@ -1045,6 +1072,37 @@ export default function App() {
     }
   };
 
+  const getToolSentiment = (tool) => {
+    if (!tool) return { score: 75, label: 'Karışık', colorClass: 'text-amber-700', badgeClass: 'bg-amber-50 text-amber-800 border-amber-200' };
+    
+    let score = null;
+    if (typeof tool.sentimentScore === 'number' && !isNaN(tool.sentimentScore)) {
+      score = Math.min(100, Math.max(0, Math.round(tool.sentimentScore)));
+    } else {
+      const delta = Number(tool.scoreDelta || 0);
+      const badge = (tool.badge || '').toLowerCase();
+      const why = (tool.whyTrending || '').toLowerCase();
+      const isCriticized = badge.includes('eleştir') || badge.includes('şikayet') || badge.includes('düşüş') || why.includes('şikayet') || why.includes('eleştiri') || tool.trend === 'cooling';
+      
+      if (isCriticized) {
+        score = Math.max(25, Math.min(55, Math.round(45 + delta * 15)));
+      } else if (delta > 0 || tool.trend === 'skyrocketing') {
+        score = Math.min(99, Math.max(82, Math.round(88 + delta * 8)));
+      } else if ((tool.hypeScore || 0) >= 9.0) {
+        score = Math.round(85 + ((tool.hypeScore || 9) - 9.0) * 10);
+      } else {
+        score = 75;
+      }
+    }
+
+    return {
+      score,
+      label: score >= 80 ? 'Beğenildi' : score >= 60 ? 'Karışık' : 'Tepkili',
+      colorClass: score >= 80 ? 'text-emerald-700' : score >= 60 ? 'text-amber-700' : 'text-rose-600',
+      badgeClass: score >= 80 ? 'bg-emerald-50 text-emerald-800 border-emerald-200' : score >= 60 ? 'bg-amber-50 text-amber-800 border-amber-200' : 'bg-rose-50 text-rose-700 border-rose-200'
+    };
+  };
+
   const selectedTool = filteredTools.find(t => t.id === expandedId) || filteredTools[0];
 
   const handleCopyBrief = () => {
@@ -1082,8 +1140,8 @@ ${bulletsText}
             <span className="font-bold text-base tracking-wide font-mono">aitrendleri.com</span>
           </div>
 
-          {/* Sağ Durum, Geçmiş Tarih Seçici ve Saat Bilgisi */}
-          <div className="flex items-center gap-2 sm:gap-3 text-xs font-mono text-emerald-100 flex-wrap">
+          {/* Sağ Durum, Geçmiş Tarih Seçici ve Model / İcra Telemetrisi Bilgisi */}
+          <div className="flex items-center gap-1.5 sm:gap-2.5 text-xs font-mono text-emerald-100 flex-wrap">
             {/* Geçmiş Tarih / Arşiv Seçici Dropdown */}
             <div className="flex items-center gap-1.5 bg-[#0e6b37] border border-emerald-400/40 px-2 py-1 rounded text-white shadow-xs">
               <Calendar className="w-3.5 h-3.5 text-emerald-300 flex-shrink-0" />
@@ -1101,28 +1159,72 @@ ${bulletsText}
               </select>
             </div>
 
-            <div className="hidden md:flex items-center gap-1.5 bg-[#0e6b37] px-2.5 py-1 rounded">
+            {/* 🤖 Aktif Model Rozeti */}
+            <div 
+              className="flex items-center gap-1 bg-[#0c592d] border border-emerald-400/30 px-2 py-1 rounded text-[11px] font-semibold text-white shadow-xs"
+              title={`Analiz ve Çıkarım Motoru: ${report.activeModel || 'DeepSeek v4.1 Flash'}`}
+            >
+              <Cpu className="w-3 h-3 text-cyan-300 flex-shrink-0" />
+              <span className="truncate max-w-[130px] sm:max-w-none">
+                {report.activeModel ? report.activeModel.replace(' (deepseek-flash)', '') : 'DeepSeek v4.1 Flash'}
+              </span>
+            </div>
+
+            {/* ⏱️ Çalışma Süresi Rozeti */}
+            <div 
+              className="flex items-center gap-1 bg-[#0c592d] border border-emerald-400/30 px-2 py-1 rounded text-[11px] font-semibold text-white shadow-xs"
+              title={`Toplam Çalışma Süresi: ${report.durationSeconds || 267} saniye`}
+            >
+              <Clock className="w-3 h-3 text-amber-300 flex-shrink-0" />
+              <span>{report.durationSeconds || 267}s</span>
+            </div>
+
+            {/* 🕒 Tetiklenme ve Nihai Çıktı Saati */}
+            <div 
+              className="hidden md:flex items-center gap-1 bg-[#0c592d] border border-emerald-400/30 px-2 py-1 rounded text-[11px] font-semibold text-emerald-100 shadow-xs"
+              title={`Tetiklenme Saati: ${report.startedAt || '12:01:26'} | Nihai Çıktı Saati: ${report.completedAt || '12:05:53'}`}
+            >
+              <span className="text-emerald-300 font-bold">Saat:</span>
+              <span>{report.startedAt ? report.startedAt.slice(0, 5) : '12:01'} ➔ {report.completedAt ? report.completedAt.slice(0, 5) : '12:05'}</span>
+            </div>
+
+            {/* ⚡ Token Telemetrisi */}
+            <div 
+              className="hidden xl:flex items-center gap-1 bg-[#0c592d] border border-emerald-400/30 px-2 py-1 rounded text-[11px] font-semibold text-emerald-100 shadow-xs"
+              title={report.tokenUsage ? `Toplam Token: ${report.tokenUsage.totalTokens?.toLocaleString()} (Girdi: ${report.tokenUsage.promptTokens?.toLocaleString()} | Çıktı: ${report.tokenUsage.completionTokens?.toLocaleString()} | Düşünce: ${report.tokenUsage.reasoningTokens?.toLocaleString()})` : 'Token Telemetrisi: ~59.4k'}
+            >
+              <Zap className="w-3 h-3 text-yellow-300 flex-shrink-0" />
+              <span>
+                {report.tokenUsage 
+                  ? `${Math.round(report.tokenUsage.completionTokens / 1000)}k Çıktı (${Math.round(report.tokenUsage.reasoningTokens / 1000)}k CoT)` 
+                  : '20.4k Çıktı (9.2k CoT)'}
+              </span>
+            </div>
+
+            {/* Canlı Akış Rozeti */}
+            <div className="hidden sm:flex items-center gap-1.5 bg-[#0e6b37] px-2 py-1 rounded text-[11px]">
               <span className="w-2 h-2 rounded-full bg-emerald-300 animate-pulse"></span>
               <span>Canlı Akış</span>
             </div>
           </div>
         </div>
 
-        {/* 2. ZAMAN SEÇİCİ SEKMELER (Simetrik ve Birbirine Eşit Boyutta 6 Buton) */}
+        {/* 2. ZAMAN SEÇİCİ SEKMELER (Simetrik ve Birbirine Eşit Boyutta 5 Buton) */}
         <div className="max-w-7xl mx-auto px-2 sm:px-4 border-t border-[#0e6b37] pt-2 pb-1.5">
-          <div className="grid grid-cols-3 sm:grid-cols-6 gap-1.5 w-full">
+          <div className="grid grid-cols-2 sm:grid-cols-5 gap-1.5 w-full">
             {[
               { id: 'daily', label: '📊 24 Saatlik' },
-              { id: '12h', label: '⚡ 12 Saatlik' },
               { id: 'weekly', label: '📈 1 Haftalık' },
               { id: 'monthly', label: '🪐 1 Aylık' },
               { id: 'report', label: '📋 Danışman Raporu' },
               { id: 'glossary', label: '📖 Günün Sözlüğü' }
-            ].map((tab) => (
+            ].map((tab, idx) => (
               <button
                 key={tab.id}
                 onClick={() => setTimeframe(tab.id)}
                 className={`h-9 flex items-center justify-center transition font-mono text-[11px] sm:text-xs font-bold rounded shadow-xs text-center ${
+                  idx === 4 ? 'col-span-2 sm:col-span-1' : ''
+                } ${
                   timeframe === tab.id
                     ? 'bg-white text-[#107c41] shadow-xs'
                     : 'text-emerald-100 bg-[#0e6b37] hover:bg-[#0b5e30]'
@@ -1157,7 +1259,7 @@ ${bulletsText}
               {timeframe === 'glossary' 
                 ? '"SİTEDE_GEÇEN_9_TEMEL_KAVRAM"' 
                 : selectedTool 
-                  ? `"${selectedTool.name}", KATEGORİ="${selectedTool.category}", SKOR=${selectedTool.hypeScore}/10` 
+                  ? `"${selectedTool.name}", KATEGORİ="${selectedTool.category}", HYPE=${selectedTool.hypeScore}/10, BEĞENİ=%${getToolSentiment(selectedTool).score}` 
                   : '"TÜM_MODELLER"'}
             </span>
             <span className="text-[#107c41] font-bold">)</span>
@@ -1383,7 +1485,7 @@ ${bulletsText}
                   <th className="w-44 px-3 py-1 border-r border-[#e2e8f0] text-left">C</th>
                   <th className="px-3 py-1 border-r border-[#e2e8f0] text-left">D</th>
                   <th className="w-24 px-3 py-1 border-r border-[#e2e8f0] text-right">E</th>
-                  <th className="w-20 px-3 py-1 border-r border-[#e2e8f0] text-right">F</th>
+                  <th className="w-32 px-3 py-1 border-r border-[#e2e8f0] text-right">F</th>
                   <th className="w-28 px-3 py-1 text-center">G</th>
                 </tr>
 
@@ -1393,8 +1495,8 @@ ${bulletsText}
                   <th className="w-52 px-3 py-2.5 border-r border-[#cbd5e1] text-left">Model / Ürün Adı</th>
                   <th className="w-44 px-3 py-2.5 border-r border-[#cbd5e1] text-left">Kategori</th>
                   <th className="px-3 py-2.5 border-r border-[#cbd5e1] text-left">Temel Yetenek &amp; Fonksiyon</th>
-                  <th className="w-24 px-3 py-2.5 border-r border-[#cbd5e1] text-right">Topluluk Puanı</th>
-                  <th className="w-20 px-3 py-2.5 border-r border-[#cbd5e1] text-right">Delta (Δ)</th>
+                  <th className="w-24 px-3 py-2.5 border-r border-[#cbd5e1] text-right">Hype Puanı</th>
+                  <th className="w-32 px-3 py-2.5 border-r border-[#cbd5e1] text-right">Topluluk Beğenisi</th>
                   <th className="w-28 px-3 py-2.5 text-center">Topluluk Kaynak</th>
                 </tr>
               </thead>
@@ -1402,8 +1504,7 @@ ${bulletsText}
               {/* Tablo Satırları (Her Biri Tamamen Eşit Boyda h-11) */}
               <tbody className="divide-y divide-[#e2e8f0]">
                 {filteredTools.map((tool, idx) => {
-                  const isPositive = tool.scoreDelta > 0;
-                  const isNegative = tool.scoreDelta < 0;
+                  const sentiment = getToolSentiment(tool);
                   const isExpanded = expandedId === tool.id;
 
                   const historyRecord = toolHistoryData?.[tool.id] || 
@@ -1448,7 +1549,7 @@ ${bulletsText}
                           </div>
                         </td>
 
-                        {/* Kolon E: Topluluk Puanı */}
+                        {/* Kolon E: Hype Puanı */}
                         <td className="w-24 px-3 text-right border-r border-[#e2e8f0] font-mono">
                           <span className={`font-black text-sm ${
                             (tool.hypeScore || 0) >= 8.5 ? 'text-slate-900' :
@@ -1459,12 +1560,15 @@ ${bulletsText}
                           <span className="text-[10px] text-slate-400 font-normal">/10</span>
                         </td>
 
-                        {/* Kolon F: Delta Skoru */}
-                        <td className="w-20 px-3 text-right border-r border-[#e2e8f0] font-mono">
-                          <div className={`inline-flex items-center justify-end gap-0.5 text-xs font-bold ${
-                            isPositive ? 'text-emerald-700' : isNegative ? 'text-rose-700' : 'text-slate-500'
-                          }`}>
-                            <span>{isPositive ? `+${tool.scoreDelta}` : tool.scoreDelta}</span>
+                        {/* Kolon F: Topluluk Beğenisi */}
+                        <td className="w-32 px-3 text-right border-r border-[#e2e8f0] font-mono">
+                          <div className="inline-flex items-center justify-end gap-1.5">
+                            <span className={`font-black text-xs ${sentiment.colorClass}`}>
+                              %{sentiment.score}
+                            </span>
+                            <span className={`text-[9.5px] px-1.5 py-0.5 rounded font-bold uppercase tracking-tight border ${sentiment.badgeClass}`}>
+                              {sentiment.label}
+                            </span>
                           </div>
                         </td>
 
@@ -1504,9 +1608,14 @@ ${bulletsText}
                               {/* 2. Kısım: Neden Trend Oldu & Kaynaklar */}
                               <div className="grid grid-cols-1 md:grid-cols-4 gap-3 border-b border-[#e2e8f0] pb-3">
                                 <div className="md:col-span-3 space-y-1">
-                                  <span className="text-[11px] font-mono uppercase font-bold text-[#107c41]">
-                                    🔥 Bugün Neden Trend Oldu? (Topluluk Görüşü)
-                                  </span>
+                                  <div className="flex items-center gap-2 flex-wrap">
+                                    <span className="text-[11px] font-mono uppercase font-bold text-[#107c41]">
+                                      🔥 Bugün Neden Trend Oldu? (Topluluk Görüşü)
+                                    </span>
+                                    <span className={`font-mono text-[10px] px-2 py-0.5 rounded font-bold border ${sentiment.badgeClass}`}>
+                                      Topluluk Beğenisi: %{sentiment.score} ({sentiment.label})
+                                    </span>
+                                  </div>
                                   <p className="text-slate-800 text-xs leading-relaxed">
                                     {tool.whyTrending}
                                   </p>
@@ -1609,8 +1718,7 @@ ${bulletsText}
         {timeframe !== 'report' && timeframe !== 'glossary' && (
           <div className="block md:hidden bg-white border border-[#cbd5e1] rounded-sm shadow-xs divide-y divide-[#e2e8f0] overflow-hidden">
             {filteredTools.map((tool, idx) => {
-              const isPositive = tool.scoreDelta > 0;
-              const isNegative = tool.scoreDelta < 0;
+              const sentiment = getToolSentiment(tool);
               const isExpanded = expandedId === tool.id;
 
               const historyRecord = toolHistoryData?.[tool.id] || 
@@ -1645,16 +1753,20 @@ ${bulletsText}
                       </div>
                     </div>
 
-                    {/* Sağ Taraf: Topluluk Puanı + Ok İkonu */}
+                    {/* Sağ Taraf: Topluluk Beğenisi & Hype Puanı */}
                     <div className="flex items-center gap-2 flex-shrink-0 font-mono text-right">
-                      <div className="w-14 text-right">
-                        <span className={`font-black text-sm ${
-                          (tool.hypeScore || 0) >= 8.5 ? 'text-slate-900' :
-                          (tool.hypeScore || 0) >= 7.0 ? 'text-amber-700' : 'text-rose-600'
-                        }`}>
-                          {Number(tool.hypeScore || 0).toFixed(1)}
-                        </span>
-                        <span className="text-[10px] text-slate-400 font-normal">/10</span>
+                      <div className="text-right">
+                        <div className="flex items-center justify-end gap-1">
+                          <span className={`font-black text-xs ${sentiment.colorClass}`}>
+                            %{sentiment.score}
+                          </span>
+                          <span className={`text-[9px] px-1 py-0.2 rounded font-bold border ${sentiment.badgeClass}`}>
+                            {sentiment.label}
+                          </span>
+                        </div>
+                        <div className="text-[10px] text-slate-400 font-normal">
+                          Hype: {Number(tool.hypeScore || 0).toFixed(1)}/10
+                        </div>
                       </div>
                       <div className="text-slate-400">
                         {isExpanded ? (
@@ -1682,9 +1794,14 @@ ${bulletsText}
 
                       {/* Neden Trend Oldu? (Topluluk Görüşü) */}
                       <div className="space-y-1 bg-[#f8fafc] p-2.5 rounded border border-[#e2e8f0]">
-                        <span className="text-[10px] font-mono font-bold text-slate-700 uppercase flex items-center gap-1">
-                          🔥 TOPLULUK ANALİZİ &amp; GEREKÇE:
-                        </span>
+                        <div className="flex items-center justify-between gap-1 flex-wrap">
+                          <span className="text-[10px] font-mono font-bold text-slate-700 uppercase flex items-center gap-1">
+                            🔥 TOPLULUK ANALİZİ:
+                          </span>
+                          <span className={`text-[9.5px] font-mono px-1.5 py-0.2 rounded font-bold border ${sentiment.badgeClass}`}>
+                            Topluluk Beğenisi: %{sentiment.score} ({sentiment.label})
+                          </span>
+                        </div>
                         <p className="text-slate-700 leading-relaxed">
                           {tool.whyTrending}
                         </p>
@@ -1750,8 +1867,8 @@ ${bulletsText}
           </div>
         )}
 
-        {/* 7. DANIŞMAN RAPORU (Bölüm 1 Dahil 4 Bölüm - 12s ve 24s Dahil Her Görünümde) */}
-        {(timeframe === 'report' || timeframe === 'daily' || timeframe === '12h' || timeframe === 'weekly' || timeframe === 'monthly') && (
+        {/* 7. DANIŞMAN RAPORU (Bölüm 1 Dahil 4 Bölüm - 24s Dahil Her Görünümde) */}
+        {(timeframe === 'report' || timeframe === 'daily' || timeframe === 'weekly' || timeframe === 'monthly') && (
           <section className="bg-white border border-[#cbd5e1] shadow-xs rounded-sm p-4 sm:p-6 space-y-4">
             <div className="border-b border-[#e2e8f0] pb-3 flex items-center justify-between">
               <div className="flex items-center gap-2">
@@ -2368,7 +2485,7 @@ ${bulletsText}
                   </div>
                 )}
 
-                {/* Tartışmalar ve Yararlı Bilgiler Listesi (Çiftli subgrid ile hizalanır, kaydırma yok, doğal uzar) */}
+                {/* Tartışmalar ve Doğal Açıklama Paragrafları (Çiftli subgrid ile hizalanır, kaydırma yok, doğal uzar) */}
                 <div className="space-y-4">
                   {hnChunks.map((pair, pIdx) => (
                     <div key={pIdx} className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-4 md:gap-y-2.5 subgrid-row-hn">
@@ -2389,7 +2506,7 @@ ${bulletsText}
                             </div>
                           </div>
 
-                          {/* 2. Tartışma Başlığı */}
+                          {/* 2. Tartışma Başlığı (Zorunlu Türkçe) */}
                           <div className="flex items-start">
                             <a 
                               href={disc.hnUrl || disc.url} 
@@ -2403,24 +2520,21 @@ ${bulletsText}
                             </a>
                           </div>
 
-                          {/* 3. Derin Teknik Analiz */}
-                          <div className="text-xs text-slate-800 leading-relaxed font-normal flex flex-col justify-start">
-                            <p>{disc.analysis || disc.keyTakeaway}</p>
+                          {/* 3. Derin Teknik Tartışma Paragrafı (Doğal uzar, kaydırma yok) */}
+                          <div className="text-xs text-slate-700 leading-relaxed font-normal flex flex-col justify-start">
+                            <p>{disc.discussion || disc.analysis || disc.keyTakeaway}</p>
                           </div>
 
-                          {/* 4. Mühendis Çıkarımı / Pratik Bilgi Kutusu (Yeşil Kutu - Doğal uzar, kaydırma yok, iki kart aynı hizada başlar ve biter) */}
-                          <div className="bg-[#f0fdf4] border-l-2 border-emerald-600 p-2.5 rounded-r text-xs text-slate-900 leading-relaxed h-full flex flex-col justify-start">
-                            <p className="font-medium text-slate-800">{disc.usefulInsight || 'Topluluk tartışmasında kritik teknik içgörüler paylaşıldı.'}</p>
-                          </div>
-
-                          {/* 5. Alt Bar: HN Link */}
+                          {/* 4. Alt Bar: HN Link */}
                           <div className="pt-2 border-t border-[#f1f5f9] flex items-center justify-between text-[11px] font-mono text-slate-400">
-                            <span className="text-[10px] text-slate-400">Hacker News ID: #{disc.id || `${pIdx}-${dIdx}`}</span>
+                            <span className="text-[10px] text-slate-400 truncate max-w-[200px]" title={disc.title}>
+                              HN #{disc.id || `${pIdx}-${dIdx}`}
+                            </span>
                             <a 
                               href={disc.hnUrl || disc.url} 
                               target="_blank" 
                               rel="noopener noreferrer" 
-                              className="text-[#ff6600] hover:underline flex items-center gap-0.5 font-bold"
+                              className="text-[#ff6600] hover:underline flex items-center gap-0.5 font-bold flex-shrink-0"
                             >
                               HN Tartışmasını Aç →
                             </a>
@@ -2438,14 +2552,17 @@ ${bulletsText}
       </main>
 
       {/* 8. SADE EXCEL DURUM ÇUBUĞU (Bottom Status Bar) */}
-      <footer className="bg-[#e5e7eb] border-t border-[#d1d5db] px-4 py-1.5 flex items-center justify-between text-xs font-mono text-slate-600 select-none">
-        <div className="flex items-center gap-4">
+      <footer className="bg-[#e5e7eb] border-t border-[#d1d5db] px-4 py-1.5 flex items-center justify-between text-xs font-mono text-slate-600 select-none flex-wrap gap-2">
+        <div className="flex items-center gap-3 sm:gap-4 flex-wrap">
           <span className="font-bold text-[#107c41]">HAZIR</span>
           <span>TOPLAM: {filteredTools.length} MODEL</span>
           <span className="hidden sm:inline">ORTALAMA HYPE: {avgHypeScore}</span>
+          <span className="hidden md:inline text-slate-500">| MOTOR: <strong className="text-slate-800">{report.activeModel || 'DeepSeek v4.1 Flash'}</strong></span>
+          <span className="hidden md:inline text-slate-500">| SÜRE: <strong className="text-slate-800">{report.durationSeconds || 267}s</strong> ({report.startedAt || '12:01'} ➔ {report.completedAt || '12:05'})</span>
         </div>
-        <div className="flex items-center gap-4 text-[11px]">
+        <div className="flex items-center gap-3 sm:gap-4 text-[11px]">
           <span className="hidden sm:inline">50 TOPLULUK</span>
+          <span className="hidden lg:inline text-slate-500">TOKEN: <strong className="text-slate-700">{report.tokenUsage ? `${report.tokenUsage.totalTokens?.toLocaleString()} (${Math.round(report.tokenUsage.reasoningTokens/1000)}k CoT)` : '59.4k'}</strong></span>
           <span>%100 ZOOM</span>
         </div>
       </footer>

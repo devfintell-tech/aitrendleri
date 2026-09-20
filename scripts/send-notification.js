@@ -61,7 +61,7 @@ export async function sendNotification(customReport = null, customStats = null) 
   const totalPosts = report.totalPostsAnalyzed || 0;
   const batches = report.batchTelemetry || [];
 
-  const leaderTool = (report.daily && report.daily[0]) || (report.twelveHours && report.twelveHours[0]) || { name: "Organik Tespit", score: 99, badge: "Lider" };
+  const leaderTool = (report.daily && report.daily[0]) || { name: "Organik Tespit", score: 99, badge: "Lider" };
 
   // Subreddit sağlık analizi
   const allSubValues = stats && stats.subreddits ? Object.values(stats.subreddits) : [];

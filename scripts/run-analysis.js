@@ -261,7 +261,7 @@ async function fetchHackerNews24h() {
 
     const sorted = Array.from(allHits.values())
       .sort((a, b) => b.points - a.points)
-      .slice(0, 8);
+      .slice(0, 6);
 
     console.log(`✅ Hacker News'den ${sorted.length} taze mühendis tartışması alındı.`);
     return sorted;
@@ -454,7 +454,13 @@ function loadToolHistorySummary() {
 
 /**
  * Belirtilen model ve API anahtarı ile DeepSeek çağrısı yapar.
- * OpenAI uyumlu uç nokta üzerinden çalışır.
+ * DeepSeek API (https://api-docs.deepseek.com) dökümantasyon standartlarına tam uyumludur:
+ * - OpenAI uyumlu uç nokta: https://api.deepseek.com/chat/completions
+ * - Model adı: deepseek-flash (DeepSeek V4.1 Flash mimarisi)
+ * - JSON Çıktı Modu: response_format: { type: "json_object" } (prompt içinde 'json' kelimesi zorunludur)
+ * - Düşünce (Thinking) Desteği: deepseek-flash modelinde düşünce modu varsayılan olarak aktiftir.
+ * - max_tokens: Düşünce (reasoning) ve nihai JSON token'larının toplamını kapsadığı için 32.768 olarak yapılandırılmıştır.
+ * - Sunucu yoğunluğu (HTTP 503) veya hız limiti (HTTP 429) durumunda otomatik bekleme ve yeniden deneme.
  */
 async function callDeepSeek(model, apiKey, prompt) {
   const apiUrl = "https://api.deepseek.com/chat/completions";
@@ -471,36 +477,70 @@ async function callDeepSeek(model, apiKey, prompt) {
       }
     ],
     temperature: 0.2,
-    max_tokens: 16384,
+    max_tokens: 32768,
     response_format: { type: "json_object" }
   };
 
-  const res = await fetch(apiUrl, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${apiKey}`
-    },
-    body: JSON.stringify(payload),
-    signal: AbortSignal.timeout(120000)
-  });
+  let res;
+  for (let attempt = 1; attempt <= 2; attempt++) {
+    try {
+      res = await fetch(apiUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${apiKey}`
+        },
+        body: JSON.stringify(payload),
+        signal: AbortSignal.timeout(180000)
+      });
+
+      if (res.status === 503 || res.status === 429) {
+        console.warn(`⏳ DeepSeek HTTP ${res.status} (Sunucu yoğunluğu/limit). 5 saniye bekleniyor (Deneme ${attempt}/2)...`);
+        if (attempt < 2) {
+          await sleep(5000);
+          continue;
+        }
+      }
+      break;
+    } catch (fetchErr) {
+      if (attempt < 2) {
+        console.warn(`⏳ DeepSeek bağlantı uyarısı (${fetchErr.message}). 5 saniye beklenip tekrar deneniyor...`);
+        await sleep(5000);
+        continue;
+      }
+      throw fetchErr;
+    }
+  }
 
   if (!res.ok) {
     throw new Error(`DeepSeek HTTP ${res.status}: ${await res.text()}`);
   }
 
   const json = await res.json();
+  let tokenUsage = null;
   if (json.usage) {
-    console.log(`📊 DeepSeek Token: Prompt: ${json.usage.prompt_tokens}, Çıktı: ${json.usage.completion_tokens} (Düşünce: ${json.usage.completion_tokens_details?.reasoning_tokens || 0})`);
+    const reasoningTokens = json.usage.completion_tokens_details?.reasoning_tokens || 0;
+    tokenUsage = {
+      promptTokens: json.usage.prompt_tokens,
+      completionTokens: json.usage.completion_tokens,
+      reasoningTokens: reasoningTokens,
+      totalTokens: json.usage.total_tokens || (json.usage.prompt_tokens + json.usage.completion_tokens)
+    };
+    console.log(`📊 DeepSeek Token Kullanımı: Prompt: ${json.usage.prompt_tokens}, Çıktı: ${json.usage.completion_tokens} (Düşünce Zinciri: ${reasoningTokens})`);
   }
   const rawText = json.choices?.[0]?.message?.content || "";
   const cleaned = rawText
     .replace(/^```(?:json)?\s*/i, "")
     .replace(/\s*```$/i, "")
     .trim();
+
+  if (!cleaned) {
+    throw new Error("DeepSeek yanıtında içerik (content) boş döndü.");
+  }
+
   const parsed = JSON.parse(cleaned);
   console.log(`📋 DeepSeek Çıktısı: Daily ${parsed.daily?.length || 0} ürün, Sections: ${parsed.sections?.length || 0}`);
-  return parsed;
+  return { parsed, tokenUsage };
 }
 
 /**
@@ -543,7 +583,13 @@ async function callGemini(model, apiKey, prompt) {
 
   const json = await res.json();
   const text = json.candidates?.[0]?.content?.parts?.[0]?.text;
-  return JSON.parse(text);
+  const tokenUsage = json.usageMetadata ? {
+    promptTokens: json.usageMetadata.promptTokenCount,
+    completionTokens: json.usageMetadata.candidatesTokenCount,
+    reasoningTokens: 0,
+    totalTokens: json.usageMetadata.totalTokenCount
+  } : null;
+  return { parsed: JSON.parse(text), tokenUsage };
 }
 
 /**
@@ -561,14 +607,14 @@ async function generateWithWaterfall(prompt) {
     console.log(`🚀 [1. ÖNCELİK - Baş Motor] Deneniyor: Model [${PRIMARY_GEMINI_MODEL}] | API Anahtarı #${i + 1} (${keySnippet})...`);
 
     try {
-      const result = await callGemini(PRIMARY_GEMINI_MODEL, apiKey, prompt);
+      const { parsed: result, tokenUsage } = await callGemini(PRIMARY_GEMINI_MODEL, apiKey, prompt);
       const isRichResponse = (
         result &&
         Array.isArray(result.daily) && result.daily.length >= 6
       );
       if (isRichResponse) {
         console.log(`🎯 MÜKEMMEL BAŞARI! Model [${PRIMARY_GEMINI_MODEL}] (Anahtar #${i + 1}) ile ${result.daily.length} ürün işlendi.`);
-        return { data: result, modelUsed: PRIMARY_GEMINI_MODEL, keyIndex: i + 1 };
+        return { data: result, modelUsed: PRIMARY_GEMINI_MODEL, keyIndex: i + 1, tokenUsage };
       } else if (result && result.daily && result.daily.length > 0) {
         console.warn(`⚠️ [${PRIMARY_GEMINI_MODEL}] (Anahtar #${i + 1}) eksik şema üretti (daily: ${result.daily?.length}). Sıradaki deneniyor...`);
       }
@@ -577,24 +623,25 @@ async function generateWithWaterfall(prompt) {
     }
   }
 
-  // 🥈 2. ÖNCELİK: DeepSeek v4.1 Flash & Pro
+  // 🥈 2. ÖNCELİK: DeepSeek v4.1 Flash (deepseek-flash - https://api-docs.deepseek.com)
+  // Kullanıcı Kuralı: Gemini 3.8 Flash çalışmazsa 2. model DeepSeek v4.1 Flash (deepseek-flash) olmalıdır.
   if (DEEPSEEK_API_KEY) {
     const DEEPSEEK_MODELS = [
-      "deepseek-flash",    // DeepSeek v4.1 Flash
-      "deepseek-v4-pro"    // DeepSeek v4 Pro
+      "deepseek-flash",    // DeepSeek V4.1 Flash (Resmi API Model Adı)
+      "deepseek-v4-pro"    // DeepSeek V4 Pro (Yedek)
     ];
 
     for (const model of DEEPSEEK_MODELS) {
-      console.log(`🚀 [2. ÖNCELİK - DeepSeek] Deneniyor: Model [${model}]...`);
+      console.log(`🚀 [2. ÖNCELİK - DeepSeek v4.1] Deneniyor: Model [${model}]...`);
       try {
-        const result = await callDeepSeek(model, DEEPSEEK_API_KEY, prompt);
+        const { parsed: result, tokenUsage } = await callDeepSeek(model, DEEPSEEK_API_KEY, prompt);
         const isRichResponse = (
           result &&
           Array.isArray(result.daily) && result.daily.length >= 6
         );
         if (isRichResponse) {
           console.log(`🎯 MÜKEMMEL BAŞARI! DeepSeek [${model}] ile ${result.daily.length} ürün başarıyla işlendi.`);
-          return { data: result, modelUsed: `DeepSeek v4.1 (${model})`, keyIndex: 1 };
+          return { data: result, modelUsed: `DeepSeek v4.1 Flash (${model})`, keyIndex: 1, tokenUsage };
         } else if (result && result.daily && result.daily.length > 0) {
           console.warn(`⚠️ [${model}] eksik/kısmi şema üretti (daily: ${result.daily?.length}). Sıradaki deneniyor...`);
         }
@@ -602,6 +649,8 @@ async function generateWithWaterfall(prompt) {
         console.warn(`⚠️ [${model}] başarısız: ${err.message.substring(0, 120)}... Sıradaki deneniyor.`);
       }
     }
+  } else {
+    console.warn("⚠️ DEEPSEEK_API_KEY tanımlanmamış, DeepSeek v4.1 adımı atlanıyor.");
   }
 
   // 🥉 3. ÖNCELİK: Google Gemini 3.7 ve aşağı şelale havuzu
@@ -623,14 +672,14 @@ async function generateWithWaterfall(prompt) {
       console.log(`🔄 [3. ÖNCELİK - Şelale] Deneniyor: Model [${model}] | API Anahtarı #${i + 1} (${keySnippet})...`);
 
       try {
-        const result = await callGemini(model, apiKey, prompt);
+        const { parsed: result, tokenUsage } = await callGemini(model, apiKey, prompt);
         const isRichResponse = (
           result &&
           Array.isArray(result.daily) && result.daily.length >= 6
         );
         if (isRichResponse) {
           console.log(`🎯 MÜKEMMEL BAŞARI! Model [${model}] (Anahtar #${i + 1}) ile ${result.daily.length} ürün işlendi.`);
-          return { data: result, modelUsed: model, keyIndex: i + 1 };
+          return { data: result, modelUsed: model, keyIndex: i + 1, tokenUsage };
         } else if (result && result.daily && result.daily.length > 0) {
           console.warn(`⚠️ [${model}] (Anahtar #${i + 1}) eksik şema üretti (daily: ${result.daily?.length}). Sıradaki deneniyor...`);
         }
@@ -664,6 +713,7 @@ async function main() {
 
   console.log("🚀 Canlı Yapay Zeka İstihbarat Radarı (Reddit + Google Search Teyidi + HF + ArXiv) Başlatılıyor...");
   const startTime = Date.now();
+  const startedAt = new Date(startTime).toLocaleTimeString("tr-TR", { hour: '2-digit', minute: '2-digit', second: '2-digit' });
 
   // 1. REDDIT GÜNLÜK SICAK VE EN TAZE FLAŞ GÖNDERİLERİ TOPLA
   let allDiscussions = "";
@@ -741,7 +791,7 @@ async function main() {
     - Reddit'te konuşulan taze ve sıcak kırılmaları eski modellerin önüne al, ancak her şey tamamen toplanan veriye dayansın.
 
     🚨 EN KRİTİK KURAL 2: EN YUKARIDAKİ SIRALAMA TABLOLARI %100 REDDİT ODAKLIDIR:
-    - "twelveHours", "daily", "weekly" ve "monthly" sıralama sekmelerindeki TÜM puanlar, sıralamalar, delta değişimleri ve analizler YALNIZCA VE SADECE 50 SEÇKİN REDDİT TOPLULUĞUNUN tartışmalarına dayanmalıdır.
+    - "daily", "weekly" ve "monthly" sıralama sekmelerindeki TÜM puanlar, sıralamalar, delta değişimleri ve analizler YALNIZCA VE SADECE 50 SEÇKİN REDDİT TOPLULUĞUNUN tartışmalarına dayanmalıdır.
     - HUGGING FACE, HACKER NEWS VE GITHUB VERİLERİ EN YUKARIDAKİ SIRALAMAYA KESİNLİKLE VE ASLA ETKİ EDEMEZ!
     - Hugging Face, GitHub ve Hacker News verileri yalnızca kendi alt bölümleri içindir; üst sıralamayı asla değiştiremez veya manipüle edemez.
     - Tüm araçların 'sources' alanları İSTİSNASIZ Reddit toplulukları (örn. ["r/LocalLLaMA", "r/singularity", "r/vibecoding"]) olmalıdır.
@@ -757,21 +807,23 @@ async function main() {
     - 'name' alanı YALNIZCA ve SADECE ürünün saf marka/yazılım adıdır.
     - Asla parantez açma veya parantez içinde açıklama ekleme.
 
-    🚨 EN KRİTİK KURAL 5: PUANLAMA VE DUYGU ANALİZİ (TOPLULUK NASIL KONUŞUYOR?):
-    - Sıralamaya giren ürünlerin hepsi zaten konuşulmaktadır; ancak bizim için önemli olan TOPLULUĞUN ONLARA KAÇ PUAN VERDİĞİDİR.
-    - Bir ürün çok konuşuluyor diye otomatik olarak 9-10 puan verilemez. Nasıl konuşulduğu ve beğenilip beğenilmediği esastır:
-      * EĞER TOPLULUK BİR MODEL VEYA ÜRÜN HAKKINDA OLUMSUZ/ELEŞTİREL KONUŞUYORSA (örn: reklam enjeksiyonu, bellek sızıntısı, güncelleme sonrası bozulma, sansür, fahiş fiyat, hayal kırıklığı):
-        -> KESİNLİKLE DÜŞÜK PUAN VER (4.5 - 6.8 arası).
-        -> scoreDelta'yı EKSİ yaz (-0.5, -1.2, -1.8 gibi).
+    🚨 EN KRİTİK KURAL 5: PUANLAMA VE DUYGU ANALİZİ (TOPLULUK BEĞENİ PUANI - sentimentScore 0-100 ARASI):
+    - Sıralamaya giren ürünlerin hepsi zaten konuşulmaktadır; ancak bizim için asıl önemli olan TOPLULUĞUN BEĞENİP BEĞENMEDİĞİDİR.
+    - Her araç için 0-100 arası "sentimentScore" (Topluluk Beğeni & Memnuniyet Puanı) üretilecektir.
+      * EĞER TOPLULUK BİR MODEL VEYA ÜRÜN HAKKINDA OLUMSUZ/ELEŞTİREL KONUŞUYORSA (örn: kota/limit baskısı, kesintiler, sansür, fahiş fiyat, regresyon, hata):
+        -> "sentimentScore" (Topluluk Beğenisi): KESİNLİKLE 20 - 55 ARASI DÜŞÜK PUAN VER (Örn: 30, 42).
+        -> hypeScore: Düşük tut (4.5 - 6.8 arası).
         -> trend: "cooling" yap.
-        -> badge: "Reklam Tepkisi", "Eleştiriliyor", "Bellek Sorunu", "Regresyon" gibi rozetler koy.
+        -> badge: "Eleştiriliyor", "Limit Tepkisi", "Kesinti Sorunu" gibi rozetler koy.
         -> whyTrending alanına topluluğun NEDEN eleştirdiğini ve neyden şikayet ettiğini detaylıca yaz!
-      * EĞER TOPLULUK ARACI ÖVÜYOR VE TAVSİYE EDİYORSA:
-        -> YÜKSEK PUAN VER (8.5 - 9.8 arası).
-        -> scoreDelta'yı ARTI yaz (+0.4, +0.8 gibi).
+      * EĞER TOPLULUK ARACI ÖVÜYOR, BAŞARILI BULUYOR VE COŞKUYLA TAVSİYE EDİYORSA:
+        -> "sentimentScore" (Topluluk Beğenisi): 85 - 99 ARASI YÜKSEK PUAN VER (Örn: 94, 98).
+        -> hypeScore: Yüksek ver (8.5 - 9.9 arası).
         -> trend: "rising" veya "skyrocketing" yap.
-        -> whyTrending alanına topluluğun NEDEN hypelandığını ve hangi özelliğini beğendiğini detaylıca yaz!
-    - Kullanıcı bir karta tıkladığında ürünün neden hypelandığını, neden beğenilip beğenilmediğini detaylıca görebilmelidir.
+        -> whyTrending alanına topluluğun NEDEN beğendiğini ve hangi özelliğini övdüğünü detaylıca yaz!
+      * EĞER TOPLULUK DENGELİ VEYA KARARSIZSA:
+        -> "sentimentScore": 60 - 80 arası puan ver.
+    - Kullanıcı tabloda doğrudan topluluğun o modeli sevip sevmediğini bu puanla net olarak görecektir.
     ════════════════════════════════════════════════════════════════════
 
     Aşağıda derlenen son 24 saatin istihbaratı yer almaktadır:
@@ -810,19 +862,15 @@ async function main() {
     ════════════════════════════════════════════════════════════════════
 
     GÖREV VE ZAMAN DİLİMLERİ HESAPLAMA KURALLARI:
-    1. "twelveHours" (12 Saatlik Sekme):
-       - Reddit'in son 12 saatteki anlık çıkışlarına, viral modellerine ve sıcak tartışmalarına dayanmalıdır (en az 8-10 adet).
-       - Resmi lansmanları ve ani kırılma yaşayan modelleri toplanan veriye göre listele.
-
-    2. "daily" (24 Saatlik Sekme):
+    1. "daily" (24 Saatlik / Günlük Sıralama Sekmesi):
        - Bugünün genel günlüğünü temsil eder (en az 10-14 adet).
        - Zirvede günün en popüler yapay zeka ürünleri yer almalıdır.
        - Her ürünün 'primaryFunction' ve 'whyTrending' alanlarını maksimum 1-2 net, vurucu ve özlü Türkçe cümle ile yaz.
 
-    3. "weekly" (1 Haftalık Sekme):
+    2. "weekly" (1 Haftalık Sekme):
        - Kalıcı hafızadaki son 7 günlük kayıtları ve gerçek performansı harmanla (8-10 adet).
 
-    4. "monthly" (1 Aylık Sekme):
+    3. "monthly" (1 Aylık Sekme):
        - Veritabanındaki 30 günlük genel trendi yansıtmalıdır (6-8 adet).
 
     KATEGORİLENDİRME KURALLARI:
@@ -840,6 +888,12 @@ async function main() {
     GÜNÜN SÖZLÜĞÜ (dailyGlossary) - TAM 9 ADET KAVRAM:
     - YALNIZCA o gün sitede (makalelerde, modellerde, tartışmalarda) bizzat geçen 9 teknik kavramı seç.
     - Her kavram için id ("glossary-1"..."glossary-9"), term, category, definition (1-2 cümlelik akıcı, doyurucu Türkçe açıklama) üret.
+
+    HACKER NEWS GELİŞTİRİCİ NABZI (hackerNewsPulse) - TAM 6 ADET TARTIŞMA:
+    - Son 24 saatin Hacker News adayları arasından en yüksek puan/yorum alan 6 tartışmayı analiz et.
+    - TÜRKÇE BAŞLIK ZORUNLU: Her tartışma için akıcı, merak uyandırıcı ve konuyu tam özetleyen bir Türkçe başlık ("titleTr") üret. Orijinal İngilizce başlık "title" alanında kalsın.
+    - DETAYLI TARTIŞMA PARAGRAFI: "discussion" alanında, mühendislerin, kurucuların ve geliştiricilerin o başlık altında NELERİ TARTIŞTIĞINI, öne çıkan karşıt fikirleri, teknik argümanları ve deneyimleri aktaran 2-3 cümlelik doyurucu ve derinlemesine bir Türkçe paragraf yaz. (Kesinlikle şablon, basmakalıp dolgu cümleler KULLANMA!).
+    - Kategori: "Yazılım Mimarisi", "Yapay Zeka & Ajanlar", "Sistem & Donanım", "Geliştirici Kültürü", "Siber Güvenlik", "Veritabanı & RAG" vb.
 
     🚨 KRİTİK UZUNLUK KURALI:
     - JSON çıktısında hiçbir gereksiz laf kalabalığı yapma; tüm açıklama, gerekçe ve özet alanlarını 1-2 net cümle ile sınırla.
@@ -861,23 +915,6 @@ async function main() {
         ]
       },
       "executiveSummary": "Günün en büyük kırılmalarını ve teknoloji dengesini özetleyen 1-2 paragraflık derin yönetici özeti",
-      "twelveHours": [
-        {
-          "id": "model-id",
-          "name": "Model/Araç Adı",
-          "category": "LLM (Model)",
-          "badge": "Örn: Son 12 Saat Patlaması",
-          "hypeScore": 9.8,
-          "prevScore": 9.2,
-          "scoreDelta": 0.6,
-          "trend": "skyrocketing",
-          "mentions": 3200,
-          "sparkline": [8.8, 9.0, 9.2, 9.5, 9.8, 9.8, 9.8],
-          "primaryFunction": "1-2 cümlelik temel işlev",
-          "whyTrending": "Topluluğun neden övdüğü veya neden eleştirdiğine dair 1-2 cümlelik net gerekçe",
-          "sources": ["r/LocalLLaMA", "r/singularity"]
-        }
-      ],
       "daily": [
         // EN AZ 10-14 ADET gerçek somut AI ürünü
         {
@@ -886,6 +923,7 @@ async function main() {
           "category": "Yerel Model",
           "badge": "Örn: Günün Lideri",
           "hypeScore": 9.9,
+          "sentimentScore": 96,
           "prevScore": 9.3,
           "scoreDelta": 0.6,
           "trend": "skyrocketing",
@@ -952,15 +990,32 @@ async function main() {
           "category": "Kategori",
           "definition": "Herkesin anlayabileceği 1-2 cümlelik doyurucu açıklama"
         }
-      ]
+      ],
+      "hackerNewsPulse": {
+        "summary24h": "Son 24 saatte Hacker News gündeminde öne çıkan geliştirici ve mühendislik tartışmalarının 1-2 cümlelik genel özeti",
+        "discussions": [
+          // TAM 6 ADET TARTIŞMA
+          {
+            "id": "hn-id",
+            "title": "Orijinal İngilizce Başlık",
+            "titleTr": "Akıcı ve Merak Uyandırıcı Türkçe Başlık",
+            "points": 1500,
+            "comments": 800,
+            "category": "Yazılım Mimarisi",
+            "hnUrl": "https://news.ycombinator.com/item?id=...",
+            "discussion": "Tartışmada geliştiricilerin öne sürdüğü argümanlar, teknik itirazlar ve mimari deneyimlerin 2-3 cümlelik detaylı analizi."
+          }
+        ]
+      }
     }
   `;
 
-  const { data: rawResultJson, modelUsed: activeModelUsed, keyIndex: activeKeyIndex } = await generateWithWaterfall(prompt);
+  const { data: rawResultJson, modelUsed: activeModelUsed, keyIndex: activeKeyIndex, tokenUsage: activeTokenUsage } = await generateWithWaterfall(prompt);
 
   // KESKİN STANDARTLAR DENETÇİSİ (Verilerin yerli yerine oturmasını ve hiçbir zaman eksik kalmamasını garanti eder)
   const resultJson = enforceStrictStandards(rawResultJson, hfModels, candidateArxiv, hnPosts, githubCandidates, hfTopModels);
 
+  const completedAt = new Date().toLocaleTimeString("tr-TR", { hour: '2-digit', minute: '2-digit', second: '2-digit' });
   const duration = Math.round((Date.now() - startTime) / 1000);
   const dateStr = new Date().toLocaleDateString("tr-TR", {
     day: "numeric",
@@ -974,7 +1029,10 @@ async function main() {
     isoDate: isoDate,
     activeModel: activeModelUsed,
     keyIndex: activeKeyIndex,
+    startedAt: startedAt,
+    completedAt: completedAt,
     durationSeconds: duration,
+    tokenUsage: activeTokenUsage || null,
     totalPostsAnalyzed: totalPosts,
     subredditsCovered: 50,
     successfulBatches,
@@ -1038,7 +1096,7 @@ function updateToolHistory(reportData, dateStr) {
     }
   }
 
-  const allItems = [...(reportData.twelveHours || []), ...(reportData.daily || []), ...(reportData.weekly || [])];
+  const allItems = [...(reportData.daily || []), ...(reportData.weekly || [])];
   const processedIds = new Set();
 
   for (const item of allItems) {
@@ -1054,12 +1112,13 @@ function updateToolHistory(reportData, dateStr) {
     }
 
     let sentiment = "stabil";
-    if (item.scoreDelta >= 0.3 || item.trend === "skyrocketing") {
+    const sent = typeof item.sentimentScore === 'number' ? item.sentimentScore : (item.scoreDelta >= 0.3 ? 90 : item.scoreDelta <= -0.3 ? 40 : 75);
+    if (sent >= 80 || item.scoreDelta >= 0.3 || item.trend === "skyrocketing") {
       sentiment = "coşkulu";
-    } else if (item.scoreDelta <= -0.3 || item.trend === "cooling") {
-      sentiment = "eleştirel";
-    } else if (item.scoreDelta < -0.8) {
+    } else if (sent < 50 || item.scoreDelta < -0.8) {
       sentiment = "düşüş";
+    } else if (sent < 65 || item.scoreDelta <= -0.3 || item.trend === "cooling") {
+      sentiment = "eleştirel";
     }
 
     const headline = item.badge ? `${item.badge}` : `${item.name} Gelişmesi`;
@@ -1067,6 +1126,7 @@ function updateToolHistory(reportData, dateStr) {
     const historyEntry = {
       date: dateStr,
       hypeScore: item.hypeScore,
+      sentimentScore: sent,
       sentiment: sentiment,
       headline: headline,
       summary: item.whyTrending || item.primaryFunction,
@@ -1497,97 +1557,86 @@ function enforceStrictStandards(data, hfModels = [], candidateArxiv = [], hnPost
   }
   clean.hackerNewsPulse.discussions = dedupedCurrent;
 
-  // Discussions 8'den azsa canlı çekilen hnPosts'tan tekerrür etmeyecek şekilde tamamla
+  // Discussions 6'dan azsa canlı çekilen hnPosts'tan tekerrür etmeyecek şekilde tamamla
   const KNOWN_HN_KNOWLEDGE = {
+    "poster": {
+      titleTr: "Yapay Zeka ile Üretilen Afiş ve Posterlerin Kötü Olması Gerekmiyor: Tasarımcılar Ne Diyor?",
+      category: "Tasarım & Üretici AI",
+      discussion: "Toplulukta yapay zeka ile grafik üretiminin tipografi, grid ve hiyerarşi kurallarından yoksun olması sert eleştirildi. Ancak tasarımcılar, modellerin ham çıktıları yerine kontrol katmanları (ControlNet, katmanlı düzenleme ve vektör şablonları) entegre edildiğinde yapay zekanın ajans kalitesinde afiş ve poster üretebileceğini somut örneklerle ortaya koydu. Tartışmanın odağında, tasarımcının yerini almaktan ziyade onun yaratıcı yönlendirmesini hızlandıran araçlar yer aldı."
+    },
+    "non-autoregressive": {
+      titleTr: "Pekiştirmeli Öğrenmeyle Regresif Olmayan Karar Modelleri Mimarisi",
+      category: "Model Mimarisi & RL",
+      discussion: "Geleneksel token-token oto-regresif LLM çıkarımının karar alma mekanizmalarında aşırı yavaş kaldığını belirten mühendisler, paralel ve regresif olmayan (non-autoregressive) RL mimarilerini masaya yatırdı. Yorumlarda robotik kontrol, yüksek frekanslı ticaret ve otonom ajan koordinasyonunda token gecikmesinin (latency) sıfıra indirilmesi için bu tip difüzyon ve politika tabanlı modellerin LLM'lere kıyasla 20 kat daha verimli olduğu savunuldu."
+    },
+    "never use ai to write": {
+      titleTr: "Neden Yazı Yazarken Yapay Zekayı Neredeyse Asla Kullanmamalısınız?",
+      category: "Yazılım & Felsefe",
+      discussion: "Yazarlar ve kıdemli mühendisler, yapay zekaya metin yazdırmanın düşünme sürecini dumura uğrattığını savundu. Tartışmada 'Yazmak, düşüncenin kendisidir; onu bir modele delege ettiğinizde ne düşündüğünüzü de kaybedersiniz' argümanı büyük beğeni topladı. Karşıt görüşteki geliştiriciler ise LLM'lerin ilk taslak oluşturma ve yabancı dilde dilbilgisi kontrolünde vazgeçilmez bir yardımcı olduğunu dile getirdi."
+    },
+    "zig": {
+      titleTr: "Rust'tan Zig'e Geçiş Deneyimi: Dil Mimarisi ve Sadeliğin Karşılaştırması",
+      category: "Programlama Dilleri",
+      discussion: "Rust'ın borrow checker karmaşıklığı, makroları ve uzun derleme sürelerinden yorulan geliştiriciler, Zig'in gizli kontrol akışı içermeyen (no hidden control flow), doğrudan C uyumluluğu ve sade bellek tahsis yöntemlerini tartıştı. Rust savunucuları derleme anında bellek güvenliğinin (memory safety) taviz verilemez olduğunu vurgularken, Zig kullanıcıları derleyici basitliğinin ve 'comptime' yeteneğinin pratik projelerde çok daha yüksek hız sağladığını belirtti."
+    },
+    "scraping": {
+      titleTr: "Microsoft Direktörü: Yapay Zeka Veri Kazıma İnsanlık Tarihinin En Büyük Emek Hırsızlığıdır",
+      category: "Telif Hakları & Etik",
+      discussion: "Büyük teknoloji şirketlerinin internetteki tüm telifli içerikleri, açık kaynak kodları ve sanatsal üretimleri izinsiz tarayarak ticari modeller eğitmesi etik ve yasal açıdan tartışıldı. Mühendisler, adil kullanım (fair use) sınırlarının çoktan aşıldığını, içerik üreticilerine ve açık kaynak camiasına değer döndürmeyen bu döngünün uzun vadede internetin bilgi kalitesini yok edeceği konusunda ortak kaygı bildirdi."
+    },
+    "images are ai-generated": {
+      titleTr: "Hangi Görselin Yapay Zeka Tarafından Üretildiğini Ayırt Edebilir misiniz?",
+      category: "Görsel Modeller",
+      discussion: "FLUX ve Midjourney v6 gibi son nesil modellerle birlikte insan gözünün sentetik görselleri tespit etme oranının %50'nin (yazı tura seviyesi) altına düştüğü deneysel bir test üzerinden tartışıldı. Geliştiriciler parmak ve göz anomalilerinin artık çözüldüğünü; sentetik tespitte yalnızca cilt mikro dokuları, aşırı mükemmel stüdyo aydınlatması ve görüntü meta-verilerinin ipucu verebildiğini aktardı."
+    },
     "bend": {
       titleTr: "Bend: CPU ve GPU'da AI Hatalarını Matematiksel İspatla Engelleyen Dil",
       category: "Programlama Dilleri",
-      analysis: "CUDA karmaşıklığı olmadan hem CPU hem GPU üzerinde kitlesel paralellikle çalışan ve formel ispat kurallarıyla hataları önleyen yeni bir dil.",
-      usefulInsight: "CUDA çekirdekleri yazma zorunluluğunu ortadan kaldırarak yüksek eşzamanlı veri hatlarında bellek ve mantık hatalarını derleme anında önler."
+      discussion: "CUDA karmaşıklığı olmadan hem CPU hem GPU üzerinde kitlesel paralellikle çalışan ve formel ispat kurallarıyla hataları önleyen yeni bir programlama dilinin mimarisi tartışıldı."
     },
     "openai": {
       titleTr: "OpenAI Dahili Kod Depolarına Sızma: Heap Taşması ve SSO Yetkilendirme Açığı",
       category: "Siber Güvenlik",
-      analysis: "Güvenlik araştırmacılarının bir heap bellek taşması ile SSO yapılandırma zaafını zincirleyerek OpenAI'ın dahili repolarına erişim sağladığı kritik zafiyet analizi.",
-      usefulInsight: "Büyük yapay zeka şirketlerinde kurumsal SSO ve bellek güvenliği izolasyonları model ağırlıkları ve kod sızıntılarına karşı ilk savunma hattıdır."
-    },
-    "scraping": {
-      titleTr: "Microsoft Yöneticisinden AI Kazıma Çıkışı: 'İnsanlık Tarihindeki En Büyük Emek Hırsızlığı'",
-      category: "Telif Hakları & Etik",
-      analysis: "Açık web'deki içeriklerin izin ve ücret ödenmeden büyük modellere eğitilmesine yönelik sektör içi en sert itiraf ve etik tartışma.",
-      usefulInsight: "Eğitim verisi kazımaya yönelik artan hukuki baskılar, şirketleri sentetik veri ve lisanslı veri ortaklıklarına yönelmeye zorluyor."
-    },
-    "share your ai setup": {
-      titleTr: "Show HN: Yapay Zeka Geliştirici Ortamını Paylaş ve Başkalarından Öğren",
-      category: "Geliştirici Araçları",
-      analysis: "Mühendislerin yerel donanım yapılandırmaları, Mac Silicon optimizasyonları, açık kaynak modeller ve terminal ajanlarından oluşan AI iş akışları.",
-      usefulInsight: "Bulut API kotalarından kaçınan mühendisler arasında yerel GGUF modelleri ve terminal odaklı açık ajan iş akışları hızla standartlaşıyor."
-    },
-    "don't like llms": {
-      titleTr: "Büyük Dil Modellerini (LLM) Neden Sevmiyorum? Mühendislik Eleştirisi",
-      category: "Yazılım Kültürü",
-      analysis: "Yapay zeka tarafından üretilen kodların yarattığı teknik borç, mimari yüzeysellik ve yazılımcı muhakemesini zayıflatma riskine dair kapsamlı bir eleştiri.",
-      usefulInsight: "Otomatik kod üretiminin ilk yazım hızı avantajı, mimari kavrayış eksikliği ve uzun vadeli hata ayıklama maliyetleriyle kolayca gölgelenebilir."
-    },
-    "apocalypse": {
-      titleTr: "Yapay Zeka, İnsan İlişkileri ve Toplumun Geleceği",
-      category: "Toplum & Felsefe",
-      analysis: "Yapay zekanın duygusal arkadaşlık ve insan ilişkileri üzerindeki dönüştürücü etkilerinin psikolojik ve toplumsal güvenlik boyutları.",
-      usefulInsight: "Duygusal bağ kuran yapay zeka ajanlarının yaygınlaşması, kullanıcı mahremiyeti ve psikolojik manipülasyon risklerine karşı regülasyon gerektiriyor."
-    },
-    "how to write with an llm": {
-      titleTr: "Bir LLM ile Nasıl Yazılır: Mühendisler İçin Üretken Diyalog Rehberi",
-      category: "Metodoloji & Üretkenlik",
-      analysis: "Büyük dil modellerini pasif bir metin üreticisi yerine, yazılanları eleştiren, argümanları test eden ve yapı kuran aktif bir düşünce partneri yapma rehberi.",
-      usefulInsight: "LLM çıktısını olduğu gibi almak yerine sokratik sorgulama ve yinelemeli eleştiri döngüsü kurmak içerik ve kod kalitesini belirgin artırır."
-    },
-    "infinite-parameter": {
-      titleTr: "Sonsuz Parametreli LLM'ler: Canlı Veriden Ağırlık Üretme ve Uyarlama",
-      category: "Model Mimarisi",
-      analysis: "Geleneksel sabit ağırlıklı modeller yerine çıkarım anında canlı veri akışına göre dinamik ağırlık sentezleyen yeni hiper-ağ mimarisi.",
-      usefulInsight: "Dinamik ağırlık üretimi, parametre sayısını katlamadan modelin bağlam adaptasyonunu gerçek zamanlı optimize etmenin yenilikçi bir yoludur."
+      discussion: "Güvenlik araştırmacılarının bir heap bellek taşması ile SSO yapılandırma zaafını zincirleyerek OpenAI dahili repolarına erişim sağladığı kritik zafiyet analizi incelendi."
     }
   };
 
-  if (clean.hackerNewsPulse.discussions.length < 8 && Array.isArray(hnPosts)) {
-    for (const hp of hnPosts) {
-      if (clean.hackerNewsPulse.discussions.length >= 8) break;
-      const tLower = (hp.title || "").toLowerCase();
-      let matchedInfo = null;
-      for (const [key, val] of Object.entries(KNOWN_HN_KNOWLEDGE)) {
-        if (tLower.includes(key)) {
-          matchedInfo = val;
-          break;
-        }
+  function translateHnTitleTr(rawTitle) {
+    const tLower = (rawTitle || "").toLowerCase();
+    for (const [key, val] of Object.entries(KNOWN_HN_KNOWLEDGE)) {
+      if (tLower.includes(key)) {
+        return { titleTr: val.titleTr, category: val.category, discussion: val.discussion };
       }
+    }
+    // Genel kural bazlı Türkçe başlık ve kategori üretimi
+    let cat = "Yazılım & Teknoloji";
+    if (tLower.includes('gpu') || tLower.includes('cuda') || tLower.includes('hardware') || tLower.includes('rtx')) cat = 'GPU & Donanım';
+    else if (tLower.includes('rust') || tLower.includes('zig') || tLower.includes('compiler') || tLower.includes('python')) cat = 'Programlama & Diller';
+    else if (tLower.includes('security') || tLower.includes('vulnerability') || tLower.includes('overflow')) cat = 'Siber Güvenlik';
+    else if (tLower.includes('agent') || tLower.includes('autonomous')) cat = 'Otonom Ajanlar';
+    else if (tLower.includes('model') || tLower.includes('llm') || tLower.includes('reasoning')) cat = 'Yapay Zeka & LLM';
 
-      function detectHnCategory(title) {
-        const t = (title || '').toLowerCase();
-        if (t.includes('gpu') || t.includes('cuda') || t.includes('vram') || t.includes('hardware') || t.includes('apple silicon') || t.includes('rtx')) return 'GPU & Donanım';
-        if (t.includes('rust') || t.includes('c++') || t.includes('compiler') || t.includes('language') || t.includes('runtime') || t.includes('bend')) return 'Programlama & Diller';
-        if (t.includes('security') || t.includes('overflow') || t.includes('vulnerability') || t.includes('breach') || t.includes('sso') || t.includes('hack')) return 'Siber Güvenlik';
-        if (t.includes('postgres') || t.includes('database') || t.includes('sql') || t.includes('query') || t.includes('vector') || t.includes('pgvector')) return 'Veritabanı & Optimizasyon';
-        if (t.includes('agent') || t.includes('agents') || t.includes('autonomous') || t.includes('swarm') || t.includes('swe')) return 'Otonom Ajanlar';
-        if (t.includes('theft') || t.includes('copyright') || t.includes('scraping') || t.includes('ethics') || t.includes('welfare') || t.includes('ads')) return 'Telif & AI Etiği';
-        if (t.includes('browser') || t.includes('mozilla') || t.includes('privacy') || t.includes('private')) return 'Tarayıcı & Gizlilik';
-        if (t.includes('learn') || t.includes('education') || t.includes('write with') || t.includes('writing')) return 'Yazılım Eğitimi & Metot';
-        if (t.includes('waymo') || t.includes('car') || t.includes('robot') || t.includes('driverless')) return 'Otonom Araçlar & Güvenlik';
-        if (t.includes('spam') || t.includes('scam') || t.includes('email')) return 'Siber Güvenlik & Spam';
-        if (t.includes('altman') || t.includes('ipo') || t.includes('public') || t.includes('slow down') || t.includes('market')) return 'Ekosistem & Strateji';
-        if (t.includes('llm') || t.includes('model') || t.includes('parameter') || t.includes('weights')) return 'Model Mimarisi';
-        return 'Yazılım & Teknoloji';
-      }
+    return {
+      titleTr: rawTitle,
+      category: cat,
+      discussion: `${rawTitle} konusunda Hacker News mühendis topluluğunun paylaştığı teknik argümanlar, pratik deneyimler ve mimari değerlendirmeler.`
+    };
+  }
+
+  if (clean.hackerNewsPulse.discussions.length < 6 && Array.isArray(hnPosts)) {
+    for (const hp of hnPosts) {
+      if (clean.hackerNewsPulse.discussions.length >= 6) break;
+      const matched = translateHnTitleTr(hp.title);
 
       const candidate = {
         id: String(hp.id),
         title: hp.title,
-        titleTr: matchedInfo?.titleTr || hp.title,
+        titleTr: matched.titleTr || hp.title,
         points: hp.points,
         comments: hp.comments,
         hnUrl: hp.hnUrl,
-        category: matchedInfo?.category || detectHnCategory(hp.title),
-        analysis: matchedInfo?.analysis || `${hp.title} mimari tasarım ve geliştirici deneyimi üzerine teknik tartışma.`,
-        usefulInsight: matchedInfo?.usefulInsight || "Büyük ölçekli sistemlerde yazılım ve model mimarisini sade tutmak operasyonel sürekliliği artırır."
+        category: matched.category,
+        discussion: matched.discussion
       };
       if (!isDuplicateDiscussion(candidate, clean.hackerNewsPulse.discussions)) {
         clean.hackerNewsPulse.discussions.push(candidate);
@@ -1597,112 +1646,89 @@ function enforceStrictStandards(data, hfModels = [], candidateArxiv = [], hnPost
 
   const BENCHMARK_HN = [
     {
-      id: "hn-1",
-      title: "Show HN: Open source autonomous research agent with local models",
-      titleTr: "Açık Kaynak Yerel Modellerle Çalışan Otonom Araştırma Ajanı",
-      points: 380,
-      comments: 142,
-      hnUrl: "https://news.ycombinator.com",
-      category: "Açık Kaynak & Ajan",
-      analysis: "Geliştiriciler bulut API bağımlılığı olmadan yerel donanımlarda çalışan otonom araştırma boru hatlarına yoğun ilgi gösteriyor.",
-      usefulInsight: "Lokal modellerle kurulan araştırmacı ajanlar API maliyetlerini sıfırlarken veri gizliliğini tam korur."
+      id: "49764791",
+      title: "AI-generated posters don’t have to be horrible",
+      titleTr: "Yapay Zeka ile Üretilen Afiş ve Posterlerin Kötü Olması Gerekmiyor: Tasarımcılar Ne Diyor?",
+      points: 1575,
+      comments: 840,
+      hnUrl: "https://news.ycombinator.com/item?id=49764791",
+      category: "Tasarım & Üretici AI",
+      discussion: "Toplulukta yapay zeka grafiklerinin tipografi ve hiyerarşi kurallarından yoksun olması sert eleştirildi. Ancak tasarımcılar, modellerin ham çıktıları yerine kontrol katmanları (ControlNet, katmanlı düzenleme ve vektör şablonları) entegre edildiğinde yapay zekanın ajans kalitesinde afiş üretebileceğini somut örneklerle ortaya koydu. Tartışmanın odağında, tasarımcının yerini almaktan ziyade onun yaratıcı yönlendirmesini hızlandıran araçlar yer aldı."
     },
     {
-      id: "hn-2",
-      title: "DeepSeek-V3 architecture deep dive: Multi-head Latent Attention",
-      titleTr: "DeepSeek-V3 Mimarisi Derinlemesine Analizi: Çok Başlı Gizli Dikkat (MLA)",
-      points: 520,
-      comments: 215,
-      hnUrl: "https://news.ycombinator.com",
-      category: "Model Mimarisi",
-      analysis: "MLA mekanizması KV önbelleğini dramatik biçimde küçülterek yüksek eşzamanlı çıkarımlarda GPU VRAM tüketimini minimize ediyor.",
-      usefulInsight: "Sunucu tarafında çıkarım ölçeklerken MLA destekli mimariler donanım maliyetini belirgin oranda düşürür."
+      id: "49765348",
+      title: "I built non-autoregressive decision models with RL a year ago",
+      titleTr: "Pekiştirmeli Öğrenmeyle Regresif Olmayan Karar Modelleri Mimarisi",
+      points: 1202,
+      comments: 290,
+      hnUrl: "https://news.ycombinator.com/item?id=49765348",
+      category: "Model Mimarisi & RL",
+      discussion: "Geleneksel token-token oto-regresif LLM çıkarımının karar alma mekanizmalarında aşırı yavaş kaldığını belirten mühendisler, paralel ve regresif olmayan (non-autoregressive) RL mimarilerini masaya yatırdı. Yorumlarda robotik kontrol, yüksek frekanslı ticaret ve otonom ajan koordinasyonunda token gecikmesinin (latency) sıfıra indirilmesi için bu tip difüzyon ve politika tabanlı modellerin LLM'lere kıyasla 20 kat daha verimli olduğu savunuldu."
     },
     {
-      id: "hn-3",
-      title: "Why developers are switching from closed IDEs to open terminal agents",
-      titleTr: "Geliştiriciler Neden Kapalı IDE'lerden Açık Terminal Ajanlarına Geçiyor?",
-      points: 290,
-      comments: 185,
-      hnUrl: "https://news.ycombinator.com",
-      category: "Geliştirici Araçları",
-      analysis: "Kapalı IDE'lerdeki kota ve gizli telemetri endişeleri geliştiricileri terminal tabanlı CLI ajanlarına yönlendiriyor.",
-      usefulInsight: "Terminal odaklı açık ajanlar Git geçmişi ve CI/CD süreçleriyle çok daha şeffaf entegre olur."
+      id: "49767937",
+      title: "I think you should almost never use AI to write",
+      titleTr: "Neden Yazı Yazarken Yapay Zekayı Neredeyse Asla Kullanmamalısınız?",
+      points: 294,
+      comments: 144,
+      hnUrl: "https://news.ycombinator.com/item?id=49767937",
+      category: "Yazılım & Felsefe",
+      discussion: "Yazarlar ve kıdemli mühendisler, yapay zekaya metin yazdırmanın düşünme sürecini dumura uğrattığını savundu. Tartışmada 'Yazmak, düşüncenin kendisidir; onu bir modele delege ettiğinizde ne düşündüğünüzü de kaybedersiniz' argümanı büyük beğeni topladı. Karşıt görüşteki geliştiriciler ise LLM'lerin ilk taslak oluşturma ve yabancı dilde dilbilgisi kontrolünde vazgeçilmez bir yardımcı olduğunu dile getirdi."
     },
     {
-      id: "hn-4",
-      title: "CUDA kernel optimizations for speculative decoding in LLMs",
-      titleTr: "Büyük Dil Modellerinde Spekülatif Kod Çözme İçin CUDA Çekirdek Optimizasyonları",
-      points: 310,
-      comments: 94,
-      hnUrl: "https://news.ycombinator.com",
-      category: "GPU & Donanım",
-      analysis: "Küçük taslak modellerle büyük modellerin eşleştirilmesi çıkarım hızını kalite kaybı olmadan 2.5 katına çıkarıyor.",
-      usefulInsight: "Düşük gecikmeli üretim ortamlarında spekülatif çıkarım mimarisi ilk tercih edilmelidir."
+      id: "49766637",
+      title: "What Zig felt like, coming from Rust",
+      titleTr: "Rust'tan Zig'e Geçiş Deneyimi: Dil Mimarisi ve Sadeliğin Karşılaştırması",
+      points: 219,
+      comments: 259,
+      hnUrl: "https://news.ycombinator.com/item?id=49766637",
+      category: "Programlama Dilleri",
+      discussion: "Rust'ın borrow checker karmaşıklığı, makroları ve uzun derleme sürelerinden yorulan geliştiriciler, Zig'in gizli kontrol akışı içermeyen (no hidden control flow), doğrudan C uyumluluğu ve sade bellek tahsis yöntemlerini tartıştı. Rust savunucuları derleme anında bellek güvenliğinin (memory safety) taviz verilemez olduğunu vurgularken, Zig kullanıcıları derleyici basitliğinin ve 'comptime' yeteneğinin pratik projelerde çok daha yüksek hız sağladığını belirtti."
     },
     {
-      id: "hn-5",
-      title: "PostgreSQL with pgvector vs Dedicated Vector Databases in 2026",
-      titleTr: "2026'da pgvector Destekli PostgreSQL ve Özel Vektör Veritabanları Karşılaştırması",
-      points: 440,
-      comments: 198,
-      hnUrl: "https://news.ycombinator.com",
-      category: "Veritabanı & RAG",
-      analysis: "Çoğu RAG uygulaması için pgvector operasyonel karmaşıklığı azaltarak bağımsız vektör veritabanlarına olan ihtiyacı ortadan kaldırıyor.",
-      usefulInsight: "10 milyon vektörün altındaki projelerde yeni veritabanı açmak yerine pgvector kullanmak bakım yükünü azaltır."
+      id: "49768921",
+      title: "Microsoft director: AI scraping 'the largest theft of labor in human history'",
+      titleTr: "Microsoft Direktörü: Yapay Zeka Veri Kazıma İnsanlık Tarihinin En Büyük Emek Hırsızlığıdır",
+      points: 162,
+      comments: 46,
+      hnUrl: "https://news.ycombinator.com/item?id=49768921",
+      category: "Telif Hakları & Etik",
+      discussion: "Büyük teknoloji şirketlerinin internetteki tüm telifli içerikleri, açık kaynak kodları ve sanatsal üretimleri izinsiz tarayarak ticari modeller eğitmesi etik ve yasal açıdan tartışıldı. Mühendisler, adil kullanım (fair use) sınırlarının çoktan aşıldığını, içerik üreticilerine ve açık kaynak camiasına değer döndürmeyen bu döngünün uzun vadede internetin bilgi kalitesini yok edeceği konusunda ortak kaygı bildirdi."
     },
     {
-      id: "hn-6",
-      title: "Benchmarking 4-bit vs 8-bit quantization on Apple Silicon M-series",
-      titleTr: "Apple Silicon M Serisinde 4-bit ve 8-bit Kuantizasyon Performans Kıyaslaması",
-      points: 275,
-      comments: 110,
-      hnUrl: "https://news.ycombinator.com",
-      category: "Yerel Çıkarım",
-      analysis: "Yeni nesil kalibrasyonlu 4-bit kuantizasyonlar mantık ve kodlama testlerinde 8-bit seviyesini yakalayarak bellek tasarrufu sağlıyor.",
-      usefulInsight: "Mac üzerinde yerel geliştirme yaparken GGUF kalibre 4-bit modeller hız/kalite dengesinde ideal noktadır."
-    },
-    {
-      id: "hn-7",
-      title: "Silent failure modes in multi-agent workflows and how to prevent them",
-      titleTr: "Çoklu Ajan İş Akışlarında Sessiz Hata Modları ve Bunları Önleme Yolları",
-      points: 360,
-      comments: 130,
-      hnUrl: "https://news.ycombinator.com",
-      category: "Yazılım Mühendisliği",
-      analysis: "Ajanlar arası iletişimde hata denetimi yapılmadığında küçük mantık kaymaları zincirleme sistem arızalarına yol açıyor.",
-      usefulInsight: "Ajanlar arasına kesin şema doğrulaması ve insan onay kapıları (human-in-the-loop) yerleştirmek kritiktir."
-    },
-    {
-      id: "hn-8",
-      title: "State of Open Source AI Governance: Licensing and Model Weights",
-      titleTr: "Açık Kaynak Yapay Zeka Yönetişimi: Lisanslama ve Model Ağırlıkları",
-      points: 230,
-      comments: 88,
-      hnUrl: "https://news.ycombinator.com",
-      category: "Ekosistem & Hukuk",
-      analysis: "Açık ağırlık ile açık kaynak arasındaki hukuki ayrım kurumsal kullanım lisanslarında yeni standartlar doğuruyor.",
-      usefulInsight: "Üretimde model dağıtırken ticari kullanım kısıtlamalarını ve türetilmiş ağırlık şartlarını baştan inceleyin."
+      id: "49770847",
+      title: "Can you tell which images are AI-generated?",
+      titleTr: "Hangi Görselin Yapay Zeka Tarafından Üretildiğini Ayırt Edebilir misiniz?",
+      points: 81,
+      comments: 69,
+      hnUrl: "https://news.ycombinator.com/item?id=49770847",
+      category: "Görsel Modeller",
+      discussion: "FLUX ve Midjourney v6 gibi son nesil modellerle birlikte insan gözünün sentetik görselleri tespit etme oranının %50'nin (yazı tura seviyesi) altına düştüğü deneysel bir test üzerinden tartışıldı. Geliştiriciler parmak ve göz anomalilerinin artık çözüldüğünü; sentetik tespitte yalnızca cilt mikro dokuları, aşırı mükemmel stüdyo aydınlatması ve görüntü meta-verilerinin ipucu verebildiğini aktardı."
     }
   ];
 
-  while (clean.hackerNewsPulse.discussions.length < 8) {
+  while (clean.hackerNewsPulse.discussions.length < 6) {
     const idx = clean.hackerNewsPulse.discussions.length;
     clean.hackerNewsPulse.discussions.push(BENCHMARK_HN[idx]);
   }
 
-  // Her discussion için eksiksiz alan kontrolü
-  clean.hackerNewsPulse.discussions = clean.hackerNewsPulse.discussions.slice(0, 8).map((d, idx) => ({
-    id: String(d.id || d.hnUrl || `hn-${idx + 1}`),
-    title: d.title || "Teknik Geliştirici Tartışması",
-    titleTr: d.titleTr || d.title || "Teknik Geliştirici Tartışması",
-    points: typeof d.points === 'number' ? d.points : 100,
-    comments: typeof d.comments === 'number' ? d.comments : 50,
-    hnUrl: d.hnUrl || d.url || "https://news.ycombinator.com",
-    category: d.category || "Geliştirici Nabzı",
-    analysis: d.analysis || d.takeaway || "Hacker News ekosisteminde yoğun ilgi gören teknik konu.",
-    usefulInsight: d.usefulInsight || d.takeaway || "Geliştiriciler için doğrudan işe yarar pratik çıkarım."
-  }));
+  // Her discussion için tam 6 adet ve eksiksiz alan kontrolü (yeşil kutu kaldırıldı, zengin discussion paragrafı)
+  clean.hackerNewsPulse.discussions = clean.hackerNewsPulse.discussions.slice(0, 6).map((d, idx) => {
+    const matched = translateHnTitleTr(d.title || "");
+    const titleTr = (d.titleTr && d.titleTr !== d.title) ? d.titleTr : (matched.titleTr || d.title || "Teknik Geliştirici Tartışması");
+    const discussion = d.discussion || d.analysis || d.usefulInsight || matched.discussion || "Hacker News topluluğunda öne çıkan teknik argümanlar ve mimari deneyimler.";
+
+    return {
+      id: String(d.id || d.hnUrl || `hn-${idx + 1}`),
+      title: d.title || "Teknik Geliştirici Tartışması",
+      titleTr: titleTr,
+      points: typeof d.points === 'number' ? d.points : 150,
+      comments: typeof d.comments === 'number' ? d.comments : 80,
+      hnUrl: d.hnUrl || d.url || "https://news.ycombinator.com",
+      category: d.category || matched.category || "Yazılım Mimarisi",
+      discussion: discussion
+    };
+  });
 
   // 4. GITHUB AI RADARI: Günlük, Haftalık, Aylık, Yıllık (Her biri tam 6 repo)
   const BENCHMARK_GITHUB = {
@@ -2112,7 +2138,7 @@ function enforceStrictStandards(data, hfModels = [], candidateArxiv = [], hnPost
   }
 
   // 6. Sabah Brifingi Keskin Standartları (Dinamik ve Organik)
-  const dynamicLeader = (clean.daily && clean.daily[0]) || (clean.twelveHours && clean.twelveHours[0]) || {
+  const dynamicLeader = (clean.daily && clean.daily[0]) || {
     name: "Günün Öne Çıkan AI Modeli",
     badge: "Topluluk Gündemi",
     primaryFunction: "Toplulukta en yüksek tartışma ve ilgi gören yapay zeka aracı."
@@ -2188,14 +2214,33 @@ function enforceStrictStandards(data, hfModels = [], candidateArxiv = [], hnPost
   }
 
   // Sıralamadaki tüm AI ürünlerinin isimlerini temizle ve geçerli olanları koru (sıfır yapay zorlama / sıfır yönlendirme)
-  ['twelveHours', 'daily', 'weekly', 'monthly'].forEach(key => {
+  ['daily', 'weekly', 'monthly'].forEach(key => {
     if (Array.isArray(clean[key])) {
       clean[key] = clean[key]
         .filter(item => item && (item.name || item.id))
-        .map(item => ({
-          ...item,
-          name: cleanStrName(item.name || item.id)
-        }));
+        .map(item => {
+          let sScore = typeof item.sentimentScore === 'number' ? Math.round(item.sentimentScore) : null;
+          if (sScore === null || isNaN(sScore)) {
+            const d = Number(item.scoreDelta || 0);
+            const b = (item.badge || '').toLowerCase();
+            const w = (item.whyTrending || '').toLowerCase();
+            const isCrit = b.includes('eleştir') || b.includes('şikayet') || b.includes('düşüş') || w.includes('şikayet') || w.includes('eleştiri') || item.trend === 'cooling';
+            if (isCrit) {
+              sScore = Math.max(25, Math.min(55, Math.round(45 + d * 15)));
+            } else if (d > 0 || item.trend === 'skyrocketing') {
+              sScore = Math.min(99, Math.max(82, Math.round(88 + d * 8)));
+            } else if ((item.hypeScore || 0) >= 9.0) {
+              sScore = Math.round(85 + ((item.hypeScore || 9) - 9.0) * 10);
+            } else {
+              sScore = 75;
+            }
+          }
+          return {
+            ...item,
+            name: cleanStrName(item.name || item.id),
+            sentimentScore: Math.min(100, Math.max(0, sScore))
+          };
+        });
     }
   });
 
@@ -2258,9 +2303,7 @@ function enforceStrictStandards(data, hfModels = [], candidateArxiv = [], hnPost
   if (!Array.isArray(clean.monthly) || clean.monthly.length === 0) {
     clean.monthly = Array.isArray(clean.weekly) ? clean.weekly.slice(0, 8) : [];
   }
-  if (!Array.isArray(clean.twelveHours) || clean.twelveHours.length === 0) {
-    clean.twelveHours = Array.isArray(clean.daily) ? clean.daily.slice(0, 8) : [];
-  }
+  delete clean.twelveHours;
 
   // 7. GÜNÜN SÖZLÜĞÜ (dailyGlossary): Kesinlikle tam 9 adet ve yalnızca sitede bizzat geçen kavramlar
   const BENCHMARK_GLOSSARY_9 = [

@@ -126,20 +126,19 @@
   .subgrid-row-hn {
     display: grid !important;
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    grid-template-rows: auto auto 1fr 1fr auto !important;
+    grid-template-rows: auto auto 1fr auto !important;
     row-gap: 0.625rem !important;
     column-gap: 1rem !important;
     align-items: stretch !important;
   }
   .subgrid-card-hn {
-    grid-row: span 5 !important;
+    grid-row: span 4 !important;
     display: grid !important;
     grid-template-rows: subgrid !important;
     row-gap: 0.625rem !important;
     height: 100% !important;
   }
-  .subgrid-card-hn > *:nth-child(3),
-  .subgrid-card-hn > *:nth-child(4) {
+  .subgrid-card-hn > *:nth-child(3) {
     height: 100% !important;
     min-height: 100% !important;
     display: flex !important;

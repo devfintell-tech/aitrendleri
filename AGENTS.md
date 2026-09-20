@@ -64,12 +64,25 @@ Bu belge, bu projenin tüm tasarım, veri mimarisi ve geliştirme standartların
 
 ---
 
-## 🟢 4. Hacker News Geliştirici Nabzı
+## 🟠 4. Hacker News Geliştirici Nabzı Standartları
 
-1. **24 Saatlik Özet (`summary24h`) & 8 Teknik Tartışma:**
-   - Her gün en çok puan ve teknik derinliğe sahip 8 tartışma yer alır.
-2. **Yeşil Çıkarım Kutuları (`usefulInsight`):**
-   - İkili satır gruplarında (`md:grid-cols-2`) sol ve sağ karttaki yeşil kutular tam olarak aynı yatay hizada başlar, doğal olarak genişler ve aynı seviyede biter.
+1. **Günün En Önemli Tam 6 Kilit Teknik Tartışması (3x2 veya 2x3 Simetri):**
+   - Her gün Hacker News'de en yüksek puan ve yorum alan en önemli tam 6 teknik tartışma yer alır (8 veya değişken sayı KULLANILAMAZ).
+   - Bu tartışmalar sıralamaya kesinlikle etki etmez; bağımsız ve saf mühendis/geliştirici nabzını yansıtır.
+
+2. **Zorunlu Akıcı Türkçe Başlık (`titleTr`):**
+   - Hacker News başlıkları sitede ASLA ham İngilizce gösterilemez.
+   - Her tartışma için akıcı, merak uyandırıcı ve konuyu tam anlatan bir Türkçe başlık (`titleTr`) üretilmek zorundadır. Orijinal İngilizce başlık alt referans çubuğunda şeffafça korunur.
+
+3. **Yeşil Kutu Yasağı & Detaylı Tartışma Paragrafı (`discussion`):**
+   - Kartlarda ayrık yeşil çıkarım kutucukları (`usefulInsight`) KESİNLİKLE YASAKTIR.
+   - Başlığın hemen altında, mühendis ve geliştiricilerin o başlık altında neleri tartıştığını, öne çıkan karşıt fikirleri, teknik argümanları ve deneyimleri aktaran 2-3 cümlelik doyurucu ve detaylı bir Türkçe analiz paragrafı (`discussion`) yer alır.
+   - Şablon/dolgu cümleler ("Büyük ölçekli sistemlerde yazılım...", "mimari tasarım ve geliştirici deneyimi...") KESİNLİKLE YASAKTIR; her tartışmanın içeriği kendine has ve gerçek yorumlara dayalı olmalıdır.
+
+4. **CSS Subgrid ve Jilet Hizalama İlkesi:**
+   - Kartlar 3 sütunlu (`lg:grid-cols-3 md:grid-cols-2 grid-cols-1`) veya 2 sütunlu ızgara düzeninde doğal olarak genişler (`h-full flex flex-col justify-between`).
+   - Kart başlıkları ve altındaki tartışma paragrafları aynı satırdaki kartlar arasında tam hizalı başlar, en uzun paragrafa göre kutular doğal olarak uzar ve alt HN link çubuğu jilet gibi aynı çizgide eşitlenir.
+   - Kart içinde hiçbir dikey/yatay kaydırma çubuğu (scrollbar) KULLANILAMAZ.
 
 ---
 
