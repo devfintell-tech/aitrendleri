@@ -1,6 +1,6 @@
 ================================================================================
 🤖 AITRENDLERI.COM OTONOM TARAMA VE ANALİZ TERMİNAL RAPORU
-Tarih: 20 Eylül 2026 | İşlem Süresi: 230s
+Tarih: 20 Eylül 2026 | İşlem Süresi: 240s
 ================================================================================
 
 [1. MODEL & ŞELALE AKTİVİTESİ]
@@ -13,17 +13,17 @@ Tarih: 20 Eylül 2026 | İşlem Süresi: 230s
   ✔ Başarılı Kategori / Batch   : 3 / 7
   ------------------------------------------------------------------------------
   1. [🟢 OK 200] Vibe Coding & Yeni Nesil Editörler: 15 gönderi
-     └─ Dağılım: r/ClaudeAI: 2, r/vibecoding: 4, r/ChatGPTCoding: 1, r/Copilot: 3, r/CursorAI: 1, r/ClaudeDev: 1, r/vscode: 3
+     └─ Dağılım: r/ClaudeAI: 2, r/vibecoding: 3, r/ChatGPTCoding: 1, r/Copilot: 4, r/CursorAI: 1, r/ClaudeDev: 1, r/vscode: 3
   2. [🔴 ERR 429] Otonom Ajanlar & Süreç Otomasyonu: 0 gönderi
      └─ Hata/Uyarı: Reddit HTTP 429 (Rate Limit)
   3. [🟢 OK 200] Büyük Dil Modelleri & Araştırma Devleri: 15 gönderi
-     └─ Dağılım: r/singularity: 1, r/OpenAI: 2, r/ArtificialInteligence: 3, r/DeepSeek: 2, r/MachineLearning: 1, r/Anthropic: 4, r/GoogleGemini: 2
+     └─ Dağılım: r/singularity: 2, r/OpenAI: 2, r/ArtificialInteligence: 4, r/DeepSeek: 3, r/MachineLearning: 1, r/Anthropic: 1, r/GoogleGemini: 2
   4. [🔴 ERR 429] Açık Kaynak, Yerel Modeller & Self-Hosted: 0 gönderi
      └─ Hata/Uyarı: Reddit HTTP 429 (Rate Limit)
   5. [🔴 ERR 429] Yazılım Geliştirici, API & Kodlama Dünyası: 0 gönderi
      └─ Hata/Uyarı: Reddit HTTP 429 (Rate Limit)
   6. [🟢 OK 200] Donanım, GPU, CPU & Bulut Altyapısı: 15 gönderi
-     └─ Dağılım: r/hardware: 1, r/AMD_Stock: 3, r/devops: 1, r/sysadmin: 4, r/nvidia: 2, r/Cloud: 2, r/googlecloud: 2
+     └─ Dağılım: r/hardware: 1, r/AMD_Stock: 2, r/devops: 1, r/sysadmin: 4, r/nvidia: 2, r/Cloud: 3, r/googlecloud: 2
   7. [🔴 ERR 429] Görsel, Video & Medya Üretimi: 0 gönderi
      └─ Hata/Uyarı: Reddit HTTP 429 (Rate Limit)
 
@@ -34,7 +34,7 @@ Tarih: 20 Eylül 2026 | İşlem Süresi: 230s
   ✔ Düşük Sinyal / Takiptekiler   : 12
   ✔ Sıfır Çekenler (Dead Sub)     : 0
   ------------------------------------------------------------------------------
-  🏆 En Çok Katkı Sağlayanlar: r/vscode (60), r/vibecoding (53), r/ClaudeAI (47), r/ChatGPTCoding (45), r/CursorAI (38)
+  🏆 En Çok Katkı Sağlayanlar: r/vscode (63), r/vibecoding (56), r/ClaudeAI (49), r/ChatGPTCoding (46), r/CursorAI (39)
   ⚠️ Düşük Sinyal Verenler   : r/copilot, r/CrewAI, r/agenticai, r/Singularity, r/vllm, r/AI_Tools, r/GenerativeAI, r/GoogleCloud, r/ComfyUI, r/Midjourney, r/Sora, r/RunwayML
   🚫 Değiştirilmesi Önerilen : Yok (Tümü veri sağlıyor)
 
@@ -45,7 +45,7 @@ Tarih: 20 Eylül 2026 | İşlem Süresi: 230s
   ✔ GitHub Radar        : 6 repo
 
 [5. GÜNÜN ORGANİK 1 NUMARALI LİDERİ]
-  👑 Claude Code (Skor: 99/100 - Eleştiriliyor)
-  📝 Neden Seçildi: Anthropic'in düşünme bütçesini sessizce kıstığı iddiası ve 48 bin dosya silme vakası topluluğu ayağa kaldırdı; kullanıcılar abonelik iptalini tartışıyor.
+  👑 Claude Code (Skor: 99/100 - Kesinti Sorunu)
+  📝 Neden Seçildi: Kişisel makinede 48 bin dosyanın silindiği vaka ve 43.000 çağrıda %39 sıfır düşünme token'ı iddiası, kullanıcıları ajanın güvenliği ve şeffaflığı konusunda isyan noktasına getirdi.
 
 ================================================================================

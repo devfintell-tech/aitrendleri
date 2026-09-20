@@ -1110,7 +1110,7 @@ async function generateMorningBriefSynthesis(finalizedData, phase1Execution = nu
 async function main() {
   // Eğer son 4 saat içinde bugünün raporu zaten başarıyla oluşturulmuşsa boşuna çalışma
   const latestReportPath = path.join(__dirname, "../src/data/latest-report.json");
-  if (fs.existsSync(latestReportPath) && !process.env.FORCE_RUN) {
+  if (fs.existsSync(latestReportPath) && !process.env.FORCE_RUN && !process.argv.includes('--force')) {
     try {
       const existing = JSON.parse(fs.readFileSync(latestReportPath, "utf-8"));
       const todayIso = new Date().toISOString().split("T")[0];

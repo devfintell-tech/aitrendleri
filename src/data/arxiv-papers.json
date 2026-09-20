@@ -80,34 +80,34 @@
       "isoDate": "2026-09-20",
       "papers": [
         {
-          "id": "arxiv-2609-11923",
-          "titleTr": "GPU-CFR: Oyun Ağacını Statik Veri Akışına Derleyerek 80 Kat Daha Hızlı Karşıolgusal Pişmanlık Minimizasyonu",
-          "title": "GPU-CFR: 80x Faster Counterfactual Regret Minimization by Compiling the Game to Static Dataflow and CUDA Graph Replay",
-          "arxivUrl": "https://arxiv.org/abs/2609.11923",
-          "authors": [
-            "Araştırma Ekibi"
-          ],
-          "category": "cs.LG",
-          "impactScore": 9.7,
-          "whyMad": "Oyun teorisinin en pahalı iş yükünü CPU'dan GPU'ya taşıyıp 80 kat hızlandırarak ajanların stratejik karar verme hızını kökten değiştiriyor.",
-          "summary": "Oyun ağacını statik bir veri akışı grafiğine derleyip CUDA Graph Replay ile tekrar oynatarak CFR hesaplamalarını GPU üzerinde ölçeklendiriyor."
-        },
-        {
           "id": "arxiv-2609-20800",
-          "titleTr": "JEPA-Anything: Farklı Dünyalar Arasında Ortak Öngörücü Dünya Modelleri",
+          "titleTr": "JEPA-Anything: Farklı Dünyalar Arasında Öngörücü Modeller Öğrenmek",
           "title": "JEPA-Anything: Learning Predictive Models across Different Worlds",
           "arxivUrl": "https://arxiv.org/abs/2609.20800",
           "authors": [
             "Araştırma Ekibi"
           ],
-          "category": "cs.AI",
+          "category": "cs.LG",
           "impactScore": 9.7,
-          "whyMad": "Farklı ortamlara ayrı ayrı model eğitmek yerine ortak bir öngörücü faktörizasyon ilkesi sunarak evrensel dünya modellemesinin kapısını aralıyor.",
-          "summary": "Ortogonal öngörücü faktörizasyon kullanarak değişen dünyalar arasında paylaşılabilen temsil öğrenmeyi mümkün kılıyor."
+          "whyMad": "Her ortam için ayrı model eğitmek yerine ortak bir öngörücü faktörizasyon ilkesi sunarak evrensel dünya modellemesini tek çatı altında topluyor.",
+          "summary": "Ortogonal öngörücü faktörizasyon kullanarak farklı dünyalarda genellenebilen bir dünya modeli öğrenme çerçevesi öneriyor."
+        },
+        {
+          "id": "arxiv-2609-11923",
+          "titleTr": "GPU-CFR: Oyunu Statik Veri Akışına Derleyip CUDA Graph Replay ile 80 Kat Hızlı Pişmanlık Minimizasyonu",
+          "title": "GPU-CFR: 80x Faster Counterfactual Regret Minimization by Compiling the Game to Static Dataflow and CUDA Graph Replay",
+          "arxivUrl": "https://arxiv.org/abs/2609.11923",
+          "authors": [
+            "Araştırma Ekibi"
+          ],
+          "category": "cs.AI",
+          "impactScore": 9.6,
+          "whyMad": "Oyun teorisi gibi en pahalı iş yüklerinden birini CPU'dan GPU'ya taşıyıp 80 kat hızlandırarak ajanların stratejik karar verme hızını kökten değiştiriyor.",
+          "summary": "Oyun ağacını statik veri akışına derleyip CUDA Graph Replay ile GPU üzerinde yeniden oynatıyor ve ölçülebilir biçimde 80 kat hızlanma elde ediyor."
         },
         {
           "id": "arxiv-2609-20804",
-          "titleTr": "Kodlama Ajanları İçin Harness Tasarımı Üzerine Ampirik Bir Çalışma",
+          "titleTr": "Kodlama Ajanları için Harness Tasarımı Üzerine Ampirik Bir Çalışma",
           "title": "An Empirical Study of Harness Design for Coding Agents",
           "arxivUrl": "https://arxiv.org/abs/2609.20804",
           "authors": [
@@ -115,8 +115,8 @@
           ],
           "category": "cs.SE",
           "impactScore": 9.4,
-          "whyMad": "Ajan performansını tek bir 'sistem' olarak değil planlama, eylem uzayı ve bağlam yönetimi bileşenleri üzerinden ölçerek karanlık bir alanı sistematik biçimde aydınlatıyor.",
-          "summary": "Farklı harness konfigürasyonlarının kodlama başarısına etkisini bileşen bazında karşılaştırmalı olarak ortaya koyuyor."
+          "whyMad": "Ajanları tek parça sistem olarak değerlendirmek yerine planlama, eylem uzayı ve bağlam yönetimi bileşenlerine ayırarak karanlık bir alanı sistematik biçimde aydınlatıyor.",
+          "summary": "Kodlama ajanı performansının harness tasarımı bileşenlerine nasıl bağlı olduğunu deneysel olarak karşılaştırıyor."
         }
       ]
     },

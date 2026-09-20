@@ -167,14 +167,15 @@
       },
       {
         "date": "20 Eylül 2026",
-        "hypeScore": 8.7,
-        "sentimentScore": 66,
+        "hypeScore": 8.9,
+        "sentimentScore": 68,
         "sentiment": "stabil",
         "headline": "Kararsız",
-        "summary": "Vibe coding topluluğunun ana platformu olmayı sürdürüyor fakat limit ve kararlılık şikayetleri dengesiz bir tablo çiziyor.",
+        "summary": "Vibe coding iş akışlarının merkezi olmaya devam ediyor; topluluk paylaşımları coşkulu ancak zaman zaman ağır refactor ve yük baskısı şikayetleri karışıyor.",
         "sources": [
           "r/CursorAI",
-          "r/vibecoding"
+          "r/vibecoding",
+          "r/vscode"
         ]
       }
     ]
@@ -322,14 +323,14 @@
       {
         "date": "20 Eylül 2026",
         "hypeScore": 9.9,
-        "sentimentScore": 32,
-        "sentiment": "coşkulu",
-        "headline": "Eleştiriliyor",
-        "summary": "Anthropic'in düşünme bütçesini sessizce kıstığı iddiası ve 48 bin dosya silme vakası topluluğu ayağa kaldırdı; kullanıcılar abonelik iptalini tartışıyor.",
+        "sentimentScore": 31,
+        "sentiment": "düşüş",
+        "headline": "Kesinti Sorunu",
+        "summary": "Kişisel makinede 48 bin dosyanın silindiği vaka ve 43.000 çağrıda %39 sıfır düşünme token'ı iddiası, kullanıcıları ajanın güvenliği ve şeffaflığı konusunda isyan noktasına getirdi.",
         "sources": [
-          "r/ClaudeDev",
           "r/vibecoding",
-          "r/Anthropic"
+          "r/ClaudeDev",
+          "r/ClaudeAI"
         ]
       }
     ]
@@ -428,14 +429,14 @@
       },
       {
         "date": "20 Eylül 2026",
-        "hypeScore": 9.2,
-        "sentimentScore": 28,
+        "hypeScore": 7,
+        "sentimentScore": 49,
         "sentiment": "düşüş",
         "headline": "Limit Tepkisi",
-        "summary": "Ek yüzde 50 limit promosyonunun kaldırılması sonrası kullanıcılar Fable'ı kendi kotalarının yüzde yüzünde kullanamadıklarını belirterek sert eleştiri yöneltiyor.",
+        "summary": "Aynı model olduğu söylenirken düşünme bütçesinin sessizce kısıldığı iddiası ve yüksek maliyet şikayetleri hissiyatı aşağı çekiyor.",
         "sources": [
-          "r/Anthropic",
-          "r/ClaudeAI"
+          "r/ClaudeAI",
+          "r/ClaudeDev"
         ]
       }
     ]
@@ -1337,14 +1338,14 @@
       },
       {
         "date": "20 Eylül 2026",
-        "hypeScore": 7.4,
-        "sentimentScore": 83,
+        "hypeScore": 7.2,
+        "sentimentScore": 88,
         "sentiment": "coşkulu",
         "headline": "Video Lideri",
-        "summary": "Hugging Face'te 4 milyon indirmeyi aşan video üretim modeli, yaratıcı iş akışlarında referans olmayı sürdürüyor.",
+        "summary": "Yüksek indirme ve beğeni sayısıyla video üretiminde referans olmayı sürdürüyor ancak günlük taze haber akışı görece sakinleşti.",
         "sources": [
-          "r/StableDiffusion",
-          "r/singularity"
+          "r/LocalLLaMA",
+          "r/MachineLearning"
         ]
       }
     ]
@@ -1495,11 +1496,11 @@
       },
       {
         "date": "20 Eylül 2026",
-        "hypeScore": 8.8,
-        "sentimentScore": 95,
+        "hypeScore": 8.4,
+        "sentimentScore": 92,
         "sentiment": "coşkulu",
         "headline": "Yerel Şampiyon",
-        "summary": "GGUF ve QAT türevleriyle birlikte indirme eşiklerini zorlayıp yerel dağıtımda fiili standart haline geldi.",
+        "summary": "Hugging Face'te 7 milyonun üzerinde indirme ve topluluğun kendi quant'larıyla yerel çalıştırma coşkusu sürüyor; yerel tarafta hâlâ referans noktası.",
         "sources": [
           "r/LocalLLaMA",
           "r/singularity"
@@ -3968,13 +3969,13 @@
       },
       {
         "date": "20 Eylül 2026",
-        "hypeScore": 9.4,
+        "hypeScore": 9.2,
         "sentimentScore": 44,
         "sentiment": "düşüş",
         "headline": "Limit Tepkisi",
-        "summary": "İlk hafta son derece verimli olan modelin artık hızlı kota yakması geliştiricileri kendi orkestrasyon paketlerini yazmaya itti.",
+        "summary": "Kullanıcılar aynı iş yükü için haftalık limitin 4 kez daha hızlı tükendiğini bildirip orkestrasyon katmanlarıyla kullanımı %98 kısmaya çalışıyor; kota baskısı temel şikayet.",
         "sources": [
-          "r/vibecoding",
+          "r/ChatGPTCoding",
           "r/OpenAI"
         ]
       }
@@ -4065,15 +4066,14 @@
       },
       {
         "date": "20 Eylül 2026",
-        "hypeScore": 8.5,
-        "sentimentScore": 84,
+        "hypeScore": 8.6,
+        "sentimentScore": 83,
         "sentiment": "coşkulu",
         "headline": "Geliştirici Favorisi",
-        "summary": "Geliştiriciler token tüketimini izleyerek Codex ve Claude Code'u yan yana kıyaslıyor; VS Code Problems paneli entegrasyonu talebi sık konuşuluyor.",
+        "summary": "Claude Code'un aksine daha öngörülebilir davranması ve VS Code Problemler paneli entegrasyonu gibi isteklerle geliştirici radarında yükseliyor.",
         "sources": [
           "r/vscode",
-          "r/ChatGPTCoding",
-          "r/vibecoding"
+          "r/ChatGPTCoding"
         ]
       }
     ]
@@ -4157,14 +4157,13 @@
     "history": [
       {
         "date": "20 Eylül 2026",
-        "hypeScore": 9.1,
-        "sentimentScore": 87,
+        "hypeScore": 7.7,
+        "sentimentScore": 84,
         "sentiment": "coşkulu",
         "headline": "Donanım Sıçraması",
-        "summary": "Blender testlerinde RTX 5090 seviyesine ulaşması, Apple'ın GPU alanında Nvidia'yı yakalayabileceği tartışmasını ateşledi.",
+        "summary": "Blender'da RTX 5090'a denk performans göstermesi toplulukta 'Nvidia yavaşlarsa Apple geçebilir' yorumlarını tetikledi.",
         "sources": [
-          "r/hardware",
-          "r/LocalLLaMA"
+          "r/hardware"
         ]
       }
     ]
@@ -4229,14 +4228,13 @@
     "history": [
       {
         "date": "20 Eylül 2026",
-        "hypeScore": 8.4,
-        "sentimentScore": 49,
-        "sentiment": "düşüş",
+        "hypeScore": 8.2,
+        "sentimentScore": 54,
+        "sentiment": "eleştirel",
         "headline": "Kararlılık Sorunu",
-        "summary": "Codex entegrasyonu, sorun paneli erişimi ve tooltip titreme hataları etrafında yoğun teknik tartışma var.",
+        "summary": "Tooltip titremesi gibi arayüz hataları ve macOS 27 Liquid Glass denemeleriyle ilgi çekiyor; aynı zamanda Codex ve Copilot entegrasyonlarının tartışma zeminini oluşturuyor.",
         "sources": [
-          "r/vscode",
-          "r/ClaudeDev"
+          "r/vscode"
         ]
       }
     ]
@@ -4265,13 +4263,14 @@
     "history": [
       {
         "date": "20 Eylül 2026",
-        "hypeScore": 8.1,
-        "sentimentScore": 26,
+        "hypeScore": 9.4,
+        "sentimentScore": 27,
         "sentiment": "coşkulu",
         "headline": "Regresyon",
-        "summary": "Yeni arayüz güncellemesi sonrası kullanıcılar sohbet geçmişinin kaybolduğunu, yanıtların jenerikleştiğini ve sesli okuma gibi özelliklerin kaldırıldığını söyleyerek tepki gösteriyor.",
+        "summary": "Yeni arayüzün ruhsuz bulunması, maskotun ve sesli okumanın kaldırılması, her yere yayılan günlük limitler ve mobil web'in terk edilmesi toplulukta sert bir isyan başlattı.",
         "sources": [
           "r/Copilot",
+          "r/vscode",
           "r/ChatGPTCoding"
         ]
       }
@@ -4427,15 +4426,14 @@
     "history": [
       {
         "date": "20 Eylül 2026",
-        "hypeScore": 9.5,
-        "sentimentScore": 41,
+        "hypeScore": 9.8,
+        "sentimentScore": 42,
         "sentiment": "coşkulu",
         "headline": "Eleştiriliyor",
-        "summary": "Haftanın sonunda patlayan düşünme bütçesi ve dosya silme iddiaları, önceki limit tartışmalarının üzerine bindi.",
+        "summary": "Hafta boyunca limit, maliyet ve güvenlik tartışmalarıyla hem kriz hem coşku dalgası üretip listenin zirvesinde kaldı.",
         "sources": [
-          "r/ClaudeDev",
           "r/vibecoding",
-          "r/Anthropic"
+          "r/ClaudeDev"
         ]
       }
     ]
@@ -4446,13 +4444,13 @@
     "history": [
       {
         "date": "20 Eylül 2026",
-        "hypeScore": 9.3,
-        "sentimentScore": 47,
+        "hypeScore": 9.4,
+        "sentimentScore": 46,
         "sentiment": "düşüş",
         "headline": "Kota Baskısı",
-        "summary": "Verimlilik düşüşü ve limit yakma şikayetleri haftanın en çok tartışılan maliyet konusu oldu.",
+        "summary": "Hafta boyunca kullanım verimliliği deneyleri ve haftalık limit tüketimi tartışmalarıyla gündemde kaldı.",
         "sources": [
-          "r/vibecoding",
+          "r/ChatGPTCoding",
           "r/OpenAI"
         ]
       }
@@ -4464,11 +4462,11 @@
     "history": [
       {
         "date": "20 Eylül 2026",
-        "hypeScore": 9,
-        "sentimentScore": 48,
+        "hypeScore": 7.4,
+        "sentimentScore": 58,
         "sentiment": "düşüş",
         "headline": "Kesinti Sorunu",
-        "summary": "Hafta boyunca tekrarlayan 'meşgul' durumları ve yeniden üretme limitleri kullanıcı sabrını zorladı.",
+        "summary": "Compute kıtlığı ve servis kesintisi iddiaları haftalık ivmeyi belirgin biçimde aşağı çekti.",
         "sources": [
           "r/DeepSeek",
           "r/LocalLLaMA"
@@ -4482,11 +4480,11 @@
     "history": [
       {
         "date": "20 Eylül 2026",
-        "hypeScore": 9.1,
-        "sentimentScore": 94,
+        "hypeScore": 8.6,
+        "sentimentScore": 93,
         "sentiment": "coşkulu",
         "headline": "10M Eşiği",
-        "summary": "Tek tıkla yerel çalıştırma rehberleriyle hafta boyunca tekrar tekrar önerildi.",
+        "summary": "10 milyon indirme eşiğiyle yerel çalıştırmada fiili standart haline gelmesi haftalık listede üst sırayı garantiliyor.",
         "sources": [
           "r/LocalLLaMA"
         ]
@@ -4500,10 +4498,10 @@
       {
         "date": "20 Eylül 2026",
         "hypeScore": 8.8,
-        "sentimentScore": 68,
+        "sentimentScore": 70,
         "sentiment": "stabil",
         "headline": "Kararsız",
-        "summary": "Vibe coding akışının merkezinde kalmayı sürdürürken limit ve bellek sızıntısı şikayetleri dengeliyor.",
+        "summary": "Vibe coding metodolojisinin ana vitrini olmayı sürdürüyor ancak zaman zaman plan değişikliği eleştirileriyle sarsılıyor.",
         "sources": [
           "r/CursorAI",
           "r/vibecoding"
@@ -4517,14 +4515,13 @@
     "history": [
       {
         "date": "20 Eylül 2026",
-        "hypeScore": 9.2,
-        "sentimentScore": 85,
+        "hypeScore": 8.1,
+        "sentimentScore": 89,
         "sentiment": "coşkulu",
         "headline": "Video Lideri",
-        "summary": "Yaratıcı topluluklarda video iş akışlarının varsayılan aracı olmayı sürdürüyor.",
+        "summary": "Hugging Face'te 4 milyon indirmeyi aşması ve video üretimindeki istikrarıyla haftanın en beğenilen medya modeli.",
         "sources": [
-          "r/StableDiffusion",
-          "r/singularity"
+          "r/LocalLLaMA"
         ]
       }
     ]
@@ -4535,14 +4532,14 @@
     "history": [
       {
         "date": "20 Eylül 2026",
-        "hypeScore": 8.8,
+        "hypeScore": 8.3,
         "sentimentScore": 90,
         "sentiment": "coşkulu",
         "headline": "Açık Kaynak Gözdesi",
-        "summary": "Ajan maliyetlerini düşüren açık kaynak çözüm olarak hafta boyunca tavsiye edildi.",
+        "summary": "Farklı modelleri akıllıca yönlendirip maliyeti düşürmesiyle geliştiricilerin haftalık favorisi oldu.",
         "sources": [
           "r/LocalLLaMA",
-          "r/vibecoding"
+          "r/ChatGPTCoding"
         ]
       }
     ]
@@ -4589,11 +4586,11 @@
     "history": [
       {
         "date": "20 Eylül 2026",
-        "hypeScore": 7.9,
-        "sentimentScore": 92,
+        "hypeScore": 6.7,
+        "sentimentScore": 89,
         "sentiment": "coşkulu",
         "headline": "Yüksek Verim",
-        "summary": "Self-hosted workspace kurulum rehberleri toplulukta tekrar tekrar paylaşılıp öneriliyor.",
+        "summary": "Self-hosted çalışma alanı kuran geliştiricilerin favorisi olmayı sürdürüyor ancak bugün gündemin arka sıralarında kaldı.",
         "sources": [
           "r/LocalLLaMA",
           "r/selfhosted"
@@ -4607,13 +4604,13 @@
     "history": [
       {
         "date": "20 Eylül 2026",
-        "hypeScore": 8.2,
-        "sentimentScore": 85,
-        "sentiment": "coşkulu",
-        "headline": "Hızlı Çıkarım",
-        "summary": "Açık kaynak platformlarda kodlama değerlendirmeleri ve çoklu ortam görevlerindeki verimliliğiyle popülaritesini koruyor.",
+        "hypeScore": 7.5,
+        "sentimentScore": 57,
+        "sentiment": "düşüş",
+        "headline": "Kesinti Sorunu",
+        "summary": "Topluluk CSA 2 mimarisini tartışırken 'DeepSeek gerçekten compute dışında kaldı' yorumları haftalık ivmedeki düşüşü besliyor.",
         "sources": [
-          "r/OpenSourceAI",
+          "r/DeepSeek",
           "r/LocalLLaMA"
         ]
       }
@@ -4661,14 +4658,14 @@
     "history": [
       {
         "date": "20 Eylül 2026",
-        "hypeScore": 8.5,
-        "sentimentScore": 86,
+        "hypeScore": 7.6,
+        "sentimentScore": 87,
         "sentiment": "coşkulu",
         "headline": "Kurumsal Favori",
-        "summary": "Kurumsal dağıtımlarda güvenilirlik vurgusu sürerken yeni sürüm olmaması ivmeyi yavaşlattı.",
+        "summary": "Kurumsal ajan dağıtımında güvenilir ve self-hosted kalmasıyla haftalık listede istikrarlı bir yer tutuyor.",
         "sources": [
-          "r/n8n",
-          "r/devops"
+          "r/devops",
+          "r/automation"
         ]
       }
     ]
@@ -4697,14 +4694,13 @@
     "history": [
       {
         "date": "20 Eylül 2026",
-        "hypeScore": 8.9,
+        "hypeScore": 8,
         "sentimentScore": 91,
         "sentiment": "coşkulu",
-        "headline": "Geliştirici Favorisi",
-        "summary": "EQ-Bench 4'te 1330 puanla Fable 5'in hemen arkasından gelip 40 kat ucuza satılması toplulukta büyük heyecan yarattı.",
+        "headline": "Yeni Açık Kaynak",
+        "summary": "EQ-Bench 4'te 1330 skorla Fable 5'in hemen ardında yer alıp 40 kat ucuz olduğunu iddia ederek yazım kalitesi arayan yerel topluluğu heyecanlandırdı.",
         "sources": [
-          "r/LocalLLaMA",
-          "r/singularity"
+          "r/LocalLLaMA"
         ]
       }
     ]
@@ -4820,11 +4816,11 @@
     "history": [
       {
         "date": "20 Eylül 2026",
-        "hypeScore": 7.5,
-        "sentimentScore": 81,
+        "hypeScore": 6.9,
+        "sentimentScore": 80,
         "sentiment": "coşkulu",
         "headline": "Sunucu Rekabeti",
-        "summary": "NVIDIA Vera'ya karşı 2.24x üstünlük iddiası, yatırımcı ve altyapı topluluklarında CPU-çıkarım tartışmasını büyüttü.",
+        "summary": "AMD'nin beyaz kitabında NVIDIA Vera'yı 2.24 kat geçtiğini iddia etmesi yatırımcı ve altyapı topluluklarında rekabet tartışması başlattı.",
         "sources": [
           "r/AMD_Stock",
           "r/hardware"
@@ -4838,14 +4834,13 @@
     "history": [
       {
         "date": "20 Eylül 2026",
-        "hypeScore": 9.9,
-        "sentimentScore": 95,
+        "hypeScore": 9.7,
+        "sentimentScore": 94,
         "sentiment": "coşkulu",
         "headline": "Haftanın Lideri",
-        "summary": "Hafta boyunca indirme rekorları ve Quantization türevleriyle yerel topluluğun tartışmasız favorisi oldu.",
+        "summary": "10 milyonun üzerinde indirme ve Unsloth GGUF sürümleriyle açık model ekosisteminin tartışmasız haftalık referansı.",
         "sources": [
-          "r/LocalLLaMA",
-          "r/singularity"
+          "r/LocalLLaMA"
         ]
       }
     ]
@@ -4864,6 +4859,24 @@
         "sources": [
           "r/vscode",
           "r/ChatGPTCoding"
+        ]
+      }
+    ]
+  },
+  "claude-fable-5-1-w": {
+    "name": "Fable 5.1",
+    "category": "LLM (Model)",
+    "history": [
+      {
+        "date": "20 Eylül 2026",
+        "hypeScore": 7.9,
+        "sentimentScore": 52,
+        "sentiment": "düşüş",
+        "headline": "Limit Tepkisi",
+        "summary": "Düşünme bütçesinin kısıldığı iddiası ve maliyet eleştirileri haftalık ivmeyi aşağı çevirdi.",
+        "sources": [
+          "r/ClaudeAI",
+          "r/Anthropic"
         ]
       }
     ]
