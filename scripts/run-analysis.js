@@ -1315,6 +1315,8 @@ async function main() {
     completedAt: completedAt,
     durationSeconds: duration,
     tokenUsage: mergedTokenUsage || null,
+    phase1TokenUsage: activeTokenUsage || null,
+    phase2TokenUsage: phase2TokenUsage || null,
     totalPostsAnalyzed: totalPosts,
     subredditsCovered: 50,
     successfulBatches,

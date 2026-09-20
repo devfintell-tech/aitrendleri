@@ -916,6 +916,8 @@ export default function App() {
       completedAt: raw.completedAt,
       durationSeconds: raw.durationSeconds,
       tokenUsage: raw.tokenUsage,
+      phase1TokenUsage: raw.phase1TokenUsage || null,
+      phase2TokenUsage: raw.phase2TokenUsage || null,
       daily: raw.daily,
       weekly: raw.weekly,
       monthly: raw.monthly,
@@ -1240,9 +1242,72 @@ ${bulletsText}
               </div>
             )}
 
-            {/* ⚡ Token Telemetrisi - Yalnızca o güne ait gerçek token verisi varsa göster */}
+            {/* ⚡ 1. LLM & 2. LLM Token Telemetrisi - Gerçek veriler varsa göster */}
             {(() => {
+              const p1 = report.phase1TokenUsage;
+              const p2 = report.phase2TokenUsage;
               const tu = report.tokenUsage;
+
+              if (p1 && p2 && typeof p1.promptTokens === 'number' && typeof p2.promptTokens === 'number') {
+                const p1PromptK = (p1.promptTokens / 1000).toFixed(1);
+                const p1ReasoningK = typeof p1.reasoningTokens === 'number' ? (p1.reasoningTokens / 1000).toFixed(1) : '0.0';
+                const p1FinalVal = p1.finalTokens || Math.max(0, (p1.completionTokens || 0) - (p1.reasoningTokens || 0));
+                const p1FinalK = (p1FinalVal / 1000).toFixed(1);
+
+                const p2PromptK = (p2.promptTokens / 1000).toFixed(1);
+                const p2ReasoningK = typeof p2.reasoningTokens === 'number' ? (p2.reasoningTokens / 1000).toFixed(1) : '0.0';
+                const p2FinalVal = p2.finalTokens || Math.max(0, (p2.completionTokens || 0) - (p2.reasoningTokens || 0));
+                const p2FinalK = (p2FinalVal / 1000).toFixed(1);
+
+                const totalK = ((tu?.totalTokens || (p1.totalTokens + p2.totalTokens)) / 1000).toFixed(1);
+
+                return (
+                  <div className="hidden lg:flex items-center gap-1.5">
+                    {/* 1. LLM Rozeti */}
+                    <div 
+                      className="flex items-center gap-1.5 bg-[#0c592d] border border-emerald-400/30 px-2 py-1 rounded text-[11px] font-semibold text-emerald-100 shadow-xs cursor-help"
+                      title={`1. LLM (Tüm Analiz & Sıralama):\n• Girdi (Prompt): ${p1.promptTokens?.toLocaleString()} token\n• Düşünce (CoT Reasoning): ${(p1.reasoningTokens || 0)?.toLocaleString()} token\n• Nihai Çıktı: ${p1FinalVal?.toLocaleString()} token\n• Toplam Çıktı: ${p1.completionTokens?.toLocaleString()} token\n• Toplam: ${p1.totalTokens?.toLocaleString()} token`}
+                    >
+                      <Zap className="w-3 h-3 text-emerald-300 flex-shrink-0" />
+                      <span className="text-emerald-300 font-bold">1. LLM:</span>
+                      <div className="flex items-center gap-1 font-mono text-[10.5px]">
+                        <span>G: {p1PromptK}k</span>
+                        <span className="text-emerald-400/40">|</span>
+                        <span className="text-purple-300">D: {p1ReasoningK}k</span>
+                        <span className="text-emerald-400/40">|</span>
+                        <span className="text-yellow-300">N: {p1FinalK}k</span>
+                      </div>
+                    </div>
+
+                    {/* 2. LLM Rozeti */}
+                    <div 
+                      className="flex items-center gap-1.5 bg-[#0c592d] border border-emerald-400/30 px-2 py-1 rounded text-[11px] font-semibold text-emerald-100 shadow-xs cursor-help"
+                      title={`2. LLM (Sabah İstihbaratı Sentezi):\n• Girdi (Prompt): ${p2.promptTokens?.toLocaleString()} token\n• Düşünce (CoT Reasoning): ${(p2.reasoningTokens || 0)?.toLocaleString()} token\n• Nihai Çıktı: ${p2FinalVal?.toLocaleString()} token\n• Toplam Çıktı: ${p2.completionTokens?.toLocaleString()} token\n• Toplam: ${p2.totalTokens?.toLocaleString()} token`}
+                    >
+                      <Zap className="w-3 h-3 text-cyan-300 flex-shrink-0" />
+                      <span className="text-cyan-300 font-bold">2. LLM:</span>
+                      <div className="flex items-center gap-1 font-mono text-[10.5px]">
+                        <span>G: {p2PromptK}k</span>
+                        <span className="text-emerald-400/40">|</span>
+                        <span className="text-purple-300">D: {p2ReasoningK}k</span>
+                        <span className="text-emerald-400/40">|</span>
+                        <span className="text-yellow-300">N: {p2FinalK}k</span>
+                      </div>
+                    </div>
+
+                    {/* Toplam Rozeti */}
+                    <div 
+                      className="flex items-center gap-1 bg-[#094723] border border-emerald-400/40 px-2 py-1 rounded text-[11px] font-semibold text-emerald-100 shadow-xs cursor-help"
+                      title={`Bileşik Token Toplamı (1. LLM + 2. LLM):\n• Girdi: ${tu?.promptTokens?.toLocaleString()} token\n• Düşünce: ${tu?.reasoningTokens?.toLocaleString()} token\n• Nihai Çıktı: ${tu?.finalTokens?.toLocaleString()} token\n• Toplam Token: ${tu?.totalTokens?.toLocaleString()} token`}
+                    >
+                      <span className="text-yellow-300 font-bold">∑ Toplam:</span>
+                      <span className="font-mono text-emerald-200">{totalK}k</span>
+                    </div>
+                  </div>
+                );
+              }
+
+              // Tekil / Geçmiş Arşiv Fallback
               if (!tu || typeof tu.promptTokens !== 'number' || tu.promptTokens <= 0) return null;
 
               const promptK = (tu.promptTokens / 1000).toFixed(1);
@@ -2688,9 +2753,20 @@ ${bulletsText}
           <span className="hidden sm:inline">50 TOPLULUK</span>
           {report.tokenUsage && typeof report.tokenUsage.promptTokens === 'number' && report.tokenUsage.promptTokens > 0 && (
             <span className="hidden lg:inline text-slate-500">
-              TOKEN: Girdi <strong className="text-slate-700">{(report.tokenUsage.promptTokens / 1000).toFixed(1)}k</strong>
-              {' '}| Düşünce <strong className="text-purple-700">{((report.tokenUsage.reasoningTokens || 0) / 1000).toFixed(1)}k</strong>
-              {' '}| Nihai <strong className="text-slate-800">{(((report.tokenUsage.finalTokens || Math.max(0, (report.tokenUsage.completionTokens || 0) - (report.tokenUsage.reasoningTokens || 0)))) / 1000).toFixed(1)}k</strong>
+              {report.phase1TokenUsage && report.phase2TokenUsage ? (
+                <>
+                  1. LLM: <strong className="text-emerald-700">{(report.phase1TokenUsage.totalTokens / 1000).toFixed(1)}k</strong>
+                  {' '}| 2. LLM: <strong className="text-cyan-700">{(report.phase2TokenUsage.totalTokens / 1000).toFixed(1)}k</strong>
+                  {' '}| TOPLAM: <strong className="text-slate-800">{(report.tokenUsage.totalTokens / 1000).toFixed(1)}k</strong>
+                  {' '}(G:<span className="text-slate-700">{(report.tokenUsage.promptTokens / 1000).toFixed(1)}k</span> D:<span className="text-purple-700">{((report.tokenUsage.reasoningTokens || 0) / 1000).toFixed(1)}k</span> N:<span className="text-yellow-700">{(((report.tokenUsage.finalTokens || Math.max(0, (report.tokenUsage.completionTokens || 0) - (report.tokenUsage.reasoningTokens || 0)))) / 1000).toFixed(1)}k</span>)
+                </>
+              ) : (
+                <>
+                  TOKEN: Girdi <strong className="text-slate-700">{(report.tokenUsage.promptTokens / 1000).toFixed(1)}k</strong>
+                  {' '}| Düşünce <strong className="text-purple-700">{((report.tokenUsage.reasoningTokens || 0) / 1000).toFixed(1)}k</strong>
+                  {' '}| Nihai <strong className="text-slate-800">{(((report.tokenUsage.finalTokens || Math.max(0, (report.tokenUsage.completionTokens || 0) - (report.tokenUsage.reasoningTokens || 0)))) / 1000).toFixed(1)}k</strong>
+                </>
+              )}
             </span>
           )}
           <span>%100 ZOOM</span>

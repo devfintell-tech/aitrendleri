@@ -173,6 +173,10 @@ Bu belge, bu projenin tüm tasarım, veri mimarisi ve geliştirme standartların
 4. **İki Aşamada Çift Çağrı Token Toplamı (Faz 1 + Faz 2):**
    - Sistem Faz 1 (Tüm analiz) ve Faz 2 (Sabah İstihbaratı sentezi) olmak üzere iki LLM çağrısı gerçekleştirdiğinden, raporlanan ve kaydedilen nihai token verisi (`tokenUsage`) her iki çağrının matematiksel olarak BİREBİR TOPLAMI (`Faz 1 + Faz 2`) olmak zorundadır.
 
+5. **1. LLM ve 2. LLM Ayrı Telemetri Gösterimi (Üst Bar ve Alt Durum Çubuğu):**
+   - Sitenin üst başlık çubuğunda ve alt durum çubuğunda yalnızca bileşik toplam değil; 1. LLM (Ana İstihbarat & Sıralama - `phase1TokenUsage`) ve 2. LLM (Sabah İstihbaratı Sentezi - `phase2TokenUsage`) çıktıları bağımsız rozetler halinde net ve şeffaf şekilde gösterilir (`1. LLM: G: Xk | D: Yk | N: Zk`, `2. LLM: G: Xk | D: Yk | N: Zk`, `∑ Toplam: Zk`).
+   - Geçmiş arşiv günlerinde veya telemetrinin henüz ayrı toplanmadığı tarihlerde, arayüz otomatik olarak tekil token rozetine geri döner (sıfır uydurma veri ilkesi).
+
 ---
 
 ## 🌅 10. Sabah İstihbaratı ve Yönetici Özeti Sentez Mimarisi & Saf Reddit Ürün Sıralaması Şartı

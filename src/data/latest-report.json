@@ -13,6 +13,20 @@
     "finalTokens": 12991,
     "totalTokens": 62716
   },
+  "phase1TokenUsage": {
+    "promptTokens": 41270,
+    "completionTokens": 15911,
+    "reasoningTokens": 3854,
+    "finalTokens": 12057,
+    "totalTokens": 57181
+  },
+  "phase2TokenUsage": {
+    "promptTokens": 4376,
+    "completionTokens": 1159,
+    "reasoningTokens": 225,
+    "finalTokens": 934,
+    "totalTokens": 5535
+  },
   "totalPostsAnalyzed": 45,
   "subredditsCovered": 50,
   "successfulBatches": 3,
