@@ -1,6 +1,6 @@
 ================================================================================
 🤖 AITRENDLERI.COM OTONOM TARAMA VE ANALİZ TERMİNAL RAPORU
-Tarih: 20 Eylül 2026 | İşlem Süresi: 267s
+Tarih: 20 Eylül 2026 | İşlem Süresi: 274s
 ================================================================================
 
 [1. MODEL & ŞELALE AKTİVİTESİ]
@@ -13,17 +13,17 @@ Tarih: 20 Eylül 2026 | İşlem Süresi: 267s
   ✔ Başarılı Kategori / Batch   : 3 / 7
   ------------------------------------------------------------------------------
   1. [🟢 OK 200] Vibe Coding & Yeni Nesil Editörler: 15 gönderi
-     └─ Dağılım: r/ClaudeAI: 1, r/vibecoding: 3, r/Copilot: 1, r/vscode: 5, r/CursorAI: 2, r/ClaudeDev: 1, r/ChatGPTCoding: 2
+     └─ Dağılım: r/ClaudeAI: 1, r/vibecoding: 3, r/Copilot: 1, r/ChatGPTCoding: 2, r/vscode: 5, r/CursorAI: 2, r/ClaudeDev: 1
   2. [🔴 ERR 429] Otonom Ajanlar & Süreç Otomasyonu: 0 gönderi
      └─ Hata/Uyarı: Reddit HTTP 429 (Rate Limit)
   3. [🟢 OK 200] Büyük Dil Modelleri & Araştırma Devleri: 15 gönderi
-     └─ Dağılım: r/singularity: 1, r/OpenAI: 1, r/ArtificialInteligence: 1, r/MachineLearning: 1, r/DeepSeek: 5, r/Anthropic: 4, r/GoogleGemini: 2
+     └─ Dağılım: r/singularity: 1, r/OpenAI: 1, r/ArtificialInteligence: 2, r/MachineLearning: 1, r/DeepSeek: 5, r/Anthropic: 4, r/GoogleGemini: 1
   4. [🔴 ERR 429] Açık Kaynak, Yerel Modeller & Self-Hosted: 0 gönderi
      └─ Hata/Uyarı: Reddit HTTP 429 (Rate Limit)
   5. [🔴 ERR 429] Yazılım Geliştirici, API & Kodlama Dünyası: 0 gönderi
      └─ Hata/Uyarı: Reddit HTTP 429 (Rate Limit)
   6. [🟢 OK 200] Donanım, GPU, CPU & Bulut Altyapısı: 15 gönderi
-     └─ Dağılım: r/hardware: 1, r/sysadmin: 3, r/devops: 2, r/AMD_Stock: 2, r/nvidia: 2, r/Cloud: 3, r/googlecloud: 2
+     └─ Dağılım: r/hardware: 1, r/sysadmin: 4, r/AMD_Stock: 2, r/devops: 2, r/nvidia: 2, r/googlecloud: 1, r/Cloud: 3
   7. [🔴 ERR 429] Görsel, Video & Medya Üretimi: 0 gönderi
      └─ Hata/Uyarı: Reddit HTTP 429 (Rate Limit)
 
@@ -34,7 +34,7 @@ Tarih: 20 Eylül 2026 | İşlem Süresi: 267s
   ✔ Düşük Sinyal / Takiptekiler   : 20
   ✔ Sıfır Çekenler (Dead Sub)     : 0
   ------------------------------------------------------------------------------
-  🏆 En Çok Katkı Sağlayanlar: r/ClaudeAI (39), r/vibecoding (34), r/ChatGPTCoding (33), r/vscode (32), r/CursorAI (30)
+  🏆 En Çok Katkı Sağlayanlar: r/ClaudeAI (40), r/vibecoding (37), r/vscode (37), r/ChatGPTCoding (35), r/CursorAI (32)
   ⚠️ Düşük Sinyal Verenler   : r/copilot, r/CrewAI, r/agenticai, r/Singularity, r/LocalLLaMA, r/ollama, r/vllm, r/huggingface, r/OpenSourceAI, r/MistralAI, r/selfhosted, r/AI_Tools, r/GenerativeAI, r/GoogleCloud, r/ComfyUI, r/StableDiffusion, r/Midjourney, r/Sora, r/RunwayML, r/artificial
   🚫 Değiştirilmesi Önerilen : Yok (Tümü veri sağlıyor)
 
@@ -45,7 +45,7 @@ Tarih: 20 Eylül 2026 | İşlem Süresi: 267s
   ✔ GitHub Radar        : 6 repo
 
 [5. GÜNÜN ORGANİK 1 NUMARALI LİDERİ]
-  👑 Apple M5 Ultra (Skor: 99/100 - Günün Lideri)
-  📝 Neden Seçildi: Topluluk, M5 Ultra'nın Blender'da 5090'a denk performans vermesini 'Apple'ın gerçekten sıçradığı an' olarak yorumluyor ve övüyor.
+  👑 Claude Code (Skor: 99/100 - Kriz Gündemi)
+  📝 Neden Seçildi: r/ClaudeAI'de bir kullanıcının 48 bin dosyasının silindiğini bildirmesi, ajanların yıkıcı komut güvenliği konusunda büyük tepki çekti.
 
 ================================================================================

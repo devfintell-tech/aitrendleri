@@ -59,7 +59,10 @@
     "2609.20776v1",
     "2609.20779v1",
     "2609.20761v1",
-    "2609.20768v1"
+    "2609.20768v1",
+    "2609.20814v1",
+    "2609.20758v1",
+    "2609.20808v1"
   ],
   "dailyRecords": [
     {
@@ -67,49 +70,49 @@
       "isoDate": "2026-09-20",
       "papers": [
         {
-          "id": "2609.20779v1",
-          "titleTr": "GPT Modellerinde Zarar Aklama: Güvenlik Eğitiminin Cinsiyet Ayrımcılığını Azaltmak Yerine Dönüştürdüğüne Dair Kanıtlar",
-          "title": "Harm Laundering in GPT Models: Evidence That Gender Discrimination Is Transformed Rather Than Reduced Across Safety-Trained Generations",
-          "arxivUrl": "http://arxiv.org/abs/2609.20779v1",
+          "id": "2609.20814v1",
+          "titleTr": "Dağıtım Kayması Nöral PDE Vekillerinde Ön Eğitim Kazanımlarını Nasıl Şekillendiriyor?",
+          "title": "How Does Distribution Shift Shape Pretraining Gains in Neural PDE Surrogates?",
+          "arxivUrl": "http://arxiv.org/abs/2609.20814v1",
           "authors": [
-            "Sarah Wyer",
-            "Sue Black",
-            "Noura Al Moubayed"
+            "Pochinapeddi Sai Bhargav",
+            "Nithin Somasekharan",
+            "Rohit Sunil Kanchi"
+          ],
+          "category": "cs.LG",
+          "impactScore": 9.5,
+          "whyMad": "Ön eğitimli vekillerin ne zaman gerçekten işe yaradığını bileşen bazında ayırarak CFD gibi yüksek maliyetli alanlarda mühendislik maliyetini düşürüyor.",
+          "summary": "Bir hava folyosu ailesinde 254 bin RANS çözümü üzerinde ön eğitilen vekil, yeni geometriye aktarılırken hangi kayma bileşenlerinin kazancı belirlediğini ölçüyor."
+        },
+        {
+          "id": "2609.20758v1",
+          "titleTr": "Parçalanmış Yapay Zeka Değerlendirmesi için Tahmin Destekli Düzleştirme ve Doğrulama",
+          "title": "Prediction-Powered Smoothing and Validation for Disaggregated AI Evaluation",
+          "arxivUrl": "http://arxiv.org/abs/2609.20758v1",
+          "authors": [
+            "Sho Kawano",
+            "Zehang Richard Li",
+            "Paul A. Parker"
+          ],
+          "category": "cs.LG",
+          "impactScore": 9.4,
+          "whyMad": "Ajan değerlendirmesinde pahalı etiketlemeyi azaltıp alan bazlı güvenilir tahmin aralıkları sunarak benchmark maliyetini düşürüyor.",
+          "summary": "Değerlendirme kümesini sonlu popülasyon olarak modelleyip tahmin destekli çıkarımı düzleştirmeyle birleştirerek az etiketli alanlarda doğruluğu artırıyor."
+        },
+        {
+          "id": "2609.20808v1",
+          "titleTr": "Çevrimiçi Söylemde Gruplar Arası Düşmanlık Modellerini Birleştirmek",
+          "title": "Unifying Models of Intergroup Hostility in Online Discourse",
+          "arxivUrl": "http://arxiv.org/abs/2609.20808v1",
+          "authors": [
+            "Patrick Gerard",
+            "Julia Mendelsohn",
+            "Kristina Lerman"
           ],
           "category": "cs.CL",
-          "impactScore": 9.6,
-          "whyMad": "Güvenlik puanlarının düştüğü yanılsamasını çürüterek ayrımcılığın silinmediğini, sadece biçim değiştirdiğini gösteriyor.",
-          "summary": "15 modelde 450 bin tamamlama analiz edilerek açık ayrımcı içeriğin yüzey biçim değiştirerek varlığını sürdürdüğü ortaya konuyor."
-        },
-        {
-          "id": "2609.20761v1",
-          "titleTr": "Agile-WAM: Temasa Duyarlı Robot Kontrolü İçin Çevik Dokunsal Dünya-Eylem Modeli",
-          "title": "Agile-WAM: An Agile Tactile World Action Model for Contact-Rich Robot Control",
-          "arxivUrl": "http://arxiv.org/abs/2609.20761v1",
-          "authors": [
-            "Hanchu Zhou",
-            "Brendan Lynch",
-            "Raman Goyal"
-          ],
-          "category": "cs.RO",
-          "impactScore": 9.5,
-          "whyMad": "Devasa üretken omurgalara bağımlılığı kaldırıp temasa duyarlı robot kontrolünü çevik ve dağıtılabilir hale getiriyor.",
-          "summary": "Dokunsal dünya-eylem modeli, gelecekteki durumları ve eylemleri birlikte öngörerek irtibat yoğun manipülasyonu verimli kılıyor."
-        },
-        {
-          "id": "2609.20768v1",
-          "titleTr": "Semantik Eylem Grafiği: Spor Özetlerinde Ajan Temellendirmesi ve İnsan Yorumu İçin Ortak Temsil",
-          "title": "Semantic Action Graph: A Shared Representation for Agent Grounding and Human Interpretation of Sports Highlights",
-          "arxivUrl": "http://arxiv.org/abs/2609.20768v1",
-          "authors": [
-            "Tica Lin",
-            "Deepak Chandran",
-            "Gauri Jagatap"
-          ],
-          "category": "cs.AI",
-          "impactScore": 9.4,
-          "whyMad": "Ajan çıktısını doğrulanabilir ve yönlendirilebilir kılan hafif bir şema sunarak üretken ajanların güvenilirliğini artırıyor.",
-          "summary": "Spor maçını rol, zaman ve sonuç kenarlarıyla bağlı düğümler olarak modelleyen semantik eylem grafiği, temellendirme ve yorumu birleştiriyor."
+          "impactScore": 9.3,
+          "whyMad": "Paralel gelişen sosyal ve ahlaki psikoloji teorilerini gerçek veriyle ilk kez karşı karşıya test ederek moderasyon stratejilerine sağlam zemin sağlıyor.",
+          "summary": "Düşman söylemin nasıl geliştiğine dair çatışan teorileri büyük ölçekli çevrimiçi söylem verisiyle karşılaştırıp birleşik bir çerçeve öneriyor."
         }
       ]
     },

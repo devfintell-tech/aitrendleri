@@ -167,11 +167,11 @@
       },
       {
         "date": "20 Eylül 2026",
-        "hypeScore": 7.4,
-        "sentimentScore": 68,
-        "sentiment": "stabil",
-        "headline": "Kararsız",
-        "summary": "'Codex mi Claude mu Cursor mü' karşılaştırmaları yoğun; topluluk Cursor'u hâlâ güçlü ama kararsız buluyor.",
+        "hypeScore": 9,
+        "sentimentScore": 66,
+        "sentiment": "coşkulu",
+        "headline": "Tercih Savaşı",
+        "summary": "r/CursorAI'de 'Codex, Claude yoksa Cursor mu?' tartışması satın alma kararlarında merkez üssü haline geldi.",
         "sources": [
           "r/CursorAI",
           "r/vibecoding"
@@ -321,11 +321,11 @@
       },
       {
         "date": "20 Eylül 2026",
-        "hypeScore": 6.8,
-        "sentimentScore": 42,
+        "hypeScore": 9.8,
+        "sentimentScore": 32,
         "sentiment": "coşkulu",
-        "headline": "Limit Tepkisi",
-        "summary": "Bir kullanıcının 48 bin dosyasını silen olay ve token yakımını izleyen paylaşımlar güven krizine yol açtı; topluluk limitleri ve maliyeti sert biçimde eleştiriyor.",
+        "headline": "Kriz Gündemi",
+        "summary": "r/ClaudeAI'de bir kullanıcının 48 bin dosyasının silindiğini bildirmesi, ajanların yıkıcı komut güvenliği konusunda büyük tepki çekti.",
         "sources": [
           "r/ClaudeAI",
           "r/ClaudeDev",
@@ -428,11 +428,11 @@
       },
       {
         "date": "20 Eylül 2026",
-        "hypeScore": 6.2,
-        "sentimentScore": 47,
-        "sentiment": "düşüş",
-        "headline": "Eleştiriliyor",
-        "summary": "Promosyon limitlerinin kaldırılması topluluğu kızdırdı; kullanıcılar Fable'ı limitlerinin tamamında kullanamamaktan şikâyetçi.",
+        "hypeScore": 9.2,
+        "sentimentScore": 38,
+        "sentiment": "coşkulu",
+        "headline": "Limit Tepkisi",
+        "summary": "Promosyonla verilen ek %50 limitin kaldırılması, kullanıcıların kullanım hakkı konusunda tepki göstermesine neden oldu.",
         "sources": [
           "r/Anthropic",
           "r/ClaudeAI"
@@ -700,11 +700,11 @@
       },
       {
         "date": "20 Eylül 2026",
-        "hypeScore": 9.6,
-        "sentimentScore": 93,
+        "hypeScore": 9.4,
+        "sentimentScore": 80,
         "sentiment": "coşkulu",
         "headline": "Sektör Standardı",
-        "summary": "Hafta boyunca model kalitesi ve güvenilirliği için övülmeye devam etti; limit şikâyetlerine rağmen özü sağlam bulunuyor.",
+        "summary": "Limit tartışmalarına rağmen kodlama kalitesinde sektör ölçütü olmayı sürdürüyor.",
         "sources": [
           "r/ClaudeAI",
           "r/Anthropic"
@@ -851,11 +851,11 @@
       },
       {
         "date": "20 Eylül 2026",
-        "hypeScore": 9.5,
-        "sentimentScore": 94,
+        "hypeScore": 9.6,
+        "sentimentScore": 82,
         "sentiment": "coşkulu",
         "headline": "Altyapı Tekeli",
-        "summary": "Büyük bulut kümelerinde GB200 dağıtımları hızlanırken altyapı hâkimiyeti toplulukta takdir ve endişe karışımıyla izleniyor.",
+        "summary": "Kurumsal AI dağıtımlarında tekel konumunu korurken Apple M5 Ultra ile karşılaştırmalar artıyor.",
         "sources": [
           "r/nvidia",
           "r/hardware"
@@ -1336,14 +1336,14 @@
       },
       {
         "date": "20 Eylül 2026",
-        "hypeScore": 9.8,
-        "sentimentScore": 96,
+        "hypeScore": 7.7,
+        "sentimentScore": 90,
         "sentiment": "coşkulu",
         "headline": "Video Lideri",
-        "summary": "Ultra hızlı video üretimi toplulukta hayranlık uyandırıyor; medya üretim zincirlerinde standart haline geliyor.",
+        "summary": "Ultra hızlı video üretimiyle yerel medya iş akışlarında ivmesini koruyan açık model olarak öne çıkıyor.",
         "sources": [
-          "r/LocalLLaMA",
-          "r/singularity"
+          "r/StableDiffusion",
+          "r/LocalLLaMA"
         ]
       }
     ]
@@ -1494,11 +1494,11 @@
       },
       {
         "date": "20 Eylül 2026",
-        "hypeScore": 9.9,
-        "sentimentScore": 97,
+        "hypeScore": 8,
+        "sentimentScore": 94,
         "sentiment": "coşkulu",
-        "headline": "Haftanın Lideri",
-        "summary": "İndirme eşiğini aşarak yerel topluluğun tartışmasız gözdesi haline geldi; türev GGUF'ları sürekli övülüyor.",
+        "headline": "Yerel Model Şampiyonu",
+        "summary": "Hugging Face'te 7.3 milyon indirme ve 15 binden fazla beğeniyle açık kaynak ekosisteminin tartışmasız gözdesi olmayı sürdürüyor.",
         "sources": [
           "r/LocalLLaMA",
           "r/singularity"
@@ -2799,11 +2799,11 @@
       },
       {
         "date": "20 Eylül 2026",
-        "hypeScore": 9,
-        "sentimentScore": 82,
-        "sentiment": "coşkulu",
+        "hypeScore": 6.8,
+        "sentimentScore": 64,
+        "sentiment": "düşüş",
         "headline": "Görsel Yetenek",
-        "summary": "Görsel yetenekleri takdir topluyor ancak son kesintiler haftalık puanı hafifçe aşağı çekti.",
+        "summary": "Kullanım limiti hesaplama araçlarında sıkça karşılaştırılıyor ancak kesintiler ivmesini düşürüyor.",
         "sources": [
           "r/DeepSeek",
           "r/LocalLLaMA"
@@ -3942,11 +3942,11 @@
       },
       {
         "date": "20 Eylül 2026",
-        "hypeScore": 6.8,
-        "sentimentScore": 50,
-        "sentiment": "düşüş",
+        "hypeScore": 9.6,
+        "sentimentScore": 35,
+        "sentiment": "coşkulu",
         "headline": "Kota Baskısı",
-        "summary": "Önce cömert olan token limitleri hızla daraldı; kullanıcılar kullanımı %98 azaltmak için orkestrasyon paketleri geliştirmek zorunda kaldıklarını bildiriyor.",
+        "summary": "Kullanıcılar 20x planda bile haftalık limitleri hızla tükettiğinden şikayet ediyor ve kamuflaj amaçlı orkestrasyon paketleri paylaşıyor.",
         "sources": [
           "r/OpenAI",
           "r/ChatGPTCoding"
@@ -4039,11 +4039,11 @@
       },
       {
         "date": "20 Eylül 2026",
-        "hypeScore": 7.6,
-        "sentimentScore": 72,
-        "sentiment": "eleştirel",
+        "hypeScore": 8.7,
+        "sentimentScore": 64,
+        "sentiment": "coşkulu",
         "headline": "Tercih Savaşı",
-        "summary": "Geliştiriciler token tüketimini izlemek için Codex'i tercih ediyor; VS Code tanılamalarına erişim talebi sıcak tartışılıyor.",
+        "summary": "VS Code Problems paneli tanılamalarına erişim talebi ve Cursor/Claude karşısındaki konumu yoğun tartışılıyor.",
         "sources": [
           "r/vscode",
           "r/CursorAI"
@@ -4130,11 +4130,11 @@
     "history": [
       {
         "date": "20 Eylül 2026",
-        "hypeScore": 8.8,
-        "sentimentScore": 89,
+        "hypeScore": 8.2,
+        "sentimentScore": 88,
         "sentiment": "coşkulu",
         "headline": "Günün Lideri",
-        "summary": "Topluluk, M5 Ultra'nın Blender'da 5090'a denk performans vermesini 'Apple'ın gerçekten sıçradığı an' olarak yorumluyor ve övüyor.",
+        "summary": "r/hardware'de Blender'da RTX 5090 seviyesine yaklaşması, Nvidia rekabeti açısından ezber bozan bir gelişme olarak görüldü.",
         "sources": [
           "r/hardware",
           "r/nvidia"
@@ -4148,14 +4148,14 @@
     "history": [
       {
         "date": "20 Eylül 2026",
-        "hypeScore": 7.2,
+        "hypeScore": 6.2,
         "sentimentScore": 70,
         "sentiment": "düşüş",
         "headline": "Referans Kart",
-        "summary": "Apple M5 Ultra'nın kendisine denk gelmesiyle 'referans kart' konumu yeniden tartışılıyor, ancak hâlâ standart kabul ediliyor.",
+        "summary": "Apple M5 Ultra karşılaştırmaları ve 8-pin mod gibi donanım hack'leriyle gündemde kaldı.",
         "sources": [
-          "r/hardware",
-          "r/nvidia"
+          "r/nvidia",
+          "r/hardware"
         ]
       }
     ]
@@ -4166,13 +4166,14 @@
     "history": [
       {
         "date": "20 Eylül 2026",
-        "hypeScore": 6.4,
-        "sentimentScore": 45,
-        "sentiment": "düşüş",
+        "hypeScore": 9.4,
+        "sentimentScore": 40,
+        "sentiment": "coşkulu",
         "headline": "Kesinti Sorunu",
-        "summary": "'Server busy', API yanıtsızlığı ve compute yetersizliği şikâyetleri arttı; kullanıcılar limitsiz eski günleri geri istiyor.",
+        "summary": "r/DeepSeek'te 'server busy' hataları, hesaplama kıtlığı spekülasyonları ve kamuflaj iddiaları eşliğinde yoğun tartışılıyor.",
         "sources": [
-          "r/DeepSeek"
+          "r/DeepSeek",
+          "r/LocalLLaMA"
         ]
       }
     ]
@@ -4183,11 +4184,11 @@
     "history": [
       {
         "date": "20 Eylül 2026",
-        "hypeScore": 6.1,
-        "sentimentScore": 55,
-        "sentiment": "düşüş",
+        "hypeScore": 7.4,
+        "sentimentScore": 42,
+        "sentiment": "coşkulu",
         "headline": "Limit Tepkisi",
-        "summary": "5 saatlik oturum limitlerinin hızla tükenmesi en çok konuşulan şikâyet; kullanıcılar kredilendirme talep ediyor.",
+        "summary": "r/Anthropic'te 5 saatlik oturum limitlerinin hızla tükenmesi kullanıcıların öfkesini artırıyor.",
         "sources": [
           "r/Anthropic",
           "r/ClaudeAI"
@@ -4201,11 +4202,11 @@
     "history": [
       {
         "date": "20 Eylül 2026",
-        "hypeScore": 6,
-        "sentimentScore": 48,
-        "sentiment": "düşüş",
+        "hypeScore": 7.1,
+        "sentimentScore": 38,
+        "sentiment": "coşkulu",
         "headline": "Kararlılık Sorunu",
-        "summary": "Jupyter kernel çökmeleri, telemetri zorlaması ve arayüz hataları birbiri ardına paylaşılıyor; topluluk huzursuz.",
+        "summary": "Jupyter kernel çökmeleri, telemetri zorlaması ve tooltip hatası gibi sorunlar r/vscode'da birleşti.",
         "sources": [
           "r/vscode"
         ]
@@ -4218,11 +4219,11 @@
     "history": [
       {
         "date": "20 Eylül 2026",
-        "hypeScore": 5.5,
-        "sentimentScore": 28,
-        "sentiment": "düşüş",
+        "hypeScore": 6.5,
+        "sentimentScore": 22,
+        "sentiment": "coşkulu",
         "headline": "Gizlilik Skandalı",
-        "summary": "Kullanıcı kodlarını izinsiz yüklediği iddiası toplulukta öfke yarattı; gizlilik ihlali tartışması hızla yayıldı.",
+        "summary": "Kullanıcı kodlarını izinsiz yüklediği iddiası ve açık kaynağa zorlandığı söylentileri güveni sarstı.",
         "sources": [
           "r/DeepSeek",
           "r/LocalLLaMA"
@@ -4236,14 +4237,14 @@
     "history": [
       {
         "date": "20 Eylül 2026",
-        "hypeScore": 5.2,
-        "sentimentScore": 40,
-        "sentiment": "düşüş",
+        "hypeScore": 8.4,
+        "sentimentScore": 28,
+        "sentiment": "coşkulu",
         "headline": "Regresyon",
-        "summary": "Yeni güncelleme 'sıkıcı ve jenerik' bulundu; konuşmaların unutulması ve özelliklerin kaldırılması eleştiriliyor.",
+        "summary": "r/Copilot'ta yeni güncellemenin sohbet geçmişini silmesi ve maskot/sesli modu kaldırması sert eleştiriliyor.",
         "sources": [
           "r/Copilot",
-          "r/vscode"
+          "r/ChatGPTCoding"
         ]
       }
     ]
@@ -4262,6 +4263,114 @@
         "sources": [
           "r/OpenAI",
           "r/ChatGPTCoding"
+        ]
+      }
+    ]
+  },
+  "minimax-h3-weekly": {
+    "name": "MiniMax H3",
+    "category": "Medya / Üretim",
+    "history": [
+      {
+        "date": "20 Eylül 2026",
+        "hypeScore": 9.8,
+        "sentimentScore": 92,
+        "sentiment": "coşkulu",
+        "headline": "Video Lideri",
+        "summary": "Yerel video üretiminde kalite ve hız dengesini kuran en tutarlı açık model olarak övülüyor.",
+        "sources": [
+          "r/StableDiffusion",
+          "r/LocalLLaMA"
+        ]
+      }
+    ]
+  },
+  "unsloth-qwen-weekly": {
+    "name": "Unsloth Qwen 3.8 27B GGUF",
+    "category": "Yerel Model",
+    "history": [
+      {
+        "date": "20 Eylül 2026",
+        "hypeScore": 9.5,
+        "sentimentScore": 94,
+        "sentiment": "coşkulu",
+        "headline": "10M İndirme Eşiği",
+        "summary": "Tek GPU'da verimli çıkarım sunduğu için yerel topluluğun standart tercihi haline geldi.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/Ollama"
+        ]
+      }
+    ]
+  },
+  "ollama-workspace": {
+    "name": "Ollama Self-Hosted Workspace",
+    "category": "Altyapı & SDK",
+    "history": [
+      {
+        "date": "20 Eylül 2026",
+        "hypeScore": 9.2,
+        "sentimentScore": 90,
+        "sentiment": "coşkulu",
+        "headline": "Tek Komutla Kurulum",
+        "summary": "Gizlilik ve maliyet kaygısıyla self-hosted çözümlere yönelen kullanıcıların birinci tercihi.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/selfhosted"
+        ]
+      }
+    ]
+  },
+  "n8n-ai-orchestrator-weekly": {
+    "name": "n8n AI Orchestrator",
+    "category": "Otomasyon",
+    "history": [
+      {
+        "date": "20 Eylül 2026",
+        "hypeScore": 9,
+        "sentimentScore": 88,
+        "sentiment": "coşkulu",
+        "headline": "Kurumsal Favori",
+        "summary": "Kurumsal ajan dağıtımında güvenilir orkestrasyon aracı olarak konumunu pekiştirdi.",
+        "sources": [
+          "r/n8n",
+          "r/devops"
+        ]
+      }
+    ]
+  },
+  "cursor-weekly": {
+    "name": "Cursor",
+    "category": "IDE / Editör",
+    "history": [
+      {
+        "date": "20 Eylül 2026",
+        "hypeScore": 8.8,
+        "sentimentScore": 70,
+        "sentiment": "coşkulu",
+        "headline": "Kararsız",
+        "summary": "Codex ve Claude Code ile kıyaslamalarda kararsız ama yoğun tartışılan editör olmayı sürdürüyor.",
+        "sources": [
+          "r/CursorAI",
+          "r/ChatGPTCoding"
+        ]
+      }
+    ]
+  },
+  "claude-code-weekly": {
+    "name": "Claude Code",
+    "category": "CLI / Terminal",
+    "history": [
+      {
+        "date": "20 Eylül 2026",
+        "hypeScore": 8.6,
+        "sentimentScore": 45,
+        "sentiment": "coşkulu",
+        "headline": "Eleştiriliyor",
+        "summary": "Dosya silme krizi ve limit baskısı birleşince haftanın en tartışmalı aracı haline geldi.",
+        "sources": [
+          "r/ClaudeAI",
+          "r/ClaudeDev"
         ]
       }
     ]
