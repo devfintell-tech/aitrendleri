@@ -168,19 +168,22 @@ Bu belge, bu projenin tüm tasarım, veri mimarisi ve geliştirme standartların
 
 ---
 
-## 🌅 10. Sabah İstihbaratı ve Yönetici Özeti İki Aşamalı Sentez Mimarisi & Saf Reddit Ürün Sıralaması Şartı
+## 🌅 10. Sabah İstihbaratı ve Yönetici Özeti Sentez Mimarisi & Saf Reddit Ürün Sıralaması Şartı
 
-1. **İki Aşamalı Sentez Mimarisi (Two-Phase Synthesis):**
-   - **Faz 1 (Veri Toplama, Filtreleme ve Kesinleştirme):** 50 Reddit topluluğu, Hugging Face modelleri, ArXiv makaleleri, Hacker News tartışmaları ve GitHub repoları taranır. Ürünler Hype skoruna göre yukarıdan aşağıya dizilir, başlıklar ve alanlar anayasal filtrelerden geçirilerek nihai veri şeması oluşturulur.
-   - **Faz 2 (Nihai Çıktıyı Okuyarak Sentezleme):** Sabah İstihbaratı'nın lider modeli (`morningBrief.leader`), 4 kilit maddesi (`morningBrief.bullets`) ve Yönetici Özeti (`executiveSummary`), Faz 1'de kesinleşmiş nihai çıktı doğrudan modele girdi verilerek sentezlenir.
-   - Böylece Sabah İstihbaratı'nın 4 kutusu ve lider kartı, sitede o an yer alan somut 1 numaralı lideri, top ürünleri, ArXiv çalışmalarını ve Hacker News tartışmalarını birebir okuyarak derin ve tutarlı bir özet üretir.
+1. **Yönetici Özeti'nin Bilgi Havuzu Dokunulmazlığı (Toplanan Tüm Ham Verilerden Çıkarım Şartı):**
+   - **Eksik Bilgi Setiyle Çıkarım Yapma Yasağı:** Yönetici Özeti (`executiveSummary`), yalnızca sitedeki filtrelenmiş birkaç kartı değil; 50 seçkin Reddit topluluğundan toplanan tüm ham gönderileri, sıcak tartışmaları, donanım krizlerini, ArXiv makale havuzunu ve Hacker News mühendislik nabzını eksiksiz okuyarak hazırlanır.
+   - Sitedeki daraltılmış son verileri okuyarak yönetici özeti hazırlamak bilgi kaybına ve ekosistemin büyük resminin kaçırılmasına yol açacağından; Yönetici Özeti doğrudan Faz 1'deki devasa veri setinden üretilir ve Faz 2 tarafından kesinlikle ezilemez veya daraltılamaz.
 
-2. **Saf Reddit Ürün Sıralaması Şartı (Pure Reddit Source Constraint):**
+2. **Sabah İstihbaratı'nın İki Aşamalı Sentezi (Two-Phase Synthesis):**
+   - Sabah İstihbaratı'nın Lider Kartı (`morningBrief.leader`) ve 4 Kilit Madde kutusu (`morningBrief.bullets`: 🚀 Model Savaşları, 🏢 Kurumsal & Pazar Dengesi, 💻 Yazılım & Otonom Ajanlar, ⚡ Yerel Zeka & Donanım), sitede listelenen nihai verilerle jilet gibi milimetrik tutarlı olması için Faz 2'de kesinleşmiş site çıktısını okuyarak sentezlenir.
+   - Zirvedeki 1 numaralı lider kartı (`daily[0]`) ile Lider Kartı isim ve rozet olarak birebir eşitlenir.
+
+3. **Saf Reddit Ürün Sıralaması Şartı (Pure Reddit Source Constraint):**
    - Sitedeki ana ürün tabloları (`daily`, `weekly`, `monthly`) YALNIZCA VE SADECE 50 seçkin Reddit topluluğunda bizzat konuşulan, tartışılan ve öne çıkan somut yapay zeka ürünlerinden oluşur.
    - Hugging Face, GitHub, ArXiv ve Hacker News verileri ana ürün sıralamasına ASLA sızamaz, puanları etkileyemez veya ürün tablosuna müdahale edemez; bu kaynaklar yalnızca kendi özel alt bölümlerinde ve Sabah İstihbaratı/Yönetici Özeti sentezinde değerlendirilir.
    - Ürün tablosundaki her ürünün `sources` dizisi istisnasız Reddit topluluklarından (örn. `["r/LocalLLaMA", "r/singularity"]`) oluşmak zorundadır.
 
-3. **Lider Kartının Zirve Dokunulmazlığı:**
+4. **Lider Kartının Zirve Dokunulmazlığı:**
    - Sabah İstihbaratı'nın Lider Kartı (`morningBrief.leader`), Faz 1'de Reddit verileriyle zirveye (1. sıra) oturmuş olan ürünle (`daily[0]`) isim ve rozet olarak milimetrik şekilde birebir aynı olmak zorundadır.
 
 

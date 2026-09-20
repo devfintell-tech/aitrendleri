@@ -732,10 +732,10 @@ async function generateMorningBriefSynthesis(finalizedData) {
     Faz 1'de titizlikle analiz edilmiş, temizlenmiş ve anayasal olarak kesinleştirilmiş nihai site verilerini okuyorsun.
 
     GÖREVİN:
-    Aşağıda sana sunulan nihai verileri (Reddit Zirvesi, Top AI Ürünleri, ArXiv Bilimsel Atılımları, Hacker News Mühendislik Tartışmaları ve GitHub Projeleri) derinlemesine sentezleyerek;
+    Aşağıda sana sunulan nihai site verilerini (Reddit Zirvesi, Top AI Ürünleri, ArXiv Bilimsel Atılımları, Hacker News Mühendislik Tartışmaları ve GitHub Projeleri) derinlemesine sentezleyerek;
     1) Zirvedeki #1 Lider için somut ve vurucu bir açıklama,
-    2) Sabah İstihbaratı'nın TAM 4 KİLİT MADDESİNİ (Model Savaşları, Kurumsal & Pazar Dengesi, Yazılım & Otonom Ajanlar, Yerel Zeka & Donanım),
-    3) Günün 2 paragraflık derinlemesine Yönetici Özeti'ni (executiveSummary) üretmektir.
+    2) Sabah İstihbaratı'nın TAM 4 KİLİT MADDESİNİ (Model Savaşları, Kurumsal & Pazar Dengesi, Yazılım & Otonom Ajanlar, Yerel Zeka & Donanım) üretmektir.
+    (Not: Yönetici Özeti bilgi kaybı yaşanmaması için toplanan 50 topluluğun tüm ham verilerinden Faz 1'de üretilmiştir. Senin görevin doğrudan arayüzdeki bu 4 kutu ve lider kartını sitedeki içerikle %100 jilet gibi tutarlı kılmaktır).
 
     ════════════════════════════════════════════════════════════════════
     KESİN VE TAVİZSİZ ANAYASAL KURALLAR:
@@ -751,9 +751,6 @@ async function generateMorningBriefSynthesis(finalizedData) {
        - 2. Madde ("Kurumsal & Pazar Dengesi", icon: "🏢"): Şirketlerin AI yatırımları, API maliyetleri veya kurumsal entegrasyonda bugün öne çıkan kırılmayı özetle.
        - 3. Madde ("Yazılım & Otonom Ajanlar", icon: "💻"): Hacker News'de mühendislerin tartıştığı mimari konuları ve GitHub'daki otonom ajan/CLI araçlarını harmanlayarak yazılımdaki günün dönüşümünü özetle.
        - 4. Madde ("Yerel Zeka & Donanım", icon: "⚡"): ArXiv'deki akademik çıkarım atılımları, yerel modeller ve GPU/donanım optimizasyonlarındaki son durumu özetle.
-
-    3. YÖNETİCİ ÖZETİ (executiveSummary):
-       - Günün en büyük kırılmalarını, model savaşlarını ve mühendislik eksenini birbiriyle ilişkilendiren derin, akıcı ve stratejik 2 paragraflık Türkçe özet olmalıdır.
 
     ════════════════════════════════════════════════════════════════════
     SİTENİN KESİNLEŞMİŞ GÜNCEL VERİLERİ:
@@ -792,8 +789,7 @@ async function generateMorningBriefSynthesis(finalizedData) {
           { "tag": "Yazılım & Otonom Ajanlar", "icon": "💻", "text": "..." },
           { "tag": "Yerel Zeka & Donanım", "icon": "⚡", "text": "..." }
         ]
-      },
-      "executiveSummary": "Günün tüm verilerini harmanlayan 2 paragraflık derin ve profesyonel yönetici özeti."
+      }
     }
   `;
 
@@ -803,9 +799,7 @@ async function generateMorningBriefSynthesis(finalizedData) {
     res.morningBrief.leader &&
     res.morningBrief.leader.name &&
     Array.isArray(res.morningBrief.bullets) &&
-    res.morningBrief.bullets.length === 4 &&
-    typeof res.executiveSummary === 'string' &&
-    res.executiveSummary.trim().length > 20
+    res.morningBrief.bullets.length === 4
   );
 
   const { data: p2Data, modelUsed: p2ModelUsed, tokenUsage: p2TokenUsage } = await generateWithWaterfall(phase2Prompt, phase2Validator);
@@ -1035,7 +1029,7 @@ async function main() {
           { "tag": "Yerel Zeka & Donanım", "icon": "⚡", "text": "Açık modeller, GPU veya çıkarım motorlarındaki son durum." }
         ]
       },
-      "executiveSummary": "Günün en büyük kırılmalarını ve teknoloji dengesini özetleyen 1-2 paragraflık derin yönetici özeti",
+      "executiveSummary": "Toplanan tüm 50 Reddit topluluğundaki sıcak gönderileri, tartışmaları, donanım krizlerini, ArXiv atılımlarını ve Hacker News nabzını eksiksiz harmanlayarak; büyük resmi ve teknoloji dengesini ortaya koyan en az 2 paragraflık derin, kapsamlı ve stratejik Türkçe Yönetici Özeti",
       "daily": [
         // EN AZ 10-14 ADET gerçek somut AI ürünü
         {
@@ -1136,9 +1130,12 @@ async function main() {
   // KESKİN STANDARTLAR DENETÇİSİ (Verilerin yerli yerine oturmasını ve hiçbir zaman eksik kalmamasını garanti eder)
   const resultJson = enforceStrictStandards(rawResultJson, hfModels, candidateArxiv, hnPosts, githubCandidates, hfTopModels);
 
-  // 🌅 FAZ 2: SABAH İSTİHBARATI VE YÖNETİCİ ÖZETİ İKİ AŞAMALI SENTEZİ
-  // Nihai olarak sıralanmış ve anayasal standartlara göre kesinleşmiş Faz 1 verilerini
-  // doğrudan girdi olarak vererek Sabah İstihbaratı ve Yönetici Özeti'ni sentezleme
+  // 🌅 FAZ 2: SABAH İSTİHBARATI 4 KİLİT MADDE VE LİDER KARTI SENTEZİ
+  // DİKKAT: Yönetici Özeti (executiveSummary) bilgi kaybı yaşanmaması ve büyük resmin kaçırılmaması için
+  // Faz 1'de toplanan tüm ham veri havuzundan (50 Reddit topluluğu, yüzlerce tartışma, ArXiv, HN, GitHub)
+  // en geniş bilgi setiyle üretilmiştir ve KESİNLİKLE EZİLMEZ (korunur).
+  // Sabah İstihbaratı'nın 4 kilit kutusu ve lider kartı ise sitedeki nihai sıralama ve içerikle
+  // %100 jilet gibi tutarlı olması için Faz 2'de nihai çıktıyı okuyarak güncellenir.
   let phase2TokenUsage = null;
   try {
     const { p2Data, p2TokenUsage } = await generateMorningBriefSynthesis(resultJson);
@@ -1152,11 +1149,8 @@ async function main() {
         },
         bullets: p2Data.morningBrief.bullets
       };
-      if (p2Data.executiveSummary && typeof p2Data.executiveSummary === 'string' && p2Data.executiveSummary.trim().length > 20) {
-        resultJson.executiveSummary = p2Data.executiveSummary.trim();
-      }
       phase2TokenUsage = p2TokenUsage;
-      console.log("✅ [FAZ 2] Sabah İstihbaratı ve Yönetici Özeti nihai çıktıyı okuyarak başarıyla güncellendi!");
+      console.log("✅ [FAZ 2] Sabah İstihbaratı 4 kilit madde ve Lider kartı nihai çıktıyı okuyarak başarıyla güncellendi (Yönetici Özeti geniş veri havuzundan korundu)!");
     }
   } catch (err) {
     console.warn("⚠️ [FAZ 2] Sabah İstihbaratı sentezi çağrısında hata oluştu, Faz 1 verisi korunuyor:", err.message);
