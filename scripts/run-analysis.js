@@ -601,7 +601,12 @@ async function callGemini(model, apiKey, prompt) {
  * 🥈 2. ÖNCELİK: DeepSeek v4.1 Flash & Pro
  * 🥉 3. ÖNCELİK: Google Gemini 3.7 ve aşağı şelale havuzu
  */
-async function generateWithWaterfall(prompt) {
+async function generateWithWaterfall(prompt, validatorFn = null) {
+  const isValid = validatorFn || ((result) => (
+    result &&
+    Array.isArray(result.daily) && result.daily.length >= 6
+  ));
+
   // 🥇 1. ÖNCELİK: Gemini 3.8 Flash (6'lı Rotasyonlu Anahtar Havuzu)
   const PRIMARY_GEMINI_MODEL = "gemini-3.8-flash";
   for (let i = 0; i < GEMINI_API_KEYS.length; i++) {
@@ -611,15 +616,13 @@ async function generateWithWaterfall(prompt) {
 
     try {
       const { parsed: result, tokenUsage } = await callGemini(PRIMARY_GEMINI_MODEL, apiKey, prompt);
-      const isRichResponse = (
-        result &&
-        Array.isArray(result.daily) && result.daily.length >= 6
-      );
+      const isRichResponse = isValid(result);
       if (isRichResponse) {
-        console.log(`🎯 MÜKEMMEL BAŞARI! Model [${PRIMARY_GEMINI_MODEL}] (Anahtar #${i + 1}) ile ${result.daily.length} ürün işlendi.`);
+        const info = Array.isArray(result.daily) ? `${result.daily.length} ürün` : "sentez şeması";
+        console.log(`🎯 MÜKEMMEL BAŞARI! Model [${PRIMARY_GEMINI_MODEL}] (Anahtar #${i + 1}) ile ${info} işlendi.`);
         return { data: result, modelUsed: PRIMARY_GEMINI_MODEL, keyIndex: i + 1, tokenUsage };
-      } else if (result && result.daily && result.daily.length > 0) {
-        console.warn(`⚠️ [${PRIMARY_GEMINI_MODEL}] (Anahtar #${i + 1}) eksik şema üretti (daily: ${result.daily?.length}). Sıradaki deneniyor...`);
+      } else {
+        console.warn(`⚠️ [${PRIMARY_GEMINI_MODEL}] (Anahtar #${i + 1}) beklenen şemayı karşılamadı. Sıradaki deneniyor...`);
       }
     } catch (err) {
       console.warn(`⚠️ [${PRIMARY_GEMINI_MODEL}] (Anahtar #${i + 1}) başarısız: ${err.message.substring(0, 100)}... Sıradaki deneniyor.`);
@@ -638,15 +641,13 @@ async function generateWithWaterfall(prompt) {
       console.log(`🚀 [2. ÖNCELİK - DeepSeek v4.1] Deneniyor: Model [${model}]...`);
       try {
         const { parsed: result, tokenUsage } = await callDeepSeek(model, DEEPSEEK_API_KEY, prompt);
-        const isRichResponse = (
-          result &&
-          Array.isArray(result.daily) && result.daily.length >= 6
-        );
+        const isRichResponse = isValid(result);
         if (isRichResponse) {
-          console.log(`🎯 MÜKEMMEL BAŞARI! DeepSeek [${model}] ile ${result.daily.length} ürün başarıyla işlendi.`);
+          const info = Array.isArray(result.daily) ? `${result.daily.length} ürün` : "sentez şeması";
+          console.log(`🎯 MÜKEMMEL BAŞARI! DeepSeek [${model}] ile ${info} başarıyla işlendi.`);
           return { data: result, modelUsed: `DeepSeek v4.1 Flash (${model})`, keyIndex: 1, tokenUsage };
-        } else if (result && result.daily && result.daily.length > 0) {
-          console.warn(`⚠️ [${model}] eksik/kısmi şema üretti (daily: ${result.daily?.length}). Sıradaki deneniyor...`);
+        } else {
+          console.warn(`⚠️ [${model}] beklenen şemayı karşılamadı. Sıradaki deneniyor...`);
         }
       } catch (err) {
         console.warn(`⚠️ [${model}] başarısız: ${err.message.substring(0, 120)}... Sıradaki deneniyor.`);
@@ -676,15 +677,13 @@ async function generateWithWaterfall(prompt) {
 
       try {
         const { parsed: result, tokenUsage } = await callGemini(model, apiKey, prompt);
-        const isRichResponse = (
-          result &&
-          Array.isArray(result.daily) && result.daily.length >= 6
-        );
+        const isRichResponse = isValid(result);
         if (isRichResponse) {
-          console.log(`🎯 MÜKEMMEL BAŞARI! Model [${model}] (Anahtar #${i + 1}) ile ${result.daily.length} ürün işlendi.`);
+          const info = Array.isArray(result.daily) ? `${result.daily.length} ürün` : "sentez şeması";
+          console.log(`🎯 MÜKEMMEL BAŞARI! Model [${model}] (Anahtar #${i + 1}) ile ${info} işlendi.`);
           return { data: result, modelUsed: model, keyIndex: i + 1, tokenUsage };
-        } else if (result && result.daily && result.daily.length > 0) {
-          console.warn(`⚠️ [${model}] (Anahtar #${i + 1}) eksik şema üretti (daily: ${result.daily?.length}). Sıradaki deneniyor...`);
+        } else {
+          console.warn(`⚠️ [${model}] (Anahtar #${i + 1}) beklenen şemayı karşılamadı. Sıradaki deneniyor...`);
         }
       } catch (err) {
         console.warn(`⚠️ [${model}] (Anahtar #${i + 1}) başarısız: ${err.message.substring(0, 100)}... Sıradaki deneniyor.`);
@@ -693,6 +692,124 @@ async function generateWithWaterfall(prompt) {
   }
 
   throw new Error("Hiçbir model ve API anahtarı kombinasyonu başarılı olamadı.");
+}
+
+/**
+ * 🌅 FAZ 2: SABAH İSTİHBARATI VE YÖNETİCİ ÖZETİ İKİ AŞAMALI SENTEZ MOTORU
+ * 
+ * Faz 1'de toplanan, filtrelenen ve anayasal standartlara göre sıralanan
+ * nihai verileri (Reddit zirvesi, ArXiv makaleleri, Hacker News tartışmaları,
+ * GitHub projeleri) doğrudan girdi olarak alıp; Sabah İstihbaratı'nın lider
+ * modelini, 4 kilit maddesini ve Yönetici Özeti'ni nihai çıktıyı okuyarak derinlemesine sentezler.
+ */
+async function generateMorningBriefSynthesis(finalizedData) {
+  console.log("\n🌅 [FAZ 2] Sabah İstihbaratı ve Yönetici Özeti Sentezi Başlatılıyor (Nihai Çıktı Okunuyor)...");
+  
+  const leader = finalizedData.daily?.[0] || {};
+  const topProducts = (finalizedData.daily || []).slice(0, 6);
+  const arxivPapers = (finalizedData.arxivDaily || []).slice(0, 3);
+  const hnDiscussions = (finalizedData.hackerNewsPulse?.discussions || []).slice(0, 6);
+  const githubProjects = (finalizedData.githubRadar?.daily || []).slice(0, 4);
+
+  const topProductsText = topProducts.map((p, idx) => 
+    `#${idx + 1} ${p.name} | Hype Skoru: ${p.hypeScore} | Topluluk Beğenisi: %${p.sentimentScore} | Rozet: ${p.badge || 'N/A'}\nTemel İşlev: ${p.primaryFunction || ''}\nNeden Trend / Topluluk Görüşü: ${p.whyTrending || ''}`
+  ).join("\n\n");
+
+  const arxivText = arxivPapers.map((a, idx) =>
+    `[${idx + 1}] "${a.titleTr || a.title}" (Kategori: ${a.category})\nÇarpıcı Etki: ${a.whyMad || a.summary}`
+  ).join("\n\n");
+
+  const hnText = hnDiscussions.map((h, idx) =>
+    `[${idx + 1}] "${h.titleTr || h.title}" (Puan: ${h.points}, Yorum: ${h.comments})\nAnaliz: ${h.discussion}`
+  ).join("\n\n");
+
+  const githubText = githubProjects.map((g, idx) =>
+    `[${idx + 1}] ${g.name} (⭐ ${g.stars}) | Kategori: ${g.category}\nİşlev: ${g.function}\nNeden Popüler: ${g.whyHype}`
+  ).join("\n\n");
+
+  const phase2Prompt = `
+    Sen "AI Trendleri" platformunun Baş İstihbarat ve Strateji Direktörüsün.
+    Faz 1'de titizlikle analiz edilmiş, temizlenmiş ve anayasal olarak kesinleştirilmiş nihai site verilerini okuyorsun.
+
+    GÖREVİN:
+    Aşağıda sana sunulan nihai verileri (Reddit Zirvesi, Top AI Ürünleri, ArXiv Bilimsel Atılımları, Hacker News Mühendislik Tartışmaları ve GitHub Projeleri) derinlemesine sentezleyerek;
+    1) Zirvedeki #1 Lider için somut ve vurucu bir açıklama,
+    2) Sabah İstihbaratı'nın TAM 4 KİLİT MADDESİNİ (Model Savaşları, Kurumsal & Pazar Dengesi, Yazılım & Otonom Ajanlar, Yerel Zeka & Donanım),
+    3) Günün 2 paragraflık derinlemesine Yönetici Özeti'ni (executiveSummary) üretmektir.
+
+    ════════════════════════════════════════════════════════════════════
+    KESİN VE TAVİZSİZ ANAYASAL KURALLAR:
+    1. ZİRVEDEKİ LİDER DOKUNULMAZLIĞI:
+       - Zirvedeki 1 Numara KESİNLİKLE "${leader.name || 'Günün Modeli'}" modelidir/aracıdır.
+       - 'name' alanı birebir "${leader.name || 'Günün Modeli'}" olmalıdır. Parantez veya yapay ek KULLANILAMAZ.
+       - 'badge' alanı "${leader.badge || 'Günün 1 Numarası'}" olmalıdır.
+       - 'description' alanı: Topluluğun neden onu zirveye taşıdığını veya neden gündemi sarstığını anlatan 1-2 vurucu, somut Türkçe cümle olmalıdır.
+
+    2. SABAH İSTİHBARATI 4 KİLİT MADDE KURALI (TAM 4 ADET):
+       - Her madde doğrudan bugün sitede yer alan somut verilere atıfta bulunmalı, ezber/şablon cümleler KESİNLİKLE YASAKTIR.
+       - 1. Madde ("Model Savaşları", icon: "🚀"): Günün lideri (${leader.name}) ve en çok konuşulan modeller arasındaki rekabeti, pazar ve açık vs kapalı modeller dengesini özetle.
+       - 2. Madde ("Kurumsal & Pazar Dengesi", icon: "🏢"): Şirketlerin AI yatırımları, API maliyetleri veya kurumsal entegrasyonda bugün öne çıkan kırılmayı özetle.
+       - 3. Madde ("Yazılım & Otonom Ajanlar", icon: "💻"): Hacker News'de mühendislerin tartıştığı mimari konuları ve GitHub'daki otonom ajan/CLI araçlarını harmanlayarak yazılımdaki günün dönüşümünü özetle.
+       - 4. Madde ("Yerel Zeka & Donanım", icon: "⚡"): ArXiv'deki akademik çıkarım atılımları, yerel modeller ve GPU/donanım optimizasyonlarındaki son durumu özetle.
+
+    3. YÖNETİCİ ÖZETİ (executiveSummary):
+       - Günün en büyük kırılmalarını, model savaşlarını ve mühendislik eksenini birbiriyle ilişkilendiren derin, akıcı ve stratejik 2 paragraflık Türkçe özet olmalıdır.
+
+    ════════════════════════════════════════════════════════════════════
+    SİTENİN KESİNLEŞMİŞ GÜNCEL VERİLERİ:
+
+    [GÜNÜN 1 NUMARASI (ZİRVEDEKİ REDDİT LİDERİ)]:
+    Ad: ${leader.name}
+    Hype Skoru: ${leader.hypeScore} / 10 | Topluluk Beğenisi: %${leader.sentimentScore}
+    Rozet: ${leader.badge}
+    Temel İşlev: ${leader.primaryFunction}
+    Neden Trend: ${leader.whyTrending}
+
+    [TOP 5 REDDİT AI ÜRÜNÜ]:
+    ${topProductsText}
+
+    [GÜNÜN 3 AKADEMİK ARXİV ÇALIŞMASI]:
+    ${arxivText}
+
+    [GÜNÜN 6 HACKER NEWS MÜHENDİSLİK TARTIŞMASI]:
+    ${hnText}
+
+    [GÜNÜN ÖNE ÇIKAN GİTHUB AÇIK KAYNAK VE AJAN PROJELERİ]:
+    ${githubText}
+    ════════════════════════════════════════════════════════════════════
+
+    İSTENEN YALIN JSON ÇIKTISI FORMATI:
+    {
+      "morningBrief": {
+        "leader": {
+          "name": "${leader.name || 'Günün Modeli'}",
+          "badge": "${leader.badge || 'Günün 1 Numarası'}",
+          "description": "Zirvedeki modelin neden bugünün gündemini belirlediğine dair 1-2 vurucu Türkçe cümle."
+        },
+        "bullets": [
+          { "tag": "Model Savaşları", "icon": "🚀", "text": "..." },
+          { "tag": "Kurumsal & Pazar Dengesi", "icon": "🏢", "text": "..." },
+          { "tag": "Yazılım & Otonom Ajanlar", "icon": "💻", "text": "..." },
+          { "tag": "Yerel Zeka & Donanım", "icon": "⚡", "text": "..." }
+        ]
+      },
+      "executiveSummary": "Günün tüm verilerini harmanlayan 2 paragraflık derin ve profesyonel yönetici özeti."
+    }
+  `;
+
+  const phase2Validator = (res) => (
+    res &&
+    res.morningBrief &&
+    res.morningBrief.leader &&
+    res.morningBrief.leader.name &&
+    Array.isArray(res.morningBrief.bullets) &&
+    res.morningBrief.bullets.length === 4 &&
+    typeof res.executiveSummary === 'string' &&
+    res.executiveSummary.trim().length > 20
+  );
+
+  const { data: p2Data, modelUsed: p2ModelUsed, tokenUsage: p2TokenUsage } = await generateWithWaterfall(phase2Prompt, phase2Validator);
+  return { p2Data, p2ModelUsed, p2TokenUsage };
 }
 
 /**
@@ -790,13 +907,13 @@ async function main() {
     ════════════════════════════════════════════════════════════════════
     🚨 EN KRİTİK KURAL 1: %100 DOĞAL, MANİPÜLASYONSUZ VE ORGANİK SIRALAMA:
     - Kesinlikle hiçbir modeli, şirketi veya aracı önceden şart koşma veya yapay olarak 1 numaraya zorlama!
-    - Reddit topluluklarında, ArXiv'de ve teknoloji gündeminde o gün EN ÇOK KONUŞULAN, EN YÜKSEK HYPE VE İVMEYE SAHİP GERÇEK MODEL/ARAÇ/DONANIM HANGİSİYSE DOĞAL OLARAK ONU 1 NUMARAYA (#1) YERLEŞTİR.
+    - 50 seçkin Reddit topluluğunda o gün EN ÇOK KONUŞULAN, EN YÜKSEK HYPE VE İVMEYE SAHİP GERÇEK MODEL/ARAÇ/DONANIM HANGİSİYSE DOĞAL OLARAK ONU 1 NUMARAYA (#1) YERLEŞTİR.
     - Reddit'te konuşulan taze ve sıcak kırılmaları eski modellerin önüne al, ancak her şey tamamen toplanan veriye dayansın.
 
-    🚨 EN KRİTİK KURAL 2: EN YUKARIDAKİ SIRALAMA TABLOLARI %100 REDDİT ODAKLIDIR:
+    🚨 EN KRİTİK KURAL 2: EN YUKARIDAKİ SIRALAMA TABLOLARI %100 REDDİT ODAKLIDIR (SAF REDDİT VERİSİ ŞARTI):
     - "daily", "weekly" ve "monthly" sıralama sekmelerindeki TÜM puanlar, sıralamalar, delta değişimleri ve analizler YALNIZCA VE SADECE 50 SEÇKİN REDDİT TOPLULUĞUNUN tartışmalarına dayanmalıdır.
-    - HUGGING FACE, HACKER NEWS VE GITHUB VERİLERİ EN YUKARIDAKİ SIRALAMAYA KESİNLİKLE VE ASLA ETKİ EDEMEZ!
-    - Hugging Face, GitHub ve Hacker News verileri yalnızca kendi alt bölümleri içindir; üst sıralamayı asla değiştiremez veya manipüle edemez.
+    - ARXİV, HUGGING FACE, HACKER NEWS VE GITHUB VERİLERİ EN YUKARIDAKİ ÜRÜN SIRALAMASINA KESİNLİKLE VE ASLA ETKİ EDEMEZ! ÜRÜN SIRALAMASI BİLGİLERİ YALNIZCA VE SADECE REDDİTTEN GELİR.
+    - Hugging Face, GitHub, ArXiv ve Hacker News verileri yalnızca kendi bağımsız alt bölümleri içindir; üst sıralamayı asla değiştiremez veya manipüle edemez.
     - Tüm araçların 'sources' alanları İSTİSNASIZ Reddit toplulukları (örn. ["r/LocalLLaMA", "r/singularity", "r/vibecoding"]) olmalıdır.
 
     🚨 EN KRİTİK KURAL 3: SIRALAMADAKİ TÜM ÖĞELER SOMUT BİR 'YAPAY ZEKA ÜRÜNÜ / MODEL / AJAN / ARAÇ / DONANIM' OLMAK ZORUNDADIR:
@@ -1019,6 +1136,51 @@ async function main() {
   // KESKİN STANDARTLAR DENETÇİSİ (Verilerin yerli yerine oturmasını ve hiçbir zaman eksik kalmamasını garanti eder)
   const resultJson = enforceStrictStandards(rawResultJson, hfModels, candidateArxiv, hnPosts, githubCandidates, hfTopModels);
 
+  // 🌅 FAZ 2: SABAH İSTİHBARATI VE YÖNETİCİ ÖZETİ İKİ AŞAMALI SENTEZİ
+  // Nihai olarak sıralanmış ve anayasal standartlara göre kesinleşmiş Faz 1 verilerini
+  // doğrudan girdi olarak vererek Sabah İstihbaratı ve Yönetici Özeti'ni sentezleme
+  let phase2TokenUsage = null;
+  try {
+    const { p2Data, p2TokenUsage } = await generateMorningBriefSynthesis(resultJson);
+    if (p2Data && p2Data.morningBrief && Array.isArray(p2Data.morningBrief.bullets) && p2Data.morningBrief.bullets.length === 4) {
+      const tableTop = resultJson.daily?.[0];
+      resultJson.morningBrief = {
+        leader: {
+          name: (tableTop && tableTop.name) ? tableTop.name : (p2Data.morningBrief.leader?.name || resultJson.morningBrief?.leader?.name || ""),
+          badge: (tableTop && tableTop.badge) ? tableTop.badge : (p2Data.morningBrief.leader?.badge || "Günün 1 Numarası"),
+          description: p2Data.morningBrief.leader?.description || resultJson.morningBrief?.leader?.description || ""
+        },
+        bullets: p2Data.morningBrief.bullets
+      };
+      if (p2Data.executiveSummary && typeof p2Data.executiveSummary === 'string' && p2Data.executiveSummary.trim().length > 20) {
+        resultJson.executiveSummary = p2Data.executiveSummary.trim();
+      }
+      phase2TokenUsage = p2TokenUsage;
+      console.log("✅ [FAZ 2] Sabah İstihbaratı ve Yönetici Özeti nihai çıktıyı okuyarak başarıyla güncellendi!");
+    }
+  } catch (err) {
+    console.warn("⚠️ [FAZ 2] Sabah İstihbaratı sentezi çağrısında hata oluştu, Faz 1 verisi korunuyor:", err.message);
+  }
+
+  // Faz 1 ve Faz 2 token kullanımlarını birleştir
+  let mergedTokenUsage = activeTokenUsage;
+  if (phase2TokenUsage && activeTokenUsage) {
+    const promptTokens = (activeTokenUsage.promptTokens || 0) + (phase2TokenUsage.promptTokens || 0);
+    const completionTokens = (activeTokenUsage.completionTokens || 0) + (phase2TokenUsage.completionTokens || 0);
+    const reasoningTokens = (activeTokenUsage.reasoningTokens || 0) + (phase2TokenUsage.reasoningTokens || 0);
+    const finalTokens = (activeTokenUsage.finalTokens || 0) + (phase2TokenUsage.finalTokens || 0);
+    const totalTokens = (activeTokenUsage.totalTokens || 0) + (phase2TokenUsage.totalTokens || 0) || (promptTokens + completionTokens);
+    mergedTokenUsage = {
+      promptTokens,
+      completionTokens,
+      reasoningTokens,
+      finalTokens,
+      totalTokens
+    };
+  } else if (phase2TokenUsage && !activeTokenUsage) {
+    mergedTokenUsage = phase2TokenUsage;
+  }
+
   const completedAt = new Date().toLocaleTimeString("tr-TR", { hour: '2-digit', minute: '2-digit', second: '2-digit' });
   const duration = Math.round((Date.now() - startTime) / 1000);
   const dateStr = new Date().toLocaleDateString("tr-TR", {
@@ -1036,7 +1198,7 @@ async function main() {
     startedAt: startedAt,
     completedAt: completedAt,
     durationSeconds: duration,
-    tokenUsage: activeTokenUsage || null,
+    tokenUsage: mergedTokenUsage || null,
     totalPostsAnalyzed: totalPosts,
     subredditsCovered: 50,
     successfulBatches,

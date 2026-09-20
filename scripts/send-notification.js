@@ -189,7 +189,7 @@ Tarih: ${dateStr} | İşlem Süresi: ${duration}s
               🤖 Model: ${activeModel}
             </span>
             <span style="background:#10b98120; color:#34d399; border:1px solid #10b98140; padding:4px 10px; border-radius:6px; font-size:12px; font-family:monospace; font-weight:bold;">
-              🔑 API Key: ${keyIndex}
+              🔑 API Key: ${activeModel && activeModel.includes("DeepSeek") ? "DEEPSEEK_API_KEY" : `Key #${keyIndex}`}
             </span>
             <span style="background:#8b5cf620; color:#a78bfa; border:1px solid #8b5cf640; padding:4px 10px; border-radius:6px; font-size:12px; font-family:monospace; font-weight:bold;">
               ⏱️ ${duration} Saniye

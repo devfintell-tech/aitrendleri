@@ -56,7 +56,10 @@
     "2609.20784v1",
     "2609.20820v1",
     "2609.20794v1",
-    "2609.20776v1"
+    "2609.20776v1",
+    "2609.20779v1",
+    "2609.20761v1",
+    "2609.20768v1"
   ],
   "dailyRecords": [
     {
@@ -64,49 +67,49 @@
       "isoDate": "2026-09-20",
       "papers": [
         {
-          "id": "2609.20820v1",
-          "titleTr": "Çalışma Alanı Modelleri: Salyangoz Odaklı Gözetim ile Hafif Robotik Hafıza",
-          "title": "Workspace Models: Lightweight Robotic Memory via Saliency-Driven Supervision",
-          "arxivUrl": "http://arxiv.org/abs/2609.20820v1",
+          "id": "2609.20779v1",
+          "titleTr": "GPT Modellerinde Zarar Aklama: Güvenlik Eğitiminin Cinsiyet Ayrımcılığını Azaltmak Yerine Dönüştürdüğüne Dair Kanıtlar",
+          "title": "Harm Laundering in GPT Models: Evidence That Gender Discrimination Is Transformed Rather Than Reduced Across Safety-Trained Generations",
+          "arxivUrl": "http://arxiv.org/abs/2609.20779v1",
           "authors": [
-            "Nitish Dashora",
-            "Douglas Chen",
-            "Idan Shenfeld"
+            "Sarah Wyer",
+            "Sue Black",
+            "Noura Al Moubayed"
           ],
-          "category": "cs.RO",
+          "category": "cs.CL",
           "impactScore": 9.6,
-          "whyMad": "Pahalı VLM sorgularını eğitim zamanına kaydırarak robotik manipülasyonda uzun vadeli hafızayı maliyetsiz hale getiriyor.",
-          "summary": "Geçmiş eylemleri sıkıştırmak için pahalı in-loop VLM sorguları yerine eğitim aşamasında görev salınımına dayalı gözetim kullanan hafif bir robotik bellek mimarisi öneriyor."
+          "whyMad": "Güvenlik puanlarının düştüğü yanılsamasını çürüterek ayrımcılığın silinmediğini, sadece biçim değiştirdiğini gösteriyor.",
+          "summary": "15 modelde 450 bin tamamlama analiz edilerek açık ayrımcı içeriğin yüzey biçim değiştirerek varlığını sürdürdüğü ortaya konuyor."
         },
         {
-          "id": "2609.20794v1",
-          "titleTr": "PosteriorBench: Bilimsel Ters Çözücülerde Nokta Tahminlerinden Posterior Eşleştirmeye",
-          "title": "PosteriorBench: Bilimsel Ters Çözücülerde Nokta Tahminlerinden Posterior Eşleştirmeye",
-          "arxivUrl": "http://arxiv.org/abs/2609.20794v1",
+          "id": "2609.20761v1",
+          "titleTr": "Agile-WAM: Temasa Duyarlı Robot Kontrolü İçin Çevik Dokunsal Dünya-Eylem Modeli",
+          "title": "Agile-WAM: An Agile Tactile World Action Model for Contact-Rich Robot Control",
+          "arxivUrl": "http://arxiv.org/abs/2609.20761v1",
           "authors": [
-            "Jiachen Yao",
-            "Zi-Siang Hsu",
-            "Xi Deng"
-          ],
-          "category": "cs.LG",
-          "impactScore": 9.5,
-          "whyMad": "Tekil çözümlerin ötesine geçerek ill-posed bilimsel problemlerde belirsizliği ve mod çöküşünü yakalayan yeni bir değerlendirme kıyaslaması sunuyor.",
-          "summary": "Bilimsel ters problemlerde üretken modellerin tekil çözümler üretmesini eleştirerek, tam posterior dağılımını yakalama yeteneklerini ölçen kapsamlı bir kıyaslama çerçevesi sunar."
-        },
-        {
-          "id": "2609.20776v1",
-          "titleTr": "GeoAAC: VLA Politikalarında Dürbün Yörüngelerinden Geometri Tabanlı Uyarlanabilir Eylem Parçalama",
-          "title": "GeoAAC: Geometry-Based Adaptive Action Chunking from Denoising Trajectories in VLA Policies",
-          "arxivUrl": "http://arxiv.org/abs/2609.20776v1",
-          "authors": [
-            "Xin Chen",
-            "Sen Chen",
-            "Yujuan Ding"
+            "Hanchu Zhou",
+            "Brendan Lynch",
+            "Raman Goyal"
           ],
           "category": "cs.RO",
+          "impactScore": 9.5,
+          "whyMad": "Devasa üretken omurgalara bağımlılığı kaldırıp temasa duyarlı robot kontrolünü çevik ve dağıtılabilir hale getiriyor.",
+          "summary": "Dokunsal dünya-eylem modeli, gelecekteki durumları ve eylemleri birlikte öngörerek irtibat yoğun manipülasyonu verimli kılıyor."
+        },
+        {
+          "id": "2609.20768v1",
+          "titleTr": "Semantik Eylem Grafiği: Spor Özetlerinde Ajan Temellendirmesi ve İnsan Yorumu İçin Ortak Temsil",
+          "title": "Semantic Action Graph: A Shared Representation for Agent Grounding and Human Interpretation of Sports Highlights",
+          "arxivUrl": "http://arxiv.org/abs/2609.20768v1",
+          "authors": [
+            "Tica Lin",
+            "Deepak Chandran",
+            "Gauri Jagatap"
+          ],
+          "category": "cs.AI",
           "impactScore": 9.4,
-          "whyMad": "Görsel-Dil-Aksiyon politikalarında sabit eylem ufku sorununu çözerek görev aşamalarına göre dinamik kontrol hassasiyeti sağlıyor.",
-          "summary": "Akış tabanlı VLA politikalarında kontrol gereksinimlerinin değiştiği aşamalara göre eylem ufuklarını dinamik olarak ayarlayan geometri tabanlı uyarlanabilir bir yöntem önerir."
+          "whyMad": "Ajan çıktısını doğrulanabilir ve yönlendirilebilir kılan hafif bir şema sunarak üretken ajanların güvenilirliğini artırıyor.",
+          "summary": "Spor maçını rol, zaman ve sonuç kenarlarıyla bağlı düğümler olarak modelleyen semantik eylem grafiği, temellendirme ve yorumu birleştiriyor."
         }
       ]
     },
