@@ -291,15 +291,15 @@ async function fetchTwitterAgenda(apifyToken = APIFY_TOKEN) {
   const payload = {
     searchTerms: [batch1, batch2],
     queryType: 'Latest',
-    maxItems: 225
+    maxItems: 400
   };
 
   try {
-    const res = await fetch(`https://api.apify.com/v2/acts/xquik~x-tweet-scraper/run-sync-get-dataset-items?token=${apifyToken}&timeout=90`, {
+    const res = await fetch(`https://api.apify.com/v2/acts/xquik~x-tweet-scraper/run-sync-get-dataset-items?token=${apifyToken}&timeout=120`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
-      signal: AbortSignal.timeout(110000)
+      signal: AbortSignal.timeout(150000)
     });
 
     if (!res.ok) {
@@ -325,7 +325,7 @@ async function fetchTwitterAgenda(apifyToken = APIFY_TOKEN) {
     // Etkileşime göre sırala (Like + 2*Retweet)
     meaningful.sort((a, b) => ((b.likeCount || 0) + (b.retweetCount || 0) * 2) - ((a.likeCount || 0) + (a.retweetCount || 0) * 2));
 
-    const processed = meaningful.slice(0, 100).map(t => {
+    const processed = meaningful.slice(0, 180).map(t => {
       const handle = t.author?.username || t.userName || "twitter_user";
       const name = t.author?.name || t.name || handle;
       const avatar = t.author?.profilePicture || t.profilePicture || "";
