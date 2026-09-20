@@ -1991,7 +1991,7 @@ ${bulletsText}
       <main className="max-w-7xl mx-auto px-2 sm:px-4 py-4 w-full flex-1 space-y-4">
         
         {/* ☕ 30 SANİYELİK SABAH İSTİHBARATI: DÜNYADA BUGÜN */}
-        {report.morningBrief && (
+        {timeframe !== 'report' && timeframe !== 'glossary' && report.morningBrief && (
           <section className="bg-white border border-[#cbd5e1] rounded-sm p-3.5 sm:p-4 shadow-xs space-y-3">
             {/* Üst Bar: Başlık & Katla/Aç */}
             <div className="flex items-center justify-between gap-2 pb-2 border-b border-[#f1f5f9]">
@@ -2565,7 +2565,7 @@ ${bulletsText}
         )}
 
         {/* 6.5 🐦 X (TWITTER) AI NABZI: 30 SEÇKİN LİDERİN GÜNDEMİ (Reddit Modellerinin Hemen Altında) */}
-        {report.twitterPulse && (
+        {timeframe !== 'report' && timeframe !== 'glossary' && report.twitterPulse && (
           <section className="bg-white border border-[#cbd5e1] shadow-xs rounded-sm p-4 sm:p-6 space-y-4">
             <div className="flex items-center justify-between flex-wrap gap-2 border-b border-[#e2e8f0] pb-3">
               <div className="flex items-center gap-2">
@@ -2811,8 +2811,11 @@ ${bulletsText}
               ))}
             </div>
 
-            {/* 5. 📖 GÜNÜN SÖZLÜĞÜ: SADE KAVRAM & ANLAMI */}
-            {report.dailyGlossary && report.dailyGlossary.length > 0 && (
+            {/* İkincil Radarlar (Sadece 24s/Haftalık/Aylık görünümlerde yer alır, Danışman Raporu tıklandığında gizlenir) */}
+            {timeframe !== 'report' && (
+              <>
+                {/* 5. 📖 GÜNÜN SÖZLÜĞÜ: SADE KAVRAM & ANLAMI */}
+                {report.dailyGlossary && report.dailyGlossary.length > 0 && (
               <div id="gunun-sozlugu" className="pt-3 border-t border-[#e2e8f0] space-y-2.5">
                 <div className="flex items-center justify-between pb-1">
                   <div className="flex items-center gap-2">
@@ -3440,6 +3443,8 @@ ${bulletsText}
                   ))}
                 </div>
               </div>
+            )}
+              </>
             )}
           </section>
         )}
