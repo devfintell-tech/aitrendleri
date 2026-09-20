@@ -909,6 +909,16 @@ export default function App() {
 
     return {
       date: raw.date,
+      isoDate: raw.isoDate,
+      activeModel: raw.activeModel,
+      keyIndex: raw.keyIndex,
+      startedAt: raw.startedAt,
+      completedAt: raw.completedAt,
+      durationSeconds: raw.durationSeconds,
+      tokenUsage: raw.tokenUsage,
+      daily: raw.daily,
+      weekly: raw.weekly,
+      monthly: raw.monthly,
       executiveSummary: raw.executiveSummary || LATEST_CONSULTANT_REPORT.executiveSummary,
       sections: raw.sections || LATEST_CONSULTANT_REPORT.sections,
       morningBrief: mb,
