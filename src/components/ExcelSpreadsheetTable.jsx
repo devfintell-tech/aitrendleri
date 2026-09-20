@@ -1,8 +1,7 @@
 import React, { useState, useMemo } from 'react';
-import { Search, ArrowUpDown, ChevronDown, Filter } from 'lucide-react';
+import { ArrowUpDown, ChevronDown, Filter } from 'lucide-react';
 
 export default function ExcelSpreadsheetTable({ items = [], onCellSelect, selectedCell = "B2" }) {
-  const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [sortColumn, setSortColumn] = useState('hypeScore'); // 'rank' | 'hypeScore' | 'scoreDelta' | 'mentions'
   const [sortAsc, setSortAsc] = useState(false);
@@ -13,13 +12,7 @@ export default function ExcelSpreadsheetTable({ items = [], onCellSelect, select
   const processedItems = useMemo(() => {
     return items
       .filter((item) => {
-        const matchesCategory = selectedCategory === 'all' || item.category === selectedCategory;
-        const matchesSearch =
-          item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          item.primaryFunction.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          item.whyTrending.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          item.sources.some(s => s.toLowerCase().includes(searchQuery.toLowerCase()));
-        return matchesCategory && matchesSearch;
+        return selectedCategory === 'all' || item.category === selectedCategory;
       })
       .sort((a, b) => {
         let diff = 0;
@@ -92,18 +85,6 @@ export default function ExcelSpreadsheetTable({ items = [], onCellSelect, select
               </button>
             ))}
           </div>
-        </div>
-
-        {/* Excel Filter Search */}
-        <div className="relative">
-          <Search className="w-3.5 h-3.5 text-slate-500 absolute left-2.5 top-1/2 -translate-y-1/2" />
-          <input
-            type="text"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Tabloda Ara (Ctrl+F)..."
-            className="bg-slate-900 border border-slate-700 text-xs text-slate-200 pl-8 pr-3 py-1 rounded w-52 focus:outline-none focus:border-[#107c41] transition"
-          />
         </div>
 
       </div>

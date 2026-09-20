@@ -10,7 +10,6 @@ import {
   ChevronUp, 
   History,
   FileSpreadsheet,
-  Search,
   Filter,
   Info,
   Calendar,
@@ -427,7 +426,6 @@ export default function App() {
   const [expandedId, setExpandedId] = useState(null);
   const [expandedHfId, setExpandedHfId] = useState(null);
   const [githubTimeframe, setGithubTimeframe] = useState('daily'); // 'daily' | 'weekly' | 'monthly' | 'yearly'
-  const [searchQuery, setSearchQuery] = useState('');
   const [copiedBrief, setCopiedBrief] = useState(false);
   const [isBriefExpanded, setIsBriefExpanded] = useState(true);
   const [copiedCmdId, setCopiedCmdId] = useState(null);
@@ -1033,23 +1031,15 @@ export default function App() {
       .sort((a, b) => (Number(b.hypeScore) || 0) - (Number(a.hypeScore) || 0));
   }, [activeReportData, timeframe]);
 
-  // Filter tools by category and search (Hype puanına göre yukarıdan aşağıya kesin sıralanır)
+  // Filter tools by category (Hype puanına göre yukarıdan aşağıya kesin sıralanır)
   const filteredTools = useMemo(() => {
     let result = rawTools;
     if (selectedCategory !== 'all') {
       result = result.filter(t => t.category === selectedCategory);
     }
-    if (searchQuery.trim()) {
-      const q = searchQuery.toLowerCase();
-      result = result.filter(t => 
-        t.name?.toLowerCase().includes(q) || 
-        t.primaryFunction?.toLowerCase().includes(q) ||
-        t.category?.toLowerCase().includes(q)
-      );
-    }
     // 🚨 ANAYASA KURALI: Hype puanına göre yukarıdan aşağıya doğru sıralanır (descending)
     return [...result].sort((a, b) => (Number(b.hypeScore) || 0) - (Number(a.hypeScore) || 0));
-  }, [rawTools, selectedCategory, searchQuery]);
+  }, [rawTools, selectedCategory]);
 
   // Lider Model Senkronizasyonu (Sarı Kısım: En Çok Konuşulan Model & En Beğenilen Model):
   const leaderBreakdown = useMemo(() => {
@@ -1247,18 +1237,17 @@ ${bulletsText}
       
       {/* 1. EXCEL YEŞİL BAŞLIK ÇUBUĞU (Office Ribbon Bar) */}
       <header className="bg-[#107c41] text-white select-none shadow-sm">
-        {/* Üst Logo ve Dosya Adı */}
+        {/* Üst Logo, Dosya Adı ve Geçmiş Tarih Seçici */}
         <div className="max-w-7xl mx-auto px-4 py-2.5 flex flex-wrap items-center justify-between gap-3">
-          <div className="flex items-center gap-2.5">
-            <div className="flex items-center justify-center w-7 h-7 bg-white text-[#107c41] font-black rounded text-xs shadow-inner tracking-tighter">
-              AI
+          <div className="flex items-center gap-2.5 sm:gap-3.5">
+            <div className="flex items-center gap-2.5">
+              <div className="flex items-center justify-center w-7 h-7 bg-white text-[#107c41] font-black rounded text-xs shadow-inner tracking-tighter">
+                AI
+              </div>
+              <span className="font-bold text-base tracking-wide font-mono">aitrendleri.com</span>
             </div>
-            <span className="font-bold text-base tracking-wide font-mono">aitrendleri.com</span>
-          </div>
 
-          {/* Sağ Durum, Geçmiş Tarih Seçici ve Model / İcra Telemetrisi Bilgisi */}
-          <div className="flex items-center gap-1.5 sm:gap-2.5 text-xs font-mono text-emerald-100 flex-wrap">
-            {/* Geçmiş Tarih / Arşiv Seçici Dropdown */}
+            {/* Geçmiş Tarih / Arşiv Seçici Dropdown (aitrendleri.com'un Sağında) */}
             <div className="flex items-center gap-1.5 bg-[#0e6b37] border border-emerald-400/40 px-2 py-1 rounded text-white shadow-xs">
               <Calendar className="w-3.5 h-3.5 text-emerald-300 flex-shrink-0" />
               <select
@@ -1274,6 +1263,10 @@ ${bulletsText}
                 ))}
               </select>
             </div>
+          </div>
+
+          {/* Sağ Durum: Model / İcra Telemetrisi Bilgisi */}
+          <div className="flex items-center gap-1.5 sm:gap-2.5 text-xs font-mono text-emerald-100 flex-wrap">
 
             {/* ⚡ 1. LLM & 2. LLM Telemetrisi (Alt Alta, Açık & Net Model ve Token Detayları) */}
             {(() => {
@@ -1540,18 +1533,6 @@ ${bulletsText}
                   : '"TÜM_MODELLER"'}
             </span>
             <span className="text-[#107c41] font-bold">)</span>
-          </div>
-
-          {/* Hızlı Arama */}
-          <div className="relative hidden md:block w-48">
-            <Search className="w-3.5 h-3.5 absolute left-2.5 top-2 text-slate-400" />
-            <input
-              type="text"
-              placeholder="Tabloda ara..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-8 pr-2 py-1 text-xs border border-[#d1d5db] rounded bg-white text-slate-800 placeholder-slate-400 focus:outline-none focus:border-[#107c41]"
-            />
           </div>
         </div>
       </div>
