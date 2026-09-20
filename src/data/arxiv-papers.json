@@ -71,7 +71,8 @@
     "arxiv-2609-20800",
     "arxiv-2609-11923",
     "arxiv-2609-11916",
-    "arxiv-2609-11911"
+    "arxiv-2609-11911",
+    "arxiv-2609-20804"
   ],
   "dailyRecords": [
     {
@@ -80,42 +81,42 @@
       "papers": [
         {
           "id": "arxiv-2609-11923",
-          "titleTr": "GPU-CFR: Oyun Teorisi Tabanlı Karar Vermede 80 Kat Hızlanma",
+          "titleTr": "GPU-CFR: Oyun Ağacını Statik Veri Akışına Derleyerek 80 Kat Daha Hızlı Karşıolgusal Pişmanlık Minimizasyonu",
           "title": "GPU-CFR: 80x Faster Counterfactual Regret Minimization by Compiling the Game to Static Dataflow and CUDA Graph Replay",
           "arxivUrl": "https://arxiv.org/abs/2609.11923",
           "authors": [
-            "Research Team"
+            "Araştırma Ekibi"
+          ],
+          "category": "cs.LG",
+          "impactScore": 9.7,
+          "whyMad": "Oyun teorisinin en pahalı iş yükünü CPU'dan GPU'ya taşıyıp 80 kat hızlandırarak ajanların stratejik karar verme hızını kökten değiştiriyor.",
+          "summary": "Oyun ağacını statik bir veri akışı grafiğine derleyip CUDA Graph Replay ile tekrar oynatarak CFR hesaplamalarını GPU üzerinde ölçeklendiriyor."
+        },
+        {
+          "id": "arxiv-2609-20800",
+          "titleTr": "JEPA-Anything: Farklı Dünyalar Arasında Ortak Öngörücü Dünya Modelleri",
+          "title": "JEPA-Anything: Learning Predictive Models across Different Worlds",
+          "arxivUrl": "https://arxiv.org/abs/2609.20800",
+          "authors": [
+            "Araştırma Ekibi"
           ],
           "category": "cs.AI",
           "impactScore": 9.7,
-          "whyMad": "Oyun teorisi hesaplamalarını GPU'ya taşıyarak devasa bir hız artışı sağlıyor.",
-          "summary": "Statik veri akışı derleme ve CUDA Graph Replay kullanarak CFR sürecini optimize ediyor."
+          "whyMad": "Farklı ortamlara ayrı ayrı model eğitmek yerine ortak bir öngörücü faktörizasyon ilkesi sunarak evrensel dünya modellemesinin kapısını aralıyor.",
+          "summary": "Ortogonal öngörücü faktörizasyon kullanarak değişen dünyalar arasında paylaşılabilen temsil öğrenmeyi mümkün kılıyor."
         },
         {
-          "id": "arxiv-2609-11916",
-          "titleTr": "Kenar Cihazlarda Çalışan VLM'ler Tür Tanımlayabilir mi?",
-          "title": "Can Edge-Deployable Vision-Language Models Identify Species?",
-          "arxivUrl": "https://arxiv.org/abs/2609.11916",
+          "id": "arxiv-2609-20804",
+          "titleTr": "Kodlama Ajanları İçin Harness Tasarımı Üzerine Ampirik Bir Çalışma",
+          "title": "An Empirical Study of Harness Design for Coding Agents",
+          "arxivUrl": "https://arxiv.org/abs/2609.20804",
           "authors": [
-            "Field AI Lab"
+            "Araştırma Ekibi"
           ],
-          "category": "cs.CV",
-          "impactScore": 9.6,
-          "whyMad": "Küçük modellerin saha koşullarında devasa bulut modelleriyle yarışabileceğini kanıtlıyor.",
-          "summary": "2-8B parametre aralığındaki modellerin saha uygulamalarındaki başarısını inceliyor."
-        },
-        {
-          "id": "arxiv-2609-11911",
-          "titleTr": "Yapay Kimlik: Ajanik AI'da Sürücü ve Kalıcı Hizalama",
-          "title": "Artificial Id: Drive and Persistent Alignment in Agentic AI",
-          "arxivUrl": "https://arxiv.org/abs/2609.11911",
-          "authors": [
-            "Alignment Research"
-          ],
-          "category": "cs.AI",
+          "category": "cs.SE",
           "impactScore": 9.4,
-          "whyMad": "Ajanların harici müdahale olmadan adaptif iç sürücülerle çalışmasını sağlıyor.",
-          "summary": "Ajanik AI'nın sürekli çalışan sistemlere geçişinde kontrol sorununa yenilikçi bir çözüm sunuyor."
+          "whyMad": "Ajan performansını tek bir 'sistem' olarak değil planlama, eylem uzayı ve bağlam yönetimi bileşenleri üzerinden ölçerek karanlık bir alanı sistematik biçimde aydınlatıyor.",
+          "summary": "Farklı harness konfigürasyonlarının kodlama başarısına etkisini bileşen bazında karşılaştırmalı olarak ortaya koyuyor."
         }
       ]
     },

@@ -559,14 +559,16 @@ function safeParseJson(rawText, source = "LLM") {
     .replace(/\s*```$/i, "")
     .trim();
 
+  let firstError = null;
+
   // 1. Doğrudan parse denemesi
   try {
     return JSON.parse(cleaned);
   } catch (err1) {
-    // Onarım adımlarına geç
+    firstError = err1;
   }
 
-  // 2. İlk { ve son } sınırlarını belirleme
+  // 2. İlk { ve son } sınırlarını belirleme (Gereksiz ön/son metinleri kırpma)
   const firstBrace = cleaned.indexOf('{');
   const lastBrace = cleaned.lastIndexOf('}');
   if (firstBrace !== -1 && lastBrace > firstBrace) {
@@ -590,66 +592,49 @@ function safeParseJson(rawText, source = "LLM") {
     // Devam et
   }
 
-  // 4. String içindeki kaçışsız kontrol karakterlerini ve iç çift tırnakları onarma
-  let out = '';
-  let inStr = false;
+  // 4. String içindeki kaçışsız kontrol karakterlerini (ham satır sonları \n, \r, \t) onarma
+  let escapedControlChars = '';
+  let inString = false;
   let isEsc = false;
   for (let i = 0; i < trailingCleaned.length; i++) {
     const c = trailingCleaned[i];
-    if (c === '\\' && inStr) {
+    if (c === '\\' && inString) {
       isEsc = !isEsc;
-      out += c;
+      escapedControlChars += c;
       continue;
     }
     if (c === '"' && !isEsc) {
-      if (!inStr) {
-        inStr = true;
-        out += c;
-      } else {
-        // String kapanış tırnağı mı, yoksa dize içi tırnak mı?
-        // Bir JSON string'inin kapanış tırnağını yalnızca isteğe bağlı boşluklar ve ardından gelen [,}:\]] takip edebilir.
-        const rest = trailingCleaned.slice(i + 1);
-        const isClosing = /^\s*([,\}\]:])/.test(rest);
-        if (isClosing) {
-          inStr = false;
-          out += c;
-        } else {
-          // İç çift tırnak hatası (Örn: "Ollama "run" komutu") -> Tek tırnağa çevir
-          out += "'";
-        }
-      }
+      inString = !inString;
+      escapedControlChars += c;
       continue;
     }
-    if (inStr && !isEsc) {
-      if (c === '\n') { out += '\\n'; continue; }
-      if (c === '\r') { out += '\\r'; continue; }
-      if (c === '\t') { out += '\\t'; continue; }
+    if (inString && !isEsc) {
+      if (c === '\n') { escapedControlChars += '\\n'; continue; }
+      if (c === '\r') { escapedControlChars += '\\r'; continue; }
+      if (c === '\t') { escapedControlChars += '\\t'; continue; }
       const code = c.charCodeAt(0);
-      if (code < 32) {
-        continue;
-      }
+      if (code < 32) { continue; }
     }
     isEsc = false;
-    out += c;
+    escapedControlChars += c;
   }
 
-  out = out.replace(/,\s*([\}\]])/g, '$1');
   try {
-    return JSON.parse(out);
+    return JSON.parse(escapedControlChars);
   } catch (err4) {
     // Devam et
   }
 
-  // 5. Kesilmiş (truncated) JSON çıktısı için parantez tamamlama
+  // 5. Kesilmiş (truncated) JSON çıktısı için parantez ve tırnak tamamlama
   let openBraces = 0;
   let openBrackets = 0;
-  let inString = false;
+  let inStr = false;
   let esc = false;
-  for (let i = 0; i < out.length; i++) {
-    const ch = out[i];
-    if (ch === '\\' && inString) { esc = !esc; continue; }
-    if (ch === '"' && !esc) { inString = !inString; continue; }
-    if (!inString) {
+  for (let i = 0; i < escapedControlChars.length; i++) {
+    const ch = escapedControlChars[i];
+    if (ch === '\\' && inStr) { esc = !esc; continue; }
+    if (ch === '"' && !esc) { inStr = !inStr; continue; }
+    if (!inStr) {
       if (ch === '{') openBraces++;
       else if (ch === '}') openBraces--;
       else if (ch === '[') openBrackets++;
@@ -657,15 +642,15 @@ function safeParseJson(rawText, source = "LLM") {
     }
     esc = false;
   }
-  let balanced = out;
-  if (inString) balanced += '"';
+  let balanced = escapedControlChars;
+  if (inStr) balanced += '"';
   while (openBrackets > 0) { balanced += ']'; openBrackets--; }
   while (openBraces > 0) { balanced += '}'; openBraces--; }
 
   try {
     return JSON.parse(balanced);
   } catch (err5) {
-    throw new Error(`[${source}] JSON onarımından sonra dahi parse edilemedi: ${err5.message} (İlk hata: ${err1.message})`);
+    throw new Error(`[${source}] JSON onarımından sonra dahi parse edilemedi: ${err5.message} (İlk hata: ${firstError?.message || "bilinmiyor"})`);
   }
 }
 
@@ -676,7 +661,7 @@ async function callDeepSeek(model, apiKey, prompt) {
     messages: [
       {
         role: "system",
-        content: "Sen kıdemli bir Yapay Zeka, GPU/Donanım, Bulut Platformları ve Yazılım Ekosistemi Baş Danışmanısın. Yanıtında KESİNLİKLE YALNIZCA geçerli bir JSON çıktısı üret. Dize (string) değerleri içinde asla çift tırnak (\") kullanma; vurgu veya alıntı gerektiğinde daima tek tırnak (') kullan. Başka hiçbir açıklama veya markdown metin ekleme."
+        content: "Sen kıdemli bir Yapay Zeka, GPU/Donanım, Bulut Platformları ve Yazılım Ekosistemi Baş Danışmanısın. KESİN KURALLAR:\n1. Yanıtında KESİNLİKLE YALNIZCA geçerli bir JSON nesnesi üret.\n2. JSON dize (string) değerleri içinde asla kaçışsız çift tırnak (\") kullanma; HTML etiketlerinde veya alıntılarda DAİMA tek tırnak (') kullan (Örn: <p class='ozet'>, 'Claude Code').\n3. Dize içinde ham satır sonu (newline) bırakma, paragrafları mutlaka '\\n\\n' kaçışı ile yaz.\n4. Başka hiçbir açıklama veya markdown metin ekleme."
       },
       {
         role: "user",
@@ -698,7 +683,7 @@ async function callDeepSeek(model, apiKey, prompt) {
           "Authorization": `Bearer ${apiKey}`
         },
         body: JSON.stringify(payload),
-        signal: AbortSignal.timeout(180000)
+        signal: AbortSignal.timeout(240000)
       });
 
       if (res.status === 503 || res.status === 429) {
@@ -816,32 +801,34 @@ async function generateWithWaterfall(prompt, validatorFn = null) {
   // 🥇 1. ÖNCELİK: DeepSeek v4.1 Flash (deepseek-flash - https://api-docs.deepseek.com)
   if (DEEPSEEK_API_KEY) {
     const DEEPSEEK_MODELS = [
-      "deepseek-flash",    // DeepSeek V4.1 Flash (Resmi API Model Adı)
-      "deepseek-v4-pro"    // DeepSeek V4 Pro (Yedek)
+      "deepseek-flash"    // DeepSeek V4.1 Flash (Kullanıcının kesin tercihi: Yalnızca Flash)
     ];
 
     for (const model of DEEPSEEK_MODELS) {
-      console.log(`🚀 [1. ÖNCELİK - DeepSeek] Deneniyor: Model [${model}]...`);
-      try {
-        const { parsed: result, tokenUsage } = await callDeepSeek(model, DEEPSEEK_API_KEY, prompt);
-        const isRichResponse = isValid(result);
-        if (isRichResponse) {
-          const info = Array.isArray(result.daily) ? `${result.daily.length} ürün` : "sentez şeması";
-          console.log(`🎯 MÜKEMMEL BAŞARI! DeepSeek [${model}] ile ${info} başarıyla işlendi.`);
-          return { 
-            data: result, 
-            provider: "deepseek",
-            modelName: model,
-            apiKey: DEEPSEEK_API_KEY,
-            modelUsed: `DeepSeek v4.1 Flash (${model})`, 
-            keyIndex: 1, 
-            tokenUsage 
-          };
-        } else {
-          console.warn(`⚠️ [${model}] beklenen şemayı karşılamadı. Sıradaki deneniyor...`);
+      for (let attempt = 1; attempt <= 2; attempt++) {
+        console.log(`🚀 [1. ÖNCELİK - DeepSeek] Deneniyor: Model [${model}] (Deneme ${attempt}/2)...`);
+        try {
+          const { parsed: result, tokenUsage } = await callDeepSeek(model, DEEPSEEK_API_KEY, prompt);
+          const isRichResponse = isValid(result);
+          if (isRichResponse) {
+            const info = Array.isArray(result.daily) ? `${result.daily.length} ürün` : "sentez şeması";
+            console.log(`🎯 MÜKEMMEL BAŞARI! DeepSeek [${model}] ile ${info} başarıyla işlendi.`);
+            return { 
+              data: result, 
+              provider: "deepseek",
+              modelName: model,
+              apiKey: DEEPSEEK_API_KEY,
+              modelUsed: `DeepSeek v4.1 Flash (${model})`, 
+              keyIndex: 1, 
+              tokenUsage 
+            };
+          } else {
+            console.warn(`⚠️ [${model}] beklenen şemayı karşılamadı (Deneme ${attempt}/2).`);
+          }
+        } catch (err) {
+          console.warn(`⚠️ [${model}] başarısız (Deneme ${attempt}/2): ${err.message.substring(0, 150)}...`);
+          if (attempt < 2) await sleep(5000);
         }
-      } catch (err) {
-        console.warn(`⚠️ [${model}] başarısız: ${err.message.substring(0, 120)}... Sıradaki deneniyor.`);
       }
     }
   } else {
@@ -1355,7 +1342,7 @@ async function main() {
     - hackerNewsPulse "discussion" paragrafları zengin, derinlemesine ve MUTLAKA EN AZ 3-4 CÜMLE olmalıdır.
     - twitterPulse "overview" metni derin ve kapsamlı EN AZ 2-3 PARAGRAF olmalıdır.
     - Ürün gerekçeleri ("whyTrending") ve işlevleri ("primaryFunction") 1-2 net cümle ile sınırlandırılmalıdır.
-    - JSON DİZE (STRING) DEĞERLERİ İÇİNDE ASLA ÇİFT TIRNAK (") KULLANMA. Alıntı veya vurgu gereken yerlerde DAİMA tek tırnak (') kullan (Örn: 'Vibe Coding', 'Flash').
+    - JSON DİZE (STRING) DEĞERLERİ İÇİNDE ASLA KAÇIŞSIZ ÇİFT TIRNAK (") KULLANMA. Alıntı, vurgu veya HTML özniteliklerinde DAİMA tek tırnak (') kullan (Örn: <p class='ozet'>, 'Claude Code'). Paragraf geçişlerinde kesinlikle ham satır sonu (newline) bırakma, daima '\\n\\n' kaçışını yaz.
     - huggingFace ve githubRadar alanları sistem tarafından otomatik doldurulduğundan onları JSON çıktısına eklemene gerek yoktur.
 
     İSTENEN JSON ŞEMASI:

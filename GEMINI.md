@@ -213,8 +213,8 @@ Bu belge, bu projenin tüm tasarım, veri mimarisi ve geliştirme standartların
    - Faz 1 ve Faz 2 KESİNLİKLE BİREBİR AYNI MODEL ve sağlayıcı tarafından yürütülmelidir. Biri DeepSeek diğeri Gemini olamaz.
    - Faz 1'i hangi model başarıyla tamamladıysa, Faz 2 de tavizsiz olarak o modelle çalıştırılır. Model değişimi veya aşamalar arası çapraz model karmaşası KESİNLİKLE YASAKTIR.
 
-6. **Model Şelale Hiyerarşisi (DeepSeek ➔ Gemini 3.8 Flash ➔ Şelale Havuzu):**
-   - Analiz motorunda en başta 1. öncelik olarak DeepSeek (`deepseek-flash`, yedek `deepseek-v4-pro`) çağrılır.
+6. **Model Şelale Hiyerarşisi (DeepSeek Flash ➔ Gemini 3.8 Flash ➔ Şelale Havuzu):**
+   - Analiz motorunda en başta 1. öncelik olarak DeepSeek Flash (`deepseek-flash`) çağrılır (Pro modeli zaman aşımı ve aşırı gecikme oluşturmaması için kullanılmaz; doğrudan ultra hızlı ve akıl yürütme yetenekli Flash modeli 2 deneme hakkıyla çalıştırılır).
    - DeepSeek yanıt veremez veya anahtar tanımlanmamışsa 2. öncelik olarak Google Gemini 3.8 Flash (`gemini-3.8-flash` - 6'lı anahtar havuzu) devreye girer.
    - Gemini 3.8 Flash da yanıt veremezse Gemini 3.7 ve alt modeller şelale yöntemiyle sırayla taranır.
 
