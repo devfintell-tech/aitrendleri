@@ -291,15 +291,15 @@ async function fetchTwitterAgenda(apifyToken = APIFY_TOKEN) {
   const payload = {
     searchTerms: [batch1, batch2],
     queryType: 'Latest',
-    maxItems: 45
+    maxItems: 225
   };
 
   try {
-    const res = await fetch(`https://api.apify.com/v2/acts/xquik~x-tweet-scraper/run-sync-get-dataset-items?token=${apifyToken}&timeout=60`, {
+    const res = await fetch(`https://api.apify.com/v2/acts/xquik~x-tweet-scraper/run-sync-get-dataset-items?token=${apifyToken}&timeout=90`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
-      signal: AbortSignal.timeout(75000)
+      signal: AbortSignal.timeout(110000)
     });
 
     if (!res.ok) {
@@ -325,7 +325,7 @@ async function fetchTwitterAgenda(apifyToken = APIFY_TOKEN) {
     // Etkileşime göre sırala (Like + 2*Retweet)
     meaningful.sort((a, b) => ((b.likeCount || 0) + (b.retweetCount || 0) * 2) - ((a.likeCount || 0) + (a.retweetCount || 0) * 2));
 
-    const processed = meaningful.slice(0, 30).map(t => {
+    const processed = meaningful.slice(0, 100).map(t => {
       const handle = t.author?.username || t.userName || "twitter_user";
       const name = t.author?.name || t.name || handle;
       const avatar = t.author?.profilePicture || t.profilePicture || "";
@@ -961,7 +961,7 @@ async function generateMorningBriefSynthesis(finalizedData, phase1Execution = nu
     Faz 1'de titizlikle analiz edilmiş, temizlenmiş ve anayasal olarak kesinleştirilmiş nihai site verilerini okuyorsun.
 
     GÖREVİN:
-    Aşağıda sana sunulan nihai site verilerini (Reddit Zirvesi, Top AI Ürünleri, ArXiv Bilimsel Atılımları, Hacker News Mühendislik Tartışmaları ve GitHub Projeleri) derinlemesine sentezleyerek;
+    Aşağıda sana sunulan nihai site verilerini (Reddit Zirvesi, Top AI Ürünleri, ArXiv Bilimsel Atılımları, Hacker News Mühendislik Tartışmaları, GitHub Projeleri ve X / Twitter Lider Gündemi) derinlemesine sentezleyerek;
     1) Zirvedeki #1 EN ÇOK KONUŞULAN MODEL (${mostDiscussed.name}) için konuşulma hacmini ve gündemini özetleyen somut ve vurucu bir açıklama,
     2) Toplulukta en yüksek memnuniyete sahip #1 EN BEĞENİLEN MODEL (${mostLoved.name}) için övgü ve beğeni nedenlerini özetleyen somut ve vurucu bir açıklama,
     3) Sabah İstihbaratı'nın TAM 4 KİLİT MADDESİNİ (Model Savaşları, Kurumsal & Pazar Dengesi, Yazılım & Otonom Ajanlar, Yerel Zeka & Donanım) üretmektir.
@@ -981,10 +981,11 @@ async function generateMorningBriefSynthesis(finalizedData, phase1Execution = nu
 
     2. SABAH İSTİHBARATI 4 KİLİT MADDE KURALI (TAM 4 ADET):
        - Her madde doğrudan bugün sitede yer alan somut verilere atıfta bulunmalı, ezber/şablon cümleler KESİNLİKLE YASAKTIR.
+       - X (Twitter) lider verileri zorlama olmaksızın, tamamen doğal ve organik bir şekilde bu 4 maddenin içine (özellikle Yazılım/Ajanlar, Yerel Donanım ve Model Savaşları) entegre edilebilir.
        - 1. Madde ("Model Savaşları", icon: "🚀"): Günün konuşulan modelleri (${mostDiscussed.name} ve diğerleri) arasındaki rekabeti, pazar ve açık vs kapalı modeller dengesini özetle.
        - 2. Madde ("Kurumsal & Pazar Dengesi", icon: "🏢"): Şirketlerin AI yatırımları, API maliyetleri veya kurumsal entegrasyonda bugün öne çıkan kırılmayı özetle.
-       - 3. Madde ("Yazılım & Otonom Ajanlar", icon: "💻"): Hacker News'de mühendislerin tartıştığı mimari konuları ve GitHub'daki otonom ajan/CLI araçlarını harmanlayarak yazılımdaki günün dönüşümünü özetle.
-       - 4. Madde ("Yerel Zeka & Donanım", icon: "⚡"): ArXiv'deki akademik çıkarım atılımları, yerel modeller ve GPU/donanım optimizasyonlarındaki son durumu özetle.
+       - 3. Madde ("Yazılım & Otonom Ajanlar", icon: "💻"): Hacker News'de mühendislerin, GitHub'daki repoların ve X'te liderlerin tartıştığı mimari konuları ve otonom ajan/CLI araçlarını harmanlayarak yazılımdaki günün dönüşümünü özetle.
+       - 4. Madde ("Yerel Zeka & Donanım", icon: "⚡"): ArXiv'deki akademik çıkarım atılımları, X ve Reddit'teki yerel model/donanım optimizasyonlarındaki son durumu özetle.
 
     ════════════════════════════════════════════════════════════════════
     SİTENİN KESİNLEŞMİŞ GÜNCEL VERİLERİ:
@@ -1310,7 +1311,7 @@ async function main() {
     - 4 bölümün her birinin 'contentHtml' alanını <p> etiketleri içinde, 2-3 güçlü ve doyurucu paragraftan oluşan HTML formatında yaz.
 
     GÜNÜN SÖZLÜĞÜ (dailyGlossary) - TAM 9 ADET KAVRAM:
-    - YALNIZCA o gün sitede (makalelerde, modellerde, tartışmalarda) bizzat geçen 9 teknik kavramı seç.
+    - YALNIZCA o gün sitede (makalelerde, modellerde, Hacker News tartışmalarında veya X liderlerinin teknik gündeminde) bizzat geçen 9 teknik kavramı seç. Twitter liderlerinin gündeme getirdiği yeni kavram veya jargondan da doğal olarak seçilebilir.
     - Her kavram için id ("glossary-1"..."glossary-9"), term, category, definition (1-2 cümlelik akıcı, doyurucu Türkçe açıklama) üret.
 
     HACKER NEWS GELİŞTİRİCİ NABZI (hackerNewsPulse) - TAM 8 ADET TARTIŞMA:
@@ -1360,7 +1361,7 @@ async function main() {
           { "tag": "Yerel Zeka & Donanım", "icon": "⚡", "text": "Açık modeller, GPU veya çıkarım motorlarındaki son durum." }
         ]
       },
-      "executiveSummary": "Toplanan tüm 50 Reddit topluluğundaki sıcak gönderileri, tartışmaları, donanım krizlerini, ArXiv atılımlarını ve Hacker News nabzını eksiksiz harmanlayarak; büyük resmi ve teknoloji dengesini ortaya koyan en az 2 paragraflık derin, kapsamlı ve stratejik Türkçe Yönetici Özeti",
+      "executiveSummary": "Toplanan tüm 50 Reddit topluluğundaki sıcak gönderileri, tartışmaları, donanım krizlerini, ArXiv atılımlarını, Hacker News nabzını ve X (Twitter) liderlerinin teknik gündemini doğal bir şekilde harmanlayarak; büyük resmi ve teknoloji dengesini ortaya koyan en az 2 paragraflık derin, kapsamlı ve stratejik Türkçe Yönetici Özeti (X verileri zorlama olmadan, doğal ve organik bir şekilde özete katkı sağlar).",
       "daily": [
         // EN AZ 10-14 ADET gerçek somut AI ürünü
         {

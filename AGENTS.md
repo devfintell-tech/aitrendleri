@@ -225,7 +225,7 @@ Bu belge, bu projenin tüm tasarım, veri mimarisi ve geliştirme standartların
 1. **Seçkin 30 Hesap Listesi & Bütçe Koruma Prensibi:**
    - X gündemi için internetteki genel ve gürültülü akış yerine, yapay zeka ekosisteminin en saygın 30 öncüsü, araştırmacısı ve çekirdek geliştiricisi taranır:
      1. `@simonw` (Simon Willison), 2. `@swyx` (Shawn Wang), 3. `@_philschmid` (Philipp Schmid), 4. `@jeremyphoward` (Jeremy Howard), 5. `@awnihannun` (Awni Hannun), 6. `@ggerganov` (Georgi Gerganov), 7. `@chipro` (Chip Huyen), 8. `@hwchase17` (Harrison Chase), 9. `@jerryjliu0` (Jerry Liu), 10. `@HamelHusain` (Hamel Husain), 11. `@karpathy` (Andrej Karpathy), 12. `@fchollet` (François Chollet), 13. `@srush_nlp` (Sasha Rush), 14. `@tri_dao` (Tri Dao), 15. `@Tim_Dettmers` (Tim Dettmers), 16. `@rasbt` (Sebastian Raschka), 17. `@lilianweng` (Lilian Weng), 18. `@eugeneyan` (Eugene Yan), 19. `@emollick` (Ethan Mollick), 20. `@swann_vance` (Swann Vance), 21. `@wattenberger` (Amelia Wattenberger), 22. `@minchoi` (Min Choi), 23. `@fofrAI` (fofr), 24. `@LinusEkenstam` (Linus Ekenstam), 25. `@bilawalsidhu` (Bilawal Sidhu), 26. `@arankomatsuzaki` (Aran Komatsuzaki), 27. `@natolambert` (Nathan Lambert), 28. `@RisingSayak` (Sayak Paul), 29. `@cwolferesearch` (Cameron R. Wolfe), 30. `@rainisto` (Roope Rainisto).
-   - Apify 5$ aylık ücretsiz kredisi 31 güne bölünerek (~0.161$/gün bütçe) ultra verimli çalıştırılır (`xquik~x-tweet-scraper`). Günlük çekim 30-45 tweet ve ~10 saniyelik işlem süresiyle sınırlandırılır.
+   - Apify 5$ aylık ücretsiz kredisi verimli kullanılarak günlük çekim ~220-225 tweet seviyesine çıkarılmıştır (`xquik~x-tweet-scraper`). Filtrelenmiş en kaliteli 100 tweet LLM analizine aktarılır.
 
 2. **Kesin Son 24 Saat Zaman Filtresi & Etkileşim Sıralaması:**
    - Yalnızca ve sadece son 24 saat içinde (`cutoff = Date.now() - 24*3600*1000`) paylaşılmış tweetler işleme alınır.
@@ -237,10 +237,12 @@ Bu belge, bu projenin tüm tasarım, veri mimarisi ve geliştirme standartların
      - **2. Bölüm - Reddit Mantığı Popüler Ürün Sıralaması (`trendingProducts`):** Tweetlerde konuşulan somut kütüphane ve araçların Hype Skoruna (`hypeScore`) göre yukarıdan aşağıya alt alta sıralandığı liste. Her ürün için `rank`, `name`, `category`, asla sarkmayan `HYPE: X.X/10` ve `BEĞENİ: X.X/10` (1-10 puan), *Ne İşe Yarar?* (`primaryFunction`), *X Radarında Neden Öne Çıktı?* (`whyDiscussed`) ve *Bahseden AI Liderleri* (`mentionedBy`).
      - **3. Bölüm - İlginç Denemeler, İş Akışları & Yeni Geliştirmeler (`experimentsAndDevelopments`):** Liderlerin bizzat test ettiği sıra dışı mimari denemeler, iş akışı otomasyonları ve laboratuvar kıyaslamaları (örn. simüle merak testleri, sıfır swap bellek optimizasyonları, prompt injection testleri). 2 sütunlu kartlar halinde sunulur.
 
-4. **CSS Subgrid, Başlık Çizgisi Eşitlemesi ve Sıfır Kaydırma Çubuğu İlkesi:**
+4. **Konumlandırma & Reddit Modelleri Altında Yer Alma İlkesi:**
+   - X (Twitter) Nabzı bölümü, kullanıcıların ana model sıralamasını inceledikten hemen sonra teknik liderlerin gündemini görebilmesi için doğrudan Reddit modelleri tablosunun altında konumlandırılır.
+
+5. **Özetlere ve Sözlüğe Doğal & Organik Entegrasyon:**
+   - X verileri zorlama/yapay dayatma olmaksızın; Yönetici Özeti (`executiveSummary`), Sabah İstihbaratı 4 Kilit Madde (`morningBrief.bullets`) ve Günün Sözlüğü (`dailyGlossary`) sentezlenirken doğal bir bilgi havuzu olarak kullanılır. Liderlerin radarındaki önemli teknik tartışmalar veya yeni kavramlar özetlere ve sözlüğe doğal olarak akar.
+
+6. **CSS Subgrid, Başlık Çizgisi Eşitlemesi ve Sıfır Kaydırma Çubuğu İlkesi:**
    - Kartların hiçbirinde dikey veya yatay kaydırma çubuğu (scrollbar) KULLANILAMAZ; kutular en uzun metne göre subgrid ile eşitlenir.
    - Deney kartlarında başlık altı ayrım çizgileri (`border-b`) aynı satırdaki kartlar arasında milimetrik olarak kilitlenir. Metinler doğal olarak uzar.
-
-
-
-
