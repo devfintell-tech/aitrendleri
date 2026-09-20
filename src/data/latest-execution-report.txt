@@ -1,6 +1,6 @@
 ================================================================================
 🤖 AITRENDLERI.COM OTONOM TARAMA VE ANALİZ TERMİNAL RAPORU
-Tarih: 20 Eylül 2026 | İşlem Süresi: 274s
+Tarih: 20 Eylül 2026 | İşlem Süresi: 257s
 ================================================================================
 
 [1. MODEL & ŞELALE AKTİVİTESİ]
@@ -23,7 +23,7 @@ Tarih: 20 Eylül 2026 | İşlem Süresi: 274s
   5. [🔴 ERR 429] Yazılım Geliştirici, API & Kodlama Dünyası: 0 gönderi
      └─ Hata/Uyarı: Reddit HTTP 429 (Rate Limit)
   6. [🟢 OK 200] Donanım, GPU, CPU & Bulut Altyapısı: 15 gönderi
-     └─ Dağılım: r/hardware: 1, r/sysadmin: 4, r/AMD_Stock: 2, r/devops: 2, r/nvidia: 2, r/googlecloud: 1, r/Cloud: 3
+     └─ Dağılım: r/hardware: 1, r/sysadmin: 4, r/AMD_Stock: 3, r/devops: 2, r/nvidia: 2, r/googlecloud: 1, r/Cloud: 2
   7. [🔴 ERR 429] Görsel, Video & Medya Üretimi: 0 gönderi
      └─ Hata/Uyarı: Reddit HTTP 429 (Rate Limit)
 
@@ -34,7 +34,7 @@ Tarih: 20 Eylül 2026 | İşlem Süresi: 274s
   ✔ Düşük Sinyal / Takiptekiler   : 20
   ✔ Sıfır Çekenler (Dead Sub)     : 0
   ------------------------------------------------------------------------------
-  🏆 En Çok Katkı Sağlayanlar: r/ClaudeAI (40), r/vibecoding (37), r/vscode (37), r/ChatGPTCoding (35), r/CursorAI (32)
+  🏆 En Çok Katkı Sağlayanlar: r/vscode (42), r/ClaudeAI (41), r/vibecoding (40), r/ChatGPTCoding (37), r/CursorAI (34)
   ⚠️ Düşük Sinyal Verenler   : r/copilot, r/CrewAI, r/agenticai, r/Singularity, r/LocalLLaMA, r/ollama, r/vllm, r/huggingface, r/OpenSourceAI, r/MistralAI, r/selfhosted, r/AI_Tools, r/GenerativeAI, r/GoogleCloud, r/ComfyUI, r/StableDiffusion, r/Midjourney, r/Sora, r/RunwayML, r/artificial
   🚫 Değiştirilmesi Önerilen : Yok (Tümü veri sağlıyor)
 
@@ -46,6 +46,6 @@ Tarih: 20 Eylül 2026 | İşlem Süresi: 274s
 
 [5. GÜNÜN ORGANİK 1 NUMARALI LİDERİ]
   👑 Claude Code (Skor: 99/100 - Kriz Gündemi)
-  📝 Neden Seçildi: r/ClaudeAI'de bir kullanıcının 48 bin dosyasının silindiğini bildirmesi, ajanların yıkıcı komut güvenliği konusunda büyük tepki çekti.
+  📝 Neden Seçildi: Bir kullanıcının 48 bin dosyasının silinmesi ve 5 saatlik oturum limitlerinin 3 ajanla dakikalar içinde tükenmesi topluluğu ayağa kaldırdı.
 
 ================================================================================

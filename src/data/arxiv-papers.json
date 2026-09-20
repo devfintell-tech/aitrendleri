@@ -62,7 +62,9 @@
     "2609.20768v1",
     "2609.20814v1",
     "2609.20758v1",
-    "2609.20808v1"
+    "2609.20808v1",
+    "2609.20815v1",
+    "2609.20765v1"
   ],
   "dailyRecords": [
     {
@@ -70,49 +72,47 @@
       "isoDate": "2026-09-20",
       "papers": [
         {
-          "id": "2609.20814v1",
-          "titleTr": "Dağıtım Kayması Nöral PDE Vekillerinde Ön Eğitim Kazanımlarını Nasıl Şekillendiriyor?",
-          "title": "How Does Distribution Shift Shape Pretraining Gains in Neural PDE Surrogates?",
-          "arxivUrl": "http://arxiv.org/abs/2609.20814v1",
+          "id": "2609.20815v1",
+          "titleTr": "Kolorektal Polipozis İçin Endoskopik Görüntü ve Video Veri Kümesi",
+          "title": "ERCPMP-Gx: Endoscopic Image and Video Dataset for Morphological, Histopathological, and Genomic Characterization of Colorectal Polyposis",
+          "arxivUrl": "http://arxiv.org/abs/2609.20815v1",
           "authors": [
-            "Pochinapeddi Sai Bhargav",
-            "Nithin Somasekharan",
-            "Rohit Sunil Kanchi"
+            "Zahra Ghaffari",
+            "Massih Bahar",
+            "Mojgan Forootan"
           ],
-          "category": "cs.LG",
-          "impactScore": 9.5,
-          "whyMad": "Ön eğitimli vekillerin ne zaman gerçekten işe yaradığını bileşen bazında ayırarak CFD gibi yüksek maliyetli alanlarda mühendislik maliyetini düşürüyor.",
-          "summary": "Bir hava folyosu ailesinde 254 bin RANS çözümü üzerinde ön eğitilen vekil, yeni geometriye aktarılırken hangi kayma bileşenlerinin kazancı belirlediğini ölçüyor."
+          "category": "cs.CV",
+          "impactScore": 9.2,
+          "whyMad": "Sporadik polip yerine polipozis fenotipini histopatoloji ve genomik ile ilişkilendiren ilk açık kaynak, kalıtsal kanser taramasını ölçeklenebilir kılıyor.",
+          "summary": "Kolorektal polipozis sendromlarının erken ve doğru sınıflandırılması için endoskopik görüntü, doku ve genomik veriyi tek çatıda birleştiriyor."
         },
         {
-          "id": "2609.20758v1",
-          "titleTr": "Parçalanmış Yapay Zeka Değerlendirmesi için Tahmin Destekli Düzleştirme ve Doğrulama",
-          "title": "Prediction-Powered Smoothing and Validation for Disaggregated AI Evaluation",
-          "arxivUrl": "http://arxiv.org/abs/2609.20758v1",
+          "id": "2609.20765v1",
+          "titleTr": "Girişim Altında Heterojen Protokollerle Kalibre Edilmiş RF Parmak İzi Tanıma",
+          "title": "Calibrated RF-Fingerprinting Under Interference With Heterogeneous Transmission Protocols",
+          "arxivUrl": "http://arxiv.org/abs/2609.20765v1",
           "authors": [
-            "Sho Kawano",
-            "Zehang Richard Li",
-            "Paul A. Parker"
+            "Tariq Abdul-Quddoos",
+            "Xiangfang Li",
+            "Lijun Qian"
           ],
-          "category": "cs.LG",
-          "impactScore": 9.4,
-          "whyMad": "Ajan değerlendirmesinde pahalı etiketlemeyi azaltıp alan bazlı güvenilir tahmin aralıkları sunarak benchmark maliyetini düşürüyor.",
-          "summary": "Değerlendirme kümesini sonlu popülasyon olarak modelleyip tahmin destekli çıkarımı düzleştirmeyle birleştirerek az etiketli alanlarda doğruluğu artırıyor."
+          "category": "eess.SP",
+          "impactScore": 9.1,
+          "whyMad": "RF parmak izini ilk kez eş kanallı girişim ve çoklu verici senaryosunda ele alarak laboratuvar varsayımını gerçek dünyaya taşıyor.",
+          "summary": "Birden fazla vericinin sinyalleri üst üste bindiğinde cihaz kimliğini kalibre ederek tanımlayan bir spektrum izleme yöntemi öneriyor."
         },
         {
-          "id": "2609.20808v1",
-          "titleTr": "Çevrimiçi Söylemde Gruplar Arası Düşmanlık Modellerini Birleştirmek",
-          "title": "Unifying Models of Intergroup Hostility in Online Discourse",
-          "arxivUrl": "http://arxiv.org/abs/2609.20808v1",
+          "id": "2609.11923v1",
+          "titleTr": "GPU-CFR: Oyunu Statik Veri Akışına Derleyerek 80 Kat Hızlı Karşıolgusal Pişmanlık Minimizasyonu",
+          "title": "GPU-CFR: 80x Faster Counterfactual Regret Minimization by Compiling the Game to Static Dataflow and CUDA Graph Replay",
+          "arxivUrl": "http://arxiv.org/abs/2609.11923v1",
           "authors": [
-            "Patrick Gerard",
-            "Julia Mendelsohn",
-            "Kristina Lerman"
+            "arXiv Authors"
           ],
-          "category": "cs.CL",
-          "impactScore": 9.3,
-          "whyMad": "Paralel gelişen sosyal ve ahlaki psikoloji teorilerini gerçek veriyle ilk kez karşı karşıya test ederek moderasyon stratejilerine sağlam zemin sağlıyor.",
-          "summary": "Düşman söylemin nasıl geliştiğine dair çatışan teorileri büyük ölçekli çevrimiçi söylem verisiyle karşılaştırıp birleşik bir çerçeve öneriyor."
+          "category": "cs.LG",
+          "impactScore": 9.7,
+          "whyMad": "CPU'da darboğaz olan bir hesaplamayı GPU'ya taşıyıp 80 kat hızlandırarak ajanların stratejik karar verme hızını değiştiriyor.",
+          "summary": "Karşıolgusal pişmanlık minimizasyonunu statik veri akışına derleyip CUDA Graph Replay ile yeniden oynatarak GPU üzerinde hızlandırıyor."
         }
       ]
     },
