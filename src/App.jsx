@@ -27,7 +27,9 @@ import {
   Cpu,
   Clock,
   Zap,
-  X
+  X,
+  Mail,
+  Send
 } from 'lucide-react';
 
 // Arşivlenen geçmiş günlük raporları dinamik olarak içeri aktar
@@ -431,6 +433,45 @@ export default function App() {
   const [isBriefExpanded, setIsBriefExpanded] = useState(true);
   const [copiedCmdId, setCopiedCmdId] = useState(null);
   const [isSystemInfoOpen, setIsSystemInfoOpen] = useState(false);
+  const [newsletterEmail, setNewsletterEmail] = useState('');
+  const [subscribeStatus, setSubscribeStatus] = useState('idle'); // 'idle' | 'loading' | 'success' | 'error'
+  const [subscribeMessage, setSubscribeMessage] = useState('');
+  const [isNewsletterModalOpen, setIsNewsletterModalOpen] = useState(false);
+
+  const handleSubscribe = async (e) => {
+    if (e) e.preventDefault();
+    const email = (newsletterEmail || '').trim().toLowerCase();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email || !emailRegex.test(email)) {
+      setSubscribeStatus('error');
+      setSubscribeMessage('Lütfen geçerli bir e-posta adresi giriniz.');
+      return;
+    }
+
+    setSubscribeStatus('loading');
+    setSubscribeMessage('');
+
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+      });
+
+      const data = await res.json().catch(() => ({}));
+      if (res.ok && data.success) {
+        setSubscribeStatus('success');
+        setSubscribeMessage(data.message || 'Tebrikler! Bültene başarıyla abone oldunuz.');
+        setNewsletterEmail('');
+      } else {
+        setSubscribeStatus('error');
+        setSubscribeMessage(data.error || 'Abonelik sırasında bir hata oluştu. Lütfen tekrar deneyin.');
+      }
+    } catch (err) {
+      setSubscribeStatus('error');
+      setSubscribeMessage('Bağlantı hatası oluştu. Lütfen tekrar deneyin.');
+    }
+  };
 
   const handleCopyCmd = (id, cmd) => {
     if (navigator?.clipboard) {
@@ -1820,6 +1861,106 @@ ${bulletsText}
         </div>
       )}
 
+      {/* 📬 BÜLTEN ABONELİK MODALI (Header butonu veya doğrudan tetikleme ile açılır) */}
+      {isNewsletterModalOpen && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs animate-in fade-in duration-150"
+          onClick={() => setIsNewsletterModalOpen(false)}
+        >
+          <div 
+            className="bg-white border border-slate-300 rounded-lg shadow-2xl max-w-md w-full overflow-hidden text-slate-800"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal Header */}
+            <div className="bg-[#107c41] text-white px-4 py-3 flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <div className="flex items-center justify-center w-6 h-6 bg-white text-[#107c41] font-black rounded text-[11px] shadow-xs">
+                  AI
+                </div>
+                <h3 className="font-bold text-sm font-mono tracking-tight">Günlük AI İstihbarat Bülteni</h3>
+              </div>
+              <button 
+                type="button"
+                onClick={() => setIsNewsletterModalOpen(false)}
+                className="text-emerald-100 hover:text-white p-1 rounded hover:bg-[#0c592d] transition cursor-pointer"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            {/* Modal Body */}
+            <div className="p-5 space-y-4">
+              <div className="space-y-1.5">
+                <div className="flex items-center gap-1.5">
+                  <span className="text-base">🌅</span>
+                  <span className="font-bold text-slate-900 text-sm font-mono">Her Sabah Saat 08:00'de</span>
+                  <span className="text-[10px] font-mono font-black bg-amber-100 text-amber-900 border border-amber-300 px-1.5 py-0.2 rounded uppercase">
+                    Ücretsiz
+                  </span>
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  50 seçkin Reddit yapay zeka topluluğunun, X (Twitter) öncülerinin, Hugging Face açık modellerinin ve ArXiv makalelerinin 5 dakikalık konsantre özeti doğrudan gelen kutunuzda olsun.
+                </p>
+              </div>
+
+              {subscribeStatus === 'success' ? (
+                <div className="bg-emerald-50 border border-emerald-300 rounded p-4 text-center space-y-2">
+                  <div className="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center mx-auto shadow-xs">
+                    <Check className="w-5 h-5" />
+                  </div>
+                  <div className="font-bold text-emerald-950 text-xs font-mono">
+                    {subscribeMessage || 'Aramıza hoş geldiniz!'}
+                  </div>
+                  <p className="text-[11px] text-emerald-800 leading-tight">
+                    İlk bülteniniz yarın sabah gelen kutunuzda olacak.
+                  </p>
+                </div>
+              ) : (
+                <form onSubmit={handleSubscribe} className="space-y-3">
+                  <div>
+                    <label className="block text-[11px] font-mono font-bold text-slate-700 uppercase mb-1">
+                      E-Posta Adresiniz:
+                    </label>
+                    <input
+                      type="email"
+                      required
+                      autoFocus
+                      value={newsletterEmail}
+                      onChange={(e) => {
+                        setNewsletterEmail(e.target.value);
+                        if (subscribeStatus === 'error') setSubscribeStatus('idle');
+                      }}
+                      placeholder="ornek@alanadi.com"
+                      className="w-full bg-[#f8fafc] border border-slate-300 text-slate-900 placeholder-slate-400 px-3 py-2 rounded text-xs font-mono focus:outline-none focus:border-[#107c41] focus:ring-1 focus:ring-[#107c41] transition"
+                    />
+                  </div>
+
+                  {subscribeStatus === 'error' && (
+                    <div className="text-xs font-mono text-rose-600 bg-rose-50 border border-rose-200 p-2 rounded flex items-center gap-1.5">
+                      <span>⚠️</span>
+                      <span>{subscribeMessage}</span>
+                    </div>
+                  )}
+
+                  <button
+                    type="submit"
+                    disabled={subscribeStatus === 'loading'}
+                    className="w-full bg-[#107c41] hover:bg-[#0c592d] active:scale-[0.98] text-white font-mono font-bold text-xs py-2.5 rounded shadow-xs transition flex items-center justify-center gap-1.5 cursor-pointer disabled:opacity-50"
+                  >
+                    <Send className="w-3.5 h-3.5" />
+                    <span>{subscribeStatus === 'loading' ? 'Kaydediliyor...' : 'Ücretsiz Abone Ol →'}</span>
+                  </button>
+                </form>
+              )}
+
+              <div className="text-[10px] text-slate-400 font-mono text-center pt-1 border-t border-slate-100">
+                Spam yok. İstediğiniz an tek tıkla abonelikten çıkabilirsiniz.
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* 3. EXCEL FORMÜL VE AD ÇUBUĞU (Formula Bar) */}
       <div className="bg-white border-b border-[#d1d5db] py-1.5 px-4 shadow-xs">
         <div className="max-w-7xl mx-auto flex items-center gap-2 text-xs font-mono">
@@ -1907,6 +2048,17 @@ ${bulletsText}
                       <span>Bülteni Kopyala</span>
                     </>
                   )}
+                </button>
+
+                {/* 📬 Bültene Abone Ol Butonu */}
+                <button
+                  type="button"
+                  onClick={() => setIsNewsletterModalOpen(true)}
+                  className="flex items-center gap-1 text-[11px] font-mono px-2 py-0.5 rounded bg-[#107c41] hover:bg-[#0c592d] active:scale-95 text-white font-bold transition shadow-2xs cursor-pointer"
+                  title="Her sabah günün özetini e-posta olarak almak için abone olun"
+                >
+                  <Mail className="w-3 h-3 text-emerald-200" />
+                  <span>Bültene Abone Ol</span>
                 </button>
 
                 <button
@@ -2053,6 +2205,67 @@ ${bulletsText}
             )}
           </section>
         )}
+
+        {/* 📬 GÜNLÜK AI BÜLTENİNE ÜCRETSİZ ABONE OL ŞERİDİ */}
+        <section className="bg-gradient-to-r from-[#0d5c30] to-[#107c41] text-white rounded p-3.5 sm:p-4 shadow-xs border border-emerald-600 flex flex-col md:flex-row items-center justify-between gap-3.5">
+          <div className="flex items-center gap-3 w-full md:w-auto">
+            <div className="w-10 h-10 rounded bg-[#094723] border border-emerald-400/40 flex items-center justify-center shrink-0 shadow-inner">
+              <Mail className="w-5 h-5 text-emerald-200" />
+            </div>
+            <div>
+              <div className="flex items-center gap-2 flex-wrap">
+                <h3 className="font-bold text-sm sm:text-base font-mono leading-tight text-white">
+                  Her Sabah 08:00'de Günlük AI İstihbaratı
+                </h3>
+                <span className="text-[10px] font-mono font-black bg-amber-400 text-amber-950 px-1.5 py-0.2 rounded uppercase tracking-wider">
+                  Ücretsiz
+                </span>
+              </div>
+              <p className="text-xs text-emerald-100/90 leading-tight pt-0.5">
+                50 Reddit topluluğu, X öncüleri, Hugging Face ve ArXiv'in 5 dakikalık hap özeti doğrudan gelen kutunuza gelsin.
+              </p>
+            </div>
+          </div>
+
+          <div className="w-full md:w-auto shrink-0">
+            {subscribeStatus === 'success' ? (
+              <div className="flex items-center gap-2 bg-[#094723] border border-emerald-300/50 px-3.5 py-2 rounded text-xs font-mono text-emerald-100">
+                <Check className="w-4 h-4 text-emerald-300 shrink-0" />
+                <span>{subscribeMessage || 'Aramıza hoş geldiniz! İlk bülteniniz yarın sabah gelen kutunuzda.'}</span>
+              </div>
+            ) : (
+              <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 w-full md:w-auto">
+                <div className="relative">
+                  <input
+                    type="email"
+                    required
+                    value={newsletterEmail}
+                    onChange={(e) => {
+                      setNewsletterEmail(e.target.value);
+                      if (subscribeStatus === 'error') setSubscribeStatus('idle');
+                    }}
+                    placeholder="E-posta adresinizi yazın..."
+                    className="w-full sm:w-64 bg-[#083e1f] border border-emerald-400/40 text-white placeholder-emerald-300/60 px-3 py-2 rounded text-xs font-mono focus:outline-none focus:border-white focus:ring-1 focus:ring-white transition"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  disabled={subscribeStatus === 'loading'}
+                  className="bg-white hover:bg-emerald-50 active:scale-95 text-[#107c41] font-mono font-bold text-xs px-4 py-2 rounded shadow-xs transition flex items-center justify-center gap-1.5 shrink-0 cursor-pointer disabled:opacity-50"
+                >
+                  <Send className="w-3.5 h-3.5" />
+                  <span>{subscribeStatus === 'loading' ? 'Kaydediliyor...' : 'Abone Ol'}</span>
+                </button>
+              </form>
+            )}
+            {subscribeStatus === 'error' && (
+              <div className="text-[11px] font-mono text-rose-200 pt-1 flex items-center gap-1">
+                <span>⚠️</span>
+                <span>{subscribeMessage}</span>
+              </div>
+            )}
+          </div>
+        </section>
 
         {/* 📖 GÜNÜN SÖZLÜĞÜ (Doğrudan Odak / Sekme Görünümü) */}
         {timeframe === 'glossary' && report.dailyGlossary && report.dailyGlossary.length > 0 && (

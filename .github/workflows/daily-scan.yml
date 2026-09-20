@@ -46,7 +46,13 @@ jobs:
           npm run build
           npx wrangler pages deploy dist --project-name aitrendleri
 
-      - name: Bilgilendirme E-postası Gönder
+      - name: Günlük E-posta Bültenini Abonelere Gönder
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          RESEND_AUDIENCE_ID: '799a53ac-4334-4193-87a1-d0b15c54acf1'
+        run: node scripts/send-newsletter.js
+
+      - name: Bilgilendirme E-postası Gönder (Yönetici)
         env:
           ALICI_MAIL: ${{ secrets.ALICI_MAIL || 'orhaner1907@gmail.com' }}
           GAS_WEBHOOK_URL: ${{ secrets.GAS_WEBHOOK_URL }}

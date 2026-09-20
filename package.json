@@ -8,6 +8,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "crawl": "node scripts/run-analysis.js",
+    "newsletter": "node scripts/send-newsletter.js",
     "deploy": "vite build && wrangler pages deploy dist --project-name aitrendleri",
     "update-live": "node scripts/run-analysis.js && vite build && wrangler pages deploy dist --project-name aitrendleri"
   },
