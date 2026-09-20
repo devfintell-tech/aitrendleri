@@ -810,13 +810,16 @@ async function main() {
     - 'name' alanı YALNIZCA ve SADECE ürünün saf marka/yazılım adıdır.
     - Asla parantez açma veya parantez içinde açıklama ekleme.
 
-    🚨 EN KRİTİK KURAL 5: HYPE SKORU (KONUŞULMA DERECESİ) VE TOPLULUK BEĞENİ PUANI AYRIMI:
-    - 1) HYPE PUANI (hypeScore 0.0 - 10.0): O ürünün son 24 saatte Reddit ve topluluklarda ne kadar yoğun konuşulduğunu, gündemde ne kadar yer kapladığını ve popülarite/buzz hacmini belirler. İster olumlu övgüyle ister olumsuz şikayet/skandalla konuşulsun, çok konuşulan her ürünün hypeScore'u yüksektir!
+    🚨 EN KRİTİK KURAL 5: HYPE SKORU (KONUŞULMA DERECESİ) VE TOPLULUK BEĞENİ PUANI AYRIMI (SIFIR KORELASYON ZORLAMASI):
+    - DİKKAT: Hype Skoru ile Beğeni Puanı arasında HİÇBİR ZORUNLU KORELASYON YOKTUR! ÇOK KONUŞULAN BİR ÜRÜN TOPLULUK TARAFINDAN NEFRET EDİLİYOR OLABİLİR.
+    - 1) HYPE PUANI (hypeScore 0.0 - 10.0): O ürünün son 24 saatte Reddit ve topluluklarda ne kadar yoğun konuşulduğunu, gündemde ne kadar yer kapladığını ve popülarite/buzz hacmini belirler.
+       * İster olumlu övgüyle ister olumsuz şikayet/skandalla konuşulsun, çok konuşulan her ürünün hypeScore'u yüksektir! Örneğin: Bir model çöktüyse, sansür geldiyse veya şirket büyük tepki çektiyse o gün herkes onu konuşur -> Hype Skoru 9.7 - 9.9 verilir.
        * TÜM ÜRÜN SIRALAMALARI (daily, weekly, monthly) KESİNLİKLE VE TAVİZSİZ OLARAK hypeScore'a GÖRE YUKARIDAN AŞAĞIYA (BÜYÜKTEN KÜÇÜĞE / DESCENDING) SIRALANMALIDIR! En çok konuşulan ürün zirvede (1. sıra) yer alır.
     - 2) TOPLULUK BEĞENİ PUANI (sentimentScore 0 - 100): Ürünün topluluk tarafından beğenilip beğenilmediğini (memnuniyet ve pozitif/negatif duygu) skorlar.
-       * EĞER TOPLULUK BİR ÜRÜNÜ ELEŞTİRİYOR, ŞİKAYET EDİYORSA (örn: kota/limit baskısı, kesintiler, sansür, fahiş fiyat, regresyon, bug):
-         -> sentimentScore (Topluluk Beğenisi): 20 - 55 ARASI DÜŞÜK VER (Örn: 28, 38). (Çok konuşuluyorsa hypeScore yine yüksek kalır!).
-         -> badge: "Eleştiriliyor", "Limit Tepkisi", "Kesinti Sorunu" gibi rozetler koy.
+       * EĞER TOPLULUK BİR ÜRÜNÜ ELEŞTİRİYOR, ŞİKAYET EDİYOR VEYA NEFRET KUSUYORSA (örn: kota/limit baskısı, kesintiler, sansür, fahiş fiyat, bozulma, çöküş, hata):
+         -> sentimentScore (Topluluk Beğenisi): KESİNLİKLE 20 - 55 ARASI DÜŞÜK VER (Örn: 24, 35, 42).
+         -> Hype Skoru yüksek (örn: 9.8) iken Beğeni Puanı düşük (örn: %25) OLABİLİR ve bu tamamen doğaldır!
+         -> badge: "Eleştiriliyor", "Limit Tepkisi", "Kesinti Sorunu", "Sansür Tepkisi" gibi rozetler koy.
          -> whyTrending alanına topluluğun NEDEN eleştirdiğini ve neyden şikayet ettiğini detaylıca yaz!
        * EĞER TOPLULUK ÜRÜNÜ ÖVÜYOR, BEĞENİYOR VE COŞKUYLA TAVSİYE EDİYORSA:
          -> sentimentScore (Topluluk Beğenisi): 85 - 99 ARASI YÜKSEK VER (Örn: 92, 97).
@@ -824,7 +827,7 @@ async function main() {
          -> whyTrending alanına topluluğun NEDEN beğendiğini ve hangi özelliğini övdüğünü detaylıca yaz!
        * EĞER TOPLULUK DENGELİ VEYA KARARSIZSA:
          -> sentimentScore: 60 - 80 arası ver.
-    - Kullanıcı tabloda bir ürünün popülaritesini Hype Skorundan, sevilip sevilmediğini ise Beğeni Puanından net olarak görecektir.
+    - Kullanıcı tabloda: "Bu ürün bugün çok konuşuluyor (Hype: 9.8) AMA herkes şikayetçi (Beğeni: %28)" gibi gerçekçi ve bağımsız bir tablo görecektir.
     ════════════════════════════════════════════════════════════════════
 
     Aşağıda derlenen son 24 saatin istihbaratı yer almaktadır:
@@ -2225,15 +2228,14 @@ function enforceStrictStandards(data, hfModels = [], candidateArxiv = [], hnPost
             const d = Number(item.scoreDelta || 0);
             const b = (item.badge || '').toLowerCase();
             const w = (item.whyTrending || '').toLowerCase();
-            const isCrit = b.includes('eleştir') || b.includes('şikayet') || b.includes('düşüş') || w.includes('şikayet') || w.includes('eleştiri') || item.trend === 'cooling';
+            const isCrit = b.includes('eleştir') || b.includes('şikayet') || b.includes('düşüş') || b.includes('tepki') || b.includes('kesinti') || w.includes('şikayet') || w.includes('eleştiri') || w.includes('tepki') || item.trend === 'cooling';
+            const isPraised = b.includes('lider') || b.includes('favori') || b.includes('verim') || b.includes('rekor') || w.includes('övgü') || w.includes('başarılı') || w.includes('beğen') || d > 0 || item.trend === 'skyrocketing';
             if (isCrit) {
-              sScore = Math.max(25, Math.min(55, Math.round(45 + d * 15)));
-            } else if (d > 0 || item.trend === 'skyrocketing') {
-              sScore = Math.min(99, Math.max(82, Math.round(88 + d * 8)));
-            } else if ((item.hypeScore || 0) >= 9.0) {
-              sScore = Math.round(85 + ((item.hypeScore || 9) - 9.0) * 10);
+              sScore = Math.max(20, Math.min(55, Math.round(40 + d * 10)));
+            } else if (isPraised) {
+              sScore = Math.min(99, Math.max(80, Math.round(88 + d * 6)));
             } else {
-              sScore = 75;
+              sScore = 70;
             }
           }
           return {

@@ -1075,7 +1075,7 @@ export default function App() {
   };
 
   const getToolSentiment = (tool) => {
-    if (!tool) return { score: 75, label: 'Karışık', colorClass: 'text-amber-700', badgeClass: 'bg-amber-50 text-amber-800 border-amber-200' };
+    if (!tool) return { score: 70, label: 'Karışık', colorClass: 'text-amber-700', badgeClass: 'bg-amber-50 text-amber-800 border-amber-200' };
     
     let score = null;
     if (typeof tool.sentimentScore === 'number' && !isNaN(tool.sentimentScore)) {
@@ -1084,16 +1084,15 @@ export default function App() {
       const delta = Number(tool.scoreDelta || 0);
       const badge = (tool.badge || '').toLowerCase();
       const why = (tool.whyTrending || '').toLowerCase();
-      const isCriticized = badge.includes('eleştir') || badge.includes('şikayet') || badge.includes('düşüş') || why.includes('şikayet') || why.includes('eleştiri') || tool.trend === 'cooling';
+      const isCriticized = badge.includes('eleştir') || badge.includes('şikayet') || badge.includes('düşüş') || badge.includes('tepki') || badge.includes('kesinti') || why.includes('şikayet') || why.includes('eleştiri') || why.includes('tepki') || tool.trend === 'cooling';
+      const isPraised = badge.includes('lider') || badge.includes('favori') || badge.includes('verim') || badge.includes('rekor') || why.includes('övgü') || why.includes('başarılı') || why.includes('beğen') || delta > 0 || tool.trend === 'skyrocketing';
       
       if (isCriticized) {
-        score = Math.max(25, Math.min(55, Math.round(45 + delta * 15)));
-      } else if (delta > 0 || tool.trend === 'skyrocketing') {
-        score = Math.min(99, Math.max(82, Math.round(88 + delta * 8)));
-      } else if ((tool.hypeScore || 0) >= 9.0) {
-        score = Math.round(85 + ((tool.hypeScore || 9) - 9.0) * 10);
+        score = Math.max(20, Math.min(55, Math.round(40 + delta * 10)));
+      } else if (isPraised) {
+        score = Math.min(99, Math.max(80, Math.round(88 + delta * 6)));
       } else {
-        score = 75;
+        score = 70;
       }
     }
 
