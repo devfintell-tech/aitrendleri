@@ -23,7 +23,7 @@ Bu belge, bu projenin tüm tasarım, veri mimarisi ve geliştirme standartların
    - Kartların başlıklarının altında yer alan ince ayrım çizgileri (`border-b`), aynı satırdaki kartlar arasında daima milimetrik olarak aynı yatay hizada olmalıdır.
    - Bir kartın başlığı 2 veya daha fazla satıra uzayıp aşağı kaysa bile, yanındaki tek satırlık başlığa sahip kartların başlık kapsayıcıları `h-full flex flex-col justify-between` ile otomatik olarak en uzun başlığın seviyesine kadar aşağı uzar.
    - Alt ayrım çizgisi daima o satırdaki en uzun (aşağıda olan) başlığın bittiği seviyeye kilitlenir; yan kartlardaki çizgiler asla yukarıda kalamaz.
-   - Bu kural hem Danışman Raporu 4 Bölüm kartlarında (`.subgrid-row-sections`), hem Günün Sözlüğü'nde (`.subgrid-row-glossary`), hem de sitedeki tüm grid kartlarında tavizsiz uygulanır.
+   - Bu kural hem Sabah İstihbaratı 4 Kilit Madde kartlarında (`.subgrid-row-morning`), hem Danışman Raporu 4 Bölüm kartlarında (`.subgrid-row-sections`), hem Günün Sözlüğü'nde (`.subgrid-row-glossary`), hem de sitedeki tüm grid kartlarında tavizsiz uygulanır.
 
 ---
 

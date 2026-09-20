@@ -1397,18 +1397,23 @@ ${bulletsText}
                   </div>
                 )}
 
-                {/* ⚡ 2. Dünyayı Kaçırmama Özeti (Madde Madde) */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+                {/* ⚡ 2. Dünyayı Kaçırmama Özeti (4 Kare Yan Yana, En Uzuna Göre Eşit Boyut) */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 items-stretch subgrid-row-morning">
                   {(report.morningBrief.bullets || []).map((bullet, bIdx) => (
                     <div 
                       key={bIdx}
-                      className="p-2.5 bg-[#f8fafc] border border-[#e2e8f0] rounded flex items-start gap-2.5 hover:border-slate-300 transition"
+                      className="p-3 bg-[#f8fafc] border border-[#cbd5e1] rounded-sm hover:border-[#107c41] transition shadow-2xs flex flex-col justify-between h-full subgrid-card-morning group"
                     >
-                      <span className="text-base shrink-0 select-none mt-0.5">{bullet.icon || '📌'}</span>
-                      <div className="space-y-0.5 min-w-0 flex-1">
-                        <span className="font-mono text-[10px] font-bold text-slate-800 uppercase block tracking-tight">
+                      {/* Üst Kısım: İkon ve Kategori Başlığı (Hizalı Çizgi) */}
+                      <div className="flex items-center gap-2 pb-2 border-b border-[#e2e8f0] w-full">
+                        <span className="text-base shrink-0 select-none">{bullet.icon || '📌'}</span>
+                        <span className="font-mono text-[11px] font-bold text-slate-800 uppercase tracking-tight truncate">
                           {bullet.tag}
                         </span>
+                      </div>
+
+                      {/* Gövde Metni: Doğal Akış, En Uzun Kutuya Göre Uzayan Boyut */}
+                      <div className="pt-2 flex-1 flex flex-col justify-start">
                         <p className="text-xs text-slate-700 leading-relaxed font-normal">
                           {bullet.text}
                         </p>
