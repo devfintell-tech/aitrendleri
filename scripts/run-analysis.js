@@ -807,23 +807,21 @@ async function main() {
     - 'name' alanı YALNIZCA ve SADECE ürünün saf marka/yazılım adıdır.
     - Asla parantez açma veya parantez içinde açıklama ekleme.
 
-    🚨 EN KRİTİK KURAL 5: PUANLAMA VE DUYGU ANALİZİ (TOPLULUK BEĞENİ PUANI - sentimentScore 0-100 ARASI):
-    - Sıralamaya giren ürünlerin hepsi zaten konuşulmaktadır; ancak bizim için asıl önemli olan TOPLULUĞUN BEĞENİP BEĞENMEDİĞİDİR.
-    - Her araç için 0-100 arası "sentimentScore" (Topluluk Beğeni & Memnuniyet Puanı) üretilecektir.
-      * EĞER TOPLULUK BİR MODEL VEYA ÜRÜN HAKKINDA OLUMSUZ/ELEŞTİREL KONUŞUYORSA (örn: kota/limit baskısı, kesintiler, sansür, fahiş fiyat, regresyon, hata):
-        -> "sentimentScore" (Topluluk Beğenisi): KESİNLİKLE 20 - 55 ARASI DÜŞÜK PUAN VER (Örn: 30, 42).
-        -> hypeScore: Düşük tut (4.5 - 6.8 arası).
-        -> trend: "cooling" yap.
-        -> badge: "Eleştiriliyor", "Limit Tepkisi", "Kesinti Sorunu" gibi rozetler koy.
-        -> whyTrending alanına topluluğun NEDEN eleştirdiğini ve neyden şikayet ettiğini detaylıca yaz!
-      * EĞER TOPLULUK ARACI ÖVÜYOR, BAŞARILI BULUYOR VE COŞKUYLA TAVSİYE EDİYORSA:
-        -> "sentimentScore" (Topluluk Beğenisi): 85 - 99 ARASI YÜKSEK PUAN VER (Örn: 94, 98).
-        -> hypeScore: Yüksek ver (8.5 - 9.9 arası).
-        -> trend: "rising" veya "skyrocketing" yap.
-        -> whyTrending alanına topluluğun NEDEN beğendiğini ve hangi özelliğini övdüğünü detaylıca yaz!
-      * EĞER TOPLULUK DENGELİ VEYA KARARSIZSA:
-        -> "sentimentScore": 60 - 80 arası puan ver.
-    - Kullanıcı tabloda doğrudan topluluğun o modeli sevip sevmediğini bu puanla net olarak görecektir.
+    🚨 EN KRİTİK KURAL 5: HYPE SKORU (KONUŞULMA DERECESİ) VE TOPLULUK BEĞENİ PUANI AYRIMI:
+    - 1) HYPE PUANI (hypeScore 0.0 - 10.0): O ürünün son 24 saatte Reddit ve topluluklarda ne kadar yoğun konuşulduğunu, gündemde ne kadar yer kapladığını ve popülarite/buzz hacmini belirler. İster olumlu övgüyle ister olumsuz şikayet/skandalla konuşulsun, çok konuşulan her ürünün hypeScore'u yüksektir!
+       * TÜM ÜRÜN SIRALAMALARI (daily, weekly, monthly) KESİNLİKLE VE TAVİZSİZ OLARAK hypeScore'a GÖRE YUKARIDAN AŞAĞIYA (BÜYÜKTEN KÜÇÜĞE / DESCENDING) SIRALANMALIDIR! En çok konuşulan ürün zirvede (1. sıra) yer alır.
+    - 2) TOPLULUK BEĞENİ PUANI (sentimentScore 0 - 100): Ürünün topluluk tarafından beğenilip beğenilmediğini (memnuniyet ve pozitif/negatif duygu) skorlar.
+       * EĞER TOPLULUK BİR ÜRÜNÜ ELEŞTİRİYOR, ŞİKAYET EDİYORSA (örn: kota/limit baskısı, kesintiler, sansür, fahiş fiyat, regresyon, bug):
+         -> sentimentScore (Topluluk Beğenisi): 20 - 55 ARASI DÜŞÜK VER (Örn: 28, 38). (Çok konuşuluyorsa hypeScore yine yüksek kalır!).
+         -> badge: "Eleştiriliyor", "Limit Tepkisi", "Kesinti Sorunu" gibi rozetler koy.
+         -> whyTrending alanına topluluğun NEDEN eleştirdiğini ve neyden şikayet ettiğini detaylıca yaz!
+       * EĞER TOPLULUK ÜRÜNÜ ÖVÜYOR, BEĞENİYOR VE COŞKUYLA TAVSİYE EDİYORSA:
+         -> sentimentScore (Topluluk Beğenisi): 85 - 99 ARASI YÜKSEK VER (Örn: 92, 97).
+         -> badge: "Günün Lideri", "Yüksek Verim", "Geliştirici Favorisi" gibi rozetler koy.
+         -> whyTrending alanına topluluğun NEDEN beğendiğini ve hangi özelliğini övdüğünü detaylıca yaz!
+       * EĞER TOPLULUK DENGELİ VEYA KARARSIZSA:
+         -> sentimentScore: 60 - 80 arası ver.
+    - Kullanıcı tabloda bir ürünün popülaritesini Hype Skorundan, sevilip sevilmediğini ise Beğeni Puanından net olarak görecektir.
     ════════════════════════════════════════════════════════════════════
 
     Aşağıda derlenen son 24 saatin istihbaratı yer almaktadır:
@@ -2240,7 +2238,13 @@ function enforceStrictStandards(data, hfModels = [], candidateArxiv = [], hnPost
             name: cleanStrName(item.name || item.id),
             sentimentScore: Math.min(100, Math.max(0, sScore))
           };
-        });
+        })
+        // 🚨 KESİN ANAYASA KURALI: Hype skoruna göre yukarıdan aşağıya doğru (büyükten küçüğe / descending) sıralanır!
+        .sort((a, b) => (Number(b.hypeScore) || 0) - (Number(a.hypeScore) || 0))
+        .map((item, idx) => ({
+          ...item,
+          rank: idx + 1
+        }));
     }
   });
 

@@ -959,10 +959,11 @@ export default function App() {
       .map(t => ({
         ...t,
         name: cleanToolNameGlobal(t.name)
-      }));
+      }))
+      .sort((a, b) => (Number(b.hypeScore) || 0) - (Number(a.hypeScore) || 0));
   }, [activeReportData, timeframe]);
 
-  // Filter tools by category and search
+  // Filter tools by category and search (Hype puanına göre yukarıdan aşağıya kesin sıralanır)
   const filteredTools = useMemo(() => {
     let result = rawTools;
     if (selectedCategory !== 'all') {
@@ -976,7 +977,8 @@ export default function App() {
         t.category?.toLowerCase().includes(q)
       );
     }
-    return result;
+    // 🚨 ANAYASA KURALI: Hype puanına göre yukarıdan aşağıya doğru sıralanır (descending)
+    return [...result].sort((a, b) => (Number(b.hypeScore) || 0) - (Number(a.hypeScore) || 0));
   }, [rawTools, selectedCategory, searchQuery]);
 
   // Lider Model Senkronizasyonu:

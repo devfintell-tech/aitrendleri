@@ -121,20 +121,34 @@ Bu belge, bu projenin tüm tasarım, veri mimarisi ve geliştirme standartların
 
 ---
 
-## 🤖 8. AI Ürün Sıralaması, Organik Duygu Analizi & Sıfır Yapay Yönlendirme İlkesi
+## 🤖 8. AI Ürün Sıralaması, Hype Hacmi & Beğeni Puanı Ayrımı Standartları
 
-1. **Sıfır Yapay Yönlendirme (No Concept Hijacking / No Artificial Mapping):**
+1. **Hype Skoru (Konuşulma Derecesi / Popülarite Hacmi):**
+   - Hype Skoru (`hypeScore` 0.0 - 10.0), bir ürünün son 24 saatte internette ve topluluklarda (Reddit, X, teknik forumlar vb.) ne kadar konuşulduğunu, ne kadar yoğun gündem olduğunu ve mention/buzz hacmini belirler.
+   - Bir ürün ister olumlu övgülerle ister olumsuz şikayetlerle veya sansür/çöküş skandallarıyla konuşulsun; çok konuşulan her ürünün Hype Skoru yüksek olur.
+
+2. **Topluluk Beğeni Puanı (Memnuniyet & Duygu Skoru):**
+   - Beğeni Puanı (`sentimentScore` 0 - 100 veya %), o ürünün topluluk tarafından beğenilip beğenilmediğini (memnuniyet, pozitif/negatif duygu) bağımsız olarak skorlar.
+   - Çok konuşulan (yüksek hype) bir ürün eğer kısıtlamalar, sansür, fahiş fiyat veya model bozulması nedeniyle eleştiriliyorsa Beğeni Puanı düşük verilir (20 - 55 arası).
+   - Topluluk ürünü coşkuyla övüyor, yeni yeteneklerini kutluyor ve tavsiye ediyorsa Beğeni Puanı yüksek verilir (85 - 99 arası).
+   - Böylece kullanıcılar bir ürünün ne kadar popüler olduğunu Hype Skoru'ndan, sevilip sevilmediğini ise Beğeni Puanı'ndan net olarak ayırt eder.
+
+3. **Hype Skoruna Göre Yukarıdan Aşağıya Kesin Sıralama Şartı:**
+   - Sitedeki tüm tablolar ve ürün listeleri (`daily`, `weekly`, `monthly`) tavizsiz olarak **HYPE SKORUNA GÖRE YUKARIDAN AŞAĞIYA DOĞRU (BÜYÜKTEN KÜÇÜĞE / DESCENDING)** sıralanır.
+   - En çok konuşulan ürün daima 1. sırada (Zirvede) yer alır. Hype skoru düşük olan ürünler listenin alt sıralarında konumlanır.
+
+4. **Sıfır Yapay Yönlendirme (No Concept Hijacking / No Artificial Mapping):**
    - Kod ve analiz süreçlerinde bir kavram veya akım (örneğin "Vibe Coding", "Workspace", "Self-Hosted") görüldüğünde asla yapay olarak başka bir ürüne (Cursor, Ollama vb.) zorla bağlanamaz / map edilemez.
    - Cursor yalnızca gerçekten Cursor tartışılıyorsa listeye girebilir; her ürün yalnızca kendi konuşulma sıklığına ve popülaritesine göre bağımsızca sıralamaya dahil olur.
 
-2. **Tüm Sıcak Başlıkların Taranması & Somut Yapay Zeka Ürünü Şartı:**
+5. **Tüm Sıcak Başlıkların Taranması & Somut Yapay Zeka Ürünü Şartı:**
    - Son 24 saatte Reddit'te tartışılan tüm sıcak başlıklar, tartışmalar ve içerikler eksiksiz taranır.
    - Sıralamaya girebilecek tek şart **somut bir yapay zeka ürünü** olmasıdır (Büyük dil modeli, açık kaynak yerel model, otonom ajan, AI CLI / terminal aracı, AI editör / IDE, framework, GPU veya AI donanımı).
    - "Maliyet", "felsefe", "anket", "iş piyasası" gibi soyut meta tartışma başlıkları ürün olmadıkları için doğrudan sıralamaya alınamaz; ancak bu tartışmaların içinde geçen somut AI araçları tespit edilerek değerlendirilir.
 
-3. **Şeffaf Nedenler & Duygu Analizi (`whyTrending`):**
-   - Sıralamadaki her ürünün kartına tıklandığında neden hypelandığı veya neden eleştirildiği (`whyTrending`, `primaryFunction`, `badge`) topluluğun gerçek yorumlarına dayanarak net şekilde gösterilmelidir.
-   - Topluluk bir ürünü övüyorsa yüksek puan (`hypeScore`, `+` delta), eleştiriyorsa (sansür, hata, bellek sorunu, pahalılık) düşük puan (`-` delta) verilir.
+6. **Şeffaf Nedenler & Duygu Analizi (`whyTrending`):**
+   - Sıralamadaki her ürünün kartına tıklandığında neden konuşulduğu ve neden beğenildiği/eleştirildiği (`whyTrending`, `primaryFunction`, `badge`) topluluğun gerçek yorumlarına dayanarak net şekilde gösterilmelidir.
+   - Topluluk bir ürünü övüyorsa yüksek beğeni puanı (`sentimentScore`), eleştiriyorsa (sansür, hata, bellek sorunu, pahalılık) düşük beğeni puanı verilir.
 
 ---
 

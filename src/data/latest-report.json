@@ -216,7 +216,8 @@
       "sources": [
         "r/hardware",
         "r/nvidia"
-      ]
+      ],
+      "rank": 1
     },
     {
       "id": "gemini-3-8-flash",
@@ -243,7 +244,8 @@
       "sources": [
         "r/GoogleGemini",
         "r/ArtificialInteligence"
-      ]
+      ],
+      "rank": 2
     },
     {
       "id": "codex",
@@ -270,7 +272,8 @@
       "sources": [
         "r/vscode",
         "r/CursorAI"
-      ]
+      ],
+      "rank": 3
     },
     {
       "id": "cursor",
@@ -297,7 +300,8 @@
       "sources": [
         "r/CursorAI",
         "r/vibecoding"
-      ]
+      ],
+      "rank": 4
     },
     {
       "id": "rtx-5090",
@@ -324,7 +328,8 @@
       "sources": [
         "r/hardware",
         "r/nvidia"
-      ]
+      ],
+      "rank": 5
     },
     {
       "id": "glm-5-3-flash",
@@ -351,7 +356,8 @@
       "sources": [
         "r/LocalLLaMA",
         "r/ChatGPTCoding"
-      ]
+      ],
+      "rank": 6
     },
     {
       "id": "claude-code",
@@ -379,7 +385,8 @@
         "r/ClaudeAI",
         "r/ClaudeDev",
         "r/vibecoding"
-      ]
+      ],
+      "rank": 7
     },
     {
       "id": "gpt-6-astra",
@@ -406,7 +413,8 @@
       "sources": [
         "r/OpenAI",
         "r/ChatGPTCoding"
-      ]
+      ],
+      "rank": 8
     },
     {
       "id": "deepseek",
@@ -432,7 +440,8 @@
       "whyTrending": "'Server busy', API yanıtsızlığı ve compute yetersizliği şikâyetleri arttı; kullanıcılar limitsiz eski günleri geri istiyor.",
       "sources": [
         "r/DeepSeek"
-      ]
+      ],
+      "rank": 9
     },
     {
       "id": "fable-5-1",
@@ -459,7 +468,8 @@
       "sources": [
         "r/Anthropic",
         "r/ClaudeAI"
-      ]
+      ],
+      "rank": 10
     },
     {
       "id": "claude-opus-4-8",
@@ -486,7 +496,8 @@
       "sources": [
         "r/Anthropic",
         "r/ClaudeAI"
-      ]
+      ],
+      "rank": 11
     },
     {
       "id": "vs-code",
@@ -512,7 +523,8 @@
       "whyTrending": "Jupyter kernel çökmeleri, telemetri zorlaması ve arayüz hataları birbiri ardına paylaşılıyor; topluluk huzursuz.",
       "sources": [
         "r/vscode"
-      ]
+      ],
+      "rank": 12
     },
     {
       "id": "z-ai",
@@ -539,7 +551,8 @@
       "sources": [
         "r/DeepSeek",
         "r/LocalLLaMA"
-      ]
+      ],
+      "rank": 13
     },
     {
       "id": "github-copilot",
@@ -566,7 +579,8 @@
       "sources": [
         "r/Copilot",
         "r/vscode"
-      ]
+      ],
+      "rank": 14
     }
   ],
   "weekly": [
@@ -595,7 +609,8 @@
       "sources": [
         "r/LocalLLaMA",
         "r/singularity"
-      ]
+      ],
+      "rank": 1
     },
     {
       "id": "minimax-h3",
@@ -622,61 +637,8 @@
       "sources": [
         "r/LocalLLaMA",
         "r/singularity"
-      ]
-    },
-    {
-      "id": "claude-3-7-sonnet",
-      "name": "Claude 3.7 Sonnet",
-      "category": "LLM (Model)",
-      "badge": "Sektör Standardı",
-      "hypeScore": 9.6,
-      "sentimentScore": 93,
-      "prevScore": 9.8,
-      "scoreDelta": -0.2,
-      "trend": "stable",
-      "mentions": 5400,
-      "sparkline": [
-        9.8,
-        9.8,
-        9.8,
-        9.7,
-        9.7,
-        9.6,
-        9.6
       ],
-      "primaryFunction": "Anthropic'in akıl yürütme güçlendirilmiş modeli; kodlama ve analizde referans kabul edilir.",
-      "whyTrending": "Hafta boyunca model kalitesi ve güvenilirliği için övülmeye devam etti; limit şikâyetlerine rağmen özü sağlam bulunuyor.",
-      "sources": [
-        "r/ClaudeAI",
-        "r/Anthropic"
-      ]
-    },
-    {
-      "id": "nvidia-blackwell-gb200",
-      "name": "NVIDIA Blackwell GB200",
-      "category": "Donanım / Çip",
-      "badge": "Altyapı Tekeli",
-      "hypeScore": 9.5,
-      "sentimentScore": 94,
-      "prevScore": 9.6,
-      "scoreDelta": -0.1,
-      "trend": "stable",
-      "mentions": 3600,
-      "sparkline": [
-        9.6,
-        9.6,
-        9.6,
-        9.6,
-        9.5,
-        9.5,
-        9.5
-      ],
-      "primaryFunction": "NVIDIA'nın veri merkezi AI çipi; büyük ölçekli model eğitimi ve çıkarımı için tasarlanmıştır.",
-      "whyTrending": "Büyük bulut kümelerinde GB200 dağıtımları hızlanırken altyapı hâkimiyeti toplulukta takdir ve endişe karışımıyla izleniyor.",
-      "sources": [
-        "r/nvidia",
-        "r/hardware"
-      ]
+      "rank": 2
     },
     {
       "id": "routed",
@@ -703,7 +665,36 @@
       "sources": [
         "r/LocalLLaMA",
         "r/devops"
-      ]
+      ],
+      "rank": 3
+    },
+    {
+      "id": "claude-3-7-sonnet",
+      "name": "Claude 3.7 Sonnet",
+      "category": "LLM (Model)",
+      "badge": "Sektör Standardı",
+      "hypeScore": 9.6,
+      "sentimentScore": 93,
+      "prevScore": 9.8,
+      "scoreDelta": -0.2,
+      "trend": "stable",
+      "mentions": 5400,
+      "sparkline": [
+        9.8,
+        9.8,
+        9.8,
+        9.7,
+        9.7,
+        9.6,
+        9.6
+      ],
+      "primaryFunction": "Anthropic'in akıl yürütme güçlendirilmiş modeli; kodlama ve analizde referans kabul edilir.",
+      "whyTrending": "Hafta boyunca model kalitesi ve güvenilirliği için övülmeye devam etti; limit şikâyetlerine rağmen özü sağlam bulunuyor.",
+      "sources": [
+        "r/ClaudeAI",
+        "r/Anthropic"
+      ],
+      "rank": 4
     },
     {
       "id": "unsloth-qwen-3-8",
@@ -729,61 +720,36 @@
       "whyTrending": "Optimize edilmiş kuantizasyon ve hızı nedeniyle yerel kullanıcıların birinci tercihi olmaya devam ediyor.",
       "sources": [
         "r/LocalLLaMA"
-      ]
-    },
-    {
-      "id": "n8n-ai-orchestrator",
-      "name": "n8n AI Orchestrator",
-      "category": "Otomasyon",
-      "badge": "Kurumsal Favori",
-      "hypeScore": 9.3,
-      "sentimentScore": 92,
-      "prevScore": 9.3,
-      "scoreDelta": 0,
-      "trend": "stable",
-      "mentions": 2400,
-      "sparkline": [
-        9,
-        9.1,
-        9.2,
-        9.3,
-        9.3,
-        9.3,
-        9.3
       ],
-      "primaryFunction": "İş akışı otomasyonu platformu; ajanları kurumsal süreçlere bağlar.",
-      "whyTrending": "Self-hosting güvenilirliği ve ajan orkestrasyon yetenekleri kurumsal kullanıcılar tarafından istikrarlı biçimde övülüyor.",
-      "sources": [
-        "r/devops",
-        "r/Cloud"
-      ]
+      "rank": 5
     },
     {
-      "id": "deepseek-v4-1-flash",
-      "name": "DeepSeek V4.1 Flash",
-      "category": "LLM (Model)",
-      "badge": "Görsel Yetenek",
-      "hypeScore": 9,
-      "sentimentScore": 82,
-      "prevScore": 9.5,
-      "scoreDelta": -0.5,
+      "id": "nvidia-blackwell-gb200",
+      "name": "NVIDIA Blackwell GB200",
+      "category": "Donanım / Çip",
+      "badge": "Altyapı Tekeli",
+      "hypeScore": 9.5,
+      "sentimentScore": 94,
+      "prevScore": 9.6,
+      "scoreDelta": -0.1,
       "trend": "stable",
-      "mentions": 2700,
+      "mentions": 3600,
       "sparkline": [
+        9.6,
+        9.6,
+        9.6,
+        9.6,
         9.5,
-        9.4,
-        9.2,
-        9.1,
-        9,
-        9,
-        9
+        9.5,
+        9.5
       ],
-      "primaryFunction": "DeepSeek'in hızlı görsel-dil modeli; multimodal analiz ve kodlamada kullanılır.",
-      "whyTrending": "Görsel yetenekleri takdir topluyor ancak son kesintiler haftalık puanı hafifçe aşağı çekti.",
+      "primaryFunction": "NVIDIA'nın veri merkezi AI çipi; büyük ölçekli model eğitimi ve çıkarımı için tasarlanmıştır.",
+      "whyTrending": "Büyük bulut kümelerinde GB200 dağıtımları hızlanırken altyapı hâkimiyeti toplulukta takdir ve endişe karışımıyla izleniyor.",
       "sources": [
-        "r/DeepSeek",
-        "r/LocalLLaMA"
-      ]
+        "r/nvidia",
+        "r/hardware"
+      ],
+      "rank": 6
     },
     {
       "id": "ollama-self-hosted-workspace",
@@ -810,7 +776,64 @@
       "sources": [
         "r/LocalLLaMA",
         "r/selfhosted"
-      ]
+      ],
+      "rank": 7
+    },
+    {
+      "id": "n8n-ai-orchestrator",
+      "name": "n8n AI Orchestrator",
+      "category": "Otomasyon",
+      "badge": "Kurumsal Favori",
+      "hypeScore": 9.3,
+      "sentimentScore": 92,
+      "prevScore": 9.3,
+      "scoreDelta": 0,
+      "trend": "stable",
+      "mentions": 2400,
+      "sparkline": [
+        9,
+        9.1,
+        9.2,
+        9.3,
+        9.3,
+        9.3,
+        9.3
+      ],
+      "primaryFunction": "İş akışı otomasyonu platformu; ajanları kurumsal süreçlere bağlar.",
+      "whyTrending": "Self-hosting güvenilirliği ve ajan orkestrasyon yetenekleri kurumsal kullanıcılar tarafından istikrarlı biçimde övülüyor.",
+      "sources": [
+        "r/devops",
+        "r/Cloud"
+      ],
+      "rank": 8
+    },
+    {
+      "id": "deepseek-v4-1-flash",
+      "name": "DeepSeek V4.1 Flash",
+      "category": "LLM (Model)",
+      "badge": "Görsel Yetenek",
+      "hypeScore": 9,
+      "sentimentScore": 82,
+      "prevScore": 9.5,
+      "scoreDelta": -0.5,
+      "trend": "stable",
+      "mentions": 2700,
+      "sparkline": [
+        9.5,
+        9.4,
+        9.2,
+        9.1,
+        9,
+        9,
+        9
+      ],
+      "primaryFunction": "DeepSeek'in hızlı görsel-dil modeli; multimodal analiz ve kodlamada kullanılır.",
+      "whyTrending": "Görsel yetenekleri takdir topluyor ancak son kesintiler haftalık puanı hafifçe aşağı çekti.",
+      "sources": [
+        "r/DeepSeek",
+        "r/LocalLLaMA"
+      ],
+      "rank": 9
     },
     {
       "id": "gpt-6-astra-weekly",
@@ -837,7 +860,8 @@
       "sources": [
         "r/OpenAI",
         "r/ChatGPTCoding"
-      ]
+      ],
+      "rank": 10
     }
   ],
   "monthly": [
@@ -866,7 +890,8 @@
       "sources": [
         "r/LocalLLaMA",
         "r/singularity"
-      ]
+      ],
+      "rank": 1
     },
     {
       "id": "minimax-h3-m",
@@ -893,7 +918,8 @@
       "sources": [
         "r/LocalLLaMA",
         "r/singularity"
-      ]
+      ],
+      "rank": 2
     },
     {
       "id": "nvidia-blackwell-m",
@@ -920,7 +946,8 @@
       "sources": [
         "r/nvidia",
         "r/hardware"
-      ]
+      ],
+      "rank": 3
     },
     {
       "id": "claude-3-7-sonnet-m",
@@ -947,7 +974,8 @@
       "sources": [
         "r/ClaudeAI",
         "r/Anthropic"
-      ]
+      ],
+      "rank": 4
     },
     {
       "id": "n8n-m",
@@ -974,7 +1002,8 @@
       "sources": [
         "r/devops",
         "r/Cloud"
-      ]
+      ],
+      "rank": 5
     },
     {
       "id": "deepseek-v4-m",
@@ -1000,7 +1029,8 @@
       "whyTrending": "Ay boyunca güçlü performansıyla övüldü; ancak son dönem kesintileri memnuniyeti düşürüyor.",
       "sources": [
         "r/DeepSeek"
-      ]
+      ],
+      "rank": 6
     },
     {
       "id": "gemini-3-8-flash-m",
@@ -1027,7 +1057,8 @@
       "sources": [
         "r/GoogleGemini",
         "r/ArtificialInteligence"
-      ]
+      ],
+      "rank": 7
     },
     {
       "id": "cursor-m",
@@ -1054,7 +1085,8 @@
       "sources": [
         "r/CursorAI",
         "r/vibecoding"
-      ]
+      ],
+      "rank": 8
     }
   ],
   "arxivDaily": [
