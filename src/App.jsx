@@ -2362,38 +2362,48 @@ ${bulletsText}
         {/* 5. MASAÜSTÜ EXCEL IZGARA TABLOSU (hidden md:block) */}
         {timeframe !== 'report' && timeframe !== 'glossary' && (
           <div className="hidden md:block bg-white border border-[#d1d5db] shadow-xs overflow-hidden">
-            <table className="w-full table-fixed text-left border-collapse font-sans text-xs">
+            <table key={timeframe} className="w-full table-fixed text-left border-collapse font-sans text-xs">
+              <colgroup>
+                <col className="w-12" />
+                <col className="w-52" />
+                {showDaysCol && <col className="w-24" />}
+                <col className="w-44" />
+                <col />
+                <col className="w-24" />
+                <col className="w-28" />
+                <col className="w-28" />
+              </colgroup>
               
-              {/* Sütun Harfleri ve Başlıklar (A - G) */}
+              {/* Sütun Harfleri ve Başlıklar (A - G / A - H) */}
               <thead>
                 {/* Excel Sütun Harfleri Satırı */}
                 <tr className="bg-[#f8fafc] border-b border-[#d1d5db] text-[10px] font-mono text-slate-500 select-none">
-                  <th className="w-12 text-center py-1 border-r border-[#e2e8f0]">A</th>
-                  <th className="w-52 px-3 py-1 border-r border-[#e2e8f0] text-left">B</th>
+                  <th key="col-a" className="w-12 text-center py-1 border-r border-[#e2e8f0]">A</th>
+                  <th key="col-b" className="w-52 px-3 py-1 border-r border-[#e2e8f0] text-left">B</th>
                   {showDaysCol && (
-                    <th className="w-24 px-2 py-1 border-r border-[#e2e8f0] text-center">C</th>
+                    <th key="col-c" className="w-24 px-2 py-1 border-r border-[#e2e8f0] text-center">C</th>
                   )}
-                  <th className="w-44 px-3 py-1 border-r border-[#e2e8f0] text-left">{showDaysCol ? 'D' : 'C'}</th>
-                  <th className="px-3 py-1 border-r border-[#e2e8f0] text-left">{showDaysCol ? 'E' : 'D'}</th>
-                  <th className="w-24 px-3 py-1 border-r border-[#e2e8f0] text-right">{showDaysCol ? 'F' : 'E'}</th>
-                  <th className="w-32 px-3 py-1 border-r border-[#e2e8f0] text-right">{showDaysCol ? 'G' : 'F'}</th>
-                  <th className="w-28 px-3 py-1 text-center">{showDaysCol ? 'H' : 'G'}</th>
+                  <th key="col-d" className="w-44 px-3 py-1 border-r border-[#e2e8f0] text-left">{showDaysCol ? 'D' : 'C'}</th>
+                  <th key="col-e" className="px-3 py-1 border-r border-[#e2e8f0] text-left">{showDaysCol ? 'E' : 'D'}</th>
+                  <th key="col-f" className="w-24 px-3 py-1 border-r border-[#e2e8f0] text-right">{showDaysCol ? 'F' : 'E'}</th>
+                  <th key="col-g" className="w-28 px-3 py-1 border-r border-[#e2e8f0] text-right">{showDaysCol ? 'G' : 'F'}</th>
+                  <th key="col-h" className="w-28 px-3 py-1 text-center">{showDaysCol ? 'H' : 'G'}</th>
                 </tr>
 
                 {/* Sütun İsimleri Satırı */}
                 <tr className="bg-[#f1f5f9] border-b-2 border-[#cbd5e1] text-[11px] font-semibold text-slate-700 select-none">
-                  <th className="w-12 text-center py-2.5 border-r border-[#cbd5e1]">Sıra</th>
-                  <th className="w-52 px-3 py-2.5 border-r border-[#cbd5e1] text-left">Model / Ürün Adı</th>
+                  <th key="title-rank" className="w-12 text-center py-2.5 border-r border-[#cbd5e1]">Sıra</th>
+                  <th key="title-name" className="w-52 px-3 py-2.5 border-r border-[#cbd5e1] text-left">Model / Ürün Adı</th>
                   {showDaysCol && (
-                    <th className="w-24 px-2 py-2.5 border-r border-[#cbd5e1] text-center font-bold text-amber-900">
+                    <th key="title-days" className="w-24 px-2 py-2.5 border-r border-[#cbd5e1] text-center font-bold text-amber-900">
                       Gündem (Gün)
                     </th>
                   )}
-                  <th className="w-44 px-3 py-2.5 border-r border-[#cbd5e1] text-left">Kategori</th>
-                  <th className="px-3 py-2.5 border-r border-[#cbd5e1] text-left">Temel Yetenek &amp; Fonksiyon</th>
-                  <th className="w-24 px-3 py-2.5 border-r border-[#cbd5e1] text-right">Hype Puanı</th>
-                  <th className="w-32 px-3 py-2.5 border-r border-[#cbd5e1] text-right">Topluluk Beğenisi</th>
-                  <th className="w-28 px-3 py-2.5 text-center">Topluluk Kaynak</th>
+                  <th key="title-cat" className="w-44 px-3 py-2.5 border-r border-[#cbd5e1] text-left">Kategori</th>
+                  <th key="title-func" className="px-3 py-2.5 border-r border-[#cbd5e1] text-left">Temel Yetenek &amp; Fonksiyon</th>
+                  <th key="title-hype" className="w-24 px-3 py-2.5 border-r border-[#cbd5e1] text-right">Hype Puanı</th>
+                  <th key="title-sentiment" className="w-28 px-3 py-2.5 border-r border-[#cbd5e1] text-right">Topluluk Beğenisi</th>
+                  <th key="title-source" className="w-28 px-3 py-2.5 text-center">Topluluk Kaynak</th>
                 </tr>
               </thead>
 
@@ -2420,12 +2430,12 @@ ${bulletsText}
                         }`}
                       >
                         {/* Kolon A: Sıra */}
-                        <td className="w-12 text-center font-mono font-bold text-slate-600 border-r border-[#e2e8f0]">
+                        <td key="td-rank" className="w-12 text-center font-mono font-bold text-slate-600 border-r border-[#e2e8f0]">
                           #{idx + 1}
                         </td>
 
                         {/* Kolon B: Model Adı */}
-                        <td className="w-52 px-3 border-r border-[#e2e8f0] truncate">
+                        <td key="td-name" className="w-52 px-3 border-r border-[#e2e8f0] truncate">
                           <span className="font-bold text-slate-900 hover:text-[#107c41] transition truncate">
                             {tool.name}
                           </span>
@@ -2433,7 +2443,7 @@ ${bulletsText}
 
                         {/* Kolon C (Yalnızca Haftalık ve Aylıkta): Gündem Gün Sayısı */}
                         {showDaysCol && (
-                          <td className="w-24 px-2 text-center border-r border-[#e2e8f0] font-mono">
+                          <td key="td-days" className="w-24 px-2 text-center border-r border-[#e2e8f0] font-mono">
                             <span className="inline-flex items-center justify-center font-bold text-xs px-2 py-0.5 rounded bg-amber-50 text-amber-900 border border-amber-200">
                               {tool.frequency ? `${tool.frequency} Gün` : '1 Gün'}
                             </span>
@@ -2441,21 +2451,21 @@ ${bulletsText}
                         )}
 
                         {/* Kolon: Kategori */}
-                        <td className="w-44 px-3 border-r border-[#e2e8f0]">
+                        <td key="td-cat" className="w-44 px-3 border-r border-[#e2e8f0]">
                           <span className={`inline-block font-mono text-[11px] px-2 py-0.5 rounded border ${getCategoryBadgeClass(tool.category)} whitespace-nowrap`}>
                             {tool.category === 'LLM (Model)' ? 'LLM' : tool.category}
                           </span>
                         </td>
 
                         {/* Kolon D: Temel Fonksiyon */}
-                        <td className="px-3 border-r border-[#e2e8f0] text-slate-700">
+                        <td key="td-func" className="px-3 border-r border-[#e2e8f0] text-slate-700">
                           <div className="truncate text-xs text-slate-700" title="Tüm açıklamayı okumak için tıklayın">
                             {tool.primaryFunction}
                           </div>
                         </td>
 
                         {/* Kolon E: Hype Puanı */}
-                        <td className="w-24 px-3 text-right border-r border-[#e2e8f0] font-mono">
+                        <td key="td-hype" className="w-24 px-3 text-right border-r border-[#e2e8f0] font-mono">
                           <span className={`font-black text-sm ${
                             (tool.hypeScore || 0) >= 8.5 ? 'text-slate-900' :
                             (tool.hypeScore || 0) >= 7.0 ? 'text-amber-700' : 'text-rose-600'
@@ -2466,7 +2476,7 @@ ${bulletsText}
                         </td>
 
                         {/* Kolon F: Topluluk Beğenisi */}
-                        <td className="w-28 px-3 text-right border-r border-[#e2e8f0] font-mono">
+                        <td key="td-sentiment" className="w-28 px-3 text-right border-r border-[#e2e8f0] font-mono">
                           <span className={`font-black text-sm ${sentiment.colorClass}`}>
                             {sentiment.score10}
                           </span>
@@ -2474,7 +2484,7 @@ ${bulletsText}
                         </td>
 
                         {/* Kolon G: Topluluk Kaynak */}
-                        <td className="w-28 px-3 text-center font-mono text-[11px] text-slate-600">
+                        <td key="td-source" className="w-28 px-3 text-center font-mono text-[11px] text-slate-600">
                           <div className="flex items-center justify-center gap-1">
                             <span className="truncate max-w-[80px]">
                               {tool.sources?.[0] || 'Reddit'}
