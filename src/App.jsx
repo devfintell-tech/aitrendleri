@@ -1089,7 +1089,7 @@ export default function App() {
   }, [report]);
 
   // Haftalık ve Aylık için önceki tutulan gerçek arşiv verilerinden hesaplanan modeller
-  const { historicalWeeklyTools, historicalMonthlyTools } = useMemo(() => {
+  const { historicalWeeklyTools, historicalMonthlyTools, toolArchiveFreqMap } = useMemo(() => {
     const archiveList = Object.entries(archiveModules)
       .filter(([filePath]) => !filePath.includes('archive-index.json'))
       .map(([filePath, mod]) => {
