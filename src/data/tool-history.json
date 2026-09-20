@@ -152,6 +152,17 @@
           "r/CursorAI",
           "r/vibecoding"
         ]
+      },
+      {
+        "date": "20 Eylül 2026",
+        "hypeScore": 7.6,
+        "sentiment": "stabil",
+        "headline": "Kararlı",
+        "summary": "Vibe coding süreçlerindeki liderliğini korusa da, izin istekleri ve bellek sızıntıları konusunda kullanıcılar arası tartışmalar sürüyor.",
+        "sources": [
+          "r/CursorAI",
+          "r/vibecoding"
+        ]
       }
     ]
   },
@@ -293,6 +304,17 @@
         "sources": [
           "r/ClaudeAI",
           "r/ClaudeDev"
+        ]
+      },
+      {
+        "date": "20 Eylül 2026",
+        "hypeScore": 5.8,
+        "sentiment": "eleştirel",
+        "headline": "Eleştiriliyor",
+        "summary": "Geliştiriciler yüksek token tüketimi, katı kullanım limitleri ve bellek yönetimi sorunları nedeniyle aracı yoğun bir şekilde eleştiriyor.",
+        "sources": [
+          "r/ClaudeDev",
+          "r/vibecoding"
         ]
       }
     ]
@@ -648,6 +670,17 @@
           "r/ClaudeAI",
           "r/vibecoding"
         ]
+      },
+      {
+        "date": "20 Eylül 2026",
+        "hypeScore": 9.8,
+        "sentiment": "stabil",
+        "headline": "Sektör Standardı",
+        "summary": "Güvenilirliği ve kod kalitesi ile hala profesyonel geliştiricilerin vazgeçilmez birincil tercihi olmaya devam ediyor.",
+        "sources": [
+          "r/ClaudeAI",
+          "r/CursorAI"
+        ]
       }
     ]
   },
@@ -785,6 +818,17 @@
         "summary": "Yüksek bilgi işlem gücüyle endüstri standardı olmaya devam ediyor.",
         "sources": [
           "r/nvidia",
+          "r/hardware"
+        ]
+      },
+      {
+        "date": "20 Eylül 2026",
+        "hypeScore": 9.6,
+        "sentiment": "stabil",
+        "headline": "Altyapı Tekeli",
+        "summary": "Büyük dil modellerinin eğitim ve çıkarım süreçlerinde maliyetleri düşüren devrimsel hesaplama gücü sunuyor.",
+        "sources": [
+          "r/singularity",
           "r/hardware"
         ]
       }
@@ -1145,6 +1189,17 @@
         "sources": [
           "r/LocalLLaMA"
         ]
+      },
+      {
+        "date": "20 Eylül 2026",
+        "hypeScore": 9.7,
+        "sentiment": "stabil",
+        "headline": "10M İndirme Eşiği",
+        "summary": "Bellek ayak izini minimuma indirerek tüketici GPU'larında akıcı çalışmasını sağladığı için benimsenme oranı rekor kırıyor.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/LLMDevs"
+        ]
       }
     ]
   },
@@ -1248,6 +1303,17 @@
         "sources": [
           "r/MachineLearning",
           "r/LocalLLaMA"
+        ]
+      },
+      {
+        "date": "20 Eylül 2026",
+        "hypeScore": 9.8,
+        "sentiment": "coşkulu",
+        "headline": "Video Lideri",
+        "summary": "Üretilen içeriklerdeki akışkanlık ve sinematik kalite, medya üreticileri tarafından büyük bir memnuniyetle karşılandı.",
+        "sources": [
+          "r/singularity",
+          "r/generativeAI"
         ]
       }
     ]
@@ -1534,6 +1600,17 @@
         "sources": [
           "r/LocalLLaMA",
           "r/devops"
+        ]
+      },
+      {
+        "date": "20 Eylül 2026",
+        "hypeScore": 9.7,
+        "sentiment": "stabil",
+        "headline": "Tek Komutla Kurulum",
+        "summary": "Gizlilik odaklı şirketlerin bulut bağımlılığını sıfıra indiren pratik çözümü çok sevildi.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/programming"
         ]
       }
     ]
@@ -2389,6 +2466,17 @@
           "r/Copilot",
           "r/vscode"
         ]
+      },
+      {
+        "date": "20 Eylül 2026",
+        "hypeScore": 5.5,
+        "sentiment": "eleştirel",
+        "headline": "Regresyon",
+        "summary": "Agresif abonelik yönlendirmeleri ve sık sık devreye giren katı günlük limitler nedeniyle kullanıcı tepkisi çekiyor.",
+        "sources": [
+          "r/Copilot",
+          "r/vscode"
+        ]
       }
     ]
   },
@@ -2491,6 +2579,17 @@
         "sources": [
           "r/sysadmin",
           "r/devops"
+        ]
+      },
+      {
+        "date": "20 Eylül 2026",
+        "hypeScore": 9.3,
+        "sentiment": "stabil",
+        "headline": "Yükselen Trend",
+        "summary": "Karmaşık kurumsal süreçleri ve satış otomasyonlarını insan müdahalesine gerek kalmadan güvenli bir şekilde yönetmesi övülüyor.",
+        "sources": [
+          "r/Automate",
+          "r/n8n"
         ]
       }
     ]
@@ -2640,6 +2739,17 @@
         "sources": [
           "r/DeepSeek",
           "r/ArtificialInteligence"
+        ]
+      },
+      {
+        "date": "20 Eylül 2026",
+        "hypeScore": 9.5,
+        "sentiment": "stabil",
+        "headline": "Görsel Yetenek",
+        "summary": "Düşük kaynak tüketimi ile sunduğu yüksek doğruluk oranları, geliştiriciler tarafından yerel uygulamalarda tercih ediliyor.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/LLMDevs"
         ]
       }
     ]
@@ -3094,6 +3204,17 @@
         "sources": [
           "r/singularity"
         ]
+      },
+      {
+        "date": "20 Eylül 2026",
+        "hypeScore": 9.3,
+        "sentiment": "stabil",
+        "headline": "Yeni Nesil",
+        "summary": "Çok adımlı mantıksal çıkarım süreçlerinde hata oranını düşüren yeni mimarisiyle dikkat çekiyor.",
+        "sources": [
+          "r/agenticai",
+          "r/AI_Agents"
+        ]
       }
     ]
   },
@@ -3287,6 +3408,17 @@
         "sources": [
           "r/ClaudeDev",
           "r/CursorAI"
+        ]
+      },
+      {
+        "date": "20 Eylül 2026",
+        "hypeScore": 9.2,
+        "sentiment": "stabil",
+        "headline": "Geliştirici Favorisi",
+        "summary": "Gerçek dünya projelerinde PR açma ve hata giderme döngülerindeki başarısıyla öne çıkıyor.",
+        "sources": [
+          "r/vibecoding",
+          "r/ClaudeDev"
         ]
       }
     ]
@@ -3682,6 +3814,17 @@
           "r/LocalLLaMA",
           "r/singularity"
         ]
+      },
+      {
+        "date": "20 Eylül 2026",
+        "hypeScore": 9.9,
+        "sentiment": "coşkulu",
+        "headline": "Son 12 Saat Patlaması",
+        "summary": "Tekil bir RTX 5090 üzerinde tam özellikli animasyonlar ve karmaşık kodlama görevlerini hatasız çalıştırmasıyla topluluktan tam not aldı.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/singularity"
+        ]
       }
     ]
   },
@@ -3698,6 +3841,17 @@
         "sources": [
           "r/singularity",
           "r/OpenAI"
+        ]
+      },
+      {
+        "date": "20 Eylül 2026",
+        "hypeScore": 9.4,
+        "sentiment": "coşkulu",
+        "headline": "Son 12 Saat Patlaması",
+        "summary": "Büyük modellerin ana bağlam penceresini kirletmeden küçük mantıksal kontroller yapmasındaki başarısı geliştiricileri etkiledi.",
+        "sources": [
+          "r/LLMDevs",
+          "r/agenticai"
         ]
       }
     ]
@@ -3727,6 +3881,17 @@
         "sources": [
           "r/OpenAI",
           "r/singularity"
+        ]
+      },
+      {
+        "date": "20 Eylül 2026",
+        "hypeScore": 9.1,
+        "sentiment": "stabil",
+        "headline": "Günün Lideri",
+        "summary": "Tarihi ve teknik zorlukları çözme konusundaki olağanüstü performansıyla hacker news ve reddit gündemine oturdu.",
+        "sources": [
+          "r/singularity",
+          "r/generativeAI"
         ]
       }
     ]
@@ -3873,6 +4038,17 @@
         "sources": [
           "r/LocalLLaMA",
           "r/sysadmin"
+        ]
+      },
+      {
+        "date": "20 Eylül 2026",
+        "hypeScore": 9.8,
+        "sentiment": "stabil",
+        "headline": "Açık Kaynak Gözdesi",
+        "summary": "API maliyetlerini düşürmek ve doğru görevi en uygun modele yönlendirmek için sunduğu mimari çok beğeniliyor.",
+        "sources": [
+          "r/LLMDevs",
+          "r/programming"
         ]
       }
     ]
