@@ -28,6 +28,7 @@
     "totalTokens": 11360
   },
   "totalPostsAnalyzed": 45,
+  "totalTweetsAnalyzed": 100,
   "subredditsCovered": 50,
   "successfulBatches": 3,
   "totalBatches": 7,

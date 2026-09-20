@@ -1575,6 +1575,7 @@ async function main() {
     phase1TokenUsage: activeTokenUsage || null,
     phase2TokenUsage: phase2TokenUsage || null,
     totalPostsAnalyzed: totalPosts,
+    totalTweetsAnalyzed: Array.isArray(twitterTweets) ? twitterTweets.length : 0,
     subredditsCovered: 50,
     successfulBatches,
     totalBatches: SUBREDDIT_BATCHES.length,

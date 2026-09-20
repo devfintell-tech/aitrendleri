@@ -1249,11 +1249,34 @@ ${bulletsText}
       <header className="bg-[#107c41] text-white select-none shadow-sm">
         {/* Üst Logo ve Dosya Adı */}
         <div className="max-w-7xl mx-auto px-4 py-2.5 flex flex-wrap items-center justify-between gap-3">
-          <div className="flex items-center gap-2.5">
-            <div className="flex items-center justify-center w-7 h-7 bg-white text-[#107c41] font-black rounded text-xs shadow-inner tracking-tighter">
-              AI
+          <div className="flex items-center gap-2.5 sm:gap-3.5 flex-wrap">
+            <div className="flex items-center gap-2.5">
+              <div className="flex items-center justify-center w-7 h-7 bg-white text-[#107c41] font-black rounded text-xs shadow-inner tracking-tighter">
+                AI
+              </div>
+              <span className="font-bold text-base tracking-wide font-mono">aitrendleri.com</span>
             </div>
-            <span className="font-bold text-base tracking-wide font-mono">aitrendleri.com</span>
+
+            {/* Veri Kaynağı Hacim Rozetleri (Reddit & X Twitter) */}
+            <div className="flex items-center gap-1.5 font-mono text-[11px]">
+              <span 
+                className="flex items-center gap-1.5 px-2 py-0.5 rounded bg-[#0c592d] border border-emerald-400/30 text-emerald-100 shadow-2xs"
+                title={`${report.totalPostsAnalyzed || 45} Reddit gönderisi ve tartışması tarandı`}
+              >
+                <span className="w-2 h-2 rounded-full bg-orange-500 shrink-0"></span>
+                <span>Reddit: <strong className="text-white font-bold">{report.totalPostsAnalyzed || 45}</strong></span>
+              </span>
+
+              {(typeof report.totalTweetsAnalyzed === 'number' || report.twitterPulse) && (
+                <span 
+                  className="flex items-center gap-1.5 px-2 py-0.5 rounded bg-[#0c592d] border border-emerald-400/30 text-emerald-100 shadow-2xs"
+                  title={`${report.totalTweetsAnalyzed || 100} X (Twitter) tweeti tarandı`}
+                >
+                  <span className="w-3.5 h-3.5 bg-black text-white text-[9px] font-black flex items-center justify-center rounded-xs shrink-0">𝕏</span>
+                  <span>X: <strong className="text-white font-bold">{report.totalTweetsAnalyzed || 100}</strong></span>
+                </span>
+              )}
+            </div>
           </div>
 
           {/* Sağ Durum, Geçmiş Tarih Seçici ve Model / İcra Telemetrisi Bilgisi */}
