@@ -1643,22 +1643,20 @@ ${bulletsText}
           </div>
         </div>
 
-        {/* 2. ZAMAN SEÇİCİ SEKMELER (Simetrik ve Birbirine Eşit Boyutta 5 Buton) */}
+        {/* 2. ZAMAN SEÇİCİ SEKMELER & BÜLTEN BUTONU (6 Buton: 2x3 Mobil, 3x2 Tablet, 6x1 Masaüstü) */}
         <div className="max-w-7xl mx-auto px-2 sm:px-4 border-t border-[#0e6b37] pt-2 pb-1.5">
-          <div className="grid grid-cols-2 sm:grid-cols-5 gap-1.5 w-full">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-1.5 w-full">
             {[
               { id: 'daily', label: '📊 24 Saatlik' },
               { id: 'weekly', label: '📈 1 Haftalık' },
               { id: 'monthly', label: '🪐 1 Aylık' },
               { id: 'report', label: '📋 Danışman Raporu' },
               { id: 'glossary', label: '📖 Günün Sözlüğü' }
-            ].map((tab, idx) => (
+            ].map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setTimeframe(tab.id)}
-                className={`h-9 flex items-center justify-center transition font-mono text-[11px] sm:text-xs font-bold rounded shadow-xs text-center ${
-                  idx === 4 ? 'col-span-2 sm:col-span-1' : ''
-                } ${
+                className={`h-9 flex items-center justify-center transition font-mono text-[11px] sm:text-xs font-bold rounded shadow-xs text-center cursor-pointer ${
                   timeframe === tab.id
                     ? 'bg-white text-[#107c41] shadow-xs'
                     : 'text-emerald-100 bg-[#0e6b37] hover:bg-[#0b5e30]'
@@ -1667,6 +1665,15 @@ ${bulletsText}
                 {tab.label}
               </button>
             ))}
+            <button
+              type="button"
+              onClick={() => setIsNewsletterModalOpen(true)}
+              className="h-9 flex items-center justify-center gap-1.5 transition font-mono text-[11px] sm:text-xs font-bold rounded shadow-xs text-center text-emerald-100 bg-[#0e6b37] hover:bg-[#0b5e30] hover:text-white cursor-pointer"
+              title="Her sabah günün özetini e-posta olarak almak için abone olun"
+            >
+              <Mail className="w-3.5 h-3.5 text-emerald-200" />
+              <span>Bültene Abone Ol</span>
+            </button>
           </div>
         </div>
       </header>
@@ -1986,18 +1993,15 @@ ${bulletsText}
         {/* ☕ 30 SANİYELİK SABAH İSTİHBARATI: DÜNYADA BUGÜN */}
         {report.morningBrief && (
           <section className="bg-white border border-[#cbd5e1] rounded-sm p-3.5 sm:p-4 shadow-xs space-y-3">
-            {/* Üst Bar: Başlık, Kopyala Butonu & Katla/Aç */}
-            <div className="flex items-center justify-between flex-wrap gap-2 pb-2 border-b border-[#f1f5f9]">
+            {/* Üst Bar: Başlık & Katla/Aç */}
+            <div className="flex items-center justify-between gap-2 pb-2 border-b border-[#f1f5f9]">
               <div className="flex items-center gap-2">
                 <span className="w-6 h-6 rounded bg-[#107c41] text-white flex items-center justify-center font-bold shadow-2xs">
                   <Coffee className="w-3.5 h-3.5" />
                 </span>
                 <div>
-                  <h2 className="text-xs sm:text-sm font-bold text-slate-900 font-mono uppercase tracking-tight flex items-center gap-1.5">
-                    <span>30 Saniyelik Sabah İstihbaratı: Dünyada Bugün</span>
-                    <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-emerald-50 text-[#107c41] border border-emerald-200 font-bold">
-                      {report.date || 'Bugün'}
-                    </span>
+                  <h2 className="text-xs sm:text-sm font-bold text-slate-900 font-mono uppercase tracking-tight">
+                    30 Saniyelik Sabah İstihbaratı: Dünyada Bugün
                   </h2>
                   <p className="text-[11px] text-slate-500 font-sans hidden sm:block">
                     Link ve teknik detay boğuntusu olmadan, dünyada ne olup bittiğini 30 saniyede yakalayın.
@@ -2005,51 +2009,7 @@ ${bulletsText}
                 </div>
               </div>
 
-              <div className="flex items-center gap-2 flex-wrap">
-                <button
-                  type="button"
-                  onClick={() => setTimeframe(timeframe === 'glossary' ? 'daily' : 'glossary')}
-                  className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded font-mono text-[11px] font-bold transition shadow-2xs cursor-pointer border ${
-                    timeframe === 'glossary'
-                      ? 'bg-blue-600 text-white border-blue-700'
-                      : 'bg-blue-50 hover:bg-blue-100 text-blue-800 border-blue-200'
-                  }`}
-                  title="Günün Sözlüğü: O gün sitede geçen 9 kilit teknik kavram"
-                >
-                  <BookMarked className={`w-3.5 h-3.5 ${timeframe === 'glossary' ? 'text-white' : 'text-blue-600'}`} />
-                  <span>📖 Günün Sözlüğü (9 Terim)</span>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={handleCopyBrief}
-                  title="Ekip Slack/WhatsApp kanallarına atmak için bülteni kopyala"
-                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-[#f8fafc] hover:bg-slate-100 text-slate-700 hover:text-slate-950 border border-slate-300 font-mono text-[11px] font-bold transition shadow-2xs cursor-pointer"
-                >
-                  {copiedBrief ? (
-                    <>
-                      <Check className="w-3 h-3 text-emerald-600" />
-                      <span className="text-emerald-700">Kopyalandı!</span>
-                    </>
-                  ) : (
-                    <>
-                      <Copy className="w-3 h-3 text-slate-500" />
-                      <span>Bülteni Kopyala</span>
-                    </>
-                  )}
-                </button>
-
-                {/* 📬 Bültene Abone Ol Butonu */}
-                <button
-                  type="button"
-                  onClick={() => setIsNewsletterModalOpen(true)}
-                  className="flex items-center gap-1 text-[11px] font-mono px-2 py-0.5 rounded bg-[#107c41] hover:bg-[#0c592d] active:scale-95 text-white font-bold transition shadow-2xs cursor-pointer"
-                  title="Her sabah günün özetini e-posta olarak almak için abone olun"
-                >
-                  <Mail className="w-3 h-3 text-emerald-200" />
-                  <span>Bültene Abone Ol</span>
-                </button>
-
+              <div className="flex items-center gap-2">
                 <button
                   type="button"
                   onClick={() => setIsBriefExpanded(!isBriefExpanded)}
@@ -2195,61 +2155,6 @@ ${bulletsText}
           </section>
         )}
 
-        {/* 📬 GÜNLÜK AI BÜLTENİNE ÜCRETSİZ ABONE OL ŞERİDİ */}
-        <section className="bg-gradient-to-r from-[#0d5c30] to-[#107c41] text-white rounded p-3.5 sm:p-4 shadow-xs border border-emerald-600 flex flex-col md:flex-row items-center justify-between gap-3.5">
-          <div className="flex items-center gap-3 w-full md:w-auto">
-            <div className="w-10 h-10 rounded bg-[#094723] border border-emerald-400/40 flex items-center justify-center shrink-0 shadow-inner">
-              <Mail className="w-5 h-5 text-emerald-200" />
-            </div>
-            <div>
-              <h3 className="font-bold text-sm sm:text-base font-mono leading-tight text-white">
-                Günlük AI İstihbarat Bülteni
-              </h3>
-              <p className="text-xs text-emerald-100/90 leading-tight pt-0.5">
-                Gündemin kısa özeti her sabah mailinizde olsun.
-              </p>
-            </div>
-          </div>
-
-          <div className="w-full md:w-auto shrink-0">
-            {subscribeStatus === 'success' ? (
-              <div className="flex items-center gap-2 bg-[#094723] border border-emerald-300/50 px-3.5 py-2 rounded text-xs font-mono text-emerald-100">
-                <Check className="w-4 h-4 text-emerald-300 shrink-0" />
-                <span>{subscribeMessage || 'Aramıza hoş geldiniz! İlk bülteniniz yarın sabah gelen kutunuzda.'}</span>
-              </div>
-            ) : (
-              <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 w-full md:w-auto">
-                <div className="relative">
-                  <input
-                    type="email"
-                    required
-                    value={newsletterEmail}
-                    onChange={(e) => {
-                      setNewsletterEmail(e.target.value);
-                      if (subscribeStatus === 'error') setSubscribeStatus('idle');
-                    }}
-                    placeholder="E-posta adresinizi yazın..."
-                    className="w-full sm:w-64 bg-[#083e1f] border border-emerald-400/40 text-white placeholder-emerald-300/60 px-3 py-2 rounded text-xs font-mono focus:outline-none focus:border-white focus:ring-1 focus:ring-white transition"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  disabled={subscribeStatus === 'loading'}
-                  className="bg-white hover:bg-emerald-50 active:scale-95 text-[#107c41] font-mono font-bold text-xs px-4 py-2 rounded shadow-xs transition flex items-center justify-center gap-1.5 shrink-0 cursor-pointer disabled:opacity-50"
-                >
-                  <Send className="w-3.5 h-3.5" />
-                  <span>{subscribeStatus === 'loading' ? 'Kaydediliyor...' : 'Abone Ol'}</span>
-                </button>
-              </form>
-            )}
-            {subscribeStatus === 'error' && (
-              <div className="text-[11px] font-mono text-rose-200 pt-1 flex items-center gap-1">
-                <span>⚠️</span>
-                <span>{subscribeMessage}</span>
-              </div>
-            )}
-          </div>
-        </section>
 
         {/* 📖 GÜNÜN SÖZLÜĞÜ (Doğrudan Odak / Sekme Görünümü) */}
         {timeframe === 'glossary' && report.dailyGlossary && report.dailyGlossary.length > 0 && (
