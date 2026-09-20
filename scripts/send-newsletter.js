@@ -148,25 +148,19 @@ function buildNewsletterHtml(report) {
 
     <div class="content-pad" style="padding: 20px 24px;">
 
-      <!-- 3. GÜNÜN İKİLİ LİDERİ (Mobilde Asla Birbirine Girmeyen, Alt Alta Tam Genişlikli Sarı Kartlar) -->
+      <!-- 3. GÜNÜN İKİLİ LİDERİ (Mobilde ve Webde Asla Sıkışmayan, Dikey Akışlı Sarı Kartlar) -->
       <div style="margin-bottom: 20px;">
         
         <!-- Kart 1: 🔥 En Çok Konuşulan Model -->
         <div style="background-color: #fffbeb; border: 1px solid #fde68a; border-radius: 6px; padding: 14px 16px; margin-bottom: 12px;">
-          <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-bottom: 1px solid #fef3c7; padding-bottom: 8px; margin-bottom: 8px;">
-            <tr>
-              <td valign="middle">
-                <span style="font-size: 11px; font-weight: bold; font-family: monospace; color: #78350f; text-transform: uppercase;">
-                  🔥 EN ÇOK KONUŞULAN MODEL
-                </span>
-              </td>
-              <td align="right" valign="middle">
-                <span style="background-color: #d97706; color: #ffffff !important; font-size: 10px; font-family: monospace; font-weight: 900; padding: 3px 8px; border-radius: 4px; white-space: nowrap;">
-                  HYPE: ${disc.hypeScore || 9.8}/10
-                </span>
-              </td>
-            </tr>
-          </table>
+          <div style="font-size: 11px; font-weight: bold; font-family: monospace; color: #78350f; text-transform: uppercase; margin-bottom: 6px;">
+            🔥 EN ÇOK KONUŞULAN MODEL
+          </div>
+          <div style="margin-bottom: 8px;">
+            <span style="background-color: #d97706; color: #ffffff !important; font-size: 10px; font-family: monospace; font-weight: 900; padding: 3px 8px; border-radius: 4px; display: inline-block;">
+              HYPE: ${disc.hypeScore || 9.8}/10
+            </span>
+          </div>
           <div class="mobile-card-title" style="font-size: 16px; font-weight: 900; font-family: monospace; color: #78350f; margin-bottom: 6px; word-break: break-word;">
             ${disc.name}
           </div>
@@ -177,20 +171,14 @@ function buildNewsletterHtml(report) {
 
         <!-- Kart 2: ⭐ En Beğenilen Model -->
         <div style="background-color: #fffbeb; border: 1px solid #fde68a; border-radius: 6px; padding: 14px 16px;">
-          <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-bottom: 1px solid #fef3c7; padding-bottom: 8px; margin-bottom: 8px;">
-            <tr>
-              <td valign="middle">
-                <span style="font-size: 11px; font-weight: bold; font-family: monospace; color: #78350f; text-transform: uppercase;">
-                  ⭐ EN BEĞENİLEN MODEL
-                </span>
-              </td>
-              <td align="right" valign="middle">
-                <span style="background-color: #059669; color: #ffffff !important; font-size: 10px; font-family: monospace; font-weight: 900; padding: 3px 8px; border-radius: 4px; white-space: nowrap;">
-                  BEĞENİ: ${lovedScore10}/10
-                </span>
-              </td>
-            </tr>
-          </table>
+          <div style="font-size: 11px; font-weight: bold; font-family: monospace; color: #78350f; text-transform: uppercase; margin-bottom: 6px;">
+            ⭐ EN BEĞENİLEN MODEL
+          </div>
+          <div style="margin-bottom: 8px;">
+            <span style="background-color: #059669; color: #ffffff !important; font-size: 10px; font-family: monospace; font-weight: 900; padding: 3px 8px; border-radius: 4px; display: inline-block;">
+              BEĞENİ: ${lovedScore10}/10
+            </span>
+          </div>
           <div class="mobile-card-title" style="font-size: 16px; font-weight: 900; font-family: monospace; color: #78350f; margin-bottom: 6px; word-break: break-word;">
             ${loved.name}
           </div>
@@ -226,7 +214,7 @@ function buildNewsletterHtml(report) {
         </table>
       </div>
 
-      <!-- 5. GÜNÜN ZİRVESİNDEKİ İLK 3 ÜRÜN (Hype Puanlı Kompakt Liste) -->
+      <!-- 5. GÜNÜN ZİRVESİNDEKİ İLK 3 ÜRÜN (Düz Model İsmi ve Puanı) -->
       <div style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 14px 16px; margin-bottom: 24px;">
         <div style="font-size: 12px; font-weight: bold; font-family: monospace; color: #107c41; text-transform: uppercase; margin-bottom: 10px;">
           📊 Topluluk Radarı: Günün Zirvedeki 3 Ürünü
@@ -237,7 +225,6 @@ function buildNewsletterHtml(report) {
               <tr>
                 <td valign="middle">
                   <span style="font-weight: bold; font-size: 14px; color: #0f172a; font-family: monospace;">#${idx + 1} ${p.name}</span>
-                  <span style="font-size: 10px; color: #475569; background: #e2e8f0; padding: 2px 6px; border-radius: 3px; font-family: monospace; margin-left: 6px; display: inline-block;">${p.category || 'AI Modeli'}</span>
                 </td>
                 <td align="right" valign="middle">
                   <span style="font-size: 11px; font-family: monospace; font-weight: bold; color: #d97706; white-space: nowrap;">Hype: ${p.hypeScore}/10</span>
@@ -254,7 +241,7 @@ function buildNewsletterHtml(report) {
       <!-- 6. BÜYÜK AKSİYON BUTONU (Mobilde %100 Genişlikte, Canlı Siteye Yönlendirme) -->
       <div style="text-align: center; margin: 26px 0 10px 0;">
         <a href="https://aitrendleri.com" class="cta-button" style="display: inline-block; background-color: #107c41; color: #ffffff !important; text-decoration: none !important; padding: 14px 32px; border-radius: 6px; font-size: 14px; font-weight: bold; font-family: monospace; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-          Tüm Detayları ve Tabloları Canlıda İncele →
+          Tüm Detayları Gör →
         </a>
         <div style="font-size: 11px; color: #64748b; margin-top: 10px; font-family: monospace;">
           <a href="https://aitrendleri.com" style="color: #64748b !important; text-decoration: none !important;">aitrendleri.com</a> • Canlı AI Ekosistem Paneli
