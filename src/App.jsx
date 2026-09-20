@@ -1275,27 +1275,6 @@ ${bulletsText}
               </select>
             </div>
 
-            {/* Veri Kaynağı Hacim Rozetleri (Reddit & X Twitter - Saniye ve LLM ile 2 Satır Tam Hizalı) */}
-            <div className="flex flex-col justify-between py-1 px-2.5 bg-[#0c592d] border border-emerald-400/30 rounded text-[11px] font-mono shadow-xs h-[50px]">
-              {/* SATIR 1: Reddit (1. LLM ve Saniye ile tam aynı yatay hizada) */}
-              <div 
-                className="flex items-center gap-1.5 text-emerald-100 whitespace-nowrap leading-none pt-0.5"
-                title={`${report.totalPostsAnalyzed || 45} Reddit gönderisi ve tartışması tarandı`}
-              >
-                <span className="w-2 h-2 rounded-full bg-orange-500 shrink-0"></span>
-                <span>Reddit: <strong className="text-white font-bold">{report.totalPostsAnalyzed || 45}</strong></span>
-              </div>
-
-              {/* SATIR 2: X (Twitter) (2. LLM ve Saat ile tam aynı yatay hizada) */}
-              <div 
-                className="flex items-center gap-1.5 text-emerald-200 border-t border-emerald-400/20 pt-1 leading-none text-[10.5px] whitespace-nowrap"
-                title={`${report.totalTweetsAnalyzed || 100} X (Twitter) tweeti tarandı`}
-              >
-                <span className="w-3 h-3 bg-black text-white text-[8px] font-black flex items-center justify-center rounded-xs shrink-0">𝕏</span>
-                <span>X: <strong className="text-white font-bold">{report.totalTweetsAnalyzed || 100}</strong></span>
-              </div>
-            </div>
-
             {/* ⚡ 1. LLM & 2. LLM Telemetrisi (Alt Alta, Açık & Net Model ve Token Detayları) */}
             {(() => {
               const p1 = report.phase1TokenUsage;
@@ -1411,6 +1390,32 @@ ${bulletsText}
                         <span className="text-yellow-300 font-bold text-[9.5px] uppercase">Bileşik Toplam</span>
                         <span className="text-xs font-black text-white">{totalK}k</span>
                       </div>
+
+                      {/* Veri Kaynağı Hacim Rozetleri (Reddit & X Twitter - Bileşik Toplam'ın Sağında, : : Tam Hizalı) */}
+                      <div 
+                        className="flex flex-col justify-between py-1 px-2.5 bg-[#0c592d] border border-emerald-400/30 rounded text-[11px] font-mono shadow-xs h-[50px]"
+                        title={`Taranan Veri Havuzu:\n• Reddit: ${report.totalPostsAnalyzed || 45} gönderi ve tartışma\n• X (Twitter): ${report.totalTweetsAnalyzed || 100} tweet`}
+                      >
+                        {/* SATIR 1: Reddit (1. LLM ile tam aynı yatay hizada) */}
+                        <div className="grid grid-cols-[14px_44px_6px_auto] items-center gap-x-1 leading-none pt-0.5">
+                          <div className="flex items-center justify-center">
+                            <span className="w-2 h-2 rounded-full bg-orange-500 shrink-0"></span>
+                          </div>
+                          <span className="text-emerald-100 font-semibold">Reddit</span>
+                          <span className="text-emerald-300 font-bold text-center">:</span>
+                          <strong className="text-white font-bold">{report.totalPostsAnalyzed || 45}</strong>
+                        </div>
+
+                        {/* SATIR 2: X (Twitter) (2. LLM ile tam aynı yatay hizada, : : alt alta milimetrik hizalı) */}
+                        <div className="grid grid-cols-[14px_44px_6px_auto] items-center gap-x-1 border-t border-emerald-400/20 pt-1 leading-none text-[10.5px]">
+                          <div className="flex items-center justify-center">
+                            <span className="w-3 h-3 bg-black text-white text-[8px] font-black flex items-center justify-center rounded-xs shrink-0">𝕏</span>
+                          </div>
+                          <span className="text-emerald-200 font-semibold">X</span>
+                          <span className="text-emerald-300 font-bold text-center">:</span>
+                          <strong className="text-white font-bold">{report.totalTweetsAnalyzed || 100}</strong>
+                        </div>
+                      </div>
                     </div>
                   </>
                 );
@@ -1452,6 +1457,29 @@ ${bulletsText}
                       </div>
                     </div>
                   )}
+
+                  {/* Fallback Reddit & X Box */}
+                  <div 
+                    className="flex flex-col justify-between py-1 px-2.5 bg-[#0c592d] border border-emerald-400/30 rounded text-[11px] font-mono shadow-xs h-[50px]"
+                    title={`Taranan Veri Havuzu:\n• Reddit: ${report.totalPostsAnalyzed || 45} gönderi ve tartışma\n• X (Twitter): ${report.totalTweetsAnalyzed || 100} tweet`}
+                  >
+                    <div className="grid grid-cols-[14px_44px_6px_auto] items-center gap-x-1 leading-none pt-0.5">
+                      <div className="flex items-center justify-center">
+                        <span className="w-2 h-2 rounded-full bg-orange-500 shrink-0"></span>
+                      </div>
+                      <span className="text-emerald-100 font-semibold">Reddit</span>
+                      <span className="text-emerald-300 font-bold text-center">:</span>
+                      <strong className="text-white font-bold">{report.totalPostsAnalyzed || 45}</strong>
+                    </div>
+                    <div className="grid grid-cols-[14px_44px_6px_auto] items-center gap-x-1 border-t border-emerald-400/20 pt-1 leading-none text-[10.5px]">
+                      <div className="flex items-center justify-center">
+                        <span className="w-3 h-3 bg-black text-white text-[8px] font-black flex items-center justify-center rounded-xs shrink-0">𝕏</span>
+                      </div>
+                      <span className="text-emerald-200 font-semibold">X</span>
+                      <span className="text-emerald-300 font-bold text-center">:</span>
+                      <strong className="text-white font-bold">{report.totalTweetsAnalyzed || 100}</strong>
+                    </div>
+                  </div>
                 </div>
               );
             })()}
