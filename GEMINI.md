@@ -180,7 +180,10 @@ Bu belge, bu projenin tüm tasarım, veri mimarisi ve geliştirme standartların
    - Her iki LLM için model adı, 'Girdi', 'Düşünce', 'Nihai' ve 'Toplam' metinleri ve sayıları üst ve alt satırda tam aynı yatay hizada (sütun sütun) yer alır.
    - Token metriklerinde G, D, N gibi tek harfli kısaltmalar kesinlikle KULLANILAMAZ; tam kelimelerle 'Girdi', 'Düşünce', 'Nihai' ve 'Toplam' yazılır.
    - Üst barda görsel kirlilik oluşturan gereksiz 'Canlı Akış' etiketi yer almaz; bilgi çubuğu derli toplu, jilet gibi hizalı ve okunabilir tutulur.
-   - Geçmiş arşiv günlerinde veya telemetrinin henüz ayrı toplanmadığı tarihlerde, arayüz otomatik olarak tekil modele ve token rozetine geri döner (sıfır uydurma veri ilkesi).
+6. **Saniye ve Dakika/Saat Alt Alta ve LLM Hizalaması (Yerden Tasarruf & Milimetrik Uyum):**
+   - Çalışma süresi (Saniye) ile Tetiklenme/Tamamlanma Saati (Dakika/Saat) üst bilgi çubuğunda alt alta 2 satır halinde konumlandırılır.
+   - Saniye satırı tam 1. LLM satırının hizasında; Saat/Dakika satırı ise tam 2. LLM satırının hizasında yer alır.
+   - Böylece bilgi çubuğunda dikey ve yatay alandan maksimum tasarruf sağlanır, gereksiz satır kırılmaları önlenir.
 
 ---
 
@@ -204,6 +207,7 @@ Bu belge, bu projenin tüm tasarım, veri mimarisi ve geliştirme standartların
      - **🔥 En Çok Konuşulan Model (`mostDiscussed`):** Günün en yüksek konuşulma hacmine ve Hype Skoruna sahip modeli (`daily[0]`). Neden gündem olduğu, viral olaylar veya kriz/tartışma hacmi özetlenir.
      - **⭐ En Beğenilen Model (`mostLoved`):** Topluluğun en yüksek memnuniyet ve övgü oranına (`sentimentScore`) sahip modeli. Neden bu kadar beğenildiği, geliştirici deneyimi ve kullanıcı takdiri özetlenir.
    - Bu iki kart yan yana tam dengeli, eşit yükseklikte ve milimetrik olarak eşleşir. Geriye dönük uyumluluk için `morningBrief.leader` alanı `mostDiscussed` modeliyle senkronize tutulur.
+   - **Etiket ve Taşma Yasağı:** Sarı kartların üzerinde "Günün Lideri", "Yüksek İvme" gibi yapay etiketler (badge) KESİNLİKLE KULLANILAMAZ. Model adı ne kadar uzun olursa olsun, `HYPE: X.X/10` ve `BEĞENİ: X.X/10` skor kutucukları asla alt satıra sarkamaz (`flex-nowrap`, `shrink-0`).
 
 5. **İki Aşamada Tek Model İlkesi (Unified Model Invariance):**
    - Faz 1 ve Faz 2 KESİNLİKLE BİREBİR AYNI MODEL ve sağlayıcı tarafından yürütülmelidir. Biri DeepSeek diğeri Gemini olamaz.

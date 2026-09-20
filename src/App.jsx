@@ -1208,28 +1208,6 @@ ${bulletsText}
               </select>
             </div>
 
-            {/* ⏱️ Çalışma Süresi Rozeti - Yalnızca gerçek ölçüm varsa göster */}
-            {typeof report.durationSeconds === 'number' && report.durationSeconds > 0 && (
-              <div 
-                className="flex items-center gap-1 bg-[#0c592d] border border-emerald-400/30 px-2 py-1 rounded text-[11px] font-semibold text-white shadow-xs"
-                title={`Toplam Çalışma Süresi: ${report.durationSeconds} saniye`}
-              >
-                <Clock className="w-3 h-3 text-amber-300 flex-shrink-0" />
-                <span>{report.durationSeconds}s</span>
-              </div>
-            )}
-
-            {/* 🕒 Tetiklenme ve Nihai Çıktı Saati - Yalnızca gerçek saat damgası varsa göster */}
-            {report.startedAt && report.completedAt && (
-              <div 
-                className="hidden md:flex items-center gap-1 bg-[#0c592d] border border-emerald-400/30 px-2 py-1 rounded text-[11px] font-semibold text-emerald-100 shadow-xs"
-                title={`Tetiklenme Saati: ${report.startedAt} | Nihai Çıktı Saati: ${report.completedAt}`}
-              >
-                <span className="text-emerald-300 font-bold">Saat:</span>
-                <span>{report.startedAt.slice(0, 5)} ➔ {report.completedAt.slice(0, 5)}</span>
-              </div>
-            )}
-
             {/* ⚡ 1. LLM & 2. LLM Telemetrisi (Alt Alta, Açık & Net Model ve Token Detayları) */}
             {(() => {
               const p1 = report.phase1TokenUsage;
@@ -1255,64 +1233,113 @@ ${bulletsText}
                 const totalK = ((tu?.totalTokens || (p1.totalTokens + p2.totalTokens)) / 1000).toFixed(1);
 
                 return (
-                  <div className="hidden lg:flex items-center gap-2">
-                    {/* İki LLM Alt Alta ve Sütun Sütun Tam Hizalı Izgara */}
-                    <div 
-                      className="grid grid-cols-[auto_auto_auto_auto_auto_auto_auto_auto_auto_auto] items-center gap-x-2 gap-y-1 bg-[#0c592d] border border-emerald-400/30 px-3 py-1.5 rounded text-[11px] font-mono text-emerald-100 shadow-xs"
-                      title={`1. LLM (${model1Name}): Girdi: ${p1.promptTokens?.toLocaleString()} | Düşünce: ${(p1.reasoningTokens || 0)?.toLocaleString()} | Nihai: ${p1FinalVal?.toLocaleString()} | Toplam: ${p1.totalTokens?.toLocaleString()}\n2. LLM (${model2Name}): Girdi: ${p2.promptTokens?.toLocaleString()} | Düşünce: ${(p2.reasoningTokens || 0)?.toLocaleString()} | Nihai: ${p2FinalVal?.toLocaleString()} | Toplam: ${p2.totalTokens?.toLocaleString()}`}
-                    >
-                      {/* SATIR 1: 1. LLM */}
-                      <span className="font-bold text-emerald-300 flex items-center gap-1 whitespace-nowrap">
-                        <Zap className="w-3 h-3 text-emerald-300 flex-shrink-0" />
-                        1. LLM:
-                      </span>
-                      <span className="bg-[#094723] text-white px-1.5 py-0.2 rounded font-semibold text-[10.5px] border border-emerald-400/20 whitespace-nowrap text-center">
-                        {model1Name}
-                      </span>
-                      <span className="text-emerald-400/40">|</span>
-                      <span className="whitespace-nowrap">Girdi: <strong className="text-emerald-200 font-bold">{p1PromptK}k</strong></span>
-                      <span className="text-emerald-400/40">|</span>
-                      <span className="whitespace-nowrap">Düşünce: <strong className="text-purple-300 font-bold">{p1ReasoningK}k</strong></span>
-                      <span className="text-emerald-400/40">|</span>
-                      <span className="whitespace-nowrap">Nihai: <strong className="text-yellow-300 font-bold">{p1FinalK}k</strong></span>
-                      <span className="text-emerald-400/40">|</span>
-                      <span className="whitespace-nowrap">Toplam: <strong className="text-white font-bold">{p1TotalK}k</strong></span>
-
-                      {/* SATIR 2: 2. LLM (Milimetrik Hizalı) */}
-                      <span className="font-bold text-cyan-300 flex items-center gap-1 whitespace-nowrap border-t border-emerald-400/20 pt-1">
-                        <Zap className="w-3 h-3 text-cyan-300 flex-shrink-0" />
-                        2. LLM:
-                      </span>
-                      <div className="border-t border-emerald-400/20 pt-1">
-                        <span className="bg-[#094723] text-white px-1.5 py-0.2 rounded font-semibold text-[10.5px] border border-emerald-400/20 whitespace-nowrap text-center inline-block w-full">
-                          {model2Name}
-                        </span>
+                  <>
+                    {/* Mobil/Tablet için sade süre rozeti */}
+                    {typeof report.durationSeconds === 'number' && report.durationSeconds > 0 && (
+                      <div className="lg:hidden flex items-center gap-1 bg-[#0c592d] border border-emerald-400/30 px-2 py-1 rounded text-[11px] font-semibold text-white shadow-xs">
+                        <Clock className="w-3 h-3 text-amber-300 flex-shrink-0" />
+                        <span>{report.durationSeconds}s</span>
                       </div>
-                      <span className="text-emerald-400/40 border-t border-emerald-400/20 pt-1">|</span>
-                      <span className="whitespace-nowrap border-t border-emerald-400/20 pt-1">Girdi: <strong className="text-emerald-200 font-bold">{p2PromptK}k</strong></span>
-                      <span className="text-emerald-400/40 border-t border-emerald-400/20 pt-1">|</span>
-                      <span className="whitespace-nowrap border-t border-emerald-400/20 pt-1">Düşünce: <strong className="text-purple-300 font-bold">{p2ReasoningK}k</strong></span>
-                      <span className="text-emerald-400/40 border-t border-emerald-400/20 pt-1">|</span>
-                      <span className="whitespace-nowrap border-t border-emerald-400/20 pt-1">Nihai: <strong className="text-yellow-300 font-bold">{p2FinalK}k</strong></span>
-                      <span className="text-emerald-400/40 border-t border-emerald-400/20 pt-1">|</span>
-                      <span className="whitespace-nowrap border-t border-emerald-400/20 pt-1">Toplam: <strong className="text-white font-bold">{p2TotalK}k</strong></span>
-                    </div>
+                    )}
 
-                    {/* Bileşik Toplam Rozeti */}
-                    <div 
-                      className="hidden xl:flex flex-col justify-center items-center bg-[#094723] border border-emerald-400/40 px-2.5 py-1.5 rounded font-mono shadow-xs text-center cursor-help"
-                      title={`Bileşik Token Toplamı (1. LLM + 2. LLM):\n• Girdi: ${tu?.promptTokens?.toLocaleString()} token\n• Düşünce: ${tu?.reasoningTokens?.toLocaleString()} token\n• Nihai Çıktı: ${tu?.finalTokens?.toLocaleString()} token\n• Toplam: ${tu?.totalTokens?.toLocaleString()} token`}
-                    >
-                      <span className="text-yellow-300 font-bold text-[9.5px] uppercase">Bileşik Toplam</span>
-                      <span className="text-xs font-black text-white">{totalK}k</span>
+                    {/* Masaüstü: Saniye & Dakika/Saat Alt Alta, 1. LLM ve 2. LLM ile Birebir Hizada */}
+                    <div className="hidden lg:flex items-center gap-2">
+                      {/* Saniye (Üstte / 1. LLM Hizası) ve Saat/Dakika (Altta / 2. LLM Hizası) */}
+                      {typeof report.durationSeconds === 'number' && report.durationSeconds > 0 && (
+                        <div className="flex flex-col justify-between py-1 px-2.5 bg-[#0c592d] border border-emerald-400/30 rounded text-[11px] font-mono shadow-xs h-[50px]">
+                          {/* SATIR 1: Saniye (1. LLM ile tam aynı yatay hizada) */}
+                          <div 
+                            className="flex items-center gap-1 text-amber-300 font-semibold whitespace-nowrap leading-none pt-0.5"
+                            title={`Toplam Çalışma Süresi: ${report.durationSeconds} saniye`}
+                          >
+                            <Clock className="w-3 h-3 text-amber-300 flex-shrink-0" />
+                            <span>{report.durationSeconds}s</span>
+                          </div>
+
+                          {/* SATIR 2: Dakika / Saat (2. LLM ile tam aynı yatay hizada) */}
+                          {report.startedAt && report.completedAt ? (
+                            <div 
+                              className="flex items-center gap-1 text-emerald-200 font-medium whitespace-nowrap border-t border-emerald-400/20 pt-1 leading-none text-[10.5px]"
+                              title={`Tetiklenme Saati: ${report.startedAt} | Nihai Çıktı Saati: ${report.completedAt}`}
+                            >
+                              <span className="text-emerald-300 font-bold">Saat:</span>
+                              <span>{report.startedAt.slice(0, 5)} ➔ {report.completedAt.slice(0, 5)}</span>
+                            </div>
+                          ) : (
+                            <div className="border-t border-emerald-400/20 pt-1 text-[10px] text-emerald-300/60 leading-none">
+                              Canlı
+                            </div>
+                          )}
+                        </div>
+                      )}
+
+                      {/* İki LLM Alt Alta ve Sütun Sütun Tam Hizalı Izgara */}
+                      <div 
+                        className="grid grid-cols-[auto_auto_auto_auto_auto_auto_auto_auto_auto_auto] items-center gap-x-2 gap-y-1 bg-[#0c592d] border border-emerald-400/30 px-3 py-1 rounded text-[11px] font-mono text-emerald-100 shadow-xs h-[50px]"
+                        title={`1. LLM (${model1Name}): Girdi: ${p1.promptTokens?.toLocaleString()} | Düşünce: ${(p1.reasoningTokens || 0)?.toLocaleString()} | Nihai: ${p1FinalVal?.toLocaleString()} | Toplam: ${p1.totalTokens?.toLocaleString()}\n2. LLM (${model2Name}): Girdi: ${p2.promptTokens?.toLocaleString()} | Düşünce: ${(p2.reasoningTokens || 0)?.toLocaleString()} | Nihai: ${p2FinalVal?.toLocaleString()} | Toplam: ${p2.totalTokens?.toLocaleString()}`}
+                      >
+                        {/* SATIR 1: 1. LLM */}
+                        <span className="font-bold text-emerald-300 flex items-center gap-1 whitespace-nowrap">
+                          <Zap className="w-3 h-3 text-emerald-300 flex-shrink-0" />
+                          1. LLM:
+                        </span>
+                        <span className="bg-[#094723] text-white px-1.5 py-0.2 rounded font-semibold text-[10.5px] border border-emerald-400/20 whitespace-nowrap text-center">
+                          {model1Name}
+                        </span>
+                        <span className="text-emerald-400/40">|</span>
+                        <span className="whitespace-nowrap">Girdi: <strong className="text-emerald-200 font-bold">{p1PromptK}k</strong></span>
+                        <span className="text-emerald-400/40">|</span>
+                        <span className="whitespace-nowrap">Düşünce: <strong className="text-purple-300 font-bold">{p1ReasoningK}k</strong></span>
+                        <span className="text-emerald-400/40">|</span>
+                        <span className="whitespace-nowrap">Nihai: <strong className="text-yellow-300 font-bold">{p1FinalK}k</strong></span>
+                        <span className="text-emerald-400/40">|</span>
+                        <span className="whitespace-nowrap">Toplam: <strong className="text-white font-bold">{p1TotalK}k</strong></span>
+
+                        {/* SATIR 2: 2. LLM (Milimetrik Hizalı) */}
+                        <span className="font-bold text-cyan-300 flex items-center gap-1 whitespace-nowrap border-t border-emerald-400/20 pt-1">
+                          <Zap className="w-3 h-3 text-cyan-300 flex-shrink-0" />
+                          2. LLM:
+                        </span>
+                        <div className="border-t border-emerald-400/20 pt-1">
+                          <span className="bg-[#094723] text-white px-1.5 py-0.2 rounded font-semibold text-[10.5px] border border-emerald-400/20 whitespace-nowrap text-center inline-block w-full">
+                            {model2Name}
+                          </span>
+                        </div>
+                        <span className="text-emerald-400/40 border-t border-emerald-400/20 pt-1">|</span>
+                        <span className="whitespace-nowrap border-t border-emerald-400/20 pt-1">Girdi: <strong className="text-emerald-200 font-bold">{p2PromptK}k</strong></span>
+                        <span className="text-emerald-400/40 border-t border-emerald-400/20 pt-1">|</span>
+                        <span className="whitespace-nowrap border-t border-emerald-400/20 pt-1">Düşünce: <strong className="text-purple-300 font-bold">{p2ReasoningK}k</strong></span>
+                        <span className="text-emerald-400/40 border-t border-emerald-400/20 pt-1">|</span>
+                        <span className="whitespace-nowrap border-t border-emerald-400/20 pt-1">Nihai: <strong className="text-yellow-300 font-bold">{p2FinalK}k</strong></span>
+                        <span className="text-emerald-400/40 border-t border-emerald-400/20 pt-1">|</span>
+                        <span className="whitespace-nowrap border-t border-emerald-400/20 pt-1">Toplam: <strong className="text-white font-bold">{p2TotalK}k</strong></span>
+                      </div>
+
+                      {/* Bileşik Toplam Rozeti */}
+                      <div 
+                        className="hidden xl:flex flex-col justify-center items-center bg-[#094723] border border-emerald-400/40 px-2.5 py-1 rounded font-mono shadow-xs text-center cursor-help h-[50px]"
+                        title={`Bileşik Token Toplamı (1. LLM + 2. LLM):\n• Girdi: ${tu?.promptTokens?.toLocaleString()} token\n• Düşünce: ${tu?.reasoningTokens?.toLocaleString()} token\n• Nihai Çıktı: ${tu?.finalTokens?.toLocaleString()} token\n• Toplam: ${tu?.totalTokens?.toLocaleString()} token`}
+                      >
+                        <span className="text-yellow-300 font-bold text-[9.5px] uppercase">Bileşik Toplam</span>
+                        <span className="text-xs font-black text-white">{totalK}k</span>
+                      </div>
                     </div>
-                  </div>
+                  </>
                 );
               }
 
               // Tekil / Geçmiş Arşiv Fallback
               return (
                 <div className="hidden lg:flex items-center gap-1.5">
+                  {typeof report.durationSeconds === 'number' && report.durationSeconds > 0 && (
+                    <div 
+                      className="flex items-center gap-1 bg-[#0c592d] border border-emerald-400/30 px-2 py-1 rounded text-[11px] font-semibold text-white shadow-xs"
+                      title={`Toplam Çalışma Süresi: ${report.durationSeconds} saniye`}
+                    >
+                      <Clock className="w-3 h-3 text-amber-300 flex-shrink-0" />
+                      <span>{report.durationSeconds}s</span>
+                    </div>
+                  )}
                   {report.activeModel && (
                     <div 
                       className="flex items-center gap-1 bg-[#0c592d] border border-emerald-400/30 px-2 py-1 rounded text-[11px] font-semibold text-white shadow-xs"
@@ -1491,26 +1518,19 @@ ${bulletsText}
                     {/* Sol Kart: 🔥 En Çok Konuşulan Model */}
                     <div className="bg-amber-50/80 border border-amber-300/90 rounded p-3 shadow-2xs flex flex-col justify-between gap-2.5 h-full">
                       <div>
-                        <div className="flex items-center justify-between gap-2 flex-wrap pb-1.5 border-b border-amber-200/70">
+                        <div className="flex items-center justify-between gap-2 flex-nowrap pb-1.5 border-b border-amber-200/70 min-w-0">
                           <div className="flex items-center gap-1.5 min-w-0">
                             <span className="text-sm shrink-0">🔥</span>
-                            <span className="text-[11px] font-mono font-bold text-amber-950 uppercase tracking-tight">
-                              En Çok Konuşulan Model:
+                            <span className="text-[11px] font-mono font-bold text-amber-950 uppercase tracking-tight shrink-0">
+                              En Çok Konuşulan:
                             </span>
-                            <span className="font-mono text-xs sm:text-sm font-black text-amber-900 bg-amber-100/90 px-2 py-0.5 rounded border border-amber-300">
+                            <span className="font-mono text-xs sm:text-sm font-black text-amber-900 bg-amber-100/90 px-2 py-0.5 rounded border border-amber-300 truncate min-w-0">
                               {leaderBreakdown.mostDiscussed.name}
                             </span>
                           </div>
-                          <div className="flex items-center gap-1.5 flex-wrap">
-                            <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-amber-600 text-white font-black shadow-2xs">
-                              HYPE: {leaderBreakdown.mostDiscussed.hypeScore}/10
-                            </span>
-                            {leaderBreakdown.mostDiscussed.badge && (
-                              <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-white/90 text-amber-800 border border-amber-200 font-bold">
-                                {leaderBreakdown.mostDiscussed.badge}
-                              </span>
-                            )}
-                          </div>
+                          <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-600 text-white font-black shadow-2xs shrink-0 whitespace-nowrap">
+                            HYPE: {leaderBreakdown.mostDiscussed.hypeScore}/10
+                          </span>
                         </div>
                         <p className="text-xs text-amber-900 mt-2 leading-relaxed">
                           {leaderBreakdown.mostDiscussed.description}
@@ -1525,26 +1545,19 @@ ${bulletsText}
                     {/* Sağ Kart: ⭐ En Beğenilen Model */}
                     <div className="bg-amber-50/80 border border-amber-300/90 rounded p-3 shadow-2xs flex flex-col justify-between gap-2.5 h-full">
                       <div>
-                        <div className="flex items-center justify-between gap-2 flex-wrap pb-1.5 border-b border-amber-200/70">
+                        <div className="flex items-center justify-between gap-2 flex-nowrap pb-1.5 border-b border-amber-200/70 min-w-0">
                           <div className="flex items-center gap-1.5 min-w-0">
                             <span className="text-sm shrink-0">⭐</span>
-                            <span className="text-[11px] font-mono font-bold text-amber-950 uppercase tracking-tight">
-                              En Beğenilen Model:
+                            <span className="text-[11px] font-mono font-bold text-amber-950 uppercase tracking-tight shrink-0">
+                              En Beğenilen:
                             </span>
-                            <span className="font-mono text-xs sm:text-sm font-black text-amber-900 bg-amber-100/90 px-2 py-0.5 rounded border border-amber-300">
+                            <span className="font-mono text-xs sm:text-sm font-black text-amber-900 bg-amber-100/90 px-2 py-0.5 rounded border border-amber-300 truncate min-w-0">
                               {leaderBreakdown.mostLoved.name}
                             </span>
                           </div>
-                          <div className="flex items-center gap-1.5 flex-wrap">
-                            <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-emerald-600 text-white font-black shadow-2xs">
-                              BEĞENİ: {((leaderBreakdown.mostLoved.sentimentScore || 0) / 10).toFixed(1)}/10
-                            </span>
-                            {leaderBreakdown.mostLoved.badge && (
-                              <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-white/90 text-amber-800 border border-amber-200 font-bold">
-                                {leaderBreakdown.mostLoved.badge}
-                              </span>
-                            )}
-                          </div>
+                          <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-600 text-white font-black shadow-2xs shrink-0 whitespace-nowrap">
+                            BEĞENİ: {((leaderBreakdown.mostLoved.sentimentScore || 0) / 10).toFixed(1)}/10
+                          </span>
                         </div>
                         <p className="text-xs text-amber-900 mt-2 leading-relaxed">
                           {leaderBreakdown.mostLoved.description}
