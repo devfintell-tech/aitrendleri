@@ -218,5 +218,34 @@ Bu belge, bu projenin tüm tasarım, veri mimarisi ve geliştirme standartların
    - DeepSeek yanıt veremez veya anahtar tanımlanmamışsa 2. öncelik olarak Google Gemini 3.8 Flash (`gemini-3.8-flash` - 6'lı anahtar havuzu) devreye girer.
    - Gemini 3.8 Flash da yanıt veremezse Gemini 3.7 ve alt modeller şelale yöntemiyle sırayla taranır.
 
+---
+
+## 🐦 11. X (Twitter) AI Nabzı & Seçkin 30 Hesap Standartları
+
+1. **Seçkin 30 Hesap Listesi & Bütçe Koruma Prensibi:**
+   - X gündemi için internetteki genel ve gürültülü akış yerine, yapay zeka ekosisteminin en saygın 30 öncüsü, araştırmacısı ve çekirdek geliştiricisi taranır:
+     1. `@simonw` (Simon Willison), 2. `@swyx` (Shawn Wang), 3. `@_philschmid` (Philipp Schmid), 4. `@jeremyphoward` (Jeremy Howard), 5. `@awnihannun` (Awni Hannun), 6. `@ggerganov` (Georgi Gerganov), 7. `@chipro` (Chip Huyen), 8. `@hwchase17` (Harrison Chase), 9. `@jerryjliu0` (Jerry Liu), 10. `@HamelHusain` (Hamel Husain), 11. `@karpathy` (Andrej Karpathy), 12. `@fchollet` (François Chollet), 13. `@srush_nlp` (Sasha Rush), 14. `@tri_dao` (Tri Dao), 15. `@Tim_Dettmers` (Tim Dettmers), 16. `@rasbt` (Sebastian Raschka), 17. `@lilianweng` (Lilian Weng), 18. `@eugeneyan` (Eugene Yan), 19. `@emollick` (Ethan Mollick), 20. `@swann_vance` (Swann Vance), 21. `@wattenberger` (Amelia Wattenberger), 22. `@minchoi` (Min Choi), 23. `@fofrAI` (fofr), 24. `@LinusEkenstam` (Linus Ekenstam), 25. `@bilawalsidhu` (Bilawal Sidhu), 26. `@arankomatsuzaki` (Aran Komatsuzaki), 27. `@natolambert` (Nathan Lambert), 28. `@RisingSayak` (Sayak Paul), 29. `@cwolferesearch` (Cameron R. Wolfe), 30. `@rainisto` (Roope Rainisto).
+   - Apify 5$ aylık ücretsiz kredisi 31 güne bölünerek (~0.161$/gün bütçe) ultra verimli çalıştırılır (`xquik~x-tweet-scraper`). Günlük çekim 30-45 tweet ve ~10 saniyelik işlem süresiyle sınırlandırılır.
+
+2. **Kesin Son 24 Saat Zaman Filtresi & Etkileşim Sıralaması:**
+   - Yalnızca ve sadece son 24 saat içinde (`cutoff = Date.now() - 24*3600*1000`) paylaşılmış tweetler işleme alınır.
+   - Toplanan tweetler beğeni ve retweet ağırlıklı skora (`likes + 2*retweets`) göre sıralanır.
+
+3. **Ürünler, Teknikler ve Tartışmaların Derlenmesi:**
+   - DeepSeek/LLM toplanan tüm tweetleri okuyarak:
+     - **24 Saatlik Özet (`summary24h`):** Liderlerin ortak hissiyatı ve odaklandığı ana gündem.
+     - **Çok Konuşulan Ürünler (`trendingProducts`):** Tweetlerde referans verilen somut kütüphane ve araçlar (örn. llama.cpp, vLLM, DeepSeek R1).
+     - **Günün Teknikleri & Mimarileri (`technicalTopics`):** Liderlerin tartıştığı yeni yaklaşımlar (örn. RL ile akıl yürütme, dinamik KV cache, ajan güvenliği).
+     - **Öne Çıkan 6-8 Tweet (`tweets`):** En değerli tweetlerin seçimi.
+
+4. **Zorunlu Akıcı Türkçe Çeviri (`textTr`) & Derin Teknik Analiz (`discussion`):**
+   - Her tweet için akıcı, eksiksiz bir Türkçe çeviri (`textTr`) üretilir. İsteğe bağlı olarak orijinal İngilizce metin (`text`) incelenebilir.
+   - Her tweetin altında, o paylaşımın yapay zeka ekosistemindeki teknik önemini, mimari yansımalarını ve geliştirici pratiklerine etkisini anlatan en az 2-3 cümlelik doyurucu bir Türkçe analiz paragrafı (`discussion`) yer alır.
+
+5. **CSS Subgrid ve Sıfır Kaydırma Çubuğu İlkesi:**
+   - Kartlar 2 sütunlu (`subgrid-row-twitter` ve `subgrid-card-twitter`) ızgara düzeninde doğal olarak genişler.
+   - Kartların içinde dikey veya yatay kaydırma çubuğu (scrollbar) KULLANILAMAZ; kutular en uzun metne göre subgrid ile eşitlenir.
+
+
 
 

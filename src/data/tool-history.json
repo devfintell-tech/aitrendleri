@@ -167,14 +167,14 @@
       },
       {
         "date": "20 Eylül 2026",
-        "hypeScore": 8.3,
+        "hypeScore": 8.7,
         "sentimentScore": 68,
-        "sentiment": "eleştirel",
+        "sentiment": "coşkulu",
         "headline": "Kararsız",
-        "summary": "Toplulukta hem üretkenlik hikayeleri hem de ağır yük altında bellek ve performans şikayetleri bir arada konuşuluyor; hissiyat bu nedenle bölünmüş durumda.",
+        "summary": "Vibe coding metodolojisiyle entegrasyonu övülürken, bazı kullanıcılar arayüz güncellemeleri ve performans sorunlarından şikayetçi.",
         "sources": [
           "r/CursorAI",
-          "r/vibecoding"
+          "r/vscode"
         ]
       }
     ]
@@ -322,12 +322,11 @@
       {
         "date": "20 Eylül 2026",
         "hypeScore": 9.8,
-        "sentimentScore": 30,
+        "sentimentScore": 52,
         "sentiment": "coşkulu",
-        "headline": "Kritik Olay",
-        "summary": "Bir kullanıcının 48 bin dosyasının ajan tarafından silindiğini bildirmesi panik yarattı; topluluk ayrıca her turda tüm konuşmanın yeniden gönderilmesiyle token yakımının kontrolden çıktığını söylüyor.",
+        "headline": "Günün Lideri",
+        "summary": "Geliştiricilerin kod tabanlarında yaptığı büyük çaplı dosya silme hataları ve test manipülasyonu tartışmaları nedeniyle gündemin merkezinde.",
         "sources": [
-          "r/ClaudeAI",
           "r/ClaudeDev",
           "r/vibecoding"
         ]
@@ -2740,14 +2739,13 @@
       },
       {
         "date": "20 Eylül 2026",
-        "hypeScore": 8,
-        "sentimentScore": 95,
+        "hypeScore": 7.8,
+        "sentimentScore": 88,
         "sentiment": "coşkulu",
-        "headline": "Açık Kaynak Gözdesi",
-        "summary": "Oracle Cloud ücretsiz katmanında sıfır maliyetle çalışan Telegram tabanlı çoklu ajan takımlarının kurulabilmesi büyük ilgi gördü.",
+        "headline": "Geliştirici Favorisi",
+        "summary": "Telegram botları üzerinden ücretsiz failover zinciri kurma yeteneği ile hala popüler ancak hype ivmesi yavaşladı.",
         "sources": [
-          "r/OpenSourceAI",
-          "r/selfhosted"
+          "r/OpenSourceAI"
         ]
       }
     ]
@@ -3969,15 +3967,14 @@
       },
       {
         "date": "20 Eylül 2026",
-        "hypeScore": 9.5,
-        "sentimentScore": 36,
-        "sentiment": "coşkulu",
-        "headline": "Kota Baskısı",
-        "summary": "Kullanıcılar haftalık limitleri hızla tükettiğini ve haftada dört kez reset gerektiğini söylüyor; bir geliştirici orkestrasyon paketiyle kullanımı yüzde 98 düşürdüğünü iddia ederek tartışmayı büyüttü.",
+        "hypeScore": 9.2,
+        "sentimentScore": 45,
+        "sentiment": "düşüş",
+        "headline": "Limit Tepkisi",
+        "summary": "Kullanıcıların kullanım limitlerine takılması ve verimlilik artışı için özel orkestrasyon paketleri geliştirmek zorunda kalmaları tartışılıyor.",
         "sources": [
-          "r/vibecoding",
           "r/ChatGPTCoding",
-          "r/OpenAI"
+          "r/singularity"
         ]
       }
     ]
@@ -4672,6 +4669,111 @@
         "sources": [
           "r/n8n",
           "r/devops"
+        ]
+      }
+    ]
+  },
+  "qwen-image-2-1": {
+    "name": "Qwen Image 2.1",
+    "category": "Yerel Model",
+    "history": [
+      {
+        "date": "20 Eylül 2026",
+        "hypeScore": 9.5,
+        "sentimentScore": 94,
+        "sentiment": "coşkulu",
+        "headline": "Yüksek Verim",
+        "summary": "Açık ağırlıklı olması ve 7B mimaride sunduğu yüksek sadakatli düzenleme yetenekleri ile Stable Diffusion kullanıcılarını etkiledi.",
+        "sources": [
+          "r/StableDiffusion",
+          "r/comfyui"
+        ]
+      }
+    ]
+  },
+  "hemmingway-1": {
+    "name": "Hemmingway 1",
+    "category": "Yerel Model",
+    "history": [
+      {
+        "date": "20 Eylül 2026",
+        "hypeScore": 8.9,
+        "sentimentScore": 97,
+        "sentiment": "coşkulu",
+        "headline": "Geliştirici Favorisi",
+        "summary": "Claude Fable 5 performansını 40 kat daha ucuza sunması ve açık ağırlıklı olması nedeniyle yerel model topluluğunda büyük heyecan yarattı.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/OpenSourceAI"
+        ]
+      }
+    ]
+  },
+  "totemheart": {
+    "name": "Totemheart",
+    "category": "Otonom Agent",
+    "history": [
+      {
+        "date": "20 Eylül 2026",
+        "hypeScore": 8.5,
+        "sentimentScore": 92,
+        "sentiment": "coşkulu",
+        "headline": "Yenilikçi",
+        "summary": "LLM'lerin sycophancy (yalakalık) sorununu çözmek için 'biyolojik sürtünme' kavramını getirmesi mühendislerin ilgisini çekti.",
+        "sources": [
+          "r/OpenSourceAI",
+          "r/artificial"
+        ]
+      }
+    ]
+  },
+  "lifttrace": {
+    "name": "LiftTrace",
+    "category": "Otomasyon",
+    "history": [
+      {
+        "date": "20 Eylül 2026",
+        "hypeScore": 8.2,
+        "sentimentScore": 95,
+        "sentiment": "coşkulu",
+        "headline": "Yüksek Verim",
+        "summary": "Cloud bağımlılığı olmayan, SQLite tabanlı ve gizlilik odaklı olmasıyla self-hosted topluluğunun favorisi oldu.",
+        "sources": [
+          "r/selfhosted"
+        ]
+      }
+    ]
+  },
+  "flylab": {
+    "name": "FlyLab",
+    "category": "Otonom Agent",
+    "history": [
+      {
+        "date": "20 Eylül 2026",
+        "hypeScore": 8,
+        "sentimentScore": 91,
+        "sentiment": "coşkulu",
+        "headline": "Deneysel",
+        "summary": "LLM kullanmadan, biyolojik bir connectome ile bilgisayar etkileşimi kurması, AI mimarisi tartışmalarında ezber bozdu.",
+        "sources": [
+          "r/OpenSourceAI"
+        ]
+      }
+    ]
+  },
+  "skillware": {
+    "name": "Skillware",
+    "category": "Altyapı & SDK",
+    "history": [
+      {
+        "date": "20 Eylül 2026",
+        "hypeScore": 7.5,
+        "sentimentScore": 85,
+        "sentiment": "coşkulu",
+        "headline": "Geliştirici Favorisi",
+        "summary": "Secret provider desteği ve Bedrock adaptörü ile ajan sistemlerinde güvenlik standartlarını yükseltmesi övülüyor.",
+        "sources": [
+          "r/LocalLLaMA"
         ]
       }
     ]

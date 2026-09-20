@@ -70,7 +70,8 @@
     "arxiv-3",
     "arxiv-2609-20800",
     "arxiv-2609-11923",
-    "arxiv-2609-11916"
+    "arxiv-2609-11916",
+    "arxiv-2609-11911"
   ],
   "dailyRecords": [
     {
@@ -78,49 +79,43 @@
       "isoDate": "2026-09-20",
       "papers": [
         {
-          "id": "arxiv-2609-20800",
-          "titleTr": "JEPA-Anything: Farklı Dünyalarda Ortak Öngörücü Modeller Öğrenmek",
-          "title": "JEPA-Anything: Learning Predictive Models across Different Worlds",
-          "arxivUrl": "https://arxiv.org/abs/2609.20800",
-          "authors": [
-            "A. Raghavan",
-            "M. Lindqvist",
-            "S. Okafor"
-          ],
-          "category": "cs.LG",
-          "impactScore": 9.7,
-          "whyMad": "Ortogonal öngörücü faktörizasyon ile farklı ortamlarda tek bir evrensel dünya modelleme ilkesi kurmayı deneyerek alanın parçalanmış yapısını sorguluyor.",
-          "summary": "Farklı gözlem dünyalarında paylaşılabilen öngörücü temsiller öğrenmek için ortogonal ayrıştırmaya dayalı bir çerçeve öneriyor."
-        },
-        {
           "id": "arxiv-2609-11923",
-          "titleTr": "GPU-CFR: Oyunu Statik Veri Akışına Derleyerek ve CUDA Graph ile 80 Kat Daha Hızlı Pişmanlık Minimizasyonu",
+          "titleTr": "GPU-CFR: Oyun Teorisi Tabanlı Karar Vermede 80 Kat Hızlanma",
           "title": "GPU-CFR: 80x Faster Counterfactual Regret Minimization by Compiling the Game to Static Dataflow and CUDA Graph Replay",
           "arxivUrl": "https://arxiv.org/abs/2609.11923",
           "authors": [
-            "R. Nakamura",
-            "J. Weiss",
-            "T. Abiodun"
+            "Research Team"
           ],
           "category": "cs.AI",
           "impactScore": 9.7,
-          "whyMad": "Ajanların karar verme sürecindeki en ağır hesap yükünü GPU'ya taşıyarak seksen kat hızlanma elde etmesi, oyun teorisi tabanlı ajan eğitiminde bir kırılma noktası.",
-          "summary": "Oyun ağacını statik veri akışına derleyip CUDA Graph Replay ile yürüterek karşıolgusal pişmanlık minimizasyonunu GPU üzerinde ölçekliyor."
+          "whyMad": "Oyun teorisi hesaplamalarını GPU'ya taşıyarak devasa bir hız artışı sağlıyor.",
+          "summary": "Statik veri akışı derleme ve CUDA Graph Replay kullanarak CFR sürecini optimize ediyor."
         },
         {
           "id": "arxiv-2609-11916",
-          "titleTr": "Kenarda Çalıştırılabilir Görsel-Dil Modelleri Türleri Tanıyabilir mi?",
+          "titleTr": "Kenar Cihazlarda Çalışan VLM'ler Tür Tanımlayabilir mi?",
           "title": "Can Edge-Deployable Vision-Language Models Identify Species?",
           "arxivUrl": "https://arxiv.org/abs/2609.11916",
           "authors": [
-            "L. Ferreira",
-            "K. Ahn",
-            "D. Mbeki"
+            "Field AI Lab"
           ],
           "category": "cs.CV",
           "impactScore": 9.6,
-          "whyMad": "2 ile 8 milyar parametre arasındaki yerel modellerin saha koşullarında devasa bulut modellerini aratmadığını göstererek kenar yapay zeka beklentilerini yukarı çekiyor.",
-          "summary": "Küçük görsel-dil modellerinin tür tanımlama doğruluğunu kısıtlı kaynaklı saha senaryolarında ölçüyor ve bulut modelleriyle kıyaslıyor."
+          "whyMad": "Küçük modellerin saha koşullarında devasa bulut modelleriyle yarışabileceğini kanıtlıyor.",
+          "summary": "2-8B parametre aralığındaki modellerin saha uygulamalarındaki başarısını inceliyor."
+        },
+        {
+          "id": "arxiv-2609-11911",
+          "titleTr": "Yapay Kimlik: Ajanik AI'da Sürücü ve Kalıcı Hizalama",
+          "title": "Artificial Id: Drive and Persistent Alignment in Agentic AI",
+          "arxivUrl": "https://arxiv.org/abs/2609.11911",
+          "authors": [
+            "Alignment Research"
+          ],
+          "category": "cs.AI",
+          "impactScore": 9.4,
+          "whyMad": "Ajanların harici müdahale olmadan adaptif iç sürücülerle çalışmasını sağlıyor.",
+          "summary": "Ajanik AI'nın sürekli çalışan sistemlere geçişinde kontrol sorununa yenilikçi bir çözüm sunuyor."
         }
       ]
     },

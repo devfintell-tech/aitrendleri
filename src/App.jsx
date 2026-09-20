@@ -431,6 +431,14 @@ export default function App() {
   const [copiedBrief, setCopiedBrief] = useState(false);
   const [isBriefExpanded, setIsBriefExpanded] = useState(true);
   const [copiedCmdId, setCopiedCmdId] = useState(null);
+  const [expandedOriginalTweets, setExpandedOriginalTweets] = useState({});
+
+  const toggleOriginalTweet = (id) => {
+    setExpandedOriginalTweets(prev => ({
+      ...prev,
+      [id]: !prev[id]
+    }));
+  };
 
   const handleCopyCmd = (id, cmd) => {
     if (navigator?.clipboard) {
@@ -907,6 +915,36 @@ export default function App() {
       };
     });
 
+    // 6. X (Twitter) AI Nabzı Normalizasyonu
+    let twPulse = raw.twitterPulse;
+    if (twPulse && typeof twPulse === 'object') {
+      const summary24h = twPulse.summary24h || "";
+      const trendingProducts = Array.isArray(twPulse.trendingProducts) ? twPulse.trendingProducts : [];
+      const technicalTopics = Array.isArray(twPulse.technicalTopics) ? twPulse.technicalTopics : [];
+      const tweets = Array.isArray(twPulse.tweets) ? twPulse.tweets.map((t, idx) => ({
+        id: String(t.id || `tw-${idx + 1}`),
+        authorName: t.authorName || t.authorHandle || "AI Uzmanı",
+        authorHandle: (t.authorHandle || "ai_expert").replace(/^@/, ''),
+        authorAvatar: t.authorAvatar || "",
+        text: t.text || t.textTr || "",
+        textTr: t.textTr || t.text || "",
+        discussion: t.discussion || "",
+        likes: typeof t.likes === 'number' ? t.likes : 0,
+        retweets: typeof t.retweets === 'number' ? t.retweets : 0,
+        tweetUrl: t.tweetUrl || `https://x.com/${(t.authorHandle || 'ai_expert').replace(/^@/, '')}/status/${t.id || ''}`,
+        category: t.category || "Yapay Zeka & Geliştirici Gündemi"
+      })) : [];
+
+      twPulse = {
+        summary24h,
+        trendingProducts,
+        technicalTopics,
+        tweets
+      };
+    } else {
+      twPulse = null;
+    }
+
     return {
       date: raw.date,
       isoDate: raw.isoDate,
@@ -930,7 +968,8 @@ export default function App() {
       huggingFaceTrending: hfTrending,
       githubRadar: normalizedGh,
       hackerNewsPulse: hnPulse,
-      dailyGlossary: normalizedGlossary
+      dailyGlossary: normalizedGlossary,
+      twitterPulse: twPulse
     };
   }, [activeReportData]);
 
@@ -1097,6 +1136,15 @@ ${bulletsText}
     }
     return chunks;
   }, [report.hackerNewsPulse]);
+
+  const twitterChunks = useMemo(() => {
+    const list = report.twitterPulse?.tweets || [];
+    const chunks = [];
+    for (let i = 0; i < list.length; i += 2) {
+      chunks.push(list.slice(i, i + 2));
+    }
+    return chunks;
+  }, [report.twitterPulse]);
 
   const glossaryChunks = useMemo(() => {
     const list = report.dailyGlossary || [];
@@ -2682,6 +2730,184 @@ ${bulletsText}
                           </div>
                         </div>
                       ))}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* 9. 🐦 X (TWITTER) AI NABZI: 30 SEÇKİN LİDERİN GÜNDEMİ (Sıralamaya Etkisiz) */}
+            {report.twitterPulse && (
+              <div className="pt-3 border-t border-[#e2e8f0] space-y-3">
+                <div className="flex items-center justify-between flex-wrap gap-2">
+                  <div className="flex items-center gap-2">
+                    <span className="w-5 h-5 bg-black text-white font-black text-xs flex items-center justify-center rounded-xs font-mono shadow-2xs">
+                      𝕏
+                    </span>
+                    <h4 className="text-xs sm:text-sm font-bold text-slate-900 font-mono uppercase">
+                      X (Twitter) AI Nabzı: 30 Seçkin Zihnin Gündemi
+                    </h4>
+                  </div>
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-sky-50 text-sky-900 border border-sky-200 font-bold">
+                    Son 24 Saat • 30 Seçkin AI Lideri • Saf Teknik İstihbarat
+                  </span>
+                </div>
+
+                {/* 24 Saatlik X Gündemi & Öne Çıkan Ürün ve Konular */}
+                <div className="p-3 bg-[#f8fafc] border-l-4 border-l-black border-y border-r border-slate-200 rounded-r text-xs text-slate-800 leading-relaxed space-y-2.5">
+                  {report.twitterPulse.summary24h && (
+                    <div>
+                      <span className="font-mono font-bold text-slate-900 uppercase text-[10px] block mb-0.5">
+                        📌 SON 24 SAATİN X GÜNDEMİ &amp; SEÇKİN MÜHENDİS ODAĞI:
+                      </span>
+                      <p className="text-slate-800">{report.twitterPulse.summary24h}</p>
+                    </div>
+                  )}
+
+                  {/* Çok Konuşulan Ürünler / Kütüphaneler */}
+                  {Array.isArray(report.twitterPulse.trendingProducts) && report.twitterPulse.trendingProducts.length > 0 && (
+                    <div className="pt-2 border-t border-slate-200/80">
+                      <span className="font-mono font-bold text-slate-700 uppercase text-[10px] block mb-1.5">
+                        🔥 RADARDAKİ KİLİT ÜRÜNLER &amp; KÜTÜPHANELER:
+                      </span>
+                      <div className="flex flex-wrap gap-1.5">
+                        {report.twitterPulse.trendingProducts.map((prod, idx) => (
+                          <div 
+                            key={idx} 
+                            className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-white border border-slate-200 rounded shadow-2xs text-[11px]"
+                            title={prod.context}
+                          >
+                            <span className="font-mono font-bold text-blue-700">{prod.name}</span>
+                            {prod.context && (
+                              <span className="text-slate-500 font-normal text-[10px] border-l border-slate-200 pl-1.5">
+                                {prod.context}
+                              </span>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Günün Teknik Tartışmaları & Yöntemleri */}
+                  {Array.isArray(report.twitterPulse.technicalTopics) && report.twitterPulse.technicalTopics.length > 0 && (
+                    <div className="pt-2 border-t border-slate-200/80">
+                      <span className="font-mono font-bold text-slate-700 uppercase text-[10px] block mb-1.5">
+                        💡 GÜNÜN TEKNİK YÖNTEMLERİ &amp; MİMARİ TARTIŞMALARI:
+                      </span>
+                      <div className="flex flex-wrap gap-1.5">
+                        {report.twitterPulse.technicalTopics.map((topic, idx) => (
+                          <div 
+                            key={idx} 
+                            className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-white border border-slate-200 rounded shadow-2xs text-[11px]"
+                          >
+                            <span className="font-mono font-bold text-purple-800 bg-purple-50 px-1 rounded border border-purple-200 text-[10px]">
+                              {topic.tag}
+                            </span>
+                            <span className="text-slate-700 font-normal">
+                              {topic.text}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                {/* Tweet Kartları (Çiftli subgrid ile hizalanır, kaydırma yok, doğal uzar) */}
+                <div className="space-y-4">
+                  {twitterChunks.map((pair, pIdx) => (
+                    <div key={pIdx} className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-4 md:gap-y-2.5 subgrid-row-twitter">
+                      {pair.map((tweet, tIdx) => {
+                        const isOriginalShown = !!expandedOriginalTweets[tweet.id || `${pIdx}-${tIdx}`];
+                        return (
+                          <div 
+                            key={tweet.id || `${pIdx}-${tIdx}`}
+                            className="bg-white border border-[#cbd5e1] rounded-sm p-3.5 hover:border-black transition shadow-xs flex flex-col justify-between gap-2.5 subgrid-card-twitter"
+                          >
+                            {/* 1. Yazar ve Kategori Barı */}
+                            <div className="flex items-center justify-between text-[10px] font-mono gap-2">
+                              <div className="flex items-center gap-2 min-w-0">
+                                {tweet.authorAvatar ? (
+                                  <img 
+                                    src={tweet.authorAvatar} 
+                                    alt={tweet.authorName} 
+                                    className="w-7 h-7 rounded-full border border-slate-200 object-cover flex-shrink-0"
+                                    onError={(e) => { e.target.style.display = 'none'; }}
+                                  />
+                                ) : (
+                                  <div className="w-7 h-7 rounded-full bg-slate-900 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 font-mono">
+                                    {(tweet.authorName || tweet.authorHandle || "X").slice(0, 1).toUpperCase()}
+                                  </div>
+                                )}
+                                <div className="min-w-0 leading-tight">
+                                  <span className="font-bold text-slate-900 truncate block text-xs">
+                                    {tweet.authorName}
+                                  </span>
+                                  <span className="text-slate-400 font-normal text-[10px] truncate block">
+                                    @{tweet.authorHandle}
+                                  </span>
+                                </div>
+                              </div>
+                              <span className="bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-semibold border border-slate-200 flex-shrink-0">
+                                {tweet.category || 'AI Gündemi'}
+                              </span>
+                            </div>
+
+                            {/* 2. Tweet Metni (Akıcı Türkçe + Orijinal İngilizce Seçeneği) */}
+                            <div className="space-y-1.5 flex flex-col justify-start">
+                              <p className="font-medium text-xs sm:text-[13px] text-slate-900 leading-snug">
+                                {tweet.textTr || tweet.text}
+                              </p>
+                              {tweet.text && tweet.textTr && tweet.text !== tweet.textTr && (
+                                <div>
+                                  <button
+                                    type="button"
+                                    onClick={() => toggleOriginalTweet(tweet.id || `${pIdx}-${tIdx}`)}
+                                    className="text-[10px] font-mono text-slate-500 hover:text-black transition inline-flex items-center gap-1 cursor-pointer underline"
+                                  >
+                                    {isOriginalShown ? '▲ Orijinal İngilizce Metni Gizle' : '▼ Orijinal İngilizce Tweeti Göster'}
+                                  </button>
+                                  {isOriginalShown && (
+                                    <div className="p-2 bg-slate-50 border border-slate-200 rounded text-[11px] text-slate-600 font-mono italic leading-relaxed mt-1">
+                                      "{tweet.text}"
+                                    </div>
+                                  )}
+                                </div>
+                              )}
+                            </div>
+
+                            {/* 3. Derin Teknik Analiz Paragrafı (Doğal uzar, kaydırma yok) */}
+                            <div className="text-xs text-slate-700 leading-relaxed font-normal flex flex-col justify-start p-2.5 bg-[#f8fafc] border border-slate-200 rounded">
+                              <span className="font-mono text-[9px] uppercase font-bold text-slate-500 block mb-0.5">
+                                🔍 TEKNİK ÖNEMİ &amp; EKOSİSTEM ANALİZİ:
+                              </span>
+                              <p>{tweet.discussion}</p>
+                            </div>
+
+                            {/* 4. Alt Bar: Etkileşim & Link */}
+                            <div className="pt-2 border-t border-[#f1f5f9] flex items-center justify-between text-[11px] font-mono text-slate-500">
+                              <div className="flex items-center gap-3">
+                                <span className="text-rose-600 font-semibold" title="Beğeni Sayısı">
+                                  ❤️ {tweet.likes ? tweet.likes.toLocaleString('tr-TR') : 0}
+                                </span>
+                                <span className="text-emerald-700 font-semibold" title="Retweet Sayısı">
+                                  🔁 {tweet.retweets ? tweet.retweets.toLocaleString('tr-TR') : 0}
+                                </span>
+                              </div>
+                              <a 
+                                href={tweet.tweetUrl} 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                className="text-slate-900 hover:text-black hover:underline flex items-center gap-1 font-bold flex-shrink-0 group"
+                              >
+                                <span>Tweeti X'te Aç</span>
+                                <ExternalLink className="w-3 h-3 text-slate-400 group-hover:text-black transition" />
+                              </a>
+                            </div>
+                          </div>
+                        );
+                      })}
                     </div>
                   ))}
                 </div>
