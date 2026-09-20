@@ -520,13 +520,15 @@ async function callDeepSeek(model, apiKey, prompt) {
   let tokenUsage = null;
   if (json.usage) {
     const reasoningTokens = json.usage.completion_tokens_details?.reasoning_tokens || 0;
+    const finalTokens = Math.max(0, (json.usage.completion_tokens || 0) - reasoningTokens);
     tokenUsage = {
       promptTokens: json.usage.prompt_tokens,
       completionTokens: json.usage.completion_tokens,
       reasoningTokens: reasoningTokens,
+      finalTokens: finalTokens,
       totalTokens: json.usage.total_tokens || (json.usage.prompt_tokens + json.usage.completion_tokens)
     };
-    console.log(`📊 DeepSeek Token Kullanımı: Prompt: ${json.usage.prompt_tokens}, Çıktı: ${json.usage.completion_tokens} (Düşünce Zinciri: ${reasoningTokens})`);
+    console.log(`📊 DeepSeek Token Kullanımı: Prompt: ${json.usage.prompt_tokens}, Çıktı: ${json.usage.completion_tokens} (Düşünce: ${reasoningTokens}, Nihai: ${finalTokens})`);
   }
   const rawText = json.choices?.[0]?.message?.content || "";
   const cleaned = rawText
@@ -587,6 +589,7 @@ async function callGemini(model, apiKey, prompt) {
     promptTokens: json.usageMetadata.promptTokenCount,
     completionTokens: json.usageMetadata.candidatesTokenCount,
     reasoningTokens: 0,
+    finalTokens: json.usageMetadata.candidatesTokenCount,
     totalTokens: json.usageMetadata.totalTokenCount
   } : null;
   return { parsed: JSON.parse(text), tokenUsage };

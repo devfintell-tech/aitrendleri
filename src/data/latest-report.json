@@ -1772,6 +1772,7 @@
     "promptTokens": 39071,
     "completionTokens": 20367,
     "reasoningTokens": 9185,
+    "finalTokens": 11182,
     "totalTokens": 59438
   }
 }
