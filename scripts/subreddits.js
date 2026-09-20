@@ -42,4 +42,4 @@ export const SUBREDDIT_BATCHES = [
   }
 ];
 
-export const REDDIT_USER_AGENT = "web:aitrendleri.com:v3.0 (by /u/orhanerturk; contact: orhaner1907@gmail.com)";
+export const REDDIT_USER_AGENT = "web:aitrendleri.com:v3.0 (by /u/orhanerturk; contact: bot@aitrendleri.com)";

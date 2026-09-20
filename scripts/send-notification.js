@@ -23,7 +23,7 @@ if (fs.existsSync(envPath)) {
   }
 }
 
-const RECIPIENT_EMAILS = process.env.ALICI_MAIL || "orhaner1907@gmail.com";
+const RECIPIENT_EMAILS = process.env.ALICI_MAIL || "";
 
 /**
  * Terminal icra özetini ve e-posta bildirimini oluşturup gönderir.

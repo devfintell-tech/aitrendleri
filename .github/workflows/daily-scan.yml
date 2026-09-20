@@ -54,7 +54,7 @@ jobs:
 
       - name: Bilgilendirme E-postası Gönder (Yönetici)
         env:
-          ALICI_MAIL: ${{ secrets.ALICI_MAIL || 'orhaner1907@gmail.com' }}
+          ALICI_MAIL: ${{ secrets.ALICI_MAIL }}
           GAS_WEBHOOK_URL: ${{ secrets.GAS_WEBHOOK_URL }}
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
         run: node scripts/send-notification.js
