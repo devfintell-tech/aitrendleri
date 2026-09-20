@@ -1249,34 +1249,11 @@ ${bulletsText}
       <header className="bg-[#107c41] text-white select-none shadow-sm">
         {/* Üst Logo ve Dosya Adı */}
         <div className="max-w-7xl mx-auto px-4 py-2.5 flex flex-wrap items-center justify-between gap-3">
-          <div className="flex items-center gap-2.5 sm:gap-3.5 flex-wrap">
-            <div className="flex items-center gap-2.5">
-              <div className="flex items-center justify-center w-7 h-7 bg-white text-[#107c41] font-black rounded text-xs shadow-inner tracking-tighter">
-                AI
-              </div>
-              <span className="font-bold text-base tracking-wide font-mono">aitrendleri.com</span>
+          <div className="flex items-center gap-2.5">
+            <div className="flex items-center justify-center w-7 h-7 bg-white text-[#107c41] font-black rounded text-xs shadow-inner tracking-tighter">
+              AI
             </div>
-
-            {/* Veri Kaynağı Hacim Rozetleri (Reddit & X Twitter) */}
-            <div className="flex items-center gap-1.5 font-mono text-[11px]">
-              <span 
-                className="flex items-center gap-1.5 px-2 py-0.5 rounded bg-[#0c592d] border border-emerald-400/30 text-emerald-100 shadow-2xs"
-                title={`${report.totalPostsAnalyzed || 45} Reddit gönderisi ve tartışması tarandı`}
-              >
-                <span className="w-2 h-2 rounded-full bg-orange-500 shrink-0"></span>
-                <span>Reddit: <strong className="text-white font-bold">{report.totalPostsAnalyzed || 45}</strong></span>
-              </span>
-
-              {(typeof report.totalTweetsAnalyzed === 'number' || report.twitterPulse) && (
-                <span 
-                  className="flex items-center gap-1.5 px-2 py-0.5 rounded bg-[#0c592d] border border-emerald-400/30 text-emerald-100 shadow-2xs"
-                  title={`${report.totalTweetsAnalyzed || 100} X (Twitter) tweeti tarandı`}
-                >
-                  <span className="w-3.5 h-3.5 bg-black text-white text-[9px] font-black flex items-center justify-center rounded-xs shrink-0">𝕏</span>
-                  <span>X: <strong className="text-white font-bold">{report.totalTweetsAnalyzed || 100}</strong></span>
-                </span>
-              )}
-            </div>
+            <span className="font-bold text-base tracking-wide font-mono">aitrendleri.com</span>
           </div>
 
           {/* Sağ Durum, Geçmiş Tarih Seçici ve Model / İcra Telemetrisi Bilgisi */}
@@ -1296,6 +1273,27 @@ ${bulletsText}
                   </option>
                 ))}
               </select>
+            </div>
+
+            {/* Veri Kaynağı Hacim Rozetleri (Reddit & X Twitter - Saniye ve LLM ile 2 Satır Tam Hizalı) */}
+            <div className="flex flex-col justify-between py-1 px-2.5 bg-[#0c592d] border border-emerald-400/30 rounded text-[11px] font-mono shadow-xs h-[50px]">
+              {/* SATIR 1: Reddit (1. LLM ve Saniye ile tam aynı yatay hizada) */}
+              <div 
+                className="flex items-center gap-1.5 text-emerald-100 whitespace-nowrap leading-none pt-0.5"
+                title={`${report.totalPostsAnalyzed || 45} Reddit gönderisi ve tartışması tarandı`}
+              >
+                <span className="w-2 h-2 rounded-full bg-orange-500 shrink-0"></span>
+                <span>Reddit: <strong className="text-white font-bold">{report.totalPostsAnalyzed || 45}</strong></span>
+              </div>
+
+              {/* SATIR 2: X (Twitter) (2. LLM ve Saat ile tam aynı yatay hizada) */}
+              <div 
+                className="flex items-center gap-1.5 text-emerald-200 border-t border-emerald-400/20 pt-1 leading-none text-[10.5px] whitespace-nowrap"
+                title={`${report.totalTweetsAnalyzed || 100} X (Twitter) tweeti tarandı`}
+              >
+                <span className="w-3 h-3 bg-black text-white text-[8px] font-black flex items-center justify-center rounded-xs shrink-0">𝕏</span>
+                <span>X: <strong className="text-white font-bold">{report.totalTweetsAnalyzed || 100}</strong></span>
+              </div>
             </div>
 
             {/* ⚡ 1. LLM & 2. LLM Telemetrisi (Alt Alta, Açık & Net Model ve Token Detayları) */}
