@@ -82,15 +82,19 @@ export async function onRequestPost(context) {
             subject: "🤖 Hoş Geldiniz! Günlük AI Trendleri İstihbarat Bülteni",
             html: `
               <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden;">
-                <div style="background-color: #107c41; padding: 24px; text-align: center; color: #ffffff;">
-                  <h1 style="margin: 0; font-size: 24px; font-family: monospace; letter-spacing: 0.5px;">AI Trendleri</h1>
-                  <p style="margin: 6px 0 0 0; font-size: 13px; opacity: 0.9;">Günlük Yapay Zeka & Teknoloji İstihbaratı</p>
+                <div style="background-color: #107c41; padding: 22px 24px; text-align: center; color: #ffffff;">
+                  <h1 style="margin: 0; font-size: 22px; font-family: monospace; letter-spacing: 0.5px;">
+                    <a href="https://aitrendleri.com" style="color: #ffffff !important; text-decoration: none !important;">
+                      AI aitrendleri.com
+                    </a>
+                  </h1>
+                  <p style="margin: 6px 0 0 0; font-size: 13px; color: #ffffff !important; opacity: 0.95;">Günlük Yapay Zeka İstihbaratı</p>
                 </div>
                 
-                <div style="padding: 24px 28px; color: #1e293b; line-height: 1.6;">
+                <div style="padding: 22px 24px; color: #1e293b; line-height: 1.6;">
                   <h2 style="font-size: 18px; color: #0f172a; margin-top: 0;">Aramıza Hoş Geldiniz! 🎉</h2>
                   <p style="font-size: 14px; color: #334155;">
-                    Artık her sabah saat <strong>08:00'de</strong>; 50 seçkin Reddit yapay zeka topluluğunun, X (Twitter) araştırmacılarının, Hugging Face açık modellerinin ve ArXiv makalelerinin 5 dakikalık kristalize özeti doğrudan gelen kutunuzda olacak.
+                    Artık her sabah saat <strong>08:00'de</strong>; 50 seçkin Reddit yapay zeka topluluğunun, X (Twitter) araştırmacılarının ve Hugging Face açık modellerinin 5 dakikalık konsantre özeti doğrudan gelen kutunuzda olacak.
                   </p>
                   
                   <div style="background-color: #f8fafc; border: 1px solid #cbd5e1; border-left: 4px solid #107c41; padding: 14px 18px; border-radius: 4px; margin: 20px 0;">
@@ -99,7 +103,6 @@ export async function onRequestPost(context) {
                       <li>🔥 <strong>Günün En Çok Konuşulan & En Beğenilen Modelleri</strong></li>
                       <li>🚀 <strong>Sabah İstihbaratı:</strong> Model savaşları, kurumsal hamleler ve yerel zeka</li>
                       <li>⚡ <strong>Günün Zirvesindeki AI Ürünleri:</strong> Hype ve Memnuniyet skorları</li>
-                      <li>🔬 <strong>ArXiv & GitHub:</strong> Günün en çarpıcı açık kaynak kodları</li>
                     </ul>
                   </div>
 
@@ -108,14 +111,14 @@ export async function onRequestPost(context) {
                   </p>
 
                   <div style="text-align: center; margin: 28px 0 16px 0;">
-                    <a href="https://aitrendleri.com" style="display: inline-block; background-color: #107c41; color: #ffffff; text-decoration: none; padding: 12px 28px; border-radius: 6px; font-size: 13px; font-weight: bold; font-family: monospace;">
+                    <a href="https://aitrendleri.com" style="display: inline-block; background-color: #107c41; color: #ffffff !important; text-decoration: none !important; padding: 14px 28px; border-radius: 6px; font-size: 13px; font-weight: bold; font-family: monospace;">
                       Canlı Trend Tablosunu İncele (aitrendleri.com) →
                     </a>
                   </div>
                 </div>
 
                 <div style="background-color: #f1f5f9; padding: 14px 20px; text-align: center; font-size: 11px; color: #64748b; font-family: monospace; border-top: 1px solid #e2e8f0;">
-                  Bu e-posta aitrendleri.com bültenine abone olduğunuz için gönderilmiştir.<br/>
+                  Bu e-posta <a href="https://aitrendleri.com" style="color: #64748b !important; text-decoration: none !important; font-weight: bold;">aitrendleri.com</a> bültenine abone olduğunuz için gönderilmiştir.<br/>
                   © ${new Date().getFullYear()} aitrendleri.com • Tüm hakları saklıdır.
                 </div>
               </div>

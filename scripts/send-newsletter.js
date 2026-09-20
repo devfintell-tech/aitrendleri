@@ -70,9 +70,6 @@ function buildNewsletterHtml(report) {
 
   const bullets = report.morningBrief?.bullets || [];
   const topProducts = (report.daily || []).slice(0, 3);
-  const hnBest = (report.hackerNewsPulse?.items || [])[0];
-  const ghBest = (report.githubRadar?.daily || [])[0];
-  const arxivBest = (report.arxivDaily || [])[0];
 
   return `
 <!DOCTYPE html>
@@ -80,21 +77,46 @@ function buildNewsletterHtml(report) {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <meta name="supported-color-schemes" content="light">
   <title>AI Trendleri — Günlük İstihbarat</title>
+  <style>
+    /* Global ve Mobil Uyumluluk Stilleri */
+    body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+    table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+    img { -ms-interpolation-mode: bicubic; border: 0; outline: none; text-decoration: none; }
+    
+    /* Mavi linkleri engelleme kuralları */
+    a[x-apple-data-detectors] { color: inherit !important; text-decoration: none !important; font-size: inherit !important; font-family: inherit !important; font-weight: inherit !important; line-height: inherit !important; }
+    .header-link { color: #ffffff !important; text-decoration: none !important; }
+    .header-link:visited { color: #ffffff !important; }
+    .header-link:hover { color: #ffffff !important; }
+
+    @media only screen and (max-width: 600px) {
+      .main-container { width: 100% !important; min-width: 100% !important; border-radius: 0 !important; border-left: none !important; border-right: none !important; margin: 0 !important; }
+      .header-pad { padding: 14px 16px !important; }
+      .content-pad { padding: 16px 14px !important; }
+      .title-text { font-size: 18px !important; line-height: 1.3 !important; }
+      .mobile-card-title { font-size: 15px !important; }
+      .cta-button { display: block !important; width: 100% !important; box-sizing: border-box !important; padding: 14px 16px !important; text-align: center !important; }
+    }
+  </style>
 </head>
 <body style="margin: 0; padding: 0; background-color: #f1f5f9; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased;">
-  <div style="max-width: 620px; margin: 20px auto; background-color: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);">
+  <div class="main-container" style="max-width: 600px; margin: 20px auto; background-color: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);">
     
-    <!-- 1. ÜST HEADER ÇUBUĞU -->
-    <div style="background-color: #107c41; padding: 18px 24px; color: #ffffff;">
+    <!-- 1. ÜST HEADER ÇUBUĞU (Yeşil Üzerine Kesinlikle BEYAZ Yazı) -->
+    <div class="header-pad" style="background-color: #107c41; padding: 16px 24px; color: #ffffff;">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td>
-            <div style="display: inline-block; vertical-align: middle; background-color: #ffffff; color: #107c41; font-weight: 900; font-family: monospace; font-size: 13px; padding: 4px 8px; border-radius: 4px; margin-right: 10px;">AI</div>
-            <span style="font-size: 18px; font-weight: bold; font-family: monospace; letter-spacing: 0.5px; vertical-align: middle;">aitrendleri.com</span>
+          <td valign="middle">
+            <div style="display: inline-block; vertical-align: middle; background-color: #ffffff; color: #107c41; font-weight: 900; font-family: monospace; font-size: 13px; padding: 3px 7px; border-radius: 4px; margin-right: 8px;">AI</div>
+            <a href="https://aitrendleri.com" class="header-link" style="color: #ffffff !important; text-decoration: none !important; font-size: 18px; font-weight: bold; font-family: monospace; letter-spacing: 0.5px; vertical-align: middle; display: inline-block;">
+              aitrendleri.com
+            </a>
           </td>
-          <td align="right">
-            <span style="font-size: 12px; font-family: monospace; background-color: #0c592d; padding: 4px 10px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.2);">
+          <td align="right" valign="middle">
+            <span style="font-size: 11px; font-family: monospace; background-color: #0c592d; color: #ffffff !important; padding: 4px 8px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.25); white-space: nowrap; display: inline-block;">
               ${dateStr}
             </span>
           </td>
@@ -102,85 +124,87 @@ function buildNewsletterHtml(report) {
       </table>
     </div>
 
-    <!-- 2. GİRİŞ & SLOGAN -->
-    <div style="padding: 20px 24px 12px 24px; border-bottom: 1px solid #e2e8f0;">
-      <h1 style="margin: 0 0 6px 0; font-size: 20px; color: #0f172a; font-weight: 800;">
+    <!-- 2. GİRİŞ & BAŞLIK -->
+    <div class="header-pad" style="padding: 18px 24px 12px 24px; border-bottom: 1px solid #e2e8f0;">
+      <h1 class="title-text" style="margin: 0 0 6px 0; font-size: 20px; color: #0f172a; font-weight: 800; line-height: 1.35;">
         🌅 Sabah İstihbaratı: Yapay Zekada Bugün Ne Oldu?
       </h1>
       <p style="margin: 0; font-size: 13px; color: #64748b; line-height: 1.5;">
-        50 seçkin Reddit topluluğu, 30 çekirdek X araştırmacısı, Hugging Face, GitHub ve ArXiv verilerinden filtrelenmiş 5 dakikalık yönetici brifingi.
+        50 seçkin Reddit topluluğu, X araştırmacıları ve Hugging Face verilerinden süzülen 5 dakikalık konsantre yönetici özeti.
       </p>
     </div>
 
-    <div style="padding: 20px 24px;">
+    <div class="content-pad" style="padding: 20px 24px;">
 
-      <!-- 3. SARI KARTLAR: ÇİFTE LİDER KIRILMASI -->
-      <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 20px;">
-        <tr>
-          <!-- En Çok Konuşulan -->
-          <td width="48%" valign="top" style="background-color: #fffbeb; border: 1px solid #fde68a; border-radius: 6px; padding: 12px;">
-            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-bottom: 1px solid #fef3c7; padding-bottom: 8px; margin-bottom: 8px;">
-              <tr>
-                <td>
-                  <span style="font-size: 11px; font-weight: bold; font-family: monospace; color: #78350f;">🔥 EN ÇOK KONUŞULAN</span>
-                </td>
-                <td align="right">
-                  <span style="background-color: #d97706; color: #ffffff; font-size: 10px; font-family: monospace; font-weight: 900; padding: 2px 6px; border-radius: 3px;">
-                    HYPE: ${disc.hypeScore || 9.8}/10
-                  </span>
-                </td>
-              </tr>
-            </table>
-            <div style="font-size: 14px; font-weight: 900; font-family: monospace; color: #78350f; margin-bottom: 6px;">
-              ${disc.name}
-            </div>
-            <p style="margin: 0; font-size: 12px; color: #92400e; line-height: 1.4;">
-              ${disc.description || 'Toplulukta en yüksek konuşulma ve mention hacmine sahip model.'}
-            </p>
-          </td>
+      <!-- 3. GÜNÜN İKİLİ LİDERİ (Mobilde Asla Birbirine Girmeyen, Alt Alta Tam Genişlikli Sarı Kartlar) -->
+      <div style="margin-bottom: 20px;">
+        
+        <!-- Kart 1: 🔥 En Çok Konuşulan Model -->
+        <div style="background-color: #fffbeb; border: 1px solid #fde68a; border-radius: 6px; padding: 14px 16px; margin-bottom: 12px;">
+          <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-bottom: 1px solid #fef3c7; padding-bottom: 8px; margin-bottom: 8px;">
+            <tr>
+              <td valign="middle">
+                <span style="font-size: 11px; font-weight: bold; font-family: monospace; color: #78350f; text-transform: uppercase;">
+                  🔥 EN ÇOK KONUŞULAN MODEL
+                </span>
+              </td>
+              <td align="right" valign="middle">
+                <span style="background-color: #d97706; color: #ffffff !important; font-size: 10px; font-family: monospace; font-weight: 900; padding: 3px 8px; border-radius: 4px; white-space: nowrap;">
+                  HYPE: ${disc.hypeScore || 9.8}/10
+                </span>
+              </td>
+            </tr>
+          </table>
+          <div class="mobile-card-title" style="font-size: 16px; font-weight: 900; font-family: monospace; color: #78350f; margin-bottom: 6px; word-break: break-word;">
+            ${disc.name}
+          </div>
+          <p style="margin: 0; font-size: 13px; color: #92400e; line-height: 1.5;">
+            ${disc.description || 'Toplulukta en yüksek konuşulma ve mention hacmine sahip model.'}
+          </p>
+        </div>
 
-          <td width="4%">&nbsp;</td>
+        <!-- Kart 2: ⭐ En Beğenilen Model -->
+        <div style="background-color: #fffbeb; border: 1px solid #fde68a; border-radius: 6px; padding: 14px 16px;">
+          <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-bottom: 1px solid #fef3c7; padding-bottom: 8px; margin-bottom: 8px;">
+            <tr>
+              <td valign="middle">
+                <span style="font-size: 11px; font-weight: bold; font-family: monospace; color: #78350f; text-transform: uppercase;">
+                  ⭐ EN BEĞENİLEN MODEL
+                </span>
+              </td>
+              <td align="right" valign="middle">
+                <span style="background-color: #059669; color: #ffffff !important; font-size: 10px; font-family: monospace; font-weight: 900; padding: 3px 8px; border-radius: 4px; white-space: nowrap;">
+                  BEĞENİ: ${lovedScore10}/10
+                </span>
+              </td>
+            </tr>
+          </table>
+          <div class="mobile-card-title" style="font-size: 16px; font-weight: 900; font-family: monospace; color: #78350f; margin-bottom: 6px; word-break: break-word;">
+            ${loved.name}
+          </div>
+          <p style="margin: 0; font-size: 13px; color: #92400e; line-height: 1.5;">
+            ${loved.description || 'Geliştiricilerin en yüksek memnuniyet ve takdir bildirdiği araç.'}
+          </p>
+        </div>
 
-          <!-- En Beğenilen -->
-          <td width="48%" valign="top" style="background-color: #fffbeb; border: 1px solid #fde68a; border-radius: 6px; padding: 12px;">
-            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-bottom: 1px solid #fef3c7; padding-bottom: 8px; margin-bottom: 8px;">
-              <tr>
-                <td>
-                  <span style="font-size: 11px; font-weight: bold; font-family: monospace; color: #78350f;">⭐ EN BEĞENİLEN</span>
-                </td>
-                <td align="right">
-                  <span style="background-color: #059669; color: #ffffff; font-size: 10px; font-family: monospace; font-weight: 900; padding: 2px 6px; border-radius: 3px;">
-                    BEĞENİ: ${lovedScore10}/10
-                  </span>
-                </td>
-              </tr>
-            </table>
-            <div style="font-size: 14px; font-weight: 900; font-family: monospace; color: #78350f; margin-bottom: 6px;">
-              ${loved.name}
-            </div>
-            <p style="margin: 0; font-size: 12px; color: #92400e; line-height: 1.4;">
-              ${loved.description || 'Geliştiricilerin en yüksek memnuniyet ve takdir bildirdiği araç.'}
-            </p>
-          </td>
-        </tr>
-      </table>
+      </div>
 
-      <!-- 4. SABAH İSTİHBARATI 4 KİLİT MADDE -->
-      <div style="margin-bottom: 24px;">
+      <!-- 4. SABAH İSTİHBARATI: 4 KİLİT MADDE (Ferah, Satır Satır) -->
+      <div style="margin-bottom: 22px;">
         <div style="font-size: 12px; font-weight: bold; font-family: monospace; color: #0f172a; text-transform: uppercase; margin-bottom: 10px; letter-spacing: 0.5px;">
           ⚡ 24 Saatin 4 Kritik Gelişmesi:
         </div>
         
         <table width="100%" cellpadding="0" cellspacing="0" border="0">
-          ${bullets.map(b => `
+          ${bullets.map((b, idx) => `
             <tr>
-              <td style="padding: 8px 0; border-bottom: 1px solid #f1f5f9;">
+              <td style="padding: 10px 0; ${idx !== bullets.length - 1 ? 'border-bottom: 1px solid #f1f5f9;' : ''}">
                 <table width="100%" cellpadding="0" cellspacing="0" border="0">
                   <tr>
-                    <td width="24" valign="top" style="font-size: 16px;">${b.icon || '📌'}</td>
+                    <td width="28" valign="top" style="font-size: 16px; line-height: 1.2;">${b.icon || '📌'}</td>
                     <td valign="top">
-                      <strong style="font-size: 13px; color: #0f172a; font-family: monospace;">${b.tag}:</strong>
-                      <span style="font-size: 13px; color: #334155; line-height: 1.4;"> ${b.text}</span>
+                      <strong style="font-size: 13px; color: #0f172a; font-family: monospace; display: inline-block; margin-bottom: 2px;">${b.tag}:</strong>
+                      <div style="font-size: 13px; color: #334155; line-height: 1.5;">${b.text}</div>
                     </td>
                   </tr>
                 </table>
@@ -190,75 +214,47 @@ function buildNewsletterHtml(report) {
         </table>
       </div>
 
-      <!-- 5. GÜNÜN ZİRVESİNDEKİ İLK 3 ÜRÜN -->
+      <!-- 5. GÜNÜN ZİRVESİNDEKİ İLK 3 ÜRÜN (Hype Puanlı Kompakt Liste) -->
       <div style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 14px 16px; margin-bottom: 24px;">
         <div style="font-size: 12px; font-weight: bold; font-family: monospace; color: #107c41; text-transform: uppercase; margin-bottom: 10px;">
           📊 Topluluk Radarı: Günün Zirvedeki 3 Ürünü
         </div>
         ${topProducts.map((p, idx) => `
-          <div style="padding: 8px 0; ${idx !== topProducts.length - 1 ? 'border-bottom: 1px dashed #cbd5e1;' : ''}">
+          <div style="padding: 10px 0; ${idx !== topProducts.length - 1 ? 'border-bottom: 1px dashed #cbd5e1;' : ''}">
             <table width="100%" cellpadding="0" cellspacing="0" border="0">
               <tr>
-                <td>
-                  <span style="font-weight: bold; font-size: 13px; color: #0f172a; font-family: monospace;">#${idx + 1} ${p.name}</span>
-                  <span style="font-size: 10px; color: #64748b; background: #e2e8f0; padding: 2px 6px; border-radius: 3px; font-family: monospace; margin-left: 6px;">${p.category || 'AI Modeli'}</span>
+                <td valign="middle">
+                  <span style="font-weight: bold; font-size: 14px; color: #0f172a; font-family: monospace;">#${idx + 1} ${p.name}</span>
+                  <span style="font-size: 10px; color: #475569; background: #e2e8f0; padding: 2px 6px; border-radius: 3px; font-family: monospace; margin-left: 6px; display: inline-block;">${p.category || 'AI Modeli'}</span>
                 </td>
-                <td align="right">
-                  <span style="font-size: 11px; font-family: monospace; font-weight: bold; color: #d97706;">Hype: ${p.hypeScore}/10</span>
+                <td align="right" valign="middle">
+                  <span style="font-size: 11px; font-family: monospace; font-weight: bold; color: #d97706; white-space: nowrap;">Hype: ${p.hypeScore}/10</span>
                 </td>
               </tr>
             </table>
-            <div style="font-size: 12px; color: #475569; margin-top: 4px; line-height: 1.3;">
+            <div style="font-size: 12px; color: #475569; margin-top: 5px; line-height: 1.4;">
               ${p.whyTrending || p.primaryFunction || ''}
             </div>
           </div>
         `).join('')}
       </div>
 
-      <!-- 6. KISA VE ÖZ RADAR BAŞLIKLARI (ArXiv, GitHub, HN) -->
-      <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 24px; font-size: 12px; color: #334155;">
-        ${hnBest ? `
-          <tr>
-            <td style="padding: 6px 0;">
-              <span style="color: #f97316; font-weight: bold; font-family: monospace;">[Hacker News]</span>
-              <strong>${hnBest.titleTr || hnBest.title}</strong>
-            </td>
-          </tr>
-        ` : ''}
-        ${ghBest ? `
-          <tr>
-            <td style="padding: 6px 0;">
-              <span style="color: #8b5cf6; font-weight: bold; font-family: monospace;">[GitHub]</span>
-              <strong>${ghBest.owner}/${ghBest.name}</strong> — ${ghBest.function || ghBest.whyHype || ''}
-            </td>
-          </tr>
-        ` : ''}
-        ${arxivBest ? `
-          <tr>
-            <td style="padding: 6px 0;">
-              <span style="color: #0284c7; font-weight: bold; font-family: monospace;">[ArXiv]</span>
-              <strong>${arxivBest.titleTr || arxivBest.title}</strong>
-            </td>
-          </tr>
-        ` : ''}
-      </table>
-
-      <!-- 7. BÜYÜK AKSİYON BUTONU (CTA) -->
-      <div style="text-align: center; margin: 28px 0 10px 0;">
-        <a href="https://aitrendleri.com" style="display: inline-block; background-color: #107c41; color: #ffffff; text-decoration: none; padding: 14px 32px; border-radius: 6px; font-size: 14px; font-weight: bold; font-family: monospace; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-          Tüm Detayları, Kodları ve Grafikleri Canlıda İncele →
+      <!-- 6. BÜYÜK AKSİYON BUTONU (Mobilde %100 Genişlikte, Canlı Siteye Yönlendirme) -->
+      <div style="text-align: center; margin: 26px 0 10px 0;">
+        <a href="https://aitrendleri.com" class="cta-button" style="display: inline-block; background-color: #107c41; color: #ffffff !important; text-decoration: none !important; padding: 14px 32px; border-radius: 6px; font-size: 14px; font-weight: bold; font-family: monospace; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+          Tüm Detayları ve Tabloları Canlıda İncele →
         </a>
-        <div style="font-size: 11px; color: #64748b; margin-top: 8px; font-family: monospace;">
-          aitrendleri.com • Canlı AI Ekosistem Paneli
+        <div style="font-size: 11px; color: #64748b; margin-top: 10px; font-family: monospace;">
+          <a href="https://aitrendleri.com" style="color: #64748b !important; text-decoration: none !important;">aitrendleri.com</a> • Canlı AI Ekosistem Paneli
         </div>
       </div>
 
     </div>
 
-    <!-- 8. FOOTER -->
-    <div style="background-color: #f8fafc; padding: 16px 24px; border-top: 1px solid #e2e8f0; text-align: center; font-size: 11px; color: #64748b; line-height: 1.5; font-family: monospace;">
-      Bu bülten, <strong>aitrendleri.com</strong> aboneliğiniz kapsamında her sabah otomatik olarak iletilmektedir.<br/>
-      Gereksiz e-posta almamak ve abonelikten çıkmak için <a href="mailto:destek@aitrendleri.com?subject=Abonelikten%20Cik" style="color: #107c41; text-decoration: underline;">buraya tıklayabilirsiniz</a>.<br/>
+    <!-- 7. FOOTER (Mavi link içermez) -->
+    <div style="background-color: #f8fafc; padding: 16px 20px; border-top: 1px solid #e2e8f0; text-align: center; font-size: 11px; color: #64748b; line-height: 1.6; font-family: monospace;">
+      Bu bülten, <a href="https://aitrendleri.com" style="color: #107c41 !important; font-weight: bold; text-decoration: none !important;">aitrendleri.com</a> aboneliğiniz kapsamında her sabah otomatik olarak iletilmektedir.<br/>
+      Gereksiz e-posta almamak ve abonelikten çıkmak için <a href="mailto:destek@aitrendleri.com?subject=Abonelikten%20Cik" style="color: #107c41 !important; text-decoration: underline;">buraya tıklayabilirsiniz</a>.<br/>
       © ${new Date().getFullYear()} aitrendleri.com • Bağımsız Yapay Zeka Radarı
     </div>
 
