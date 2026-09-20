@@ -66,21 +66,21 @@ Bu belge, bu projenin tüm tasarım, veri mimarisi ve geliştirme standartların
 
 ## 🟠 4. Hacker News Geliştirici Nabzı Standartları
 
-1. **Günün En Önemli Tam 6 Kilit Teknik Tartışması (3x2 veya 2x3 Simetri):**
-   - Her gün Hacker News'de en yüksek puan ve yorum alan en önemli tam 6 teknik tartışma yer alır (8 veya değişken sayı KULLANILAMAZ).
+1. **Günün En Önemli Tam 8 Kilit Teknik Tartışması (4x2 Simetri):**
+   - Her gün Hacker News'de en yüksek puan ve yorum alan en önemli tam 8 teknik tartışma yer alır.
    - Bu tartışmalar sıralamaya kesinlikle etki etmez; bağımsız ve saf mühendis/geliştirici nabzını yansıtır.
 
 2. **Zorunlu Akıcı Türkçe Başlık (`titleTr`):**
    - Hacker News başlıkları sitede ASLA ham İngilizce gösterilemez.
    - Her tartışma için akıcı, merak uyandırıcı ve konuyu tam anlatan bir Türkçe başlık (`titleTr`) üretilmek zorundadır. Orijinal İngilizce başlık alt referans çubuğunda şeffafça korunur.
 
-3. **Yeşil Kutu Yasağı & Detaylı Tartışma Paragrafı (`discussion`):**
+3. **Yeşil Kutu Yasağı & Zengin ve Derin Tartışma Paragrafı (`discussion`):**
    - Kartlarda ayrık yeşil çıkarım kutucukları (`usefulInsight`) KESİNLİKLE YASAKTIR.
-   - Başlığın hemen altında, mühendis ve geliştiricilerin o başlık altında neleri tartıştığını, öne çıkan karşıt fikirleri, teknik argümanları ve deneyimleri aktaran 2-3 cümlelik doyurucu ve detaylı bir Türkçe analiz paragrafı (`discussion`) yer alır.
+   - Başlığın hemen altında, mühendis ve geliştiricilerin o başlık altında neleri tartıştığını, öne çıkan karşıt fikirleri, teknik argümanları, mimari deneyimleri ve pratik deneyimleri aktaran en az 3-4 cümlelik doyurucu, zengin ve derinlemesine bir Türkçe analiz paragrafı (`discussion`) yer alır.
    - Şablon/dolgu cümleler ("Büyük ölçekli sistemlerde yazılım...", "mimari tasarım ve geliştirici deneyimi...") KESİNLİKLE YASAKTIR; her tartışmanın içeriği kendine has ve gerçek yorumlara dayalı olmalıdır.
 
 4. **CSS Subgrid ve Jilet Hizalama İlkesi:**
-   - Kartlar 3 sütunlu (`lg:grid-cols-3 md:grid-cols-2 grid-cols-1`) veya 2 sütunlu ızgara düzeninde doğal olarak genişler (`h-full flex flex-col justify-between`).
+   - Kartlar 2 sütunlu (`grid-cols-1 md:grid-cols-2`) ızgara düzeninde doğal olarak genişler (`h-full flex flex-col justify-between`).
    - Kart başlıkları ve altındaki tartışma paragrafları aynı satırdaki kartlar arasında tam hizalı başlar, en uzun paragrafa göre kutular doğal olarak uzar ve alt HN link çubuğu jilet gibi aynı çizgide eşitlenir.
    - Kart içinde hiçbir dikey/yatay kaydırma çubuğu (scrollbar) KULLANILAMAZ.
 
@@ -190,8 +190,11 @@ Bu belge, bu projenin tüm tasarım, veri mimarisi ve geliştirme standartların
    - Hugging Face, GitHub, ArXiv ve Hacker News verileri ana ürün sıralamasına ASLA sızamaz, puanları etkileyemez veya ürün tablosuna müdahale edemez; bu kaynaklar yalnızca kendi özel alt bölümlerinde ve Sabah İstihbaratı/Yönetici Özeti sentezinde değerlendirilir.
    - Ürün tablosundaki her ürünün `sources` dizisi istisnasız Reddit topluluklarından (örn. `["r/LocalLLaMA", "r/singularity"]`) oluşmak zorundadır.
 
-4. **Lider Kartının Zirve Dokunulmazlığı:**
-   - Sabah İstihbaratı'nın Lider Kartı (`morningBrief.leader`), Faz 1'de Reddit verileriyle zirveye (1. sıra) oturmuş olan ürünle (`daily[0]`) isim ve rozet olarak milimetrik şekilde birebir aynı olmak zorundadır.
+4. **Sarı Kısım İkili Lider Kırılması (En Çok Konuşulan Model & En Beğenilen Model):**
+   - Sabah İstihbaratı'nın sarı lider alanı, ekosistemin çift yönlü gerçeğini (Hype vs. Memnuniyet) şeffafça yansıtmak üzere yan yana **tam 2 model** içerir:
+     - **🔥 En Çok Konuşulan Model (`mostDiscussed`):** Günün en yüksek konuşulma hacmine ve Hype Skoruna sahip modeli (`daily[0]`). Neden gündem olduğu, viral olaylar veya kriz/tartışma hacmi özetlenir.
+     - **⭐ En Beğenilen Model (`mostLoved`):** Topluluğun en yüksek memnuniyet ve övgü oranına (`sentimentScore`) sahip modeli. Neden bu kadar beğenildiği, geliştirici deneyimi ve kullanıcı takdiri özetlenir.
+   - Bu iki kart yan yana tam dengeli, eşit yükseklikte ve milimetrik olarak eşleşir. Geriye dönük uyumluluk için `morningBrief.leader` alanı `mostDiscussed` modeliyle senkronize tutulur.
 
 5. **İki Aşamada Tek Model İlkesi (Unified Model Invariance):**
    - Faz 1 ve Faz 2 KESİNLİKLE BİREBİR AYNI MODEL ve sağlayıcı tarafından yürütülmelidir. Biri DeepSeek diğeri Gemini olamaz.

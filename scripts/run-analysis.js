@@ -261,7 +261,7 @@ async function fetchHackerNews24h() {
 
     const sorted = Array.from(allHits.values())
       .sort((a, b) => b.points - a.points)
-      .slice(0, 6);
+      .slice(0, 8);
 
     console.log(`✅ Hacker News'den ${sorted.length} taze mühendis tartışması alındı.`);
     return sorted;
@@ -732,12 +732,17 @@ async function generateWithWaterfall(prompt, validatorFn = null) {
  * Biri DeepSeek diğeri Gemini olamaz. Faz 1'i hangi model kazandıysa Faz 2'yi de o model yürütür.
  */
 async function generateMorningBriefSynthesis(finalizedData, phase1Execution = null) {
-  console.log("\n🌅 [FAZ 2] Sabah İstihbaratı 4 Kilit Madde Sentezi Başlatılıyor (Nihai Çıktı Okunuyor)...");
+  console.log("\n🌅 [FAZ 2] Sabah İstihbaratı İkili Lider ve 4 Kilit Madde Sentezi Başlatılıyor (Nihai Çıktı Okunuyor)...");
   
-  const leader = finalizedData.daily?.[0] || {};
+  // 1. En Çok Konuşulan Model (Hype Zirvesi)
+  const mostDiscussed = finalizedData.daily?.[0] || {};
+  // 2. En Beğenilen Model (Sentiment / Memnuniyet Zirvesi)
+  const sortedBySentiment = [...(finalizedData.daily || [])].sort((a, b) => (Number(b.sentimentScore) || 0) - (Number(a.sentimentScore) || 0));
+  const mostLoved = sortedBySentiment[0] || mostDiscussed;
+
   const topProducts = (finalizedData.daily || []).slice(0, 6);
   const arxivPapers = (finalizedData.arxivDaily || []).slice(0, 3);
-  const hnDiscussions = (finalizedData.hackerNewsPulse?.discussions || []).slice(0, 6);
+  const hnDiscussions = (finalizedData.hackerNewsPulse?.discussions || []).slice(0, 8);
   const githubProjects = (finalizedData.githubRadar?.daily || []).slice(0, 4);
 
   const topProductsText = topProducts.map((p, idx) => 
@@ -762,21 +767,26 @@ async function generateMorningBriefSynthesis(finalizedData, phase1Execution = nu
 
     GÖREVİN:
     Aşağıda sana sunulan nihai site verilerini (Reddit Zirvesi, Top AI Ürünleri, ArXiv Bilimsel Atılımları, Hacker News Mühendislik Tartışmaları ve GitHub Projeleri) derinlemesine sentezleyerek;
-    1) Zirvedeki #1 Lider için somut ve vurucu bir açıklama,
-    2) Sabah İstihbaratı'nın TAM 4 KİLİT MADDESİNİ (Model Savaşları, Kurumsal & Pazar Dengesi, Yazılım & Otonom Ajanlar, Yerel Zeka & Donanım) üretmektir.
-    (Not: Yönetici Özeti bilgi kaybı yaşanmaması için toplanan 50 topluluğun tüm ham verilerinden Faz 1'de üretilmiştir. Senin görevin doğrudan arayüzdeki bu 4 kutu ve lider kartını sitedeki içerikle %100 jilet gibi tutarlı kılmaktır).
+    1) Zirvedeki #1 EN ÇOK KONUŞULAN MODEL (${mostDiscussed.name}) için konuşulma hacmini ve gündemini özetleyen somut ve vurucu bir açıklama,
+    2) Toplulukta en yüksek memnuniyete sahip #1 EN BEĞENİLEN MODEL (${mostLoved.name}) için övgü ve beğeni nedenlerini özetleyen somut ve vurucu bir açıklama,
+    3) Sabah İstihbaratı'nın TAM 4 KİLİT MADDESİNİ (Model Savaşları, Kurumsal & Pazar Dengesi, Yazılım & Otonom Ajanlar, Yerel Zeka & Donanım) üretmektir.
+    (Not: Yönetici Özeti bilgi kaybı yaşanmaması için toplanan 50 topluluğun tüm ham verilerinden Faz 1'de üretilmiştir. Senin görevin doğrudan arayüzdeki sarı ikili lider kartlarını ve 4 kutuyu sitedeki içerikle %100 jilet gibi tutarlı kılmaktır).
 
     ════════════════════════════════════════════════════════════════════
     KESİN VE TAVİZSİZ ANAYASAL KURALLAR:
-    1. ZİRVEDEKİ LİDER DOKUNULMAZLIĞI:
-       - Zirvedeki 1 Numara KESİNLİKLE "${leader.name || 'Günün Modeli'}" modelidir/aracıdır.
-       - 'name' alanı birebir "${leader.name || 'Günün Modeli'}" olmalıdır. Parantez veya yapay ek KULLANILAMAZ.
-       - 'badge' alanı "${leader.badge || 'Günün 1 Numarası'}" olmalıdır.
-       - 'description' alanı: Topluluğun neden onu zirveye taşıdığını veya neden gündemi sarstığını anlatan 1-2 vurucu, somut Türkçe cümle olmalıdır.
+    1. İKİLİ LİDER DOKUNULMAZLIĞI (SARI KISIM İÇİN 2 MODEL):
+       - En Çok Konuşulan Model KESİNLİKLE "${mostDiscussed.name || 'Günün Konuşulanı'}" modelidir (Hype: ${mostDiscussed.hypeScore}/10).
+         'name' alanı birebir "${mostDiscussed.name || 'Günün Konuşulanı'}" olmalıdır.
+         'badge' alanı "${mostDiscussed.badge || 'Hype Zirvesi'}" olmalıdır.
+         'description' alanı: Topluluğun neden onu konuşulma zirvesine taşıdığını veya neden gündemi sarstığını anlatan 1-2 vurucu, somut Türkçe cümle olmalıdır.
+       - En Beğenilen Model KESİNLİKLE "${mostLoved.name || 'Günün Beğenileni'}" modelidir (Memnuniyet: %${mostLoved.sentimentScore}).
+         'name' alanı birebir "${mostLoved.name || 'Günün Beğenileni'}" olmalıdır.
+         'badge' alanı "${mostLoved.badge || 'Memnuniyet Lideri'}" olmalıdır.
+         'description' alanı: Topluluğun bu modele neden en yüksek övgüyü ve memnuniyeti verdiğini aktaran 1-2 vurucu, somut Türkçe cümle olmalıdır.
 
     2. SABAH İSTİHBARATI 4 KİLİT MADDE KURALI (TAM 4 ADET):
        - Her madde doğrudan bugün sitede yer alan somut verilere atıfta bulunmalı, ezber/şablon cümleler KESİNLİKLE YASAKTIR.
-       - 1. Madde ("Model Savaşları", icon: "🚀"): Günün lideri (${leader.name}) ve en çok konuşulan modeller arasındaki rekabeti, pazar ve açık vs kapalı modeller dengesini özetle.
+       - 1. Madde ("Model Savaşları", icon: "🚀"): Günün konuşulan modelleri (${mostDiscussed.name} ve diğerleri) arasındaki rekabeti, pazar ve açık vs kapalı modeller dengesini özetle.
        - 2. Madde ("Kurumsal & Pazar Dengesi", icon: "🏢"): Şirketlerin AI yatırımları, API maliyetleri veya kurumsal entegrasyonda bugün öne çıkan kırılmayı özetle.
        - 3. Madde ("Yazılım & Otonom Ajanlar", icon: "💻"): Hacker News'de mühendislerin tartıştığı mimari konuları ve GitHub'daki otonom ajan/CLI araçlarını harmanlayarak yazılımdaki günün dönüşümünü özetle.
        - 4. Madde ("Yerel Zeka & Donanım", icon: "⚡"): ArXiv'deki akademik çıkarım atılımları, yerel modeller ve GPU/donanım optimizasyonlarındaki son durumu özetle.
@@ -784,12 +794,19 @@ async function generateMorningBriefSynthesis(finalizedData, phase1Execution = nu
     ════════════════════════════════════════════════════════════════════
     SİTENİN KESİNLEŞMİŞ GÜNCEL VERİLERİ:
 
-    [GÜNÜN 1 NUMARASI (ZİRVEDEKİ REDDİT LİDERİ)]:
-    Ad: ${leader.name}
-    Hype Skoru: ${leader.hypeScore} / 10 | Topluluk Beğenisi: %${leader.sentimentScore}
-    Rozet: ${leader.badge}
-    Temel İşlev: ${leader.primaryFunction}
-    Neden Trend: ${leader.whyTrending}
+    [EN ÇOK KONUŞULAN MODEL (HYPE ZİRVESİ)]:
+    Ad: ${mostDiscussed.name}
+    Hype Skoru: ${mostDiscussed.hypeScore} / 10 | Topluluk Beğenisi: %${mostDiscussed.sentimentScore}
+    Rozet: ${mostDiscussed.badge}
+    Temel İşlev: ${mostDiscussed.primaryFunction}
+    Neden Trend: ${mostDiscussed.whyTrending}
+
+    [EN BEĞENİLEN MODEL (MEMNUNİYET ZİRVESİ)]:
+    Ad: ${mostLoved.name}
+    Hype Skoru: ${mostLoved.hypeScore} / 10 | Topluluk Beğenisi: %${mostLoved.sentimentScore}
+    Rozet: ${mostLoved.badge}
+    Temel İşlev: ${mostLoved.primaryFunction}
+    Neden Trend / Övgü: ${mostLoved.whyTrending}
 
     [TOP 5 REDDİT AI ÜRÜNÜ]:
     ${topProductsText}
@@ -797,7 +814,7 @@ async function generateMorningBriefSynthesis(finalizedData, phase1Execution = nu
     [GÜNÜN 3 AKADEMİK ARXİV ÇALIŞMASI]:
     ${arxivText}
 
-    [GÜNÜN 6 HACKER NEWS MÜHENDİSLİK TARTIŞMASI]:
+    [GÜNÜN 8 HACKER NEWS MÜHENDİSLİK TARTIŞMASI]:
     ${hnText}
 
     [GÜNÜN ÖNE ÇIKAN GİTHUB AÇIK KAYNAK VE AJAN PROJELERİ]:
@@ -807,9 +824,19 @@ async function generateMorningBriefSynthesis(finalizedData, phase1Execution = nu
     İSTENEN YALIN JSON ÇIKTISI FORMATI:
     {
       "morningBrief": {
+        "mostDiscussed": {
+          "name": "${mostDiscussed.name || 'Günün Konuşulanı'}",
+          "badge": "${mostDiscussed.badge || 'Hype Zirvesi'}",
+          "description": "Zirvedeki modelin neden bugünün konuşulma rekorunu kırdığına dair 1-2 vurucu Türkçe cümle."
+        },
+        "mostLoved": {
+          "name": "${mostLoved.name || 'Günün Beğenileni'}",
+          "badge": "${mostLoved.badge || 'Memnuniyet Lideri'}",
+          "description": "Topluluk tarafından en çok övgü alan modelin memnuniyet nedenlerine dair 1-2 vurucu Türkçe cümle."
+        },
         "leader": {
-          "name": "${leader.name || 'Günün Modeli'}",
-          "badge": "${leader.badge || 'Günün 1 Numarası'}",
+          "name": "${mostDiscussed.name || 'Günün Konuşulanı'}",
+          "badge": "${mostDiscussed.badge || 'Hype Zirvesi'}",
           "description": "Zirvedeki modelin neden bugünün gündemini belirlediğine dair 1-2 vurucu Türkçe cümle."
         },
         "bullets": [
@@ -825,8 +852,7 @@ async function generateMorningBriefSynthesis(finalizedData, phase1Execution = nu
   const phase2Validator = (res) => (
     res &&
     res.morningBrief &&
-    res.morningBrief.leader &&
-    res.morningBrief.leader.name &&
+    (res.morningBrief.mostDiscussed || res.morningBrief.leader) &&
     Array.isArray(res.morningBrief.bullets) &&
     res.morningBrief.bullets.length === 4
   );
@@ -1077,10 +1103,10 @@ async function main() {
     - YALNIZCA o gün sitede (makalelerde, modellerde, tartışmalarda) bizzat geçen 9 teknik kavramı seç.
     - Her kavram için id ("glossary-1"..."glossary-9"), term, category, definition (1-2 cümlelik akıcı, doyurucu Türkçe açıklama) üret.
 
-    HACKER NEWS GELİŞTİRİCİ NABZI (hackerNewsPulse) - TAM 6 ADET TARTIŞMA:
-    - Son 24 saatin Hacker News adayları arasından en yüksek puan/yorum alan 6 tartışmayı analiz et.
+    HACKER NEWS GELİŞTİRİCİ NABZI (hackerNewsPulse) - TAM 8 ADET TARTIŞMA:
+    - Son 24 saatin Hacker News adayları arasından en yüksek puan/yorum alan tam 8 tartışmayı analiz et.
     - TÜRKÇE BAŞLIK ZORUNLU: Her tartışma için akıcı, merak uyandırıcı ve konuyu tam özetleyen bir Türkçe başlık ("titleTr") üret. Orijinal İngilizce başlık "title" alanında kalsın.
-    - DETAYLI TARTIŞMA PARAGRAFI: "discussion" alanında, mühendislerin, kurucuların ve geliştiricilerin o başlık altında NELERİ TARTIŞTIĞINI, öne çıkan karşıt fikirleri, teknik argümanları ve deneyimleri aktaran 2-3 cümlelik doyurucu ve derinlemesine bir Türkçe paragraf yaz. (Kesinlikle şablon, basmakalıp dolgu cümleler KULLANMA!).
+    - DETAYLI VE ZENGİN TARTIŞMA PARAGRAFI: "discussion" alanında, mühendislerin, kurucuların ve geliştiricilerin o başlık altında NELERİ TARTIŞTIĞINI, öne çıkan karşıt fikirleri, teknik argümanları, mimari deneyimleri ve pratik deneyimleri derinlemesine aktaran en az 3-4 cümlelik doyurucu, zengin bir Türkçe paragraf yaz. (Kesinlikle şablon, basmakalıp dolgu cümleler KULLANMA!).
     - Kategori: "Yazılım Mimarisi", "Yapay Zeka & Ajanlar", "Sistem & Donanım", "Geliştirici Kültürü", "Siber Güvenlik", "Veritabanı & RAG" vb.
 
     🚨 KRİTİK UZUNLUK KURALI:
@@ -1180,9 +1206,9 @@ async function main() {
         }
       ],
       "hackerNewsPulse": {
-        "summary24h": "Son 24 saatte Hacker News gündeminde öne çıkan geliştirici ve mühendislik tartışmalarının 1-2 cümlelik genel özeti",
+        "summary24h": "Son 24 saatte Hacker News gündeminde öne çıkan geliştirici ve mühendislik tartışmalarının 2-3 cümlelik genel özeti",
         "discussions": [
-          // TAM 6 ADET TARTIŞMA
+          // TAM 8 ADET TARTIŞMA
           {
             "id": "hn-id",
             "title": "Orijinal İngilizce Başlık",
@@ -1191,7 +1217,7 @@ async function main() {
             "comments": 800,
             "category": "Yazılım Mimarisi",
             "hnUrl": "https://news.ycombinator.com/item?id=...",
-            "discussion": "Tartışmada geliştiricilerin öne sürdüğü argümanlar, teknik itirazlar ve mimari deneyimlerin 2-3 cümlelik detaylı analizi."
+            "discussion": "Tartışmada geliştiricilerin öne sürdüğü argümanlar, teknik itirazlar ve mimari deneyimlerin 3-4 cümlelik zengin ve detaylı analizi."
           }
         ]
       }
@@ -1204,11 +1230,11 @@ async function main() {
   // KESKİN STANDARTLAR DENETÇİSİ (Verilerin yerli yerine oturmasını ve hiçbir zaman eksik kalmamasını garanti eder)
   const resultJson = enforceStrictStandards(rawResultJson, hfModels, candidateArxiv, hnPosts, githubCandidates, hfTopModels);
 
-  // 🌅 FAZ 2: SABAH İSTİHBARATI 4 KİLİT MADDE VE LİDER KARTI SENTEZİ
+  // 🌅 FAZ 2: SABAH İSTİHBARATI 4 KİLİT MADDE VE İKİLİ LİDER KARTI SENTEZİ
   // DİKKAT: Yönetici Özeti (executiveSummary) bilgi kaybı yaşanmaması ve büyük resmin kaçırılmaması için
   // Faz 1'de toplanan tüm ham veri havuzundan (50 Reddit topluluğu, yüzlerce tartışma, ArXiv, HN, GitHub)
   // en geniş bilgi setiyle üretilmiştir ve KESİNLİKLE EZİLMEZ (korunur).
-  // Sabah İstihbaratı'nın 4 kilit kutusu ve lider kartı ise sitedeki nihai sıralama ve içerikle
+  // Sabah İstihbaratı'nın sarı ikili lider kartları ve 4 kilit kutusu ise sitedeki nihai sıralama ve içerikle
   // %100 jilet gibi tutarlı olması için Faz 2'de nihai çıktıyı okuyarak güncellenir.
   // Faz 1 ve Faz 2 KESİNLİKLE AYNI MODEL tarafından yürütülür (Unified Model Invariance).
   let phase2TokenUsage = null;
@@ -1216,16 +1242,33 @@ async function main() {
     const { p2Data, p2TokenUsage } = await generateMorningBriefSynthesis(resultJson, phase1Execution);
     if (p2Data && p2Data.morningBrief && Array.isArray(p2Data.morningBrief.bullets) && p2Data.morningBrief.bullets.length === 4) {
       const tableTop = resultJson.daily?.[0];
+      const sortedBySent = [...(resultJson.daily || [])].sort((a, b) => (Number(b.sentimentScore) || 0) - (Number(a.sentimentScore) || 0));
+      const tableLoved = sortedBySent[0] || tableTop;
+
       resultJson.morningBrief = {
+        mostDiscussed: {
+          name: (tableTop && tableTop.name) ? tableTop.name : (p2Data.morningBrief.mostDiscussed?.name || p2Data.morningBrief.leader?.name || ""),
+          badge: (tableTop && tableTop.badge) ? tableTop.badge : (p2Data.morningBrief.mostDiscussed?.badge || "Günün 1 Numarası"),
+          hypeScore: tableTop?.hypeScore || p2Data.morningBrief.mostDiscussed?.hypeScore || 0,
+          sentimentScore: tableTop?.sentimentScore || p2Data.morningBrief.mostDiscussed?.sentimentScore || 0,
+          description: p2Data.morningBrief.mostDiscussed?.description || p2Data.morningBrief.leader?.description || tableTop?.whyTrending || ""
+        },
+        mostLoved: {
+          name: (tableLoved && tableLoved.name) ? tableLoved.name : (p2Data.morningBrief.mostLoved?.name || tableLoved?.name || ""),
+          badge: (tableLoved && tableLoved.badge) ? tableLoved.badge : (p2Data.morningBrief.mostLoved?.badge || "Memnuniyet Lideri"),
+          hypeScore: tableLoved?.hypeScore || p2Data.morningBrief.mostLoved?.hypeScore || 0,
+          sentimentScore: tableLoved?.sentimentScore || p2Data.morningBrief.mostLoved?.sentimentScore || 0,
+          description: p2Data.morningBrief.mostLoved?.description || tableLoved?.whyTrending || ""
+        },
         leader: {
-          name: (tableTop && tableTop.name) ? tableTop.name : (p2Data.morningBrief.leader?.name || resultJson.morningBrief?.leader?.name || ""),
+          name: (tableTop && tableTop.name) ? tableTop.name : (p2Data.morningBrief.leader?.name || p2Data.morningBrief.mostDiscussed?.name || ""),
           badge: (tableTop && tableTop.badge) ? tableTop.badge : (p2Data.morningBrief.leader?.badge || "Günün 1 Numarası"),
-          description: p2Data.morningBrief.leader?.description || resultJson.morningBrief?.leader?.description || ""
+          description: p2Data.morningBrief.leader?.description || p2Data.morningBrief.mostDiscussed?.description || ""
         },
         bullets: p2Data.morningBrief.bullets
       };
       phase2TokenUsage = p2TokenUsage;
-      console.log("✅ [FAZ 2] Sabah İstihbaratı 4 kilit madde ve Lider kartı nihai çıktıyı okuyarak başarıyla güncellendi (Yönetici Özeti geniş veri havuzundan korundu)!");
+      console.log("✅ [FAZ 2] Sabah İstihbaratı ikili lider kartları ve 4 kilit madde nihai çıktıyı okuyarak başarıyla güncellendi (Yönetici Özeti geniş veri havuzundan korundu)!");
     }
   } catch (err) {
     console.warn("⚠️ [FAZ 2] Sabah İstihbaratı sentezi çağrısında hata oluştu, Faz 1 verisi korunuyor:", err.message);
@@ -1862,9 +1905,9 @@ function enforceStrictStandards(data, hfModels = [], candidateArxiv = [], hnPost
     };
   }
 
-  if (clean.hackerNewsPulse.discussions.length < 6 && Array.isArray(hnPosts)) {
+  if (clean.hackerNewsPulse.discussions.length < 8 && Array.isArray(hnPosts)) {
     for (const hp of hnPosts) {
-      if (clean.hackerNewsPulse.discussions.length >= 6) break;
+      if (clean.hackerNewsPulse.discussions.length >= 8) break;
       const matched = translateHnTitleTr(hp.title);
 
       const candidate = {
@@ -1943,16 +1986,36 @@ function enforceStrictStandards(data, hfModels = [], candidateArxiv = [], hnPost
       hnUrl: "https://news.ycombinator.com/item?id=49770847",
       category: "Görsel Modeller",
       discussion: "FLUX ve Midjourney v6 gibi son nesil modellerle birlikte insan gözünün sentetik görselleri tespit etme oranının %50'nin (yazı tura seviyesi) altına düştüğü deneysel bir test üzerinden tartışıldı. Geliştiriciler parmak ve göz anomalilerinin artık çözüldüğünü; sentetik tespitte yalnızca cilt mikro dokuları, aşırı mükemmel stüdyo aydınlatması ve görüntü meta-verilerinin ipucu verebildiğini aktardı."
+    },
+    {
+      id: "49771120",
+      title: "Local LLMs in production: Memory bandwidth is the only metric that matters",
+      titleTr: "Üretimde Yerel LLM'ler: Bellek Bant Genişliği Neden Tek Kritik Metriktir?",
+      points: 412,
+      comments: 185,
+      hnUrl: "https://news.ycombinator.com/item?id=49771120",
+      category: "Donanım & Çıkarım",
+      discussion: "Üretim ortamında yerel LLM çalıştıran kıdemli altyapı mühendisleri, FLOPs hesaplama gücünden ziyade bellek bant genişliğinin (memory bandwidth) gerçek belirleyici olduğunu vurguladı. Tartışmada Apple M serisinin birleşik bellek mimarisinin ve HBM3 bellekli kurumsal kartların, token üretim gecikmesini (TTFT ve TPS) nasıl doğrudan belirlediği ve quantization (AWQ, EXL2) tekniklerinin bant genişliği darboğazını aşmadaki rolü kapsamlı şekilde açıklandı."
+    },
+    {
+      id: "49772340",
+      title: "Why SQLite is conquering edge AI and client-side vector search",
+      titleTr: "SQLite Uç Yapay Zeka ve İstemci Tarafı Vektör Aramasını Neden Fethediyor?",
+      points: 388,
+      comments: 142,
+      hnUrl: "https://news.ycombinator.com/item?id=49772340",
+      category: "Veritabanı & Vektör",
+      discussion: "Karmaşık harici vektör veritabanları (Pinecone, Milvus) yerine sqlite-vec eklentisinin lokal otonom ajanlar ve masaüstü AI uygulamalarında neden standart hale geldiği tartışıldı. Geliştiriciler tek bir C dosyasında çalışan, sıfır ağ gecikmesine sahip ve ACID güvenceli bir yerel veritabanının, hem embedding saklama hem de RAG mimarilerinde bakım maliyetini sıfırladığını somut mimari deneyimlerle paylaştı."
     }
   ];
 
-  while (clean.hackerNewsPulse.discussions.length < 6) {
+  while (clean.hackerNewsPulse.discussions.length < 8) {
     const idx = clean.hackerNewsPulse.discussions.length;
-    clean.hackerNewsPulse.discussions.push(BENCHMARK_HN[idx]);
+    clean.hackerNewsPulse.discussions.push(BENCHMARK_HN[idx % BENCHMARK_HN.length]);
   }
 
-  // Her discussion için tam 6 adet ve eksiksiz alan kontrolü (yeşil kutu kaldırıldı, zengin discussion paragrafı)
-  clean.hackerNewsPulse.discussions = clean.hackerNewsPulse.discussions.slice(0, 6).map((d, idx) => {
+  // Her discussion için tam 8 adet ve eksiksiz alan kontrolü (yeşil kutu kaldırıldı, zengin discussion paragrafı)
+  clean.hackerNewsPulse.discussions = clean.hackerNewsPulse.discussions.slice(0, 8).map((d, idx) => {
     const matched = translateHnTitleTr(d.title || "");
     const titleTr = (d.titleTr && d.titleTr !== d.title) ? d.titleTr : (matched.titleTr || d.title || "Teknik Geliştirici Tartışması");
     const discussion = d.discussion || d.analysis || d.usefulInsight || matched.discussion || "Hacker News topluluğunda öne çıkan teknik argümanlar ve mimari deneyimler.";

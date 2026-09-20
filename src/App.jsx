@@ -991,26 +991,51 @@ export default function App() {
     return [...result].sort((a, b) => (Number(b.hypeScore) || 0) - (Number(a.hypeScore) || 0));
   }, [rawTools, selectedCategory, searchQuery]);
 
-  // Lider Model Senkronizasyonu:
-  // Özet kısmındaki ("Günün 1 Numarası") kutusu daima tablodaki 1. sıradaki araç ile %100 birebir aynı olmalı
-  const activeLeader = useMemo(() => {
-    const tableLeader = filteredTools[0] || rawTools[0] || (report.daily && report.daily[0]);
-    const mbLeader = report.morningBrief?.leader;
-    if (!tableLeader) return mbLeader;
+  // Lider Model Senkronizasyonu (Sarı Kısım: En Çok Konuşulan Model & En Beğenilen Model):
+  const leaderBreakdown = useMemo(() => {
+    const list = filteredTools.length > 0 ? filteredTools : (report.daily || []);
+    if (!list.length) return null;
 
-    const isSame = mbLeader?.name && (
-      mbLeader.name.toLowerCase().includes(tableLeader.name.toLowerCase()) ||
-      tableLeader.name.toLowerCase().includes(mbLeader.name.toLowerCase())
+    // 1. En Çok Konuşulan Model (Hype Skoru Zirvesi, daily[0])
+    const mostDiscussedProduct = list[0];
+    const mbDiscussed = report.morningBrief?.mostDiscussed || report.morningBrief?.leader;
+
+    // 2. En Beğenilen Model (Sentiment / Memnuniyet Skoru Zirvesi)
+    const sortedBySentiment = [...list].sort((a, b) => (Number(b.sentimentScore) || 0) - (Number(a.sentimentScore) || 0));
+    const mostLovedProduct = sortedBySentiment[0] || list[0];
+    const mbLoved = report.morningBrief?.mostLoved;
+
+    const isDiscussedMatch = mbDiscussed?.name && mostDiscussedProduct?.name && (
+      mbDiscussed.name.toLowerCase().includes(mostDiscussedProduct.name.toLowerCase()) ||
+      mostDiscussedProduct.name.toLowerCase().includes(mbDiscussed.name.toLowerCase())
+    );
+
+    const isLovedMatch = mbLoved?.name && mostLovedProduct?.name && (
+      mbLoved.name.toLowerCase().includes(mostLovedProduct.name.toLowerCase()) ||
+      mostLovedProduct.name.toLowerCase().includes(mbLoved.name.toLowerCase())
     );
 
     return {
-      name: tableLeader.name,
-      badge: tableLeader.badge || mbLeader?.badge || "Topluluk Zirvesi",
-      description: (isSame && mbLeader?.description)
-        ? mbLeader.description
-        : (tableLeader.whyTrending || tableLeader.primaryFunction || "Günün en yüksek topluluk ilgisi ve puanına sahip lider modeli.")
+      mostDiscussed: {
+        name: mostDiscussedProduct.name,
+        badge: mostDiscussedProduct.badge || "Günün 1 Numarası",
+        hypeScore: mostDiscussedProduct.hypeScore,
+        sentimentScore: mostDiscussedProduct.sentimentScore,
+        description: (isDiscussedMatch && mbDiscussed?.description)
+          ? mbDiscussed.description
+          : (mostDiscussedProduct.whyTrending || mostDiscussedProduct.primaryFunction || "Günün en yüksek konuşulma hacmine ve gündemine sahip lider modeli.")
+      },
+      mostLoved: {
+        name: mostLovedProduct.name,
+        badge: mostLovedProduct.badge || "Memnuniyet Lideri",
+        hypeScore: mostLovedProduct.hypeScore,
+        sentimentScore: mostLovedProduct.sentimentScore,
+        description: (isLovedMatch && mbLoved?.description)
+          ? mbLoved.description
+          : (mostLovedProduct.whyTrending || mostLovedProduct.primaryFunction || "Topluluk tarafından en çok övgü alan ve en yüksek memnuniyet puanına sahip model.")
+      }
     };
-  }, [filteredTools, rawTools, report.daily, report.morningBrief]);
+  }, [filteredTools, report.daily, report.morningBrief]);
 
   // Average Hype calculation for status bar
   const avgHypeScore = useMemo(() => {
@@ -1018,6 +1043,39 @@ export default function App() {
     const sum = filteredTools.reduce((acc, t) => acc + (t.hypeScore || 0), 0);
     return (sum / filteredTools.length).toFixed(1);
   }, [filteredTools]);
+
+  const toggleCategory = (cat) => {
+    setSelectedCategory(prev => prev === cat ? null : cat);
+  };
+
+  const selectedTool = filteredTools.find(t => t.id === expandedId) || filteredTools[0];
+
+  const handleCopyBrief = () => {
+    const mb = report?.morningBrief;
+    if (!mb) return;
+    const bulletsText = (mb.bullets || []).map(b => `${b.icon || '📌'} ${b.tag}: ${b.text}`).join('\n\n');
+    const disc = leaderBreakdown?.mostDiscussed;
+    const loved = leaderBreakdown?.mostLoved;
+
+    const fullText = `☕ aitrendleri.com - Günlük AI İstihbarat Brifingi (${report.date || 'Bugün'})
+
+🔥 EN ÇOK KONUŞULAN MODEL: ${disc?.name || mb.leader?.name || 'Lider Model'} (${disc?.badge || 'Zirve'} | Hype: ${disc?.hypeScore || 0}/10)
+${disc?.description || mb.leader?.description || ''}
+
+⭐ EN BEĞENİLEN MODEL: ${loved?.name || 'Memnuniyet Lideri'} (${loved?.badge || 'Övgü'} | Beğeni: %${loved?.sentimentScore || 0})
+${loved?.description || ''}
+
+⚡ DÜNYADA YAPAY ZEKA BUGÜN (Madde Madde):
+${bulletsText}
+
+🔗 Canlı Terminal & Ayrıntılar: https://aitrendleri.com`;
+
+    if (navigator?.clipboard) {
+      navigator.clipboard.writeText(fullText);
+      setCopiedBrief(true);
+      setTimeout(() => setCopiedBrief(false), 2500);
+    }
+  };
 
   // GitHub Radarı ve Hacker News için Satır Bazlı Hizalama Kümeleri (Subgrid chunking)
   const githubChunks = useMemo(() => {
@@ -1112,29 +1170,6 @@ export default function App() {
       colorClass: score >= 80 ? 'text-emerald-700' : score >= 60 ? 'text-amber-700' : 'text-rose-600',
       badgeClass: score >= 80 ? 'bg-emerald-50 text-emerald-800 border-emerald-200' : score >= 60 ? 'bg-amber-50 text-amber-800 border-amber-200' : 'bg-rose-50 text-rose-700 border-rose-200'
     };
-  };
-
-  const selectedTool = filteredTools.find(t => t.id === expandedId) || filteredTools[0];
-
-  const handleCopyBrief = () => {
-    const mb = report?.morningBrief;
-    if (!mb) return;
-    const bulletsText = (mb.bullets || []).map(b => `${b.icon || '📌'} ${b.tag}: ${b.text}`).join('\n\n');
-    const fullText = `☕ aitrendleri.com - Günlük AI İstihbarat Brifingi (${report.date || 'Bugün'})
-
-🏆 GÜNÜN 1 NUMARASI: ${mb.leader?.name || 'Lider Model'} (${mb.leader?.badge || 'Zirve'})
-${mb.leader?.description || ''}
-
-⚡ DÜNYADA YAPAY ZEKA BUGÜN (Madde Madde):
-${bulletsText}
-
-🔗 Canlı Terminal & Ayrıntılar: https://aitrendleri.com`;
-
-    if (navigator?.clipboard) {
-      navigator.clipboard.writeText(fullText);
-      setCopiedBrief(true);
-      setTimeout(() => setCopiedBrief(false), 2500);
-    }
   };
 
   return (
@@ -1388,28 +1423,74 @@ ${bulletsText}
 
             {isBriefExpanded && (
               <div className="space-y-3 pt-0.5">
-                {/* 🏆 1. Günün Lider Kırılması (Zirve Rozeti - Tablodaki 1 Numara ile Daima %100 Senkronize) */}
-                {activeLeader && (
-                  <div className="bg-amber-50/70 border border-amber-300/80 rounded p-2.5 sm:p-3 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5">
-                    <div className="flex items-start sm:items-center gap-2.5 min-w-0">
-                      <span className="shrink-0 text-sm sm:text-base">🏆</span>
-                      <div className="min-w-0">
-                        <div className="flex items-center gap-2 flex-wrap">
-                          <span className="text-[11px] font-mono font-bold text-amber-950 uppercase tracking-tight">
-                            {timeframe === 'weekly' ? 'Haftanın 1 Numarası:' : timeframe === 'monthly' ? 'Ayın 1 Numarası:' : 'Günün 1 Numarası:'}
-                          </span>
-                          <span className="font-mono text-xs sm:text-sm font-black text-amber-900 bg-amber-100/90 px-2 py-0.5 rounded border border-amber-300">
-                            {activeLeader.name}
-                          </span>
-                          {activeLeader.badge && (
-                            <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-white/90 text-amber-800 border border-amber-200 font-bold">
-                              {activeLeader.badge}
+                {/* 🏆 1. Günün İkili Lider Kırılması (Sarı Kısım: En Çok Konuşulan Model & En Beğenilen Model) */}
+                {leaderBreakdown && (
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 items-stretch">
+                    {/* Sol Kart: 🔥 En Çok Konuşulan Model */}
+                    <div className="bg-amber-50/80 border border-amber-300/90 rounded p-3 shadow-2xs flex flex-col justify-between gap-2.5 h-full">
+                      <div>
+                        <div className="flex items-center justify-between gap-2 flex-wrap pb-1.5 border-b border-amber-200/70">
+                          <div className="flex items-center gap-1.5 min-w-0">
+                            <span className="text-sm shrink-0">🔥</span>
+                            <span className="text-[11px] font-mono font-bold text-amber-950 uppercase tracking-tight">
+                              En Çok Konuşulan Model:
                             </span>
-                          )}
+                            <span className="font-mono text-xs sm:text-sm font-black text-amber-900 bg-amber-100/90 px-2 py-0.5 rounded border border-amber-300">
+                              {leaderBreakdown.mostDiscussed.name}
+                            </span>
+                          </div>
+                          <div className="flex items-center gap-1.5 flex-wrap">
+                            <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-amber-600 text-white font-black shadow-2xs">
+                              HYPE: {leaderBreakdown.mostDiscussed.hypeScore}/10
+                            </span>
+                            {leaderBreakdown.mostDiscussed.badge && (
+                              <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-white/90 text-amber-800 border border-amber-200 font-bold">
+                                {leaderBreakdown.mostDiscussed.badge}
+                              </span>
+                            )}
+                          </div>
                         </div>
-                        <p className="text-xs text-amber-900 mt-1 leading-relaxed">
-                          {activeLeader.description}
+                        <p className="text-xs text-amber-900 mt-2 leading-relaxed">
+                          {leaderBreakdown.mostDiscussed.description}
                         </p>
+                      </div>
+                      <div className="text-[10px] font-mono text-amber-800/80 pt-1.5 flex items-center justify-between border-t border-amber-200/50">
+                        <span>Gündem &amp; Konuşulma Hacmi</span>
+                        <span>Topluluk Beğenisi: %{leaderBreakdown.mostDiscussed.sentimentScore}</span>
+                      </div>
+                    </div>
+
+                    {/* Sağ Kart: ⭐ En Beğenilen Model */}
+                    <div className="bg-amber-50/80 border border-amber-300/90 rounded p-3 shadow-2xs flex flex-col justify-between gap-2.5 h-full">
+                      <div>
+                        <div className="flex items-center justify-between gap-2 flex-wrap pb-1.5 border-b border-amber-200/70">
+                          <div className="flex items-center gap-1.5 min-w-0">
+                            <span className="text-sm shrink-0">⭐</span>
+                            <span className="text-[11px] font-mono font-bold text-amber-950 uppercase tracking-tight">
+                              En Beğenilen Model:
+                            </span>
+                            <span className="font-mono text-xs sm:text-sm font-black text-amber-900 bg-amber-100/90 px-2 py-0.5 rounded border border-amber-300">
+                              {leaderBreakdown.mostLoved.name}
+                            </span>
+                          </div>
+                          <div className="flex items-center gap-1.5 flex-wrap">
+                            <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-emerald-600 text-white font-black shadow-2xs">
+                              BEĞENİ: %{leaderBreakdown.mostLoved.sentimentScore}
+                            </span>
+                            {leaderBreakdown.mostLoved.badge && (
+                              <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-white/90 text-amber-800 border border-amber-200 font-bold">
+                                {leaderBreakdown.mostLoved.badge}
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                        <p className="text-xs text-amber-900 mt-2 leading-relaxed">
+                          {leaderBreakdown.mostLoved.description}
+                        </p>
+                      </div>
+                      <div className="text-[10px] font-mono text-amber-800/80 pt-1.5 flex items-center justify-between border-t border-amber-200/50">
+                        <span>Kullanıcı Memnuniyeti &amp; Övgü</span>
+                        <span>Hype Skoru: {leaderBreakdown.mostLoved.hypeScore}/10</span>
                       </div>
                     </div>
                   </div>
