@@ -1088,6 +1088,98 @@ export default function App() {
     };
   }, [report]);
 
+  // Haftalık ve Aylık için önceki tutulan gerçek arşiv verilerinden hesaplanan modeller
+  const { historicalWeeklyTools, historicalMonthlyTools } = useMemo(() => {
+    const archiveList = Object.entries(archiveModules)
+      .filter(([filePath]) => !filePath.includes('archive-index.json'))
+      .map(([filePath, mod]) => {
+        const data = mod.default || mod;
+        const match = filePath.match(/(\d{4}-\d{2}-\d{2})\.json/);
+        const fileIso = match ? match[1] : (data?.isoDate || data?.date);
+        return { fileIso, data };
+      })
+      .sort((a, b) => (b.fileIso || '').localeCompare(a.fileIso || ''));
+
+    // Aktif seçili tarihe göre dosyaları filtrele (geçmiş tarihe bakılıyorsa o tarihten geriye doğru)
+    let startIndex = 0;
+    if (selectedDateId !== 'latest') {
+      const idx = archiveList.findIndex(a => a.fileIso === selectedDateId);
+      if (idx !== -1) startIndex = idx;
+    }
+
+    const availableFromSelected = archiveList.slice(startIndex);
+    const weeklyFiles = availableFromSelected.slice(0, 7);
+    const monthlyFiles = availableFromSelected.slice(0, 30);
+
+    const aggregateFiles = (fileEntries, label) => {
+      const toolMap = {};
+      fileEntries.forEach(({ fileIso, data }) => {
+        if (!data || !Array.isArray(data.daily)) return;
+        data.daily.forEach(t => {
+          const cleanName = (t.name || "").replace(/\s*\([^)]*\)/g, "").trim();
+          if (!cleanName) return;
+          const key = cleanName.toLowerCase();
+          if (!toolMap[key]) {
+            toolMap[key] = {
+              id: t.id || key.replace(/[^a-z0-9]+/g, '-'),
+              name: cleanName,
+              category: t.category || "LLM",
+              primaryFunction: t.primaryFunction || t.description || "",
+              whyTrending: t.whyTrending || "",
+              sources: [...(t.sources || [])],
+              hypes: [],
+              sentiments: [],
+              dates: [],
+              latestWhy: t.whyTrending
+            };
+          }
+          toolMap[key].hypes.push(Number(t.hypeScore) || 7.0);
+          toolMap[key].sentiments.push(Number(t.sentimentScore) || 75);
+          toolMap[key].dates.push(fileIso);
+          if (t.sources) {
+            t.sources.forEach(s => {
+              if (!toolMap[key].sources.includes(s)) toolMap[key].sources.push(s);
+            });
+          }
+          if (t.primaryFunction) toolMap[key].primaryFunction = t.primaryFunction;
+          if (t.whyTrending) toolMap[key].latestWhy = t.whyTrending;
+        });
+      });
+
+      const list = Object.values(toolMap).map(t => {
+        const freq = t.hypes.length;
+        const avgHype = Number((t.hypes.reduce((a, b) => a + b, 0) / freq).toFixed(1));
+        const avgSent = Math.round(t.sentiments.reduce((a, b) => a + b, 0) / freq);
+        const sparkline = t.hypes.length >= 7 
+          ? t.hypes.slice(-7) 
+          : [...Array(Math.max(0, 7 - t.hypes.length)).fill(t.hypes[0] || 7.0), ...t.hypes];
+
+        return {
+          id: t.id,
+          name: t.name,
+          category: t.category,
+          frequency: freq,
+          hypeScore: avgHype,
+          sentimentScore: avgSent,
+          sparkline: sparkline,
+          primaryFunction: t.primaryFunction,
+          whyTrending: `${label} boyunca ${freq} gün gündemde kaldı. ${t.latestWhy || ''}`,
+          badge: `${freq} Gün Gündem`,
+          sources: t.sources.slice(0, 4)
+        };
+      });
+
+      // 🚨 Kullanıcı Talebi: Önceki verilere göre en çok kere gündem olanlar ve hype sıralamasında yukarıda olanlar
+      list.sort((a, b) => (b.frequency - a.frequency) || (Number(b.hypeScore) || 0) - (Number(a.hypeScore) || 0));
+      return list;
+    };
+
+    return {
+      historicalWeeklyTools: aggregateFiles(weeklyFiles, "Hafta"),
+      historicalMonthlyTools: aggregateFiles(monthlyFiles, "Ay")
+    };
+  }, [selectedDateId]);
+
   const rawTools = useMemo(() => {
     const cleanToolNameGlobal = (name) => {
       if (!name || typeof name !== 'string') return "";
@@ -1110,11 +1202,14 @@ export default function App() {
       /uncontrolled/i
     ];
 
-    const list = {
-      daily: activeReportData?.daily || MOCK_TOOLS_DATA.daily,
-      weekly: activeReportData?.weekly || MOCK_TOOLS_DATA.weekly,
-      monthly: activeReportData?.monthly || MOCK_TOOLS_DATA.monthly
-    }[timeframe] || (activeReportData?.daily || MOCK_TOOLS_DATA.daily);
+    let list;
+    if (timeframe === 'weekly') {
+      list = historicalWeeklyTools.length > 0 ? historicalWeeklyTools : (activeReportData?.weekly || MOCK_TOOLS_DATA.weekly);
+    } else if (timeframe === 'monthly') {
+      list = historicalMonthlyTools.length > 0 ? historicalMonthlyTools : (activeReportData?.monthly || MOCK_TOOLS_DATA.monthly);
+    } else {
+      list = activeReportData?.daily || MOCK_TOOLS_DATA.daily;
+    }
 
     return (list || [])
       .filter(t => {
@@ -1126,18 +1221,26 @@ export default function App() {
         ...t,
         name: cleanToolNameGlobal(t.name)
       }))
-      .sort((a, b) => (Number(b.hypeScore) || 0) - (Number(a.hypeScore) || 0));
-  }, [activeReportData, timeframe]);
+      .sort((a, b) => {
+        if (timeframe === 'weekly' || timeframe === 'monthly') {
+          return (Number(b.frequency) || 0) - (Number(a.frequency) || 0) || (Number(b.hypeScore) || 0) - (Number(a.hypeScore) || 0);
+        }
+        return (Number(b.hypeScore) || 0) - (Number(a.hypeScore) || 0);
+      });
+  }, [activeReportData, timeframe, historicalWeeklyTools, historicalMonthlyTools]);
 
-  // Filter tools by category (Hype puanına göre yukarıdan aşağıya kesin sıralanır)
+  // Filter tools by category (Haftalık/Aylıkta gündem sıklığı ve hype, günlükte kesin hype puanı)
   const filteredTools = useMemo(() => {
     let result = rawTools;
     if (selectedCategory !== 'all') {
       result = result.filter(t => t.category === selectedCategory);
     }
+    if (timeframe === 'weekly' || timeframe === 'monthly') {
+      return [...result].sort((a, b) => (Number(b.frequency) || 0) - (Number(a.frequency) || 0) || (Number(b.hypeScore) || 0) - (Number(a.hypeScore) || 0));
+    }
     // 🚨 ANAYASA KURALI: Hype puanına göre yukarıdan aşağıya doğru sıralanır (descending)
     return [...result].sort((a, b) => (Number(b.hypeScore) || 0) - (Number(a.hypeScore) || 0));
-  }, [rawTools, selectedCategory]);
+  }, [rawTools, selectedCategory, timeframe]);
 
   // Lider Model Senkronizasyonu (Sarı Kısım: En Çok Konuşulan Model & En Beğenilen Model):
   const leaderBreakdown = useMemo(() => {
@@ -1990,8 +2093,8 @@ ${bulletsText}
       {/* 4. KATEGORİ VE ÇALIŞMA ALANI */}
       <main className="max-w-7xl mx-auto px-2 sm:px-4 py-4 w-full flex-1 space-y-4">
         
-        {/* ☕ 30 SANİYELİK SABAH İSTİHBARATI: DÜNYADA BUGÜN */}
-        {timeframe !== 'report' && timeframe !== 'glossary' && report.morningBrief && (
+        {/* ☕ 30 SANİYELİK SABAH İSTİHBARATI: DÜNYADA BUGÜN (Sadece Günlük Görünümde) */}
+        {timeframe === 'daily' && report.morningBrief && (
           <section className="bg-white border border-[#cbd5e1] rounded-sm p-3.5 sm:p-4 shadow-xs space-y-3">
             {/* Üst Bar: Başlık & Katla/Aç */}
             <div className="flex items-center justify-between gap-2 pb-2 border-b border-[#f1f5f9]">
@@ -2284,9 +2387,16 @@ ${bulletsText}
 
                         {/* Kolon B: Model Adı */}
                         <td className="w-52 px-3 border-r border-[#e2e8f0] truncate">
-                          <span className="font-bold text-slate-900 hover:text-[#107c41] transition truncate block">
-                            {tool.name}
-                          </span>
+                          <div className="flex items-center gap-1.5 truncate">
+                            <span className="font-bold text-slate-900 hover:text-[#107c41] transition truncate">
+                              {tool.name}
+                            </span>
+                            {(timeframe === 'weekly' || timeframe === 'monthly') && tool.frequency && (
+                              <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-amber-50 text-amber-800 border border-amber-200 font-bold shrink-0">
+                                {tool.frequency} Gün
+                              </span>
+                            )}
+                          </div>
                         </td>
 
                         {/* Kolon C: Kategori */}
@@ -2470,6 +2580,11 @@ ${bulletsText}
                           <span className={`font-mono text-[9px] px-1.5 py-0.2 rounded border ${getCategoryBadgeClass(tool.category)} whitespace-nowrap`}>
                             {tool.category}
                           </span>
+                          {(timeframe === 'weekly' || timeframe === 'monthly') && tool.frequency && (
+                            <span className="font-mono text-[9px] px-1.5 py-0.2 rounded bg-amber-50 text-amber-800 border border-amber-200 font-bold whitespace-nowrap">
+                              {tool.frequency} Gün Gündem
+                            </span>
+                          )}
                         </div>
                       </div>
                     </div>
@@ -2564,8 +2679,8 @@ ${bulletsText}
           </div>
         )}
 
-        {/* 6.5 🐦 X (TWITTER) AI NABZI: 30 SEÇKİN LİDERİN GÜNDEMİ (Reddit Modellerinin Hemen Altında) */}
-        {timeframe !== 'report' && timeframe !== 'glossary' && report.twitterPulse && (
+        {/* 6.5 🐦 X (TWITTER) AI NABZI: 30 SEÇKİN LİDERİN GÜNDEMİ (Sadece Günlük Görünümde) */}
+        {timeframe === 'daily' && report.twitterPulse && (
           <section className="bg-white border border-[#cbd5e1] shadow-xs rounded-sm p-4 sm:p-6 space-y-4">
             <div className="flex items-center justify-between flex-wrap gap-2 border-b border-[#e2e8f0] pb-3">
               <div className="flex items-center gap-2">
@@ -2762,8 +2877,8 @@ ${bulletsText}
           </section>
         )}
 
-        {/* 7. DANIŞMAN RAPORU (Bölüm 1 Dahil 4 Bölüm - 24s Dahil Her Görünümde) */}
-        {(timeframe === 'report' || timeframe === 'daily' || timeframe === 'weekly' || timeframe === 'monthly') && (
+        {/* 7. DANIŞMAN RAPORU (Sadece Günlük ve Danışman Raporu Sekmesinde Gösterilir; Haftalık ve Aylıkta Gizlenir) */}
+        {(timeframe === 'report' || timeframe === 'daily') && (
           <section className="bg-white border border-[#cbd5e1] shadow-xs rounded-sm p-4 sm:p-6 space-y-4">
             <div className="border-b border-[#e2e8f0] pb-3 flex items-center justify-between">
               <div className="flex items-center gap-2">
