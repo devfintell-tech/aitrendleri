@@ -1242,6 +1242,8 @@ export default function App() {
     return [...result].sort((a, b) => (Number(b.hypeScore) || 0) - (Number(a.hypeScore) || 0));
   }, [rawTools, selectedCategory, timeframe]);
 
+  const isMultiDay = timeframe === 'weekly' || timeframe === 'monthly';
+
   // Lider Model Senkronizasyonu (Sarı Kısım: En Çok Konuşulan Model & En Beğenilen Model):
   const leaderBreakdown = useMemo(() => {
     const list = filteredTools.length > 0 ? filteredTools : (report.daily || []);
@@ -2339,17 +2341,25 @@ ${bulletsText}
                 <tr className="bg-[#f8fafc] border-b border-[#d1d5db] text-[10px] font-mono text-slate-500 select-none">
                   <th className="w-12 text-center py-1 border-r border-[#e2e8f0]">A</th>
                   <th className="w-52 px-3 py-1 border-r border-[#e2e8f0] text-left">B</th>
-                  <th className="w-44 px-3 py-1 border-r border-[#e2e8f0] text-left">C</th>
-                  <th className="px-3 py-1 border-r border-[#e2e8f0] text-left">D</th>
-                  <th className="w-24 px-3 py-1 border-r border-[#e2e8f0] text-right">E</th>
-                  <th className="w-32 px-3 py-1 border-r border-[#e2e8f0] text-right">F</th>
-                  <th className="w-28 px-3 py-1 text-center">G</th>
+                  {isMultiDay && (
+                    <th className="w-24 px-2 py-1 border-r border-[#e2e8f0] text-center">C</th>
+                  )}
+                  <th className="w-44 px-3 py-1 border-r border-[#e2e8f0] text-left">{isMultiDay ? 'D' : 'C'}</th>
+                  <th className="px-3 py-1 border-r border-[#e2e8f0] text-left">{isMultiDay ? 'E' : 'D'}</th>
+                  <th className="w-24 px-3 py-1 border-r border-[#e2e8f0] text-right">{isMultiDay ? 'F' : 'E'}</th>
+                  <th className="w-32 px-3 py-1 border-r border-[#e2e8f0] text-right">{isMultiDay ? 'G' : 'F'}</th>
+                  <th className="w-28 px-3 py-1 text-center">{isMultiDay ? 'H' : 'G'}</th>
                 </tr>
 
                 {/* Sütun İsimleri Satırı */}
                 <tr className="bg-[#f1f5f9] border-b-2 border-[#cbd5e1] text-[11px] font-semibold text-slate-700 select-none">
                   <th className="w-12 text-center py-2.5 border-r border-[#cbd5e1]">Sıra</th>
                   <th className="w-52 px-3 py-2.5 border-r border-[#cbd5e1] text-left">Model / Ürün Adı</th>
+                  {isMultiDay && (
+                    <th className="w-24 px-2 py-2.5 border-r border-[#cbd5e1] text-center font-bold text-amber-900">
+                      Gündem (Gün)
+                    </th>
+                  )}
                   <th className="w-44 px-3 py-2.5 border-r border-[#cbd5e1] text-left">Kategori</th>
                   <th className="px-3 py-2.5 border-r border-[#cbd5e1] text-left">Temel Yetenek &amp; Fonksiyon</th>
                   <th className="w-24 px-3 py-2.5 border-r border-[#cbd5e1] text-right">Hype Puanı</th>
@@ -2387,19 +2397,21 @@ ${bulletsText}
 
                         {/* Kolon B: Model Adı */}
                         <td className="w-52 px-3 border-r border-[#e2e8f0] truncate">
-                          <div className="flex items-center gap-1.5 truncate">
-                            <span className="font-bold text-slate-900 hover:text-[#107c41] transition truncate">
-                              {tool.name}
-                            </span>
-                            {(timeframe === 'weekly' || timeframe === 'monthly') && tool.frequency && (
-                              <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-amber-50 text-amber-800 border border-amber-200 font-bold shrink-0">
-                                {tool.frequency} Gün
-                              </span>
-                            )}
-                          </div>
+                          <span className="font-bold text-slate-900 hover:text-[#107c41] transition truncate">
+                            {tool.name}
+                          </span>
                         </td>
 
-                        {/* Kolon C: Kategori */}
+                        {/* Kolon C (Haftalık/Aylık): Gündem Gün Sayısı */}
+                        {isMultiDay && (
+                          <td className="w-24 px-2 text-center border-r border-[#e2e8f0] font-mono">
+                            <span className="inline-flex items-center justify-center font-bold text-xs px-2 py-0.5 rounded bg-amber-50 text-amber-900 border border-amber-200">
+                              {tool.frequency ? `${tool.frequency} Gün` : '1 Gün'}
+                            </span>
+                          </td>
+                        )}
+
+                        {/* Kolon: Kategori */}
                         <td className="w-44 px-3 border-r border-[#e2e8f0]">
                           <span className={`inline-block font-mono text-[11px] px-2 py-0.5 rounded border ${getCategoryBadgeClass(tool.category)} whitespace-nowrap`}>
                             {tool.category}
@@ -2450,7 +2462,7 @@ ${bulletsText}
                       {/* 6. SADE VE OKUNAKLI TIKLANAN DETAY KARTI */}
                       {isExpanded && (
                         <tr className="bg-[#f8fafc] border-b-2 border-[#107c41]">
-                          <td colSpan={7} className="p-2.5 sm:p-4 md:p-5">
+                          <td colSpan={isMultiDay ? 8 : 7} className="p-2.5 sm:p-4 md:p-5">
                             
                             <div className="bg-white border border-[#cbd5e1] rounded-md p-3 sm:p-4 space-y-3 sm:space-y-4 shadow-xs">
                               
