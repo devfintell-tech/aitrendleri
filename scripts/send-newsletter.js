@@ -95,6 +95,10 @@ function buildNewsletterHtml(report) {
     @media only screen and (max-width: 600px) {
       .main-container { width: 100% !important; min-width: 100% !important; border-radius: 0 !important; border-left: none !important; border-right: none !important; margin: 0 !important; }
       .header-pad { padding: 14px 16px !important; }
+      .header-brand-cell { display: block !important; width: 100% !important; text-align: left !important; padding-bottom: 8px !important; }
+      .header-date-cell { display: block !important; width: 100% !important; text-align: left !important; }
+      .header-brand-text { font-size: 17px !important; }
+      .header-date-badge { font-size: 11px !important; padding: 3px 8px !important; }
       .content-pad { padding: 16px 14px !important; }
       .title-text { font-size: 18px !important; line-height: 1.3 !important; }
       .mobile-card-title { font-size: 15px !important; }
@@ -105,20 +109,28 @@ function buildNewsletterHtml(report) {
 <body style="margin: 0; padding: 0; background-color: #f1f5f9; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased;">
   <div class="main-container" style="max-width: 600px; margin: 20px auto; background-color: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);">
     
-    <!-- 1. ÜST HEADER ÇUBUĞU (Yeşil Üzerine Kesinlikle BEYAZ Yazı) -->
-    <div class="header-pad" style="background-color: #107c41; padding: 16px 24px; color: #ffffff;">
+    <!-- 1. ÜST HEADER ÇUBUĞU (Yeşil Üzerine Kesinlikle BEYAZ Yazı & Mobilde Asla Sıkışmayan Düzen) -->
+    <div class="header-pad" style="background-color: #107c41; padding: 16px 20px; color: #ffffff;">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td valign="middle">
-            <div style="display: inline-block; vertical-align: middle; background-color: #ffffff; color: #107c41; font-weight: 900; font-family: monospace; font-size: 13px; padding: 3px 7px; border-radius: 4px; margin-right: 8px;">AI</div>
-            <a href="https://aitrendleri.com" class="header-link" style="color: #ffffff !important; text-decoration: none !important; font-size: 18px; font-weight: bold; font-family: monospace; letter-spacing: 0.5px; vertical-align: middle; display: inline-block;">
-              aitrendleri.com
-            </a>
+          <!-- Logo & Marka -->
+          <td class="header-brand-cell" valign="middle" style="padding: 0;">
+            <table cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td valign="middle" style="background-color: #ffffff; color: #107c41; font-weight: 900; font-family: monospace; font-size: 12px; padding: 3px 7px; border-radius: 4px;">AI</td>
+                <td valign="middle" style="padding-left: 8px;">
+                  <a href="https://aitrendleri.com" class="header-link header-brand-text" style="color: #ffffff !important; text-decoration: none !important; font-size: 18px; font-weight: bold; font-family: monospace; letter-spacing: 0.5px; display: inline-block;">
+                    aitrendleri.com
+                  </a>
+                </td>
+              </tr>
+            </table>
           </td>
-          <td align="right" valign="middle">
-            <span style="font-size: 11px; font-family: monospace; background-color: #0c592d; color: #ffffff !important; padding: 4px 8px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.25); white-space: nowrap; display: inline-block;">
+          <!-- Tarih Rozeti (Mobilde Kendi Satırına Alınır) -->
+          <td class="header-date-cell" align="right" valign="middle" style="padding: 0;">
+            <div class="header-date-badge" style="font-size: 11px; font-family: monospace; background-color: #0c592d; color: #ffffff !important; padding: 4px 10px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.25); white-space: nowrap; display: inline-block;">
               ${dateStr}
-            </span>
+            </div>
           </td>
         </tr>
       </table>
