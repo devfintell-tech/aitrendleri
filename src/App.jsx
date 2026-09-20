@@ -1585,15 +1585,10 @@ ${bulletsText}
                         </td>
 
                         {/* Kolon F: Topluluk Beğenisi */}
-                        <td className="w-32 px-3 text-right border-r border-[#e2e8f0] font-mono">
-                          <div className="inline-flex items-center justify-end gap-1.5">
-                            <span className={`font-black text-xs ${sentiment.colorClass}`}>
-                              %{sentiment.score}
-                            </span>
-                            <span className={`text-[9.5px] px-1.5 py-0.5 rounded font-bold uppercase tracking-tight border ${sentiment.badgeClass}`}>
-                              {sentiment.label}
-                            </span>
-                          </div>
+                        <td className="w-28 px-3 text-right border-r border-[#e2e8f0] font-mono">
+                          <span className={`font-black text-xs ${sentiment.colorClass}`}>
+                            %{sentiment.score}
+                          </span>
                         </td>
 
                         {/* Kolon G: Topluluk Kaynak */}
@@ -1637,7 +1632,7 @@ ${bulletsText}
                                       🔥 Bugün Neden Trend Oldu? (Topluluk Görüşü)
                                     </span>
                                     <span className={`font-mono text-[10px] px-2 py-0.5 rounded font-bold border ${sentiment.badgeClass}`}>
-                                      Topluluk Beğenisi: %{sentiment.score} ({sentiment.label})
+                                      Topluluk Beğenisi: %{sentiment.score}
                                     </span>
                                   </div>
                                   <p className="text-slate-800 text-xs leading-relaxed">
@@ -1780,12 +1775,9 @@ ${bulletsText}
                     {/* Sağ Taraf: Topluluk Beğenisi & Hype Puanı */}
                     <div className="flex items-center gap-2 flex-shrink-0 font-mono text-right">
                       <div className="text-right">
-                        <div className="flex items-center justify-end gap-1">
+                        <div>
                           <span className={`font-black text-xs ${sentiment.colorClass}`}>
                             %{sentiment.score}
-                          </span>
-                          <span className={`text-[9px] px-1 py-0.2 rounded font-bold border ${sentiment.badgeClass}`}>
-                            {sentiment.label}
                           </span>
                         </div>
                         <div className="text-[10px] text-slate-400 font-normal">
@@ -1823,7 +1815,7 @@ ${bulletsText}
                             🔥 TOPLULUK ANALİZİ:
                           </span>
                           <span className={`text-[9.5px] font-mono px-1.5 py-0.2 rounded font-bold border ${sentiment.badgeClass}`}>
-                            Topluluk Beğenisi: %{sentiment.score} ({sentiment.label})
+                            Topluluk Beğenisi: %{sentiment.score}
                           </span>
                         </div>
                         <p className="text-slate-700 leading-relaxed">
