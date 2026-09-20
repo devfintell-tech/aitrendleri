@@ -128,9 +128,10 @@ Bu belge, bu projenin tüm tasarım, veri mimarisi ve geliştirme standartların
    - Bir ürün ister olumlu övgülerle ister olumsuz şikayetlerle veya sansür/çöküş skandallarıyla konuşulsun; çok konuşulan her ürünün Hype Skoru yüksek olur.
 
 2. **Topluluk Beğeni Puanı (Memnuniyet & Duygu Skoru):**
-   - Beğeni Puanı (`sentimentScore` 0 - 100 veya %), o ürünün topluluk tarafından beğenilip beğenilmediğini (memnuniyet, pozitif/negatif duygu) bağımsız olarak skorlar.
-   - Çok konuşulan (yüksek hype) bir ürün eğer kısıtlamalar, sansür, fahiş fiyat veya model bozulması nedeniyle eleştiriliyorsa Beğeni Puanı düşük verilir (20 - 55 arası).
-   - Topluluk ürünü coşkuyla övüyor, yeni yeteneklerini kutluyor ve tavsiye ediyorsa Beğeni Puanı yüksek verilir (85 - 99 arası).
+   - Beğeni Puanı (`sentimentScore`), arayüzde 1 ile 10 arası skor puanı olarak gösterilir (ör. `9.2/10`, `8.8/10`). Yüzde (`%`) formatı kesinlikle kullanılmaz.
+   - Sitede modele tıklandığında açılan detay panelinde ve geçmiş kayıtlarda "Coşku" gibi sübjektif duygu etiketleri yer almaz; yalnızca Hype puanı, kaynaklar, net topluluk analizi ve objektif skor sunulur.
+   - Çok konuşulan (yüksek hype) bir ürün eğer kısıtlamalar, sansür, fahiş fiyat veya model bozulması nedeniyle eleştiriliyorsa Beğeni Puanı düşük verilir (2.0 - 5.5 arası).
+   - Topluluk ürünü coşkuyla övüyor, yeni yeteneklerini kutluyor ve tavsiye ediyorsa Beğeni Puanı yüksek verilir (8.0 - 9.9 arası).
    - Böylece kullanıcılar bir ürünün ne kadar popüler olduğunu Hype Skoru'ndan, sevilip sevilmediğini ise Beğeni Puanı'ndan net olarak ayırt eder.
 
 3. **Hype Skoruna Göre Yukarıdan Aşağıya Kesin Sıralama Şartı:**
@@ -174,8 +175,11 @@ Bu belge, bu projenin tüm tasarım, veri mimarisi ve geliştirme standartların
    - Sistem Faz 1 (Tüm analiz) ve Faz 2 (Sabah İstihbaratı sentezi) olmak üzere iki LLM çağrısı gerçekleştirdiğinden, raporlanan ve kaydedilen nihai token verisi (`tokenUsage`) her iki çağrının matematiksel olarak BİREBİR TOPLAMI (`Faz 1 + Faz 2`) olmak zorundadır.
 
 5. **1. LLM ve 2. LLM Ayrı Telemetri Gösterimi (Üst Bar ve Alt Durum Çubuğu):**
-   - Sitenin üst başlık çubuğunda ve alt durum çubuğunda yalnızca bileşik toplam değil; 1. LLM (Ana İstihbarat & Sıralama - `phase1TokenUsage`) ve 2. LLM (Sabah İstihbaratı Sentezi - `phase2TokenUsage`) çıktıları bağımsız rozetler halinde net ve şeffaf şekilde gösterilir (`1. LLM: G: Xk | D: Yk | N: Zk`, `2. LLM: G: Xk | D: Yk | N: Zk`, `∑ Toplam: Zk`).
-   - Geçmiş arşiv günlerinde veya telemetrinin henüz ayrı toplanmadığı tarihlerde, arayüz otomatik olarak tekil token rozetine geri döner (sıfır uydurma veri ilkesi).
+   - Sitenin üst başlık çubuğunda 1. LLM (Ana İstihbarat & Sıralama - `phase1TokenUsage`) ve 2. LLM (Sabah İstihbaratı Sentezi - `phase2TokenUsage`) bağımsız olarak, alt alta düzenli ve derli toplu bir panel içinde sunulur.
+   - Her iki LLM için hangi modelin kullanıldığı açıkça belirtilir (ör. `DeepSeek v4.1 Flash`).
+   - Token metriklerinde G, D, N gibi tek harfli kısaltmalar kesinlikle KULLANILAMAZ; tam kelimelerle 'Girdi', 'Düşünce', 'Nihai' ve 'Toplam' yazılır.
+   - Üst barda görsel kirlilik oluşturan gereksiz 'Canlı Akış' etiketi yer almaz; bilgi çubuğu derli toplu, jilet gibi hizalı ve okunabilir tutulur.
+   - Geçmiş arşiv günlerinde veya telemetrinin henüz ayrı toplanmadığı tarihlerde, arayüz otomatik olarak tekil modele ve token rozetine geri döner (sıfır uydurma veri ilkesi).
 
 ---
 

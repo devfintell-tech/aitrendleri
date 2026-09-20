@@ -1064,7 +1064,7 @@ export default function App() {
 🔥 EN ÇOK KONUŞULAN MODEL: ${disc?.name || mb.leader?.name || 'Lider Model'} (${disc?.badge || 'Zirve'} | Hype: ${disc?.hypeScore || 0}/10)
 ${disc?.description || mb.leader?.description || ''}
 
-⭐ EN BEĞENİLEN MODEL: ${loved?.name || 'Memnuniyet Lideri'} (${loved?.badge || 'Övgü'} | Beğeni: %${loved?.sentimentScore || 0})
+⭐ EN BEĞENİLEN MODEL: ${loved?.name || 'Memnuniyet Lideri'} (${loved?.badge || 'Övgü'} | Beğeni: ${((loved?.sentimentScore || 0) / 10).toFixed(1)}/10)
 ${loved?.description || ''}
 
 ⚡ DÜNYADA YAPAY ZEKA BUGÜN (Madde Madde):
@@ -1168,6 +1168,7 @@ ${bulletsText}
 
     return {
       score,
+      score10: (score / 10).toFixed(1),
       label: score >= 80 ? 'Beğenildi' : score >= 60 ? 'Karışık' : 'Tepkili',
       colorClass: score >= 80 ? 'text-emerald-700' : score >= 60 ? 'text-amber-700' : 'text-rose-600',
       badgeClass: score >= 80 ? 'bg-emerald-50 text-emerald-800 border-emerald-200' : score >= 60 ? 'bg-amber-50 text-amber-800 border-amber-200' : 'bg-rose-50 text-rose-700 border-rose-200'
@@ -1207,19 +1208,6 @@ ${bulletsText}
               </select>
             </div>
 
-            {/* 🤖 Aktif Model Rozeti */}
-            {report.activeModel && (
-              <div 
-                className="flex items-center gap-1 bg-[#0c592d] border border-emerald-400/30 px-2 py-1 rounded text-[11px] font-semibold text-white shadow-xs"
-                title={`Analiz ve Çıkarım Motoru: ${report.activeModel}`}
-              >
-                <Cpu className="w-3 h-3 text-cyan-300 flex-shrink-0" />
-                <span className="truncate max-w-[130px] sm:max-w-none">
-                  {report.activeModel.replace(' (deepseek-flash)', '')}
-                </span>
-              </div>
-            )}
-
             {/* ⏱️ Çalışma Süresi Rozeti - Yalnızca gerçek ölçüm varsa göster */}
             {typeof report.durationSeconds === 'number' && report.durationSeconds > 0 && (
               <div 
@@ -1242,107 +1230,121 @@ ${bulletsText}
               </div>
             )}
 
-            {/* ⚡ 1. LLM & 2. LLM Token Telemetrisi - Gerçek veriler varsa göster */}
+            {/* ⚡ 1. LLM & 2. LLM Telemetrisi (Alt Alta, Açık & Net Model ve Token Detayları) */}
             {(() => {
               const p1 = report.phase1TokenUsage;
               const p2 = report.phase2TokenUsage;
               const tu = report.tokenUsage;
 
               if (p1 && p2 && typeof p1.promptTokens === 'number' && typeof p2.promptTokens === 'number') {
+                const model1Name = report.phase1Model || (report.activeModel ? report.activeModel.replace(' (deepseek-flash)', '') : 'DeepSeek v4.1 Flash');
+                const model2Name = report.phase2Model || (report.activeModel ? report.activeModel.replace(' (deepseek-flash)', '') : 'DeepSeek v4.1 Flash');
+
                 const p1PromptK = (p1.promptTokens / 1000).toFixed(1);
                 const p1ReasoningK = typeof p1.reasoningTokens === 'number' ? (p1.reasoningTokens / 1000).toFixed(1) : '0.0';
                 const p1FinalVal = p1.finalTokens || Math.max(0, (p1.completionTokens || 0) - (p1.reasoningTokens || 0));
                 const p1FinalK = (p1FinalVal / 1000).toFixed(1);
+                const p1TotalK = (p1.totalTokens / 1000).toFixed(1);
 
                 const p2PromptK = (p2.promptTokens / 1000).toFixed(1);
                 const p2ReasoningK = typeof p2.reasoningTokens === 'number' ? (p2.reasoningTokens / 1000).toFixed(1) : '0.0';
                 const p2FinalVal = p2.finalTokens || Math.max(0, (p2.completionTokens || 0) - (p2.reasoningTokens || 0));
                 const p2FinalK = (p2FinalVal / 1000).toFixed(1);
+                const p2TotalK = (p2.totalTokens / 1000).toFixed(1);
 
                 const totalK = ((tu?.totalTokens || (p1.totalTokens + p2.totalTokens)) / 1000).toFixed(1);
 
                 return (
-                  <div className="hidden lg:flex items-center gap-1.5">
-                    {/* 1. LLM Rozeti */}
-                    <div 
-                      className="flex items-center gap-1.5 bg-[#0c592d] border border-emerald-400/30 px-2 py-1 rounded text-[11px] font-semibold text-emerald-100 shadow-xs cursor-help"
-                      title={`1. LLM (Tüm Analiz & Sıralama):\n• Girdi (Prompt): ${p1.promptTokens?.toLocaleString()} token\n• Düşünce (CoT Reasoning): ${(p1.reasoningTokens || 0)?.toLocaleString()} token\n• Nihai Çıktı: ${p1FinalVal?.toLocaleString()} token\n• Toplam Çıktı: ${p1.completionTokens?.toLocaleString()} token\n• Toplam: ${p1.totalTokens?.toLocaleString()} token`}
-                    >
-                      <Zap className="w-3 h-3 text-emerald-300 flex-shrink-0" />
-                      <span className="text-emerald-300 font-bold">1. LLM:</span>
-                      <div className="flex items-center gap-1 font-mono text-[10.5px]">
-                        <span>G: {p1PromptK}k</span>
+                  <div className="hidden lg:flex items-center gap-2">
+                    {/* İki LLM Alt Alta Kutusu */}
+                    <div className="flex flex-col gap-1 bg-[#0c592d] border border-emerald-400/30 px-2.5 py-1 rounded text-[11px] font-mono text-emerald-100 shadow-xs">
+                      {/* 1. LLM */}
+                      <div 
+                        className="flex items-center gap-2"
+                        title={`1. LLM (Ana İstihbarat & Sıralama - ${model1Name}):\n• Girdi (Prompt): ${p1.promptTokens?.toLocaleString()} token\n• Düşünce (CoT Reasoning): ${(p1.reasoningTokens || 0)?.toLocaleString()} token\n• Nihai Çıktı: ${p1FinalVal?.toLocaleString()} token\n• Toplam: ${p1.totalTokens?.toLocaleString()} token`}
+                      >
+                        <span className="font-bold text-emerald-300 flex items-center gap-1">
+                          <Zap className="w-3 h-3 text-emerald-300 flex-shrink-0" />
+                          1. LLM (Ana İstihbarat):
+                        </span>
+                        <span className="bg-[#094723] text-white px-1.5 py-0.2 rounded font-semibold text-[10.5px] border border-emerald-400/20">
+                          {model1Name}
+                        </span>
                         <span className="text-emerald-400/40">|</span>
-                        <span className="text-purple-300">D: {p1ReasoningK}k</span>
+                        <span>Girdi: <strong className="text-emerald-200">{p1PromptK}k</strong></span>
                         <span className="text-emerald-400/40">|</span>
-                        <span className="text-yellow-300">N: {p1FinalK}k</span>
+                        <span>Düşünce: <strong className="text-purple-300">{p1ReasoningK}k</strong></span>
+                        <span className="text-emerald-400/40">|</span>
+                        <span>Nihai: <strong className="text-yellow-300">{p1FinalK}k</strong></span>
+                        <span className="text-emerald-400/40">|</span>
+                        <span>Toplam: <strong className="text-white">{p1TotalK}k</strong></span>
+                      </div>
+
+                      {/* 2. LLM */}
+                      <div 
+                        className="flex items-center gap-2 border-t border-emerald-400/20 pt-1"
+                        title={`2. LLM (Sabah İstihbaratı Sentezi - ${model2Name}):\n• Girdi (Prompt): ${p2.promptTokens?.toLocaleString()} token\n• Düşünce (CoT Reasoning): ${(p2.reasoningTokens || 0)?.toLocaleString()} token\n• Nihai Çıktı: ${p2FinalVal?.toLocaleString()} token\n• Toplam: ${p2.totalTokens?.toLocaleString()} token`}
+                      >
+                        <span className="font-bold text-cyan-300 flex items-center gap-1">
+                          <Zap className="w-3 h-3 text-cyan-300 flex-shrink-0" />
+                          2. LLM (Sabah İstihbaratı):
+                        </span>
+                        <span className="bg-[#094723] text-white px-1.5 py-0.2 rounded font-semibold text-[10.5px] border border-emerald-400/20">
+                          {model2Name}
+                        </span>
+                        <span className="text-emerald-400/40">|</span>
+                        <span>Girdi: <strong className="text-emerald-200">{p2PromptK}k</strong></span>
+                        <span className="text-emerald-400/40">|</span>
+                        <span>Düşünce: <strong className="text-purple-300">{p2ReasoningK}k</strong></span>
+                        <span className="text-emerald-400/40">|</span>
+                        <span>Nihai: <strong className="text-yellow-300">{p2FinalK}k</strong></span>
+                        <span className="text-emerald-400/40">|</span>
+                        <span>Toplam: <strong className="text-white">{p2TotalK}k</strong></span>
                       </div>
                     </div>
 
-                    {/* 2. LLM Rozeti */}
+                    {/* Bileşik Toplam Rozeti */}
                     <div 
-                      className="flex items-center gap-1.5 bg-[#0c592d] border border-emerald-400/30 px-2 py-1 rounded text-[11px] font-semibold text-emerald-100 shadow-xs cursor-help"
-                      title={`2. LLM (Sabah İstihbaratı Sentezi):\n• Girdi (Prompt): ${p2.promptTokens?.toLocaleString()} token\n• Düşünce (CoT Reasoning): ${(p2.reasoningTokens || 0)?.toLocaleString()} token\n• Nihai Çıktı: ${p2FinalVal?.toLocaleString()} token\n• Toplam Çıktı: ${p2.completionTokens?.toLocaleString()} token\n• Toplam: ${p2.totalTokens?.toLocaleString()} token`}
+                      className="hidden xl:flex flex-col justify-center items-center bg-[#094723] border border-emerald-400/40 px-2.5 py-1 rounded font-mono shadow-xs text-center cursor-help"
+                      title={`Bileşik Token Toplamı (1. LLM + 2. LLM):\n• Girdi: ${tu?.promptTokens?.toLocaleString()} token\n• Düşünce: ${tu?.reasoningTokens?.toLocaleString()} token\n• Nihai Çıktı: ${tu?.finalTokens?.toLocaleString()} token\n• Toplam: ${tu?.totalTokens?.toLocaleString()} token`}
                     >
-                      <Zap className="w-3 h-3 text-cyan-300 flex-shrink-0" />
-                      <span className="text-cyan-300 font-bold">2. LLM:</span>
-                      <div className="flex items-center gap-1 font-mono text-[10.5px]">
-                        <span>G: {p2PromptK}k</span>
-                        <span className="text-emerald-400/40">|</span>
-                        <span className="text-purple-300">D: {p2ReasoningK}k</span>
-                        <span className="text-emerald-400/40">|</span>
-                        <span className="text-yellow-300">N: {p2FinalK}k</span>
-                      </div>
-                    </div>
-
-                    {/* Toplam Rozeti */}
-                    <div 
-                      className="flex items-center gap-1 bg-[#094723] border border-emerald-400/40 px-2 py-1 rounded text-[11px] font-semibold text-emerald-100 shadow-xs cursor-help"
-                      title={`Bileşik Token Toplamı (1. LLM + 2. LLM):\n• Girdi: ${tu?.promptTokens?.toLocaleString()} token\n• Düşünce: ${tu?.reasoningTokens?.toLocaleString()} token\n• Nihai Çıktı: ${tu?.finalTokens?.toLocaleString()} token\n• Toplam Token: ${tu?.totalTokens?.toLocaleString()} token`}
-                    >
-                      <span className="text-yellow-300 font-bold">∑ Toplam:</span>
-                      <span className="font-mono text-emerald-200">{totalK}k</span>
+                      <span className="text-yellow-300 font-bold text-[9.5px] uppercase">Bileşik Toplam</span>
+                      <span className="text-xs font-black text-white">{totalK}k</span>
                     </div>
                   </div>
                 );
               }
 
               // Tekil / Geçmiş Arşiv Fallback
-              if (!tu || typeof tu.promptTokens !== 'number' || tu.promptTokens <= 0) return null;
-
-              const promptK = (tu.promptTokens / 1000).toFixed(1);
-              const reasoningK = typeof tu.reasoningTokens === 'number' ? (tu.reasoningTokens / 1000).toFixed(1) : '0.0';
-              const finalVal = tu.finalTokens || Math.max(0, (tu.completionTokens || 0) - (tu.reasoningTokens || 0));
-              const finalK = (finalVal / 1000).toFixed(1);
-
               return (
-                <div 
-                  className="hidden lg:flex items-center gap-1.5 bg-[#0c592d] border border-emerald-400/30 px-2.5 py-1 rounded text-[11px] font-semibold text-emerald-100 shadow-xs"
-                  title={`Token Telemetrisi:\n• Girdi (Prompt): ${tu.promptTokens?.toLocaleString()} token\n• Düşünce (CoT Reasoning): ${(tu.reasoningTokens || 0)?.toLocaleString()} token\n• Nihai Çıktı: ${finalVal?.toLocaleString()} token\n• Toplam Çıktı: ${tu.completionTokens?.toLocaleString()} token\n• Toplam Token: ${tu.totalTokens?.toLocaleString()} token`}
-                >
-                  <Zap className="w-3 h-3 text-yellow-300 flex-shrink-0" />
-                  <div className="flex items-center gap-1.5 font-mono">
-                    <span>
-                      <span className="text-emerald-300 font-bold">Girdi:</span> {promptK}k
-                    </span>
-                    <span className="text-emerald-400/40">|</span>
-                    <span>
-                      <span className="text-purple-300 font-bold">Düşünce:</span> {reasoningK}k
-                    </span>
-                    <span className="text-emerald-400/40">|</span>
-                    <span>
-                      <span className="text-yellow-300 font-bold">Nihai:</span> {finalK}k
-                    </span>
-                  </div>
+                <div className="hidden lg:flex items-center gap-1.5">
+                  {report.activeModel && (
+                    <div 
+                      className="flex items-center gap-1 bg-[#0c592d] border border-emerald-400/30 px-2 py-1 rounded text-[11px] font-semibold text-white shadow-xs"
+                      title={`Analiz ve Çıkarım Motoru: ${report.activeModel}`}
+                    >
+                      <Cpu className="w-3 h-3 text-cyan-300 flex-shrink-0" />
+                      <span>{report.activeModel.replace(' (deepseek-flash)', '')}</span>
+                    </div>
+                  )}
+                  {tu && typeof tu.promptTokens === 'number' && tu.promptTokens > 0 && (
+                    <div 
+                      className="flex items-center gap-1.5 bg-[#0c592d] border border-emerald-400/30 px-2.5 py-1 rounded text-[11px] font-semibold text-emerald-100 shadow-xs cursor-help"
+                      title={`Token Telemetrisi:\n• Girdi: ${tu.promptTokens?.toLocaleString()}\n• Düşünce: ${(tu.reasoningTokens || 0)?.toLocaleString()}\n• Nihai: ${(tu.finalTokens || Math.max(0, (tu.completionTokens || 0) - (tu.reasoningTokens || 0)))?.toLocaleString()}\n• Toplam: ${tu.totalTokens?.toLocaleString()}`}
+                    >
+                      <Zap className="w-3 h-3 text-yellow-300 flex-shrink-0" />
+                      <div className="flex items-center gap-1.5 font-mono">
+                        <span>Girdi: <strong className="text-emerald-200 font-bold">{(tu.promptTokens / 1000).toFixed(1)}k</strong></span>
+                        <span className="text-emerald-400/40">|</span>
+                        <span>Düşünce: <strong className="text-purple-300 font-bold">{((tu.reasoningTokens || 0) / 1000).toFixed(1)}k</strong></span>
+                        <span className="text-emerald-400/40">|</span>
+                        <span>Nihai: <strong className="text-yellow-300 font-bold">{(((tu.finalTokens || Math.max(0, (tu.completionTokens || 0) - (tu.reasoningTokens || 0)))) / 1000).toFixed(1)}k</strong></span>
+                      </div>
+                    </div>
+                  )}
                 </div>
               );
             })()}
-
-            {/* Canlı Akış Rozeti */}
-            <div className="hidden sm:flex items-center gap-1.5 bg-[#0e6b37] px-2 py-1 rounded text-[11px]">
-              <span className="w-2 h-2 rounded-full bg-emerald-300 animate-pulse"></span>
-              <span>Canlı Akış</span>
-            </div>
           </div>
         </div>
 
@@ -1396,7 +1398,7 @@ ${bulletsText}
               {timeframe === 'glossary' 
                 ? '"SİTEDE_GEÇEN_9_TEMEL_KAVRAM"' 
                 : selectedTool 
-                  ? `"${selectedTool.name}", KATEGORİ="${selectedTool.category}", HYPE=${selectedTool.hypeScore}/10, BEĞENİ=%${getToolSentiment(selectedTool).score}` 
+                  ? `"${selectedTool.name}", KATEGORİ="${selectedTool.category}", HYPE=${selectedTool.hypeScore}/10, BEĞENİ=${getToolSentiment(selectedTool).score10}/10` 
                   : '"TÜM_MODELLER"'}
             </span>
             <span className="text-[#107c41] font-bold">)</span>
@@ -1521,7 +1523,7 @@ ${bulletsText}
                       </div>
                       <div className="text-[10px] font-mono text-amber-800/80 pt-1.5 flex items-center justify-between border-t border-amber-200/50">
                         <span>Gündem &amp; Konuşulma Hacmi</span>
-                        <span>Topluluk Beğenisi: %{leaderBreakdown.mostDiscussed.sentimentScore}</span>
+                        <span>Topluluk Beğenisi: {((leaderBreakdown.mostDiscussed.sentimentScore || 0) / 10).toFixed(1)}/10</span>
                       </div>
                     </div>
 
@@ -1540,7 +1542,7 @@ ${bulletsText}
                           </div>
                           <div className="flex items-center gap-1.5 flex-wrap">
                             <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-emerald-600 text-white font-black shadow-2xs">
-                              BEĞENİ: %{leaderBreakdown.mostLoved.sentimentScore}
+                              BEĞENİ: {((leaderBreakdown.mostLoved.sentimentScore || 0) / 10).toFixed(1)}/10
                             </span>
                             {leaderBreakdown.mostLoved.badge && (
                               <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-white/90 text-amber-800 border border-amber-200 font-bold">
@@ -1750,9 +1752,10 @@ ${bulletsText}
 
                         {/* Kolon F: Topluluk Beğenisi */}
                         <td className="w-28 px-3 text-right border-r border-[#e2e8f0] font-mono">
-                          <span className={`font-black text-xs ${sentiment.colorClass}`}>
-                            %{sentiment.score}
+                          <span className={`font-black text-sm ${sentiment.colorClass}`}>
+                            {sentiment.score10}
                           </span>
+                          <span className="text-[10px] text-slate-400 font-normal">/10</span>
                         </td>
 
                         {/* Kolon G: Topluluk Kaynak */}
@@ -1796,7 +1799,7 @@ ${bulletsText}
                                       🔥 Bugün Neden Trend Oldu? (Topluluk Görüşü)
                                     </span>
                                     <span className={`font-mono text-[10px] px-2 py-0.5 rounded font-bold border ${sentiment.badgeClass}`}>
-                                      Topluluk Beğenisi: %{sentiment.score}
+                                      Topluluk Beğenisi: {sentiment.score10}/10
                                     </span>
                                   </div>
                                   <p className="text-slate-800 text-xs leading-relaxed">
@@ -1833,49 +1836,20 @@ ${bulletsText}
 
                                 {historyEntries.length > 0 ? (
                                   <div className="space-y-1.5 pt-1">
-                                    {historyEntries.map((entry, hIdx) => {
-                                      const getSentBadge = (sent) => {
-                                        switch (sent) {
-                                          case 'coşkulu':
-                                            return 'bg-emerald-100 text-emerald-800 border-emerald-300';
-                                          case 'eleştirel':
-                                            return 'bg-amber-100 text-amber-900 border-amber-300';
-                                          case 'düşüş':
-                                            return 'bg-rose-100 text-rose-800 border-rose-300';
-                                          default:
-                                            return 'bg-slate-100 text-slate-700 border-slate-300';
-                                        }
-                                      };
-
-                                      const getSentLabel = (sent) => {
-                                        switch (sent) {
-                                          case 'coşkulu':
-                                            return '🔥 Coşku';
-                                          case 'eleştirel':
-                                            return '⚠️ Eleştiri / Şikayet';
-                                          case 'düşüş':
-                                            return '📉 Düşüş / Rezalet';
-                                          default:
-                                            return '⚖️ Stabil';
-                                        }
-                                      };
-
-                                      return (
-                                        <div key={hIdx} className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3 py-1.5 border-b border-[#f1f5f9] last:border-0 text-xs">
-                                          <div className="flex items-center gap-2 flex-shrink-0">
-                                            <span className="font-mono text-slate-500 text-[11px] w-24">{entry.date}</span>
-                                            <span className={`px-2 py-0.5 rounded text-[10px] font-bold border ${getSentBadge(entry.sentiment)}`}>
-                                              {getSentLabel(entry.sentiment)}
-                                            </span>
-                                            <span className="font-mono font-bold text-slate-900">{entry.hypeScore}/10</span>
-                                          </div>
-                                          <div className="text-slate-700 text-xs flex-1">
-                                            <strong className="text-slate-900 mr-1">{entry.headline}:</strong>
-                                            {entry.summary}
-                                          </div>
+                                    {historyEntries.map((entry, hIdx) => (
+                                      <div key={hIdx} className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3 py-1.5 border-b border-[#f1f5f9] last:border-0 text-xs">
+                                        <div className="flex items-center gap-2 flex-shrink-0">
+                                          <span className="font-mono text-slate-500 text-[11px] w-24">{entry.date}</span>
+                                          <span className="font-mono font-bold text-slate-900 bg-slate-100 px-1.5 py-0.5 rounded border border-slate-200 text-[10.5px]">
+                                            Hype: {entry.hypeScore}/10
+                                          </span>
                                         </div>
-                                      );
-                                    })}
+                                        <div className="text-slate-700 text-xs flex-1">
+                                          <strong className="text-slate-900 mr-1">{entry.headline}:</strong>
+                                          <span>{entry.summary}</span>
+                                        </div>
+                                      </div>
+                                    ))}
                                   </div>
                                 ) : (
                                   <div className="text-slate-500 text-xs font-mono py-2">
@@ -1941,7 +1915,7 @@ ${bulletsText}
                       <div className="text-right">
                         <div>
                           <span className={`font-black text-xs ${sentiment.colorClass}`}>
-                            %{sentiment.score}
+                            Beğeni: {sentiment.score10}/10
                           </span>
                         </div>
                         <div className="text-[10px] text-slate-400 font-normal">
@@ -1979,7 +1953,7 @@ ${bulletsText}
                             🔥 TOPLULUK ANALİZİ:
                           </span>
                           <span className={`text-[9.5px] font-mono px-1.5 py-0.2 rounded font-bold border ${sentiment.badgeClass}`}>
-                            Topluluk Beğenisi: %{sentiment.score}
+                            Topluluk Beğenisi: {sentiment.score10}/10
                           </span>
                         </div>
                         <p className="text-slate-700 leading-relaxed">
@@ -2003,39 +1977,18 @@ ${bulletsText}
                             <span>Geçmiş Değerlendirmeler ({historyEntries.length} Gün):</span>
                           </div>
                           <div className="space-y-1 bg-[#f9fafb] p-2 rounded border border-[#e2e8f0]">
-                            {historyEntries.map((entry, hIdx) => {
-                              const getSentBadge = (sent) => {
-                                switch (sent) {
-                                  case 'coşkulu': return 'bg-emerald-100 text-emerald-800 border-emerald-300';
-                                  case 'eleştirel': return 'bg-amber-100 text-amber-900 border-amber-300';
-                                  case 'düşüş': return 'bg-rose-100 text-rose-800 border-rose-300';
-                                  default: return 'bg-slate-100 text-slate-700 border-slate-300';
-                                }
-                              };
-                              const getSentLabel = (sent) => {
-                                switch (sent) {
-                                  case 'coşkulu': return '🔥 Coşku';
-                                  case 'eleştirel': return '⚠️ Eleştiri';
-                                  case 'düşüş': return '📉 Düşüş';
-                                  default: return '⚖️ Stabil';
-                                }
-                              };
-                              return (
-                                <div key={hIdx} className="border-b border-[#e2e8f0] pb-1 last:border-0 last:pb-0 space-y-0.5">
-                                  <div className="flex items-center justify-between font-mono text-[9px]">
-                                    <span className="text-slate-500">{entry.date}</span>
-                                    <span className={`px-1 py-0.2 rounded font-bold border ${getSentBadge(entry.sentiment)}`}>
-                                      {getSentLabel(entry.sentiment)}
-                                    </span>
-                                    <span className="font-bold text-slate-900">{entry.hypeScore}/10</span>
-                                  </div>
-                                  <p className="text-slate-700 text-[10px] leading-tight">
-                                    <strong className="text-slate-900">{entry.headline}: </strong>
-                                    {entry.summary}
-                                  </p>
+                            {historyEntries.map((entry, hIdx) => (
+                              <div key={hIdx} className="border-b border-[#e2e8f0] pb-1 last:border-0 last:pb-0 space-y-0.5">
+                                <div className="flex items-center justify-between font-mono text-[9px]">
+                                  <span className="text-slate-500">{entry.date}</span>
+                                  <span className="font-bold text-slate-900">Hype: {entry.hypeScore}/10</span>
                                 </div>
-                              );
-                            })}
+                                <p className="text-slate-700 text-[10px] leading-tight">
+                                  <strong className="text-slate-900">{entry.headline}: </strong>
+                                  {entry.summary}
+                                </p>
+                              </div>
+                            ))}
                           </div>
                         </div>
                       )}
@@ -2758,7 +2711,7 @@ ${bulletsText}
                   1. LLM: <strong className="text-emerald-700">{(report.phase1TokenUsage.totalTokens / 1000).toFixed(1)}k</strong>
                   {' '}| 2. LLM: <strong className="text-cyan-700">{(report.phase2TokenUsage.totalTokens / 1000).toFixed(1)}k</strong>
                   {' '}| TOPLAM: <strong className="text-slate-800">{(report.tokenUsage.totalTokens / 1000).toFixed(1)}k</strong>
-                  {' '}(G:<span className="text-slate-700">{(report.tokenUsage.promptTokens / 1000).toFixed(1)}k</span> D:<span className="text-purple-700">{((report.tokenUsage.reasoningTokens || 0) / 1000).toFixed(1)}k</span> N:<span className="text-yellow-700">{(((report.tokenUsage.finalTokens || Math.max(0, (report.tokenUsage.completionTokens || 0) - (report.tokenUsage.reasoningTokens || 0)))) / 1000).toFixed(1)}k</span>)
+                  {' '}(Girdi: <span className="text-slate-700">{(report.tokenUsage.promptTokens / 1000).toFixed(1)}k</span> | Düşünce: <span className="text-purple-700">{((report.tokenUsage.reasoningTokens || 0) / 1000).toFixed(1)}k</span> | Nihai: <span className="text-yellow-700">{(((report.tokenUsage.finalTokens || Math.max(0, (report.tokenUsage.completionTokens || 0) - (report.tokenUsage.reasoningTokens || 0)))) / 1000).toFixed(1)}k</span>)
                 </>
               ) : (
                 <>
