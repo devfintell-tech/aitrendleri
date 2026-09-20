@@ -585,13 +585,20 @@ async function callGemini(model, apiKey, prompt) {
 
   const json = await res.json();
   const text = json.candidates?.[0]?.content?.parts?.[0]?.text;
-  const tokenUsage = json.usageMetadata ? {
-    promptTokens: json.usageMetadata.promptTokenCount,
-    completionTokens: json.usageMetadata.candidatesTokenCount,
-    reasoningTokens: 0,
-    finalTokens: json.usageMetadata.candidatesTokenCount,
-    totalTokens: json.usageMetadata.totalTokenCount
-  } : null;
+  let tokenUsage = null;
+  if (json.usageMetadata) {
+    const promptTokens = json.usageMetadata.promptTokenCount || 0;
+    const candTokens = json.usageMetadata.candidatesTokenCount || 0;
+    const reasoningTokens = json.usageMetadata.thoughtsTokenCount || 0;
+    const finalTokens = Math.max(0, candTokens - reasoningTokens);
+    tokenUsage = {
+      promptTokens,
+      completionTokens: candTokens,
+      reasoningTokens,
+      finalTokens,
+      totalTokens: json.usageMetadata.totalTokenCount || (promptTokens + candTokens)
+    };
+  }
   return { parsed: JSON.parse(text), tokenUsage };
 }
 
@@ -620,7 +627,15 @@ async function generateWithWaterfall(prompt, validatorFn = null) {
       if (isRichResponse) {
         const info = Array.isArray(result.daily) ? `${result.daily.length} ürün` : "sentez şeması";
         console.log(`🎯 MÜKEMMEL BAŞARI! Model [${PRIMARY_GEMINI_MODEL}] (Anahtar #${i + 1}) ile ${info} işlendi.`);
-        return { data: result, modelUsed: PRIMARY_GEMINI_MODEL, keyIndex: i + 1, tokenUsage };
+        return { 
+          data: result, 
+          provider: "gemini",
+          modelName: PRIMARY_GEMINI_MODEL,
+          apiKey: apiKey,
+          modelUsed: PRIMARY_GEMINI_MODEL, 
+          keyIndex: i + 1, 
+          tokenUsage 
+        };
       } else {
         console.warn(`⚠️ [${PRIMARY_GEMINI_MODEL}] (Anahtar #${i + 1}) beklenen şemayı karşılamadı. Sıradaki deneniyor...`);
       }
@@ -645,7 +660,15 @@ async function generateWithWaterfall(prompt, validatorFn = null) {
         if (isRichResponse) {
           const info = Array.isArray(result.daily) ? `${result.daily.length} ürün` : "sentez şeması";
           console.log(`🎯 MÜKEMMEL BAŞARI! DeepSeek [${model}] ile ${info} başarıyla işlendi.`);
-          return { data: result, modelUsed: `DeepSeek v4.1 Flash (${model})`, keyIndex: 1, tokenUsage };
+          return { 
+            data: result, 
+            provider: "deepseek",
+            modelName: model,
+            apiKey: DEEPSEEK_API_KEY,
+            modelUsed: `DeepSeek v4.1 Flash (${model})`, 
+            keyIndex: 1, 
+            tokenUsage 
+          };
         } else {
           console.warn(`⚠️ [${model}] beklenen şemayı karşılamadı. Sıradaki deneniyor...`);
         }
@@ -681,7 +704,15 @@ async function generateWithWaterfall(prompt, validatorFn = null) {
         if (isRichResponse) {
           const info = Array.isArray(result.daily) ? `${result.daily.length} ürün` : "sentez şeması";
           console.log(`🎯 MÜKEMMEL BAŞARI! Model [${model}] (Anahtar #${i + 1}) ile ${info} işlendi.`);
-          return { data: result, modelUsed: model, keyIndex: i + 1, tokenUsage };
+          return { 
+            data: result, 
+            provider: "gemini",
+            modelName: model,
+            apiKey: apiKey,
+            modelUsed: model, 
+            keyIndex: i + 1, 
+            tokenUsage 
+          };
         } else {
           console.warn(`⚠️ [${model}] (Anahtar #${i + 1}) beklenen şemayı karşılamadı. Sıradaki deneniyor...`);
         }
@@ -697,13 +728,11 @@ async function generateWithWaterfall(prompt, validatorFn = null) {
 /**
  * 🌅 FAZ 2: SABAH İSTİHBARATI VE YÖNETİCİ ÖZETİ İKİ AŞAMALI SENTEZ MOTORU
  * 
- * Faz 1'de toplanan, filtrelenen ve anayasal standartlara göre sıralanan
- * nihai verileri (Reddit zirvesi, ArXiv makaleleri, Hacker News tartışmaları,
- * GitHub projeleri) doğrudan girdi olarak alıp; Sabah İstihbaratı'nın lider
- * modelini, 4 kilit maddesini ve Yönetici Özeti'ni nihai çıktıyı okuyarak derinlemesine sentezler.
+ * Anayasal İlke: Faz 1 ve Faz 2 KESİNLİKLE BİREBİR AYNI MODELİ kullanmak zorundadır.
+ * Biri DeepSeek diğeri Gemini olamaz. Faz 1'i hangi model kazandıysa Faz 2'yi de o model yürütür.
  */
-async function generateMorningBriefSynthesis(finalizedData) {
-  console.log("\n🌅 [FAZ 2] Sabah İstihbaratı ve Yönetici Özeti Sentezi Başlatılıyor (Nihai Çıktı Okunuyor)...");
+async function generateMorningBriefSynthesis(finalizedData, phase1Execution = null) {
+  console.log("\n🌅 [FAZ 2] Sabah İstihbaratı 4 Kilit Madde Sentezi Başlatılıyor (Nihai Çıktı Okunuyor)...");
   
   const leader = finalizedData.daily?.[0] || {};
   const topProducts = (finalizedData.daily || []).slice(0, 6);
@@ -802,6 +831,50 @@ async function generateMorningBriefSynthesis(finalizedData) {
     res.morningBrief.bullets.length === 4
   );
 
+  // 🎯 İKİ AŞAMADA TEK MODEL İLKESİ: Faz 1'deki model ve sağlayıcı kesinlikle korunur
+  if (phase1Execution && phase1Execution.provider && phase1Execution.modelName) {
+    const { provider, modelName, apiKey, modelUsed, keyIndex } = phase1Execution;
+    console.log(`🔒 [FAZ 2] Faz 1 ile BİREBİR AYNI MODEL KİLİTLENDİ: [${modelUsed}] (${provider})`);
+
+    if (provider === "deepseek") {
+      try {
+        const { parsed, tokenUsage } = await callDeepSeek(modelName, apiKey, phase2Prompt);
+        if (phase2Validator(parsed)) {
+          console.log(`🎯 [FAZ 2] DeepSeek [${modelName}] ile sentez başarıyla tamamlandı.`);
+          return { p2Data: parsed, p2ModelUsed: modelUsed, p2TokenUsage: tokenUsage };
+        }
+      } catch (err) {
+        console.warn(`⚠️ [FAZ 2] DeepSeek [${modelName}] sentez çağrısı başarısız: ${err.message}`);
+      }
+    } else if (provider === "gemini") {
+      // Önce Faz 1'i başarıyla tamamlayan API anahtarını dene
+      try {
+        const { parsed, tokenUsage } = await callGemini(modelName, apiKey, phase2Prompt);
+        if (phase2Validator(parsed)) {
+          console.log(`🎯 [FAZ 2] Gemini [${modelName}] (Anahtar #${keyIndex}) ile sentez başarıyla tamamlandı.`);
+          return { p2Data: parsed, p2ModelUsed: modelUsed, p2TokenUsage: tokenUsage };
+        }
+      } catch (err) {
+        console.warn(`⚠️ [FAZ 2] Gemini [${modelName}] Anahtar #${keyIndex} başarısız (${err.message}). Aynı model korunarak diğer anahtarlar deneniyor...`);
+        // Kesinlikle model değiştirilmez; yalnızca aynı model için rotasyon havuzundaki diğer anahtarlar denenir
+        for (let i = 0; i < GEMINI_API_KEYS.length; i++) {
+          if (GEMINI_API_KEYS[i] === apiKey) continue;
+          try {
+            const { parsed, tokenUsage } = await callGemini(modelName, GEMINI_API_KEYS[i], phase2Prompt);
+            if (phase2Validator(parsed)) {
+              console.log(`🎯 [FAZ 2] Gemini [${modelName}] (Yedek Anahtar #${i + 1}) ile sentez başarıyla tamamlandı.`);
+              return { p2Data: parsed, p2ModelUsed: modelUsed, p2TokenUsage: tokenUsage };
+            }
+          } catch (e2) {
+            // Bir sonraki anahtarı dene
+          }
+        }
+      }
+    }
+  }
+
+  // Eğer phase1Execution verilmemişse (bağımsız test çağrıları vb.) şelale ile güvenli modda çalış
+  console.log("⚠️ [FAZ 2] Faz 1 yürütme detayı bulunamadı veya çağrı başarısız oldu, şelale havuzu deneniyor...");
   const { data: p2Data, modelUsed: p2ModelUsed, tokenUsage: p2TokenUsage } = await generateWithWaterfall(phase2Prompt, phase2Validator);
   return { p2Data, p2ModelUsed, p2TokenUsage };
 }
@@ -1125,7 +1198,8 @@ async function main() {
     }
   `;
 
-  const { data: rawResultJson, modelUsed: activeModelUsed, keyIndex: activeKeyIndex, tokenUsage: activeTokenUsage } = await generateWithWaterfall(prompt);
+  const phase1Execution = await generateWithWaterfall(prompt);
+  const { data: rawResultJson, modelUsed: activeModelUsed, keyIndex: activeKeyIndex, tokenUsage: activeTokenUsage } = phase1Execution;
 
   // KESKİN STANDARTLAR DENETÇİSİ (Verilerin yerli yerine oturmasını ve hiçbir zaman eksik kalmamasını garanti eder)
   const resultJson = enforceStrictStandards(rawResultJson, hfModels, candidateArxiv, hnPosts, githubCandidates, hfTopModels);
@@ -1136,9 +1210,10 @@ async function main() {
   // en geniş bilgi setiyle üretilmiştir ve KESİNLİKLE EZİLMEZ (korunur).
   // Sabah İstihbaratı'nın 4 kilit kutusu ve lider kartı ise sitedeki nihai sıralama ve içerikle
   // %100 jilet gibi tutarlı olması için Faz 2'de nihai çıktıyı okuyarak güncellenir.
+  // Faz 1 ve Faz 2 KESİNLİKLE AYNI MODEL tarafından yürütülür (Unified Model Invariance).
   let phase2TokenUsage = null;
   try {
-    const { p2Data, p2TokenUsage } = await generateMorningBriefSynthesis(resultJson);
+    const { p2Data, p2TokenUsage } = await generateMorningBriefSynthesis(resultJson, phase1Execution);
     if (p2Data && p2Data.morningBrief && Array.isArray(p2Data.morningBrief.bullets) && p2Data.morningBrief.bullets.length === 4) {
       const tableTop = resultJson.daily?.[0];
       resultJson.morningBrief = {
@@ -1156,7 +1231,7 @@ async function main() {
     console.warn("⚠️ [FAZ 2] Sabah İstihbaratı sentezi çağrısında hata oluştu, Faz 1 verisi korunuyor:", err.message);
   }
 
-  // Faz 1 ve Faz 2 token kullanımlarını birleştir
+  // Faz 1 ve Faz 2 token kullanımlarını BİREBİR VE MATEMATİKSEL OLARAK TOPLA
   let mergedTokenUsage = activeTokenUsage;
   if (phase2TokenUsage && activeTokenUsage) {
     const promptTokens = (activeTokenUsage.promptTokens || 0) + (phase2TokenUsage.promptTokens || 0);
@@ -1171,6 +1246,10 @@ async function main() {
       finalTokens,
       totalTokens
     };
+    console.log(`📊 [GERÇEK TELEMETRİ BİRLEŞİMİ (Faz 1 + Faz 2)]:`);
+    console.log(`   • Faz 1: Prompt: ${activeTokenUsage.promptTokens}, Düşünce: ${activeTokenUsage.reasoningTokens}, Nihai: ${activeTokenUsage.finalTokens}, Toplam: ${activeTokenUsage.totalTokens}`);
+    console.log(`   • Faz 2: Prompt: ${phase2TokenUsage.promptTokens}, Düşünce: ${phase2TokenUsage.reasoningTokens}, Nihai: ${phase2TokenUsage.finalTokens}, Toplam: ${phase2TokenUsage.totalTokens}`);
+    console.log(`   • TOPLAM: Prompt: ${promptTokens}, Düşünce: ${reasoningTokens}, Nihai: ${finalTokens}, Genel Toplam: ${totalTokens}`);
   } else if (phase2TokenUsage && !activeTokenUsage) {
     mergedTokenUsage = phase2TokenUsage;
   }

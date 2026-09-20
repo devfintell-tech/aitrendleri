@@ -166,6 +166,13 @@ Bu belge, bu projenin tüm tasarım, veri mimarisi ve geliştirme standartların
    - `scripts/run-analysis.js` üretilen her JSON çıktısında (`latest-report.json` ve `src/data/archive/YYYY-MM-DD.json`) `activeModel`, `durationSeconds`, `startedAt`, `completedAt` ve `tokenUsage` (`promptTokens`, `completionTokens`, `reasoningTokens`, `finalTokens`, `totalTokens`) alanlarını eksiksiz üretmek ve kaydetmek zorundadır.
    - Sitedeki üst başlık rozetlerinde ve alt durum çubuğunda (status bar) bu veriler kullanıcıya anlık ve şeffaf bir şekilde yansıtılmalıdır.
 
+3. **Gerçek Veri Zorunluluğu & Sabit/Uydurma Veri Yasağı:**
+   - Geçmiş arşiv günlerinde veya telemetri verisinin henüz toplanmadığı tarihlerde, arayüzde KESİNLİKLE sabit/örnek/uydurma telemetri verisi (`39.1k`, `9.2k`, `267s`, `12:01 ➔ 12:05` vb.) gösterilemez.
+   - Gerçek ölçüm yoksa ilgili rozet arayüzden tamamen gizlenir (`null`); yalnızca eldeki gerçek ve doğrulanmış ölçümler ekrana basılır.
+
+4. **İki Aşamada Çift Çağrı Token Toplamı (Faz 1 + Faz 2):**
+   - Sistem Faz 1 (Tüm analiz) ve Faz 2 (Sabah İstihbaratı sentezi) olmak üzere iki LLM çağrısı gerçekleştirdiğinden, raporlanan ve kaydedilen nihai token verisi (`tokenUsage`) her iki çağrının matematiksel olarak BİREBİR TOPLAMI (`Faz 1 + Faz 2`) olmak zorundadır.
+
 ---
 
 ## 🌅 10. Sabah İstihbaratı ve Yönetici Özeti Sentez Mimarisi & Saf Reddit Ürün Sıralaması Şartı
@@ -185,5 +192,10 @@ Bu belge, bu projenin tüm tasarım, veri mimarisi ve geliştirme standartların
 
 4. **Lider Kartının Zirve Dokunulmazlığı:**
    - Sabah İstihbaratı'nın Lider Kartı (`morningBrief.leader`), Faz 1'de Reddit verileriyle zirveye (1. sıra) oturmuş olan ürünle (`daily[0]`) isim ve rozet olarak milimetrik şekilde birebir aynı olmak zorundadır.
+
+5. **İki Aşamada Tek Model İlkesi (Unified Model Invariance):**
+   - Faz 1 ve Faz 2 KESİNLİKLE BİREBİR AYNI MODEL ve sağlayıcı tarafından yürütülmelidir. Biri DeepSeek diğeri Gemini olamaz.
+   - Faz 1'i hangi model başarıyla tamamladıysa, Faz 2 de tavizsiz olarak o modelle çalıştırılır. Model değişimi veya aşamalar arası çapraz model karmaşası KESİNLİKLE YASAKTIR.
+
 
 

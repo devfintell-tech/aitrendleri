@@ -1171,46 +1171,54 @@ ${bulletsText}
             </div>
 
             {/* 🤖 Aktif Model Rozeti */}
-            <div 
-              className="flex items-center gap-1 bg-[#0c592d] border border-emerald-400/30 px-2 py-1 rounded text-[11px] font-semibold text-white shadow-xs"
-              title={`Analiz ve Çıkarım Motoru: ${report.activeModel || 'DeepSeek v4.1 Flash'}`}
-            >
-              <Cpu className="w-3 h-3 text-cyan-300 flex-shrink-0" />
-              <span className="truncate max-w-[130px] sm:max-w-none">
-                {report.activeModel ? report.activeModel.replace(' (deepseek-flash)', '') : 'DeepSeek v4.1 Flash'}
-              </span>
-            </div>
+            {report.activeModel && (
+              <div 
+                className="flex items-center gap-1 bg-[#0c592d] border border-emerald-400/30 px-2 py-1 rounded text-[11px] font-semibold text-white shadow-xs"
+                title={`Analiz ve Çıkarım Motoru: ${report.activeModel}`}
+              >
+                <Cpu className="w-3 h-3 text-cyan-300 flex-shrink-0" />
+                <span className="truncate max-w-[130px] sm:max-w-none">
+                  {report.activeModel.replace(' (deepseek-flash)', '')}
+                </span>
+              </div>
+            )}
 
-            {/* ⏱️ Çalışma Süresi Rozeti */}
-            <div 
-              className="flex items-center gap-1 bg-[#0c592d] border border-emerald-400/30 px-2 py-1 rounded text-[11px] font-semibold text-white shadow-xs"
-              title={`Toplam Çalışma Süresi: ${report.durationSeconds || 267} saniye`}
-            >
-              <Clock className="w-3 h-3 text-amber-300 flex-shrink-0" />
-              <span>{report.durationSeconds || 267}s</span>
-            </div>
+            {/* ⏱️ Çalışma Süresi Rozeti - Yalnızca gerçek ölçüm varsa göster */}
+            {typeof report.durationSeconds === 'number' && report.durationSeconds > 0 && (
+              <div 
+                className="flex items-center gap-1 bg-[#0c592d] border border-emerald-400/30 px-2 py-1 rounded text-[11px] font-semibold text-white shadow-xs"
+                title={`Toplam Çalışma Süresi: ${report.durationSeconds} saniye`}
+              >
+                <Clock className="w-3 h-3 text-amber-300 flex-shrink-0" />
+                <span>{report.durationSeconds}s</span>
+              </div>
+            )}
 
-            {/* 🕒 Tetiklenme ve Nihai Çıktı Saati */}
-            <div 
-              className="hidden md:flex items-center gap-1 bg-[#0c592d] border border-emerald-400/30 px-2 py-1 rounded text-[11px] font-semibold text-emerald-100 shadow-xs"
-              title={`Tetiklenme Saati: ${report.startedAt || '12:01:26'} | Nihai Çıktı Saati: ${report.completedAt || '12:05:53'}`}
-            >
-              <span className="text-emerald-300 font-bold">Saat:</span>
-              <span>{report.startedAt ? report.startedAt.slice(0, 5) : '12:01'} ➔ {report.completedAt ? report.completedAt.slice(0, 5) : '12:05'}</span>
-            </div>
+            {/* 🕒 Tetiklenme ve Nihai Çıktı Saati - Yalnızca gerçek saat damgası varsa göster */}
+            {report.startedAt && report.completedAt && (
+              <div 
+                className="hidden md:flex items-center gap-1 bg-[#0c592d] border border-emerald-400/30 px-2 py-1 rounded text-[11px] font-semibold text-emerald-100 shadow-xs"
+                title={`Tetiklenme Saati: ${report.startedAt} | Nihai Çıktı Saati: ${report.completedAt}`}
+              >
+                <span className="text-emerald-300 font-bold">Saat:</span>
+                <span>{report.startedAt.slice(0, 5)} ➔ {report.completedAt.slice(0, 5)}</span>
+              </div>
+            )}
 
-            {/* ⚡ Token Telemetrisi (Girdi, Düşünce & Nihai Çıktı Token Ayrımı) */}
+            {/* ⚡ Token Telemetrisi - Yalnızca o güne ait gerçek token verisi varsa göster */}
             {(() => {
               const tu = report.tokenUsage;
-              const promptK = tu ? (tu.promptTokens / 1000).toFixed(1) : '39.1';
-              const reasoningK = tu ? (tu.reasoningTokens / 1000).toFixed(1) : '9.2';
-              const finalVal = tu ? (tu.finalTokens || Math.max(0, tu.completionTokens - tu.reasoningTokens)) : 11182;
+              if (!tu || typeof tu.promptTokens !== 'number' || tu.promptTokens <= 0) return null;
+
+              const promptK = (tu.promptTokens / 1000).toFixed(1);
+              const reasoningK = typeof tu.reasoningTokens === 'number' ? (tu.reasoningTokens / 1000).toFixed(1) : '0.0';
+              const finalVal = tu.finalTokens || Math.max(0, (tu.completionTokens || 0) - (tu.reasoningTokens || 0));
               const finalK = (finalVal / 1000).toFixed(1);
 
               return (
                 <div 
                   className="hidden lg:flex items-center gap-1.5 bg-[#0c592d] border border-emerald-400/30 px-2.5 py-1 rounded text-[11px] font-semibold text-emerald-100 shadow-xs"
-                  title={tu ? `Token Telemetrisi:\n• Girdi (Prompt): ${tu.promptTokens?.toLocaleString()} token\n• Düşünce (CoT Reasoning): ${tu.reasoningTokens?.toLocaleString()} token\n• Nihai Çıktı: ${finalVal.toLocaleString()} token\n• Toplam Çıktı: ${tu.completionTokens?.toLocaleString()} token\n• Toplam Token: ${tu.totalTokens?.toLocaleString()} token` : 'Token Telemetrisi: Girdi 39.1k • Düşünce 9.2k • Nihai 11.2k'}
+                  title={`Token Telemetrisi:\n• Girdi (Prompt): ${tu.promptTokens?.toLocaleString()} token\n• Düşünce (CoT Reasoning): ${(tu.reasoningTokens || 0)?.toLocaleString()} token\n• Nihai Çıktı: ${finalVal?.toLocaleString()} token\n• Toplam Çıktı: ${tu.completionTokens?.toLocaleString()} token\n• Toplam Token: ${tu.totalTokens?.toLocaleString()} token`}
                 >
                   <Zap className="w-3 h-3 text-yellow-300 flex-shrink-0" />
                   <div className="flex items-center gap-1.5 font-mono">
@@ -2583,12 +2591,27 @@ ${bulletsText}
           <span className="font-bold text-[#107c41]">HAZIR</span>
           <span>TOPLAM: {filteredTools.length} MODEL</span>
           <span className="hidden sm:inline">ORTALAMA HYPE: {avgHypeScore}</span>
-          <span className="hidden md:inline text-slate-500">| MOTOR: <strong className="text-slate-800">{report.activeModel || 'DeepSeek v4.1 Flash'}</strong></span>
-          <span className="hidden md:inline text-slate-500">| SÜRE: <strong className="text-slate-800">{report.durationSeconds || 267}s</strong> ({report.startedAt || '12:01'} ➔ {report.completedAt || '12:05'})</span>
+          {report.activeModel && (
+            <span className="hidden md:inline text-slate-500">
+              | MOTOR: <strong className="text-slate-800">{report.activeModel.replace(' (deepseek-flash)', '')}</strong>
+            </span>
+          )}
+          {typeof report.durationSeconds === 'number' && report.durationSeconds > 0 && (
+            <span className="hidden md:inline text-slate-500">
+              | SÜRE: <strong className="text-slate-800">{report.durationSeconds}s</strong>
+              {report.startedAt && report.completedAt ? ` (${report.startedAt.slice(0, 5)} ➔ ${report.completedAt.slice(0, 5)})` : ''}
+            </span>
+          )}
         </div>
         <div className="flex items-center gap-3 sm:gap-4 text-[11px]">
           <span className="hidden sm:inline">50 TOPLULUK</span>
-          <span className="hidden lg:inline text-slate-500">TOKEN: Girdi <strong className="text-slate-700">{report.tokenUsage ? `${(report.tokenUsage.promptTokens / 1000).toFixed(1)}k` : '39.1k'}</strong> | Düşünce <strong className="text-purple-700">{report.tokenUsage ? `${(report.tokenUsage.reasoningTokens / 1000).toFixed(1)}k` : '9.2k'}</strong> | Nihai <strong className="text-slate-800">{report.tokenUsage ? `${((report.tokenUsage.finalTokens || Math.max(0, report.tokenUsage.completionTokens - report.tokenUsage.reasoningTokens)) / 1000).toFixed(1)}k` : '11.2k'}</strong></span>
+          {report.tokenUsage && typeof report.tokenUsage.promptTokens === 'number' && report.tokenUsage.promptTokens > 0 && (
+            <span className="hidden lg:inline text-slate-500">
+              TOKEN: Girdi <strong className="text-slate-700">{(report.tokenUsage.promptTokens / 1000).toFixed(1)}k</strong>
+              {' '}| Düşünce <strong className="text-purple-700">{((report.tokenUsage.reasoningTokens || 0) / 1000).toFixed(1)}k</strong>
+              {' '}| Nihai <strong className="text-slate-800">{(((report.tokenUsage.finalTokens || Math.max(0, (report.tokenUsage.completionTokens || 0) - (report.tokenUsage.reasoningTokens || 0)))) / 1000).toFixed(1)}k</strong>
+            </span>
+          )}
           <span>%100 ZOOM</span>
         </div>
       </footer>
