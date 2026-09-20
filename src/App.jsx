@@ -1890,16 +1890,9 @@ ${bulletsText}
 
             {/* Modal Body */}
             <div className="p-5 space-y-4">
-              <div className="space-y-1.5">
-                <div className="flex items-center gap-1.5">
-                  <span className="text-base">🌅</span>
-                  <span className="font-bold text-slate-900 text-sm font-mono">Her Sabah Saat 08:00'de</span>
-                  <span className="text-[10px] font-mono font-black bg-amber-100 text-amber-900 border border-amber-300 px-1.5 py-0.2 rounded uppercase">
-                    Ücretsiz
-                  </span>
-                </div>
-                <p className="text-xs text-slate-600 leading-relaxed">
-                  50 seçkin Reddit yapay zeka topluluğunun, X (Twitter) öncülerinin, Hugging Face açık modellerinin ve ArXiv makalelerinin 5 dakikalık konsantre özeti doğrudan gelen kutunuzda olsun.
+              <div>
+                <p className="text-xs sm:text-sm text-slate-600 font-mono leading-relaxed">
+                  Gündemin kısa özeti her sabah mailinizde olsun.
                 </p>
               </div>
 
@@ -1948,14 +1941,10 @@ ${bulletsText}
                     className="w-full bg-[#107c41] hover:bg-[#0c592d] active:scale-[0.98] text-white font-mono font-bold text-xs py-2.5 rounded shadow-xs transition flex items-center justify-center gap-1.5 cursor-pointer disabled:opacity-50"
                   >
                     <Send className="w-3.5 h-3.5" />
-                    <span>{subscribeStatus === 'loading' ? 'Kaydediliyor...' : 'Ücretsiz Abone Ol →'}</span>
+                    <span>{subscribeStatus === 'loading' ? 'Kaydediliyor...' : 'Abone Ol →'}</span>
                   </button>
                 </form>
               )}
-
-              <div className="text-[10px] text-slate-400 font-mono text-center pt-1 border-t border-slate-100">
-                Spam yok. İstediğiniz an tek tıkla abonelikten çıkabilirsiniz.
-              </div>
             </div>
           </div>
         </div>
@@ -2213,16 +2202,11 @@ ${bulletsText}
               <Mail className="w-5 h-5 text-emerald-200" />
             </div>
             <div>
-              <div className="flex items-center gap-2 flex-wrap">
-                <h3 className="font-bold text-sm sm:text-base font-mono leading-tight text-white">
-                  Her Sabah 08:00'de Günlük AI İstihbaratı
-                </h3>
-                <span className="text-[10px] font-mono font-black bg-amber-400 text-amber-950 px-1.5 py-0.2 rounded uppercase tracking-wider">
-                  Ücretsiz
-                </span>
-              </div>
+              <h3 className="font-bold text-sm sm:text-base font-mono leading-tight text-white">
+                Günlük AI İstihbarat Bülteni
+              </h3>
               <p className="text-xs text-emerald-100/90 leading-tight pt-0.5">
-                50 Reddit topluluğu, X öncüleri, Hugging Face ve ArXiv'in 5 dakikalık hap özeti doğrudan gelen kutunuza gelsin.
+                Gündemin kısa özeti her sabah mailinizde olsun.
               </p>
             </div>
           </div>

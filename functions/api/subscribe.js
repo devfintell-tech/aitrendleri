@@ -94,7 +94,7 @@ export async function onRequestPost(context) {
                 <div style="padding: 22px 24px; color: #1e293b; line-height: 1.6;">
                   <h2 style="font-size: 18px; color: #0f172a; margin-top: 0;">Aramıza Hoş Geldiniz! 🎉</h2>
                   <p style="font-size: 14px; color: #334155;">
-                    Artık her sabah saat <strong>08:00'de</strong>; 50 seçkin Reddit yapay zeka topluluğunun, X (Twitter) araştırmacılarının ve Hugging Face açık modellerinin 5 dakikalık konsantre özeti doğrudan gelen kutunuzda olacak.
+                    Gündemin kısa özeti artık her sabah doğrudan gelen kutunuzda olacak.
                   </p>
                   
                   <div style="background-color: #f8fafc; border: 1px solid #cbd5e1; border-left: 4px solid #107c41; padding: 14px 18px; border-radius: 4px; margin: 20px 0;">
