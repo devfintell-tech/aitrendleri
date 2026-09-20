@@ -28,6 +28,7 @@ import {
   Clock,
   Zap,
   X,
+  Search,
   Mail,
   Send
 } from 'lucide-react';
@@ -437,6 +438,7 @@ export default function App() {
   const [subscribeStatus, setSubscribeStatus] = useState('idle'); // 'idle' | 'loading' | 'success' | 'error'
   const [subscribeMessage, setSubscribeMessage] = useState('');
   const [isNewsletterModalOpen, setIsNewsletterModalOpen] = useState(false);
+  const [glossarySearch, setGlossarySearch] = useState('');
 
   const handleSubscribe = async (e) => {
     if (e) e.preventDefault();
@@ -1395,6 +1397,69 @@ ${bulletsText}
     return chunks;
   }, [report.dailyGlossary]);
 
+  // Günün Sözlüğü Arşivi: Seçili güne kadarki tüm arşiv verilerinden toplanan benzersiz kavramlar (tekrarsız)
+  const cumulativeArchiveGlossary = useMemo(() => {
+    // 1. O günkü 9 kavramın anahtarlarını al (aynı kavramlar iki kere yer almasın)
+    const todayList = report.dailyGlossary || [];
+    const seenTerms = new Set(todayList.map(t => (t.term || '').toLowerCase().trim()));
+
+    // 2. Aktif tarihin ISO kodunu belirle
+    const currentIso = report.isoDate || (selectedDateId !== 'latest' ? selectedDateId : availableDates[0]?.isoDate);
+
+    // 3. Arşiv dosyalarını tarihe göre azalan (yeniden eskiye) sırala
+    const archiveList = Object.entries(archiveModules)
+      .filter(([filePath]) => !filePath.includes('archive-index.json'))
+      .map(([filePath, mod]) => {
+        const data = mod.default || mod;
+        const match = filePath.match(/(\d{4}-\d{2}-\d{2})\.json/);
+        const fileIso = match ? match[1] : (data?.isoDate || data?.date);
+        return { fileIso, data };
+      })
+      .sort((a, b) => (b.fileIso || '').localeCompare(a.fileIso || ''));
+
+    // 4. O tarihe kadar olan dosyaları tara (fileIso <= currentIso)
+    const list = [];
+    archiveList.forEach(({ fileIso, data }) => {
+      if (currentIso && fileIso > currentIso) return; // Seçili tarihten sonraki günleri hariç tut
+      if (!data || !Array.isArray(data.dailyGlossary)) return;
+
+      data.dailyGlossary.forEach((item, idx) => {
+        const rawTerm = item.term || '';
+        const cleanKey = rawTerm.toLowerCase().trim();
+        if (!cleanKey || seenTerms.has(cleanKey)) return;
+        seenTerms.add(cleanKey);
+
+        list.push({
+          id: item.id || `arch-${fileIso}-${idx}`,
+          term: rawTerm,
+          category: item.category || 'Yapay Zeka',
+          definition: item.definition || '',
+          dateStr: (data.date || '').replace(/\s*20\d\d$/, '').trim() || fileIso,
+          isoDate: fileIso
+        });
+      });
+    });
+
+    return list;
+  }, [report.dailyGlossary, report.isoDate, selectedDateId, availableDates]);
+
+  const filteredArchiveGlossary = useMemo(() => {
+    if (!glossarySearch.trim()) return cumulativeArchiveGlossary;
+    const q = glossarySearch.toLowerCase().trim();
+    return cumulativeArchiveGlossary.filter(item => 
+      (item.term || '').toLowerCase().includes(q) ||
+      (item.definition || '').toLowerCase().includes(q)
+    );
+  }, [cumulativeArchiveGlossary, glossarySearch]);
+
+  const archiveGlossaryChunks = useMemo(() => {
+    const chunks = [];
+    for (let i = 0; i < filteredArchiveGlossary.length; i += 3) {
+      chunks.push(filteredArchiveGlossary.slice(i, i + 3));
+    }
+    return chunks;
+  }, [filteredArchiveGlossary]);
+
   const sectionPairs = useMemo(() => {
     const secs = report.sections || [];
     const pairs = [];
@@ -2111,7 +2176,7 @@ ${bulletsText}
             </span>
             <span className="text-blue-600 font-semibold truncate">
               {timeframe === 'glossary' 
-                ? '"SİTEDE_GEÇEN_9_TEMEL_KAVRAM"' 
+                ? `"GÜNÜN_9_KAVRAMI_VE_${cumulativeArchiveGlossary.length}_ARŞİV_KAVRAMI"` 
                 : selectedTool 
                   ? `"${selectedTool.name}", KATEGORİ="${selectedTool.category}", HYPE=${selectedTool.hypeScore}/10, BEĞENİ=${getToolSentiment(selectedTool).score10}/10` 
                   : '"TÜM_MODELLER"'}
@@ -2292,47 +2357,133 @@ ${bulletsText}
 
         {/* 📖 GÜNÜN SÖZLÜĞÜ (Doğrudan Odak / Sekme Görünümü) */}
         {timeframe === 'glossary' && report.dailyGlossary && report.dailyGlossary.length > 0 && (
-          <section id="gunun-sozlugu-odak" className="bg-white border border-[#cbd5e1] rounded-sm p-4 sm:p-5 shadow-xs space-y-3">
-            <div className="flex items-center justify-between pb-2 border-b border-[#e2e8f0]">
-              <div className="flex items-center gap-2">
-                <BookMarked className="w-4 h-4 text-slate-600" />
-                <h2 className="font-bold text-xs sm:text-sm text-slate-900 font-mono uppercase tracking-wide">
-                  Günün Sözlüğü
-                </h2>
-                <span className="text-[11px] font-mono text-slate-400">
-                  • Sitede Geçen 9 Temel Kavram ({report.date})
+          <section id="gunun-sozlugu-odak" className="bg-white border border-[#cbd5e1] rounded-sm p-4 sm:p-5 shadow-xs space-y-6">
+            
+            {/* 1. GÜNÜN 9 KAVRAMI */}
+            <div className="space-y-3">
+              <div className="flex items-center justify-between pb-2 border-b border-[#e2e8f0] flex-wrap gap-2">
+                <div className="flex items-center gap-2">
+                  <BookMarked className="w-4 h-4 text-[#107c41]" />
+                  <h2 className="font-bold text-xs sm:text-sm text-slate-900 font-mono uppercase tracking-wide">
+                    Günün Sözlüğü ({report.date})
+                  </h2>
+                  <span className="text-[11px] font-mono text-slate-500">
+                    • Bugün Sitede Bizzat Geçen 9 Kilit Kavram
+                  </span>
+                </div>
+                <span className="font-mono text-[10px] px-2 py-0.5 rounded bg-emerald-50 text-[#107c41] border border-emerald-200 font-bold">
+                  9 Güncel Kavram
                 </span>
+              </div>
+
+              {/* Sade Sözlük Kartları (CSS Subgrid ile hizalı, sıfır karmaşa) */}
+              <div className="space-y-3">
+                {glossaryChunks.map((chunk, cIdx) => (
+                  <div 
+                    key={cIdx} 
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-3.5 gap-y-3 subgrid-row-glossary"
+                  >
+                    {chunk.map((item, idx) => (
+                      <div
+                        key={item.id || `${cIdx}-${idx}`}
+                        className="bg-white border border-[#e2e8f0] rounded p-3.5 hover:border-slate-400 transition flex flex-col justify-between subgrid-card-glossary shadow-2xs"
+                      >
+                        {/* 1. Kavram Başlığı (h-full ile en uzun başlığa göre uzar, alt çizgi jilet gibi eşitlenir) */}
+                        <div className="pb-2 border-b border-slate-200 h-full flex flex-col justify-between">
+                          <h4 className="font-mono font-bold text-xs sm:text-[13px] text-slate-900 tracking-tight leading-snug">
+                            {item.term}
+                          </h4>
+                        </div>
+
+                        {/* 2. Sade ve Anlaşılır Anlamı */}
+                        <p className="text-xs sm:text-[12.5px] text-slate-600 leading-relaxed font-normal">
+                          {item.definition}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                ))}
               </div>
             </div>
 
-            {/* Sade Sözlük Kartları (CSS Subgrid ile hizalı, sıfır karmaşa) */}
-            <div className="space-y-3">
-              {glossaryChunks.map((chunk, cIdx) => (
-                <div 
-                  key={cIdx} 
-                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-3.5 gap-y-3 subgrid-row-glossary"
-                >
-                  {chunk.map((item, idx) => (
-                    <div
-                      key={item.id || `${cIdx}-${idx}`}
-                      className="bg-white border border-[#e2e8f0] rounded p-3.5 hover:border-slate-400 transition flex flex-col justify-between subgrid-card-glossary shadow-2xs"
-                    >
-                      {/* 1. Kavram Başlığı (h-full ile en uzun başlığa göre uzar, alt çizgi jilet gibi eşitlenir) */}
-                      <div className="pb-2 border-b border-slate-200 h-full flex flex-col justify-between">
-                        <h4 className="font-mono font-bold text-xs sm:text-[13px] text-slate-900 tracking-tight leading-snug">
-                          {item.term}
-                        </h4>
-                      </div>
+            {/* 2. O GÜNE KADARKİ TÜM KAVRAMLAR ARŞİVİ (TEKRARSIZ) */}
+            {cumulativeArchiveGlossary.length > 0 && (
+              <div className="space-y-3 pt-4 border-t-2 border-[#cbd5e1]">
+                <div className="flex items-center justify-between flex-wrap gap-2 pb-2 border-b border-[#e2e8f0]">
+                  <div className="flex items-center gap-2">
+                    <History className="w-4 h-4 text-slate-600" />
+                    <h3 className="font-bold text-xs sm:text-sm text-slate-900 font-mono uppercase tracking-wide">
+                      Geçmiş Kavramlar Arşivi
+                    </h3>
+                    <span className="text-[11px] font-mono text-slate-500">
+                      • {report.date} Tarihine Kadarki {cumulativeArchiveGlossary.length} Benzersiz Kavram (Tekrarsız)
+                    </span>
+                  </div>
 
-                      {/* 2. Sade ve Anlaşılır Anlamı */}
-                      <p className="text-xs sm:text-[12.5px] text-slate-600 leading-relaxed font-normal">
-                        {item.definition}
-                      </p>
-                    </div>
-                  ))}
+                  {/* Arama Kutusu */}
+                  <div className="relative">
+                    <Search className="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                    <input
+                      type="text"
+                      value={glossarySearch}
+                      onChange={(e) => setGlossarySearch(e.target.value)}
+                      placeholder="Arşivde kavram ara... (örn: MCP, RAG)"
+                      className="w-48 sm:w-64 pl-8 pr-7 py-1 text-xs border border-slate-300 rounded bg-white text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-[#107c41] font-sans"
+                    />
+                    {glossarySearch && (
+                      <button
+                        onClick={() => setGlossarySearch('')}
+                        className="absolute right-2 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600"
+                        title="Aramayı temizle"
+                      >
+                        <X className="w-3 h-3" />
+                      </button>
+                    )}
+                  </div>
                 </div>
-              ))}
-            </div>
+
+                {filteredArchiveGlossary.length === 0 ? (
+                  <div className="text-center py-8 text-slate-500 font-mono text-xs bg-slate-50 rounded border border-slate-200">
+                    "{glossarySearch}" aramasına uygun arşiv kavramı bulunamadı.
+                  </div>
+                ) : (
+                  <div className="space-y-3">
+                    {archiveGlossaryChunks.map((chunk, cIdx) => (
+                      <div 
+                        key={cIdx} 
+                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-3.5 gap-y-3 subgrid-row-glossary"
+                      >
+                        {chunk.map((item, idx) => (
+                          <div
+                            key={item.id || `${cIdx}-${idx}`}
+                            className="bg-white border border-[#e2e8f0] rounded p-3.5 hover:border-slate-400 transition flex flex-col justify-between subgrid-card-glossary shadow-2xs"
+                          >
+                            {/* 1. Kavram Başlığı ve Tarih */}
+                            <div className="pb-2 border-b border-slate-200 h-full flex flex-col justify-between">
+                              <div className="flex items-start justify-between gap-2">
+                                <h4 className="font-mono font-bold text-xs sm:text-[13px] text-slate-900 tracking-tight leading-snug">
+                                  {item.term}
+                                </h4>
+                                {item.dateStr && (
+                                  <span className="text-[9.5px] font-mono text-slate-400 shrink-0 select-none">
+                                    {item.dateStr}
+                                  </span>
+                                )}
+                              </div>
+                            </div>
+
+                            {/* 2. Sade ve Anlaşılır Anlamı */}
+                            <p className="text-xs sm:text-[12.5px] text-slate-600 leading-relaxed font-normal">
+                              {item.definition}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
           </section>
         )}
 
