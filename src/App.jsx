@@ -1188,17 +1188,21 @@ ${bulletsText}
               <span>{report.startedAt ? report.startedAt.slice(0, 5) : '12:01'} ➔ {report.completedAt ? report.completedAt.slice(0, 5) : '12:05'}</span>
             </div>
 
-            {/* ⚡ Token Telemetrisi */}
+            {/* ⚡ Token Telemetrisi (Girdi & Çıktı Token Şeffaflığı) */}
             <div 
-              className="hidden xl:flex items-center gap-1 bg-[#0c592d] border border-emerald-400/30 px-2 py-1 rounded text-[11px] font-semibold text-emerald-100 shadow-xs"
-              title={report.tokenUsage ? `Toplam Token: ${report.tokenUsage.totalTokens?.toLocaleString()} (Girdi: ${report.tokenUsage.promptTokens?.toLocaleString()} | Çıktı: ${report.tokenUsage.completionTokens?.toLocaleString()} | Düşünce: ${report.tokenUsage.reasoningTokens?.toLocaleString()})` : 'Token Telemetrisi: ~59.4k'}
+              className="hidden lg:flex items-center gap-1.5 bg-[#0c592d] border border-emerald-400/30 px-2.5 py-1 rounded text-[11px] font-semibold text-emerald-100 shadow-xs"
+              title={report.tokenUsage ? `Token Telemetrisi:\nGirdi (Prompt): ${report.tokenUsage.promptTokens?.toLocaleString()} token\nÇıktı (Completion): ${report.tokenUsage.completionTokens?.toLocaleString()} token\nDüşünce (CoT): ${report.tokenUsage.reasoningTokens?.toLocaleString()} token\nToplam: ${report.tokenUsage.totalTokens?.toLocaleString()} token` : 'Token Telemetrisi: Girdi ~39.1k • Çıktı ~20.4k'}
             >
               <Zap className="w-3 h-3 text-yellow-300 flex-shrink-0" />
-              <span>
-                {report.tokenUsage 
-                  ? `${Math.round(report.tokenUsage.completionTokens / 1000)}k Çıktı (${Math.round(report.tokenUsage.reasoningTokens / 1000)}k CoT)` 
-                  : '20.4k Çıktı (9.2k CoT)'}
-              </span>
+              <div className="flex items-center gap-1.5 font-mono">
+                <span>
+                  <span className="text-emerald-300 font-bold">Girdi:</span> {report.tokenUsage?.promptTokens ? `${(report.tokenUsage.promptTokens / 1000).toFixed(1)}k` : '39.1k'}
+                </span>
+                <span className="text-emerald-400/40">|</span>
+                <span>
+                  <span className="text-yellow-300 font-bold">Çıktı:</span> {report.tokenUsage?.completionTokens ? `${(report.tokenUsage.completionTokens / 1000).toFixed(1)}k` : '20.4k'}
+                </span>
+              </div>
             </div>
 
             {/* Canlı Akış Rozeti */}
@@ -2562,7 +2566,7 @@ ${bulletsText}
         </div>
         <div className="flex items-center gap-3 sm:gap-4 text-[11px]">
           <span className="hidden sm:inline">50 TOPLULUK</span>
-          <span className="hidden lg:inline text-slate-500">TOKEN: <strong className="text-slate-700">{report.tokenUsage ? `${report.tokenUsage.totalTokens?.toLocaleString()} (${Math.round(report.tokenUsage.reasoningTokens/1000)}k CoT)` : '59.4k'}</strong></span>
+          <span className="hidden lg:inline text-slate-500">TOKEN: Girdi <strong className="text-slate-700">{report.tokenUsage ? `${(report.tokenUsage.promptTokens / 1000).toFixed(1)}k` : '39.1k'}</strong> / Çıktı <strong className="text-slate-700">{report.tokenUsage ? `${(report.tokenUsage.completionTokens / 1000).toFixed(1)}k` : '20.4k'}</strong></span>
           <span>%100 ZOOM</span>
         </div>
       </footer>

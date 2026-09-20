@@ -135,3 +135,19 @@ Bu belge, bu projenin tüm tasarım, veri mimarisi ve geliştirme standartların
 3. **Şeffaf Nedenler & Duygu Analizi (`whyTrending`):**
    - Sıralamadaki her ürünün kartına tıklandığında neden hypelandığı veya neden eleştirildiği (`whyTrending`, `primaryFunction`, `badge`) topluluğun gerçek yorumlarına dayanarak net şekilde gösterilmelidir.
    - Topluluk bir ürünü övüyorsa yüksek puan (`hypeScore`, `+` delta), eleştiriyorsa (sansür, hata, bellek sorunu, pahalılık) düşük puan (`-` delta) verilir.
+
+---
+
+## ⚡ 9. Yürütme Telemetrisi, Model Bilgisi & Token Standartları (Girdi & Çıktı Şeffaflığı)
+
+1. **Zorunlu Telemetri Başlık Bilgileri (Header Bar):**
+   - Sitenin üst bilgi çubuğunda (tarih seçicinin hemen yanında) günlük analizin teknik yürütme verileri eksiksiz ve şeffaf şekilde yer almalıdır:
+     - **Aktif Model:** Analizi ve çıkarımı yapan model adı (ör. `DeepSeek v4.1 Flash`, `Gemini 2.5 Flash`).
+     - **Çalışma Süresi:** Analizin toplam kaç saniye sürdüğü (`durationSeconds` ör. `267s`).
+     - **Zaman Damgası:** Analizin saat kaçta tetiklendiği ve nihai çıktının saat kaçta mühürlendiği (`startedAt ➔ completedAt` ör. `12:01 ➔ 12:05`).
+     - **Girdi Token ve Çıktı Token:** Modelin tükettiği girdi token (`promptTokens` / Girdi) ve ürettiği çıktı token (`completionTokens` / Çıktı, düşünce/CoT dahil) arayüzde ayrı ayrı ve net biçimde belirtilmelidir (ör. `Girdi: 39.1k | Çıktı: 20.4k`).
+
+2. **Veri ve Şema Bütünlüğü:**
+   - `scripts/run-analysis.js` üretilen her JSON çıktısında (`latest-report.json` ve `src/data/archive/YYYY-MM-DD.json`) `activeModel`, `durationSeconds`, `startedAt`, `completedAt` ve `tokenUsage` (`promptTokens`, `completionTokens`, `reasoningTokens`, `totalTokens`) alanlarını eksiksiz üretmek ve kaydetmek zorundadır.
+   - Sitedeki üst başlık rozetlerinde ve alt durum çubuğunda (status bar) bu veriler kullanıcıya anlık ve şeffaf bir şekilde yansıtılmalıdır.
+
