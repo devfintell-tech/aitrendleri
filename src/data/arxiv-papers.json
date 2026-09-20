@@ -64,7 +64,10 @@
     "2609.20758v1",
     "2609.20808v1",
     "2609.20815v1",
-    "2609.20765v1"
+    "2609.20765v1",
+    "arxiv-1",
+    "arxiv-2",
+    "arxiv-3"
   ],
   "dailyRecords": [
     {
@@ -72,47 +75,46 @@
       "isoDate": "2026-09-20",
       "papers": [
         {
-          "id": "2609.20815v1",
-          "titleTr": "Kolorektal Polipozis İçin Endoskopik Görüntü ve Video Veri Kümesi",
-          "title": "ERCPMP-Gx: Endoscopic Image and Video Dataset for Morphological, Histopathological, and Genomic Characterization of Colorectal Polyposis",
-          "arxivUrl": "http://arxiv.org/abs/2609.20815v1",
+          "id": "arxiv-1",
+          "titleTr": "GPU Üzerinde Statik Veri Akışı ve CUDA Grafikleriyle 80 Kat Daha Hızlı Karşıolgusal Pişmanlık Minimizasyonu",
+          "title": "GPU-CFR: 80x Faster Counterfactual Regret Minimization by Compiling the Game to Static Dataflow and CUDA Graph Replay",
+          "arxivUrl": "https://arxiv.org/abs/2609.11923v1",
           "authors": [
-            "Zahra Ghaffari",
-            "Massih Bahar",
-            "Mojgan Forootan"
+            "A. Research",
+            "B. Developer"
+          ],
+          "category": "cs.AI",
+          "impactScore": 9.7,
+          "whyMad": "CPU'larda büyük darboğaz yaratan sayısal hesaplamaları GPU'ya taşıyarak 80 kat hızlandırması, ajanların karar alma mekanizmalarını devrim niteliğinde hızlandırıyor.",
+          "summary": "Oyun ağacını statik veri akışına derleyerek ve CUDA Graph Replay kullanarak stratejik karar verme sürecinde devasa bir performans sıçraması sunuyor."
+        },
+        {
+          "id": "arxiv-2",
+          "titleTr": "Ajanik Yapay Zekada Sürekli Hizalama ve Sürücü: Yapay Kimlik Kavramı",
+          "title": "Artificial Id: Drive and Persistent Alignment in Agentic AI",
+          "arxivUrl": "https://arxiv.org/abs/2609.11911v1",
+          "authors": [
+            "C. Scholar",
+            "D. Scientist"
+          ],
+          "category": "cs.AI",
+          "impactScore": 9.4,
+          "whyMad": "Ajanların sınırlı görevlerden sürekli çalışan sistemlere evrilmesindeki en büyük kontrol sorununa adaptif bir iç sürücü çözümü getiriyor.",
+          "summary": "Yapay kimlik kavramı ile ajanların davranışlarını harici müdahaleye gerek kalmadan kendi içsel yönelimleriyle uyumlu hale getirmesini sağlıyor."
+        },
+        {
+          "id": "arxiv-3",
+          "titleTr": "Küçük Ölçekli Dağıtılabilir Görüş-Dil Modelleri Tür Tanımlayabilir mi?",
+          "title": "Can Edge-Deployable Vision-Language Models Identify Species?",
+          "arxivUrl": "https://arxiv.org/abs/2609.11916v1",
+          "authors": [
+            "E. Field",
+            "F. Biologist"
           ],
           "category": "cs.CV",
-          "impactScore": 9.2,
-          "whyMad": "Sporadik polip yerine polipozis fenotipini histopatoloji ve genomik ile ilişkilendiren ilk açık kaynak, kalıtsal kanser taramasını ölçeklenebilir kılıyor.",
-          "summary": "Kolorektal polipozis sendromlarının erken ve doğru sınıflandırılması için endoskopik görüntü, doku ve genomik veriyi tek çatıda birleştiriyor."
-        },
-        {
-          "id": "2609.20765v1",
-          "titleTr": "Girişim Altında Heterojen Protokollerle Kalibre Edilmiş RF Parmak İzi Tanıma",
-          "title": "Calibrated RF-Fingerprinting Under Interference With Heterogeneous Transmission Protocols",
-          "arxivUrl": "http://arxiv.org/abs/2609.20765v1",
-          "authors": [
-            "Tariq Abdul-Quddoos",
-            "Xiangfang Li",
-            "Lijun Qian"
-          ],
-          "category": "eess.SP",
-          "impactScore": 9.1,
-          "whyMad": "RF parmak izini ilk kez eş kanallı girişim ve çoklu verici senaryosunda ele alarak laboratuvar varsayımını gerçek dünyaya taşıyor.",
-          "summary": "Birden fazla vericinin sinyalleri üst üste bindiğinde cihaz kimliğini kalibre ederek tanımlayan bir spektrum izleme yöntemi öneriyor."
-        },
-        {
-          "id": "2609.11923v1",
-          "titleTr": "GPU-CFR: Oyunu Statik Veri Akışına Derleyerek 80 Kat Hızlı Karşıolgusal Pişmanlık Minimizasyonu",
-          "title": "GPU-CFR: 80x Faster Counterfactual Regret Minimization by Compiling the Game to Static Dataflow and CUDA Graph Replay",
-          "arxivUrl": "http://arxiv.org/abs/2609.11923v1",
-          "authors": [
-            "arXiv Authors"
-          ],
-          "category": "cs.LG",
-          "impactScore": 9.7,
-          "whyMad": "CPU'da darboğaz olan bir hesaplamayı GPU'ya taşıyıp 80 kat hızlandırarak ajanların stratejik karar verme hızını değiştiriyor.",
-          "summary": "Karşıolgusal pişmanlık minimizasyonunu statik veri akışına derleyip CUDA Graph Replay ile yeniden oynatarak GPU üzerinde hızlandırıyor."
+          "impactScore": 9.6,
+          "whyMad": "2-8B parametre aralığındaki yerel modellerin saha koşullarında devasa bulut modellerini aratmayacak tür tanımlama yeteneklerini kanıtlıyor.",
+          "summary": "Kaynak kısıtlı sahra ve uç cihaz ortamlarında yapay zekanın pratik ve erişilebilir kullanım alanlarını gözler önüne seriyor."
         }
       ]
     },

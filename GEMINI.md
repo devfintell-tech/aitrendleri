@@ -175,8 +175,9 @@ Bu belge, bu projenin tüm tasarım, veri mimarisi ve geliştirme standartların
    - Sistem Faz 1 (Tüm analiz) ve Faz 2 (Sabah İstihbaratı sentezi) olmak üzere iki LLM çağrısı gerçekleştirdiğinden, raporlanan ve kaydedilen nihai token verisi (`tokenUsage`) her iki çağrının matematiksel olarak BİREBİR TOPLAMI (`Faz 1 + Faz 2`) olmak zorundadır.
 
 5. **1. LLM ve 2. LLM Ayrı Telemetri Gösterimi (Üst Bar ve Alt Durum Çubuğu):**
-   - Sitenin üst başlık çubuğunda 1. LLM (Ana İstihbarat & Sıralama - `phase1TokenUsage`) ve 2. LLM (Sabah İstihbaratı Sentezi - `phase2TokenUsage`) bağımsız olarak, alt alta düzenli ve derli toplu bir panel içinde sunulur.
-   - Her iki LLM için hangi modelin kullanıldığı açıkça belirtilir (ör. `DeepSeek v4.1 Flash`).
+   - Sitenin üst başlık çubuğunda 1. LLM (`phase1TokenUsage`) ve 2. LLM (`phase2TokenUsage`) bağımsız olarak, alt alta ve sütun sütun tam milimetrik hizalı bir ızgara içinde sunulur.
+   - 'Ana İstihbarat' veya 'Sabah İstihbaratı' gibi yer kaplayan etiketler yerine doğrudan `1. LLM:` ve `2. LLM:` kullanılır.
+   - Her iki LLM için model adı, 'Girdi', 'Düşünce', 'Nihai' ve 'Toplam' metinleri ve sayıları üst ve alt satırda tam aynı yatay hizada (sütun sütun) yer alır.
    - Token metriklerinde G, D, N gibi tek harfli kısaltmalar kesinlikle KULLANILAMAZ; tam kelimelerle 'Girdi', 'Düşünce', 'Nihai' ve 'Toplam' yazılır.
    - Üst barda görsel kirlilik oluşturan gereksiz 'Canlı Akış' etiketi yer almaz; bilgi çubuğu derli toplu, jilet gibi hizalı ve okunabilir tutulur.
    - Geçmiş arşiv günlerinde veya telemetrinin henüz ayrı toplanmadığı tarihlerde, arayüz otomatik olarak tekil modele ve token rozetine geri döner (sıfır uydurma veri ilkesi).
@@ -207,6 +208,11 @@ Bu belge, bu projenin tüm tasarım, veri mimarisi ve geliştirme standartların
 5. **İki Aşamada Tek Model İlkesi (Unified Model Invariance):**
    - Faz 1 ve Faz 2 KESİNLİKLE BİREBİR AYNI MODEL ve sağlayıcı tarafından yürütülmelidir. Biri DeepSeek diğeri Gemini olamaz.
    - Faz 1'i hangi model başarıyla tamamladıysa, Faz 2 de tavizsiz olarak o modelle çalıştırılır. Model değişimi veya aşamalar arası çapraz model karmaşası KESİNLİKLE YASAKTIR.
+
+6. **Model Şelale Hiyerarşisi (DeepSeek ➔ Gemini 3.8 Flash ➔ Şelale Havuzu):**
+   - Analiz motorunda en başta 1. öncelik olarak DeepSeek (`deepseek-flash`, yedek `deepseek-v4-pro`) çağrılır.
+   - DeepSeek yanıt veremez veya anahtar tanımlanmamışsa 2. öncelik olarak Google Gemini 3.8 Flash (`gemini-3.8-flash` - 6'lı anahtar havuzu) devreye girer.
+   - Gemini 3.8 Flash da yanıt veremezse Gemini 3.7 ve alt modeller şelale yöntemiyle sırayla taranır.
 
 
 

@@ -167,13 +167,14 @@
       {
         "date": "20 Eylül 2026",
         "hypeScore": 9.1,
-        "sentimentScore": 63,
+        "sentimentScore": 88,
         "sentiment": "coşkulu",
-        "headline": "Tercih Savaşı",
-        "summary": "'Codex mi Claude mı Cursor mı' anketleri vibe coding topluluğunda yeniden alevlendi.",
+        "headline": "Yüksek Verim",
+        "summary": "Geliştiricilerin sıfırdan Three.js dünyaları ve özel portfolyolar oluşturma projelerini paylaşmasıyla editör pazarındaki yerini sağlamlaştırdı.",
         "sources": [
           "r/CursorAI",
-          "r/vibecoding"
+          "r/vibecoding",
+          "r/vscode"
         ]
       }
     ]
@@ -321,10 +322,10 @@
       {
         "date": "20 Eylül 2026",
         "hypeScore": 9.8,
-        "sentimentScore": 42,
+        "sentimentScore": 32,
         "sentiment": "coşkulu",
-        "headline": "Kriz Gündemi",
-        "summary": "Bir kullanıcının 48 bin dosyasının silinmesi ve 5 saatlik oturum limitlerinin 3 ajanla dakikalar içinde tükenmesi topluluğu ayağa kaldırdı.",
+        "headline": "Günün Lideri",
+        "summary": "65 günlük analizlerin Anthropic'in modelin düşünce bütçesini sessizce kıstığını ortaya koyması ve topluluğun token maliyetlerinden şikayet etmesiyle zirveye oturdu.",
         "sources": [
           "r/ClaudeAI",
           "r/ClaudeDev",
@@ -1220,13 +1221,14 @@
       },
       {
         "date": "20 Eylül 2026",
-        "hypeScore": 9.6,
-        "sentimentScore": 95,
+        "hypeScore": 8.9,
+        "sentimentScore": 96,
         "sentiment": "coşkulu",
-        "headline": "10M İndirme Eşiği",
-        "summary": "Optimize edilmiş kuantizasyon ve hızı nedeniyle yerel kullanıcıların birinci tercihi olmaya devam ediyor.",
+        "headline": "Yüksek İvme",
+        "summary": "10 milyon indirme eşiğini aşarak yerel donanımda en çok tercih edilen model paketleme formatı haline geldi.",
         "sources": [
-          "r/LocalLLaMA"
+          "r/LocalLLaMA",
+          "r/huggingface"
         ]
       }
     ]
@@ -1335,14 +1337,14 @@
       },
       {
         "date": "20 Eylül 2026",
-        "hypeScore": 7.7,
-        "sentimentScore": 90,
+        "hypeScore": 8.7,
+        "sentimentScore": 92,
         "sentiment": "coşkulu",
         "headline": "Video Lideri",
-        "summary": "Ultra hızlı video üretimiyle yerel medya iş akışlarında ivmesini koruyan açık model olarak öne çıkıyor.",
+        "summary": "Hugging Face üzerinde milyarlarca token ve yüksek indirme oranlarıyla medya üretim pipeline'larının vazgeçilmezi oldu.",
         "sources": [
-          "r/StableDiffusion",
-          "r/LocalLLaMA"
+          "r/artificial",
+          "r/huggingface"
         ]
       }
     ]
@@ -2523,13 +2525,14 @@
       },
       {
         "date": "20 Eylül 2026",
-        "hypeScore": 8.5,
+        "hypeScore": 7.5,
         "sentimentScore": 38,
         "sentiment": "coşkulu",
-        "headline": "Regresyon",
-        "summary": "Yeni güncelleme sohbet geçmişini sildi, maskotu ve sesli okumayı kaldırdı; kullanıcılar 'sıkıcı ve yavaş' diyor.",
+        "headline": "Eleştiriliyor",
+        "summary": "Yeni arayüz güncellemelerinde maskotun, renklerin ve sesli sohbet özelliklerinin kaldırılması kullanıcılar arasında hayal kırıklığı yarattı.",
         "sources": [
-          "r/Copilot"
+          "r/Copilot",
+          "r/vscode"
         ]
       }
     ]
@@ -2733,6 +2736,18 @@
         "summary": "Bir agent'ın (MoltFire) OpenClaw üzerinde çalışarak bir matematik rekoru kırması ve arXiv'de yayınlanması büyük ses getirdi.",
         "sources": [
           "r/vibecoding"
+        ]
+      },
+      {
+        "date": "20 Eylül 2026",
+        "hypeScore": 8,
+        "sentimentScore": 95,
+        "sentiment": "coşkulu",
+        "headline": "Açık Kaynak Gözdesi",
+        "summary": "Oracle Cloud ücretsiz katmanında sıfır maliyetle çalışan Telegram tabanlı çoklu ajan takımlarının kurulabilmesi büyük ilgi gördü.",
+        "sources": [
+          "r/OpenSourceAI",
+          "r/selfhosted"
         ]
       }
     ]
@@ -3400,6 +3415,18 @@
         "sources": [
           "r/vscode"
         ]
+      },
+      {
+        "date": "20 Eylül 2026",
+        "hypeScore": 8.3,
+        "sentimentScore": 50,
+        "sentiment": "eleştirel",
+        "headline": "Kararlılık Sorunu",
+        "summary": "Jupyter kernel çökme sorunları, telemetri ayarları zorlamaları ve tooltip titreme hataları geliştirici forumlarında yoğun şekilde tartışılıyor.",
+        "sources": [
+          "r/vscode",
+          "r/ClaudeDev"
+        ]
       }
     ]
   },
@@ -3873,13 +3900,15 @@
       },
       {
         "date": "20 Eylül 2026",
-        "hypeScore": 9.9,
+        "hypeScore": 9.6,
+        "sentimentScore": 94,
         "sentiment": "coşkulu",
-        "headline": "Son 12 Saat Patlaması",
-        "summary": "Tekil bir RTX 5090 üzerinde tam özellikli animasyonlar ve karmaşık kodlama görevlerini hatasız çalıştırmasıyla topluluktan tam not aldı.",
+        "headline": "Geliştirici Favorisi",
+        "summary": "Hugging Face ve yerel topluluklarda milyonlarca indirme ve erken erişim testleriyle açık kaynaklı modeller arasında en çok konuşulan ağırlık oldu.",
         "sources": [
           "r/LocalLLaMA",
-          "r/singularity"
+          "r/huggingface",
+          "r/OpenSourceAI"
         ]
       }
     ]
@@ -3941,14 +3970,15 @@
       },
       {
         "date": "20 Eylül 2026",
-        "hypeScore": 9.4,
-        "sentimentScore": 54,
+        "hypeScore": 9,
+        "sentimentScore": 41,
         "sentiment": "coşkulu",
-        "headline": "Kota Baskısı",
-        "summary": "Kullanıcılar 500M token'ı yakmadan limit aşmamak için orkestrasyon paketleri geliştiriyor; token verimliliği ana tartışma.",
+        "headline": "Limit Tepkisi",
+        "summary": "Kullanıcıların ilk haftalardaki verimlilikten sonra çok hızlı bir şekilde kullanım kotalarına takılması ve ek optimizasyon paketleri aramak zorunda kalması tartışılıyor.",
         "sources": [
-          "r/OpenAI",
-          "r/ChatGPTCoding"
+          "r/ChatGPTCoding",
+          "r/singularity",
+          "r/vibecoding"
         ]
       }
     ]
@@ -4381,13 +4411,13 @@
       {
         "date": "20 Eylül 2026",
         "hypeScore": 9.9,
-        "sentimentScore": 95,
+        "sentimentScore": 97,
         "sentiment": "coşkulu",
         "headline": "Haftanın Lideri",
-        "summary": "Hugging Face'te 7M+ indirmeyle açık kaynak yerel model şampiyonluğunu sürdürüyor.",
+        "summary": "Haft boyunca hem Hugging Face indirme rekorları kırdı hem de yerel topluluklarda en çok fine-tune edilen model oldu.",
         "sources": [
           "r/LocalLLaMA",
-          "r/singularity"
+          "r/huggingface"
         ]
       }
     ]
@@ -4399,10 +4429,10 @@
       {
         "date": "20 Eylül 2026",
         "hypeScore": 9.5,
-        "sentimentScore": 50,
-        "sentiment": "coşkulu",
+        "sentimentScore": 35,
+        "sentiment": "düşüş",
         "headline": "Eleştiriliyor",
-        "summary": "Haftanın ikinci yarısında hem geliştirici favorisi hem limit krizinin merkezi oldu.",
+        "summary": "Düşünce bütçesindeki gizli kısıntılar ve token tüketim maliyetleri haftanın en çok tartışılan geliştirici krizi oldu.",
         "sources": [
           "r/ClaudeAI",
           "r/ClaudeDev"
@@ -4452,10 +4482,10 @@
       {
         "date": "20 Eylül 2026",
         "hypeScore": 9.1,
-        "sentimentScore": 93,
+        "sentimentScore": 95,
         "sentiment": "coşkulu",
         "headline": "Yerel Şampiyon",
-        "summary": "10M indirme eşiğini aşarak yerel çıkarımda standart haline geldi.",
+        "summary": "10 milyon indirme barajını aşarak yerel donanım kullanıcılarının standart aracı haline geldi.",
         "sources": [
           "r/LocalLLaMA"
         ]
@@ -4469,13 +4499,12 @@
       {
         "date": "20 Eylül 2026",
         "hypeScore": 9,
-        "sentimentScore": 64,
-        "sentiment": "eleştirel",
+        "sentimentScore": 75,
+        "sentiment": "stabil",
         "headline": "Kararsız",
-        "summary": "Hafta boyunca Codex ve Claude karşısında 'tercih savaşı'nın merkezinde kaldı.",
+        "summary": "Bellek yönetimi ve abonelik planları hakkındaki tartışmalar sürerken yaratıcı projelerde vazgeçilmezliğini koruyor.",
         "sources": [
-          "r/CursorAI",
-          "r/vibecoding"
+          "r/CursorAI"
         ]
       }
     ]
@@ -4487,13 +4516,13 @@
       {
         "date": "20 Eylül 2026",
         "hypeScore": 8.8,
-        "sentimentScore": 90,
+        "sentimentScore": 93,
         "sentiment": "coşkulu",
         "headline": "Video Lideri",
-        "summary": "4M+ indirmeyle açık video üretiminin en çok tercih edilen modeli olmayı sürdürüyor.",
+        "summary": "Medya üretim topluluklarında video oluşturma hız kalitesiyle haftalık trendlerde üst sıralarda yer aldı.",
         "sources": [
-          "r/StableDiffusion",
-          "r/MachineLearning"
+          "r/artificial",
+          "r/huggingface"
         ]
       }
     ]
@@ -4505,13 +4534,13 @@
       {
         "date": "20 Eylül 2026",
         "hypeScore": 8.7,
-        "sentimentScore": 92,
+        "sentimentScore": 96,
         "sentiment": "coşkulu",
         "headline": "Açık Kaynak Gözdesi",
-        "summary": "Hafta boyunca yeni açık kaynak altyapı projelerinin başında geldi.",
+        "summary": "Çoklu LLM sağlayıcıları arasında maliyeti düşüren yönlendirme algoritmasıyla geliştiricilerden tam not aldı.",
         "sources": [
-          "r/LocalLLaMA",
-          "r/devops"
+          "r/OpenSourceAI",
+          "r/selfhosted"
         ]
       }
     ]
@@ -4523,13 +4552,12 @@
       {
         "date": "20 Eylül 2026",
         "hypeScore": 8.5,
-        "sentimentScore": 88,
+        "sentimentScore": 91,
         "sentiment": "coşkulu",
         "headline": "Kurumsal Favori",
-        "summary": "Kurumsal ajan dağıtımında güvenilir ve self-host edilebilir çözüm olarak öne çıkıyor.",
+        "summary": "Kurumsal şirketlerin kendi sunucularında otonom iş akışları kurması için en çok tercih edilen platform oldu.",
         "sources": [
-          "r/n8n",
-          "r/devops"
+          "r/selfhosted"
         ]
       }
     ]
@@ -4541,13 +4569,67 @@
       {
         "date": "20 Eylül 2026",
         "hypeScore": 8.3,
-        "sentimentScore": 86,
+        "sentimentScore": 89,
         "sentiment": "coşkulu",
         "headline": "Donanım Sıçraması",
-        "summary": "Blender karşılaştırmalarında Nvidia'nın tüketici GPU'larına yaklaşması haftanın donanım haberi.",
+        "summary": "Büyük yerel modellerin Apple silikon üzerinde çalıştırılmasındaki rolüyle donanım gündemini meşgul etti.",
         "sources": [
-          "r/hardware",
-          "r/MachineLearning"
+          "r/LocalLLaMA",
+          "r/singularity"
+        ]
+      }
+    ]
+  },
+  "ollama": {
+    "name": "Ollama",
+    "category": "Altyapı & SDK",
+    "history": [
+      {
+        "date": "20 Eylül 2026",
+        "hypeScore": 8.5,
+        "sentimentScore": 45,
+        "sentiment": "düşüş",
+        "headline": "Destek Sorunu",
+        "summary": "Kullanıcıların destek biletlerinin haftalarca yanıtlanmaması ve vizyon modellerinin araç çağrılarında oturumları çökertmesi yönündeki şikayetler öne çıkıyor.",
+        "sources": [
+          "r/ollama",
+          "r/LocalLLaMA"
+        ]
+      }
+    ]
+  },
+  "deepseek-v4-flash": {
+    "name": "DeepSeek V4.1 Flash",
+    "category": "Yerel Model",
+    "history": [
+      {
+        "date": "20 Eylül 2026",
+        "hypeScore": 8.2,
+        "sentimentScore": 85,
+        "sentiment": "coşkulu",
+        "headline": "Hızlı Çıkarım",
+        "summary": "Açık kaynak platformlarda kodlama değerlendirmeleri ve çoklu ortam görevlerindeki verimliliğiyle popülaritesini koruyor.",
+        "sources": [
+          "r/OpenSourceAI",
+          "r/LocalLLaMA"
+        ]
+      }
+    ]
+  },
+  "flux-1-dev": {
+    "name": "FLUX.1 dev",
+    "category": "Medya / Üretim",
+    "history": [
+      {
+        "date": "20 Eylül 2026",
+        "hypeScore": 7.8,
+        "sentimentScore": 94,
+        "sentiment": "coşkulu",
+        "headline": "Görsel Lideri",
+        "summary": "Hugging Face üzerinde istikrarlı indirme oranları ve ComfyUI entegrasyonlarıyla görsel üretim ekosisteminin temel taşı olmaya devam ediyor.",
+        "sources": [
+          "r/StableDiffusion",
+          "r/comfyui"
         ]
       }
     ]

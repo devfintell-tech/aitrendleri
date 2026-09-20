@@ -1,11 +1,11 @@
 ================================================================================
 🤖 AITRENDLERI.COM OTONOM TARAMA VE ANALİZ TERMİNAL RAPORU
-Tarih: 20 Eylül 2026 | İşlem Süresi: 257s
+Tarih: 20 Eylül 2026 | İşlem Süresi: 835s
 ================================================================================
 
 [1. MODEL & ŞELALE AKTİVİTESİ]
-  ✔ Aktif Çalışan Model : DeepSeek v4.1 Flash (deepseek-flash)
-  ✔ Seçilen API Anahtarı : DEEPSEEK_API_KEY
+  ✔ Aktif Çalışan Model : gemini-3.5-flash-lite
+  ✔ Seçilen API Anahtarı : GEMINI_API_KEY ##6
   ✔ Yürütme Durumu       : BAŞARILI (HTTP 200 OK)
 
 [2. 50 REDDIT TOPLULUĞU TARAMA TELEMETRİSİ]
@@ -13,29 +13,29 @@ Tarih: 20 Eylül 2026 | İşlem Süresi: 257s
   ✔ Başarılı Kategori / Batch   : 3 / 7
   ------------------------------------------------------------------------------
   1. [🟢 OK 200] Vibe Coding & Yeni Nesil Editörler: 15 gönderi
-     └─ Dağılım: r/ClaudeAI: 1, r/vibecoding: 3, r/Copilot: 1, r/ChatGPTCoding: 2, r/vscode: 5, r/CursorAI: 2, r/ClaudeDev: 1
+     └─ Dağılım: r/ClaudeAI: 2, r/vibecoding: 3, r/Copilot: 1, r/ChatGPTCoding: 2, r/CursorAI: 1, r/vscode: 5, r/ClaudeDev: 1
   2. [🔴 ERR 429] Otonom Ajanlar & Süreç Otomasyonu: 0 gönderi
      └─ Hata/Uyarı: Reddit HTTP 429 (Rate Limit)
-  3. [🟢 OK 200] Büyük Dil Modelleri & Araştırma Devleri: 15 gönderi
-     └─ Dağılım: r/singularity: 1, r/OpenAI: 1, r/ArtificialInteligence: 2, r/MachineLearning: 1, r/DeepSeek: 5, r/Anthropic: 4, r/GoogleGemini: 1
-  4. [🔴 ERR 429] Açık Kaynak, Yerel Modeller & Self-Hosted: 0 gönderi
+  3. [🔴 ERR 429] Büyük Dil Modelleri & Araştırma Devleri: 0 gönderi
      └─ Hata/Uyarı: Reddit HTTP 429 (Rate Limit)
+  4. [🟢 OK 200] Açık Kaynak, Yerel Modeller & Self-Hosted: 15 gönderi
+     └─ Dağılım: r/LocalLLaMA: 2, r/selfhosted: 3, r/MistralAI: 2, r/ollama: 1, r/OpenSourceAI: 3, r/huggingface: 2, r/Vllm: 2
   5. [🔴 ERR 429] Yazılım Geliştirici, API & Kodlama Dünyası: 0 gönderi
      └─ Hata/Uyarı: Reddit HTTP 429 (Rate Limit)
-  6. [🟢 OK 200] Donanım, GPU, CPU & Bulut Altyapısı: 15 gönderi
-     └─ Dağılım: r/hardware: 1, r/sysadmin: 4, r/AMD_Stock: 3, r/devops: 2, r/nvidia: 2, r/googlecloud: 1, r/Cloud: 2
-  7. [🔴 ERR 429] Görsel, Video & Medya Üretimi: 0 gönderi
+  6. [🔴 ERR 429] Donanım, GPU, CPU & Bulut Altyapısı: 0 gönderi
      └─ Hata/Uyarı: Reddit HTTP 429 (Rate Limit)
+  7. [🟢 OK 200] Görsel, Video & Medya Üretimi: 15 gönderi
+     └─ Dağılım: r/StableDiffusion: 3, r/comfyui: 1, r/midjourney: 7, r/artificial: 2, r/runwayml: 1, r/SORA: 1
 
 [3. SUBREDDİT VERİTABANI İÇGÖRÜLERİ (src/data/subreddit-stats.json)]
   ✔ Toplam Takip Edilen Subreddit : 49
   ✔ Yüksek Sinyal Verenler        : 19
-  ✔ Aktif Düzenli Kaynaklar       : 10
-  ✔ Düşük Sinyal / Takiptekiler   : 20
+  ✔ Aktif Düzenli Kaynaklar       : 18
+  ✔ Düşük Sinyal / Takiptekiler   : 12
   ✔ Sıfır Çekenler (Dead Sub)     : 0
   ------------------------------------------------------------------------------
-  🏆 En Çok Katkı Sağlayanlar: r/vscode (42), r/ClaudeAI (41), r/vibecoding (40), r/ChatGPTCoding (37), r/CursorAI (34)
-  ⚠️ Düşük Sinyal Verenler   : r/copilot, r/CrewAI, r/agenticai, r/Singularity, r/LocalLLaMA, r/ollama, r/vllm, r/huggingface, r/OpenSourceAI, r/MistralAI, r/selfhosted, r/AI_Tools, r/GenerativeAI, r/GoogleCloud, r/ComfyUI, r/StableDiffusion, r/Midjourney, r/Sora, r/RunwayML, r/artificial
+  🏆 En Çok Katkı Sağlayanlar: r/vscode (47), r/vibecoding (43), r/ClaudeAI (43), r/ChatGPTCoding (39), r/CursorAI (35)
+  ⚠️ Düşük Sinyal Verenler   : r/copilot, r/CrewAI, r/agenticai, r/Singularity, r/vllm, r/AI_Tools, r/GenerativeAI, r/GoogleCloud, r/ComfyUI, r/Midjourney, r/Sora, r/RunwayML
   🚫 Değiştirilmesi Önerilen : Yok (Tümü veri sağlıyor)
 
 [4. DİĞER VERİ KAYNAKLARI]
@@ -45,7 +45,7 @@ Tarih: 20 Eylül 2026 | İşlem Süresi: 257s
   ✔ GitHub Radar        : 6 repo
 
 [5. GÜNÜN ORGANİK 1 NUMARALI LİDERİ]
-  👑 Claude Code (Skor: 99/100 - Kriz Gündemi)
-  📝 Neden Seçildi: Bir kullanıcının 48 bin dosyasının silinmesi ve 5 saatlik oturum limitlerinin 3 ajanla dakikalar içinde tükenmesi topluluğu ayağa kaldırdı.
+  👑 Claude Code (Skor: 99/100 - Günün Lideri)
+  📝 Neden Seçildi: 65 günlük analizlerin Anthropic'in modelin düşünce bütçesini sessizce kıstığını ortaya koyması ve topluluğun token maliyetlerinden şikayet etmesiyle zirveye oturdu.
 
 ================================================================================

@@ -1256,56 +1256,51 @@ ${bulletsText}
 
                 return (
                   <div className="hidden lg:flex items-center gap-2">
-                    {/* İki LLM Alt Alta Kutusu */}
-                    <div className="flex flex-col gap-1 bg-[#0c592d] border border-emerald-400/30 px-2.5 py-1 rounded text-[11px] font-mono text-emerald-100 shadow-xs">
-                      {/* 1. LLM */}
-                      <div 
-                        className="flex items-center gap-2"
-                        title={`1. LLM (Ana İstihbarat & Sıralama - ${model1Name}):\n• Girdi (Prompt): ${p1.promptTokens?.toLocaleString()} token\n• Düşünce (CoT Reasoning): ${(p1.reasoningTokens || 0)?.toLocaleString()} token\n• Nihai Çıktı: ${p1FinalVal?.toLocaleString()} token\n• Toplam: ${p1.totalTokens?.toLocaleString()} token`}
-                      >
-                        <span className="font-bold text-emerald-300 flex items-center gap-1">
-                          <Zap className="w-3 h-3 text-emerald-300 flex-shrink-0" />
-                          1. LLM (Ana İstihbarat):
-                        </span>
-                        <span className="bg-[#094723] text-white px-1.5 py-0.2 rounded font-semibold text-[10.5px] border border-emerald-400/20">
-                          {model1Name}
-                        </span>
-                        <span className="text-emerald-400/40">|</span>
-                        <span>Girdi: <strong className="text-emerald-200">{p1PromptK}k</strong></span>
-                        <span className="text-emerald-400/40">|</span>
-                        <span>Düşünce: <strong className="text-purple-300">{p1ReasoningK}k</strong></span>
-                        <span className="text-emerald-400/40">|</span>
-                        <span>Nihai: <strong className="text-yellow-300">{p1FinalK}k</strong></span>
-                        <span className="text-emerald-400/40">|</span>
-                        <span>Toplam: <strong className="text-white">{p1TotalK}k</strong></span>
-                      </div>
+                    {/* İki LLM Alt Alta ve Sütun Sütun Tam Hizalı Izgara */}
+                    <div 
+                      className="grid grid-cols-[auto_auto_auto_auto_auto_auto_auto_auto_auto_auto] items-center gap-x-2 gap-y-1 bg-[#0c592d] border border-emerald-400/30 px-3 py-1.5 rounded text-[11px] font-mono text-emerald-100 shadow-xs"
+                      title={`1. LLM (${model1Name}): Girdi: ${p1.promptTokens?.toLocaleString()} | Düşünce: ${(p1.reasoningTokens || 0)?.toLocaleString()} | Nihai: ${p1FinalVal?.toLocaleString()} | Toplam: ${p1.totalTokens?.toLocaleString()}\n2. LLM (${model2Name}): Girdi: ${p2.promptTokens?.toLocaleString()} | Düşünce: ${(p2.reasoningTokens || 0)?.toLocaleString()} | Nihai: ${p2FinalVal?.toLocaleString()} | Toplam: ${p2.totalTokens?.toLocaleString()}`}
+                    >
+                      {/* SATIR 1: 1. LLM */}
+                      <span className="font-bold text-emerald-300 flex items-center gap-1 whitespace-nowrap">
+                        <Zap className="w-3 h-3 text-emerald-300 flex-shrink-0" />
+                        1. LLM:
+                      </span>
+                      <span className="bg-[#094723] text-white px-1.5 py-0.2 rounded font-semibold text-[10.5px] border border-emerald-400/20 whitespace-nowrap text-center">
+                        {model1Name}
+                      </span>
+                      <span className="text-emerald-400/40">|</span>
+                      <span className="whitespace-nowrap">Girdi: <strong className="text-emerald-200 font-bold">{p1PromptK}k</strong></span>
+                      <span className="text-emerald-400/40">|</span>
+                      <span className="whitespace-nowrap">Düşünce: <strong className="text-purple-300 font-bold">{p1ReasoningK}k</strong></span>
+                      <span className="text-emerald-400/40">|</span>
+                      <span className="whitespace-nowrap">Nihai: <strong className="text-yellow-300 font-bold">{p1FinalK}k</strong></span>
+                      <span className="text-emerald-400/40">|</span>
+                      <span className="whitespace-nowrap">Toplam: <strong className="text-white font-bold">{p1TotalK}k</strong></span>
 
-                      {/* 2. LLM */}
-                      <div 
-                        className="flex items-center gap-2 border-t border-emerald-400/20 pt-1"
-                        title={`2. LLM (Sabah İstihbaratı Sentezi - ${model2Name}):\n• Girdi (Prompt): ${p2.promptTokens?.toLocaleString()} token\n• Düşünce (CoT Reasoning): ${(p2.reasoningTokens || 0)?.toLocaleString()} token\n• Nihai Çıktı: ${p2FinalVal?.toLocaleString()} token\n• Toplam: ${p2.totalTokens?.toLocaleString()} token`}
-                      >
-                        <span className="font-bold text-cyan-300 flex items-center gap-1">
-                          <Zap className="w-3 h-3 text-cyan-300 flex-shrink-0" />
-                          2. LLM (Sabah İstihbaratı):
-                        </span>
-                        <span className="bg-[#094723] text-white px-1.5 py-0.2 rounded font-semibold text-[10.5px] border border-emerald-400/20">
+                      {/* SATIR 2: 2. LLM (Milimetrik Hizalı) */}
+                      <span className="font-bold text-cyan-300 flex items-center gap-1 whitespace-nowrap border-t border-emerald-400/20 pt-1">
+                        <Zap className="w-3 h-3 text-cyan-300 flex-shrink-0" />
+                        2. LLM:
+                      </span>
+                      <div className="border-t border-emerald-400/20 pt-1">
+                        <span className="bg-[#094723] text-white px-1.5 py-0.2 rounded font-semibold text-[10.5px] border border-emerald-400/20 whitespace-nowrap text-center inline-block w-full">
                           {model2Name}
                         </span>
-                        <span className="text-emerald-400/40">|</span>
-                        <span>Girdi: <strong className="text-emerald-200">{p2PromptK}k</strong></span>
-                        <span className="text-emerald-400/40">|</span>
-                        <span>Düşünce: <strong className="text-purple-300">{p2ReasoningK}k</strong></span>
-                        <span className="text-emerald-400/40">|</span>
-                        <span>Nihai: <strong className="text-yellow-300">{p2FinalK}k</strong></span>
-                        <span className="text-emerald-400/40">|</span>
-                        <span>Toplam: <strong className="text-white">{p2TotalK}k</strong></span>
                       </div>
+                      <span className="text-emerald-400/40 border-t border-emerald-400/20 pt-1">|</span>
+                      <span className="whitespace-nowrap border-t border-emerald-400/20 pt-1">Girdi: <strong className="text-emerald-200 font-bold">{p2PromptK}k</strong></span>
+                      <span className="text-emerald-400/40 border-t border-emerald-400/20 pt-1">|</span>
+                      <span className="whitespace-nowrap border-t border-emerald-400/20 pt-1">Düşünce: <strong className="text-purple-300 font-bold">{p2ReasoningK}k</strong></span>
+                      <span className="text-emerald-400/40 border-t border-emerald-400/20 pt-1">|</span>
+                      <span className="whitespace-nowrap border-t border-emerald-400/20 pt-1">Nihai: <strong className="text-yellow-300 font-bold">{p2FinalK}k</strong></span>
+                      <span className="text-emerald-400/40 border-t border-emerald-400/20 pt-1">|</span>
+                      <span className="whitespace-nowrap border-t border-emerald-400/20 pt-1">Toplam: <strong className="text-white font-bold">{p2TotalK}k</strong></span>
                     </div>
 
                     {/* Bileşik Toplam Rozeti */}
                     <div 
-                      className="hidden xl:flex flex-col justify-center items-center bg-[#094723] border border-emerald-400/40 px-2.5 py-1 rounded font-mono shadow-xs text-center cursor-help"
+                      className="hidden xl:flex flex-col justify-center items-center bg-[#094723] border border-emerald-400/40 px-2.5 py-1.5 rounded font-mono shadow-xs text-center cursor-help"
                       title={`Bileşik Token Toplamı (1. LLM + 2. LLM):\n• Girdi: ${tu?.promptTokens?.toLocaleString()} token\n• Düşünce: ${tu?.reasoningTokens?.toLocaleString()} token\n• Nihai Çıktı: ${tu?.finalTokens?.toLocaleString()} token\n• Toplam: ${tu?.totalTokens?.toLocaleString()} token`}
                     >
                       <span className="text-yellow-300 font-bold text-[9.5px] uppercase">Bileşik Toplam</span>

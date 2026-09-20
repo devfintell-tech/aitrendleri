@@ -36,7 +36,7 @@ const GEMINI_API_KEYS = [
   process.env.GEMINI_API_KEY_4
 ].filter(Boolean);
 
-// 🥈 2. ÖNCELİK: DeepSeek v4.1 Flash & Pro API Anahtarı
+// 🥇 1. ÖNCELİK: DeepSeek v4.1 Flash & Pro API Anahtarı
 const DEEPSEEK_API_KEY = process.env.DEEPSEEK_API_KEY;
 
 const parser = new XMLParser({
@@ -604,8 +604,8 @@ async function callGemini(model, apiKey, prompt) {
 
 /**
  * ŞELALE SİSTEMİ:
- * 🥇 1. ÖNCELİK: Google Gemini 3.8 Flash (6'lı Rotasyonlu Anahtar Havuzu)
- * 🥈 2. ÖNCELİK: DeepSeek v4.1 Flash & Pro
+ * 🥇 1. ÖNCELİK: DeepSeek v4.1 Flash & Pro (deepseek-flash, deepseek-v4-pro)
+ * 🥈 2. ÖNCELİK: Google Gemini 3.8 Flash (6'lı Rotasyonlu Anahtar Havuzu)
  * 🥉 3. ÖNCELİK: Google Gemini 3.7 ve aşağı şelale havuzu
  */
 async function generateWithWaterfall(prompt, validatorFn = null) {
@@ -614,38 +614,7 @@ async function generateWithWaterfall(prompt, validatorFn = null) {
     Array.isArray(result.daily) && result.daily.length >= 6
   ));
 
-  // 🥇 1. ÖNCELİK: Gemini 3.8 Flash (6'lı Rotasyonlu Anahtar Havuzu)
-  const PRIMARY_GEMINI_MODEL = "gemini-3.8-flash";
-  for (let i = 0; i < GEMINI_API_KEYS.length; i++) {
-    const apiKey = GEMINI_API_KEYS[i];
-    const keySnippet = apiKey.substring(0, 8) + "..." + apiKey.slice(-4);
-    console.log(`🚀 [1. ÖNCELİK - Baş Motor] Deneniyor: Model [${PRIMARY_GEMINI_MODEL}] | API Anahtarı #${i + 1} (${keySnippet})...`);
-
-    try {
-      const { parsed: result, tokenUsage } = await callGemini(PRIMARY_GEMINI_MODEL, apiKey, prompt);
-      const isRichResponse = isValid(result);
-      if (isRichResponse) {
-        const info = Array.isArray(result.daily) ? `${result.daily.length} ürün` : "sentez şeması";
-        console.log(`🎯 MÜKEMMEL BAŞARI! Model [${PRIMARY_GEMINI_MODEL}] (Anahtar #${i + 1}) ile ${info} işlendi.`);
-        return { 
-          data: result, 
-          provider: "gemini",
-          modelName: PRIMARY_GEMINI_MODEL,
-          apiKey: apiKey,
-          modelUsed: PRIMARY_GEMINI_MODEL, 
-          keyIndex: i + 1, 
-          tokenUsage 
-        };
-      } else {
-        console.warn(`⚠️ [${PRIMARY_GEMINI_MODEL}] (Anahtar #${i + 1}) beklenen şemayı karşılamadı. Sıradaki deneniyor...`);
-      }
-    } catch (err) {
-      console.warn(`⚠️ [${PRIMARY_GEMINI_MODEL}] (Anahtar #${i + 1}) başarısız: ${err.message.substring(0, 100)}... Sıradaki deneniyor.`);
-    }
-  }
-
-  // 🥈 2. ÖNCELİK: DeepSeek v4.1 Flash (deepseek-flash - https://api-docs.deepseek.com)
-  // Kullanıcı Kuralı: Gemini 3.8 Flash çalışmazsa 2. model DeepSeek v4.1 Flash (deepseek-flash) olmalıdır.
+  // 🥇 1. ÖNCELİK: DeepSeek v4.1 Flash (deepseek-flash - https://api-docs.deepseek.com)
   if (DEEPSEEK_API_KEY) {
     const DEEPSEEK_MODELS = [
       "deepseek-flash",    // DeepSeek V4.1 Flash (Resmi API Model Adı)
@@ -653,7 +622,7 @@ async function generateWithWaterfall(prompt, validatorFn = null) {
     ];
 
     for (const model of DEEPSEEK_MODELS) {
-      console.log(`🚀 [2. ÖNCELİK - DeepSeek v4.1] Deneniyor: Model [${model}]...`);
+      console.log(`🚀 [1. ÖNCELİK - DeepSeek] Deneniyor: Model [${model}]...`);
       try {
         const { parsed: result, tokenUsage } = await callDeepSeek(model, DEEPSEEK_API_KEY, prompt);
         const isRichResponse = isValid(result);
@@ -677,7 +646,37 @@ async function generateWithWaterfall(prompt, validatorFn = null) {
       }
     }
   } else {
-    console.warn("⚠️ DEEPSEEK_API_KEY tanımlanmamış, DeepSeek v4.1 adımı atlanıyor.");
+    console.warn("⚠️ DEEPSEEK_API_KEY tanımlanmamış, DeepSeek adımı atlanıyor.");
+  }
+
+  // 🥈 2. ÖNCELİK: Google Gemini 3.8 Flash (6'lı Rotasyonlu Anahtar Havuzu)
+  const PRIMARY_GEMINI_MODEL = "gemini-3.8-flash";
+  for (let i = 0; i < GEMINI_API_KEYS.length; i++) {
+    const apiKey = GEMINI_API_KEYS[i];
+    const keySnippet = apiKey.substring(0, 8) + "..." + apiKey.slice(-4);
+    console.log(`🚀 [2. ÖNCELİK - Gemini 3.8 Flash] Deneniyor: Model [${PRIMARY_GEMINI_MODEL}] | API Anahtarı #${i + 1} (${keySnippet})...`);
+
+    try {
+      const { parsed: result, tokenUsage } = await callGemini(PRIMARY_GEMINI_MODEL, apiKey, prompt);
+      const isRichResponse = isValid(result);
+      if (isRichResponse) {
+        const info = Array.isArray(result.daily) ? `${result.daily.length} ürün` : "sentez şeması";
+        console.log(`🎯 MÜKEMMEL BAŞARI! Model [${PRIMARY_GEMINI_MODEL}] (Anahtar #${i + 1}) ile ${info} işlendi.`);
+        return { 
+          data: result, 
+          provider: "gemini",
+          modelName: PRIMARY_GEMINI_MODEL,
+          apiKey: apiKey,
+          modelUsed: PRIMARY_GEMINI_MODEL, 
+          keyIndex: i + 1, 
+          tokenUsage 
+        };
+      } else {
+        console.warn(`⚠️ [${PRIMARY_GEMINI_MODEL}] (Anahtar #${i + 1}) beklenen şemayı karşılamadı. Sıradaki deneniyor...`);
+      }
+    } catch (err) {
+      console.warn(`⚠️ [${PRIMARY_GEMINI_MODEL}] (Anahtar #${i + 1}) başarısız: ${err.message.substring(0, 100)}... Sıradaki deneniyor.`);
+    }
   }
 
   // 🥉 3. ÖNCELİK: Google Gemini 3.7 ve aşağı şelale havuzu
