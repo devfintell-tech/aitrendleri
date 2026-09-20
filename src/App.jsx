@@ -977,8 +977,8 @@ export default function App() {
       tokenUsage: raw.tokenUsage,
       phase1TokenUsage: raw.phase1TokenUsage || null,
       phase2TokenUsage: raw.phase2TokenUsage || null,
-      totalPostsAnalyzed: raw.totalPostsAnalyzed || 45,
-      totalTweetsAnalyzed: raw.totalTweetsAnalyzed || 100,
+      totalPostsAnalyzed: typeof raw.totalPostsAnalyzed === 'number' && raw.totalPostsAnalyzed > 0 ? raw.totalPostsAnalyzed : null,
+      totalTweetsAnalyzed: typeof raw.totalTweetsAnalyzed === 'number' && raw.totalTweetsAnalyzed > 0 ? raw.totalTweetsAnalyzed : null,
       daily: raw.daily,
       weekly: raw.weekly,
       monthly: raw.monthly,
@@ -1471,31 +1471,50 @@ ${bulletsText}
                       <span className="text-xs font-black text-white">{totalK}k</span>
                     </div>
 
-                    {/* Veri Kaynağı Hacim Rozetleri (Reddit & X Twitter - Bileşik Toplam'ın Sağında, : : Tam Hizalı) */}
-                    <div 
-                      className="flex flex-col justify-between py-1 px-2.5 bg-[#0c592d] border border-emerald-400/30 rounded text-[11px] font-mono shadow-xs h-[50px]"
-                      title={`Taranan Veri Havuzu:\n• Reddit: ${report.totalPostsAnalyzed || 45} gönderi ve tartışma\n• X (Twitter): ${report.totalTweetsAnalyzed || 100} tweet`}
-                    >
-                      {/* SATIR 1: Reddit (1. LLM ile tam aynı yatay hizada) */}
-                      <div className="grid grid-cols-[14px_44px_6px_auto] items-center gap-x-1 leading-none pt-0.5">
-                        <div className="flex items-center justify-center">
-                          <span className="w-2 h-2 rounded-full bg-orange-500 shrink-0"></span>
-                        </div>
-                        <span className="text-emerald-100 font-semibold">Reddit</span>
-                        <span className="text-emerald-300 font-bold text-center">:</span>
-                        <strong className="text-white font-bold">{report.totalPostsAnalyzed || 45}</strong>
-                      </div>
+                    {/* Veri Kaynağı Hacim Rozetleri (Reddit & X Twitter - Yalnızca gerçek veri varsa gösterilir) */}
+                    {(report.totalPostsAnalyzed || report.totalTweetsAnalyzed) && (
+                      <div 
+                        className="flex flex-col justify-between py-1 px-2.5 bg-[#0c592d] border border-emerald-400/30 rounded text-[11px] font-mono shadow-xs h-[50px]"
+                        title={`Taranan Veri Havuzu:${report.totalPostsAnalyzed ? `\n• Reddit: ${report.totalPostsAnalyzed} gönderi ve tartışma` : ''}${report.totalTweetsAnalyzed ? `\n• X (Twitter): ${report.totalTweetsAnalyzed} tweet` : ''}`}
+                      >
+                        {/* SATIR 1: Reddit (1. LLM ile tam aynı yatay hizada) */}
+                        {report.totalPostsAnalyzed ? (
+                          <div className="grid grid-cols-[14px_44px_6px_auto] items-center gap-x-1 leading-none pt-0.5">
+                            <div className="flex items-center justify-center">
+                              <span className="w-2 h-2 rounded-full bg-orange-500 shrink-0"></span>
+                            </div>
+                            <span className="text-emerald-100 font-semibold">Reddit</span>
+                            <span className="text-emerald-300 font-bold text-center">:</span>
+                            <strong className="text-white font-bold">{report.totalPostsAnalyzed}</strong>
+                          </div>
+                        ) : (
+                          <div className="grid grid-cols-[14px_44px_6px_auto] items-center gap-x-1 leading-none pt-0.5">
+                            <div className="flex items-center justify-center">
+                              <span className="w-3 h-3 bg-black text-white text-[8px] font-black flex items-center justify-center rounded-xs shrink-0">𝕏</span>
+                            </div>
+                            <span className="text-emerald-200 font-semibold">X</span>
+                            <span className="text-emerald-300 font-bold text-center">:</span>
+                            <strong className="text-white font-bold">{report.totalTweetsAnalyzed}</strong>
+                          </div>
+                        )}
 
-                      {/* SATIR 2: X (Twitter) (2. LLM ile tam aynı yatay hizada, : : alt alta milimetrik hizalı) */}
-                      <div className="grid grid-cols-[14px_44px_6px_auto] items-center gap-x-1 border-t border-emerald-400/20 pt-1 leading-none text-[10.5px]">
-                        <div className="flex items-center justify-center">
-                          <span className="w-3 h-3 bg-black text-white text-[8px] font-black flex items-center justify-center rounded-xs shrink-0">𝕏</span>
-                        </div>
-                        <span className="text-emerald-200 font-semibold">X</span>
-                        <span className="text-emerald-300 font-bold text-center">:</span>
-                        <strong className="text-white font-bold">{report.totalTweetsAnalyzed || 100}</strong>
+                        {/* SATIR 2: X (Twitter) varsa gösterilir; geçmişte X verisi yoksa asla sallama veri gösterilmez */}
+                        {report.totalPostsAnalyzed && report.totalTweetsAnalyzed ? (
+                          <div className="grid grid-cols-[14px_44px_6px_auto] items-center gap-x-1 border-t border-emerald-400/20 pt-1 leading-none text-[10.5px]">
+                            <div className="flex items-center justify-center">
+                              <span className="w-3 h-3 bg-black text-white text-[8px] font-black flex items-center justify-center rounded-xs shrink-0">𝕏</span>
+                            </div>
+                            <span className="text-emerald-200 font-semibold">X</span>
+                            <span className="text-emerald-300 font-bold text-center">:</span>
+                            <strong className="text-white font-bold">{report.totalTweetsAnalyzed}</strong>
+                          </div>
+                        ) : (
+                          <div className="border-t border-emerald-400/20 pt-1 leading-none text-[10px] text-emerald-300/70 whitespace-nowrap">
+                            {report.totalPostsAnalyzed ? 'Tartışma Havuzu' : 'Tweet Havuzu'}
+                          </div>
+                        )}
                       </div>
-                    </div>
+                    )}
                   </div>
                 );
               }
@@ -1536,27 +1555,47 @@ ${bulletsText}
                       </div>
                     </div>
                   )}
-                  <div 
-                    className="flex flex-col justify-between py-1 px-2.5 bg-[#0c592d] border border-emerald-400/30 rounded text-[11px] font-mono shadow-xs h-[50px]"
-                    title={`Taranan Veri Havuzu:\n• Reddit: ${report.totalPostsAnalyzed || 45} gönderi ve tartışma\n• X (Twitter): ${report.totalTweetsAnalyzed || 100} tweet`}
-                  >
-                    <div className="grid grid-cols-[14px_44px_6px_auto] items-center gap-x-1 leading-none pt-0.5">
-                      <div className="flex items-center justify-center">
-                        <span className="w-2 h-2 rounded-full bg-orange-500 shrink-0"></span>
-                      </div>
-                      <span className="text-emerald-100 font-semibold">Reddit</span>
-                      <span className="text-emerald-300 font-bold text-center">:</span>
-                      <strong className="text-white font-bold">{report.totalPostsAnalyzed || 45}</strong>
+                  {(report.totalPostsAnalyzed || report.totalTweetsAnalyzed) && (
+                    <div 
+                      className="flex flex-col justify-between py-1 px-2.5 bg-[#0c592d] border border-emerald-400/30 rounded text-[11px] font-mono shadow-xs h-[50px]"
+                      title={`Taranan Veri Havuzu:${report.totalPostsAnalyzed ? `\n• Reddit: ${report.totalPostsAnalyzed} gönderi ve tartışma` : ''}${report.totalTweetsAnalyzed ? `\n• X (Twitter): ${report.totalTweetsAnalyzed} tweet` : ''}`}
+                    >
+                      {report.totalPostsAnalyzed ? (
+                        <div className="grid grid-cols-[14px_44px_6px_auto] items-center gap-x-1 leading-none pt-0.5">
+                          <div className="flex items-center justify-center">
+                            <span className="w-2 h-2 rounded-full bg-orange-500 shrink-0"></span>
+                          </div>
+                          <span className="text-emerald-100 font-semibold">Reddit</span>
+                          <span className="text-emerald-300 font-bold text-center">:</span>
+                          <strong className="text-white font-bold">{report.totalPostsAnalyzed}</strong>
+                        </div>
+                      ) : (
+                        <div className="grid grid-cols-[14px_44px_6px_auto] items-center gap-x-1 leading-none pt-0.5">
+                          <div className="flex items-center justify-center">
+                            <span className="w-3 h-3 bg-black text-white text-[8px] font-black flex items-center justify-center rounded-xs shrink-0">𝕏</span>
+                          </div>
+                          <span className="text-emerald-200 font-semibold">X</span>
+                          <span className="text-emerald-300 font-bold text-center">:</span>
+                          <strong className="text-white font-bold">{report.totalTweetsAnalyzed}</strong>
+                        </div>
+                      )}
+
+                      {report.totalPostsAnalyzed && report.totalTweetsAnalyzed ? (
+                        <div className="grid grid-cols-[14px_44px_6px_auto] items-center gap-x-1 border-t border-emerald-400/20 pt-1 leading-none text-[10.5px]">
+                          <div className="flex items-center justify-center">
+                            <span className="w-3 h-3 bg-black text-white text-[8px] font-black flex items-center justify-center rounded-xs shrink-0">𝕏</span>
+                          </div>
+                          <span className="text-emerald-200 font-semibold">X</span>
+                          <span className="text-emerald-300 font-bold text-center">:</span>
+                          <strong className="text-white font-bold">{report.totalTweetsAnalyzed}</strong>
+                        </div>
+                      ) : (
+                        <div className="border-t border-emerald-400/20 pt-1 leading-none text-[10px] text-emerald-300/70 whitespace-nowrap">
+                          {report.totalPostsAnalyzed ? 'Tartışma Havuzu' : 'Tweet Havuzu'}
+                        </div>
+                      )}
                     </div>
-                    <div className="grid grid-cols-[14px_44px_6px_auto] items-center gap-x-1 border-t border-emerald-400/20 pt-1 leading-none text-[10.5px]">
-                      <div className="flex items-center justify-center">
-                        <span className="w-3 h-3 bg-black text-white text-[8px] font-black flex items-center justify-center rounded-xs shrink-0">𝕏</span>
-                      </div>
-                      <span className="text-emerald-200 font-semibold">X</span>
-                      <span className="text-emerald-300 font-bold text-center">:</span>
-                      <strong className="text-white font-bold">{report.totalTweetsAnalyzed || 100}</strong>
-                    </div>
-                  </div>
+                  )}
                 </div>
               );
             })()}
@@ -1736,28 +1775,34 @@ ${bulletsText}
                 </div>
               )}
 
-              {/* 3. Taranan Veri Havuzu */}
-              <div className="bg-[#f8fafc] border border-slate-200 rounded p-3 space-y-2">
-                <span className="font-bold text-[11px] text-slate-800 uppercase block">
-                  📊 Taranan Veri Havuzu
-                </span>
-                <div className="grid grid-cols-2 gap-2 text-xs">
-                  <div className="bg-white p-2 rounded border border-slate-200 flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-orange-500 shrink-0"></span>
-                    <div>
-                      <span className="text-[10px] text-slate-500 block">Reddit:</span>
-                      <strong className="text-slate-900">{telemetryData.totalPostsAnalyzed || 45} Gönderi</strong>
-                    </div>
-                  </div>
-                  <div className="bg-white p-2 rounded border border-slate-200 flex items-center gap-2">
-                    <span className="w-3.5 h-3.5 bg-black text-white text-[9px] font-black flex items-center justify-center rounded-xs shrink-0">𝕏</span>
-                    <div>
-                      <span className="text-[10px] text-slate-500 block">X (Twitter):</span>
-                      <strong className="text-slate-900">{telemetryData.totalTweetsAnalyzed || 100} Tweet</strong>
-                    </div>
+              {/* 3. Taranan Veri Havuzu (Yalnızca gerçek veri varsa gösterilir) */}
+              {(telemetryData.totalPostsAnalyzed || telemetryData.totalTweetsAnalyzed) && (
+                <div className="bg-[#f8fafc] border border-slate-200 rounded p-3 space-y-2">
+                  <span className="font-bold text-[11px] text-slate-800 uppercase block">
+                    📊 Taranan Veri Havuzu
+                  </span>
+                  <div className={`grid ${telemetryData.totalPostsAnalyzed && telemetryData.totalTweetsAnalyzed ? 'grid-cols-2' : 'grid-cols-1'} gap-2 text-xs`}>
+                    {telemetryData.totalPostsAnalyzed && (
+                      <div className="bg-white p-2 rounded border border-slate-200 flex items-center gap-2">
+                        <span className="w-2.5 h-2.5 rounded-full bg-orange-500 shrink-0"></span>
+                        <div>
+                          <span className="text-[10px] text-slate-500 block">Reddit:</span>
+                          <strong className="text-slate-900">{telemetryData.totalPostsAnalyzed} Gönderi</strong>
+                        </div>
+                      </div>
+                    )}
+                    {telemetryData.totalTweetsAnalyzed && (
+                      <div className="bg-white p-2 rounded border border-slate-200 flex items-center gap-2">
+                        <span className="w-3.5 h-3.5 bg-black text-white text-[9px] font-black flex items-center justify-center rounded-xs shrink-0">𝕏</span>
+                        <div>
+                          <span className="text-[10px] text-slate-500 block">X (Twitter):</span>
+                          <strong className="text-slate-900">{telemetryData.totalTweetsAnalyzed} Tweet</strong>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
-              </div>
+              )}
 
             </div>
 
