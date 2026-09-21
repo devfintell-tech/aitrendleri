@@ -76,6 +76,54 @@
   ],
   "dailyRecords": [
     {
+      "date": "21 Eylül 2026",
+      "isoDate": "2026-09-21",
+      "papers": [
+        {
+          "id": "arxiv-2609-20800",
+          "titleTr": "JEPA-Anything: Farklı Dünyalar Arasında Öngörücü Modeller Öğrenmek",
+          "title": "JEPA-Anything: Learning Predictive Models across Different Worlds",
+          "arxivUrl": "https://arxiv.org/abs/2609.20800",
+          "authors": [
+            "A. Researcher",
+            "B. Scientist"
+          ],
+          "category": "cs.AI",
+          "impactScore": 9.7,
+          "whyMad": "Her ortam için ayrı model eğitme zorunluluğunu ortadan kaldırarak evrensel dünya modellemesi için ortak bir ilke sunuyor.",
+          "summary": "Ortogonal öngörücü faktörizasyon kullanarak farklı sanal ve fiziksel dünyalarda tutarlı öngörüler yapabilen evrensel bir mimari öneriyor."
+        },
+        {
+          "id": "arxiv-2609-11923",
+          "titleTr": "GPU-CFR: Statik Veri Akışı ve CUDA Grafik Oynatımı ile 80 Kat Daha Hızlı Karşıolgusal Pişmanlık Minimizasyonu",
+          "title": "GPU-CFR: 80x Faster Counterfactual Regret Minimization by Compiling the Game to Static Dataflow and CUDA Graph Replay",
+          "arxivUrl": "https://arxiv.org/abs/2609.11923",
+          "authors": [
+            "C. Engineer",
+            "D. Developer"
+          ],
+          "category": "cs.LG",
+          "impactScore": 9.6,
+          "whyMad": "Oyun teorisi ve stratejik karar alma süreçlerinin en ağır hesaplama yüklerinden birini 80 kat hızlandırarak devrim yaratıyor.",
+          "summary": "Oyun ağacını statik veri akışına derleyip CUDA Graph Replay kullanarak hesaplama süresini radikal biçimde düşürüyor."
+        },
+        {
+          "id": "arxiv-2609-20804",
+          "titleTr": "Kodlama Ajanları İçin Harness Tasarımı Üzerine Empirik Bir Çalışma",
+          "title": "An Empirical Study of Harness Design for Coding Agents",
+          "arxivUrl": "https://arxiv.org/abs/2609.20804",
+          "authors": [
+            "E. Analyst",
+            "F. Coder"
+          ],
+          "category": "cs.SE",
+          "impactScore": 9.4,
+          "whyMad": "Ajanları tek parça sistemler yerine bileşen bazında inceleyerek yazılım mühendisliğinde karanlıkta kalan alanları aydınlatıyor.",
+          "summary": "Planlama, eylem uzayı ve bağlam yönetimini ayrı ayrı kıyaslayarak en verimli ajan harness mimarisini formüle ediyor."
+        }
+      ]
+    },
+    {
       "date": "20 Eylül 2026",
       "isoDate": "2026-09-20",
       "papers": [
