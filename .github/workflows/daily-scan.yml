@@ -12,6 +12,8 @@ jobs:
     timeout-minutes: 25
     permissions:
       contents: write # Repoya commit & push izni
+    env:
+      TZ: 'Europe/Istanbul'
 
     steps:
       - name: Kodu Çek
@@ -28,9 +30,10 @@ jobs:
       - name: Bağımlılıkları Yükle
         run: npm ci || npm install
 
-      - name: 50 Reddit Sub Taraması & DeepSeek / Gemini Şelale Analizi
+      - name: 50 Reddit Sub Taranası & DeepSeek / Gemini Şelale Analizi
         env:
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}
           GEMINI_API_KEY_3: ${{ secrets.GEMINI_API_KEY_3 }}

@@ -1113,7 +1113,7 @@ async function main() {
   if (fs.existsSync(latestReportPath) && !process.env.FORCE_RUN && !process.argv.includes('--force')) {
     try {
       const existing = JSON.parse(fs.readFileSync(latestReportPath, "utf-8"));
-      const todayIso = new Date().toISOString().split("T")[0];
+      const todayIso = new Date().toLocaleDateString("en-CA", { timeZone: "Europe/Istanbul" });
       const fileMtime = fs.statSync(latestReportPath).mtimeMs;
       const hoursSinceModified = (Date.now() - fileMtime) / (1000 * 60 * 60);
       if (existing.isoDate === todayIso && hoursSinceModified < 4) {
@@ -1125,7 +1125,7 @@ async function main() {
 
   console.log("🚀 Canlı Yapay Zeka İstihbarat Radarı (Reddit + Google Search Teyidi + HF + ArXiv) Başlatılıyor...");
   const startTime = Date.now();
-  const startedAt = new Date(startTime).toLocaleTimeString("tr-TR", { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+  const startedAt = new Date(startTime).toLocaleTimeString("tr-TR", { timeZone: "Europe/Istanbul", hour: '2-digit', minute: '2-digit', second: '2-digit' });
 
   // 1. REDDIT GÜNLÜK SICAK VE EN TAZE FLAŞ GÖNDERİLERİ TOPLA
   let allDiscussions = "";
@@ -1554,14 +1554,15 @@ async function main() {
     mergedTokenUsage = phase2TokenUsage;
   }
 
-  const completedAt = new Date().toLocaleTimeString("tr-TR", { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+  const completedAt = new Date().toLocaleTimeString("tr-TR", { timeZone: "Europe/Istanbul", hour: '2-digit', minute: '2-digit', second: '2-digit' });
   const duration = Math.round((Date.now() - startTime) / 1000);
   const dateStr = new Date().toLocaleDateString("tr-TR", {
+    timeZone: "Europe/Istanbul",
     day: "numeric",
     month: "long",
     year: "numeric"
   });
-  const isoDate = new Date().toISOString().split("T")[0]; // örn. "2026-09-05"
+  const isoDate = new Date().toLocaleDateString("en-CA", { timeZone: "Europe/Istanbul" }); // örn. "2026-09-05" (TSİ garantili)
 
   const finalOutput = {
     date: dateStr,

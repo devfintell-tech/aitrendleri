@@ -1647,9 +1647,9 @@ ${bulletsText}
                         {report.startedAt && report.completedAt ? (
                           <div 
                             className="flex items-center gap-1 text-emerald-200 font-medium whitespace-nowrap border-t border-emerald-400/20 pt-1 leading-none text-[10.5px]"
-                            title={`Tetiklenme Saati: ${report.startedAt} | Nihai Çıktı Saati: ${report.completedAt}`}
+                            title={`Tetiklenme Saati: ${report.startedAt} (TSİ) | Nihai Çıktı Saati: ${report.completedAt} (TSİ)`}
                           >
-                            <span className="text-emerald-300 font-bold">Saat:</span>
+                            <span className="text-emerald-300 font-bold">TSİ:</span>
                             <span>{report.startedAt.slice(0, 5)} ➔ {report.completedAt.slice(0, 5)}</span>
                           </div>
                         ) : (
@@ -1929,7 +1929,7 @@ ${bulletsText}
                     </strong>
                   </div>
                   <div className="bg-white p-2 rounded border border-slate-200/80">
-                    <span className="text-[10px] text-slate-500 block">Tetiklenme &amp; Çıktı:</span>
+                    <span className="text-[10px] text-slate-500 block">Tetiklenme &amp; Çıktı (TSİ):</span>
                     <strong className="text-slate-800 text-xs">
                       {telemetryData.startedAt && telemetryData.completedAt 
                         ? `${telemetryData.startedAt.slice(0, 5)} ➔ ${telemetryData.completedAt.slice(0, 5)}`
@@ -3782,7 +3782,7 @@ ${bulletsText}
           {typeof report.durationSeconds === 'number' && report.durationSeconds > 0 && (
             <span className="hidden md:inline text-slate-500">
               | SÜRE: <strong className="text-slate-800">{report.durationSeconds}s</strong>
-              {report.startedAt && report.completedAt ? ` (${report.startedAt.slice(0, 5)} ➔ ${report.completedAt.slice(0, 5)})` : ''}
+              {report.startedAt && report.completedAt ? ` (${report.startedAt.slice(0, 5)} ➔ ${report.completedAt.slice(0, 5)} TSİ)` : ''}
             </span>
           )}
         </div>
