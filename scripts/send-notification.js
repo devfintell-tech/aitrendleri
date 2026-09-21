@@ -291,7 +291,7 @@ Tarih: ${dateStr} | İşlem Süresi: ${duration}s
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          from: "AI Trendleri <onboarding@resend.dev>",
+          from: "AI Trendleri <bulten@aitrendleri.com>",
           to: RECIPIENT_EMAILS.split(',').map(e => e.trim()),
           subject: emailSubject,
           html: emailHtml
