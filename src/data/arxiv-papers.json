@@ -72,9 +72,63 @@
     "arxiv-2609-11923",
     "arxiv-2609-11916",
     "arxiv-2609-11911",
-    "arxiv-2609-20804"
+    "arxiv-2609-20804",
+    "arxiv-2609-22086",
+    "arxiv-2609-22068",
+    "arxiv-2609-22067"
   ],
   "dailyRecords": [
+    {
+      "date": "22 Eylül 2026",
+      "isoDate": "2026-09-22",
+      "papers": [
+        {
+          "id": "arxiv-2609-22086",
+          "titleTr": "Designer-RSI: Ajan Tabanlı Grafik Tasarımda Kullanıcı Trafiğinden Prosedürel Bellek Evrimi",
+          "title": "Designer-RSI: Evolving Procedural Memory from User Traffic for Agentic Graphic Design",
+          "arxivUrl": "http://arxiv.org/abs/2609.22086v1",
+          "authors": [
+            "Hongyang Du",
+            "Lan Yan",
+            "Christian Flores"
+          ],
+          "category": "cs.AI",
+          "impactScore": 9.5,
+          "whyMad": "Sonucu programatik olarak doğrulanamayan yaratıcı işlerde, donmuş bir modeli 230+ araçla çalıştırıp dış prosedürel bellek biriktirmenin işe yaradığını gösteriyor.",
+          "summary": "Profesyonel tasarım yazılımını araç çağrılarıyla kullanan ajan, doğal dilde biriken yeniden kullanılabilir tasarım prosedürlerini deneyimden damıtarak sürekli uyum sağlıyor."
+        },
+        {
+          "id": "arxiv-2609-22068",
+          "titleTr": "CodeMidas: Kodun Kendisinden Ajan Tabanlı Kodlama RL Ortamlarını Ölçekleme",
+          "title": "CodeMidas: Scaling Agentic Coding RL Environments from Code Itself",
+          "arxivUrl": "http://arxiv.org/abs/2609.22068v1",
+          "authors": [
+            "Bowen Ye",
+            "Lei Li",
+            "Shicheng Li"
+          ],
+          "category": "cs.SE",
+          "impactScore": 9.4,
+          "whyMad": "Issue ve commit artefaktlarına bağımlı kalan mevcut yöntemlerin darboğazını kırıp doğrudan kaynak kodundan doğrulanabilir RL ortamı üretiyor.",
+          "summary": "Mevcut kod tabanlarındaki gerçekleştirilmiş işlevleri, çalıştırılabilir pekiştirmeli öğrenme ortamlarına dönüştüren ajanik bir üretim hattı sunuyor."
+        },
+        {
+          "id": "arxiv-2609-22067",
+          "titleTr": "Günlük AI Ajan Kullanımında Değere Duyarlı Yetki Devri: OpenClaw Kanıtı",
+          "title": "Value-Sensitive Delegation in Everyday AI Agent Use: Evidence from OpenClaw",
+          "arxivUrl": "http://arxiv.org/abs/2609.22067v1",
+          "authors": [
+            "Renkai Ma",
+            "Ruyuan Wan",
+            "Xuan Lu"
+          ],
+          "category": "cs.HC",
+          "impactScore": 9.3,
+          "whyMad": "Görev tamamlama oranı yerine insanların gerçekten önemsediği değerleri ölçerek ajan değerlendirmesine ezber bozan bir eksen ekliyor.",
+          "summary": "73 bin birinci şahıs Reddit gönderisi analiz edilerek otonom, güvenilir, uygun maliyetli, sınırlı erişim, denetlenebilir ve eşit erişim gibi altı değer grubu çıkarılıyor."
+        }
+      ]
+    },
     {
       "date": "21 Eylül 2026",
       "isoDate": "2026-09-21",

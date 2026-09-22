@@ -190,6 +190,19 @@
           "r/ChatGPTCoding",
           "r/webdev"
         ]
+      },
+      {
+        "date": "22 Eylül 2026",
+        "hypeScore": 8.9,
+        "sentimentScore": 54,
+        "sentiment": "eleştirel",
+        "headline": "Kararsız",
+        "summary": "Oturumlar arası bağlam taşıma sorunu ve sürekli context limitine takılma şikayetleri öne çıkıyor; kullanıcılar kendi handoff CLI'larını yazmaya başladı.",
+        "sources": [
+          "r/CursorAI",
+          "r/vibecoding",
+          "r/ChatGPTCoding"
+        ]
       }
     ]
   },
@@ -357,6 +370,19 @@
           "r/ClaudeAI",
           "r/ClaudeDev",
           "r/vibecoding"
+        ]
+      },
+      {
+        "date": "22 Eylül 2026",
+        "hypeScore": 9.9,
+        "sentimentScore": 41,
+        "sentiment": "düşüş",
+        "headline": "Eleştiriliyor",
+        "summary": "Kurumsal ekiplerin spec, test ve PR süreçlerini tamamen Claude Code'a devrettiği itirafları ve 'kimse kodu okumuyor' şikayetleri topluluğu sardı; ajanın tuhaf halüsinasyonları güven tartışmasını büyüttü.",
+        "sources": [
+          "r/vibecoding",
+          "r/ClaudeDev",
+          "r/ClaudeAI"
         ]
       }
     ]
@@ -1409,6 +1435,18 @@
           "r/generativeAI",
           "r/ai_tools"
         ]
+      },
+      {
+        "date": "22 Eylül 2026",
+        "hypeScore": 8.2,
+        "sentimentScore": 80,
+        "sentiment": "coşkulu",
+        "headline": "Video Lideri",
+        "summary": "CrossView-Warp LoRA'sı ile sahneyi farklı kamera açılarından yeniden üretme yeteneği ve haftalık haber derlemeleri videonun lideri konumunu koruyor.",
+        "sources": [
+          "r/comfyui",
+          "r/StableDiffusion"
+        ]
       }
     ]
   },
@@ -1591,6 +1629,19 @@
           "r/LocalLLaMA",
           "r/singularity",
           "r/datascience"
+        ]
+      },
+      {
+        "date": "22 Eylül 2026",
+        "hypeScore": 9.3,
+        "sentimentScore": 93,
+        "sentiment": "coşkulu",
+        "headline": "Yerel Şampiyon",
+        "summary": "Hugging Face'te 7 milyon indirmeyi geçmesi ve GGUF türevlerinin tekrar tekrar paketlenmesi, topluluğun yerel şampiyon ilan ettiği modeli yeniden zirveye taşıdı.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/huggingface",
+          "r/ollama"
         ]
       }
     ]
@@ -2634,6 +2685,19 @@
           "r/Copilot",
           "r/vscode"
         ]
+      },
+      {
+        "date": "22 Eylül 2026",
+        "hypeScore": 8.7,
+        "sentimentScore": 26,
+        "sentiment": "coşkulu",
+        "headline": "Regresyon Tepkisi",
+        "summary": "Yeniden tasarım sonrası modelin 'lobotomiye uğradığı' ve silinen sohbetlerin yeni öneriler olarak geri geldiği şikayetleri r/Copilot'ta isyan seviyesine çıktı.",
+        "sources": [
+          "r/Copilot",
+          "r/ChatGPTCoding",
+          "r/vscode"
+        ]
       }
     ]
   },
@@ -2933,6 +2997,18 @@
         "sources": [
           "r/LocalLLaMA",
           "r/DeepSeek"
+        ]
+      },
+      {
+        "date": "22 Eylül 2026",
+        "hypeScore": 8.1,
+        "sentimentScore": 64,
+        "sentiment": "coşkulu",
+        "headline": "Kesinti Sorunu",
+        "summary": "Hugging Face trendlerinde tekrar yükselirken kullanıcılar erişim kesintileri ve kararsız hizmet kalitesinden şikayet ediyor.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/huggingface"
         ]
       }
     ]
@@ -3849,6 +3925,18 @@
         "sources": [
           "r/nvidia",
           "r/LocalLLaMA"
+        ]
+      },
+      {
+        "date": "22 Eylül 2026",
+        "hypeScore": 8.5,
+        "sentimentScore": 47,
+        "sentiment": "düşüş",
+        "headline": "Fiyat Tepkisi",
+        "summary": "Bellek ve GPU fiyatlarının yükselmesi LocalLLaMA'da 'artık kendi donanımımı toplayamam' serzenişine dönüştü; kart hâlâ referans ama erişilebilirlik eleştiriliyor.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/selfhosted"
         ]
       }
     ]
@@ -4804,6 +4892,19 @@
           "r/LocalLLaMA",
           "r/selfhosted"
         ]
+      },
+      {
+        "date": "22 Eylül 2026",
+        "hypeScore": 8.3,
+        "sentimentScore": 90,
+        "sentiment": "coşkulu",
+        "headline": "Yüksek Verim",
+        "summary": "Self-hosted AI workspace kurulum rehberleri ve mini PC tabanlı homelab paylaşımları arttıkça Ollama 'giriş kapısı' olarak övülmeye devam ediyor.",
+        "sources": [
+          "r/ollama",
+          "r/selfhosted",
+          "r/LocalLLaMA"
+        ]
       }
     ]
   },
@@ -4890,6 +4991,18 @@
         "sentiment": "coşkulu",
         "headline": "Yüksek Verim",
         "summary": "Açık ağırlıklı olması ve 7B mimaride sunduğu yüksek sadakatli düzenleme yetenekleri ile Stable Diffusion kullanıcılarını etkiledi.",
+        "sources": [
+          "r/StableDiffusion",
+          "r/comfyui"
+        ]
+      },
+      {
+        "date": "22 Eylül 2026",
+        "hypeScore": 8.9,
+        "sentimentScore": 88,
+        "sentiment": "coşkulu",
+        "headline": "Görsel Favorisi",
+        "summary": "PoseStudio LoRA'sı, sampler/scheduler karşılaştırma testleri ve 6GB VRAM'de upscaler denemeleri topluluğu tamamen bu modelin etrafında topladı.",
         "sources": [
           "r/StableDiffusion",
           "r/comfyui"
@@ -5105,6 +5218,282 @@
           "r/LLMDevs",
           "r/programming",
           "r/datascience"
+        ]
+      }
+    ]
+  },
+  "glm-5-3": {
+    "name": "GLM-5.3",
+    "category": "Yerel Model",
+    "history": [
+      {
+        "date": "22 Eylül 2026",
+        "hypeScore": 8.4,
+        "sentimentScore": 82,
+        "sentiment": "coşkulu",
+        "headline": "Topluluk Favorisi",
+        "summary": "Mistral Vibe Code içinde Pro, Team ve Enterprise katmanlarına 1M token bağlamla eklenmesi hem kurumsal hem yerel kampa aynı gün haber oldu.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/MistralAI",
+          "r/ChatGPTCoding"
+        ]
+      }
+    ]
+  },
+  "mistral-vibe-code": {
+    "name": "Mistral Vibe Code",
+    "category": "CLI / Terminal",
+    "history": [
+      {
+        "date": "22 Eylül 2026",
+        "hypeScore": 8,
+        "sentimentScore": 78,
+        "sentiment": "coşkulu",
+        "headline": "Yeni Entegrasyon",
+        "summary": "GLM-5.3'ü 1M token bağlam ve cömert kullanım limitiyle sunması, Avrupa veri egemenliği arayan ekiplerin radarına soktu.",
+        "sources": [
+          "r/ChatGPTCoding",
+          "r/MistralAI"
+        ]
+      }
+    ]
+  },
+  "sora-2": {
+    "name": "Sora 2",
+    "category": "Medya / Üretim",
+    "history": [
+      {
+        "date": "22 Eylül 2026",
+        "hypeScore": 7.9,
+        "sentimentScore": 70,
+        "sentiment": "stabil",
+        "headline": "Veda Turu",
+        "summary": "Sora2videosharing topluluğu 35 dakikalık derleme veda videoları paylaşıp 'hâlâ kral sensin' mesajlarıyla gündemi tutuyor.",
+        "sources": [
+          "r/SORA",
+          "r/artificial"
+        ]
+      }
+    ]
+  },
+  "supra2-img": {
+    "name": "Supra2-IMG",
+    "category": "Medya / Üretim",
+    "history": [
+      {
+        "date": "22 Eylül 2026",
+        "hypeScore": 7.9,
+        "sentimentScore": 91,
+        "sentiment": "coşkulu",
+        "headline": "Ezber Bozan",
+        "summary": "CPU'da yaklaşık 20 saniyede görsel üretebilmesi ve cherry-pick yapılmamış örnekleriyle küçük modellerin hâlâ sürpriz yapabildiğini kanıtladı.",
+        "sources": [
+          "r/StableDiffusion",
+          "r/comfyui"
+        ]
+      }
+    ]
+  },
+  "swe-2": {
+    "name": "SWE-2",
+    "category": "Otonom Agent",
+    "history": [
+      {
+        "date": "22 Eylül 2026",
+        "hypeScore": 7.6,
+        "sentimentScore": 85,
+        "sentiment": "coşkulu",
+        "headline": "Ücretsiz Dönem",
+        "summary": "8 Ekim'e kadar ücretsiz açılması r/windsurf'te deneme dalgası yarattı; ancak haftalık zirveden geri çekildiği için hype düşüşte.",
+        "sources": [
+          "r/windsurf"
+        ]
+      }
+    ]
+  },
+  "w-qwen3-8-27b": {
+    "name": "Qwen 3.8 27B",
+    "category": "Yerel Model",
+    "history": [
+      {
+        "date": "22 Eylül 2026",
+        "hypeScore": 9.9,
+        "sentimentScore": 94,
+        "sentiment": "coşkulu",
+        "headline": "Haftanın Lideri",
+        "summary": "Hafta boyunca GGUF türevleri ve kuantizasyon varyantlarıyla gündemde kaldı; yerel toplulukta fiili standart haline geldi.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/huggingface",
+          "r/ollama"
+        ]
+      }
+    ]
+  },
+  "w-claude-code": {
+    "name": "Claude Code",
+    "category": "CLI / Terminal",
+    "history": [
+      {
+        "date": "22 Eylül 2026",
+        "hypeScore": 9.8,
+        "sentimentScore": 48,
+        "sentiment": "düşüş",
+        "headline": "Eleştiriliyor",
+        "summary": "Haftanın en çok konuşulan aracı olmayı sürdürdü; ancak kullanım limiti, maliyet ve kurumsal kör kabul tartışmaları beğeniyi aşağı çekiyor.",
+        "sources": [
+          "r/vibecoding",
+          "r/ClaudeDev",
+          "r/ClaudeAI"
+        ]
+      }
+    ]
+  },
+  "w-gpt-6-astra": {
+    "name": "GPT-6 Astra",
+    "category": "LLM (Model)",
+    "history": [
+      {
+        "date": "22 Eylül 2026",
+        "hypeScore": 9.4,
+        "sentimentScore": 62,
+        "sentiment": "coşkulu",
+        "headline": "Kota Baskısı",
+        "summary": "PokeBench'te 246 turla en hızlı gym rozetini alması ve açık kaynak oyun denemeleriyle kıyaslanması haftanın referansı yaptı.",
+        "sources": [
+          "r/OpenSourceAI",
+          "r/singularity",
+          "r/ChatGPTCoding"
+        ]
+      }
+    ]
+  },
+  "w-cursor": {
+    "name": "Cursor",
+    "category": "IDE / Editör",
+    "history": [
+      {
+        "date": "22 Eylül 2026",
+        "hypeScore": 8.8,
+        "sentimentScore": 55,
+        "sentiment": "eleştirel",
+        "headline": "Kararsız",
+        "summary": "Bağlam yönetimi, planlı değişiklikler ve RAM/kaynak tüketimi tartışmaları hafta boyunca sürdü; topluluk kararsız kaldı.",
+        "sources": [
+          "r/CursorAI",
+          "r/vibecoding",
+          "r/vscode"
+        ]
+      }
+    ]
+  },
+  "w-ollama": {
+    "name": "Ollama",
+    "category": "Altyapı & SDK",
+    "history": [
+      {
+        "date": "22 Eylül 2026",
+        "hypeScore": 8.6,
+        "sentimentScore": 90,
+        "sentiment": "coşkulu",
+        "headline": "Yüksek Verim",
+        "summary": "Tek komutla kurulan self-hosted AI çalışma alanları ve homelab rehberleri sayesinde istikrarlı bir favori olmayı korudu.",
+        "sources": [
+          "r/ollama",
+          "r/selfhosted",
+          "r/LocalLLaMA"
+        ]
+      }
+    ]
+  },
+  "w-unsloth-qwen": {
+    "name": "Unsloth Qwen 3.8 27B GGUF",
+    "category": "Yerel Model",
+    "history": [
+      {
+        "date": "22 Eylül 2026",
+        "hypeScore": 8.6,
+        "sentimentScore": 88,
+        "sentiment": "coşkulu",
+        "headline": "10M İndirme Eşiği",
+        "summary": "Düşük VRAM'de yüksek verim vaadi ve indirme sayısının eşik aşması yerel kampın en pratik çözümü olarak öne çıkarıyor.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/ollama"
+        ]
+      }
+    ]
+  },
+  "w-n8n": {
+    "name": "n8n AI Orchestrator",
+    "category": "Otomasyon",
+    "history": [
+      {
+        "date": "22 Eylül 2026",
+        "hypeScore": 8.5,
+        "sentimentScore": 89,
+        "sentiment": "coşkulu",
+        "headline": "Kurumsal Favori",
+        "summary": "Self-hosted kurulum güvenilirliği ve yedekleme/DR senaryolarıyla kurumsal ekiplerin standart tercihi olmayı sürdürüyor.",
+        "sources": [
+          "r/selfhosted",
+          "r/OpenSourceAI",
+          "r/n8n"
+        ]
+      }
+    ]
+  },
+  "w-routed": {
+    "name": "Routed",
+    "category": "Altyapı & SDK",
+    "history": [
+      {
+        "date": "22 Eylül 2026",
+        "hypeScore": 8.3,
+        "sentimentScore": 91,
+        "sentiment": "coşkulu",
+        "headline": "Açık Kaynak Gözdesi",
+        "summary": "Maliyet-fayda dengesi arayan geliştiricilerin mimari favorisi haline geldi ve hafta boyunca istikrarlı ilgi gördü.",
+        "sources": [
+          "r/OpenSourceAI",
+          "r/LocalLLaMA"
+        ]
+      }
+    ]
+  },
+  "w-apple-m5-ultra": {
+    "name": "Apple M5 Ultra",
+    "category": "Donanım / Çip",
+    "history": [
+      {
+        "date": "22 Eylül 2026",
+        "hypeScore": 8.3,
+        "sentimentScore": 80,
+        "sentiment": "coşkulu",
+        "headline": "Donanım Sıçraması",
+        "summary": "Büyük modelleri tek cihazda çalıştırma denemeleri ve bellek kapasitesi avantajı sayesinde yerel toplulukta takip edilmeye devam ediyor.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/selfhosted"
+        ]
+      }
+    ]
+  },
+  "w-minimax-h3": {
+    "name": "MiniMax H3",
+    "category": "Medya / Üretim",
+    "history": [
+      {
+        "date": "22 Eylül 2026",
+        "hypeScore": 8.1,
+        "sentimentScore": 79,
+        "sentiment": "stabil",
+        "headline": "Video Lideri",
+        "summary": "Haftalık haber derlemeleri, CrossView-Warp LoRA'sı ve ComfyUI node güncellemeleriyle video tarafında liderliğini korudu.",
+        "sources": [
+          "r/comfyui",
+          "r/StableDiffusion"
         ]
       }
     ]
