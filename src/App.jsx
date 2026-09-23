@@ -2881,7 +2881,7 @@ ${bulletsText}
           </div>
         )}
 
-        {/* 6.5 🐦 X (TWITTER) AI NABZI: 30 SEÇKİN LİDERİN GÜNDEMİ (Sadece Günlük Görünümde) */}
+        {/* 6.5 🐦 X (TWITTER) AI NABZI: 100 SEÇKİN LİDERİN GÜNDEMİ (Sadece Günlük Görünümde) */}
         {timeframe === 'daily' && report.twitterPulse && (
           <section className="bg-white border border-[#cbd5e1] shadow-xs rounded-sm p-4 sm:p-6 space-y-4">
             <div className="flex items-center justify-between flex-wrap gap-2 border-b border-[#e2e8f0] pb-3">
@@ -2890,11 +2890,11 @@ ${bulletsText}
                   𝕏
                 </span>
                 <h3 className="text-xs sm:text-sm font-bold text-slate-900 font-mono uppercase">
-                  X (Twitter) AI Nabzı: 30 Seçkin Zihnin Gündemi
+                  X (Twitter) AI Nabzı: 100 Seçkin Zihnin Gündemi
                 </h3>
               </div>
               <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-sky-50 text-sky-900 border border-sky-200 font-bold">
-                Son 24 Saat • 30 Seçkin AI Lideri • Saf Teknik İstihbarat
+                Son 24 Saat • 100 Seçkin AI Lideri • Saf Teknik İstihbarat
               </span>
             </div>
 
@@ -2903,7 +2903,7 @@ ${bulletsText}
               <div className="p-4 bg-[#f8fafc] border-l-4 border-l-black border-y border-r border-slate-200 rounded-r text-xs sm:text-[13px] text-slate-800 leading-relaxed space-y-2.5 shadow-2xs">
                 <div className="flex items-center justify-between gap-2 border-b border-slate-200/80 pb-2">
                   <span className="font-mono font-bold text-slate-900 uppercase text-xs flex items-center gap-1.5">
-                    <span>📌</span> TWITTER'DA (X) GÜNDEM NE? (30 SEÇKİN ZİHNİN RADARI)
+                    <span>📌</span> TWITTER'DA (X) GÜNDEM NE? (100 SEÇKİN ZİHNİN RADARI)
                   </span>
                   <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-black text-white font-bold">
                     Editöryel Sentez
@@ -3032,7 +3032,7 @@ ${bulletsText}
                     </h4>
                   </div>
                   <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-purple-50 text-purple-900 border border-purple-200 font-semibold">
-                    30 Seçkin Liderin Laboratuvar &amp; Mimari Keşifleri
+                    100 Seçkin Liderin Laboratuvar &amp; Mimari Keşifleri
                   </span>
                 </div>
 

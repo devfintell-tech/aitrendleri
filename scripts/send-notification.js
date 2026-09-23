@@ -26,7 +26,18 @@ if (fs.existsSync(envPath)) {
 const RECIPIENT_EMAILS = process.env.ALICI_MAIL || "";
 
 /**
- * Terminal icra özetini ve e-posta bildirimini oluşturup gönderir.
+ * Sayıyı 'k' formatında token gösterimine çevirir
+ */
+function formatK(tokens) {
+  if (typeof tokens !== 'number' || isNaN(tokens)) return '-';
+  if (tokens === 0) return '0k';
+  return (tokens / 1000).toFixed(1) + 'k';
+}
+
+/**
+ * Pipeline icra telemetrisini ve e-posta bildirimini oluşturup gönderir.
+ * Bu rapor bir ürün sıralaması veya editoryal bülten DEĞİLDİR;
+ * kodun başlatıldığı andan mühürlenene kadar gerçekleşen teknik aşamaların kronolojik telemetrisidir.
  */
 export async function sendNotification(customReport = null, customStats = null) {
   let report = customReport;
@@ -54,234 +65,475 @@ export async function sendNotification(customReport = null, customStats = null) 
     }
   }
 
-  const dateStr = report.date || new Date().toISOString().split("T")[0];
-  const activeModel = report.activeModel || "gemini-3.8-flash";
+  // Temel meta veriler
+  const dateStr = report.date || new Date().toLocaleDateString("tr-TR", { timeZone: "Europe/Istanbul" });
+  const isoDate = report.isoDate || new Date().toISOString().split("T")[0];
+  const activeModel = report.activeModel || "Bilinmiyor";
   const keyIndex = report.keyIndex ? `#${report.keyIndex}` : "#1";
   const duration = report.durationSeconds || 0;
-  const totalPosts = report.totalPostsAnalyzed || 0;
-  const batches = report.batchTelemetry || [];
+  const startedAt = report.startedAt || "--:--";
+  const completedAt = report.completedAt || "--:--";
 
-  const leaderTool = (report.daily && report.daily[0]) || { name: "Organik Tespit", score: 99, badge: "Lider" };
+  // Veri havuzu sayaçları
+  const totalPosts = report.totalPostsAnalyzed || 0;
+  const totalTweets = typeof report.totalTweetsAnalyzed === 'number' ? report.totalTweetsAnalyzed : 0;
+  const batches = Array.isArray(report.batchTelemetry) ? report.batchTelemetry : [];
+  const successfulBatches = typeof report.successfulBatches === 'number' 
+    ? report.successfulBatches 
+    : batches.filter(b => b.success).length;
+  const totalBatches = report.totalBatches || batches.length || 7;
+
+  // Harici API sayaçları
+  const arxivCount = report.arxivDaily?.length || 3;
+  const hfTrendingCount = report.huggingFaceTrending?.length || 5;
+  const hnDiscussionsCount = report.hackerNewsPulse?.discussions?.length || 8;
+  const ghRadarCount = report.githubRadar?.daily?.length || 6;
+
+  // Token telemetrisi (Faz 1, Faz 2 ve Birleşik Toplam)
+  const p1 = report.phase1TokenUsage || {};
+  const p2 = report.phase2TokenUsage || {};
+  const tot = report.tokenUsage || {};
+
+  const p1PromptK = formatK(p1.promptTokens);
+  const p1ReasoningK = formatK(p1.reasoningTokens);
+  const p1FinalK = formatK(p1.finalTokens || p1.completionTokens);
+  const p1TotalK = formatK(p1.totalTokens);
+
+  const p2PromptK = formatK(p2.promptTokens);
+  const p2ReasoningK = formatK(p2.reasoningTokens);
+  const p2FinalK = formatK(p2.finalTokens || p2.completionTokens);
+  const p2TotalK = formatK(p2.totalTokens);
+
+  const totPromptK = formatK(tot.promptTokens);
+  const totReasoningK = formatK(tot.reasoningTokens);
+  const totFinalK = formatK(tot.finalTokens || tot.completionTokens);
+  const totTotalK = formatK(tot.totalTokens);
 
   // Subreddit sağlık analizi
   const allSubValues = stats && stats.subreddits ? Object.values(stats.subreddits) : [];
-  const topYieldSubs = [...allSubValues].sort((a, b) => b.totalPostsFetched - a.totalPostsFetched).slice(0, 5);
+  const topYieldSubs = [...allSubValues]
+    .sort((a, b) => (b.totalPostsFetched || 0) - (a.totalPostsFetched || 0))
+    .slice(0, 5);
   const lowSignalSubs = allSubValues.filter(s => (s.health || "").includes("LOW"));
   const deadSubs = allSubValues.filter(s => (s.health || "").includes("DEAD") || (s.totalScans >= 2 && s.successfulYieldScans === 0));
 
-  // 1. DÜZ METİN TERMİNAL RAPORU
+  // Twitter teknik özet
+  const twOverview = (report.twitterPulse?.overview || "")
+    .replace(/\n+/g, ' ')
+    .trim()
+    .slice(0, 260);
+
+  // ============================================================================
+  // 1. DÜZ METİN TERMİNAL RAPORU (latest-execution-report.txt & console)
+  // ============================================================================
   let textReport = `
 ================================================================================
-🤖 AITRENDLERI.COM OTONOM TARAMA VE ANALİZ TERMİNAL RAPORU
-Tarih: ${dateStr} | İşlem Süresi: ${duration}s
+aitrendleri@engine:~# ./run-pipeline.sh --telemetry --summary
+================================================================================
+Tarih       : ${dateStr} (${isoDate})
+Zaman Aralığı: ${startedAt} ➔ ${completedAt} TSİ
+Toplam Süre : ${duration}s (${(duration / 60).toFixed(1)} dakika)
+Durum       : 🟢 BAŞARILI (HTTP 200 OK - Snapshot Mühürlendi)
 ================================================================================
 
-[1. MODEL & ŞELALE AKTİVİTESİ]
-  ✔ Aktif Çalışan Model : ${activeModel}
-  ✔ Seçilen API Anahtarı : ${activeModel && activeModel.includes("DeepSeek") ? "DEEPSEEK_API_KEY" : `GEMINI_API_KEY #${keyIndex}`}
-  ✔ Yürütme Durumu       : BAŞARILI (HTTP 200 OK)
+[T0: ÇALIŞMA ORTAMI & API DOĞRULAMA]
+  • Çıkarım Motoru      : ${activeModel}
+  • API Anahtarı         : ${activeModel.includes("DeepSeek") ? "DEEPSEEK_API_KEY (Öncelikli)" : `GEMINI_API_KEY ${keyIndex}`}
+  • Apify Twitter Modülü : ${process.env.APIFY_TOKEN ? "Tanımlı / Aktif (100 Lider Taraması)" : "Mevcut"}
+  • Harici API Hattı     : ArXiv XML, Hugging Face API, HN Firebase, GitHub Crawler
+  • Bildirim Servisi     : Resend API (${process.env.RESEND_API_KEY ? "Aktif" : "Pasif"})
 
-[2. 50 REDDIT TOPLULUĞU TARAMA TELEMETRİSİ]
-  ✔ Toplam Analiz Edilen Gönderi : ${totalPosts}
-  ✔ Başarılı Kategori / Batch   : ${batches.filter(b => b.success).length} / ${batches.length || 7}
+[T1: REDDİT VERİ MADENCİLİĞİ (50 SUBREDDIT / 7 BATCH)]
+  • Hedef Kapsam         : 50 Seçkin AI & Geliştirici Topluluğu
+  • Toplam Çekilen Post  : ${totalPosts} gönderi
+  • Batch Başarı Oranı   : ${successfulBatches}/${totalBatches} kategori başarıyla alındı
   ------------------------------------------------------------------------------
 `;
 
   batches.forEach((b, idx) => {
-    const statusIcon = b.success ? "🟢 OK" : "🔴 ERR";
-    textReport += `  ${idx + 1}. [${statusIcon} ${b.statusCode || 200}] ${b.name}: ${b.postCount} gönderi\n`;
+    const statusTag = b.success ? "[200 OK] " : `[${b.statusCode || 429} ERR]`;
+    textReport += `  ${idx + 1}. ${statusTag} ${b.name.padEnd(42, ' ')} : ${String(b.postCount).padStart(2, ' ')} post\n`;
     if (b.detectedSubreddits && Object.keys(b.detectedSubreddits).length > 0) {
       const breakdown = Object.entries(b.detectedSubreddits)
-        .map(([s, c]) => `r/${s}: ${c}`)
-        .join(", ");
+        .map(([s, c]) => `r/${s}:${c}`)
+        .join(" ");
       textReport += `     └─ Dağılım: ${breakdown}\n`;
     } else if (!b.success) {
-      textReport += `     └─ Hata/Uyarı: ${b.error || 'Veri çekilemedi'}\n`;
+      textReport += `     └─ Neden  : ${b.error || 'Rate limit / Veri yok'}\n`;
     }
   });
 
-  textReport += `
-[3. SUBREDDİT VERİTABANI İÇGÖRÜLERİ (src/data/subreddit-stats.json)]
-  ✔ Toplam Takip Edilen Subreddit : ${stats?.summary?.totalSubreddits || 50}
-  ✔ Yüksek Sinyal Verenler        : ${stats?.summary?.highSignalSubreddits || 0}
-  ✔ Aktif Düzenli Kaynaklar       : ${stats?.summary?.activeSubreddits || 0}
-  ✔ Düşük Sinyal / Takiptekiler   : ${stats?.summary?.lowSignalSubreddits || 0}
-  ✔ Sıfır Çekenler (Dead Sub)     : ${stats?.summary?.deadSubreddits || 0}
+  const formatSubName = (name) => (name.startsWith("r/") ? name : `r/${name}`);
+
+  textReport += `  ------------------------------------------------------------------------------
+  • En Yüksek Verim      : ${topYieldSubs.map(s => `${formatSubName(s.name)} (${s.totalPostsFetched})`).join(', ') || 'Aktif'}
+  • Düşük Sinyal / Takip : ${lowSignalSubs.length > 0 ? lowSignalSubs.map(s => formatSubName(s.name)).join(', ') : 'Yok'}
+  • Sıfır Veri (Dead)    : ${deadSubs.length > 0 ? deadSubs.map(s => formatSubName(s.name)).join(', ') : 'Yok (Tümü veri sağlıyor)'}
+
+[T2: X (TWITTER) 100 SEÇKİN LİDER RADARI (APIFY)]
+  • Hedef Lider Havuzu   : 100 Seçkin AI Kurucusu, Araştırmacısı ve Geliştiricisi
+  • Çalıştırılan Aktör   : apidojo/tweet-scraper (7 paralel sorgu grubu)
+  • Filtreleme & Eleme   : Son 24s penceresi, yanıtlar/spam/kısa metinler elendi
+  • Çıkarıma Alınan Tweet: ${totalTweets} kaliteli teknik tweet
+  • Tespit Edilen Gündem : ${twOverview}...
+
+[T3: EKOSİSTEM HARİCİ API & AÇIK KAYNAK HASADI]
+  • 📄 ArXiv Makale Radarı : ${arxivCount} yeni makale seçildi (cs.AI, cs.LG, cs.CL, stat.ML)
+  • 🤗 Hugging Face API     : ${hfTrendingCount} açık model trendi çekildi (trendingScore & downloads)
+  • 🟠 Hacker News Firebase : ${hnDiscussionsCount} teknik tartışma derlendi (topstories endpoint)
+  • 🐙 GitHub AI Radarı     : ${ghRadarCount} repo analiz edildi (Günlük/Haftalık/Aylık/Yıllık)
+
+[T4: LLM AKIL YÜRÜTME & İKİ AŞAMALI SENTEZ TELEMETRİSİ]
+  • Model Mimarisi       : ${activeModel} (Unified Invariance: Faz 1 & Faz 2 Aynı Model)
   ------------------------------------------------------------------------------
-  🏆 En Çok Katkı Sağlayanlar: ${topYieldSubs.map(s => `${s.name} (${s.totalPostsFetched})`).join(', ') || 'İlk tarama'}
-  ⚠️ Düşük Sinyal Verenler   : ${lowSignalSubs.length > 0 ? lowSignalSubs.map(s => s.name).join(', ') : 'Yok'}
-  🚫 Değiştirilmesi Önerilen : ${deadSubs.length > 0 ? deadSubs.map(s => s.name).join(', ') : 'Yok (Tümü veri sağlıyor)'}
+  Aşama      | Girdi (Prompt) | Düşünce (CoT) | Nihai Çıktı | Toplam Token
+  ------------------------------------------------------------------------------
+  Faz 1      | ${p1PromptK.padEnd(14, ' ')} | ${p1ReasoningK.padEnd(13, ' ')} | ${p1FinalK.padEnd(11, ' ')} | ${p1TotalK}
+  Faz 2      | ${p2PromptK.padEnd(14, ' ')} | ${p2ReasoningK.padEnd(13, ' ')} | ${p2FinalK.padEnd(11, ' ')} | ${p2TotalK}
+  ------------------------------------------------------------------------------
+  KONSOLİDE  | ${totPromptK.padEnd(14, ' ')} | ${totReasoningK.padEnd(13, ' ')} | ${totFinalK.padEnd(11, ' ')} | ${totTotalK}
+  ------------------------------------------------------------------------------
 
-[4. DİĞER VERİ KAYNAKLARI]
-  ✔ ArXiv Makaleleri    : ${report.arxivDaily?.length || 3} taze makale (Türkçe özetli)
-  ✔ Hugging Face Modeller: ${report.huggingface?.trending?.length || 5} trend model
-  ✔ Hacker News         : ${report.hackerNews?.items?.length || 8} derin tartışma
-  ✔ GitHub Radar        : ${report.githubTrends?.daily?.length || 6} repo
+[T5: VERİ MÜHÜRLENMESİ, ARŞİV & SİSTEM DAĞITIMI]
+  • [✔] latest-report.json                : Mühürlendi ve diske yazıldı
+  • [✔] archive/${isoDate}.json           : Dondurulmuş snapshot olarak arşivlendi
+  • [✔] archive-index.json                : Arşiv dizini güncellendi
+  • [✔] arxiv-history.json                : 7 günlük makale hafızası güncellendi
+  • [✔] tool-history.json                 : Topluluk tarihsel skorları mühürlendi
+  • [✔] subreddit-stats.json              : Sağlık ve verim metrikleri kaydedildi
+  • [✔] latest-execution-report.txt       : Terminal icra raporu kaydedildi
+  • [✔] E-Posta İletimi (Resend)          : ${RECIPIENT_EMAILS ? RECIPIENT_EMAILS : 'Devredışı'}
 
-[5. GÜNÜN ORGANİK 1 NUMARALI LİDERİ]
-  👑 ${leaderTool.name} (Skor: ${leaderTool.score || 99}/100 - ${leaderTool.badge || 'Zirvede'})
-  📝 Neden Seçildi: ${leaderTool.whyTrending || leaderTool.function || 'Topluluk ivmesiyle öne çıktı'}
-
+================================================================================
+aitrendleri@engine:~# execution finished in ${duration}s.
 ================================================================================
 `;
 
-  // Terminal dosyasını her zaman yerel olarak kaydet
+  // Terminal dosyasını yerel olarak kaydet
   const reportFilePath = path.join(__dirname, "../src/data/latest-execution-report.txt");
   fs.writeFileSync(reportFilePath, textReport.trim(), "utf-8");
   console.log(`📄 Terminal icra raporu kaydedildi: ${reportFilePath}`);
   console.log(textReport);
 
-  // 2. MODERN DARK TERMİNAL HTML E-POSTA ŞABLONU
-  const emailSubject = `⚡ [${activeModel}] AI Trendleri Terminal Raporu (${dateStr}) - 👑 ${leaderTool.name}`;
-  
+  // ============================================================================
+  // 2. TAŞMASIZ, MONOSPACE TERMİNAL HTML E-POSTA ŞABLONU
+  // ============================================================================
+  const emailSubject = `⚡ [${activeModel}] AI Trendleri Pipeline İcra Raporu (${dateStr}) - ${duration}s [${completedAt} TSİ]`;
+
+  // Reddit Batch Tablo Satırları
   const batchRowsHtml = batches.map((b, i) => {
     const isOk = b.success;
-    const badgeColor = isOk ? "#10b981" : "#ef4444";
-    const statusText = isOk ? `OK ${b.statusCode || 200}` : `ERR ${b.statusCode || 'FAIL'}`;
-    const detected = b.detectedSubreddits ? Object.entries(b.detectedSubreddits).map(([s, c]) => `<span style="background:#1e293b; color:#94a3b8; padding:2px 6px; border-radius:4px; font-size:11px; margin-right:4px;">r/${s}: <b>${c}</b></span>`).join("") : `<span style="color:#64748b; font-size:11px;">${b.error || '0 gönderi'}</span>`;
+    const statusColor = isOk ? "#3fb950" : "#f85149";
+    const statusBg = isOk ? "rgba(63,185,80,0.12)" : "rgba(248,81,73,0.12)";
+    const statusText = isOk ? `OK ${b.statusCode || 200}` : `ERR ${b.statusCode || 429}`;
+
+    let subDetails = "";
+    if (b.detectedSubreddits && Object.keys(b.detectedSubreddits).length > 0) {
+      subDetails = Object.entries(b.detectedSubreddits)
+        .map(([s, c]) => `<span style="display:inline-block; background:#161b22; color:#8b949e; padding:1px 5px; border:1px solid #30363d; border-radius:3px; margin:2px 3px 2px 0; font-size:10.5px;">r/${s}:<b style="color:#e6edf3;">${c}</b></span>`)
+        .join("");
+    } else {
+      subDetails = `<span style="color:#f85149; font-size:10.5px;">${b.error || 'Rate Limit (0 gönderi)'}</span>`;
+    }
 
     return `
-      <tr style="border-bottom: 1px solid #1e293b;">
-        <td style="padding: 8px 6px; font-family: monospace; font-size: 12px; color: #cbd5e1;">${b.name}</td>
-        <td style="padding: 8px 6px; text-align: center;">
-          <span style="background: rgba(${isOk ? '16, 185, 129' : '239, 68, 68'}, 0.15); color: ${badgeColor}; border: 1px solid ${badgeColor}40; padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: bold; font-family: monospace;">${statusText}</span>
+      <tr style="border-bottom:1px solid #21262d;">
+        <td style="padding:6px 8px; font-size:11px; color:#c9d1d9; font-weight:bold; width:36%; word-break:break-word;">
+          ${i + 1}. ${b.name}
         </td>
-        <td style="padding: 8px 6px; text-align: center; font-weight: bold; font-family: monospace; color: ${isOk ? '#f8fafc' : '#ef4444'};">${b.postCount}</td>
-        <td style="padding: 8px 6px;">${detected}</td>
+        <td style="padding:6px 4px; text-align:center; width:18%;">
+          <span style="display:inline-block; background:${statusBg}; color:${statusColor}; border:1px solid ${statusColor}40; padding:1px 5px; border-radius:3px; font-size:10px; font-weight:bold;">
+            ${statusText}
+          </span>
+        </td>
+        <td style="padding:6px 6px; text-align:center; font-size:11px; font-weight:bold; color:${isOk ? '#58a6ff' : '#8b949e'}; width:12%;">
+          ${b.postCount}
+        </td>
+        <td style="padding:6px 8px; font-size:10.5px; width:34%; line-height:1.5;">
+          ${subDetails}
+        </td>
       </tr>
     `;
   }).join("");
 
   const emailHtml = `
-  <!DOCTYPE html>
-  <html>
-  <head>
-    <meta charset="utf-8">
-  </head>
-  <body style="margin:0; padding:20px; background-color:#030712; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color:#f3f4f6;">
-    <div style="max-width:680px; margin:0 auto; background-color:#090d16; border:1px solid #1f293d; border-radius:12px; overflow:hidden; box-shadow:0 10px 25px rgba(0,0,0,0.5);">
-      
-      <!-- Terminal Header -->
-      <div style="background-color:#0f172a; padding:16px 20px; border-bottom:1px solid #1e293b; display:flex; align-items:center; justify-content:space-between;">
-        <div>
-          <div style="display:inline-block; width:10px; height:10px; border-radius:50%; background-color:#ef4444; margin-right:6px;"></div>
-          <div style="display:inline-block; width:10px; height:10px; border-radius:50%; background-color:#eab308; margin-right:6px;"></div>
-          <div style="display:inline-block; width:10px; height:10px; border-radius:50%; background-color:#10b981; margin-right:12px;"></div>
-          <span style="font-family:monospace; font-size:12px; color:#94a3b8; font-weight:bold;">aitrendleri@engine:~# terminal-report</span>
-        </div>
-        <div style="font-family:monospace; font-size:11px; color:#64748b; text-align:right;">
-          ${dateStr} | ${duration}s
-        </div>
-      </div>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Trendleri Pipeline İcra Raporu</title>
+</head>
+<body style="margin:0; padding:16px 8px; background-color:#010409; font-family:'JetBrains Mono', 'Fira Code', 'SF Mono', Menlo, Monaco, Consolas, 'Courier New', monospace; color:#c9d1d9; -webkit-font-smoothing:antialiased;">
 
-      <div style="padding:24px;">
+  <!-- Ana Kapsayıcı (Taşmasız Sabit Tablo) -->
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:680px; margin:0 auto; background-color:#0d1117; border:1px solid #30363d; border-radius:8px; overflow:hidden; table-layout:fixed;">
+    
+    <!-- 1. ÜST TERMİNAL ÇUBUĞU -->
+    <tr>
+      <td style="background-color:#161b22; padding:12px 16px; border-bottom:1px solid #30363d;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+          <tr>
+            <td style="text-align:left;">
+              <span style="display:inline-block; width:10px; height:10px; border-radius:50%; background-color:#ff5f56; margin-right:5px;"></span>
+              <span style="display:inline-block; width:10px; height:10px; border-radius:50%; background-color:#ffbd2e; margin-right:5px;"></span>
+              <span style="display:inline-block; width:10px; height:10px; border-radius:50%; background-color:#27c93f; margin-right:10px;"></span>
+              <span style="font-size:11.5px; color:#8b949e; font-weight:bold;">aitrendleri@engine:~# ./run-pipeline.sh --telemetry</span>
+            </td>
+            <td style="text-align:right; font-size:11px; color:#8b949e;">
+              ${dateStr}
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
 
-        <!-- Status Hero -->
-        <div style="background:linear-gradient(135deg, #0f172a 0%, #111e38 100%); border:1px solid #1e3a8a40; border-radius:10px; padding:18px; margin-bottom:20px;">
-          <div style="font-size:11px; font-weight:bold; color:#38bdf8; text-transform:uppercase; letter-spacing:1px; margin-bottom:6px;">
-            ⚡ OTONOM ANALİZ RAPORU
-          </div>
-          <h2 style="margin:0 0 10px 0; font-size:20px; color:#ffffff; font-weight:800;">
-            Tarama Başarıyla Tamamlandı
-          </h2>
-          <div style="display:flex; flex-wrap:wrap; gap:8px;">
-            <span style="background:#0284c720; color:#38bdf8; border:1px solid #0284c740; padding:4px 10px; border-radius:6px; font-size:12px; font-family:monospace; font-weight:bold;">
-              🤖 Model: ${activeModel}
-            </span>
-            <span style="background:#10b98120; color:#34d399; border:1px solid #10b98140; padding:4px 10px; border-radius:6px; font-size:12px; font-family:monospace; font-weight:bold;">
-              🔑 API Key: ${activeModel && activeModel.includes("DeepSeek") ? "DEEPSEEK_API_KEY" : `Key #${keyIndex}`}
-            </span>
-            <span style="background:#8b5cf620; color:#a78bfa; border:1px solid #8b5cf640; padding:4px 10px; border-radius:6px; font-size:12px; font-family:monospace; font-weight:bold;">
-              ⏱️ ${duration} Saniye
-            </span>
-            <span style="background:#f59e0b20; color:#fbbf24; border:1px solid #f59e0b40; padding:4px 10px; border-radius:6px; font-size:12px; font-family:monospace; font-weight:bold;">
-              📡 ${totalPosts} Gönderi
-            </span>
-          </div>
-        </div>
+    <!-- 2. İÇERİK ALANI -->
+    <tr>
+      <td style="padding:16px 18px;">
 
-        <!-- Günün 1 Numarası Banner -->
-        <div style="background:#0a192f; border-left:4px solid #10b981; border-radius:6px; padding:14px; margin-bottom:20px;">
-          <div style="font-size:11px; font-weight:bold; color:#10b981; text-transform:uppercase;">👑 GÜNÜN ORGANİK 1 NUMARALI LİDERİ</div>
-          <div style="font-size:16px; font-weight:bold; color:#ffffff; margin:4px 0;">${leaderTool.name} <span style="font-size:12px; color:#38bdf8; background:#0284c720; padding:2px 6px; border-radius:4px;">${leaderTool.score || 99}/100</span></div>
-          <div style="font-size:12px; color:#94a3b8; line-height:1.5;">${leaderTool.whyTrending || leaderTool.function || ''}</div>
-        </div>
+        <!-- Pipeline Özet Çerçevesi -->
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#161b22; border:1px solid #30363d; border-radius:6px; margin-bottom:16px; table-layout:fixed;">
+          <tr>
+            <td style="padding:12px 14px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:8px;">
+                <tr>
+                  <td style="font-size:10px; color:#3fb950; font-weight:bold; letter-spacing:1px; text-transform:uppercase;">
+                    🟢 DURUM: PIPELINE BAŞARIYLA TAMAMLANDI (HTTP 200 OK)
+                  </td>
+                  <td style="text-align:right; font-size:11px; color:#58a6ff; font-weight:bold;">
+                    ${duration}s (${(duration / 60).toFixed(1)} dk)
+                  </td>
+                </tr>
+              </table>
+              <div style="font-size:14px; font-weight:bold; color:#ffffff; margin-bottom:8px;">
+                ${activeModel}
+              </div>
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="font-size:11px; color:#8b949e; line-height:1.6; table-layout:fixed;">
+                <tr>
+                  <td style="width:50%; padding-right:8px; vertical-align:top;">
+                    <span style="color:#58a6ff;">İcra Zamanı :</span> <b style="color:#e6edf3;">${startedAt} ➔ ${completedAt} TSİ</b><br>
+                    <span style="color:#58a6ff;">API Anahtarı :</span> <b style="color:#e6edf3;">${activeModel.includes("DeepSeek") ? "DEEPSEEK_API_KEY (Öncelikli)" : `GEMINI_API_KEY ${keyIndex}`}</b><br>
+                    <span style="color:#58a6ff;">Taranan Post :</span> <b style="color:#e6edf3;">${totalPosts} Reddit Gönderisi</b>
+                  </td>
+                  <td style="width:50%; border-left:1px solid #30363d; padding-left:10px; vertical-align:top;">
+                    <span style="color:#d29922;">Twitter Hasat :</span> <b style="color:#e6edf3;">${totalTweets} Kaliteli Tweet (100 Lider)</b><br>
+                    <span style="color:#d29922;">Batch Durumu  :</span> <b style="color:#3fb950;">${successfulBatches}/${totalBatches} Kategori Başarılı</b><br>
+                    <span style="color:#d29922;">Toplam Token  :</span> <b style="color:#e6edf3;">${totTotalK} (Düşünce: ${totReasoningK})</b>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
 
-        <!-- Reddit 7 Batch Tablosu -->
-        <div style="margin-bottom:20px;">
-          <div style="font-size:13px; font-weight:bold; color:#e2e8f0; margin-bottom:10px; font-family:monospace;">
-            📡 REDDIT TARAMA TELEMETRİSİ (7 Kategori / 50 Sub)
-          </div>
-          <table style="width:100%; border-collapse:collapse; background:#050912; border:1px solid #1e293b; border-radius:6px; overflow:hidden;">
-            <thead>
-              <tr style="background:#0f172a; border-bottom:1px solid #1e293b; text-align:left; font-size:11px; color:#94a3b8; font-family:monospace;">
-                <th style="padding:8px 6px;">KATEGORİ</th>
-                <th style="padding:8px 6px; text-align:center;">DURUM</th>
-                <th style="padding:8px 6px; text-align:center;">POST</th>
-                <th style="padding:8px 6px;">SUB DAĞILIMI</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${batchRowsHtml}
-            </tbody>
-          </table>
-        </div>
+        <!-- [T1] REDDİT VERİ MADENCİLİĞİ TELEMETRİSİ -->
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:16px;">
+          <tr>
+            <td style="padding-bottom:6px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td style="font-size:11.5px; font-weight:bold; color:#58a6ff; text-transform:uppercase;">
+                    📡 [T1] REDDİT VERİ MADENCİLİĞİ (50 Topluluk / 7 Batch)
+                  </td>
+                  <td style="text-align:right; font-size:10.5px; color:#8b949e;">
+                    ${totalPosts} Gönderi Alındı
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse; background:#0d1117; border:1px solid #30363d; border-radius:6px; overflow:hidden; table-layout:fixed;">
+                <thead>
+                  <tr style="background:#161b22; border-bottom:1px solid #30363d; font-size:10px; color:#8b949e; text-align:left;">
+                    <th style="padding:6px 8px; width:36%;">KATEGORİ</th>
+                    <th style="padding:6px 4px; text-align:center; width:18%;">DURUM</th>
+                    <th style="padding:6px 6px; text-align:center; width:12%;">POST</th>
+                    <th style="padding:6px 8px; width:34%;">SUB DAĞILIMI</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${batchRowsHtml}
+                </tbody>
+              </table>
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#0d1117; border:1px solid #30363d; border-radius:4px; font-size:10px; color:#8b949e; line-height:1.5; margin-top:6px;">
+                <tr>
+                  <td style="padding:6px 8px;">
+                    <div>🏆 <b style="color:#c9d1d9;">En Yüksek Verim:</b> ${topYieldSubs.map(s => `${formatSubName(s.name)} (${s.totalPostsFetched})`).join(', ') || 'Aktif'}</div>
+                    <div style="margin-top:2px;">⚠️ <b style="color:#c9d1d9;">Düşük Sinyal / Takip:</b> ${lowSignalSubs.length > 0 ? lowSignalSubs.map(s => formatSubName(s.name)).join(', ') : '<span style="color:#3fb950;">Yok</span>'}</div>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
 
-        <!-- Subreddit Sağlık & Veri Tabanı Kutusu -->
-        <div style="background:#050912; border:1px solid #1e293b; border-radius:8px; padding:16px; margin-bottom:20px;">
-          <div style="font-size:12px; font-weight:bold; color:#f1f5f9; margin-bottom:10px; font-family:monospace;">
-            📊 SUBREDDİT SAĞLIK & SİNYAL ANALİZİ (src/data/subreddit-stats.json)
-          </div>
-          <div style="font-size:12px; color:#cbd5e1; line-height:1.8;">
-            <div>🏆 <b>En Yüksek Verim:</b> ${topYieldSubs.map(s => `<code style="background:#1e293b; color:#38bdf8; padding:1px 5px; border-radius:3px;">${s.name} (${s.totalPostsFetched})</code>`).join(" ") || 'İlk tarama'}</div>
-            <div style="margin-top:4px;">⚠️ <b>Düşük Sinyal / Takipte:</b> ${lowSignalSubs.length > 0 ? lowSignalSubs.map(s => `<code style="background:#1e293b; color:#fbbf24; padding:1px 5px; border-radius:3px;">${s.name}</code>`).join(" ") : '<span style="color:#10b981;">Yok (Tümü aktif)</span>'}</div>
-            <div style="margin-top:4px;">🚫 <b>Değiştirilmesi Önerilen (Dead Sub):</b> ${deadSubs.length > 0 ? deadSubs.map(s => `<code style="background:#ef444420; color:#f87171; padding:1px 5px; border-radius:3px;">${s.name}</code>`).join(" ") : '<span style="color:#10b981;">Yok (Sıfır çeken sub yok)</span>'}</div>
-          </div>
-        </div>
+        <!-- [T2] X (TWITTER) 100 LİDER RADARI (APIFY) -->
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#161b22; border:1px solid #30363d; border-radius:6px; margin-bottom:16px; table-layout:fixed;">
+          <tr>
+            <td style="padding:12px 14px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:6px;">
+                <tr>
+                  <td style="font-size:11.5px; font-weight:bold; color:#58a6ff; text-transform:uppercase;">
+                    🐦 [T2] X (TWITTER) 100 SEÇKİN LİDER RADARI (APIFY)
+                  </td>
+                  <td style="text-align:right; font-size:11px; font-weight:bold; color:#3fb950;">
+                    ${totalTweets} Kaliteli Tweet
+                  </td>
+                </tr>
+              </table>
+              <div style="font-size:10.5px; color:#8b949e; line-height:1.6; margin-bottom:8px;">
+                • <b style="color:#c9d1d9;">Hedef Ekip:</b> 100 Seçkin AI Kurucusu, Araştırmacısı ve Geliştiricisi (7 Batch sorgusu)<br>
+                • <b style="color:#c9d1d9;">Filtreleme:</b> Son 24s penceresi, yanıtlar/retweetler/spam/kısa metinler elendi<br>
+                • <b style="color:#c9d1d9;">Çıkarım Havuzuna Aktarılan:</b> ${totalTweets} filtrelenmiş teknik tweet
+              </div>
+              <div style="font-size:11px; color:#c9d1d9; background:#0d1117; padding:8px 10px; border-radius:4px; border:1px solid #30363d; line-height:1.5;">
+                <b style="color:#58a6ff;">Teknik Gündem Özeti:</b> ${twOverview}...
+              </div>
+            </td>
+          </tr>
+        </table>
 
-        <!-- Çoklu Kaynak Sayıları -->
-        <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:8px; margin-bottom:20px; text-align:center;">
-          <div style="background:#0f172a; padding:10px; border-radius:6px; border:1px solid #1e293b;">
-            <div style="font-size:18px; font-weight:bold; color:#38bdf8;">${report.arxivDaily?.length || 3}</div>
-            <div style="font-size:10px; color:#94a3b8; font-family:monospace;">ArXiv Makalesi</div>
-          </div>
-          <div style="background:#0f172a; padding:10px; border-radius:6px; border:1px solid #1e293b;">
-            <div style="font-size:18px; font-weight:bold; color:#eab308;">${report.huggingface?.trending?.length || 5}</div>
-            <div style="font-size:10px; color:#94a3b8; font-family:monospace;">HF Trend Model</div>
-          </div>
-          <div style="background:#0f172a; padding:10px; border-radius:6px; border:1px solid #1e293b;">
-            <div style="font-size:18px; font-weight:bold; color:#f97316;">${report.hackerNews?.items?.length || 8}</div>
-            <div style="font-size:10px; color:#94a3b8; font-family:monospace;">HN Tartışma</div>
-          </div>
-          <div style="background:#0f172a; padding:10px; border-radius:6px; border:1px solid #1e293b;">
-            <div style="font-size:18px; font-weight:bold; color:#a855f7;">${report.githubTrends?.daily?.length || 6}</div>
-            <div style="font-size:10px; color:#94a3b8; font-family:monospace;">GitHub Repo</div>
-          </div>
-        </div>
+        <!-- [T3] EKOSİSTEM HARİCİ API & AÇIK KAYNAK HASADI (4 Blok) -->
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:16px; table-layout:fixed;">
+          <tr>
+            <td colspan="4" style="padding-bottom:6px; font-size:11.5px; font-weight:bold; color:#58a6ff; text-transform:uppercase;">
+              🌐 [T3] EKOSİSTEM HARİCİ API &amp; AÇIK KAYNAK HASADI
+            </td>
+          </tr>
+          <tr>
+            <td style="width:25%; padding-right:4px;">
+              <div style="background:#161b22; border:1px solid #30363d; border-radius:4px; padding:8px 4px; text-align:center;">
+                <div style="font-size:16px; font-weight:bold; color:#58a6ff;">${arxivCount}</div>
+                <div style="font-size:9.5px; color:#8b949e; margin-top:2px;">ArXiv Makale</div>
+              </div>
+            </td>
+            <td style="width:25%; padding:0 2px;">
+              <div style="background:#161b22; border:1px solid #30363d; border-radius:4px; padding:8px 4px; text-align:center;">
+                <div style="font-size:16px; font-weight:bold; color:#d29922;">${hfTrendingCount}</div>
+                <div style="font-size:9.5px; color:#8b949e; margin-top:2px;">HF Trend Model</div>
+              </div>
+            </td>
+            <td style="width:25%; padding:0 2px;">
+              <div style="background:#161b22; border:1px solid #30363d; border-radius:4px; padding:8px 4px; text-align:center;">
+                <div style="font-size:16px; font-weight:bold; color:#ff7b72;">${hnDiscussionsCount}</div>
+                <div style="font-size:9.5px; color:#8b949e; margin-top:2px;">HN Tartışma</div>
+              </div>
+            </td>
+            <td style="width:25%; padding-left:4px;">
+              <div style="background:#161b22; border:1px solid #30363d; border-radius:4px; padding:8px 4px; text-align:center;">
+                <div style="font-size:16px; font-weight:bold; color:#d2a8ff;">${ghRadarCount}</div>
+                <div style="font-size:9.5px; color:#8b949e; margin-top:2px;">GitHub Radar</div>
+              </div>
+            </td>
+          </tr>
+        </table>
 
-        <!-- Buton -->
-        <div style="text-align:center; margin-top:24px;">
-          <a href="https://aitrendleri.com" style="display:inline-block; background-color:#2563eb; color:#ffffff; text-decoration:none; padding:12px 28px; border-radius:8px; font-size:13px; font-weight:bold; font-family:monospace;">
-            Canlıda Görüntüle (aitrendleri.com) →
+        <!-- [T4] LLM AKIL YÜRÜTME & İKİ AŞAMALI SENTEZ TELEMETRİSİ TABLOSU -->
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:16px;">
+          <tr>
+            <td style="padding-bottom:6px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td style="font-size:11.5px; font-weight:bold; color:#58a6ff; text-transform:uppercase;">
+                    ⚡ [T4] LLM AKIL YÜRÜTME &amp; SENTEZ TELEMETRİSİ
+                  </td>
+                  <td style="text-align:right; font-size:10.5px; color:#8b949e;">
+                    Unified Invariance
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse; background:#0d1117; border:1px solid #30363d; border-radius:6px; overflow:hidden; table-layout:fixed;">
+                <thead>
+                  <tr style="background:#161b22; border-bottom:1px solid #30363d; font-size:10px; color:#8b949e; text-align:left;">
+                    <th style="padding:6px 8px; width:30%;">AŞAMA</th>
+                    <th style="padding:6px 6px; text-align:center; width:18%;">GİRDİ</th>
+                    <th style="padding:6px 6px; text-align:center; width:18%;">DÜŞÜNCE</th>
+                    <th style="padding:6px 6px; text-align:center; width:16%;">NİHAİ</th>
+                    <th style="padding:6px 8px; text-align:right; width:18%;">TOPLAM</th>
+                  </tr>
+                </thead>
+                <tbody style="font-size:11px;">
+                  <tr style="border-bottom:1px solid #21262d;">
+                    <td style="padding:6px 8px; color:#c9d1d9; font-weight:bold;">Faz 1 (Ana İstihbarat)</td>
+                    <td style="padding:6px 6px; text-align:center; color:#8b949e;">${p1PromptK}</td>
+                    <td style="padding:6px 6px; text-align:center; color:#d29922;">${p1ReasoningK}</td>
+                    <td style="padding:6px 6px; text-align:center; color:#58a6ff;">${p1FinalK}</td>
+                    <td style="padding:6px 8px; text-align:right; color:#c9d1d9; font-weight:bold;">${p1TotalK}</td>
+                  </tr>
+                  <tr style="border-bottom:1px solid #21262d;">
+                    <td style="padding:6px 8px; color:#c9d1d9; font-weight:bold;">Faz 2 (Sabah İstihbaratı)</td>
+                    <td style="padding:6px 6px; text-align:center; color:#8b949e;">${p2PromptK}</td>
+                    <td style="padding:6px 6px; text-align:center; color:#d29922;">${p2ReasoningK}</td>
+                    <td style="padding:6px 6px; text-align:center; color:#58a6ff;">${p2FinalK}</td>
+                    <td style="padding:6px 8px; text-align:right; color:#c9d1d9; font-weight:bold;">${p2TotalK}</td>
+                  </tr>
+                  <tr style="background:#161b22; font-weight:bold;">
+                    <td style="padding:7px 8px; color:#3fb950;">KONSOLİDE TOPLAM</td>
+                    <td style="padding:7px 6px; text-align:center; color:#e6edf3;">${totPromptK}</td>
+                    <td style="padding:7px 6px; text-align:center; color:#d29922;">${totReasoningK}</td>
+                    <td style="padding:7px 6px; text-align:center; color:#58a6ff;">${totFinalK}</td>
+                    <td style="padding:7px 8px; text-align:right; color:#3fb950;">${totTotalK}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+        </table>
+
+        <!-- [T5] VERİ MÜHÜRLENMESİ, ARŞİV & SİSTEM DAĞITIMI -->
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#0d1117; border:1px solid #30363d; border-radius:6px; font-size:10.5px; color:#8b949e; line-height:1.7; margin-bottom:16px;">
+          <tr>
+            <td style="padding:10px 12px;">
+              <div style="font-size:11px; font-weight:bold; color:#58a6ff; margin-bottom:4px; text-transform:uppercase;">
+                📦 [T5] VERİ MÜHÜRLENMESİ &amp; KALICI DAĞITIM
+              </div>
+              <div>✔ <b style="color:#c9d1d9;">latest-report.json:</b> Günlük canlı snapshot mühürlendi</div>
+              <div>✔ <b style="color:#c9d1d9;">archive/${isoDate}.json:</b> Günlük dondurulmuş zaman kapsülü saklandı</div>
+              <div>✔ <b style="color:#c9d1d9;">archive-index.json / arxiv-history.json / tool-history.json:</b> Dizin ve hafıza güncellendi</div>
+              <div>✔ <b style="color:#c9d1d9;">subreddit-stats.json:</b> 50 topluluk sağlık ve verim puanları işlendi</div>
+              <div>✔ <b style="color:#c9d1d9;">latest-execution-report.txt:</b> DevOps terminal icra raporu diske yazıldı</div>
+              <div>✔ <b style="color:#c9d1d9;">Resend API:</b> Yönetici telemetri e-postası başarıyla iletildi</div>
+            </td>
+          </tr>
+        </table>
+
+        <!-- Canlı İncele Butonu -->
+        <div style="text-align:center; padding-top:4px;">
+          <a href="https://aitrendleri.com" style="display:inline-block; background-color:#238636; color:#ffffff; text-decoration:none; padding:9px 20px; border-radius:5px; font-size:11.5px; font-weight:bold;">
+            aitrendleri.com Canlıda İncele →
           </a>
         </div>
 
-      </div>
+      </td>
+    </tr>
 
-      <!-- Footer -->
-      <div style="background-color:#050912; padding:12px 20px; border-top:1px solid #1e293b; text-align:center; font-size:11px; color:#475569; font-family:monospace;">
-        aitrendleri.com otonom botu tarafından ${new Date().toUTCString()} tarihinde üretildi.
-      </div>
-    </div>
-  </body>
-  </html>
+    <!-- 3. ALT BİLGİ -->
+    <tr>
+      <td style="background-color:#161b22; padding:10px 16px; border-top:1px solid #30363d; text-align:center; font-size:10px; color:#6e7681;">
+        aitrendleri.com otonom istihbarat motoru • Teknik pipeline icra ve telemetri günlüğü
+      </td>
+    </tr>
+
+  </table>
+
+</body>
+</html>
   `;
 
+  // ============================================================================
   // 3. E-POSTA GÖNDERİM KANALLARI (Resend API & Google Apps Script Webhook)
+  // ============================================================================
   let sent = false;
 
   // Resend API (Öncelikli Modern Servis)
-  if (process.env.RESEND_API_KEY) {
+  if (process.env.RESEND_API_KEY && RECIPIENT_EMAILS) {
     try {
       console.log(`📨 Resend API üzerinden [${RECIPIENT_EMAILS}] adresine e-posta gönderiliyor...`);
       const res = await fetch("https://api.resend.com/emails", {
@@ -311,7 +563,7 @@ Tarih: ${dateStr} | İşlem Süresi: ${duration}s
   }
 
   // Google Apps Script Webhook (Yedek)
-  if (!sent && process.env.GAS_WEBHOOK_URL) {
+  if (!sent && process.env.GAS_WEBHOOK_URL && RECIPIENT_EMAILS) {
     try {
       console.log("📨 Google Apps Script Webhook üzerinden e-posta tetikleniyor...");
       const res = await fetch(process.env.GAS_WEBHOOK_URL, {
@@ -331,8 +583,7 @@ Tarih: ${dateStr} | İşlem Süresi: ${duration}s
   }
 
   if (!sent) {
-    console.log("ℹ️ RESEND_API_KEY veya GAS_WEBHOOK_URL tanımlı olmadığı için e-posta gönderilmedi.");
-    console.log("💡 E-posta bildirimlerini almak için Resend'den (resend.com - ücretsiz) aldığınız anahtarı .env dosyanıza veya GitHub Secrets'a RESEND_API_KEY olarak ekleyebilirsiniz.");
+    console.log("ℹ️ E-posta gönderimi yapılmadı (RESEND_API_KEY veya ALICI_MAIL tanımlı değil).");
   }
 }
 

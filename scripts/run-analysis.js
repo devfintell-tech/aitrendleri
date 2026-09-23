@@ -279,7 +279,7 @@ async function fetchHackerNews24h() {
  * Belirlenen 30 yapay zeka liderinin son 24 saatteki gönderilerini toplar.
  */
 async function fetchTwitterAgenda(apifyToken = APIFY_TOKEN) {
-  console.log("🐦 Apify üzerinden 30 seçkin AI liderinin X (Twitter) gündemi taranıyor...");
+  console.log("🐦 Apify üzerinden 100 seçkin AI liderinin X (Twitter) gündemi taranıyor...");
   if (!apifyToken) {
     console.warn("⚠️ APIFY_TOKEN tanımlanmamış, Twitter adımı atlanıyor.");
     return [];
@@ -287,19 +287,24 @@ async function fetchTwitterAgenda(apifyToken = APIFY_TOKEN) {
 
   const batch1 = '(from:simonw OR from:swyx OR from:_philschmid OR from:jeremyphoward OR from:awnihannun OR from:ggerganov OR from:chipro OR from:hwchase17 OR from:jerryjliu0 OR from:HamelHusain OR from:karpathy OR from:fchollet OR from:srush_nlp OR from:tri_dao OR from:Tim_Dettmers) -filter:nativeretweets';
   const batch2 = '(from:rasbt OR from:lilianweng OR from:eugeneyan OR from:emollick OR from:swann_vance OR from:wattenberger OR from:minchoi OR from:fofrAI OR from:LinusEkenstam OR from:bilawalsidhu OR from:arankomatsuzaki OR from:natolambert OR from:RisingSayak OR from:cwolferesearch OR from:rainisto) -filter:nativeretweets';
+  const batch3 = '(from:danielhanchen OR from:Teknium1 OR from:corbtt OR from:jxnlco OR from:yoheinakajima OR from:maximelabonne OR from:abacaj OR from:mckaywrigley OR from:levelsio OR from:svpino OR from:omarsar0 OR from:charliebholtz OR from:nutlope OR from:rohanpaul_ai OR from:Yampeleg) -filter:nativeretweets';
+  const batch4 = '(from:drjimfan OR from:bindureddy OR from:amasad OR from:reach_vb OR from:osanseviero OR from:alexalbert__ OR from:charles_irl OR from:altryne OR from:mattshumer_ OR from:mervenoyann OR from:_jasonwei OR from:ID_AA_Carmack OR from:GrantSlatton OR from:victormustar OR from:dan_jeffries1) -filter:nativeretweets';
+  const batch5 = '(from:geohot OR from:lucidrains OR from:comfyanonymous OR from:cocktailpeanut OR from:cloneofsimo OR from:ylecun OR from:gdb OR from:adcock_brett OR from:cHHillee OR from:dhh OR from:goodside OR from:steipete OR from:mitchellh OR from:abhishekkrthakur) -filter:nativeretweets';
+  const batch6 = '(from:borisdayma OR from:transitive_bs OR from:nearcyan OR from:paraschopra OR from:bshaby OR from:karinanguyen_ OR from:shadcn OR from:rauchg OR from:OfficialLoganK OR from:cubiq OR from:bentossell OR from:MattWolfe9 OR from:rowancheung) -filter:nativeretweets';
+  const batch7 = '(from:huyingxi OR from:chavinlo OR from:jachiam0 OR from:natfriedman OR from:danielgross OR from:ilyasut OR from:sama OR from:demishassabis OR from:AravSrinivas OR from:alexandr_wang OR from:paulg OR from:mreflow OR from:dair_ai) -filter:nativeretweets';
 
   const payload = {
-    searchTerms: [batch1, batch2],
+    searchTerms: [batch1, batch2, batch3, batch4, batch5, batch6, batch7],
     queryType: 'Latest',
-    maxItems: 400
+    maxItems: 600
   };
 
   try {
-    const res = await fetch(`https://api.apify.com/v2/acts/xquik~x-tweet-scraper/run-sync-get-dataset-items?token=${apifyToken}&timeout=120`, {
+    const res = await fetch(`https://api.apify.com/v2/acts/xquik~x-tweet-scraper/run-sync-get-dataset-items?token=${apifyToken}&timeout=210`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
-      signal: AbortSignal.timeout(150000)
+      signal: AbortSignal.timeout(240000)
     });
 
     if (!res.ok) {
@@ -346,7 +351,7 @@ async function fetchTwitterAgenda(apifyToken = APIFY_TOKEN) {
       };
     });
 
-    console.log(`✅ X (Twitter): 30 liderden son 24 saate ait ${processed.length} kaliteli tweet toplandı.`);
+    console.log(`✅ X (Twitter): 100 liderden son 24 saate ait ${processed.length} kaliteli tweet toplandı.`);
     return processed;
   } catch (err) {
     console.warn("⚠️ Apify üzerinden tweetler çekilirken hata oluştu:", err.message);
@@ -980,6 +985,9 @@ async function generateMorningBriefSynthesis(finalizedData, phase1Execution = nu
          'description' alanı: Topluluğun bu modele neden en yüksek övgüyü ve memnuniyeti verdiğini aktaran 1-2 vurucu, somut Türkçe cümle olmalıdır.
 
     2. SABAH İSTİHBARATI 4 KİLİT MADDE KURALI (TAM 4 ADET):
+       - 🚨 UZUNLUK VE SIKILIK KURALI (KOMPAKT & NET - ŞU ANKİNİN YARISI KADAR):
+         Her bir maddenin metni ('text') KESİNLİKLE EN FAZLA 2-3 VURUCU, NET VE AKICI CÜMLE OLMALIDIR (Maksimum 45-60 kelime / 400-500 karakter).
+         Asla sayfayı aşağı uzatan destansı uzun paragraflar veya çoklu '\\n\\n' blokları yazma! Okuyucunun dünyada ne olup bittiğini 30 saniyede yakalayabilmesi için metinler kompakt, jilet gibi net ve hap bilgi kıvamında olmalıdır.
        - Her madde doğrudan bugün sitede yer alan somut verilere atıfta bulunmalı, ezber/şablon cümleler KESİNLİKLE YASAKTIR.
        - X (Twitter) lider verileri zorlama olmaksızın, tamamen doğal ve organik bir şekilde bu 4 maddenin içine (özellikle Yazılım/Ajanlar, Yerel Donanım ve Model Savaşları) entegre edilebilir.
        - 1. Madde ("Model Savaşları", icon: "🚀"): Günün konuşulan modelleri (${mostDiscussed.name} ve diğerleri) arasındaki rekabeti, pazar ve açık vs kapalı modeller dengesini özetle.
@@ -1190,7 +1198,7 @@ async function main() {
     githubPromptText = githubCandidates.map(g => `- [⭐ ${g.stars}] ${g.id} (${g.language}): ${g.description} (Link: ${g.url})`).join("\n");
   }
 
-  // 6. 🐦 X (TWITTER) AI NABZI: 30 SEÇKİN LİDERİN SON 24 SAAT TARTIŞMALARI
+  // 6. 🐦 X (TWITTER) AI NABZI: 100 SEÇKİN LİDERİN SON 24 SAAT TARTIŞMALARI
   const twitterTweets = await fetchTwitterAgenda(APIFY_TOKEN);
   let twitterPromptText = "";
   if (twitterTweets.length > 0) {
@@ -1321,7 +1329,7 @@ async function main() {
     - Kategori: "Yazılım Mimarisi", "Yapay Zeka & Ajanlar", "Sistem & Donanım", "Geliştirici Kültürü", "Siber Güvenlik", "Veritabanı & RAG" vb.
 
     X (TWITTER) AI NABZI (twitterPulse) KURALLARI:
-    - Son 24 saatte 30 seçkin yapay zeka liderinin (Karpathy, Simon Willison, Jeremy Howard, François Chollet, Awni Hannun, Georgi Gerganov vb.) paylaştığı gönderileri eksiksiz analiz et.
+    - Son 24 saatte 100 seçkin yapay zeka liderinin (Karpathy, Simon Willison, Daniel Han, Teknium, George Hotz, Yann LeCun, Greg Brockman, Corbett, Jason Liu, Yohei, McKay Wrigley, Pieter Levels, François Chollet, Tim Dettmers vb.) paylaştığı gönderileri eksiksiz analiz et.
     - "overview": Twitter'da (X) Gündem Ne? Derlenen bütün tweetleri sentezleyerek; liderlerin ortak hissiyatını, odaklandıkları kriz ve tartışmaları, açık vs kapalı modeller dengesini ve yapay zeka ekosistemindeki güncel havayı anlatan EN AZ 2-3 DOYURUCU VE DERİN TÜRKÇE PARAGRAFTAN oluşan kapsamlı bir yazılı özet metni oluştur.
     - "trendingProducts": Tweetlerde bahsedilen veya liderlerin radarında en çok konuşulan somut yapay zeka ürünlerini/araçlarını (5-8 adet) REDDİT MANTIĞIYLA alt alta sırala:
       * "rank": Sıra numarası (1, 2, 3...)
@@ -1355,10 +1363,10 @@ async function main() {
           "description": "Neden günün en büyük kırılması olduğuna dair 1 cümlelik net açıklama."
         },
         "bullets": [
-          { "tag": "Model Savaşları", "icon": "🚀", "text": "Modeller arası rekabette günün en sıcak gelişmesi." },
-          { "tag": "Kurumsal & Pazar Dengesi", "icon": "🏢", "text": "Şirketler ve kurumsal benimsemedeki son durum." },
-          { "tag": "Yazılım & Otonom Ajanlar", "icon": "💻", "text": "CLI araçları ve kodlama ajanlarındaki günün kırılması." },
-          { "tag": "Yerel Zeka & Donanım", "icon": "⚡", "text": "Açık modeller, GPU veya çıkarım motorlarındaki son durum." }
+          { "tag": "Model Savaşları", "icon": "🚀", "text": "Modeller arası rekabette günün en sıcak gelişmesi (maksimum 2-3 kısa cümle, 45-50 kelime)." },
+          { "tag": "Kurumsal & Pazar Dengesi", "icon": "🏢", "text": "Şirketler ve kurumsal benimsemedeki son durum (maksimum 2-3 kısa cümle, 45-50 kelime)." },
+          { "tag": "Yazılım & Otonom Ajanlar", "icon": "💻", "text": "CLI araçları ve kodlama ajanlarındaki günün kırılması (maksimum 2-3 kısa cümle, 45-50 kelime)." },
+          { "tag": "Yerel Zeka & Donanım", "icon": "⚡", "text": "Açık modeller, GPU veya çıkarım motorlarındaki son durum (maksimum 2-3 kısa cümle, 45-50 kelime)." }
         ]
       },
       "executiveSummary": "Toplanan tüm 50 Reddit topluluğundaki sıcak gönderileri, tartışmaları, donanım krizlerini, ArXiv atılımlarını, Hacker News nabzını ve X (Twitter) liderlerinin teknik gündemini doğal bir şekilde harmanlayarak; büyük resmi ve teknoloji dengesini ortaya koyan en az 2 paragraflık derin, kapsamlı ve stratejik Türkçe Yönetici Özeti (X verileri zorlama olmadan, doğal ve organik bir şekilde özete katkı sağlar).",
