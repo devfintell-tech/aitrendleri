@@ -203,6 +203,19 @@
           "r/vibecoding",
           "r/ChatGPTCoding"
         ]
+      },
+      {
+        "date": "23 Eylül 2026",
+        "hypeScore": 8.5,
+        "sentimentScore": 66,
+        "sentiment": "eleştirel",
+        "headline": "Kararsız",
+        "summary": "Oturumlar arası bağlam kaybı ve yeni Coordinator fleets mimarisi topluluğun ana tartışma başlığı oldu.",
+        "sources": [
+          "r/CursorAI",
+          "r/vibecoding",
+          "r/AI_Agents"
+        ]
       }
     ]
   },
@@ -383,6 +396,18 @@
           "r/vibecoding",
           "r/ClaudeDev",
           "r/ClaudeAI"
+        ]
+      },
+      {
+        "date": "23 Eylül 2026",
+        "hypeScore": 8.9,
+        "sentimentScore": 58,
+        "sentiment": "düşüş",
+        "headline": "Eleştiriliyor",
+        "summary": "Bildirim eksikliği ve beklenmeyen davranış değişiklikleri kullanıcıları rahatsız ederken, Opus 5.5 entegrasyonu yeni bir beklenti dalgası yarattı.",
+        "sources": [
+          "r/ClaudeDev",
+          "r/vscode"
         ]
       }
     ]
@@ -1643,6 +1668,19 @@
           "r/huggingface",
           "r/ollama"
         ]
+      },
+      {
+        "date": "23 Eylül 2026",
+        "hypeScore": 9,
+        "sentimentScore": 93,
+        "sentiment": "coşkulu",
+        "headline": "Yerel Şampiyon",
+        "summary": "Yüksek Verim rozetini korurken GGUF kuantizasyonları ve ajan görevlerindeki istikrarıyla topluluk favorisi olmayı sürdürüyor.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/singularity",
+          "r/Ollama"
+        ]
       }
     ]
   },
@@ -2612,6 +2650,17 @@
         "sources": [
           "r/windsurf"
         ]
+      },
+      {
+        "date": "23 Eylül 2026",
+        "hypeScore": 7.5,
+        "sentimentScore": 36,
+        "sentiment": "coşkulu",
+        "headline": "Maliyet Eleştirisi",
+        "summary": "Karmaşık güncellemeler ve sıkışan kotanın Devin ile birlikte eleştirilmesi toplulukta olumsuz tepki topluyor.",
+        "sources": [
+          "r/windsurf"
+        ]
       }
     ]
   },
@@ -2697,6 +2746,17 @@
           "r/Copilot",
           "r/ChatGPTCoding",
           "r/vscode"
+        ]
+      },
+      {
+        "date": "23 Eylül 2026",
+        "hypeScore": 8.7,
+        "sentimentScore": 30,
+        "sentiment": "coşkulu",
+        "headline": "Veri Kaybı Tepkisi",
+        "summary": "Yeni web arayüzü sonrası tüm konuşmaların ve kütüphanenin kaybolması kullanıcılarda panik ve veri güvenliği endişesi yarattı.",
+        "sources": [
+          "r/Copilot"
         ]
       }
     ]
@@ -3009,6 +3069,18 @@
         "sources": [
           "r/LocalLLaMA",
           "r/huggingface"
+        ]
+      },
+      {
+        "date": "23 Eylül 2026",
+        "hypeScore": 7,
+        "sentimentScore": 45,
+        "sentiment": "düşüş",
+        "headline": "Kesinti Sorunu",
+        "summary": "Event log tarayıp Defender'ın kaçırdığı truva atını bulması dikkat çekti ancak kesinti şikayetleri sürüyor.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/AI_Agents"
         ]
       }
     ]
@@ -4137,6 +4209,19 @@
           "r/LLMDevs",
           "r/agenticai"
         ]
+      },
+      {
+        "date": "23 Eylül 2026",
+        "hypeScore": 9.6,
+        "sentimentScore": 74,
+        "sentiment": "stabil",
+        "headline": "Açık Kaynak Fırtınası",
+        "summary": "7 gün içinde openjev, laya ve notjev gibi açık kaynak klonları patladı; bir kısım geliştirici ise fazla hype ve grift endişesi dile getiriyor.",
+        "sources": [
+          "r/LLMDevs",
+          "r/AI_Agents",
+          "r/agenticAI"
+        ]
       }
     ]
   },
@@ -4288,6 +4373,18 @@
           "r/vscode",
           "r/ChatGPTCoding"
         ]
+      },
+      {
+        "date": "23 Eylül 2026",
+        "hypeScore": 8,
+        "sentimentScore": 82,
+        "sentiment": "coşkulu",
+        "headline": "Geliştirici Favorisi",
+        "summary": "Uzun süren görevler için topluluk bildirim eklentileri ve agent harness kalibrasyonu tartışmaları öne çıktı.",
+        "sources": [
+          "r/vscode",
+          "r/ClaudeDev"
+        ]
       }
     ]
   },
@@ -4321,6 +4418,18 @@
         "sources": [
           "r/CursorAI",
           "r/ChatGPTCoding"
+        ]
+      },
+      {
+        "date": "23 Eylül 2026",
+        "hypeScore": 8.3,
+        "sentimentScore": 24,
+        "sentiment": "coşkulu",
+        "headline": "Kota Tepkisi",
+        "summary": "Ücretsiz günlük kotanın kaldırılıp haftalık limite indirilmesi, çoklu hesap kullanan geliştiricileri isyan ettirdi.",
+        "sources": [
+          "r/windsurf",
+          "r/ClaudeDev"
         ]
       }
     ]
@@ -4678,6 +4787,18 @@
         "headline": "Haftanın Lideri",
         "summary": "Haft boyunca hem devrim niteliğindeki yetenekleri hem de gizli kullanım kısıtlamalarıyla en çok konuşulan başlık oldu.",
         "sources": []
+      },
+      {
+        "date": "23 Eylül 2026",
+        "hypeScore": 9.8,
+        "sentimentScore": 60,
+        "sentiment": "eleştirel",
+        "headline": "Eleştiriliyor",
+        "summary": "Kullanıcı limitleri ve davranış değişiklikleri şikayet edilirken Opus 5.5 entegrasyonu heyecanı yüksek.",
+        "sources": [
+          "r/ClaudeDev",
+          "r/vscode"
+        ]
       }
     ]
   },
@@ -4705,6 +4826,18 @@
         "headline": "Yoğun İlgi",
         "summary": "Yüksek verimliliği ve getirdiği katı kota sınırları arasında geçen hararetli tartışmalar.",
         "sources": []
+      },
+      {
+        "date": "23 Eylül 2026",
+        "hypeScore": 9.4,
+        "sentimentScore": 58,
+        "sentiment": "eleştirel",
+        "headline": "Kota Baskısı",
+        "summary": "Yoğun ilgiye rağmen limit baskısı ve maliyet şikayetleri hafta boyunca gündemi meşgul etti.",
+        "sources": [
+          "r/OpenAI",
+          "r/generativeAI"
+        ]
       }
     ]
   },
@@ -4740,6 +4873,18 @@
         "sources": [
           "r/LocalLLaMA"
         ]
+      },
+      {
+        "date": "23 Eylül 2026",
+        "hypeScore": 8.6,
+        "sentimentScore": 90,
+        "sentiment": "coşkulu",
+        "headline": "10M İndirme Eşiği",
+        "summary": "Yerel donanımda 27B sınıfı kaliteyi erişilebilir kıldığı için topluluk takdirini koruyor.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/Ollama"
+        ]
       }
     ]
   },
@@ -4767,6 +4912,18 @@
         "headline": "Kodlama Standardı",
         "summary": "Farklı model sağlayıcılarıyla esnek kullanım sunması ve geliştirici üretkenliğini artırması.",
         "sources": []
+      },
+      {
+        "date": "23 Eylül 2026",
+        "hypeScore": 8.8,
+        "sentimentScore": 64,
+        "sentiment": "eleştirel",
+        "headline": "Kararsız",
+        "summary": "Bağlam yönetimi iyileştirmeleri ve Coordinator fleets duyurusu hafta boyunca tartışıldı.",
+        "sources": [
+          "r/CursorAI",
+          "r/vibecoding"
+        ]
       }
     ]
   },
@@ -4793,6 +4950,18 @@
         "headline": "Medya Lideri",
         "summary": "İçerik üreticilerinin ve video yapay zeka meraklılarının projelerinde ana araç olarak benimsenmesi.",
         "sources": []
+      },
+      {
+        "date": "23 Eylül 2026",
+        "hypeScore": 8.1,
+        "sentimentScore": 86,
+        "sentiment": "coşkulu",
+        "headline": "Video Lideri",
+        "summary": "Hugging Face'te 3,7 milyon indirmeyi aşarak video üretim kategorisinde liderliğini koruyor.",
+        "sources": [
+          "r/StableDiffusion",
+          "r/generativeAI"
+        ]
       }
     ]
   },
@@ -4820,6 +4989,18 @@
         "headline": "Mimari Favori",
         "summary": "Geliştiricilerin çoklu model maliyetlerini kontrol altında tutmak için standart araç haline gelmesi.",
         "sources": []
+      },
+      {
+        "date": "23 Eylül 2026",
+        "hypeScore": 8.3,
+        "sentimentScore": 88,
+        "sentiment": "coşkulu",
+        "headline": "Açık Kaynak Gözdesi",
+        "summary": "Maliyet optimizasyonu ve çoklu model yönlendirme ihtiyacı büyüdükçe topluluk ilgisi artıyor.",
+        "sources": [
+          "r/LLMDevs",
+          "r/AI_Agents"
+        ]
       }
     ]
   },
@@ -4847,6 +5028,18 @@
         "headline": "Kurumsal Otomasyon",
         "summary": "Yeni başlayanlardan kurumsal şirketlere kadar geniş bir yelpazede güvenilir otomasyon altyapısı sunması.",
         "sources": []
+      },
+      {
+        "date": "23 Eylül 2026",
+        "hypeScore": 8.5,
+        "sentimentScore": 88,
+        "sentiment": "coşkulu",
+        "headline": "Kurumsal Favori",
+        "summary": "Kurumsal ajan dağıtımı ve WhatsApp gibi kanalları yapılı göreve dönüştüren şablonlar ilgi görüyor.",
+        "sources": [
+          "r/n8n",
+          "r/Automate"
+        ]
       }
     ]
   },
@@ -4905,6 +5098,18 @@
           "r/selfhosted",
           "r/LocalLLaMA"
         ]
+      },
+      {
+        "date": "23 Eylül 2026",
+        "hypeScore": 6.8,
+        "sentimentScore": 86,
+        "sentiment": "coşkulu",
+        "headline": "Yüksek Verim",
+        "summary": "notjev gibi System 1 karar araçlarının herhangi bir OpenAI uyumlu modeli Jev tarzına çevirmesinde referans altyapı oldu.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/Ollama"
+        ]
       }
     ]
   },
@@ -4958,6 +5163,18 @@
         "sources": [
           "r/LocalLLaMA",
           "r/selfhosted"
+        ]
+      },
+      {
+        "date": "23 Eylül 2026",
+        "hypeScore": 8.6,
+        "sentimentScore": 86,
+        "sentiment": "coşkulu",
+        "headline": "Yüksek Verim",
+        "summary": "Tek komutla kurulum ve yeni System 1 araçlarıyla entegrasyonu sayesinde topluluk favorisi.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/Ollama"
         ]
       }
     ]
@@ -5163,6 +5380,18 @@
         "summary": "10 milyonun üzerinde indirme ve Unsloth GGUF sürümleriyle açık model ekosisteminin tartışmasız haftalık referansı.",
         "sources": [
           "r/LocalLLaMA"
+        ]
+      },
+      {
+        "date": "23 Eylül 2026",
+        "hypeScore": 9.9,
+        "sentimentScore": 93,
+        "sentiment": "coşkulu",
+        "headline": "Haftanın Yerel Şampiyonu",
+        "summary": "Son bir haftadır Hugging Face indirme ve beğeni tablosunun zirvesinde; GGUF kuantizasyonları istikrarlı ilgi görüyor.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/singularity"
         ]
       }
     ]
@@ -5494,6 +5723,97 @@
         "sources": [
           "r/comfyui",
           "r/StableDiffusion"
+        ]
+      }
+    ]
+  },
+  "claude-opus-5-5": {
+    "name": "Claude Opus 5.5",
+    "category": "LLM (Model)",
+    "history": [
+      {
+        "date": "23 Eylül 2026",
+        "hypeScore": 9.9,
+        "sentimentScore": 91,
+        "sentiment": "coşkulu",
+        "headline": "Günün Lideri",
+        "summary": "Terminal-Bench 4.0'te 66.4'e çıkan sıçrama, 680 bin satırlık kod göçünü bir günde bitirmesi ve riso-art animasyon demoları toplulukta coşkuyla paylaşıldı.",
+        "sources": [
+          "r/ClaudeAI",
+          "r/ClaudeDev",
+          "r/vibecoding"
+        ]
+      }
+    ]
+  },
+  "gpt-6-sol-luna": {
+    "name": "GPT-6 Sol ve Luna",
+    "category": "LLM (Model)",
+    "history": [
+      {
+        "date": "23 Eylül 2026",
+        "hypeScore": 9.3,
+        "sentimentScore": 86,
+        "sentiment": "coşkulu",
+        "headline": "Fiyat Kırılımı",
+        "summary": "Luna'nın $0.10 / $0.50 fiyatlandırması, geliştiricilerin ürün özelliklerini kurarken maliyet hesaplarını yeniden yapmasına neden oldu.",
+        "sources": [
+          "r/OpenAI",
+          "r/generativeAI"
+        ]
+      }
+    ]
+  },
+  "n8n": {
+    "name": "n8n",
+    "category": "Otomasyon",
+    "history": [
+      {
+        "date": "23 Eylül 2026",
+        "hypeScore": 7.8,
+        "sentimentScore": 88,
+        "sentiment": "coşkulu",
+        "headline": "Kurumsal Favori",
+        "summary": "WhatsApp sesli notlarını yapılı göreve ve CRM eylemine çeviren topluluk iş akışları ilgi görüyor.",
+        "sources": [
+          "r/n8n",
+          "r/Automate"
+        ]
+      }
+    ]
+  },
+  "mimo-v2-6": {
+    "name": "MiMo-V2.6",
+    "category": "Yerel Model",
+    "history": [
+      {
+        "date": "23 Eylül 2026",
+        "hypeScore": 7.3,
+        "sentimentScore": 90,
+        "sentiment": "coşkulu",
+        "headline": "Benchmark Şampiyonu",
+        "summary": "Ajan görevlerindeki artış ve geliştirilmiş RL tarifiyle bazı harness'larda pass@1 doğruluğunu yükseltmesi konuşuldu.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/LLMDevs"
+        ]
+      }
+    ]
+  },
+  "jev-w": {
+    "name": "Jev",
+    "category": "LLM (Model)",
+    "history": [
+      {
+        "date": "23 Eylül 2026",
+        "hypeScore": 9.4,
+        "sentimentScore": 74,
+        "sentiment": "stabil",
+        "headline": "Yeni Çözüm",
+        "summary": "Açık kaynak klonlarının hızla çoğalması haftanın en tartışmalı ve hareketli konusu oldu.",
+        "sources": [
+          "r/LLMDevs",
+          "r/AI_Agents"
         ]
       }
     ]

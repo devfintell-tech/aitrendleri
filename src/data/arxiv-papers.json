@@ -75,9 +75,63 @@
     "arxiv-2609-20804",
     "arxiv-2609-22086",
     "arxiv-2609-22068",
-    "arxiv-2609-22067"
+    "arxiv-2609-22067",
+    "arxiv-2609-24984",
+    "arxiv-2609-24985",
+    "arxiv-2609-24979"
   ],
   "dailyRecords": [
+    {
+      "date": "23 Eylül 2026",
+      "isoDate": "2026-09-23",
+      "papers": [
+        {
+          "id": "arxiv-2609-24984",
+          "titleTr": "WorldCrafter: Örtük 3B-Farkında Bellek ile Tutarlı Video Dünya Modeli",
+          "title": "WorldCrafter: Consistent Video World Model with Implicit 3D-aware Memory",
+          "arxivUrl": "https://arxiv.org/abs/2609.24984v1",
+          "authors": [
+            "Wangbo Yu",
+            "Kunhao Liu",
+            "Wenbo Hu"
+          ],
+          "category": "cs.CV",
+          "impactScore": 9.5,
+          "whyMad": "İstenen bakış açısının çok görünümlü kanıtları sıkıştırma biçimini şekillendirmesine izin vererek uzun ufuklu video dünya modellerindeki tutarlılık sorununu kırıyor.",
+          "summary": "Video üreteciyle ortak eğitilen bir bellek kodlayıcı ve poz-koşullu mekanizma sayesinde, farklı bakış açıları arasında önceki gözlemleri saygıyla koruyan etkileşimli bir video dünya modeli sunuyor."
+        },
+        {
+          "id": "arxiv-2609-24985",
+          "titleTr": "Critical-State RL: Çok Turlu Araç Kullanımı İçin Eğitilebilir Durumların Teşhisi",
+          "title": "Critical-State RL: Diagnosing Trainable States for Multi-Turn Tool Use",
+          "arxivUrl": "https://arxiv.org/abs/2609.24985v1",
+          "authors": [
+            "Zixiang Chen",
+            "Wenting Zhao",
+            "Zhepeng Cen"
+          ],
+          "category": "cs.LG",
+          "impactScore": 9.4,
+          "whyMad": "Ödül varyasyonunun tek başına hangi çağrının eğitimden fayda göreceğini göstermediğini kanıtlayıp, çok turlu etkileşimlerde eğitilebilir durumları tespit eden pratik bir yöntem öneriyor.",
+          "summary": "Görev tanımlı aday çağrılar ve yerel ödüller üzerinden her ödülün eylem etkisini yakalayıp yakalamadığını değerlendirerek, çok turlu araç kullanım hatalarının kökenini tek bir çağrıya indirgiyor."
+        },
+        {
+          "id": "arxiv-2609-24979",
+          "titleTr": "Cihaz İçi LLM Üretken Kişiselleştirmesi için LoRA Üreten Hiper Ağlar",
+          "title": "LoRA-generating hypernetworks for efficient on-device LLM generative personalization",
+          "arxivUrl": "https://arxiv.org/abs/2609.24979v1",
+          "authors": [
+            "Sean Augenstein",
+            "Li Ding",
+            "Jihwan Lee"
+          ],
+          "category": "cs.CL",
+          "impactScore": 9.3,
+          "whyMad": "Mobil cihazlardaki kısıtlı hesaplama bütçesini hesaba katarak kişiselleştirme kazançlarını gerçekçi kılan bir hiper ağ yöntemi sunuyor.",
+          "summary": "Kullanıcının zaman içindeki öngörülebilir kullanım kalıplarından yararlanarak cihaz üzerinde LoRA adaptörleri üreten ve mobil LLM'lerin kişiselleştirme kalitesini artıran bir mekanizma öneriyor."
+        }
+      ]
+    },
     {
       "date": "22 Eylül 2026",
       "isoDate": "2026-09-22",
