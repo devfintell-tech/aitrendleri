@@ -409,6 +409,19 @@
           "r/ClaudeDev",
           "r/vscode"
         ]
+      },
+      {
+        "date": "24 Eylül 2026",
+        "hypeScore": 9.4,
+        "sentimentScore": 54,
+        "sentiment": "eleştirel",
+        "headline": "Eleştiriliyor",
+        "summary": "Kullanım limiti baskısı ve abonelik maliyeti yüzünden 'en iyi Claude Code alternatifi ne' tartışması büyüdü. Geliştiriciler opencode ve açık modellere geçişi açıkça anlatıyor.",
+        "sources": [
+          "r/ClaudeDev",
+          "r/vibecoding",
+          "r/ChatGPTCoding"
+        ]
       }
     ]
   },
@@ -1472,6 +1485,19 @@
           "r/comfyui",
           "r/StableDiffusion"
         ]
+      },
+      {
+        "date": "24 Eylül 2026",
+        "hypeScore": 6.9,
+        "sentimentScore": 84,
+        "sentiment": "coşkulu",
+        "headline": "Video Lideri",
+        "summary": "3.6 milyon indirme ile medya üretiminde liderliğini koruyor ancak yeni görsel ve video modellerinin çıkmasıyla günlük ivmesi geriledi. Kullanıcılar tutarlılık ve süre uzatımı için hâlâ referans olarak kullanıyor.",
+        "sources": [
+          "r/StableDiffusion",
+          "r/LocalLLaMA",
+          "r/singularity"
+        ]
       }
     ]
   },
@@ -1590,6 +1616,19 @@
         "sources": [
           "r/LLMDevs",
           "r/LocalLLaMA"
+        ]
+      },
+      {
+        "date": "24 Eylül 2026",
+        "hypeScore": 7.2,
+        "sentimentScore": 80,
+        "sentiment": "coşkulu",
+        "headline": "Topluluk Favorisi",
+        "summary": "Claude Code'dan taşınan geliştiriciler arasında hızlı çıkarım performansı nedeniyle tercih ediliyor. Açık ağırlıklı ekosistemde 'fiyat-performans' tartışmalarının merkezinde yer alıyor.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/ChatGPTCoding",
+          "r/DeepSeek"
         ]
       }
     ]
@@ -2758,6 +2797,19 @@
         "sources": [
           "r/Copilot"
         ]
+      },
+      {
+        "date": "24 Eylül 2026",
+        "hypeScore": 8.5,
+        "sentimentScore": 30,
+        "sentiment": "düşüş",
+        "headline": "Regresyon Tepkisi",
+        "summary": "Kullanıcılar yeni arayüzü 'ucuz bir kopya' diye nitelendirip eski sürümü geri istiyor. Sohbet geçmişinin taşınmaması ve iletişimsizlik şikayetleri başlığı kilitliyor.",
+        "sources": [
+          "r/Copilot",
+          "r/vscode",
+          "r/ChatGPTCoding"
+        ]
       }
     ]
   },
@@ -3081,6 +3133,19 @@
         "sources": [
           "r/LocalLLaMA",
           "r/AI_Agents"
+        ]
+      },
+      {
+        "date": "24 Eylül 2026",
+        "hypeScore": 7.5,
+        "sentimentScore": 76,
+        "sentiment": "coşkulu",
+        "headline": "Yüksek Verim",
+        "summary": "Tim Dettmers gibi isimler uzun ufuklu mühendislik görevlerinde Astra'ya kıyasla daha verimli bulduğunu paylaşıyor. Ancak Çin kaynaklı içerik sansürü ve kesinti haberleri memnuniyeti aşağı çekiyor.",
+        "sources": [
+          "r/DeepSeek",
+          "r/LocalLLaMA",
+          "r/singularity"
         ]
       }
     ]
@@ -4181,6 +4246,19 @@
           "r/LocalLLaMA",
           "r/singularity"
         ]
+      },
+      {
+        "date": "24 Eylül 2026",
+        "hypeScore": 9,
+        "sentimentScore": 92,
+        "sentiment": "coşkulu",
+        "headline": "Yerel Şampiyon",
+        "summary": "6.9 milyon indirme ve 16 bini aşan beğeniyle yerel topluluğun tartışmasız gözdesi. Kullanıcılar kuantize sürümlerle kendi donanımlarında kapalı modellere yakın sonuç aldığını paylaşıyor.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/singularity",
+          "r/MachineLearning"
+        ]
       }
     ]
   },
@@ -4431,6 +4509,19 @@
           "r/windsurf",
           "r/ClaudeDev"
         ]
+      },
+      {
+        "date": "24 Eylül 2026",
+        "hypeScore": 8.7,
+        "sentimentScore": 32,
+        "sentiment": "coşkulu",
+        "headline": "Kota Tepkisi",
+        "summary": "Ücretsiz katmandaki günlük kotanın kaldırılıp yerine çok daha küçük bir haftalık kotanın gelmesi sert tepki çekti. Birden fazla hesapla kullanan geliştiriciler bu değişimi 'kullanılamaz hale geldi' diye eleştiriyor.",
+        "sources": [
+          "r/windsurf",
+          "r/ChatGPTCoding",
+          "r/vibecoding"
+        ]
       }
     ]
   },
@@ -4516,6 +4607,19 @@
         "sources": [
           "r/nvidia",
           "r/hardware"
+        ]
+      },
+      {
+        "date": "24 Eylül 2026",
+        "hypeScore": 6.5,
+        "sentimentScore": 78,
+        "sentiment": "düşüş",
+        "headline": "Fiyat Tepkisi",
+        "summary": "Bellek çipi maliyetinin hesaplama çipini alan başına geçmesi, kartın fiyat ve tedarik baskısını yeniden gündeme taşıdı. Yerel model kullanıcıları VRAM sınırını ve güç tüketimini tartışıyor.",
+        "sources": [
+          "r/hardware",
+          "r/nvidia",
+          "r/LocalLLaMA"
         ]
       }
     ]
@@ -5224,6 +5328,19 @@
           "r/StableDiffusion",
           "r/comfyui"
         ]
+      },
+      {
+        "date": "24 Eylül 2026",
+        "hypeScore": 6.2,
+        "sentimentScore": 82,
+        "sentiment": "coşkulu",
+        "headline": "Yüksek Verim",
+        "summary": "ComfyUI entegrasyonu ve kuantize GGUF sürümleriyle hızlı benimseniyor ancak ilk lansman heyecanı normalleşiyor. Kullanıcılar denetimsiz ince ayar sürümlerini ayrıca tartışıyor.",
+        "sources": [
+          "r/StableDiffusion",
+          "r/LocalLLaMA",
+          "r/comfyui"
+        ]
       }
     ]
   },
@@ -5576,6 +5693,19 @@
           "r/ClaudeDev",
           "r/ClaudeAI"
         ]
+      },
+      {
+        "date": "24 Eylül 2026",
+        "hypeScore": 9.6,
+        "sentimentScore": 58,
+        "sentiment": "eleştirel",
+        "headline": "Haftanın Tartışması",
+        "summary": "Hafta boyunca hem en çok övülen hem en çok eleştirilen araç oldu; limitler ve maliyet şikayetleri alternatif arayışını hızlandırdı.",
+        "sources": [
+          "r/ClaudeDev",
+          "r/vibecoding",
+          "r/ChatGPTCoding"
+        ]
       }
     ]
   },
@@ -5594,6 +5724,19 @@
           "r/OpenSourceAI",
           "r/singularity",
           "r/ChatGPTCoding"
+        ]
+      },
+      {
+        "date": "24 Eylül 2026",
+        "hypeScore": 9.3,
+        "sentimentScore": 66,
+        "sentiment": "stabil",
+        "headline": "Kota Baskısı",
+        "summary": "Hafta boyunca kota ve limit baskısıyla anıldı; buna karşılık düşürülen fiyatlar kullanıcıları geri çekti.",
+        "sources": [
+          "r/OpenAI",
+          "r/singularity",
+          "r/ArtificialInteligence"
         ]
       }
     ]
@@ -5614,6 +5757,19 @@
           "r/vibecoding",
           "r/vscode"
         ]
+      },
+      {
+        "date": "24 Eylül 2026",
+        "hypeScore": 8.8,
+        "sentimentScore": 62,
+        "sentiment": "eleştirel",
+        "headline": "Kararsız",
+        "summary": "Satır içi önerilerin agresifliği ve ince ayar eksikliği eleştiriliyor; buna rağmen kurumsalda kullanım genişliyor.",
+        "sources": [
+          "r/CursorAI",
+          "r/vscode",
+          "r/ChatGPTCoding"
+        ]
       }
     ]
   },
@@ -5632,6 +5788,19 @@
           "r/ollama",
           "r/selfhosted",
           "r/LocalLLaMA"
+        ]
+      },
+      {
+        "date": "24 Eylül 2026",
+        "hypeScore": 8.3,
+        "sentimentScore": 88,
+        "sentiment": "coşkulu",
+        "headline": "Yüksek Verim",
+        "summary": "Yerel yapay zeka çalışma alanı kurulumlarında standart haline geldi ve kuantize model dağıtımında en çok tercih edilen araç oldu.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/selfhosted",
+          "r/ollama"
         ]
       }
     ]
@@ -5724,6 +5893,19 @@
           "r/comfyui",
           "r/StableDiffusion"
         ]
+      },
+      {
+        "date": "24 Eylül 2026",
+        "hypeScore": 8.6,
+        "sentimentScore": 85,
+        "sentiment": "coşkulu",
+        "headline": "Video Lideri",
+        "summary": "Hafta boyunca video üretiminde referans model olarak kaldı ve yeni sürüm beklentisiyle ivme kazandı.",
+        "sources": [
+          "r/StableDiffusion",
+          "r/singularity",
+          "r/LocalLLaMA"
+        ]
       }
     ]
   },
@@ -5743,6 +5925,20 @@
           "r/ClaudeDev",
           "r/vibecoding"
         ]
+      },
+      {
+        "date": "24 Eylül 2026",
+        "hypeScore": 9.9,
+        "sentimentScore": 96,
+        "sentiment": "coşkulu",
+        "headline": "Günün Lideri",
+        "summary": "Kullanıcılar 4.6 hissiyatını koruyup 'çok daha iyi' buluyor ve kullanım limitlerinin rahatlaması övgüyle karşılanıyor. Tek promptta oyun, enzim keşfi ve prosedürel sanat demoları topluluğu coşturdu.",
+        "sources": [
+          "r/ClaudeAI",
+          "r/vibecoding",
+          "r/singularity",
+          "r/OpenAI"
+        ]
       }
     ]
   },
@@ -5760,6 +5956,19 @@
         "sources": [
           "r/OpenAI",
           "r/generativeAI"
+        ]
+      },
+      {
+        "date": "24 Eylül 2026",
+        "hypeScore": 9.2,
+        "sentimentScore": 74,
+        "sentiment": "stabil",
+        "headline": "Fiyat Kırılımı",
+        "summary": "Prompt caching ve indirilmiş önbellek girdi tarifeleriyle maliyet odaklı bir hamle olarak konuşuluyor. Topluluk kaliteden çok fiyat-performans ekseninde karşılaştırma yapıyor.",
+        "sources": [
+          "r/OpenAI",
+          "r/singularity",
+          "r/ArtificialInteligence"
         ]
       }
     ]
@@ -5814,6 +6023,158 @@
         "sources": [
           "r/LLMDevs",
           "r/AI_Agents"
+        ]
+      }
+    ]
+  },
+  "gemini-3-8-flash-tts": {
+    "name": "Gemini 3.8 Flash TTS",
+    "category": "LLM (Model)",
+    "history": [
+      {
+        "date": "24 Eylül 2026",
+        "hypeScore": 8.3,
+        "sentimentScore": 90,
+        "sentiment": "coşkulu",
+        "headline": "Yeni Lansman",
+        "summary": "Hume ses benchmarkında birinci olması ve aşırı düşük maliyeti övülüyor. Ses klonlama ve SynthID filigranı ile güvenlik dengesi toplulukta olumlu karşılandı.",
+        "sources": [
+          "r/GoogleGemini",
+          "r/singularity",
+          "r/ArtificialInteligence"
+        ]
+      }
+    ]
+  },
+  "kimi-k3": {
+    "name": "Kimi K3",
+    "category": "Yerel Model",
+    "history": [
+      {
+        "date": "24 Eylül 2026",
+        "hypeScore": 8,
+        "sentimentScore": 88,
+        "sentiment": "coşkulu",
+        "headline": "Açık Kaynak Yükselişi",
+        "summary": "Claude Code'dan açık yığınlara geçen geliştiriciler Kimi K3'ü karmaşık mühendislik görevlerinde yeterli buluyor. Hugging Face'te 1.8 milyon indirmeyi geçmesi ivmeyi doğruluyor.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/ChatGPTCoding",
+          "r/singularity"
+        ]
+      }
+    ]
+  },
+  "opencode": {
+    "name": "opencode",
+    "category": "CLI / Terminal",
+    "history": [
+      {
+        "date": "24 Eylül 2026",
+        "hypeScore": 7.8,
+        "sentimentScore": 85,
+        "sentiment": "coşkulu",
+        "headline": "Geliştirici Favorisi",
+        "summary": "Kullanıcılar Claude Code'un limit ve maliyet baskısından kaçmak için opencode ve açık modellere taşındığını açıkça anlatıyor. Kurulum kolaylığı ve model bağımsızlığı öne çıkıyor.",
+        "sources": [
+          "r/vibecoding",
+          "r/ChatGPTCoding",
+          "r/LocalLLaMA"
+        ]
+      }
+    ]
+  },
+  "w-qwen-3-8-27b": {
+    "name": "Qwen 3.8 27B",
+    "category": "Yerel Model",
+    "history": [
+      {
+        "date": "24 Eylül 2026",
+        "hypeScore": 9.5,
+        "sentimentScore": 93,
+        "sentiment": "coşkulu",
+        "headline": "Yerel Şampiyon",
+        "summary": "Haftanın lider açık modeli olarak kaldı ve 6.9 milyon indirmeyle yerel topluluğun referans noktası oldu.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/singularity",
+          "r/MachineLearning"
+        ]
+      }
+    ]
+  },
+  "w-claude-opus-5-5": {
+    "name": "Claude Opus 5.5",
+    "category": "LLM (Model)",
+    "history": [
+      {
+        "date": "24 Eylül 2026",
+        "hypeScore": 9.4,
+        "sentimentScore": 95,
+        "sentiment": "coşkulu",
+        "headline": "Haftanın Çıkışı",
+        "summary": "Hafta ortasında çıkan sürüm, limitleri rahatlatması ve tek promptluk üretim demolarıyla haftayı domine etti.",
+        "sources": [
+          "r/ClaudeAI",
+          "r/vibecoding",
+          "r/OpenAI"
+        ]
+      }
+    ]
+  },
+  "w-glm-5-3": {
+    "name": "GLM-5.3",
+    "category": "Yerel Model",
+    "history": [
+      {
+        "date": "24 Eylül 2026",
+        "hypeScore": 8.4,
+        "sentimentScore": 82,
+        "sentiment": "coşkulu",
+        "headline": "Topluluk Favorisi",
+        "summary": "Kapalı modellerin limit baskısından kaçan geliştiricilerin açık kaynak alternatif listelerinde üst sıralarda yer aldı.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/ChatGPTCoding",
+          "r/DeepSeek"
+        ]
+      }
+    ]
+  },
+  "w-n8n-ai-orchestrator": {
+    "name": "n8n AI Orchestrator",
+    "category": "Otomasyon",
+    "history": [
+      {
+        "date": "24 Eylül 2026",
+        "hypeScore": 8.2,
+        "sentimentScore": 86,
+        "sentiment": "coşkulu",
+        "headline": "Kurumsal Favori",
+        "summary": "Kurumsal ajan dağıtımında ve yedekleme senaryolarında güvenilir çözüm olarak konuşulmaya devam ediyor.",
+        "sources": [
+          "r/n8n",
+          "r/automation",
+          "r/selfhosted"
+        ]
+      }
+    ]
+  },
+  "w-jev": {
+    "name": "Jev",
+    "category": "Altyapı & SDK",
+    "history": [
+      {
+        "date": "24 Eylül 2026",
+        "hypeScore": 8,
+        "sentimentScore": 80,
+        "sentiment": "coşkulu",
+        "headline": "Yeni Çözüm",
+        "summary": "Haftanın başında büyük ilgi gören çözüm, model yeteneklerinin sınırları tartışıldıkça ivmesini kaybetti.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/ChatGPTCoding",
+          "r/singularity"
         ]
       }
     ]

@@ -1,16 +1,16 @@
 ================================================================================
 aitrendleri@engine:~# ./run-pipeline.sh --telemetry --summary
 ================================================================================
-Tarih       : 23 Eylül 2026 (2026-09-23)
-Zaman Aralığı: 03:06:57 ➔ 03:12:58 TSİ
-Toplam Süre : 361s (6.0 dakika)
+Tarih       : 24 Eylül 2026 (2026-09-24)
+Zaman Aralığı: 03:06:31 ➔ 03:10:39 TSİ
+Toplam Süre : 248s (4.1 dakika)
 Durum       : 🟢 BAŞARILI (HTTP 200 OK - Snapshot Mühürlendi)
 ================================================================================
 
 [T0: ÇALIŞMA ORTAMI & API DOĞRULAMA]
   • Çıkarım Motoru      : DeepSeek v4.1 Flash (deepseek-flash)
   • API Anahtarı         : DEEPSEEK_API_KEY (Öncelikli)
-  • Apify Twitter Modülü : Tanımlı / Aktif (100 Lider Taraması)
+  • Apify Twitter Modülü : Mevcut
   • Harici API Hattı     : ArXiv XML, Hugging Face API, HN Firebase, GitHub Crawler
   • Bildirim Servisi     : Resend API (Aktif)
 
@@ -20,21 +20,21 @@ Durum       : 🟢 BAŞARILI (HTTP 200 OK - Snapshot Mühürlendi)
   • Batch Başarı Oranı   : 3/7 kategori başarıyla alındı
   ------------------------------------------------------------------------------
   1. [200 OK]  Vibe Coding & Yeni Nesil Editörler         : 15 post
-     └─ Dağılım: r/ClaudeAI:4 r/vibecoding:1 r/ChatGPTCoding:1 r/Copilot:3 r/windsurf:1 r/CursorAI:1 r/ClaudeDev:1 r/vscode:3
-  2. [200 OK]  Otonom Ajanlar & Süreç Otomasyonu          : 15 post
-     └─ Dağılım: r/AI_Agents:5 r/LangChain:1 r/n8n:2 r/agenticAI:4 r/crewai:1 r/AutoGPT:2
-  3. [429 ERR] Büyük Dil Modelleri & Araştırma Devleri    :  0 post
+     └─ Dağılım: r/ClaudeAI:2 r/vibecoding:3 r/Copilot:1 r/ChatGPTCoding:4 r/vscode:3 r/windsurf:1 r/ClaudeDev:1
+  2. [429 ERR] Otonom Ajanlar & Süreç Otomasyonu          :  0 post
      └─ Neden  : Reddit HTTP 429 (Rate Limit)
+  3. [200 OK]  Büyük Dil Modelleri & Araştırma Devleri    : 15 post
+     └─ Dağılım: r/singularity:3 r/Anthropic:2 r/OpenAI:4 r/ArtificialInteligence:2 r/DeepSeek:2 r/MachineLearning:1 r/GoogleGemini:1
   4. [429 ERR] Açık Kaynak, Yerel Modeller & Self-Hosted  :  0 post
      └─ Neden  : Reddit HTTP 429 (Rate Limit)
-  5. [200 OK]  Yazılım Geliştirici, API & Kodlama Dünyası : 15 post
-     └─ Dağılım: r/webdev:2 r/generativeAI:2 r/programming:2 r/PromptEngineering:1 r/datascience:1 r/LLMDevs:6 r/ai_tools:1
-  6. [429 ERR] Donanım, GPU, CPU & Bulut Altyapısı        :  0 post
+  5. [429 ERR] Yazılım Geliştirici, API & Kodlama Dünyası :  0 post
      └─ Neden  : Reddit HTTP 429 (Rate Limit)
+  6. [200 OK]  Donanım, GPU, CPU & Bulut Altyapısı        : 15 post
+     └─ Dağılım: r/nvidia:2 r/sysadmin:2 r/hardware:3 r/AMD_Stock:1 r/devops:2 r/googlecloud:2 r/Cloud:3
   7. [429 ERR] Görsel, Video & Medya Üretimi              :  0 post
      └─ Neden  : Reddit HTTP 429 (Rate Limit)
   ------------------------------------------------------------------------------
-  • En Yüksek Verim      : r/vscode (69), r/vibecoding (61), r/ClaudeAI (60), r/ChatGPTCoding (50), r/CursorAI (43)
+  • En Yüksek Verim      : r/vscode (72), r/vibecoding (64), r/ClaudeAI (62), r/ChatGPTCoding (54), r/CursorAI (43)
   • Düşük Sinyal / Takip : r/copilot, r/CrewAI, r/agenticai, r/Singularity, r/vllm, r/AI_Tools, r/GenerativeAI, r/GoogleCloud, r/ComfyUI, r/Midjourney, r/Sora, r/RunwayML
   • Sıfır Veri (Dead)    : Yok (Tümü veri sağlıyor)
 
@@ -43,7 +43,7 @@ Durum       : 🟢 BAŞARILI (HTTP 200 OK - Snapshot Mühürlendi)
   • Çalıştırılan Aktör   : apidojo/tweet-scraper (7 paralel sorgu grubu)
   • Filtreleme & Eleme   : Son 24s penceresi, yanıtlar/spam/kısa metinler elendi
   • Çıkarıma Alınan Tweet: 180 kaliteli teknik tweet
-  • Tespit Edilen Gündem : Bugün X ekosisteminde liderlerin zihni üç eksende birleşiyor: model fiyat çöküşü, System 1/karar modeli dalgası ve ajan harness kalitesi. @simonw 'Luna, 5.6'nın yarı fiyatı, üstelik zaten inanılmaz ucuzdu' derken, @natolambert 'frontier hızını ayarlamak vs mer...
+  • Tespit Edilen Gündem : X gündeminin merkezinde bu kez tartışmasız bir kazanan var: Claude Opus 5.5. Matt Shumer 'Opus ile limitleri düşünmeden çalışmanın ne kadar özgürleştirici olduğunu unutmuşum' derken, Alex Volkov bir gün boyunca yoğun kullanıp gece boyunca çalıştırdığını ve kot...
 
 [T3: EKOSİSTEM HARİCİ API & AÇIK KAYNAK HASADI]
   • 📄 ArXiv Makale Radarı : 3 yeni makale seçildi (cs.AI, cs.LG, cs.CL, stat.ML)
@@ -56,15 +56,15 @@ Durum       : 🟢 BAŞARILI (HTTP 200 OK - Snapshot Mühürlendi)
   ------------------------------------------------------------------------------
   Aşama      | Girdi (Prompt) | Düşünce (CoT) | Nihai Çıktı | Toplam Token
   ------------------------------------------------------------------------------
-  Faz 1      | 67.4k          | 4.3k          | 20.5k       | 92.3k
-  Faz 2      | 8.7k           | 0.8k          | 2.6k        | 12.1k
+  Faz 1      | 70.4k          | 2.3k          | 22.7k       | 95.5k
+  Faz 2      | 9.1k           | 0.9k          | 1.1k        | 11.1k
   ------------------------------------------------------------------------------
-  KONSOLİDE  | 76.1k          | 5.1k          | 23.1k       | 104.4k
+  KONSOLİDE  | 79.5k          | 3.3k          | 23.8k       | 106.6k
   ------------------------------------------------------------------------------
 
 [T5: VERİ MÜHÜRLENMESİ, ARŞİV & SİSTEM DAĞITIMI]
   • [✔] latest-report.json                : Mühürlendi ve diske yazıldı
-  • [✔] archive/2026-09-23.json           : Dondurulmuş snapshot olarak arşivlendi
+  • [✔] archive/2026-09-24.json           : Dondurulmuş snapshot olarak arşivlendi
   • [✔] archive-index.json                : Arşiv dizini güncellendi
   • [✔] arxiv-history.json                : 7 günlük makale hafızası güncellendi
   • [✔] tool-history.json                 : Topluluk tarihsel skorları mühürlendi
@@ -73,5 +73,5 @@ Durum       : 🟢 BAŞARILI (HTTP 200 OK - Snapshot Mühürlendi)
   • [✔] E-Posta İletimi (Resend)          : orhaner1907@gmail.com
 
 ================================================================================
-aitrendleri@engine:~# execution finished in 361s.
+aitrendleri@engine:~# execution finished in 248s.
 ================================================================================

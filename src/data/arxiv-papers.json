@@ -78,9 +78,63 @@
     "arxiv-2609-22067",
     "arxiv-2609-24984",
     "arxiv-2609-24985",
-    "arxiv-2609-24979"
+    "arxiv-2609-24979",
+    "arxiv-2609-26781v1",
+    "arxiv-2609-26779v1",
+    "arxiv-2609-26796v1"
   ],
   "dailyRecords": [
+    {
+      "date": "24 Eylül 2026",
+      "isoDate": "2026-09-24",
+      "papers": [
+        {
+          "id": "arxiv-2609-26781v1",
+          "titleTr": "Agensh: Kurumsal Zekayı 1.024 Ajana Ölçeklemek",
+          "title": "Agensh: Scaling Organizational Intelligence to 1,024 Agents",
+          "arxivUrl": "https://arxiv.org/abs/2609.26781v1",
+          "authors": [
+            "Zhihao Zhan",
+            "Ting Song",
+            "Li Dong"
+          ],
+          "category": "cs.AI",
+          "impactScore": 9.6,
+          "whyMad": "Merkezi orkestratör darboğazını tamamen kaldırıp çoklu ajan sistemlerini bin ölçeğine taşıyan kendi kendini organize eden bir harness öneriyor.",
+          "summary": "Bin ajanlık ölçekte merkezi koordinasyon olmadan çalışan, eşzamanlı işçilerin işbirliği döngüsü yürüttüğü bir çoklu ajan mimarisi sunuyor."
+        },
+        {
+          "id": "arxiv-2609-26779v1",
+          "titleTr": "CliffCompaction: Uzun Ufuklu Kodlama Ajanları için Maliyet Verimli Sıkıştırma",
+          "title": "CliffCompaction: Cost-Efficient Compaction for Long-Horizon Coding Agents",
+          "arxivUrl": "https://arxiv.org/abs/2609.26779v1",
+          "authors": [
+            "Trang Nguyen",
+            "Eulrang Cho",
+            "Bingqing Chen"
+          ],
+          "category": "cs.AI",
+          "impactScore": 9.5,
+          "whyMad": "Bağlam sınırlı kalırken maliyeti yüzde 50'ye kadar düşürüp Terminal-Bench performansını koruyor; test zamanı ölçekleme için yeni bir verimlilik seviyesi açıyor.",
+          "summary": "Otomatik sıkıştırma ile milyonlarca tokenlık oturumları sürdürülebilir kılan ve KernelBench'te en iyi sonuçları elde eden bir yöntem öneriyor."
+        },
+        {
+          "id": "arxiv-2609-26796v1",
+          "titleTr": "Flash-dLLM: Difüzyon Dil Modelleri için IO-Duyarlı KV Önbellekleme ve Paralel Kod Çözme",
+          "title": "Flash-dLLM: IO-Aware KV Caching and Parallel Decoding for Fast, Memory-Efficient Diffusion LLMs",
+          "arxivUrl": "https://arxiv.org/abs/2609.26796v1",
+          "authors": [
+            "Quan Nguyen-Tri",
+            "Mukul Ranjan",
+            "Zhiqiang Shen"
+          ],
+          "category": "cs.CL",
+          "impactScore": 9.4,
+          "whyMad": "Difüzyon dil modellerinin pratikte kullanılamaz kalmasına neden olan çıkarım darboğazını KV önbelleği ve paralel kod çözümeyi birlikte ele alarak kırıyor.",
+          "summary": "Önbellek yeniden kullanımı ve paralel kod çözmede ortaya çıkan G/Ç darboğazlarını hedefleyen, bellek verimli difüzyon LLM çıkarım yöntemi sunuyor."
+        }
+      ]
+    },
     {
       "date": "23 Eylül 2026",
       "isoDate": "2026-09-23",
