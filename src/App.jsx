@@ -2940,26 +2940,27 @@ ${bulletsText}
                       key={prod.name || idx}
                       className="bg-white border border-[#cbd5e1] rounded-sm p-3.5 hover:border-black transition shadow-2xs space-y-3"
                     >
-                      {/* Üst Bar: Sıra, Ürün Adı, Kategori ve Skorlar */}
-                      <div className="flex items-center justify-between gap-3 flex-wrap sm:flex-nowrap border-b border-slate-100 pb-2.5">
-                        <div className="flex items-center gap-2.5 min-w-0">
+                      {/* Üst Bar: Sıra, Ürün Adı, Kategori (Mobilde Gizli) ve Skorlar */}
+                      <div className="flex items-center justify-between gap-2 sm:gap-3 border-b border-slate-100 pb-2.5">
+                        <div className="flex items-center gap-2 min-w-0">
                           <span className="w-6 h-6 flex-shrink-0 flex items-center justify-center bg-slate-900 text-white font-mono font-bold text-xs rounded-xs">
                             #{prod.rank || (idx + 1)}
                           </span>
-                          <h5 className="font-bold text-slate-900 text-sm sm:text-base font-mono truncate">
+                          <h5 className="font-bold text-slate-900 text-xs sm:text-base font-mono truncate" title={prod.name}>
                             {prod.name}
                           </h5>
-                          <span className="font-mono text-[10px] px-2 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-200 whitespace-nowrap">
+                          {/* Kategori Etiketi: Mobilde yer kazanmak için gizli, masaüstünde görünür */}
+                          <span className="hidden sm:inline-block font-mono text-[10px] px-2 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-200 whitespace-nowrap">
                             {prod.category}
                           </span>
                         </div>
 
                         {/* Skor Rozetleri: ASLA SARKMAYAN, flex-nowrap shrink-0 */}
-                        <div className="flex items-center gap-2 flex-nowrap shrink-0 font-mono text-xs">
-                          <span className="px-2 py-0.5 rounded bg-amber-50 text-amber-900 border border-amber-300 font-bold whitespace-nowrap shrink-0">
+                        <div className="flex items-center gap-1.5 sm:gap-2 flex-nowrap shrink-0 font-mono text-[10.5px] sm:text-xs">
+                          <span className="px-1.5 sm:px-2 py-0.5 rounded bg-amber-50 text-amber-900 border border-amber-300 font-bold whitespace-nowrap shrink-0">
                             HYPE: {Number(prod.hypeScore || 0).toFixed(1)}/10
                           </span>
-                          <span className={`px-2 py-0.5 rounded font-bold whitespace-nowrap shrink-0 border ${
+                          <span className={`px-1.5 sm:px-2 py-0.5 rounded font-bold whitespace-nowrap shrink-0 border ${
                             (prod.sentimentScore || 0) >= 8.5 
                               ? 'bg-emerald-50 text-emerald-900 border-emerald-300' 
                               : (prod.sentimentScore || 0) >= 7.0 
