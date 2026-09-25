@@ -216,6 +216,18 @@
           "r/vibecoding",
           "r/AI_Agents"
         ]
+      },
+      {
+        "date": "25 Eylül 2026",
+        "hypeScore": 7.2,
+        "sentimentScore": 71,
+        "sentiment": "düşüş",
+        "headline": "Kararsız",
+        "summary": "'Vibe coder' tartışmalarında referans veriliyor ancak gündemdeki asıl pazarlık konusu değil; doğal ilgi azalışta.",
+        "sources": [
+          "r/CursorAI",
+          "r/vibecoding"
+        ]
       }
     ]
   },
@@ -422,6 +434,19 @@
           "r/vibecoding",
           "r/ChatGPTCoding"
         ]
+      },
+      {
+        "date": "25 Eylül 2026",
+        "hypeScore": 9.6,
+        "sentimentScore": 78,
+        "sentiment": "stabil",
+        "headline": "Eleştiriliyor",
+        "summary": "Gösteri projeleriyle övülürken, 'kod tabanında kontrolsüz davranıyor' ve 'ne yaptığını denetlemek zor' eleştirileri paralel yükseliyor.",
+        "sources": [
+          "r/ClaudeAI",
+          "r/ClaudeDev",
+          "r/vibecoding"
+        ]
       }
     ]
   },
@@ -539,6 +564,18 @@
         "sources": [
           "r/ClaudeAI",
           "r/vibecoding"
+        ]
+      },
+      {
+        "date": "25 Eylül 2026",
+        "hypeScore": 8.3,
+        "sentimentScore": 68,
+        "sentiment": "coşkulu",
+        "headline": "Yüksek Maliyet",
+        "summary": "Kullanıcılar 'çok pahalı olduğu için hak ettiği ilgiyi görmüyor ama zor bug fix'lerde tek atışta çözüyor' diyor.",
+        "sources": [
+          "r/ClaudeAI",
+          "r/singularity"
         ]
       }
     ]
@@ -1345,6 +1382,18 @@
           "r/LocalLLaMA",
           "r/datascience"
         ]
+      },
+      {
+        "date": "25 Eylül 2026",
+        "hypeScore": 8.7,
+        "sentimentScore": 90,
+        "sentiment": "coşkulu",
+        "headline": "10M İndirme",
+        "summary": "Yerel toplulukta düşük VRAM'de yüksek kalite sunan quant olarak standart haline geldi.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/ollama"
+        ]
       }
     ]
   },
@@ -1497,6 +1546,18 @@
           "r/StableDiffusion",
           "r/LocalLLaMA",
           "r/singularity"
+        ]
+      },
+      {
+        "date": "25 Eylül 2026",
+        "hypeScore": 8.7,
+        "sentimentScore": 86,
+        "sentiment": "coşkulu",
+        "headline": "Video Lideri",
+        "summary": "Hugging Face'te 3.6M indirme eşiğini aşarak video üretiminde liderliği sürdürüyor; ComfyUI prompt iş akışlarında referans gösteriliyor.",
+        "sources": [
+          "r/comfyui",
+          "r/StableDiffusion"
         ]
       }
     ]
@@ -4259,6 +4320,19 @@
           "r/singularity",
           "r/MachineLearning"
         ]
+      },
+      {
+        "date": "25 Eylül 2026",
+        "hypeScore": 9.4,
+        "sentimentScore": 93,
+        "sentiment": "coşkulu",
+        "headline": "Yerel Şampiyon",
+        "summary": "Kullanıcılar Q4_K_S quant ile API aboneliğini bıraktıklarını ve modelin karmaşık görevleri tek başına tamamladığını paylaşıyor.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/ollama",
+          "r/Vllm"
+        ]
       }
     ]
   },
@@ -4353,6 +4427,18 @@
           "r/ChatGPTCoding",
           "r/OpenAI",
           "r/generativeAI"
+        ]
+      },
+      {
+        "date": "25 Eylül 2026",
+        "hypeScore": 9.3,
+        "sentimentScore": 62,
+        "sentiment": "eleştirel",
+        "headline": "Kota Baskısı",
+        "summary": "Token ve kota limitlerinin sıkılaşması nedeniyle haftalık tartışmalarda hem övgü hem şikayet aldı.",
+        "sources": [
+          "r/ChatGPTCoding",
+          "r/singularity"
         ]
       }
     ]
@@ -4674,6 +4760,17 @@
         "sources": [
           "r/vscode"
         ]
+      },
+      {
+        "date": "25 Eylül 2026",
+        "hypeScore": 6.9,
+        "sentimentScore": 83,
+        "sentiment": "coşkulu",
+        "headline": "Küçük Zafer",
+        "summary": "Linux'ta pencere butonlarının doğru tarafa taşınması sevindirdi; ancak övgünün Electron'a gitmesi trajikomik bulundu.",
+        "sources": [
+          "r/vscode"
+        ]
       }
     ]
   },
@@ -4710,6 +4807,18 @@
           "r/Copilot",
           "r/vscode",
           "r/ChatGPTCoding"
+        ]
+      },
+      {
+        "date": "25 Eylül 2026",
+        "hypeScore": 8.9,
+        "sentimentScore": 44,
+        "sentiment": "coşkulu",
+        "headline": "Ücretsiz Sınırı",
+        "summary": "Tasks özelliğinin çalışmadığı ve ücretsiz katmanın 'iki sorudan sonra ödeme istediği' yönünde şikayetler Reddit'te hızla yayıldı.",
+        "sources": [
+          "r/Copilot",
+          "r/GitHubCopilot"
         ]
       }
     ]
@@ -5214,6 +5323,18 @@
           "r/LocalLLaMA",
           "r/Ollama"
         ]
+      },
+      {
+        "date": "25 Eylül 2026",
+        "hypeScore": 7.4,
+        "sentimentScore": 82,
+        "sentiment": "coşkulu",
+        "headline": "Tek Komut Kurulum",
+        "summary": "Kullanıcılar ev sunucusunda ajan ve araştırma için laptop ve mobilden erişilebilen Ollama kurulumlarını paylaşıyor.",
+        "sources": [
+          "r/ollama",
+          "r/selfhosted"
+        ]
       }
     ]
   },
@@ -5339,6 +5460,18 @@
         "sources": [
           "r/StableDiffusion",
           "r/LocalLLaMA",
+          "r/comfyui"
+        ]
+      },
+      {
+        "date": "25 Eylül 2026",
+        "hypeScore": 8.5,
+        "sentimentScore": 84,
+        "sentiment": "coşkulu",
+        "headline": "Görsel Favorisi",
+        "summary": "'Önce kötüledim ama özür diliyorum' başlığıyla geri dönen bir kullanıcı, 2511'e kıyasla çok daha üstün ince detay ürettiğini paylaştı.",
+        "sources": [
+          "r/StableDiffusion",
           "r/comfyui"
         ]
       }
@@ -5583,6 +5716,18 @@
           "r/LocalLLaMA",
           "r/MistralAI",
           "r/ChatGPTCoding"
+        ]
+      },
+      {
+        "date": "25 Eylül 2026",
+        "hypeScore": 8.1,
+        "sentimentScore": 86,
+        "sentiment": "coşkulu",
+        "headline": "Topluluk Favorisi",
+        "summary": "Yerel toplulukta hızlı yanıt ve düşük kaynak kullanımı nedeniyle tercih edilen model olmayı sürdürüyor.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/OpenSourceAI"
         ]
       }
     ]
@@ -5939,6 +6084,19 @@
           "r/singularity",
           "r/OpenAI"
         ]
+      },
+      {
+        "date": "25 Eylül 2026",
+        "hypeScore": 9.9,
+        "sentimentScore": 94,
+        "sentiment": "coşkulu",
+        "headline": "Günün Lideri",
+        "summary": "Reddit'te tek promptla tam çalışan 3D oyun ve LEGO tasarımı paylaşımları patladı; topluluk 'benchmaxxed değil ama gerçekten daha zeki' diyerek övüyor.",
+        "sources": [
+          "r/ClaudeAI",
+          "r/vibecoding",
+          "r/ClaudeDev"
+        ]
       }
     ]
   },
@@ -5987,6 +6145,18 @@
         "sources": [
           "r/n8n",
           "r/Automate"
+        ]
+      },
+      {
+        "date": "25 Eylül 2026",
+        "hypeScore": 8.2,
+        "sentimentScore": 89,
+        "sentiment": "coşkulu",
+        "headline": "Kurumsal Favori",
+        "summary": "Kurumsal ajan dağıtımında güvenilir seçim olarak referans verilmeye devam ediyor.",
+        "sources": [
+          "r/selfhosted",
+          "r/n8n"
         ]
       }
     ]
@@ -6175,6 +6345,76 @@
           "r/LocalLLaMA",
           "r/ChatGPTCoding",
           "r/singularity"
+        ]
+      }
+    ]
+  },
+  "devin-windsurf": {
+    "name": "Devin",
+    "category": "Otonom Agent",
+    "history": [
+      {
+        "date": "25 Eylül 2026",
+        "hypeScore": 9.2,
+        "sentimentScore": 26,
+        "sentiment": "coşkulu",
+        "headline": "Fatura Şoku",
+        "summary": "Bir kullanıcı hesabından yetkisiz on-demand harcama ve geri ödenmeyen faturalar şikayet etti; destek ekibinden yanıt gelmemesi tepkiyi büyüttü.",
+        "sources": [
+          "r/CursorAI",
+          "r/selfhosted"
+        ]
+      }
+    ]
+  },
+  "krea-2": {
+    "name": "Krea 2",
+    "category": "Medya / Üretim",
+    "history": [
+      {
+        "date": "25 Eylül 2026",
+        "hypeScore": 8,
+        "sentimentScore": 91,
+        "sentiment": "coşkulu",
+        "headline": "Topluluk Favorisi",
+        "summary": "Kullanıcıların paylaştığı ücretsiz karakter LoRA kütüphanesi 18'den 70 modele çıktı; eğitim iş akışı rehberi viral oldu.",
+        "sources": [
+          "r/StableDiffusion"
+        ]
+      }
+    ]
+  },
+  "vllm": {
+    "name": "vLLM",
+    "category": "Altyapı & SDK",
+    "history": [
+      {
+        "date": "25 Eylül 2026",
+        "hypeScore": 7.7,
+        "sentimentScore": 88,
+        "sentiment": "coşkulu",
+        "headline": "Yüksek Verim",
+        "summary": "Qwen3.8-27B FP16 için dört GPU'lu çoklu W6800X Duo donanımında yayınlanan benchmark sonuçları toplulukta referans alınıyor.",
+        "sources": [
+          "r/Vllm",
+          "r/LocalLLaMA"
+        ]
+      }
+    ]
+  },
+  "dockhand": {
+    "name": "Dockhand",
+    "category": "Altyapı & SDK",
+    "history": [
+      {
+        "date": "25 Eylül 2026",
+        "hypeScore": 6.6,
+        "sentimentScore": 87,
+        "sentiment": "coşkulu",
+        "headline": "Yeni Gözde",
+        "summary": "Portainer'dan ayrılan bir kullanıcının daha temiz arayüz ve akıcı iş akışı övgüsü self-hosted topluluğunda tartışma açtı.",
+        "sources": [
+          "r/selfhosted"
         ]
       }
     ]

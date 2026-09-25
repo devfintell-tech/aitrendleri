@@ -81,9 +81,63 @@
     "arxiv-2609-24979",
     "arxiv-2609-26781v1",
     "arxiv-2609-26779v1",
-    "arxiv-2609-26796v1"
+    "arxiv-2609-26796v1",
+    "arxiv-2609-28449v1",
+    "arxiv-2609-28470v1",
+    "arxiv-2609-28473v1"
   ],
   "dailyRecords": [
+    {
+      "date": "25 Eylül 2026",
+      "isoDate": "2026-09-25",
+      "papers": [
+        {
+          "id": "arxiv-2609-28449v1",
+          "titleTr": "LLM'ler Çalışma Zamanı Davranışını Akıl Yürütebilir mi? Depo Düzeyinde Dinamik Bir Benchmark",
+          "title": "Can LLMs Reason About Runtime Behavior? A Repository-Level Dynamic Benchmark",
+          "arxivUrl": "https://arxiv.org/abs/2609.28449v1",
+          "authors": [
+            "Hamed Taherkhani",
+            "Mohammad Abdollahi",
+            "Melika Sepidband"
+          ],
+          "category": "cs.SE",
+          "impactScore": 9.6,
+          "whyMad": "Kodlama ajanlarının gerçek yürütme davranışını anlayıp anlamadığını, statik kod okuma yerine 480 yürütmeye dayalı görevle ölçerek sektörün kör noktasını kapatıyor.",
+          "summary": "12 gerçek Python deposu üzerinden yürütmeye dayalı akıl yürütmeyi test eden SWE-Flux benchmark'ını sunuyor."
+        },
+        {
+          "id": "arxiv-2609-28470v1",
+          "titleTr": "StudentBench: Yapay Zeka ve İnsan Öğretmenliği Eşdeğer GRE Öğrenme Kazanımları Sağlıyor",
+          "title": "StudentBench: AI and human tutoring yield equivalent GRE learning gains",
+          "arxivUrl": "https://arxiv.org/abs/2609.28470v1",
+          "authors": [
+            "Curtis Northcutt",
+            "Inaara Hasmani",
+            "Kevin Feng"
+          ],
+          "category": "cs.CY",
+          "impactScore": 9.5,
+          "whyMad": "175 bin öğrenci-AI mesajıyla LLM'lerin insan öğretmenliğiyle eşdeğer öğrenme kazancı sağladığını ölçerek eğitimdeki en büyük tartışmaya kanıt sunuyor.",
+          "summary": "AI öğretim değerlendirmeleri için geniş ölçekli veri toplayan bir platform ve StudentBench test setini tanıtıyor."
+        },
+        {
+          "id": "arxiv-2609-28473v1",
+          "titleTr": "Yüksek Boyutlu Gizli Değişkenlerin Yayılabilirliği Üzerine",
+          "title": "On the Diffusibility of High-Dimensional Latents",
+          "arxivUrl": "https://arxiv.org/abs/2609.28473v1",
+          "authors": [
+            "Chao Feng",
+            "Zhiyang Xu",
+            "Bowei Chen"
+          ],
+          "category": "cs.CV",
+          "impactScore": 9.3,
+          "whyMad": "Yeniden yapılandırma için ince ayar yapmanın, sezgisel olarak beklenecek iyileştirme yerine temsil boyutunu küçültüp difüzyon kalitesini bozduğunu ortaya koyuyor.",
+          "summary": "Temsil otokodlayıcılarının geometrisiyle difüzyon modellerinin etkin boyutu arasındaki ilişkiyi inceliyor."
+        }
+      ]
+    },
     {
       "date": "24 Eylül 2026",
       "isoDate": "2026-09-24",

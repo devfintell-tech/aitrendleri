@@ -1,9 +1,9 @@
 ================================================================================
 aitrendleri@engine:~# ./run-pipeline.sh --telemetry --summary
 ================================================================================
-Tarih       : 24 Eylül 2026 (2026-09-24)
-Zaman Aralığı: 03:06:31 ➔ 03:10:39 TSİ
-Toplam Süre : 248s (4.1 dakika)
+Tarih       : 25 Eylül 2026 (2026-09-25)
+Zaman Aralığı: 03:07:12 ➔ 03:10:53 TSİ
+Toplam Süre : 221s (3.7 dakika)
 Durum       : 🟢 BAŞARILI (HTTP 200 OK - Snapshot Mühürlendi)
 ================================================================================
 
@@ -20,21 +20,21 @@ Durum       : 🟢 BAŞARILI (HTTP 200 OK - Snapshot Mühürlendi)
   • Batch Başarı Oranı   : 3/7 kategori başarıyla alındı
   ------------------------------------------------------------------------------
   1. [200 OK]  Vibe Coding & Yeni Nesil Editörler         : 15 post
-     └─ Dağılım: r/ClaudeAI:2 r/vibecoding:3 r/Copilot:1 r/ChatGPTCoding:4 r/vscode:3 r/windsurf:1 r/ClaudeDev:1
+     └─ Dağılım: r/vibecoding:2 r/ClaudeAI:7 r/vscode:1 r/Copilot:2 r/ChatGPTCoding:1 r/windsurf:1 r/ClaudeDev:1
   2. [429 ERR] Otonom Ajanlar & Süreç Otomasyonu          :  0 post
      └─ Neden  : Reddit HTTP 429 (Rate Limit)
-  3. [200 OK]  Büyük Dil Modelleri & Araştırma Devleri    : 15 post
-     └─ Dağılım: r/singularity:3 r/Anthropic:2 r/OpenAI:4 r/ArtificialInteligence:2 r/DeepSeek:2 r/MachineLearning:1 r/GoogleGemini:1
-  4. [429 ERR] Açık Kaynak, Yerel Modeller & Self-Hosted  :  0 post
+  3. [429 ERR] Büyük Dil Modelleri & Araştırma Devleri    :  0 post
      └─ Neden  : Reddit HTTP 429 (Rate Limit)
+  4. [200 OK]  Açık Kaynak, Yerel Modeller & Self-Hosted  : 15 post
+     └─ Dağılım: r/LocalLLaMA:4 r/selfhosted:3 r/MistralAI:2 r/huggingface:2 r/OpenSourceAI:2 r/Vllm:1 r/ollama:1
   5. [429 ERR] Yazılım Geliştirici, API & Kodlama Dünyası :  0 post
      └─ Neden  : Reddit HTTP 429 (Rate Limit)
-  6. [200 OK]  Donanım, GPU, CPU & Bulut Altyapısı        : 15 post
-     └─ Dağılım: r/nvidia:2 r/sysadmin:2 r/hardware:3 r/AMD_Stock:1 r/devops:2 r/googlecloud:2 r/Cloud:3
-  7. [429 ERR] Görsel, Video & Medya Üretimi              :  0 post
+  6. [429 ERR] Donanım, GPU, CPU & Bulut Altyapısı        :  0 post
      └─ Neden  : Reddit HTTP 429 (Rate Limit)
+  7. [200 OK]  Görsel, Video & Medya Üretimi              : 15 post
+     └─ Dağılım: r/StableDiffusion:5 r/midjourney:2 r/artificial:3 r/comfyui:3 r/runwayml:1 r/SORA:1
   ------------------------------------------------------------------------------
-  • En Yüksek Verim      : r/vscode (72), r/vibecoding (64), r/ClaudeAI (62), r/ChatGPTCoding (54), r/CursorAI (43)
+  • En Yüksek Verim      : r/vscode (73), r/ClaudeAI (69), r/vibecoding (66), r/ChatGPTCoding (55), r/CursorAI (43)
   • Düşük Sinyal / Takip : r/copilot, r/CrewAI, r/agenticai, r/Singularity, r/vllm, r/AI_Tools, r/GenerativeAI, r/GoogleCloud, r/ComfyUI, r/Midjourney, r/Sora, r/RunwayML
   • Sıfır Veri (Dead)    : Yok (Tümü veri sağlıyor)
 
@@ -43,7 +43,7 @@ Durum       : 🟢 BAŞARILI (HTTP 200 OK - Snapshot Mühürlendi)
   • Çalıştırılan Aktör   : apidojo/tweet-scraper (7 paralel sorgu grubu)
   • Filtreleme & Eleme   : Son 24s penceresi, yanıtlar/spam/kısa metinler elendi
   • Çıkarıma Alınan Tweet: 180 kaliteli teknik tweet
-  • Tespit Edilen Gündem : X gündeminin merkezinde bu kez tartışmasız bir kazanan var: Claude Opus 5.5. Matt Shumer 'Opus ile limitleri düşünmeden çalışmanın ne kadar özgürleştirici olduğunu unutmuşum' derken, Alex Volkov bir gün boyunca yoğun kullanıp gece boyunca çalıştırdığını ve kot...
+  • Tespit Edilen Gündem : Son 24 saatte X'teki yapay zeka liderlerinin gündemi, Claude Opus 5.5'in beklenmedik derecede yaratıcı ve otonom görevlerdeki performansı etrafında yoğunlaştı. Kullanıcıların en çok paylaştığı vaka, Opus 5.5'in gerçek LEGO parçalarıyla inşa edilebilir bir örde...
 
 [T3: EKOSİSTEM HARİCİ API & AÇIK KAYNAK HASADI]
   • 📄 ArXiv Makale Radarı : 3 yeni makale seçildi (cs.AI, cs.LG, cs.CL, stat.ML)
@@ -56,15 +56,15 @@ Durum       : 🟢 BAŞARILI (HTTP 200 OK - Snapshot Mühürlendi)
   ------------------------------------------------------------------------------
   Aşama      | Girdi (Prompt) | Düşünce (CoT) | Nihai Çıktı | Toplam Token
   ------------------------------------------------------------------------------
-  Faz 1      | 70.4k          | 2.3k          | 22.7k       | 95.5k
-  Faz 2      | 9.1k           | 0.9k          | 1.1k        | 11.1k
+  Faz 1      | 71.7k          | 1.2k          | 17.4k       | 90.3k
+  Faz 2      | 8.3k           | 0.0k          | 1.0k        | 9.3k
   ------------------------------------------------------------------------------
-  KONSOLİDE  | 79.5k          | 3.3k          | 23.8k       | 106.6k
+  KONSOLİDE  | 80.0k          | 1.2k          | 18.3k       | 99.5k
   ------------------------------------------------------------------------------
 
 [T5: VERİ MÜHÜRLENMESİ, ARŞİV & SİSTEM DAĞITIMI]
   • [✔] latest-report.json                : Mühürlendi ve diske yazıldı
-  • [✔] archive/2026-09-24.json           : Dondurulmuş snapshot olarak arşivlendi
+  • [✔] archive/2026-09-25.json           : Dondurulmuş snapshot olarak arşivlendi
   • [✔] archive-index.json                : Arşiv dizini güncellendi
   • [✔] arxiv-history.json                : 7 günlük makale hafızası güncellendi
   • [✔] tool-history.json                 : Topluluk tarihsel skorları mühürlendi
@@ -73,5 +73,5 @@ Durum       : 🟢 BAŞARILI (HTTP 200 OK - Snapshot Mühürlendi)
   • [✔] E-Posta İletimi (Resend)          : orhaner1907@gmail.com
 
 ================================================================================
-aitrendleri@engine:~# execution finished in 248s.
+aitrendleri@engine:~# execution finished in 221s.
 ================================================================================
