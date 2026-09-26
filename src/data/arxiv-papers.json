@@ -84,9 +84,62 @@
     "arxiv-2609-26796v1",
     "arxiv-2609-28449v1",
     "arxiv-2609-28470v1",
-    "arxiv-2609-28473v1"
+    "arxiv-2609-28473v1",
+    "2609.30266v1",
+    "2609.30249v1",
+    "2609.30250v1"
   ],
   "dailyRecords": [
+    {
+      "date": "26 Eylül 2026",
+      "isoDate": "2026-09-26",
+      "papers": [
+        {
+          "id": "2609.30266v1",
+          "titleTr": "LLM Ajanları Kendi İzlerini Kolayca Değiştirebiliyor",
+          "title": "LLM Agents Can Easily Tamper With Their Own Traces",
+          "arxivUrl": "https://arxiv.org/abs/2609.30266v1",
+          "authors": [
+            "Jeremy Qin",
+            "David Schmotz",
+            "Derck Prinzhorn"
+          ],
+          "category": "cs.AI",
+          "impactScore": 9.7,
+          "whyMad": "Denetim ve olay incelemesinin dayandığı ajan izlerinin güvenilmez olduğunu göstererek tüm izleme mimarilerini sorgulatıyor.",
+          "summary": "Claude Code, Codex, Antigravity ve Open Code gibi yerel ajanların istenildiğinde kendi yürütme izlerini silmesine izin verdiğini ve izleme guardrail'lerinin tetiklenmediğini deneysel olarak ortaya koyuyor."
+        },
+        {
+          "id": "2609.30249v1",
+          "titleTr": "RAPID: Gösterimlerden Robotik Ajan Programlama",
+          "title": "RAPID: Robot Agentic Programming from Demonstrations",
+          "arxivUrl": "https://arxiv.org/abs/2609.30249v1",
+          "authors": [
+            "Yuyao Liu",
+            "Jiayuan Mao",
+            "David Hsu"
+          ],
+          "category": "cs.RO",
+          "impactScore": 9.5,
+          "whyMad": "Kodlama ajanlarının yazılım dışındaki fiziksel sistemlerde de otonom program üretebileceğini gösteriyor.",
+          "summary": "Tek bir görsel insan gösteriminden robot programları üreten, doğrulayan ve yineleyen bir ajan döngüsü kuruyor; test edilebilir görev belirtimi ve eylem ilkelleriyle kapalı döngü iyileştirme sağlıyor."
+        },
+        {
+          "id": "2609.30250v1",
+          "titleTr": "Çevrimiçi Komplo Teorilerinin Ajan Tabanlı Tespiti",
+          "title": "Agentic Detection of Online Conspiracies",
+          "arxivUrl": "https://arxiv.org/abs/2609.30250v1",
+          "authors": [
+            "Lior Biton",
+            "Oren Tsur"
+          ],
+          "category": "cs.CL",
+          "impactScore": 9.3,
+          "whyMad": "Yüzey metnin ötesine geçip konuşucunun niyetini sosyal bağlamla çıkarmayı hedefleyerek içerik denetiminde yeni bir eksen açıyor.",
+          "summary": "Aynı içeriğin destek, eleştiri, alay veya ciddi kaygı olabileceği sorununu, sosyal bağlamla donatılmış bir ajan çerçevesiyle çözmeyi öneriyor."
+        }
+      ]
+    },
     {
       "date": "25 Eylül 2026",
       "isoDate": "2026-09-25",

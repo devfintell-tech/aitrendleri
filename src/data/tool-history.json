@@ -228,6 +228,18 @@
           "r/CursorAI",
           "r/vibecoding"
         ]
+      },
+      {
+        "date": "26 Eylül 2026",
+        "hypeScore": 9.5,
+        "sentimentScore": 26,
+        "sentiment": "coşkulu",
+        "headline": "Hesap Kapatma Tepkisi",
+        "summary": "Kullanıcının hesabının 'TOS ihlali' gerekçesiyle kapatılması ve yapay zeka müşteri desteğinin itirazları geçiştirmesi r/CursorAI'de büyük öfke yarattı.",
+        "sources": [
+          "r/CursorAI",
+          "r/vscode"
+        ]
       }
     ]
   },
@@ -446,6 +458,18 @@
           "r/ClaudeAI",
           "r/ClaudeDev",
           "r/vibecoding"
+        ]
+      },
+      {
+        "date": "26 Eylül 2026",
+        "hypeScore": 8,
+        "sentimentScore": 66,
+        "sentiment": "düşüş",
+        "headline": "Davranış Takibi",
+        "summary": "r/ClaudeDev'de geliştiricilerin bugün gözlemlediği tutarsız davranışları sorması ve ArXiv'de izini silen ajan makalesinin yayınlanması gündemi besledi.",
+        "sources": [
+          "r/ClaudeDev",
+          "r/ClaudeAI"
         ]
       }
     ]
@@ -1559,6 +1583,17 @@
           "r/comfyui",
           "r/StableDiffusion"
         ]
+      },
+      {
+        "date": "26 Eylül 2026",
+        "hypeScore": 8.5,
+        "sentimentScore": 89,
+        "sentiment": "coşkulu",
+        "headline": "Video Lideri",
+        "summary": "r/comfyui'de stil transferi ve VFX düzenleme için yeni deneysel LoRA'ların duyurulması topluluk çıktılarıyla desteklendi.",
+        "sources": [
+          "r/comfyui"
+        ]
       }
     ]
   },
@@ -1780,6 +1815,18 @@
           "r/LocalLLaMA",
           "r/singularity",
           "r/Ollama"
+        ]
+      },
+      {
+        "date": "26 Eylül 2026",
+        "hypeScore": 9.5,
+        "sentimentScore": 95,
+        "sentiment": "coşkulu",
+        "headline": "Haftanın Yerel Şampiyonu",
+        "summary": "Hugging Face'te 6.5 milyon indirme ve 16 binden fazla beğeniyle yerel topluluğun tartışmasız referans modeli olmayı sürdürüyor.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/huggingface"
         ]
       }
     ]
@@ -2758,6 +2805,17 @@
         "sentiment": "coşkulu",
         "headline": "Maliyet Eleştirisi",
         "summary": "Karmaşık güncellemeler ve sıkışan kotanın Devin ile birlikte eleştirilmesi toplulukta olumsuz tepki topluyor.",
+        "sources": [
+          "r/windsurf"
+        ]
+      },
+      {
+        "date": "26 Eylül 2026",
+        "hypeScore": 7.4,
+        "sentimentScore": 41,
+        "sentiment": "düşüş",
+        "headline": "Kapasite Eleştirisi",
+        "summary": "r/windsurf'te 'this serving model' ibareli karmaşık protokol hatası ve süregelen sunum kapasitesi sorunları eleştirildi.",
         "sources": [
           "r/windsurf"
         ]
@@ -4440,6 +4498,17 @@
           "r/ChatGPTCoding",
           "r/singularity"
         ]
+      },
+      {
+        "date": "26 Eylül 2026",
+        "hypeScore": 9.2,
+        "sentimentScore": 81,
+        "sentiment": "coşkulu",
+        "headline": "Otonom Deney Şampiyonu",
+        "summary": "r/vibecoding'de Codex computer-use ile kendi başına İnternet markası kurup ilk ödeme yapan müşteri siparişini alan deney paylaşımı ilgi gördü.",
+        "sources": [
+          "r/vibecoding"
+        ]
       }
     ]
   },
@@ -4838,6 +4907,18 @@
           "r/OpenAI",
           "r/ChatGPTCoding"
         ]
+      },
+      {
+        "date": "26 Eylül 2026",
+        "hypeScore": 9,
+        "sentimentScore": 79,
+        "sentiment": "eleştirel",
+        "headline": "Ajan Ekonomisi",
+        "summary": "Kota ve limit baskısı şikayetleri ile bağımsız marka işletme deneylerinin başarısı aynı hafta içinde yan yana konuşuldu.",
+        "sources": [
+          "r/vibecoding",
+          "r/singularity"
+        ]
       }
     ]
   },
@@ -4856,6 +4937,18 @@
           "r/StableDiffusion",
           "r/LocalLLaMA"
         ]
+      },
+      {
+        "date": "26 Eylül 2026",
+        "hypeScore": 8.7,
+        "sentimentScore": 88,
+        "sentiment": "coşkulu",
+        "headline": "Video Lideri",
+        "summary": "Yeni LoRA'lar ve anime-to-realism dönüşüm çalışmalarıyla görsel üretim topluluklarında sürekli sıcak kaldı.",
+        "sources": [
+          "r/comfyui",
+          "r/StableDiffusion"
+        ]
       }
     ]
   },
@@ -4873,6 +4966,18 @@
         "sources": [
           "r/LocalLLaMA",
           "r/Ollama"
+        ]
+      },
+      {
+        "date": "26 Eylül 2026",
+        "hypeScore": 8.2,
+        "sentimentScore": 89,
+        "sentiment": "coşkulu",
+        "headline": "10M İndirme Eşiği",
+        "summary": "Yerel toplulukta 10 milyon indirme eşiğine yaklaşan en güvenilir GGUF dağıtımı olarak anılıyor.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/huggingface"
         ]
       }
     ]
@@ -4928,6 +5033,18 @@
           "r/CursorAI",
           "r/ChatGPTCoding"
         ]
+      },
+      {
+        "date": "26 Eylül 2026",
+        "hypeScore": 8.6,
+        "sentimentScore": 55,
+        "sentiment": "eleştirel",
+        "headline": "Kararsız",
+        "summary": "Hafta boyunca fiyat, kota ve hesap yönetimi şikayetleriyle övgülerin iç içe geçtiği kararsız bir tablo çizdi.",
+        "sources": [
+          "r/CursorAI",
+          "r/vscode"
+        ]
       }
     ]
   },
@@ -4945,6 +5062,18 @@
         "sources": [
           "r/ClaudeAI",
           "r/ClaudeDev"
+        ]
+      },
+      {
+        "date": "26 Eylül 2026",
+        "hypeScore": 9.2,
+        "sentimentScore": 72,
+        "sentiment": "stabil",
+        "headline": "Haftanın Tartışması",
+        "summary": "Kod tabanlarında kontrolsüz dosya silme ve davranış tutarsızlığı raporları hafta boyunca eleştiri odağında kaldı.",
+        "sources": [
+          "r/ClaudeDev",
+          "r/CursorAI"
         ]
       }
     ]
@@ -5335,6 +5464,18 @@
           "r/ollama",
           "r/selfhosted"
         ]
+      },
+      {
+        "date": "26 Eylül 2026",
+        "hypeScore": 7.6,
+        "sentimentScore": 85,
+        "sentiment": "coşkulu",
+        "headline": "Ev Sunucusu Favorisi",
+        "summary": "r/selfhosted'de Mac Mini M4'ü sürekli açık ev sunucusuna çeviren kullanıcıların ilk sıradaki tavsiyesi haline geldi.",
+        "sources": [
+          "r/selfhosted",
+          "r/ollama"
+        ]
       }
     ]
   },
@@ -5473,6 +5614,18 @@
         "sources": [
           "r/StableDiffusion",
           "r/comfyui"
+        ]
+      },
+      {
+        "date": "26 Eylül 2026",
+        "hypeScore": 8.9,
+        "sentimentScore": 88,
+        "sentiment": "coşkulu",
+        "headline": "Görsel Favorisi",
+        "summary": "r/comfyui'de CFG davranışını belgeleyen test serisi ve negatif promptların kaliteyi ciddi şekilde artırdığının gösterilmesi öne çıktı.",
+        "sources": [
+          "r/comfyui",
+          "r/StableDiffusion"
         ]
       }
     ]
@@ -5728,6 +5881,18 @@
         "sources": [
           "r/LocalLLaMA",
           "r/OpenSourceAI"
+        ]
+      },
+      {
+        "date": "26 Eylül 2026",
+        "hypeScore": 8.7,
+        "sentimentScore": 36,
+        "sentiment": "coşkulu",
+        "headline": "Almanca Regresyonu",
+        "summary": "r/MistralAI'de Le Chat'te zorla varsayılan yapılması ve Almanca çıktısında Çince karakter ve uydurma kelimeler üretmesi sert eleştiri aldı.",
+        "sources": [
+          "r/MistralAI",
+          "r/LocalLLaMA"
         ]
       }
     ]
@@ -6097,6 +6262,18 @@
           "r/vibecoding",
           "r/ClaudeDev"
         ]
+      },
+      {
+        "date": "26 Eylül 2026",
+        "hypeScore": 9.9,
+        "sentimentScore": 94,
+        "sentiment": "coşkulu",
+        "headline": "Günün Lideri",
+        "summary": "r/vibecoding ve r/ClaudeAI'de tek promptla oynanabilir Pokémon demosu, 3D at animasyonu ve Bad Apple remiksi üreten gönderiler günü tamamen domine etti.",
+        "sources": [
+          "r/vibecoding",
+          "r/ClaudeAI"
+        ]
       }
     ]
   },
@@ -6399,6 +6576,18 @@
           "r/Vllm",
           "r/LocalLLaMA"
         ]
+      },
+      {
+        "date": "26 Eylül 2026",
+        "hypeScore": 7.5,
+        "sentimentScore": 62,
+        "sentiment": "eleştirel",
+        "headline": "GPU Ölçekleme Testi",
+        "summary": "r/vllm'de NVFP4 GLM-5.3'ün KV cache profilinde çökmesi ve 4x vs 8x RTX 3060 kurulumunda PCIe darboğazı tartışıldı.",
+        "sources": [
+          "r/vllm",
+          "r/LocalLLaMA"
+        ]
       }
     ]
   },
@@ -6414,6 +6603,146 @@
         "headline": "Yeni Gözde",
         "summary": "Portainer'dan ayrılan bir kullanıcının daha temiz arayüz ve akıcı iş akışı övgüsü self-hosted topluluğunda tartışma açtı.",
         "sources": [
+          "r/selfhosted"
+        ]
+      }
+    ]
+  },
+  "swift-1-5-qwen38-flash-next": {
+    "name": "Swift1.5 Qwen3.8 Flash-Next",
+    "category": "Yerel Model",
+    "history": [
+      {
+        "date": "26 Eylül 2026",
+        "hypeScore": 8.4,
+        "sentimentScore": 91,
+        "sentiment": "coşkulu",
+        "headline": "Akıl Yürütme Verimliliği",
+        "summary": "r/LocalLLaMA'da aşırı düşünme azaltılırken kalitenin gerçek kullanımda eşdeğer kalması ve büyük zaman tasarrufu sağlaması övüldü.",
+        "sources": [
+          "r/LocalLLaMA"
+        ]
+      }
+    ]
+  },
+  "mistral": {
+    "name": "Mistral",
+    "category": "Şirket / Lab",
+    "history": [
+      {
+        "date": "26 Eylül 2026",
+        "hypeScore": 8.3,
+        "sentimentScore": 30,
+        "sentiment": "düşüş",
+        "headline": "Kimlik Krizi",
+        "summary": "r/MistralAI'de web arayüzünde Mistral modellerine erişimin kaldırılıp model seçiminin tamamen GLM'e bırakılması 'Mistral'ın artık anlamı ne' tartışması başlattı.",
+        "sources": [
+          "r/MistralAI"
+        ]
+      }
+    ]
+  },
+  "comfyui": {
+    "name": "ComfyUI",
+    "category": "Medya / Üretim",
+    "history": [
+      {
+        "date": "26 Eylül 2026",
+        "hypeScore": 7.3,
+        "sentimentScore": 87,
+        "sentiment": "coşkulu",
+        "headline": "Yerel Müzik Atölyesi",
+        "summary": "r/comfyui'de YuE2 ve MiniMax Music 3 ile tamamen yerel çalışan, API anahtarı gerektirmeyen müzik atölyesi paylaşıldı.",
+        "sources": [
+          "r/comfyui"
+        ]
+      }
+    ]
+  },
+  "krea-2-turbo": {
+    "name": "Krea 2 Turbo",
+    "category": "Medya / Üretim",
+    "history": [
+      {
+        "date": "26 Eylül 2026",
+        "hypeScore": 7.1,
+        "sentimentScore": 84,
+        "sentiment": "coşkulu",
+        "headline": "Stil Galerisi Güncellemesi",
+        "summary": "r/StableDiffusion'da 397 stilin prompt düzeltmesiyle yeniden render edilmesi ve kaynağı bulunan isim eksikliği hatası paylaşıldı.",
+        "sources": [
+          "r/StableDiffusion"
+        ]
+      }
+    ]
+  },
+  "claude-opus-5-5-weekly": {
+    "name": "Claude Opus 5.5",
+    "category": "LLM (Model)",
+    "history": [
+      {
+        "date": "26 Eylül 2026",
+        "hypeScore": 9.4,
+        "sentimentScore": 92,
+        "sentiment": "coşkulu",
+        "headline": "Haftanın Yaratıcı Lideri",
+        "summary": "Hafta boyunca oynanabilir oyun demoları, 3D animasyonlar ve HTML sanatı üretimiyle topluluk gündemini sürekli meşgul etti.",
+        "sources": [
+          "r/ClaudeAI",
+          "r/vibecoding"
+        ]
+      }
+    ]
+  },
+  "jev-weekly": {
+    "name": "Jev",
+    "category": "LLM (Model)",
+    "history": [
+      {
+        "date": "26 Eylül 2026",
+        "hypeScore": 8.8,
+        "sentimentScore": 90,
+        "sentiment": "coşkulu",
+        "headline": "Açık Kaynak Fırtınası",
+        "summary": "LangGraph ve DSPy gibi çerçevelere doğal entegrasyonu ve düşük gecikmeli routing başarımıyla geliştirici favorisi oldu.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/MachineLearning"
+        ]
+      }
+    ]
+  },
+  "n8n-weekly": {
+    "name": "n8n AI Orchestrator",
+    "category": "Otomasyon",
+    "history": [
+      {
+        "date": "26 Eylül 2026",
+        "hypeScore": 8.5,
+        "sentimentScore": 87,
+        "sentiment": "coşkulu",
+        "headline": "Kurumsal Favori",
+        "summary": "Kurumsal ajan dağıtımında yedekleme ve hata kurtarma senaryolarıyla güvenilir tercih olmayı sürdürüyor.",
+        "sources": [
+          "r/selfhosted",
+          "r/n8n"
+        ]
+      }
+    ]
+  },
+  "ollama-weekly": {
+    "name": "Ollama",
+    "category": "Altyapı & SDK",
+    "history": [
+      {
+        "date": "26 Eylül 2026",
+        "hypeScore": 8.3,
+        "sentimentScore": 84,
+        "sentiment": "coşkulu",
+        "headline": "Tek Komut Kurulum",
+        "summary": "Ev sunucusu ve self-hosted iş akışlarında ilk kurulan bileşen olarak istikrarlı ilgi görüyor.",
+        "sources": [
+          "r/ollama",
           "r/selfhosted"
         ]
       }
