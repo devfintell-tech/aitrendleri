@@ -87,9 +87,63 @@
     "arxiv-2609-28473v1",
     "2609.30266v1",
     "2609.30249v1",
-    "2609.30250v1"
+    "2609.30250v1",
+    "2609.30264v1",
+    "2609.30258v1",
+    "2609.30247v1"
   ],
   "dailyRecords": [
+    {
+      "date": "27 Eylül 2026",
+      "isoDate": "2026-09-27",
+      "papers": [
+        {
+          "id": "2609.30264v1",
+          "titleTr": "Karşıolgu Model Öngörülü Kontrolü için Eylem Ayırt Edici Dünya Modelleri",
+          "title": "AD-WM: Action-Discriminative World Models for Counterfactual Model Predictive Control",
+          "arxivUrl": "http://arxiv.org/abs/2609.30264v1",
+          "authors": [
+            "Jiabin Qiu",
+            "Zixuan Chen",
+            "Hongye Cao"
+          ],
+          "category": "cs.LG",
+          "impactScore": 9.6,
+          "whyMad": "Dünya modellerinin düşük olgusal tahmin hatasına rağmen eylemleri ayırt edemediğini göstererek MPC tabanlı ajan tasarımını temelden sorgulatıyor.",
+          "summary": "Artık latent dinamikler ve ters dinamik normalizasyonuyla eylem ayırt ediciliğini birleştirerek karşıolgu kontrolünde belirgin iyileşme sağlıyor."
+        },
+        {
+          "id": "2609.30258v1",
+          "titleTr": "Gömülü Pekiştirmeli Öğrenmede Gizli Yörünge Yeniden İnşası için Zamansal Gradyan Tersine Çevirme",
+          "title": "Temporal Gradient Inversion for Private Trajectory Reconstruction in Embodied Reinforcement Learning",
+          "arxivUrl": "http://arxiv.org/abs/2609.30258v1",
+          "authors": [
+            "Sudip Bhujel",
+            "Shanghao Shi",
+            "Ruiquan Huang"
+          ],
+          "category": "cs.CR",
+          "impactScore": 9.5,
+          "whyMad": "Yalnızca gradyan gönderen dağıtık RL ajanlarının bile ardışık gözlem-eylem yörüngelerini sızdırdığını kanıtlayarak gizlilik varsayımını çürütüyor.",
+          "summary": "TRACE saldırısı, per-step politika gradyanlarından otoregresif olarak özel yörüngeleri yeniden inşa ederek zamansal sızıntının ciddiyetini ortaya koyuyor."
+        },
+        {
+          "id": "2609.30247v1",
+          "titleTr": "Rolling-WAM: Yuvarlanan Hayal Gücüyle Dünya Eylem Modelleri",
+          "title": "Rolling-WAM: World Action Models with Rolling Imagination",
+          "arxivUrl": "http://arxiv.org/abs/2609.30247v1",
+          "authors": [
+            "Yinghua Zhou",
+            "Junjie Ye",
+            "Yiqi Zhao"
+          ],
+          "category": "cs.RO",
+          "impactScore": 9.4,
+          "whyMad": "Her yeniden planlama döngüsünde video-eylem gürültü gidermenin gecikmesini kırarak kapalı döngü robot yanıt verebilirliğini pratik hale getiriyor.",
+          "summary": "Ortak gürültü gidermeyi kademeli gürültü seviyelerinde kayan pencereyle ardışık döngülere dağıtarak eylem güncelleme gecikmesini ciddi biçimde düşürüyor."
+        }
+      ]
+    },
     {
       "date": "26 Eylül 2026",
       "isoDate": "2026-09-26",
