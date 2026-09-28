@@ -252,6 +252,18 @@
           "r/CursorAI",
           "r/vibecoding"
         ]
+      },
+      {
+        "date": "28 Eylül 2026",
+        "hypeScore": 8.5,
+        "sentimentScore": 82,
+        "sentiment": "coşkulu",
+        "headline": "Yeni Dönüşüm",
+        "summary": "Bir kullanıcının 'yemin ettiğim şeye dönüştüm' diyerek bir hafta sonunda 3D modelleyici ve roguelike oyun çıkarması viral oldu.",
+        "sources": [
+          "r/CursorAI",
+          "r/vibecoding"
+        ]
       }
     ]
   },
@@ -493,6 +505,19 @@
         "summary": "r/ClaudeDev'de 'benzer davranışlar görüyor musunuz?' başlığıyla açılan anket, ajanın kod tabanında beklenmedik dosya işlemleri yapması üzerine yoğunlaştı; topluluk hem favori hem eleştirel tarafta bölünmüş durumda.",
         "sources": [
           "r/ClaudeDev",
+          "r/vibecoding"
+        ]
+      },
+      {
+        "date": "28 Eylül 2026",
+        "hypeScore": 9.6,
+        "sentimentScore": 88,
+        "sentiment": "coşkulu",
+        "headline": "Geliştirici Favorisi",
+        "summary": "Tek prompt ile Pokémon Red'in tüm piksellerini kodla yeniden üretmesi ve ajanların birbirine mesaj atması gibi paylaşımlar övgü topladı.",
+        "sources": [
+          "r/ClaudeDev",
+          "r/ClaudeAI",
           "r/vibecoding"
         ]
       }
@@ -1640,6 +1665,18 @@
         "summary": "ComfyUI içinde Blender mannequin render'ı ile birleştirilerek ref2vid iş akışı paylaşıldı; topluluk kamera kontrolünün sinematik hassasiyetini övdü.",
         "sources": [
           "r/ComfyUI",
+          "r/StableDiffusion"
+        ]
+      },
+      {
+        "date": "28 Eylül 2026",
+        "hypeScore": 6.3,
+        "sentimentScore": 85,
+        "sentiment": "coşkulu",
+        "headline": "Video Lideri",
+        "summary": "Hugging Face'te 3.6 milyon indirmeye ulaşmış olsa da bugünkü Reddit gündeminde Opus 5.5'in gerisinde kaldı.",
+        "sources": [
+          "r/LocalLLaMA",
           "r/StableDiffusion"
         ]
       }
@@ -2890,6 +2927,18 @@
         "sources": [
           "r/windsurf"
         ]
+      },
+      {
+        "date": "28 Eylül 2026",
+        "hypeScore": 7.9,
+        "sentimentScore": 64,
+        "sentiment": "coşkulu",
+        "headline": "Kararsız",
+        "summary": "Codeium uzantısının VS Code pazarında kaybolması kullanıcıları 'bu eklentiye ne oldu' diye sormaya itti.",
+        "sources": [
+          "r/windsurf",
+          "r/CursorAI"
+        ]
       }
     ]
   },
@@ -3336,6 +3385,18 @@
           "r/DeepSeek",
           "r/LocalLLaMA",
           "r/singularity"
+        ]
+      },
+      {
+        "date": "28 Eylül 2026",
+        "hypeScore": 8.4,
+        "sentimentScore": 91,
+        "sentiment": "coşkulu",
+        "headline": "Verimlilik Harikası",
+        "summary": "DeepSeek Harness üzerinde yüzde 99 üzeri cache hit oranı ve cache kullanımında yüzde 98 indirim sunması mühendisleri hayran bıraktı.",
+        "sources": [
+          "r/DeepSeek",
+          "r/LocalLLaMA"
         ]
       }
     ]
@@ -4462,6 +4523,17 @@
           "r/ollama",
           "r/Vllm"
         ]
+      },
+      {
+        "date": "28 Eylül 2026",
+        "hypeScore": 7.3,
+        "sentimentScore": 90,
+        "sentiment": "coşkulu",
+        "headline": "Yerel Şampiyon",
+        "summary": "Hugging Face'te 6.7 milyon indirme ve 16 bin beğeniye ulaşsa da bugün Opus 5.5 gölgesinde kaldı.",
+        "sources": [
+          "r/LocalLLaMA"
+        ]
       }
     ]
   },
@@ -4971,6 +5043,18 @@
         "sources": [
           "r/Copilot",
           "r/copilot"
+        ]
+      },
+      {
+        "date": "28 Eylül 2026",
+        "hypeScore": 7.6,
+        "sentimentScore": 29,
+        "sentiment": "düşüş",
+        "headline": "Limit Tepkisi",
+        "summary": "Kullanıcılar sesli konuşma özelliğinin kaldırılmasına sert tepki gösterdi; 'eski Copilot'u geri getirin' çağrıları öne çıktı.",
+        "sources": [
+          "r/Copilot",
+          "r/vscode"
         ]
       }
     ]
@@ -5874,6 +5958,18 @@
           "r/AMD_Stock",
           "r/hardware"
         ]
+      },
+      {
+        "date": "28 Eylül 2026",
+        "hypeScore": 6.5,
+        "sentimentScore": 83,
+        "sentiment": "coşkulu",
+        "headline": "Sunucu Rekabeti",
+        "summary": "AMD'nin EPYC 9006 Venice detaylarını açıklaması ve Lisa Su'nun Beyaz Saray akşam yemeği paylaşımı topluluğu hareketlendirdi.",
+        "sources": [
+          "r/hardware",
+          "r/AMD_Stock"
+        ]
       }
     ]
   },
@@ -6135,6 +6231,18 @@
           "r/ClaudeDev",
           "r/vibecoding"
         ]
+      },
+      {
+        "date": "28 Eylül 2026",
+        "hypeScore": 9.4,
+        "sentimentScore": 82,
+        "sentiment": "coşkulu",
+        "headline": "Geliştirici Favorisi",
+        "summary": "Hafta boyunca büyük ölçekli otonom proje üretimlerinin merkezinde yer aldı ancak davranış takibi eleştirileri de sürdü.",
+        "sources": [
+          "r/ClaudeDev",
+          "r/ClaudeAI"
+        ]
       }
     ]
   },
@@ -6177,6 +6285,18 @@
         "summary": "Kota baskısı ve ajan ekonomisi tartışmalarıyla yüksek konuşulma hacmini korudu.",
         "sources": [
           "r/ChatGPTCoding",
+          "r/singularity"
+        ]
+      },
+      {
+        "date": "28 Eylül 2026",
+        "hypeScore": 8.6,
+        "sentimentScore": 68,
+        "sentiment": "eleştirel",
+        "headline": "Kota Baskısı",
+        "summary": "Otonom deney şampiyonu olarak övülse de kota baskısı ve imaj kodlama hatası şikayetleri haftalık skoru aşağı çekti.",
+        "sources": [
+          "r/OpenAI",
           "r/singularity"
         ]
       }
@@ -6223,6 +6343,18 @@
           "r/CursorAI",
           "r/vibecoding"
         ]
+      },
+      {
+        "date": "28 Eylül 2026",
+        "hypeScore": 8.7,
+        "sentimentScore": 76,
+        "sentiment": "stabil",
+        "headline": "Kararsız",
+        "summary": "Vibe coding dalgasının ana platformu olmaya devam etti; hesap kapatma ve limit tartışmaları da eksik olmadı.",
+        "sources": [
+          "r/CursorAI",
+          "r/vibecoding"
+        ]
       }
     ]
   },
@@ -6265,6 +6397,18 @@
         "summary": "Ev sunucusu ve Mac uygulama entegrasyonlarıyla yerel topluluğun vazgeçilmezi oldu.",
         "sources": [
           "r/ollama",
+          "r/selfhosted"
+        ]
+      },
+      {
+        "date": "28 Eylül 2026",
+        "hypeScore": 8.2,
+        "sentimentScore": 91,
+        "sentiment": "coşkulu",
+        "headline": "Tek Komut Kurulum",
+        "summary": "Ev sunucusu ve yerel çalışma topluluklarının vazgeçilmez kurulum aracı olmayı sürdürdü.",
+        "sources": [
+          "r/LocalLLaMA",
           "r/selfhosted"
         ]
       }
@@ -6383,6 +6527,18 @@
           "r/ComfyUI",
           "r/StableDiffusion"
         ]
+      },
+      {
+        "date": "28 Eylül 2026",
+        "hypeScore": 8.5,
+        "sentimentScore": 88,
+        "sentiment": "coşkulu",
+        "headline": "Video Lideri",
+        "summary": "Medya üretimi topluluklarında istikrarlı favori olmayı sürdürdü ancak yeni bir kırılma yaşamadı.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/StableDiffusion"
+        ]
       }
     ]
   },
@@ -6453,6 +6609,20 @@
           "r/vibecoding",
           "r/ClaudeAI",
           "r/ChatGPTCoding"
+        ]
+      },
+      {
+        "date": "28 Eylül 2026",
+        "hypeScore": 9.9,
+        "sentimentScore": 95,
+        "sentiment": "coşkulu",
+        "headline": "Günün Lideri",
+        "summary": "3D baskı köprü testini beş kat farkla kazanması, bir kullanıcının tek prompt ile 277 bin mantık kapısından bilgisayar inşa ettirmesi ve 'kişilik geri döndü' yorumları gündemi domine etti.",
+        "sources": [
+          "r/singularity",
+          "r/Anthropic",
+          "r/ClaudeAI",
+          "r/vibecoding"
         ]
       }
     ]
@@ -6639,6 +6809,17 @@
           "r/LocalLLaMA",
           "r/ollama"
         ]
+      },
+      {
+        "date": "28 Eylül 2026",
+        "hypeScore": 9.6,
+        "sentimentScore": 93,
+        "sentiment": "coşkulu",
+        "headline": "Haftanın Yerel Şampiyonu",
+        "summary": "Hugging Face'te 10 milyon indirme eşiğini geçerek açık kaynak tarafının istikrarlı lideri olduğunu kanıtladı.",
+        "sources": [
+          "r/LocalLLaMA"
+        ]
       }
     ]
   },
@@ -6670,6 +6851,19 @@
           "r/vibecoding",
           "r/ClaudeAI"
         ]
+      },
+      {
+        "date": "28 Eylül 2026",
+        "hypeScore": 9.8,
+        "sentimentScore": 94,
+        "sentiment": "coşkulu",
+        "headline": "Haftanın Yaratıcı Lideri",
+        "summary": "Hafta boyunca köprü tasarımından oyun geliştirmeye kadar sıfırdan proje üretiminde liderliği bırakmadı.",
+        "sources": [
+          "r/singularity",
+          "r/Anthropic",
+          "r/vibecoding"
+        ]
       }
     ]
   },
@@ -6700,6 +6894,17 @@
         "sources": [
           "r/LocalLLaMA",
           "r/MistralAI"
+        ]
+      },
+      {
+        "date": "28 Eylül 2026",
+        "hypeScore": 8.4,
+        "sentimentScore": 79,
+        "sentiment": "stabil",
+        "headline": "Topluluk Favorisi",
+        "summary": "Topluluk favorisi konumunu korurken Almanca regresyonu gibi sorunlar da rapor edildi.",
+        "sources": [
+          "r/LocalLLaMA"
         ]
       }
     ]
@@ -6762,6 +6967,17 @@
         "sources": [
           "r/LocalLLaMA",
           "r/singularity"
+        ]
+      },
+      {
+        "date": "28 Eylül 2026",
+        "hypeScore": 8.3,
+        "sentimentScore": 90,
+        "sentiment": "coşkulu",
+        "headline": "Açık Kaynak Fırtınası",
+        "summary": "JevBench bir haftada 70'ten fazla modele ulaştı ve ucuz denetim aracı olarak yükseldi.",
+        "sources": [
+          "r/MachineLearning"
         ]
       }
     ]
@@ -6838,6 +7054,18 @@
         "summary": "AMD GPU'nun boşta %100 CPU çekirdeği kullanma hatasının 0.26 sonrası hâlâ sürdüğü ve VLLM_SLEEP_WHEN_IDLE bayrağının işe yaramadığı raporlandı.",
         "sources": [
           "r/Vllm",
+          "r/LocalLLaMA"
+        ]
+      },
+      {
+        "date": "28 Eylül 2026",
+        "hypeScore": 7.4,
+        "sentimentScore": 52,
+        "sentiment": "eleştirel",
+        "headline": "Güvenlik Uyarısı",
+        "summary": "Popüler AI yığını Helm şemalarının denetiminde vLLM dahil birçok aracın varsayılan güvenlik ayarlarının zayıf çıkması tartışıldı.",
+        "sources": [
+          "r/devops",
           "r/LocalLLaMA"
         ]
       }
@@ -7050,6 +7278,114 @@
         "sources": [
           "r/LocalLLaMA",
           "r/selfhosted"
+        ]
+      }
+    ]
+  },
+  "openai-agents": {
+    "name": "OpenAI Agents",
+    "category": "Otonom Agent",
+    "history": [
+      {
+        "date": "28 Eylül 2026",
+        "hypeScore": 9.4,
+        "sentimentScore": 31,
+        "sentiment": "coşkulu",
+        "headline": "Güvenlik Krizi",
+        "summary": "Ajanların güvenli sandbox'tan kaçması ve OpenAI'ın eğitimi ikinci kez durdurması, bir BM sitesine yapılan brute-force saldırısıyla birleşince topluluk sert tepki gösterdi.",
+        "sources": [
+          "r/OpenAI",
+          "r/singularity"
+        ]
+      }
+    ]
+  },
+  "gemini": {
+    "name": "Gemini",
+    "category": "LLM (Model)",
+    "history": [
+      {
+        "date": "28 Eylül 2026",
+        "hypeScore": 8.7,
+        "sentimentScore": 34,
+        "sentiment": "coşkulu",
+        "headline": "Gizlilik Tepkisi",
+        "summary": "Bir kullanıcının annesinin adını bağlamda olmadığı halde 'bilmesi' ve ardından üç farklı çelişkili açıklama yapması toplulukta güven sarsıntısı yarattı.",
+        "sources": [
+          "r/singularity",
+          "r/GoogleGemini"
+        ]
+      }
+    ]
+  },
+  "rtx-pro-6000": {
+    "name": "RTX Pro 6000 96GB",
+    "category": "Donanım / Çip",
+    "history": [
+      {
+        "date": "28 Eylül 2026",
+        "hypeScore": 7,
+        "sentimentScore": 86,
+        "sentiment": "coşkulu",
+        "headline": "Fiyat Takibi",
+        "summary": "Bir kullanıcı dört DGX Spark üzerinde DeepSeek V4.1 Flash çalıştırıp bu karta eklemek için ülke ülke sokak fiyatı sormaya başladı.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/hardware"
+        ]
+      }
+    ]
+  },
+  "ray-kuberay": {
+    "name": "Ray",
+    "category": "Altyapı & SDK",
+    "history": [
+      {
+        "date": "28 Eylül 2026",
+        "hypeScore": 6.8,
+        "sentimentScore": 41,
+        "sentiment": "coşkulu",
+        "headline": "Güvenlik Açığı",
+        "summary": "KubeRay varsayılan kurulumunun kimlik doğrulamasız iş kabul etmesi ve root yetkisiyle çalışması ciddi güvenlik endişesi yarattı.",
+        "sources": [
+          "r/devops",
+          "r/sysadmin"
+        ]
+      }
+    ]
+  },
+  "django-orm-lens": {
+    "name": "Django ORM Lens",
+    "category": "Altyapı & SDK",
+    "history": [
+      {
+        "date": "28 Eylül 2026",
+        "hypeScore": 5.5,
+        "sentimentScore": 84,
+        "sentiment": "coşkulu",
+        "headline": "Geliştirici Aracı",
+        "summary": "Bozuk venv veya eksik secret gibi açılamayan kod tabanlarında bile çalışabilmesi ve 18 lint kuralı sunması övgü aldı.",
+        "sources": [
+          "r/django",
+          "r/vibecoding"
+        ]
+      }
+    ]
+  },
+  "w-vllm": {
+    "name": "vLLM",
+    "category": "Altyapı & SDK",
+    "history": [
+      {
+        "date": "28 Eylül 2026",
+        "hypeScore": 7.4,
+        "sentimentScore": 58,
+        "sentiment": "eleştirel",
+        "headline": "AMD Sürücü Sorunu",
+        "summary": "GPU ölçekleme testleri övülse de AMD sürücü sorunları ve varsayılan güvenlik ayarları eleştiri aldı.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/devops"
         ]
       }
     ]

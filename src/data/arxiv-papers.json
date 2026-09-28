@@ -90,9 +90,61 @@
     "2609.30250v1",
     "2609.30264v1",
     "2609.30258v1",
-    "2609.30247v1"
+    "2609.30247v1",
+    "2609.30243v1",
+    "2609.30226v1",
+    "2609.30233v1"
   ],
   "dailyRecords": [
+    {
+      "date": "28 Eylül 2026",
+      "isoDate": "2026-09-28",
+      "papers": [
+        {
+          "id": "2609.30243v1",
+          "titleTr": "JevOut: Doğal Bağlam Karar Modellerini Saptırabiliyor",
+          "title": "JevOut: Natural Context Can Flip Decision Models",
+          "arxivUrl": "http://arxiv.org/abs/2609.30243v1",
+          "authors": [
+            "Zixiang Xu"
+          ],
+          "category": "cs.CL",
+          "impactScore": 9.6,
+          "whyMad": "Doğal görünen kısa bağlam eklemelerinin doğru kararı bozabildiğini göstererek araç yönlendirme ve otomatik eylem hatlarını sorgulatıyor.",
+          "summary": "Yapılandırılmamış dili olasılık dağılımına çeviren karar modellerinin, bağlama doğal biçimde uyan eklemelerle kolayca yanlış yönlendirilebildiğini ortaya koyuyor."
+        },
+        {
+          "id": "2609.30226v1",
+          "titleTr": "PoEM: Mevcut Politikalardan RL Sonuçlarını Tahmin Etme",
+          "title": "PoEM: Predicting RL Outcomes from Existing Policies",
+          "arxivUrl": "http://arxiv.org/abs/2609.30226v1",
+          "authors": [
+            "Kimia Hamidieh",
+            "Giannis Daras",
+            "Antonio Torralba"
+          ],
+          "category": "cs.LG",
+          "impactScore": 9.4,
+          "whyMad": "Yeni bir ödül fonksiyonu verildiğinde RL'i fiilen çalıştırmadan sonucu tahmin edebileceğini iddia ederek post-training maliyetini radikal biçimde düşürebilir.",
+          "summary": "Temel modellerin RL ile post-training sürecinin hesaplama yoğun ve kararsız olduğunu hatırlatıp, ödül değişimlerinde sonucu önceden kestiren bir yaklaşım öneriyor."
+        },
+        {
+          "id": "2609.30233v1",
+          "titleTr": "Genelleştirilmiş Görev ve Hareket Planlama Problemleri için Kodlama Ajanları",
+          "title": "Coding Agents for Generalized Task and Motion Planning Problems",
+          "arxivUrl": "http://arxiv.org/abs/2609.30233v1",
+          "authors": [
+            "Matteo Merler",
+            "Bowen Li",
+            "Josh Roy"
+          ],
+          "category": "cs.AI",
+          "impactScore": 9.2,
+          "whyMad": "Kodlama ajanlarının fiziksel planlama problemlerine özel mühendisliği otomatikleştirebileceğini göstererek robotik tarafında yeni bir kapı aralıyor.",
+          "summary": "Genelleştirilmiş TAMP problemlerinde mevcut yöntemlerin yoğun alan-özel mühendislik gerektirdiğini belirtip, kodlama ajanlarının bu süreci sentezleyip otomatikleştirip otomatikleştiremeyeceğini araştırıyor."
+        }
+      ]
+    },
     {
       "date": "27 Eylül 2026",
       "isoDate": "2026-09-27",
