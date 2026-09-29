@@ -93,9 +93,62 @@
     "2609.30247v1",
     "2609.30243v1",
     "2609.30226v1",
-    "2609.30233v1"
+    "2609.30233v1",
+    "2609-31619v1",
+    "2609-31600v1",
+    "2609-31587v1"
   ],
   "dailyRecords": [
+    {
+      "date": "29 Eylül 2026",
+      "isoDate": "2026-09-29",
+      "papers": [
+        {
+          "id": "2609-31619v1",
+          "titleTr": "Durmayı Öğrenmeden Durmak: Öz-Denetimli Güven Eğitimi Akıl Yürütme Verimliliğini Artırıyor",
+          "title": "Learning to Stop without Learning to Stop: Self-Supervised Confidence Training Improves Reasoning Efficiency",
+          "arxivUrl": "http://arxiv.org/abs/2609.31619v1",
+          "authors": [
+            "Parsa Hosseini",
+            "Akasha Tigalappanavara",
+            "Sumit Nawathe"
+          ],
+          "category": "cs.LG",
+          "impactScore": 9.5,
+          "whyMad": "Uzun akıl yürütme izlerinin maliyetini ceza fonksiyonu yerine modelin kendi güven sinyaliyle kısaltarak çıkarım ekonomisini baştan yazıyor.",
+          "summary": "Öz-denetimli bir güven prosedürüyle eğitilen akıl yürütme modelleri, uzunluk cezası kullanmadan belirgin verimlilik kazancı elde ediyor."
+        },
+        {
+          "id": "2609-31600v1",
+          "titleTr": "Yeni LoRA Becerileri Okumalı ama Asla Yazmamalı",
+          "title": "New LoRA Skills Should Read but Never Write",
+          "arxivUrl": "http://arxiv.org/abs/2609.31600v1",
+          "authors": [
+            "Zeyan Li",
+            "Panqi Yang",
+            "Qirong Guo"
+          ],
+          "category": "cs.CL",
+          "impactScore": 9.3,
+          "whyMad": "Bağımsız eğitilmiş LoRA adaptörlerinin birleştirilmesindeki girişim problemini, okuma ile yazma rollerini ayırarak çözüyor.",
+          "summary": "LoRA güncellemelerinin sonsuz sayıda eşdeğer çarpanlara ayrılabildiğini gösterip, kompozisyonda interferansı azaltan bir çerçeve öneriyor."
+        },
+        {
+          "id": "2609-31587v1",
+          "titleTr": "Kodlama Ajanları İçin Kompakt Dokümantasyon: Bir Kıyaslama, Bir Optimize Edici ve Neden Aktarılamadığı",
+          "title": "Compact Documentation for Coding Agents: A Benchmark, an Optimizer, and Why It Does Not Transfer",
+          "arxivUrl": "http://arxiv.org/abs/2609.31587v1",
+          "authors": [
+            "Md Shohel Arman",
+            "Igor Molybog"
+          ],
+          "category": "cs.SE",
+          "impactScore": 9.2,
+          "whyMad": "Dokümantasyonun uzunluğunun değil tamlığının belirleyici olduğunu kanıtlayarak ajan bağlamı maliyetini doğrudan hedefliyor.",
+          "summary": "Koddan yeniden üretilen testleri geçip geçmediğine bakan döngüsel bir kıyaslama ile doküman yazımı için optimize edilmiş bir istem üretiyor."
+        }
+      ]
+    },
     {
       "date": "28 Eylül 2026",
       "isoDate": "2026-09-28",

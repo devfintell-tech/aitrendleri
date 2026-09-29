@@ -264,6 +264,19 @@
           "r/CursorAI",
           "r/vibecoding"
         ]
+      },
+      {
+        "date": "29 Eylül 2026",
+        "hypeScore": 9.2,
+        "sentimentScore": 61,
+        "sentiment": "coşkulu",
+        "headline": "Kararsız",
+        "summary": "Kullanıcılar 'artık ana araç olarak değer mi' diye soruyor; kullanım limitleri ve alternatif araçlarla kıyaslamalar hararetli tartışılıyor.",
+        "sources": [
+          "r/CursorAI",
+          "r/vibecoding",
+          "r/vscode"
+        ]
       }
     ]
   },
@@ -518,6 +531,18 @@
         "sources": [
           "r/ClaudeDev",
           "r/ClaudeAI",
+          "r/vibecoding"
+        ]
+      },
+      {
+        "date": "29 Eylül 2026",
+        "hypeScore": 9,
+        "sentimentScore": 78,
+        "sentiment": "eleştirel",
+        "headline": "Geliştirici Favorisi",
+        "summary": "Bayat dosya görünümü ve bağlam taşıma davranışı ölçümlerle tartışıldı, çoklu ajan harness'ları Claude Code etrafında kuruluyor.",
+        "sources": [
+          "r/ClaudeDev",
           "r/vibecoding"
         ]
       }
@@ -4342,6 +4367,17 @@
         "sources": [
           "r/ChatGPTCoding"
         ]
+      },
+      {
+        "date": "29 Eylül 2026",
+        "hypeScore": 7.4,
+        "sentimentScore": 78,
+        "sentiment": "coşkulu",
+        "headline": "Yerel Araç",
+        "summary": "Continue eklentisindeki 4096 token çıktı sınırını aşmak isteyen geliştiriciler LM Studio yapılandırma çözümlerini paylaştı.",
+        "sources": [
+          "r/vscode"
+        ]
       }
     ]
   },
@@ -4533,6 +4569,18 @@
         "summary": "Hugging Face'te 6.7 milyon indirme ve 16 bin beğeniye ulaşsa da bugün Opus 5.5 gölgesinde kaldı.",
         "sources": [
           "r/LocalLLaMA"
+        ]
+      },
+      {
+        "date": "29 Eylül 2026",
+        "hypeScore": 7.8,
+        "sentimentScore": 89,
+        "sentiment": "coşkulu",
+        "headline": "Yerel Şampiyon",
+        "summary": "LM Studio ve Continue ile yerel kurulumlarda referans model haline geldi; 50 bin üzeri bağlamla masaüstünde çalıştıranlar deneyim paylaşıyor.",
+        "sources": [
+          "r/vscode",
+          "r/MachineLearning"
         ]
       }
     ]
@@ -4937,6 +4985,18 @@
           "r/DeepSeek",
           "r/LocalLLaMA"
         ]
+      },
+      {
+        "date": "29 Eylül 2026",
+        "hypeScore": 7.9,
+        "sentimentScore": 74,
+        "sentiment": "düşüş",
+        "headline": "İnsani Anlar",
+        "summary": "Hatalı cevabı düzeltilince kendini motive eden uzun bir akıl yürütme çıktısı paylaşıldı; modelin 'duygusal' tavrı hem eğlendirdi hem tartışıldı.",
+        "sources": [
+          "r/ArtificialInteligence",
+          "r/DeepSeek"
+        ]
       }
     ]
   },
@@ -5269,6 +5329,19 @@
         "headline": "Açık Kaynak Şampiyonu",
         "summary": "Hugging Face üzerindeki rekor indirmeleri ve ticari maliyetleri sıfırlayan yapısıyla haftaya damga vurdu.",
         "sources": []
+      },
+      {
+        "date": "29 Eylül 2026",
+        "hypeScore": 9.6,
+        "sentimentScore": 91,
+        "sentiment": "coşkulu",
+        "headline": "Haftanın Yerel Şampiyonu",
+        "summary": "Hafta boyunca yerel kurulum rehberlerinde ilk tercih oldu, 10 milyon indirme eşiği ve topluluk favorisi rozetiyle anıldı.",
+        "sources": [
+          "r/vscode",
+          "r/MachineLearning",
+          "r/DeepSeek"
+        ]
       }
     ]
   },
@@ -5306,6 +5379,19 @@
         "summary": "Kullanıcı limitleri ve davranış değişiklikleri şikayet edilirken Opus 5.5 entegrasyonu heyecanı yüksek.",
         "sources": [
           "r/ClaudeDev",
+          "r/vscode"
+        ]
+      },
+      {
+        "date": "29 Eylül 2026",
+        "hypeScore": 9.4,
+        "sentimentScore": 76,
+        "sentiment": "stabil",
+        "headline": "Haftanın Tartışması",
+        "summary": "Hafta boyunca hem övüldü hem eleştirildi; bağlam taşıma ve maliyet şikayetleri ile geliştirici favorisi rozetini aynı hafta taşıdı.",
+        "sources": [
+          "r/ClaudeDev",
+          "r/vibecoding",
           "r/vscode"
         ]
       }
@@ -5346,6 +5432,18 @@
         "sources": [
           "r/OpenAI",
           "r/generativeAI"
+        ]
+      },
+      {
+        "date": "29 Eylül 2026",
+        "hypeScore": 8.8,
+        "sentimentScore": 55,
+        "sentiment": "eleştirel",
+        "headline": "Kota Baskısı",
+        "summary": "Hafta boyunca erişim kotaları ve güvenlik iddiaları etrafında tartışıldı, kullanıcılar limit baskısından şikayetçi oldu.",
+        "sources": [
+          "r/OpenAI",
+          "r/singularity"
         ]
       }
     ]
@@ -5433,6 +5531,18 @@
           "r/CursorAI",
           "r/vibecoding"
         ]
+      },
+      {
+        "date": "29 Eylül 2026",
+        "hypeScore": 8.7,
+        "sentimentScore": 63,
+        "sentiment": "eleştirel",
+        "headline": "Kararsız",
+        "summary": "Hafta boyunca abonelik değeri ve limitleri sürekli sorgulandı, topluluk hissiyatı kararsız çizgide kaldı.",
+        "sources": [
+          "r/CursorAI",
+          "r/vibecoding"
+        ]
       }
     ]
   },
@@ -5470,6 +5580,18 @@
         "sources": [
           "r/StableDiffusion",
           "r/generativeAI"
+        ]
+      },
+      {
+        "date": "29 Eylül 2026",
+        "hypeScore": 8.5,
+        "sentimentScore": 87,
+        "sentiment": "coşkulu",
+        "headline": "Video Lideri",
+        "summary": "Hafta boyunca üretilen örnek videolarla gündemde kaldı, hız ve kalite dengesi medya topluluklarında övüldü.",
+        "sources": [
+          "r/singularity",
+          "r/ArtificialInteligence"
         ]
       }
     ]
@@ -5548,6 +5670,18 @@
         "sources": [
           "r/n8n",
           "r/Automate"
+        ]
+      },
+      {
+        "date": "29 Eylül 2026",
+        "hypeScore": 8.4,
+        "sentimentScore": 86,
+        "sentiment": "coşkulu",
+        "headline": "Kurumsal Favori",
+        "summary": "Hafta boyunca kurumsal ajan dağıtımlarında Copilot Studio'ya alternatif olarak öne çıkarıldı.",
+        "sources": [
+          "r/devops",
+          "r/Copilot"
         ]
       }
     ]
@@ -5720,6 +5854,18 @@
         "sources": [
           "r/LocalLLaMA",
           "r/Ollama"
+        ]
+      },
+      {
+        "date": "29 Eylül 2026",
+        "hypeScore": 8,
+        "sentimentScore": 85,
+        "sentiment": "coşkulu",
+        "headline": "Tek Komut Kurulum",
+        "summary": "Hafta boyunca ev sunucusu kuran kullanıcıların ilk tercihi olarak paylaşıldı.",
+        "sources": [
+          "r/vscode",
+          "r/devops"
         ]
       }
     ]
@@ -6685,6 +6831,18 @@
           "r/selfhosted",
           "r/n8n"
         ]
+      },
+      {
+        "date": "29 Eylül 2026",
+        "hypeScore": 7,
+        "sentimentScore": 87,
+        "sentiment": "coşkulu",
+        "headline": "Kurumsal Favori",
+        "summary": "Copilot Studio hayal kırıklığı tartışmasında 'gerçek çözüm n8n' diye öne çıkarıldı, kurumsal ekipler tercihini paylaştı.",
+        "sources": [
+          "r/Copilot",
+          "r/devops"
+        ]
       }
     ]
   },
@@ -7315,6 +7473,18 @@
           "r/singularity",
           "r/GoogleGemini"
         ]
+      },
+      {
+        "date": "29 Eylül 2026",
+        "hypeScore": 7.6,
+        "sentimentScore": 42,
+        "sentiment": "düşüş",
+        "headline": "Eleştiriliyor",
+        "summary": "Kullanıcılar telefon kurtarma gibi basit sorularda aldıkları absürt cevapları paylaşıp 'Gemini, ciddi misin?' diyerek tepki gösterdi.",
+        "sources": [
+          "r/GoogleGemini",
+          "r/ArtificialInteligence"
+        ]
       }
     ]
   },
@@ -7386,6 +7556,188 @@
         "sources": [
           "r/LocalLLaMA",
           "r/devops"
+        ]
+      }
+    ]
+  },
+  "claude-sonnet-5-5": {
+    "name": "Claude Sonnet 5.5",
+    "category": "LLM (Model)",
+    "history": [
+      {
+        "date": "29 Eylül 2026",
+        "hypeScore": 9.9,
+        "sentimentScore": 93,
+        "sentiment": "coşkulu",
+        "headline": "Günün Lideri",
+        "summary": "Ücretsiz katmanda Opus seviyesine yakın benchmark sonuçları vermesi 'şu an en iyi bedava model' rüzgarı yarattı, bazı kullanıcılar token verimsizliğini tartışıyor.",
+        "sources": [
+          "r/singularity",
+          "r/ClaudeAI",
+          "r/ClaudeDev",
+          "r/vibecoding"
+        ]
+      }
+    ]
+  },
+  "microsoft-copilot": {
+    "name": "Microsoft Copilot",
+    "category": "LLM (Model)",
+    "history": [
+      {
+        "date": "29 Eylül 2026",
+        "hypeScore": 9.4,
+        "sentimentScore": 27,
+        "sentiment": "coşkulu",
+        "headline": "Veri Gizliliği Tepkisi",
+        "summary": "'İnsanlar Copilot istemlerini okuyor' haberi ile Power Platform ve Copilot Studio'nun yıllardır yerinde sayması toplulukta sert eleştiri üretti.",
+        "sources": [
+          "r/Copilot",
+          "r/ArtificialInteligence"
+        ]
+      }
+    ]
+  },
+  "gpt-6-1-astra": {
+    "name": "GPT-6.1 Astra",
+    "category": "LLM (Model)",
+    "history": [
+      {
+        "date": "29 Eylül 2026",
+        "hypeScore": 9.1,
+        "sentimentScore": 48,
+        "sentiment": "düşüş",
+        "headline": "Güvenlik Tartışması",
+        "summary": "WSJ'nin modelin güvenlik endişeleriyle rafa kaldırıldığını yazması ve Altman'ın DevDay imaları topluluğu ikiye böldü.",
+        "sources": [
+          "r/OpenAI",
+          "r/singularity"
+        ]
+      }
+    ]
+  },
+  "amd": {
+    "name": "AMD",
+    "category": "Şirket / Lab",
+    "history": [
+      {
+        "date": "29 Eylül 2026",
+        "hypeScore": 8.9,
+        "sentimentScore": 81,
+        "sentiment": "coşkulu",
+        "headline": "Stratejik Hamle",
+        "summary": "Fei-Fei Li'nin EVP ve Baş Bilim İnsanı olarak AMD'ye katılması ve tümüyle hisse takası yapılan satın alma araştırmacı ile yatırımcı gündemini birleştirdi.",
+        "sources": [
+          "r/AMD_Stock",
+          "r/hardware",
+          "r/ArtificialInteligence"
+        ]
+      }
+    ]
+  },
+  "rtx-5080": {
+    "name": "RTX 5080",
+    "category": "Donanım / Çip",
+    "history": [
+      {
+        "date": "29 Eylül 2026",
+        "hypeScore": 8.2,
+        "sentimentScore": 67,
+        "sentiment": "coşkulu",
+        "headline": "Donanım Baskısı",
+        "summary": "Witcher 3 remaster'ının 4K path tracing için 5080 istemesi, kartın gerçek gücü ve VRAM yeterliliği tartışmasını alevlendirdi.",
+        "sources": [
+          "r/nvidia"
+        ]
+      }
+    ]
+  },
+  "continue": {
+    "name": "Continue",
+    "category": "IDE / Editör",
+    "history": [
+      {
+        "date": "29 Eylül 2026",
+        "hypeScore": 7.2,
+        "sentimentScore": 66,
+        "sentiment": "stabil",
+        "headline": "Yapılandırma Savaşı",
+        "summary": "Yerel modellerle 4096 token çıktı sınırına takılan kullanıcılar extension.js yaması gibi agresif çözümler paylaşmak zorunda kaldı.",
+        "sources": [
+          "r/vscode",
+          "r/ChatGPTCoding"
+        ]
+      }
+    ]
+  },
+  "gtx-1080-ti": {
+    "name": "GTX 1080 Ti",
+    "category": "Donanım / Çip",
+    "history": [
+      {
+        "date": "29 Eylül 2026",
+        "hypeScore": 6.8,
+        "sentimentScore": 91,
+        "sentiment": "coşkulu",
+        "headline": "Efsane Kart",
+        "summary": "Kediyi ısıtan ve emekliliği reddeden 1080 Ti şakası r/nvidia'da sevilerek paylaşıldı.",
+        "sources": [
+          "r/nvidia"
+        ]
+      }
+    ]
+  },
+  "claude-opus-5-5-w": {
+    "name": "Claude Opus 5.5",
+    "category": "LLM (Model)",
+    "history": [
+      {
+        "date": "29 Eylül 2026",
+        "hypeScore": 9.9,
+        "sentimentScore": 94,
+        "sentiment": "coşkulu",
+        "headline": "Haftanın Yaratıcı Lideri",
+        "summary": "Hafta boyunca video, rapor ve ajan görevlerinde en çok referans verilen model oldu, 'günün lideri' rozetini altı gün üst üste taşıdı.",
+        "sources": [
+          "r/ClaudeAI",
+          "r/singularity",
+          "r/vibecoding"
+        ]
+      }
+    ]
+  },
+  "deepseek-v4-1-flash-w": {
+    "name": "DeepSeek V4.1 Flash",
+    "category": "LLM (Model)",
+    "history": [
+      {
+        "date": "29 Eylül 2026",
+        "hypeScore": 8.3,
+        "sentimentScore": 79,
+        "sentiment": "stabil",
+        "headline": "Yüksek Verim",
+        "summary": "Hafta boyunca kesinti ve gizlilik başlıklarında anıldı, buna rağmen verimlilik övgüleri devam etti.",
+        "sources": [
+          "r/DeepSeek",
+          "r/ArtificialInteligence"
+        ]
+      }
+    ]
+  },
+  "glm-5-3-w": {
+    "name": "GLM-5.3",
+    "category": "Yerel Model",
+    "history": [
+      {
+        "date": "29 Eylül 2026",
+        "hypeScore": 8.2,
+        "sentimentScore": 84,
+        "sentiment": "coşkulu",
+        "headline": "Topluluk Favorisi",
+        "summary": "Hafta boyunca yerel çalıştırma rehberlerinde öne çıktı, bazı dillerde yaşanan regresyonlar eleştiri aldı.",
+        "sources": [
+          "r/MachineLearning",
+          "r/ArtificialInteligence"
         ]
       }
     ]
