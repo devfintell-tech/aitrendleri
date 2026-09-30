@@ -96,9 +96,63 @@
     "2609.30233v1",
     "2609-31619v1",
     "2609-31600v1",
-    "2609-31587v1"
+    "2609-31587v1",
+    "2609.35769v1",
+    "2609.35760v1",
+    "2609.35768v1"
   ],
   "dailyRecords": [
+    {
+      "date": "30 Eylül 2026",
+      "isoDate": "2026-09-30",
+      "papers": [
+        {
+          "id": "2609.35769v1",
+          "titleTr": "Teleskopik Dil Modelleri: Tek Modelde Çoklu Hesaplama Bütçesi",
+          "title": "Telescopic Language Models",
+          "arxivUrl": "http://arxiv.org/abs/2609.35769v1",
+          "authors": [
+            "Zhilin Guo",
+            "Boqiao Zhang",
+            "Hakan Aktas"
+          ],
+          "category": "cs.CL",
+          "impactScore": 9.6,
+          "whyMad": "Her hesaplama bütçesi için ayrı bir eğitim veya sıkıştırma turu yapmak yerine tek bir iç içe kapasiteli Transformer ile tüm bütçelere hizmet etmeyi mümkün kılıyor.",
+          "summary": "Rastgele kesilmiş kapasite ekseni üzerinden stokastik önek denetimiyle eğitilen TLM, tek artefaktı geçerli bir dil modeli olarak ve birden fazla hesaplama seviyesinde sunuyor."
+        },
+        {
+          "id": "2609.35760v1",
+          "titleTr": "TokenCast: LLM Ajan Yürütmesinde Token Tüketimini Önceden Tahmin Etme",
+          "title": "TokenCast: Forecasting Token Consumption During LLM Agent Execution",
+          "arxivUrl": "http://arxiv.org/abs/2609.35760v1",
+          "authors": [
+            "Chaoqian Ouyang",
+            "Ling Yue",
+            "Libin Zheng"
+          ],
+          "category": "cs.CL",
+          "impactScore": 9.5,
+          "whyMad": "Aynı görevi yürüten bir ajanın token tüketimi çalıştırmalar arasında büyüklük sırası bazında değişebiliyor; bu çalışma belirsizliği çalıştırma öncesinde tahmin edilebilir kılıyor.",
+          "summary": "TokenCast, bileşen bazlı bir tahmin modeliyle ajanın yürütme ilerledikçe token tüketimini giderek revize ederek öngörüyor."
+        },
+        {
+          "id": "2609.35768v1",
+          "titleTr": "PDMD: Video Difüzyon Modelleri için Yansıtılmış Dağılım Eşleştirme Damıtması",
+          "title": "PDMD: Projected Distribution Matching Distillation for Video Diffusion Models",
+          "arxivUrl": "http://arxiv.org/abs/2609.35768v1",
+          "authors": [
+            "Zimo Wang",
+            "Junkun Yuan",
+            "Angtian Wang"
+          ],
+          "category": "cs.CV",
+          "impactScore": 9.4,
+          "whyMad": "Damıtma sırasında oluşan ilerleyici aşırı doygunluk ve artefaktların kaynağını eleştirmen hatalarına kadar izleyerek bunları yansıtma yoluyla filtreliyor.",
+          "summary": "PDMD, birkaç adımlı çıkarımda video difüzyon modellerinin kararlılığını artırarak damıtılmış örnek kalitesini iyileştiriyor."
+        }
+      ]
+    },
     {
       "date": "29 Eylül 2026",
       "isoDate": "2026-09-29",

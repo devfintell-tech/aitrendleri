@@ -277,6 +277,18 @@
           "r/vibecoding",
           "r/vscode"
         ]
+      },
+      {
+        "date": "30 Eylül 2026",
+        "hypeScore": 9.2,
+        "sentimentScore": 64,
+        "sentiment": "eleştirel",
+        "headline": "Kararsız",
+        "summary": "r/CursorAI'da aboneliğin hala değip değmediği ve kullanım limitlerinin fiyata uygunluğu hararetle tartışılıyor.",
+        "sources": [
+          "r/CursorAI",
+          "r/vibecoding"
+        ]
       }
     ]
   },
@@ -544,6 +556,18 @@
         "sources": [
           "r/ClaudeDev",
           "r/vibecoding"
+        ]
+      },
+      {
+        "date": "30 Eylül 2026",
+        "hypeScore": 9.4,
+        "sentimentScore": 71,
+        "sentiment": "coşkulu",
+        "headline": "Geliştirici Favorisi",
+        "summary": "r/ClaudeDev kullanıcıları davranış değişikliklerini ve agent-host klasörünü mercek altına alırken Cowork görevlerinin buluta zorlanması tepki çekiyor.",
+        "sources": [
+          "r/ClaudeDev",
+          "r/ClaudeAI"
         ]
       }
     ]
@@ -1703,6 +1727,18 @@
         "sources": [
           "r/LocalLLaMA",
           "r/StableDiffusion"
+        ]
+      },
+      {
+        "date": "30 Eylül 2026",
+        "hypeScore": 9.1,
+        "sentimentScore": 88,
+        "sentiment": "coşkulu",
+        "headline": "Video Lideri",
+        "summary": "ComfyUI için w6a8 kuantizasyonu ve Endless Lipsync v1.5 iş akışlarıyla r/StableDiffusion'da yeni node'lar paylaşılıyor.",
+        "sources": [
+          "r/StableDiffusion",
+          "r/comfyui"
         ]
       }
     ]
@@ -2963,6 +2999,18 @@
         "sources": [
           "r/windsurf",
           "r/CursorAI"
+        ]
+      },
+      {
+        "date": "30 Eylül 2026",
+        "hypeScore": 8.4,
+        "sentimentScore": 47,
+        "sentiment": "coşkulu",
+        "headline": "Limit Tepkisi",
+        "summary": "SWE2 modelinin sonsuz döngülere takılması ve GPT Astra'nın kotanın dörtte birini iki soruyla tüketmesi r/windsurf'te şikayet konusu.",
+        "sources": [
+          "r/windsurf",
+          "r/vibecoding"
         ]
       }
     ]
@@ -4582,6 +4630,18 @@
           "r/vscode",
           "r/MachineLearning"
         ]
+      },
+      {
+        "date": "30 Eylül 2026",
+        "hypeScore": 9.3,
+        "sentimentScore": 95,
+        "sentiment": "coşkulu",
+        "headline": "Yerel Şampiyon",
+        "summary": "Hugging Face'te 7 milyon indirmeyi aşarken r/LocalLLaMA'da 400 ajanlı MMO deneyinin ve çok sayıda ses modelinin arkasındaki motor olarak öne çıkıyor.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/huggingface"
+        ]
       }
     ]
   },
@@ -4868,6 +4928,18 @@
           "r/ChatGPTCoding",
           "r/vibecoding"
         ]
+      },
+      {
+        "date": "30 Eylül 2026",
+        "hypeScore": 8.5,
+        "sentimentScore": 52,
+        "sentiment": "eleştirel",
+        "headline": "Fatura Şoku",
+        "summary": "SDLC/ACU tabanlı faturalandırmanın öngörülemezliği ve yüksek maliyeti r/singularity ve r/vibecoding tartışmalarında öne çıkıyor.",
+        "sources": [
+          "r/vibecoding",
+          "r/singularity"
+        ]
       }
     ]
   },
@@ -5116,6 +5188,18 @@
           "r/Copilot",
           "r/vscode"
         ]
+      },
+      {
+        "date": "30 Eylül 2026",
+        "hypeScore": 8.9,
+        "sentimentScore": 27,
+        "sentiment": "coşkulu",
+        "headline": "Regresyon Tepkisi",
+        "summary": "Yeni güncellemenin karakteri ve sohbet kalitesini bozduğu, 'gri ve üzgün' hale geldiği belirtilerek kullanıcıların Gemini'ye kaçtığı bildiriliyor.",
+        "sources": [
+          "r/Copilot",
+          "r/vscode"
+        ]
       }
     ]
   },
@@ -5342,6 +5426,18 @@
           "r/MachineLearning",
           "r/DeepSeek"
         ]
+      },
+      {
+        "date": "30 Eylül 2026",
+        "hypeScore": 9.6,
+        "sentimentScore": 96,
+        "sentiment": "coşkulu",
+        "headline": "Haftanın Yerel Şampiyonu",
+        "summary": "Hafta boyunca ajan deneyleri, ses modelleri ve MMO simülasyonlarının ortak motoru olarak topluluk favorisi kaldı.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/huggingface"
+        ]
       }
     ]
   },
@@ -5394,6 +5490,18 @@
           "r/vibecoding",
           "r/vscode"
         ]
+      },
+      {
+        "date": "30 Eylül 2026",
+        "hypeScore": 9.4,
+        "sentimentScore": 74,
+        "sentiment": "eleştirel",
+        "headline": "Geliştirici Favorisi",
+        "summary": "Bulut zorlaması ve kullanım limiti tartışmaları sürerken hafta boyunca geliştirici gündemini belirleyen isim oldu.",
+        "sources": [
+          "r/ClaudeDev",
+          "r/vibecoding"
+        ]
       }
     ]
   },
@@ -5443,6 +5551,18 @@
         "summary": "Hafta boyunca erişim kotaları ve güvenlik iddiaları etrafında tartışıldı, kullanıcılar limit baskısından şikayetçi oldu.",
         "sources": [
           "r/OpenAI",
+          "r/singularity"
+        ]
+      },
+      {
+        "date": "30 Eylül 2026",
+        "hypeScore": 8.9,
+        "sentimentScore": 58,
+        "sentiment": "eleştirel",
+        "headline": "Kota Baskısı",
+        "summary": "Hafta boyunca güçlü yetenekleri takdir edilse de kotanın iki soruda tükenmesi toplulukta kızgınlık yarattı.",
+        "sources": [
+          "r/ChatGPTCoding",
           "r/singularity"
         ]
       }
@@ -5543,6 +5663,18 @@
           "r/CursorAI",
           "r/vibecoding"
         ]
+      },
+      {
+        "date": "30 Eylül 2026",
+        "hypeScore": 8.7,
+        "sentimentScore": 66,
+        "sentiment": "stabil",
+        "headline": "Kararsız",
+        "summary": "Kullanım limitleri ve abonelik değeri tartışması bir hafta boyunca dinmedi, memnuniyet dalgalı seyretti.",
+        "sources": [
+          "r/CursorAI",
+          "r/vibecoding"
+        ]
       }
     ]
   },
@@ -5592,6 +5724,18 @@
         "sources": [
           "r/singularity",
           "r/ArtificialInteligence"
+        ]
+      },
+      {
+        "date": "30 Eylül 2026",
+        "hypeScore": 8.5,
+        "sentimentScore": 87,
+        "sentiment": "coşkulu",
+        "headline": "Video Lideri",
+        "summary": "ComfyUI node'ları ve kuantizasyon güncellemeleriyle hafta boyunca video üretim gündemini canlı tuttu.",
+        "sources": [
+          "r/StableDiffusion",
+          "r/comfyui"
         ]
       }
     ]
@@ -5867,6 +6011,18 @@
           "r/vscode",
           "r/devops"
         ]
+      },
+      {
+        "date": "30 Eylül 2026",
+        "hypeScore": 8,
+        "sentimentScore": 86,
+        "sentiment": "coşkulu",
+        "headline": "Tek Komut Kurulum",
+        "summary": "400 ajanlı MMO deneyi gibi projelerin arkasındaki çıkarım katmanı olarak öne çıksa da OpenRouter'a geçiş tartışmaları sürüyor.",
+        "sources": [
+          "r/ollama",
+          "r/selfhosted"
+        ]
       }
     ]
   },
@@ -5884,6 +6040,18 @@
         "sources": [
           "r/devops",
           "r/automation"
+        ]
+      },
+      {
+        "date": "30 Eylül 2026",
+        "hypeScore": 8.5,
+        "sentimentScore": 88,
+        "sentiment": "coşkulu",
+        "headline": "Kurumsal Favori",
+        "summary": "Self-host kurulumlarında güvenilirlik ve kurumsal ajan dağıtımı için tercih edilen standart haline gelmesi konuşuluyor.",
+        "sources": [
+          "r/selfhosted",
+          "r/OpenSourceAI"
         ]
       }
     ]
@@ -6242,6 +6410,18 @@
         "sources": [
           "r/MistralAI",
           "r/LocalLLaMA"
+        ]
+      },
+      {
+        "date": "30 Eylül 2026",
+        "hypeScore": 9.5,
+        "sentimentScore": 92,
+        "sentiment": "coşkulu",
+        "headline": "Topluluk Favorisi",
+        "summary": "Anthropic'in güvenlik raporu, r/LocalLLaMA'da ironik biçimde GLM için 'şimdiye kadarki en iyi reklam' olarak nitelendiriliyor.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/OpenSourceAI"
         ]
       }
     ]
@@ -6770,6 +6950,18 @@
           "r/ClaudeAI",
           "r/vibecoding"
         ]
+      },
+      {
+        "date": "30 Eylül 2026",
+        "hypeScore": 9.7,
+        "sentimentScore": 43,
+        "sentiment": "düşüş",
+        "headline": "Eleştiriliyor",
+        "summary": "LiveNerf projesiyle 'nerf' ölçümü tartışılırken r/ClaudeAI topluluğu çıkış sonrası performans düşüşü ve tutarsızlıktan şikayet ediyor.",
+        "sources": [
+          "r/ClaudeAI",
+          "r/ClaudeDev"
+        ]
       }
     ]
   },
@@ -7294,6 +7486,18 @@
         "sources": [
           "r/comfyui"
         ]
+      },
+      {
+        "date": "30 Eylül 2026",
+        "hypeScore": 8.3,
+        "sentimentScore": 90,
+        "sentiment": "coşkulu",
+        "headline": "Geliştirici Favorisi",
+        "summary": "Yeni Asset System, Continuity node'u ve RefMod kaydetme özellikleri ile r/comfyui ve r/StableDiffusion'da pratik iş akışı iyileştirmeleri tartışılıyor.",
+        "sources": [
+          "r/comfyui",
+          "r/StableDiffusion"
+        ]
       }
     ]
   },
@@ -7577,6 +7781,18 @@
           "r/ClaudeDev",
           "r/vibecoding"
         ]
+      },
+      {
+        "date": "30 Eylül 2026",
+        "hypeScore": 9,
+        "sentimentScore": 89,
+        "sentiment": "coşkulu",
+        "headline": "Yüksek Verim",
+        "summary": "Topluluk, 30 saniyelik 1080p videoyu sıfır video modeli kullanmadan yalnızca kod ve ffmpeg ile ürettiği maliyet karşılaştırmalarını paylaşıyor.",
+        "sources": [
+          "r/ClaudeAI",
+          "r/vibecoding"
+        ]
       }
     ]
   },
@@ -7703,6 +7919,18 @@
           "r/singularity",
           "r/vibecoding"
         ]
+      },
+      {
+        "date": "30 Eylül 2026",
+        "hypeScore": 9.6,
+        "sentimentScore": 61,
+        "sentiment": "eleştirel",
+        "headline": "Haftanın Tartışması",
+        "summary": "Bir hafta boyunca hem performans övgüleri hem de nerf ve limit şikayetleriyle gündemin merkezinde kaldı.",
+        "sources": [
+          "r/ClaudeAI",
+          "r/ClaudeDev"
+        ]
       }
     ]
   },
@@ -7721,6 +7949,18 @@
           "r/DeepSeek",
           "r/ArtificialInteligence"
         ]
+      },
+      {
+        "date": "30 Eylül 2026",
+        "hypeScore": 8.3,
+        "sentimentScore": 82,
+        "sentiment": "coşkulu",
+        "headline": "Verimlilik Harikası",
+        "summary": "Maliyet-performans dengesi ve yerel sunucularda pratik kullanımı nedeniyle hafta boyunca önerildi.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/ollama"
+        ]
       }
     ]
   },
@@ -7738,6 +7978,72 @@
         "sources": [
           "r/MachineLearning",
           "r/ArtificialInteligence"
+        ]
+      },
+      {
+        "date": "30 Eylül 2026",
+        "hypeScore": 8.4,
+        "sentimentScore": 91,
+        "sentiment": "coşkulu",
+        "headline": "Topluluk Favorisi",
+        "summary": "Güvenlik tartışmalarına rağmen toplulukta açık model tercihi olarak popülerliğini korudu.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/OpenSourceAI"
+        ]
+      }
+    ]
+  },
+  "gpt-6-1-sol": {
+    "name": "GPT-6.1 Sol",
+    "category": "LLM (Model)",
+    "history": [
+      {
+        "date": "30 Eylül 2026",
+        "hypeScore": 9.9,
+        "sentimentScore": 87,
+        "sentiment": "coşkulu",
+        "headline": "Günün Lideri",
+        "summary": "DevDay'de tanıtılan 6.1 Sol, Hacker News'te 748 puanla zirveye oturdu ve topluluk 'Astra'ya yakın zeka, çok daha düşük maliyet' denklemini coşkuyla tartışıyor.",
+        "sources": [
+          "r/ClaudeAI",
+          "r/vibecoding"
+        ]
+      }
+    ]
+  },
+  "dots": {
+    "name": "Dots",
+    "category": "Otonom Agent",
+    "history": [
+      {
+        "date": "30 Eylül 2026",
+        "hypeScore": 9.6,
+        "sentimentScore": 79,
+        "sentiment": "coşkulu",
+        "headline": "Yeni Lansman",
+        "summary": "DevDay'de tanıtılan Dots, emollick'in deyimiyle 'Clawlike' kategorisinde Muse ve Grokbot'a karşı en iddialı rakip olarak masaya sürüldü.",
+        "sources": [
+          "r/ChatGPTCoding",
+          "r/singularity"
+        ]
+      }
+    ]
+  },
+  "perplexity-computer": {
+    "name": "Perplexity Computer",
+    "category": "Otonom Agent",
+    "history": [
+      {
+        "date": "30 Eylül 2026",
+        "hypeScore": 8.6,
+        "sentimentScore": 81,
+        "sentiment": "coşkulu",
+        "headline": "Yeni Yetenek",
+        "summary": "Opus 5.5 ile kendi GPU'sunu kiralayarak browser tabanlı açık dünya oyunu tasarlayıp üretmesi X'te büyük yankı uyandırdı.",
+        "sources": [
+          "r/singularity",
+          "r/ChatGPTCoding"
         ]
       }
     ]
