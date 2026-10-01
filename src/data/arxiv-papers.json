@@ -99,9 +99,63 @@
     "2609-31587v1",
     "2609.35769v1",
     "2609.35760v1",
-    "2609.35768v1"
+    "2609.35768v1",
+    "2609-38178v1",
+    "2609-38177v1",
+    "2609-38169v1"
   ],
   "dailyRecords": [
+    {
+      "date": "1 Ekim 2026",
+      "isoDate": "2026-10-01",
+      "papers": [
+        {
+          "id": "2609-38178v1",
+          "titleTr": "Otonom Robot Politikalarının İyileştirilmesi için Beceri-Uzayı Atışı",
+          "title": "Skill-Space Shooting for Autonomous Robot Policy Improvement",
+          "arxivUrl": "http://arxiv.org/abs/2609.38178v1",
+          "authors": [
+            "Zihang Rui",
+            "Renhao Wang",
+            "Haoxu Huang"
+          ],
+          "category": "cs.RO",
+          "impactScore": 9.5,
+          "whyMad": "Fiziksel dünyada konuşlanan robotların insan gösterimi olmadan kendi hatalarından öğrenmesini sağlayarak robotik ölçeklenebilirliğinde kritik bir eşiği aşıyor.",
+          "summary": "Ajanik sistemleri kullanarak temel modellerin öğrenilmiş davranışları özerk biçimde birleştirmesini ve başarısızlıklardan yeni beceriler öğrenmesini sağlayan bir yöntem öneriyor."
+        },
+        {
+          "id": "2609-38177v1",
+          "titleTr": "Imagine3D-LLM: Çok Modlu Modellere Cevap Vermeden Önce 3B Sahneyi Hayal Etmeyi Öğretmek",
+          "title": "Imagine3D-LLM: Teaching MLLMs to Imagine 3D Scenes Before Answering",
+          "arxivUrl": "http://arxiv.org/abs/2609.38177v1",
+          "authors": [
+            "Jaewoo Jung",
+            "Hyeonseo Yu",
+            "Honggyu An"
+          ],
+          "category": "cs.CV",
+          "impactScore": 9.4,
+          "whyMad": "Çok modlu modellerin çoklu görüş açılarını tek bir tutarlı 3B zihinsel modele dönüştürme eksikliğini, cevaplamadan önce sahneyi hayal etme yeteneğiyle kapatıyor.",
+          "summary": "Modelin yanıt üretmeden önce çoklu görüş görüntülerinden tutarlı bir 3B sahne temsili oluşturmasını sağlayarak mekansal akıl yürütme performansını artırıyor."
+        },
+        {
+          "id": "2609-38169v1",
+          "titleTr": "STEPQuant: Delta-Kuralı Yinelenen Durum Nicelemesinde Hatalar Ne Zaman ve Nerede Önemli",
+          "title": "STEPQuant: When and Where Errors Matter in Delta-Rule Recurrent State Quantization",
+          "arxivUrl": "http://arxiv.org/abs/2609.38169v1",
+          "authors": [
+            "Bingchen Yao",
+            "Haobo Xu",
+            "Haokun Lin"
+          ],
+          "category": "cs.LG",
+          "impactScore": 9.3,
+          "whyMad": "Doğrusal dikkat modellerinin kalıcı durumlarını düşük hassasiyette belleğe sığdırmanın doğruluğu neden bozduğunu zaman ve mekan boyutunda çözerek çıkarım verimliliğine doğrudan katkı sunuyor.",
+          "summary": "Niceleme hatalarının uzun ömürlü bellekte kalıcılık ve ardışık güncellemelerde yayılma olmak üzere iki boyutta farklı etki ettiğini gösteriyor."
+        }
+      ]
+    },
     {
       "date": "30 Eylül 2026",
       "isoDate": "2026-09-30",

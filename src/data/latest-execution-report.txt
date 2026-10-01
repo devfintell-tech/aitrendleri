@@ -1,9 +1,9 @@
 ================================================================================
 aitrendleri@engine:~# ./run-pipeline.sh --telemetry --summary
 ================================================================================
-Tarih       : 30 Eylül 2026 (2026-09-30)
-Zaman Aralığı: 03:07:21 ➔ 03:11:16 TSİ
-Toplam Süre : 235s (3.9 dakika)
+Tarih       : 1 Ekim 2026 (2026-10-01)
+Zaman Aralığı: 03:07:43 ➔ 03:11:35 TSİ
+Toplam Süre : 232s (3.9 dakika)
 Durum       : 🟢 BAŞARILI (HTTP 200 OK - Snapshot Mühürlendi)
 ================================================================================
 
@@ -20,21 +20,21 @@ Durum       : 🟢 BAŞARILI (HTTP 200 OK - Snapshot Mühürlendi)
   • Batch Başarı Oranı   : 3/7 kategori başarıyla alındı
   ------------------------------------------------------------------------------
   1. [200 OK]  Vibe Coding & Yeni Nesil Editörler         : 15 post
-     └─ Dağılım: r/ClaudeAI:4 r/vibecoding:1 r/Copilot:2 r/ChatGPTCoding:1 r/windsurf:1 r/vscode:4 r/CursorAI:1 r/ClaudeDev:1
+     └─ Dağılım: r/ClaudeAI:3 r/vibecoding:3 r/Copilot:3 r/vscode:1 r/ChatGPTCoding:1 r/windsurf:2 r/CursorAI:1 r/ClaudeDev:1
   2. [429 ERR] Otonom Ajanlar & Süreç Otomasyonu          :  0 post
      └─ Neden  : Reddit HTTP 429 (Rate Limit)
-  3. [429 ERR] Büyük Dil Modelleri & Araştırma Devleri    :  0 post
+  3. [200 OK]  Büyük Dil Modelleri & Araştırma Devleri    : 15 post
+     └─ Dağılım: r/singularity:4 r/OpenAI:4 r/ArtificialInteligence:1 r/Anthropic:1 r/GoogleGemini:1 r/MachineLearning:2 r/DeepSeek:2
+  4. [429 ERR] Açık Kaynak, Yerel Modeller & Self-Hosted  :  0 post
      └─ Neden  : Reddit HTTP 429 (Rate Limit)
-  4. [200 OK]  Açık Kaynak, Yerel Modeller & Self-Hosted  : 15 post
-     └─ Dağılım: r/LocalLLaMA:1 r/selfhosted:3 r/ollama:2 r/MistralAI:2 r/OpenSourceAI:2 r/huggingface:4 r/Vllm:1
   5. [429 ERR] Yazılım Geliştirici, API & Kodlama Dünyası :  0 post
      └─ Neden  : Reddit HTTP 429 (Rate Limit)
-  6. [429 ERR] Donanım, GPU, CPU & Bulut Altyapısı        :  0 post
+  6. [200 OK]  Donanım, GPU, CPU & Bulut Altyapısı        : 15 post
+     └─ Dağılım: r/sysadmin:1 r/hardware:1 r/nvidia:2 r/AMD_Stock:4 r/devops:1 r/googlecloud:3 r/Cloud:3
+  7. [429 ERR] Görsel, Video & Medya Üretimi              :  0 post
      └─ Neden  : Reddit HTTP 429 (Rate Limit)
-  7. [200 OK]  Görsel, Video & Medya Üretimi              : 15 post
-     └─ Dağılım: r/midjourney:3 r/StableDiffusion:5 r/artificial:1 r/comfyui:4 r/runwayml:1 r/SORA:1
   ------------------------------------------------------------------------------
-  • En Yüksek Verim      : r/ClaudeAI (89), r/vscode (83), r/vibecoding (76), r/ChatGPTCoding (63), r/CursorAI (52)
+  • En Yüksek Verim      : r/ClaudeAI (92), r/vscode (84), r/vibecoding (79), r/ChatGPTCoding (64), r/CursorAI (53)
   • Düşük Sinyal / Takip : r/copilot, r/CrewAI, r/agenticai, r/Singularity, r/vllm, r/AI_Tools, r/GenerativeAI, r/GoogleCloud, r/ComfyUI, r/Midjourney, r/Sora, r/RunwayML
   • Sıfır Veri (Dead)    : Yok (Tümü veri sağlıyor)
 
@@ -43,7 +43,7 @@ Durum       : 🟢 BAŞARILI (HTTP 200 OK - Snapshot Mühürlendi)
   • Çalıştırılan Aktör   : apidojo/tweet-scraper (7 paralel sorgu grubu)
   • Filtreleme & Eleme   : Son 24s penceresi, yanıtlar/spam/kısa metinler elendi
   • Çıkarıma Alınan Tweet: 180 kaliteli teknik tweet
-  • Tespit Edilen Gündem : Son 24 saatte X'teki yapay zeka gündemi tamamen OpenAI DevDay'in etrafında şekillendi. Sam Altman'ın 'Dots geldi', 'Ultrafast çok hızlı, geri dönmek istemiyorum' ve '6.1 Sol, Astra'nın beşte biri fiyata ve %95 önbellek okuma indirimiyle' paylaşımları liderleri...
+  • Tespit Edilen Gündem : Son 24 saatte X (Twitter) ekosisteminin hakim duygusu tek kelimeyle özetlenebilir: lansman kasırgası. Logan Kilpatrick, Gemini 4 Argon'u duyurarak Google'ın geri dönüşünü ilan etti; model $2 giriş ve $10 çıkış gibi agresif bir tanıtım fiyatıyla geliyor ve 1 mi...
 
 [T3: EKOSİSTEM HARİCİ API & AÇIK KAYNAK HASADI]
   • 📄 ArXiv Makale Radarı : 3 yeni makale seçildi (cs.AI, cs.LG, cs.CL, stat.ML)
@@ -56,15 +56,15 @@ Durum       : 🟢 BAŞARILI (HTTP 200 OK - Snapshot Mühürlendi)
   ------------------------------------------------------------------------------
   Aşama      | Girdi (Prompt) | Düşünce (CoT) | Nihai Çıktı | Toplam Token
   ------------------------------------------------------------------------------
-  Faz 1      | 75.8k          | 4.3k          | 22.1k       | 102.3k
-  Faz 2      | 9.1k           | 0.1k          | 1.4k        | 10.6k
+  Faz 1      | 79.6k          | 1.3k          | 18.6k       | 99.5k
+  Faz 2      | 8.3k           | 1.3k          | 1.0k        | 10.6k
   ------------------------------------------------------------------------------
-  KONSOLİDE  | 84.9k          | 4.4k          | 23.5k       | 112.9k
+  KONSOLİDE  | 87.8k          | 2.6k          | 19.7k       | 110.1k
   ------------------------------------------------------------------------------
 
 [T5: VERİ MÜHÜRLENMESİ, ARŞİV & SİSTEM DAĞITIMI]
   • [✔] latest-report.json                : Mühürlendi ve diske yazıldı
-  • [✔] archive/2026-09-30.json           : Dondurulmuş snapshot olarak arşivlendi
+  • [✔] archive/2026-10-01.json           : Dondurulmuş snapshot olarak arşivlendi
   • [✔] archive-index.json                : Arşiv dizini güncellendi
   • [✔] arxiv-history.json                : 7 günlük makale hafızası güncellendi
   • [✔] tool-history.json                 : Topluluk tarihsel skorları mühürlendi
@@ -73,5 +73,5 @@ Durum       : 🟢 BAŞARILI (HTTP 200 OK - Snapshot Mühürlendi)
   • [✔] E-Posta İletimi (Resend)          : orhaner1907@gmail.com
 
 ================================================================================
-aitrendleri@engine:~# execution finished in 235s.
+aitrendleri@engine:~# execution finished in 232s.
 ================================================================================

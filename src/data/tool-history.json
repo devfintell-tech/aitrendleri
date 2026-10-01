@@ -289,6 +289,18 @@
           "r/CursorAI",
           "r/vibecoding"
         ]
+      },
+      {
+        "date": "1 Ekim 2026",
+        "hypeScore": 8.4,
+        "sentimentScore": 62,
+        "sentiment": "eleştirel",
+        "headline": "Kararsız",
+        "summary": "Reddit'te 'hâlâ ana kodlama aracı olarak aboneliğe değer mi' tartışması açıldı; kullanıcılar ajan güvenilirliğini ve fiyat/limit dengesini sorguluyor.",
+        "sources": [
+          "r/CursorAI",
+          "r/vscode"
+        ]
       }
     ]
   },
@@ -568,6 +580,19 @@
         "sources": [
           "r/ClaudeDev",
           "r/ClaudeAI"
+        ]
+      },
+      {
+        "date": "1 Ekim 2026",
+        "hypeScore": 9.2,
+        "sentimentScore": 58,
+        "sentiment": "eleştirel",
+        "headline": "Kararsız",
+        "summary": "Bir yanda 54 saatlik Minecraft mod deneyi hayranlıkla paylaşılırken diğer yanda gece boyu izin ekranında takılıp 28 dolar API yakan kullanıcılar denetimsiz alternatif arıyor.",
+        "sources": [
+          "r/ChatGPTCoding",
+          "r/ClaudeAI",
+          "r/ClaudeDev"
         ]
       }
     ]
@@ -3012,6 +3037,17 @@
           "r/windsurf",
           "r/vibecoding"
         ]
+      },
+      {
+        "date": "1 Ekim 2026",
+        "hypeScore": 7.8,
+        "sentimentScore": 41,
+        "sentiment": "düşüş",
+        "headline": "Limit Tepkisi",
+        "summary": "Kullanıcılar tek oturumda bile 'ücretsiz model oranı limiti' hatası aldıklarını, limitin 4 dakikada sıfırlandığını paylaşıyor ve gerçek limitin ne olduğunu sorguluyor.",
+        "sources": [
+          "r/windsurf"
+        ]
       }
     ]
   },
@@ -4076,6 +4112,17 @@
           "r/vscode",
           "r/ClaudeDev"
         ]
+      },
+      {
+        "date": "1 Ekim 2026",
+        "hypeScore": 7,
+        "sentimentScore": 68,
+        "sentiment": "stabil",
+        "headline": "Şaşkınlık",
+        "summary": "Kullanıcılar LeetCode çözerken editörün 'henüz düşünülmemiş formülleri' önermesine şaşırıyor; 'arkamda kamera mı var' esprileri yapılıyor.",
+        "sources": [
+          "r/vscode"
+        ]
       }
     ]
   },
@@ -5069,6 +5116,17 @@
           "r/ArtificialInteligence",
           "r/DeepSeek"
         ]
+      },
+      {
+        "date": "1 Ekim 2026",
+        "hypeScore": 7.4,
+        "sentimentScore": 43,
+        "sentiment": "düşüş",
+        "headline": "Kalite Şikayeti",
+        "summary": "Resmi API'nin rol yapma diyaloglarında kısaldığı, tekrara düştüğü ve kelimeleri kısaltmayı reddettiği şikayet ediliyor; kullanıcılar düzeltme arıyor.",
+        "sources": [
+          "r/DeepSeek"
+        ]
       }
     ]
   },
@@ -5199,6 +5257,18 @@
         "sources": [
           "r/Copilot",
           "r/vscode"
+        ]
+      },
+      {
+        "date": "1 Ekim 2026",
+        "hypeScore": 9.4,
+        "sentimentScore": 26,
+        "sentiment": "coşkulu",
+        "headline": "Eleştiriliyor",
+        "summary": "Reddit'te 'yeni sürüm berbart' akımı hakim: kullanıcılar arayüz bozulmasını, kişilik değişimini ve kısıtlayıcı günlük limitleri sertçe eleştiriyor.",
+        "sources": [
+          "r/Copilot",
+          "r/copilot"
         ]
       }
     ]
@@ -5438,6 +5508,17 @@
           "r/LocalLLaMA",
           "r/huggingface"
         ]
+      },
+      {
+        "date": "1 Ekim 2026",
+        "hypeScore": 9.4,
+        "sentimentScore": 95,
+        "sentiment": "coşkulu",
+        "headline": "Haftanın Yerel Şampiyonu",
+        "summary": "Hugging Face'te 7 milyon indirmeyi aşarak yerel çalıştırma topluluğunun tartışmasız favorisi haline geldi.",
+        "sources": [
+          "r/LocalLLaMA"
+        ]
       }
     ]
   },
@@ -5502,6 +5583,18 @@
           "r/ClaudeDev",
           "r/vibecoding"
         ]
+      },
+      {
+        "date": "1 Ekim 2026",
+        "hypeScore": 9.5,
+        "sentimentScore": 62,
+        "sentiment": "eleştirel",
+        "headline": "Haftanın Tartışması",
+        "summary": "Gece boyu denetimsiz çalışma, izin takılması ve API maliyeti haftanın en çok tartışılan operasyonel konusu oldu.",
+        "sources": [
+          "r/ChatGPTCoding",
+          "r/ClaudeDev"
+        ]
       }
     ]
   },
@@ -5564,6 +5657,18 @@
         "sources": [
           "r/ChatGPTCoding",
           "r/singularity"
+        ]
+      },
+      {
+        "date": "1 Ekim 2026",
+        "hypeScore": 8.9,
+        "sentimentScore": 64,
+        "sentiment": "eleştirel",
+        "headline": "Kota Baskısı",
+        "summary": "Hafta boyunca kullanım kotası baskısı ve planlı görevlerdeki tutarsızlık nedeniyle eleştirildi.",
+        "sources": [
+          "r/OpenAI",
+          "r/ChatGPTCoding"
         ]
       }
     ]
@@ -5674,6 +5779,18 @@
         "sources": [
           "r/CursorAI",
           "r/vibecoding"
+        ]
+      },
+      {
+        "date": "1 Ekim 2026",
+        "hypeScore": 8.7,
+        "sentimentScore": 66,
+        "sentiment": "stabil",
+        "headline": "Kararsız",
+        "summary": "Hafta boyunca 'aboneliğe değer mi' ve 'üretkenlik baskısı' tartışmalarıyla dalgalı bir seyir izledi.",
+        "sources": [
+          "r/CursorAI",
+          "r/vscode"
         ]
       }
     ]
@@ -5826,6 +5943,18 @@
         "sources": [
           "r/devops",
           "r/Copilot"
+        ]
+      },
+      {
+        "date": "1 Ekim 2026",
+        "hypeScore": 8.3,
+        "sentimentScore": 89,
+        "sentiment": "coşkulu",
+        "headline": "Kurumsal Favori",
+        "summary": "Kurumsal ajan dağıtımı ve yedekleme yöneticisi gibi yeni eklentilerle iş dünyası topluluklarında istikrarlı ilgi görüyor.",
+        "sources": [
+          "r/devops",
+          "r/n8n"
         ]
       }
     ]
@@ -6021,6 +6150,18 @@
         "summary": "400 ajanlı MMO deneyi gibi projelerin arkasındaki çıkarım katmanı olarak öne çıksa da OpenRouter'a geçiş tartışmaları sürüyor.",
         "sources": [
           "r/ollama",
+          "r/selfhosted"
+        ]
+      },
+      {
+        "date": "1 Ekim 2026",
+        "hypeScore": 8.1,
+        "sentimentScore": 90,
+        "sentiment": "coşkulu",
+        "headline": "Yerel Çalışma Favorisi",
+        "summary": "Hafta boyunca ev sunucusu kuran ve yerel gizlilik arayan geliştiricilerin birincil tercihi olarak öne çıktı.",
+        "sources": [
+          "r/LocalLLaMA",
           "r/selfhosted"
         ]
       }
@@ -6961,6 +7102,19 @@
         "sources": [
           "r/ClaudeAI",
           "r/ClaudeDev"
+        ]
+      },
+      {
+        "date": "1 Ekim 2026",
+        "hypeScore": 9.6,
+        "sentimentScore": 72,
+        "sentiment": "eleştirel",
+        "headline": "Yüksek Hype",
+        "summary": "Opus 5.5'in 'nerf'lendiği iddiası ve LiveNerf gibi açık kaynak izleme projeleri tartışma yarattı; ayrıca çıktı dosyalarını 'continue', 'decide for yourself' gibi isimlerle kaydetmesi kullanıcıları şaşırttı.",
+        "sources": [
+          "r/ClaudeAI",
+          "r/ClaudeDev",
+          "r/windsurf"
         ]
       }
     ]
@@ -7931,6 +8085,19 @@
           "r/ClaudeAI",
           "r/ClaudeDev"
         ]
+      },
+      {
+        "date": "1 Ekim 2026",
+        "hypeScore": 9.8,
+        "sentimentScore": 82,
+        "sentiment": "coşkulu",
+        "headline": "Haftanın Yaratıcı Lideri",
+        "summary": "Hafta boyunca 54 saatlik otonom deneyler, yaratıcı içerik üretimi ve nerf tartışmalarıyla Reddit gündemini domine etti.",
+        "sources": [
+          "r/ClaudeAI",
+          "r/ClaudeDev",
+          "r/ChatGPTCoding"
+        ]
       }
     ]
   },
@@ -8009,6 +8176,18 @@
           "r/ClaudeAI",
           "r/vibecoding"
         ]
+      },
+      {
+        "date": "1 Ekim 2026",
+        "hypeScore": 8.7,
+        "sentimentScore": 84,
+        "sentiment": "coşkulu",
+        "headline": "Fiyat Kırılımı",
+        "summary": "Reddit'te Sonnet 5.5 ile karşılaştırıldığında 3D görevlerde yaklaşık 30 kat daha ucuz çıkması konuşuluyor; 11 dakikada tamamladığı işi rakip 78 dakikada bitirdi.",
+        "sources": [
+          "r/vibecoding",
+          "r/OpenAI"
+        ]
       }
     ]
   },
@@ -8044,6 +8223,147 @@
         "sources": [
           "r/singularity",
           "r/ChatGPTCoding"
+        ]
+      }
+    ]
+  },
+  "gemini-4-argon": {
+    "name": "Gemini 4 Argon",
+    "category": "LLM (Model)",
+    "history": [
+      {
+        "date": "1 Ekim 2026",
+        "hypeScore": 9.9,
+        "sentimentScore": 93,
+        "sentiment": "coşkulu",
+        "headline": "Günün Lideri",
+        "summary": "Reddit'te 'GEMINI IS BACK' paylaşımlarıyla aynı gün dört büyük toplulukta zirveye oturdu; halüsinasyon iddiasını çözdüğü ve Opus 5.5 ile GPT-6 Astra'yı geçtiği konuşuluyor.",
+        "sources": [
+          "r/singularity",
+          "r/GoogleGemini",
+          "r/OpenAI"
+        ]
+      }
+    ]
+  },
+  "sonnet-5-5": {
+    "name": "Sonnet 5.5",
+    "category": "LLM (Model)",
+    "history": [
+      {
+        "date": "1 Ekim 2026",
+        "hypeScore": 8,
+        "sentimentScore": 44,
+        "sentiment": "düşüş",
+        "headline": "Maliyet Eleştirisi",
+        "summary": "3D görev karşılaştırmasında 19 ajan açıp 78 dakikada 57 dolar harcaması eleştiriliyor; topluluk GPT-6.1 Sol karşısında maliyet verimliliğini sorguluyor.",
+        "sources": [
+          "r/vibecoding"
+        ]
+      }
+    ]
+  },
+  "microsoft-365-copilot": {
+    "name": "Microsoft 365 Copilot",
+    "category": "LLM (Model)",
+    "history": [
+      {
+        "date": "1 Ekim 2026",
+        "hypeScore": 6.8,
+        "sentimentScore": 22,
+        "sentiment": "düşüş",
+        "headline": "Veri Kaybı Tepkisi",
+        "summary": "iOS uygulaması sessizce 'Legacy' olurken yeni uygulamada eski sohbetler görünmüyor; iki yıllık sohbet geçmişinin taşınmaması tepki çekti.",
+        "sources": [
+          "r/Copilot"
+        ]
+      }
+    ]
+  },
+  "photon-studio": {
+    "name": "Photon Studio",
+    "category": "Medya / Üretim",
+    "history": [
+      {
+        "date": "1 Ekim 2026",
+        "hypeScore": 6.4,
+        "sentimentScore": 88,
+        "sentiment": "coşkulu",
+        "headline": "Geliştirici Favorisi",
+        "summary": "Microsoft Store'a eklendi; geliştirici, mağaza yükleme sürecini bir bilgisayar kullanım ajanıyla tek seferde tamamladığını paylaştı.",
+        "sources": [
+          "r/vibecoding"
+        ]
+      }
+    ]
+  },
+  "rtx-5060": {
+    "name": "RTX 5060",
+    "category": "Donanım / Çip",
+    "history": [
+      {
+        "date": "1 Ekim 2026",
+        "hypeScore": 6,
+        "sentimentScore": 76,
+        "sentiment": "coşkulu",
+        "headline": "Donanım Gösterisi",
+        "summary": "Reddit'te RTX 5060 üzerinde path-traced Witcher 3 Remastered ekran görüntüleri paylaşıldı; orta segment kartın yeni teknolojilerle performansı övüldü.",
+        "sources": [
+          "r/nvidia",
+          "r/hardware"
+        ]
+      }
+    ]
+  },
+  "gemini-w": {
+    "name": "Gemini",
+    "category": "LLM (Model)",
+    "history": [
+      {
+        "date": "1 Ekim 2026",
+        "hypeScore": 8.8,
+        "sentimentScore": 78,
+        "sentiment": "coşkulu",
+        "headline": "Geri Dönüş",
+        "summary": "Gemini 4 Argon lansmanıyla haftanın sonunda sert bir yükseliş yakaladı; gizlilik eleştirileri geride kaldı.",
+        "sources": [
+          "r/singularity",
+          "r/GoogleGemini"
+        ]
+      }
+    ]
+  },
+  "windsurf-w": {
+    "name": "Windsurf",
+    "category": "IDE / Editör",
+    "history": [
+      {
+        "date": "1 Ekim 2026",
+        "hypeScore": 8.3,
+        "sentimentScore": 48,
+        "sentiment": "coşkulu",
+        "headline": "Limit Tepkisi",
+        "summary": "Ücretsiz model kota sınırları ve tek oturumdaki limit hataları haftanın en sık şikayet edilen konularından biri oldu.",
+        "sources": [
+          "r/windsurf"
+        ]
+      }
+    ]
+  },
+  "devin-w": {
+    "name": "Devin",
+    "category": "Otonom Agent",
+    "history": [
+      {
+        "date": "1 Ekim 2026",
+        "hypeScore": 7.6,
+        "sentimentScore": 52,
+        "sentiment": "düşüş",
+        "headline": "Fatura Şoku",
+        "summary": "Kota tüketimi ve öngörülemeyen fatura şokları geliştiricilerin en çok şikayet ettiği konular oldu.",
+        "sources": [
+          "r/ChatGPTCoding",
+          "r/ClaudeDev"
         ]
       }
     ]
