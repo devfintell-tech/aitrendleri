@@ -1,5 +1,10 @@
 [
   {
+    "isoDate": "2026-10-02",
+    "dateStr": "2 Ekim 2026",
+    "count": 14
+  },
+  {
     "isoDate": "2026-10-01",
     "dateStr": "1 Ekim 2026",
     "count": 13

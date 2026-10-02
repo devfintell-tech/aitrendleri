@@ -102,9 +102,62 @@
     "2609.35768v1",
     "2609-38178v1",
     "2609-38177v1",
-    "2609-38169v1"
+    "2609-38169v1",
+    "2609-40340v1",
+    "2609-40359v1",
+    "2609-40330v1"
   ],
   "dailyRecords": [
+    {
+      "date": "2 Ekim 2026",
+      "isoDate": "2026-10-02",
+      "papers": [
+        {
+          "id": "2609-40340v1",
+          "titleTr": "EvoDuet: Bilimsel Keşif İçin Web Arama ve Görev Çözümünün Çift Düzeyli Ortak Evrimi",
+          "title": "EvoDuet: Bilevel Co-Evolution of Web Searching and Task Solving for Scientific Discovery",
+          "arxivUrl": "http://arxiv.org/abs/2609.40340v1",
+          "authors": [
+            "Young-Jun Lee",
+            "Jinheon Baek",
+            "Soyeong Jeong"
+          ],
+          "category": "cs.AI",
+          "impactScore": 9.5,
+          "whyMad": "Ajanların bilgi açığını kendisinin fark edip aramayı zamanlamasını sağlayarak evrimsel arama tıkanmalarını çözüyor.",
+          "summary": "Sabit model parametreleriyle çözümleri ve arama sorgularını birlikte evrimleştiren iki düzeyli bir optimizasyon yöntemi sunuyor."
+        },
+        {
+          "id": "2609-40359v1",
+          "titleTr": "Zamanlama Kısayollarını Kaldırmak Girişimsiz Beyinden-Metne Dönüşümü İyileştiriyor",
+          "title": "Removing Timing Shortcuts Improves Non-Invasive Brain-to-Text",
+          "arxivUrl": "http://arxiv.org/abs/2609.40359v1",
+          "authors": [
+            "Dulhan Jayalath",
+            "Oiwi Parker Jones"
+          ],
+          "category": "cs.CL",
+          "impactScore": 9.4,
+          "whyMad": "Beyin verisi olmadan da üretilebilen sözde iyileşmeleri ifşa ederek alandaki gizli kısayol sorununu çürütüyor.",
+          "summary": "Örtüşen pencerelerin kelime aralığını sızdırdığını göstererek girişimsiz beyin-metin çözümlemesindeki yanıltıcı başarı iddialarını ortaya koyuyor."
+        },
+        {
+          "id": "2609-40330v1",
+          "titleTr": "Turbo Harness: Örneğe Uyarlanabilir Ajan Harness Optimizasyonu",
+          "title": "Turbo Harness: Instance-Adaptive Harness Optimization",
+          "arxivUrl": "http://arxiv.org/abs/2609.40330v1",
+          "authors": [
+            "Tunyu Zhang",
+            "Hao Wang",
+            "Kai Xu"
+          ],
+          "category": "cs.AI",
+          "impactScore": 9.3,
+          "whyMad": "Tek bir global harness yerine her görev örneğine uyarlanan bir yapı kurarak ajan öz-iyileştirmesini ileri taşıyor.",
+          "summary": "Optimizasyon sürecinde üretilen bilgiyi yeniden kullanarak global olarak optimize edilmiş bir harness'ı her örneğe uyarlayan bir çerçeve öneriyor."
+        }
+      ]
+    },
     {
       "date": "1 Ekim 2026",
       "isoDate": "2026-10-01",

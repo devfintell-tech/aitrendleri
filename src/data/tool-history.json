@@ -301,6 +301,18 @@
           "r/CursorAI",
           "r/vscode"
         ]
+      },
+      {
+        "date": "2 Ekim 2026",
+        "hypeScore": 9,
+        "sentimentScore": 65,
+        "sentiment": "coşkulu",
+        "headline": "Kararsız",
+        "summary": "Hackathon ve limit kullanımı sorularıyla CursorAI'da yoğun tartışılıyor; kullanıcılar 2k/ay limitinin yeterliliğini sorguluyor.",
+        "sources": [
+          "r/CursorAI",
+          "r/vibecoding"
+        ]
       }
     ]
   },
@@ -593,6 +605,19 @@
           "r/ChatGPTCoding",
           "r/ClaudeAI",
           "r/ClaudeDev"
+        ]
+      },
+      {
+        "date": "2 Ekim 2026",
+        "hypeScore": 9.4,
+        "sentimentScore": 74,
+        "sentiment": "stabil",
+        "headline": "Geliştirici Favorisi",
+        "summary": "Token israfını tespit eden Optimaizr gibi araçlar ve günlük kullanım hikayeleriyle gündemin merkezinde kalmayı sürdürüyor.",
+        "sources": [
+          "r/vibecoding",
+          "r/ClaudeDev",
+          "r/ChatGPTCoding"
         ]
       }
     ]
@@ -1765,6 +1790,18 @@
           "r/StableDiffusion",
           "r/comfyui"
         ]
+      },
+      {
+        "date": "2 Ekim 2026",
+        "hypeScore": 8.6,
+        "sentimentScore": 88,
+        "sentiment": "coşkulu",
+        "headline": "Video Lideri",
+        "summary": "360 Orbit LoRA ve referans tabanlı denemelerle StableDiffusion'da en çok paylaşılan video üretim aracı oldu.",
+        "sources": [
+          "r/StableDiffusion",
+          "r/SORA"
+        ]
       }
     ]
   },
@@ -2010,6 +2047,18 @@
         "sources": [
           "r/LocalLLaMA",
           "r/huggingface"
+        ]
+      },
+      {
+        "date": "2 Ekim 2026",
+        "hypeScore": 9.3,
+        "sentimentScore": 96,
+        "sentiment": "coşkulu",
+        "headline": "Yerel Şampiyon",
+        "summary": "Hugging Face indirme liderliğini sürdürüyor ve LocalLLaMA'da GGUF türevleriyle günlük tartışılıyor.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/ollama"
         ]
       }
     ]
@@ -3047,6 +3096,18 @@
         "summary": "Kullanıcılar tek oturumda bile 'ücretsiz model oranı limiti' hatası aldıklarını, limitin 4 dakikada sıfırlandığını paylaşıyor ve gerçek limitin ne olduğunu sorguluyor.",
         "sources": [
           "r/windsurf"
+        ]
+      },
+      {
+        "date": "2 Ekim 2026",
+        "hypeScore": 8.9,
+        "sentimentScore": 38,
+        "sentiment": "coşkulu",
+        "headline": "Limit Tepkisi",
+        "summary": "Ücretsiz model limit uyarıları ve SWE2'nin sonsuz döngüye girmesi şikayetleriyle topluluk tepki gösteriyor.",
+        "sources": [
+          "r/windsurf",
+          "r/ChatGPTCoding"
         ]
       }
     ]
@@ -4730,6 +4791,18 @@
           "r/AI_Agents",
           "r/agenticAI"
         ]
+      },
+      {
+        "date": "2 Ekim 2026",
+        "hypeScore": 8.6,
+        "sentimentScore": 88,
+        "sentiment": "coşkulu",
+        "headline": "Açık Kaynak Fırtınası",
+        "summary": "Cloudflare ve Perplexity'nin Jev alternatifleri çıkarmasıyla hafta boyunca merkezde kaldı.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/OpenSourceAI"
+        ]
       }
     ]
   },
@@ -4916,6 +4989,19 @@
           "r/vscode",
           "r/ClaudeDev"
         ]
+      },
+      {
+        "date": "2 Ekim 2026",
+        "hypeScore": 9.5,
+        "sentimentScore": 32,
+        "sentiment": "coşkulu",
+        "headline": "Limit Tepkisi",
+        "summary": "Kullanıcılar 200 dolarlık planda bile kredilerin aniden tükendiğini ve kotanın 0'a düştüğünü bildirerek sert şekilde eleştiriyor.",
+        "sources": [
+          "r/ChatGPTCoding",
+          "r/ClaudeDev",
+          "r/vibecoding"
+        ]
       }
     ]
   },
@@ -5085,6 +5171,18 @@
           "r/hardware",
           "r/nvidia",
           "r/LocalLLaMA"
+        ]
+      },
+      {
+        "date": "2 Ekim 2026",
+        "hypeScore": 8.5,
+        "sentimentScore": 78,
+        "sentiment": "coşkulu",
+        "headline": "Fiyat Tepkisi",
+        "summary": "ComfyUI video için 5090 sahipliği ile GPU kiralama maliyeti kıyaslaması toplulukta hararetle tartışılıyor.",
+        "sources": [
+          "r/StableDiffusion",
+          "r/ComfyUI"
         ]
       }
     ]
@@ -5595,6 +5693,18 @@
           "r/ChatGPTCoding",
           "r/ClaudeDev"
         ]
+      },
+      {
+        "date": "2 Ekim 2026",
+        "hypeScore": 9.5,
+        "sentimentScore": 72,
+        "sentiment": "stabil",
+        "headline": "Geliştirici Favorisi",
+        "summary": "Hafta boyunca hem övgü hem limit tartışmasıyla topluluğun ana gündem maddesi oldu.",
+        "sources": [
+          "r/vibecoding",
+          "r/ClaudeDev"
+        ]
       }
     ]
   },
@@ -5792,6 +5902,18 @@
           "r/CursorAI",
           "r/vscode"
         ]
+      },
+      {
+        "date": "2 Ekim 2026",
+        "hypeScore": 8.7,
+        "sentimentScore": 66,
+        "sentiment": "stabil",
+        "headline": "Kararsız",
+        "summary": "Hafta boyunca kullanıcı deneyimi eleştirileri ve övgüleri arasında salınan kararsız bir tablo çizdi.",
+        "sources": [
+          "r/CursorAI",
+          "r/vibecoding"
+        ]
       }
     ]
   },
@@ -5853,6 +5975,18 @@
         "sources": [
           "r/StableDiffusion",
           "r/comfyui"
+        ]
+      },
+      {
+        "date": "2 Ekim 2026",
+        "hypeScore": 8.5,
+        "sentimentScore": 87,
+        "sentiment": "coşkulu",
+        "headline": "Video Lideri",
+        "summary": "Hafta boyunca StableDiffusion'da en çok paylaşılan video modeli olarak zirvede kaldı.",
+        "sources": [
+          "r/StableDiffusion",
+          "r/SORA"
         ]
       }
     ]
@@ -5955,6 +6089,18 @@
         "sources": [
           "r/devops",
           "r/n8n"
+        ]
+      },
+      {
+        "date": "2 Ekim 2026",
+        "hypeScore": 8.3,
+        "sentimentScore": 84,
+        "sentiment": "coşkulu",
+        "headline": "Kurumsal Favori",
+        "summary": "Kurumsal ajan dağıtımında hafta boyunca istikrarlı favori konumunu korudu.",
+        "sources": [
+          "r/selfhosted",
+          "r/OpenSourceAI"
         ]
       }
     ]
@@ -6062,6 +6208,18 @@
           "r/ollama",
           "r/selfhosted"
         ]
+      },
+      {
+        "date": "2 Ekim 2026",
+        "hypeScore": 8.2,
+        "sentimentScore": 84,
+        "sentiment": "coşkulu",
+        "headline": "Yerel Çalışma Favorisi",
+        "summary": "VRAM yemeyen SQLite tabanlı Hillock bellek sistemi ve ROCm kurulum çözümleriyle gündemde kaldı.",
+        "sources": [
+          "r/ollama",
+          "r/LocalLLaMA"
+        ]
       }
     ]
   },
@@ -6162,6 +6320,18 @@
         "summary": "Hafta boyunca ev sunucusu kuran ve yerel gizlilik arayan geliştiricilerin birincil tercihi olarak öne çıktı.",
         "sources": [
           "r/LocalLLaMA",
+          "r/selfhosted"
+        ]
+      },
+      {
+        "date": "2 Ekim 2026",
+        "hypeScore": 8.1,
+        "sentimentScore": 85,
+        "sentiment": "coşkulu",
+        "headline": "Tek Komut Kurulum",
+        "summary": "Hafta boyunca bellek entegrasyonu ve ROCm çözümleriyle istikrarlı ilgi gördü.",
+        "sources": [
+          "r/ollama",
           "r/selfhosted"
         ]
       }
@@ -6269,6 +6439,18 @@
         "sentiment": "coşkulu",
         "headline": "Görsel Favorisi",
         "summary": "Pruna distill sürümünün RTX 3070M'de 20 saniyede 1024x1024 üretmesi ve Fizgig'in driver tabanlı destek eklemesi toplulukta heyecan yarattı.",
+        "sources": [
+          "r/StableDiffusion",
+          "r/ComfyUI"
+        ]
+      },
+      {
+        "date": "2 Ekim 2026",
+        "hypeScore": 8.4,
+        "sentimentScore": 86,
+        "sentiment": "coşkulu",
+        "headline": "Görsel Favorisi",
+        "summary": "FLUX.2 Krea Turbo ile karşılaştırıldığı karakter sheet testlerinde hız ve tutarlılıkla öne çıktı.",
         "sources": [
           "r/StableDiffusion",
           "r/ComfyUI"
@@ -6453,6 +6635,18 @@
         "sources": [
           "r/LocalLLaMA",
           "r/singularity"
+        ]
+      },
+      {
+        "date": "2 Ekim 2026",
+        "hypeScore": 9.4,
+        "sentimentScore": 95,
+        "sentiment": "coşkulu",
+        "headline": "Haftanın Yerel Şampiyonu",
+        "summary": "Hafta boyunca indirme ve GGUF türevleriyle açık kaynak cephesinin lideri olmayı sürdürdü.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/ollama"
         ]
       }
     ]
@@ -7115,6 +7309,19 @@
           "r/ClaudeAI",
           "r/ClaudeDev",
           "r/windsurf"
+        ]
+      },
+      {
+        "date": "2 Ekim 2026",
+        "hypeScore": 9.7,
+        "sentimentScore": 90,
+        "sentiment": "coşkulu",
+        "headline": "Günün Lideri",
+        "summary": "windsurf ve ClaudeAI topluluklarında duyurusu günün en çok konuşulan olayı oldu; geliştiriciler yetenek sıçramasını övüyor.",
+        "sources": [
+          "r/windsurf",
+          "r/ClaudeAI",
+          "r/ClaudeDev"
         ]
       }
     ]
@@ -8098,6 +8305,19 @@
           "r/ClaudeDev",
           "r/ChatGPTCoding"
         ]
+      },
+      {
+        "date": "2 Ekim 2026",
+        "hypeScore": 9.8,
+        "sentimentScore": 91,
+        "sentiment": "coşkulu",
+        "headline": "Haftanın Yaratıcı Lideri",
+        "summary": "Hafta boyunca Reddit'te en yüksek ivmeyi korudu; yaratıcı görevlerde tartışmasız favori.",
+        "sources": [
+          "r/ClaudeAI",
+          "r/windsurf",
+          "r/ClaudeDev"
+        ]
       }
     ]
   },
@@ -8158,6 +8378,18 @@
           "r/LocalLLaMA",
           "r/OpenSourceAI"
         ]
+      },
+      {
+        "date": "2 Ekim 2026",
+        "hypeScore": 8.2,
+        "sentimentScore": 82,
+        "sentiment": "coşkulu",
+        "headline": "Topluluk Favorisi",
+        "summary": "Hafta boyunca topluluk favorisi olmayı sürdürdü ancak ivmesi hafif geriledi.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/ollama"
+        ]
       }
     ]
   },
@@ -8187,6 +8419,18 @@
         "sources": [
           "r/vibecoding",
           "r/OpenAI"
+        ]
+      },
+      {
+        "date": "2 Ekim 2026",
+        "hypeScore": 8.3,
+        "sentimentScore": 70,
+        "sentiment": "eleştirel",
+        "headline": "Yüksek Talep",
+        "summary": "Sam Altman yük altında yavaşladığını kabul etti; topluluk hız ve kota baskısını tartışıyor.",
+        "sources": [
+          "r/ChatGPTCoding",
+          "r/singularity"
         ]
       }
     ]
@@ -8330,6 +8574,18 @@
           "r/singularity",
           "r/GoogleGemini"
         ]
+      },
+      {
+        "date": "2 Ekim 2026",
+        "hypeScore": 8.8,
+        "sentimentScore": 80,
+        "sentiment": "coşkulu",
+        "headline": "Fiyat Kırılımı",
+        "summary": "Hafta boyunca fiyat avantajı ve 3D oyun yeteneğiyle topluluk radarında kaldı.",
+        "sources": [
+          "r/Bard",
+          "r/singularity"
+        ]
       }
     ]
   },
@@ -8364,6 +8620,60 @@
         "sources": [
           "r/ChatGPTCoding",
           "r/ClaudeDev"
+        ]
+      }
+    ]
+  },
+  "cloudflare-clef": {
+    "name": "Cloudflare Clef",
+    "category": "Altyapı & SDK",
+    "history": [
+      {
+        "date": "2 Ekim 2026",
+        "hypeScore": 9.2,
+        "sentimentScore": 88,
+        "sentiment": "coşkulu",
+        "headline": "Yeni Çıkış",
+        "summary": "LocalLLaMA'da paylaşıldı, Hacker News'te 403 puan aldı ve liderler yönlendirme için yeni bir sınıf olarak selamladı.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/OpenSourceAI"
+        ]
+      }
+    ]
+  },
+  "k2-horizon": {
+    "name": "K2 Horizon",
+    "category": "Yerel Model",
+    "history": [
+      {
+        "date": "2 Ekim 2026",
+        "hypeScore": 8.8,
+        "sentimentScore": 92,
+        "sentiment": "coşkulu",
+        "headline": "Açık Kaynak Fırtınası",
+        "summary": "IFM ekibi LocalLLaMA'da AMA yaparak eğitim verisini ve tariflerini açtı; topluluk şeffaflığı övüyor.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/OpenSourceAI"
+        ]
+      }
+    ]
+  },
+  "comfy-agent": {
+    "name": "Comfy Agent",
+    "category": "Medya / Üretim",
+    "history": [
+      {
+        "date": "2 Ekim 2026",
+        "hypeScore": 8.7,
+        "sentimentScore": 90,
+        "sentiment": "coşkulu",
+        "headline": "Yüksek Verim",
+        "summary": "StableDiffusion topluluğu, workflow'ları otomatik kurup onardığı için coşkuyla karşıladı; yerel sürüm merakla bekleniyor.",
+        "sources": [
+          "r/StableDiffusion",
+          "r/ComfyUI"
         ]
       }
     ]
