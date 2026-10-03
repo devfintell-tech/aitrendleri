@@ -313,6 +313,19 @@
           "r/CursorAI",
           "r/vibecoding"
         ]
+      },
+      {
+        "date": "3 Ekim 2026",
+        "hypeScore": 8.2,
+        "sentimentScore": 62,
+        "sentiment": "eleştirel",
+        "headline": "Kararsız",
+        "summary": "Topluluk Cursor'un ajanlar arası oturumlar arası haberleşme özelliğini hala sunmamasını 'bu özellik olmazsa Cursor suya düşer' diye tartışırken, kararsız kalite algısı sürüyor.",
+        "sources": [
+          "r/CursorAI",
+          "r/vibecoding",
+          "r/ChatGPTCoding"
+        ]
       }
     ]
   },
@@ -618,6 +631,19 @@
           "r/vibecoding",
           "r/ClaudeDev",
           "r/ChatGPTCoding"
+        ]
+      },
+      {
+        "date": "3 Ekim 2026",
+        "hypeScore": 9.1,
+        "sentimentScore": 74,
+        "sentiment": "eleştirel",
+        "headline": "Geliştirici Favorisi",
+        "summary": "Ajanların oturumlar arası birbirleriyle konuşabilmesi özelliği 'inanılmaz güçlü' diye övülürken, r/CursorAI'da bu yeteneğin rakipte olmaması sert tartışıldı; bazı geliştiriciler ise davranış değişikliklerinden şikayetçi.",
+        "sources": [
+          "r/ClaudeDev",
+          "r/CursorAI",
+          "r/ClaudeAI"
         ]
       }
     ]
@@ -1801,6 +1827,19 @@
         "sources": [
           "r/StableDiffusion",
           "r/SORA"
+        ]
+      },
+      {
+        "date": "3 Ekim 2026",
+        "hypeScore": 8.9,
+        "sentimentScore": 88,
+        "sentiment": "coşkulu",
+        "headline": "Video Lideri",
+        "summary": "ComfyUI v0.38'e geçişle AMD 9070 sistemde I2V süresi 304 saniyeden 253'e düştü; 2-step PDMD LoRA'ları, anime slider'ları ve HDR workflow'larıyla ekosistem hızla genişliyor.",
+        "sources": [
+          "r/comfyui",
+          "r/StableDiffusion",
+          "r/huggingface"
         ]
       }
     ]
@@ -3108,6 +3147,18 @@
         "sources": [
           "r/windsurf",
           "r/ChatGPTCoding"
+        ]
+      },
+      {
+        "date": "3 Ekim 2026",
+        "hypeScore": 8.4,
+        "sentimentScore": 45,
+        "sentiment": "düşüş",
+        "headline": "Kesinti Sorunu",
+        "summary": "Kullanıcılar ücretsiz modelde bile 'limit doldu, 4 dakika bekleyin' uyarısı alırken SWE2'nin sonsuz döngüye girip kredileri yakması Opus 5.5 lansmanı gölgesinde ciddi memnuniyetsizlik yarattı.",
+        "sources": [
+          "r/windsurf",
+          "r/CursorAI"
         ]
       }
     ]
@@ -4750,6 +4801,19 @@
           "r/LocalLLaMA",
           "r/huggingface"
         ]
+      },
+      {
+        "date": "3 Ekim 2026",
+        "hypeScore": 9.5,
+        "sentimentScore": 94,
+        "sentiment": "coşkulu",
+        "headline": "Yerel Şampiyon",
+        "summary": "Bir kullanıcı iPhone 17 Pro Max'i ikinci GPU yaparak prefill hızını %29-44 artırdı, bir diğeri M4 Max'te Ollama ile token/sn yerine gerçek bağlam gecikmesini ölçtü; topluluk yerel çıkarımın sınırını zorluyor.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/ollama",
+          "r/huggingface"
+        ]
       }
     ]
   },
@@ -5183,6 +5247,18 @@
         "sources": [
           "r/StableDiffusion",
           "r/ComfyUI"
+        ]
+      },
+      {
+        "date": "3 Ekim 2026",
+        "hypeScore": 7.4,
+        "sentimentScore": 58,
+        "sentiment": "düşüş",
+        "headline": "Fiyat ve Bürokrasi",
+        "summary": "Micro Center'ın RTX 5090 satışında artık ihracat beyanı dahil evrak istediği ortaya çıktı; yerel topluluk hem stok sıkıntısını hem bürokratik engeli tartışıyor.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/hardware"
         ]
       }
     ]
@@ -6220,6 +6296,19 @@
           "r/ollama",
           "r/LocalLLaMA"
         ]
+      },
+      {
+        "date": "3 Ekim 2026",
+        "hypeScore": 7.7,
+        "sentimentScore": 84,
+        "sentiment": "coşkulu",
+        "headline": "Tek Komut Kurulum",
+        "summary": "M4 Max üzerinde Qwen 3.8 27B ile yapılan bağlam uzunluğu benchmark'ı, token/sn yerine gerçek bekleme süresini ölçmenin önemini göstererek yerel kullanıcıların favorisi haline geldi.",
+        "sources": [
+          "r/ollama",
+          "r/LocalLLaMA",
+          "r/selfhosted"
+        ]
       }
     ]
   },
@@ -6454,6 +6543,19 @@
         "sources": [
           "r/StableDiffusion",
           "r/ComfyUI"
+        ]
+      },
+      {
+        "date": "3 Ekim 2026",
+        "hypeScore": 6.9,
+        "sentimentScore": 79,
+        "sentiment": "coşkulu",
+        "headline": "Görsel Favorisi",
+        "summary": "Sansürsüz GGUF sürümü 1.3 milyon indirmeye ulaşırken Viggle'ın turbo varyantı ve topluluk LoRA'ları yerel görsel üretim sahnesini canlandırdı.",
+        "sources": [
+          "r/StableDiffusion",
+          "r/comfyui",
+          "r/LocalLLaMA"
         ]
       }
     ]
@@ -6794,6 +6896,18 @@
           "r/SORA",
           "r/artificial"
         ]
+      },
+      {
+        "date": "3 Ekim 2026",
+        "hypeScore": 6.7,
+        "sentimentScore": 61,
+        "sentiment": "eleştirel",
+        "headline": "Veda Turu",
+        "summary": "r/SORA topluluğu 35 dakikalık toplu 'veda' videosu üretip video paylaşım kanalına veda ederken, modelin yerini alacak yeni nesil üretim araçları tartışılıyor.",
+        "sources": [
+          "r/SORA",
+          "r/artificial"
+        ]
       }
     ]
   },
@@ -6902,6 +7016,19 @@
         "summary": "Hafta boyunca büyük ölçekli otonom proje üretimlerinin merkezinde yer aldı ancak davranış takibi eleştirileri de sürdü.",
         "sources": [
           "r/ClaudeDev",
+          "r/ClaudeAI"
+        ]
+      },
+      {
+        "date": "3 Ekim 2026",
+        "hypeScore": 9.5,
+        "sentimentScore": 72,
+        "sentiment": "stabil",
+        "headline": "Haftanın Tartışması",
+        "summary": "Oturumlar arası ajan haberleşmesi ve kota davranışları hafta boyunca gelgitli bir şekilde tartışıldı; geliştirici favorisi ama eleştiriler sürüyor.",
+        "sources": [
+          "r/ClaudeDev",
+          "r/CursorAI",
           "r/ClaudeAI"
         ]
       }
@@ -7016,6 +7143,19 @@
           "r/CursorAI",
           "r/vibecoding"
         ]
+      },
+      {
+        "date": "3 Ekim 2026",
+        "hypeScore": 8.7,
+        "sentimentScore": 66,
+        "sentiment": "stabil",
+        "headline": "Kararsız",
+        "summary": "Rakiplerin ajan özelliklerinde öne geçmesiyle haftanın tartışma konusu oldu; kalite algısı dalgalı seyrediyor.",
+        "sources": [
+          "r/CursorAI",
+          "r/vibecoding",
+          "r/ChatGPTCoding"
+        ]
       }
     ]
   },
@@ -7072,6 +7212,19 @@
           "r/LocalLLaMA",
           "r/selfhosted"
         ]
+      },
+      {
+        "date": "3 Ekim 2026",
+        "hypeScore": 8.2,
+        "sentimentScore": 85,
+        "sentiment": "coşkulu",
+        "headline": "Tek Komut Kurulum",
+        "summary": "Yerel model benchmark'larında referans araç olarak sürekli kullanıldı ve kararlı kaldı.",
+        "sources": [
+          "r/ollama",
+          "r/LocalLLaMA",
+          "r/selfhosted"
+        ]
       }
     ]
   },
@@ -7108,6 +7261,19 @@
           "r/selfhosted",
           "r/OpenSourceAI",
           "r/n8n"
+        ]
+      },
+      {
+        "date": "3 Ekim 2026",
+        "hypeScore": 8,
+        "sentimentScore": 82,
+        "sentiment": "coşkulu",
+        "headline": "Kurumsal Favori",
+        "summary": "Kurumsal ajan dağıtımında güvenilir tercih olarak öne çıkmaya devam ediyor.",
+        "sources": [
+          "r/selfhosted",
+          "r/n8n",
+          "r/OpenSourceAI"
         ]
       }
     ]
@@ -7199,6 +7365,19 @@
         "sources": [
           "r/LocalLLaMA",
           "r/StableDiffusion"
+        ]
+      },
+      {
+        "date": "3 Ekim 2026",
+        "hypeScore": 8.6,
+        "sentimentScore": 87,
+        "sentiment": "coşkulu",
+        "headline": "Video Lideri",
+        "summary": "ComfyUI hızlanması, seamless birleştirme workflow'ları ve LoRA selleri hafta boyunca video üreticilerinin gündemini tuttu.",
+        "sources": [
+          "r/comfyui",
+          "r/StableDiffusion",
+          "r/huggingface"
         ]
       }
     ]
@@ -7322,6 +7501,19 @@
           "r/windsurf",
           "r/ClaudeAI",
           "r/ClaudeDev"
+        ]
+      },
+      {
+        "date": "3 Ekim 2026",
+        "hypeScore": 9.8,
+        "sentimentScore": 42,
+        "sentiment": "coşkulu",
+        "headline": "Nerf Tepkisi",
+        "summary": "Kullanıcılar lansman günü ile bugünkü aynı prompt çıktılarını karşılaştırıp 'Opus 5.5 nerfed' diyerek sessiz zayıflatma iddiasını kanıtlamaya çalışıyor; topluluk coşku yerine hayal kırıklığı içinde.",
+        "sources": [
+          "r/ClaudeAI",
+          "r/ClaudeDev",
+          "r/windsurf"
         ]
       }
     ]
@@ -7531,6 +7723,19 @@
         "sources": [
           "r/LocalLLaMA"
         ]
+      },
+      {
+        "date": "3 Ekim 2026",
+        "hypeScore": 9.6,
+        "sentimentScore": 93,
+        "sentiment": "coşkulu",
+        "headline": "Haftanın Yerel Şampiyonu",
+        "summary": "Hafta boyunca M4 Max benchmark'ları, iPhone ikinci GPU deneyleri ve Humanlike-Chat 2.0 LoRA'sıyla topluluğun en çok sevdiği yerel model oldu.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/ollama",
+          "r/huggingface"
+        ]
       }
     ]
   },
@@ -7574,6 +7779,19 @@
           "r/singularity",
           "r/Anthropic",
           "r/vibecoding"
+        ]
+      },
+      {
+        "date": "3 Ekim 2026",
+        "hypeScore": 9.8,
+        "sentimentScore": 55,
+        "sentiment": "eleştirel",
+        "headline": "Haftanın Yaratıcı Lideri",
+        "summary": "Bir hafta boyunca övgüyle taçlandırıldı, ardından ani zayıflama iddiasıyla haftanın en tartışmalı konusu oldu; hem zirve hem hayal kırıklığı aynı üründe birleşti.",
+        "sources": [
+          "r/ClaudeAI",
+          "r/ClaudeDev",
+          "r/windsurf"
         ]
       }
     ]
@@ -7779,6 +7997,19 @@
           "r/devops",
           "r/LocalLLaMA"
         ]
+      },
+      {
+        "date": "3 Ekim 2026",
+        "hypeScore": 7.1,
+        "sentimentScore": 68,
+        "sentiment": "eleştirel",
+        "headline": "Yüksek Verim",
+        "summary": "4× NVIDIA L4 üzerinde 27B akıl yürütme modeli sunan geliştiriciler, L4'te NVFP4 çalışmadığını ve SGLang'ın CUDA graph aşamasında çöktüğünü, vLLM'in Marlin çekirdekleriyle hayat kurtardığını paylaştı.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/vllm",
+          "r/MachineLearning"
+        ]
       }
     ]
   },
@@ -7855,6 +8086,18 @@
         "sentiment": "coşkulu",
         "headline": "Geliştirici Favorisi",
         "summary": "Yeni Asset System, Continuity node'u ve RefMod kaydetme özellikleri ile r/comfyui ve r/StableDiffusion'da pratik iş akışı iyileştirmeleri tartışılıyor.",
+        "sources": [
+          "r/comfyui",
+          "r/StableDiffusion"
+        ]
+      },
+      {
+        "date": "3 Ekim 2026",
+        "hypeScore": 7.9,
+        "sentimentScore": 87,
+        "sentiment": "coşkulu",
+        "headline": "Geliştirici Favorisi",
+        "summary": "v0.38 sürümü MiniMax H3'ü %16 hızlandırdı ve Civitai içinde tarama yapıp eksik modelleri otomatik indiren yeni eklenti topluluk tarafından coşkuyla karşılandı.",
         "sources": [
           "r/comfyui",
           "r/StableDiffusion"
@@ -8171,6 +8414,18 @@
         "sources": [
           "r/Copilot",
           "r/ArtificialInteligence"
+        ]
+      },
+      {
+        "date": "3 Ekim 2026",
+        "hypeScore": 8.7,
+        "sentimentScore": 24,
+        "sentiment": "düşüş",
+        "headline": "Limit Tepkisi",
+        "summary": "Ücretsiz planın günlük 15 mesaja düşürülmesi ve web/mobildeki sürekli çökme, websocket ve kimlik doğrulama hataları 'yaşadığım en kötü ücretsiz deneyim' başlığıyla öfkeyle paylaşılıyor.",
+        "sources": [
+          "r/Copilot",
+          "r/artificial"
         ]
       }
     ]
@@ -8674,6 +8929,60 @@
         "sources": [
           "r/StableDiffusion",
           "r/ComfyUI"
+        ]
+      }
+    ]
+  },
+  "mcplama": {
+    "name": "MCPlama",
+    "category": "Altyapı & SDK",
+    "history": [
+      {
+        "date": "3 Ekim 2026",
+        "hypeScore": 6.4,
+        "sentimentScore": 73,
+        "sentiment": "coşkulu",
+        "headline": "Yeni Açık Kaynak",
+        "summary": "Geliştiriciler MCP sunucularını Claude Code, Cursor ve VS Code genelinde tek tek yapılandırma yorgunluğuna karşı merkezi yönetim ve Docker izolasyonu önerdiği için ilgi görüyor.",
+        "sources": [
+          "r/OpenSourceAI",
+          "r/ClaudeDev"
+        ]
+      }
+    ]
+  },
+  "w-comfyui": {
+    "name": "ComfyUI",
+    "category": "Medya / Üretim",
+    "history": [
+      {
+        "date": "3 Ekim 2026",
+        "hypeScore": 7.9,
+        "sentimentScore": 86,
+        "sentiment": "coşkulu",
+        "headline": "Geliştirici Favorisi",
+        "summary": "Yeni sürüm performans artışı ve eklenti ekosistemiyle haftanın en çok övülen üretim aracı oldu.",
+        "sources": [
+          "r/comfyui",
+          "r/StableDiffusion"
+        ]
+      }
+    ]
+  },
+  "w-rtx-5090": {
+    "name": "RTX 5090",
+    "category": "Donanım / Çip",
+    "history": [
+      {
+        "date": "3 Ekim 2026",
+        "hypeScore": 7.5,
+        "sentimentScore": 56,
+        "sentiment": "düşüş",
+        "headline": "Fiyat Tepkisi",
+        "summary": "Stok sıkıntısı ve evrak zorunluluğu haberleriyle hafta boyunca fiyat ve erişim tartışmalarının odağındaydı.",
+        "sources": [
+          "r/LocalLLaMA",
+          "r/hardware"
         ]
       }
     ]

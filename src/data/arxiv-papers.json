@@ -105,9 +105,63 @@
     "2609-38169v1",
     "2609-40340v1",
     "2609-40359v1",
-    "2609-40330v1"
+    "2609-40330v1",
+    "2610-02206v1",
+    "2610-02200v1",
+    "2610-02204v1"
   ],
   "dailyRecords": [
+    {
+      "date": "3 Ekim 2026",
+      "isoDate": "2026-10-03",
+      "papers": [
+        {
+          "id": "2610-02206v1",
+          "titleTr": "KaliBench: Kali Linux Üzerinde Siber Güvenlik Aracı Kullanımı İçin İnce Taneli Bir Kıyaslama",
+          "title": "KaliBench: A Fine-Grained Benchmark for Cybersecurity Tool Use on Kali Linux with Runtime-Free Verifiable Rewards",
+          "arxivUrl": "http://arxiv.org/abs/2610.02206v1",
+          "authors": [
+            "Pengfei Li",
+            "Naufal Suryanto",
+            "Sicheng Zhang"
+          ],
+          "category": "cs.CR",
+          "impactScore": 9.5,
+          "whyMad": "LLM'lerin siber güvenlik araçlarını gerçek komut satırında çalıştırma becerisini ölçen ilk ince taneli kıyaslama; bilgi testi ile gerçek uygulama arasındaki uçurumu kapatıyor.",
+          "summary": "Küçük sözdizimi ve bayrak hatalarının güvenlik operasyonlarını çökerttiği gerçeğinden yola çıkarak, çalışma zamanı gerektirmeyen doğrulanabilir ödüllerle ajanların gerçek CLI komut üretme yeteneğini ölçüyor."
+        },
+        {
+          "id": "2610-02200v1",
+          "titleTr": "VISTA: Etkileşimli Bir Dünyada Akıl Yürütme İçin Görsel Bir Koşum Takımı",
+          "title": "VISTA: A Visual Harness for Reasoning in an Interactive World",
+          "arxivUrl": "http://arxiv.org/abs/2610.02200v1",
+          "authors": [
+            "Qiushi Han",
+            "Keya Hu",
+            "Linlu Qiu"
+          ],
+          "category": "cs.AI",
+          "impactScore": 9.4,
+          "whyMad": "Çok modlu modellere kayıpsız görsel bellek ve uzun ufuklu görsel algı kazandırarak etkileşimli ortamlarda akıl yürütmeyi mümkün kılıyor.",
+          "summary": "Modelin ortamı doğrudan görsel gözlemlerle algılamasını ve geçmiş gözlemleri orijinal biçiminde saklayıp aktif olarak geri çağırmasını sağlayan bir görsel koşum takımı öneriyor."
+        },
+        {
+          "id": "2610-02204v1",
+          "titleTr": "Yeniden Kur, Alıştırma Yap, Gerçeğe Dön: Fiziksel Ajanlar İçin Rehberli Öz-İyileştirme",
+          "title": "Reconstruct, Practice, Go Real: Guided Self-Improvement for Embodied Agents",
+          "arxivUrl": "http://arxiv.org/abs/2610.02204v1",
+          "authors": [
+            "Yen-Jen Wang",
+            "Haozhe Jiang",
+            "Shuying Deng"
+          ],
+          "category": "cs.RO",
+          "impactScore": 9.3,
+          "whyMad": "Model ağırlıklarını güncellemeden robotların kendi yürütme sistemlerini otonom olarak iyileştirmesini sağlayarak robotik ölçeklenebilirliğinde önemli bir eşiği aşıyor.",
+          "summary": "RPG çerçevesi, çevrimdışı veri setinden manipülasyon yeteneklerini tespit edip simülasyonda ilgili alıştırma görevleri kuruyor ve yürütme geri bildirimiyle ajanı ağırlık güncellemeden geliştiriyor."
+        }
+      ]
+    },
     {
       "date": "2 Ekim 2026",
       "isoDate": "2026-10-02",
